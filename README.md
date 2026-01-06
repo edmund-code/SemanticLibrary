@@ -1,6 +1,6 @@
-# SemanticLibrary
+# AcademicLibrary
 
-A professional research tool for the local analysis and visualization of academic libraries. SemanticLibrary processes PDF documents to extract metadata and creates an interactive, force-directed network map based on bibliographic coupling.
+A professional research tool for the local analysis and visualization of academic libraries. AcademicLibrary processes PDF documents to extract metadata and creates an interactive, force-directed network map based on bibliographic coupling.
 
 ## Overview
 
