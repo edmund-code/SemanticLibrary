@@ -1,0 +1,1912 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">WEAK-TO-STRONG GENERALIZATION ENABLES FULLY AUTOMATED DE NOVO TRAINING OF MULTI-HEAD MASK-RCNN MODEL FOR SEGMENTING DENSELY OVERLAPPING CELL NUCLEI IN MULTIPLEX WHOLE-SLICE BRAIN IMAGES</title>
+				<funder ref="#_QUCBax9">
+					<orgName type="full">National Institutes of Health</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2025-12-11">December 11, 2025</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">A</forename><surname>Preprint</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Lin</forename><surname>Bai</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">University of Houston</orgName>
+								<address>
+									<postCode>77024</postCode>
+									<region>TX</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Xiaoyang</forename><surname>Li</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="institution">Canva Pty Ltd</orgName>
+								<address>
+									<settlement>Sydney</settlement>
+									<region>NSW</region>
+									<country key="AU">Australia</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Liqiang</forename><surname>Huang</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">University of Houston</orgName>
+								<address>
+									<postCode>77024</postCode>
+									<region>TX</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Quynh</forename><surname>Nguyen</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">University of Houston</orgName>
+								<address>
+									<postCode>77024</postCode>
+									<region>TX</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Hien</forename><surname>Van Nguyen</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">University of Houston</orgName>
+								<address>
+									<postCode>77024</postCode>
+									<region>TX</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Saurabh</forename><surname>Prasad</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">University of Houston</orgName>
+								<address>
+									<postCode>77024</postCode>
+									<region>TX</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Dragan</forename><surname>Maric</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">University of Houston</orgName>
+								<address>
+									<postCode>77024</postCode>
+									<region>TX</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="institution">National Institute of Neurological Disorders and Stroke</orgName>
+								<address>
+									<postCode>20892</postCode>
+									<settlement>Bethesda</settlement>
+									<region>MD</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">John</forename><surname>Redell</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Neurobiology and Anatomy</orgName>
+								<orgName type="institution">UT McGovern Medical School</orgName>
+								<address>
+									<settlement>Houston</settlement>
+									<region>TX</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Pramod</forename><surname>Dash</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Neurobiology and Anatomy</orgName>
+								<orgName type="institution">UT McGovern Medical School</orgName>
+								<address>
+									<settlement>Houston</settlement>
+									<region>TX</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">Badrinath</forename><surname>Roysam</surname></persName>
+							<email>broysam@uh.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">University of Houston</orgName>
+								<address>
+									<postCode>77024</postCode>
+									<region>TX</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">WEAK-TO-STRONG GENERALIZATION ENABLES FULLY AUTOMATED DE NOVO TRAINING OF MULTI-HEAD MASK-RCNN MODEL FOR SEGMENTING DENSELY OVERLAPPING CELL NUCLEI IN MULTIPLEX WHOLE-SLICE BRAIN IMAGES</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2025-12-11">December 11, 2025</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">B6D01B0D40AC413B45D2B729DFF07F8E</idno>
+					<idno type="arXiv">arXiv:2512.11722v1[cs.CV]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:10+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>weak to strong learning</term>
+					<term>automated training</term>
+					<term>instance segmentation</term>
+					<term>whole-slide imaging</term>
+					<term>cell nuclei</term>
+					<term>multiplex immunofluorescence</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>We present a weak to strong generalization methodology for fully automated training of a multi-head extension of the Mask-RCNN method with efficient channel attention for reliable segmentation of overlapping cell nuclei in multiplex cyclic immunofluorescent (IF) whole-slide images (WSI), and present evidence for pseudo-label correction and coverage expansion, the key phenomena underlying weak to strong generalization. This method can learn to segment de novo a new class of images from a new instrument and/or a new imaging protocol without the need for human annotations. We also present metrics for automated self-diagnosis of segmentation quality in production environments, where human visual proofreading of massive WSI images is unaffordable. Our method was benchmarked against five current widely used methods and showed a significant improvement. The code, sample WSI images, and high-resolution segmentation results are provided in open form for community adoption and adaptation.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Multiplex immunofluorescent (IF) imaging of whole slides of tissues using automated cyclic staining is currently performed on a large scale for deep cellular characterization of histological samples in pre-clinical science and drug discovery <ref type="bibr" target="#b0">([Al-Kofahi et al., 2009]</ref>; <ref type="bibr" target="#b1">[Li et al., 2017]</ref>; <ref type="bibr" target="#b2">[Lin et al., 2003]</ref>; <ref type="bibr" target="#b3">[Lin et al., 2007]</ref>; <ref type="bibr" target="#b4">[Lin et al., 2005]</ref>; <ref type="bibr" target="#b5">[Maric et al., 2021]</ref>; <ref type="bibr">[Rivest et al., 2023]</ref>). These systems generate massive multi-gigabyte multi-channel whole-slide images (WSI) containing hundreds of thousands or more cells that must be analyzed accurately with maximum-possible and scalable automation. Reliable detection and accurate segmentation of cell nuclei is a critical yet challenging first step towards cell-based quantification of molecular markers. This problem is especially challenging since WSI images cover extended tissue regions that can exhibit high variability in staining, tissue architecture, and cell morphology, and varied image artifacts arising from automated scanning and cyclic immunofluorescence processes. Interestingly, even the fluorescent staining of cell nuclei is highly variable across WSI tissue regions and the commonly used DNA stain DAPI does not mark all nuclei as evident in Figure <ref type="figure" target="#fig_0">1A</ref> showing an image of a rat brain slice (29, 398 × 43, 054 pixels per channel, &gt;250,000 cells) drawn from a 50-plex dataset <ref type="bibr" target="#b5">([Maric et al., 2021]</ref>) (The full high-resolution image is posted in the Supplement).</p><p>Recent progress in segmenting cell nuclei has largely been driven by the application of deep neural networks and foundational models trained on massive human-annotated datasets ( <ref type="bibr" target="#b7">[Kirillov et al., 2023]</ref>; <ref type="bibr" target="#b8">[Radford et al., 2021]</ref>; <ref type="bibr" target="#b9">[Ramesh et al., 2022]</ref>) in a bid to capture the variability. Despite the progress, these methods remain human annotation effort intensive. Foundational models require massive initial annotation efforts to train, and additional annotation efforts to adapt the models to a new class of images. Even then, several problems remain. For example, the correct handling of overlapping nuclei in thicker samples remains unaddressed (Figure <ref type="figure" target="#fig_1">2</ref>). Next, foundational models are often trained on 3-channel (RGB) images and therefore cannot exploit the cues that are available in multiplex WSI images, a missed opportunity (Figure <ref type="figure" target="#fig_0">1</ref>). Finally, the problem of assessing the accuracy of automatically generated segmentations remains human effort intensive. There is a compelling need for automated assessment methods, especially in production environments, where visual proofreading of massive WSI images is unaffordable and not scalable.</p><p>We present an integrated fully automated methodology based on weak-to-strong generalization <ref type="bibr" target="#b10">([Lang et al., 2024]</ref>) to overcome the above-mentioned limitations (Figure <ref type="figure" target="#fig_2">3</ref>), and metrics for automated segmentation quality assessment. Weak-to-strong generalization is a special case of weakly supervised machine learning in which a strong model (student) is trained using (comparatively unreliable) annotations generated automatically by a weaker model (teacher) after they are subjected to well-designed automated cleanup and data augmentation steps. This strong model is trained using weak annotations generated using a current foundational model (e.g., SAM <ref type="bibr" target="#b7">([Kirillov et al., 2023]</ref>)) that lacks needed capabilities like the ability to handle overlapping nuclei. In this work, we refer to these weak annotations as "pseudo labels" in line with the weak-to-strong generalization literature. A key step is the automated processing of the pseudo labels to generate a large collection of synthetic examples with numerous instances of complex and variable nuclear overlap patterns. From these augmented weak label data, we train the strong model by weak-to-strong learning ( <ref type="bibr" target="#b10">[Lang et al., 2024]</ref>). <ref type="bibr" target="#b10">Lang et al. ([Lang et al., 2024]</ref>) showed that a well-trained student model can learn to correct the weaker model's mistakes ("pseudo label correction") and generalize to instances where the teacher lacks confidence, even when these examples are excluded from the training data ( "coverage expansion"). We present evidence for these phenomena and show their beneficial impact. Finally, we present metrics for assessing the accuracy of large-scale nuclear segmentations in a fully automated manner based on accounting for the fluorescence signal and quantifying the purity of fluorescent signatures over cells.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Summary of prior work</head><p>Methods for segmenting cell nuclei fall into three main categories. First, there are parameter-based methods, such as thresholding ( <ref type="bibr" target="#b11">[Otsu, 1975]</ref>), watershed <ref type="bibr" target="#b12">([Malpica et al., 1997]</ref>), or active contours <ref type="bibr" target="#b13">([Chan and Vese, 2001]</ref>), that require users to manually adjust parameters for each imaging modality and scale. This requires care and expertise and often yields suboptimal performance, largely due to variability across the large WSI images. The second involves deep CNN models (e.g., <ref type="bibr">Mask-RCNN([He et al., 2017]</ref>), U-Net ( <ref type="bibr" target="#b15">[Ronneberger et al., 2015]</ref>), <ref type="bibr">YOLACT ([Bolya et al., 2019]</ref>)) that are custom trained for each class of images to cope with the expected variability. Variations of these models ( <ref type="bibr" target="#b17">[Graham et al., 2019]</ref>; <ref type="bibr">[Jia et al., 2021]</ref>; <ref type="bibr" target="#b19">[Johnson, 2018]</ref>, <ref type="bibr" target="#b20">[Johnson, 2020]</ref>; <ref type="bibr" target="#b21">[Long, 2020]</ref>; <ref type="bibr" target="#b22">[Lv et al., 2019]</ref>; <ref type="bibr" target="#b23">[Vuola et al., 2019]</ref>; <ref type="bibr" target="#b24">[Zhou et al., 2018]</ref>) have been extensively applied to nuclear segmentation. Deep Learning Models ( <ref type="bibr" target="#b25">[Ke et al., 2021]</ref>; <ref type="bibr" target="#b26">[Kong et al., 2020]</ref>; <ref type="bibr" target="#b27">[Molnar et al., 2016]</ref>; <ref type="bibr" target="#b28">[Roy et al., 2023]</ref>; <ref type="bibr" target="#b29">[Zhou et al., 2019]</ref>) like DoNet ( <ref type="bibr" target="#b30">[Jiang et al., 2023]</ref>) are specifically designed to identify overlapping objects, and many augmentation methods <ref type="bibr" target="#b31">([Dvornik et al., 2018]</ref>; <ref type="bibr" target="#b32">[Dwibedi et al., 2017]</ref>; <ref type="bibr" target="#b33">[Fang et al., 2019]</ref>; <ref type="bibr" target="#b34">[Ghiasi et al., 2021]</ref>; <ref type="bibr" target="#b35">[Lin et al., 2022]</ref>; <ref type="bibr" target="#b36">[Yu et al., 2023]</ref>; <ref type="bibr" target="#b37">[Yun et al., 2019]</ref>; <ref type="bibr" target="#b38">[Zhang, 2017]</ref>) are proposed to boost segmentation performance. While these methods achieve high accuracy, they require extensive annotation efforts, making them time-consuming and resource intensive. The third and most scalable approach is to develop reusable deep learning based models like StarDist ( <ref type="bibr" target="#b39">[Schmidt et al., 2018]</ref>), Cellpose ( <ref type="bibr" target="#b40">[Pachitariu and Stringer, 2022]</ref>; <ref type="bibr" target="#b40">[Stringer and Pachitariu, 2025]</ref>; <ref type="bibr" target="#b41">[Stringer et al., 2021]</ref>), CellSeg <ref type="bibr" target="#b42">([Lee et al., 2022]</ref>) that are pre-trained on large and diverse datasets. While these models are efficient and widely used, they often suffer from domain shift -when the test images arise from a distribution that is different from the training set, and the model's performance can degrade. Furthermore, these methods are designed to work with a small number of channels (e.g., RGB images), making them sub-optimal in multiplex WSI applications.</p><p>Recently, large-scale, pre-trained foundation models (e.g. the Segment Anything Model (SAM) ( <ref type="bibr" target="#b7">[Kirillov et al., 2023]</ref>)) trained on &gt;1B masks over 11M images show competitive segmentation performance and often outperform fullysupervised models. Foundation models can generalize data distributions beyond those encountered during training, a capability facilitated by prompt engineering and referred to as zero-shot and few-shot generalization. Although powerful, models like SAM cannot handle overlapping nuclei, and multiplex images since they are trained on RGB images, and require manual prompts to generate segmentations, limiting their applicability in fully automated workflows. Many methods to fine tune SAM for biomedical images have been described, such as All-in-SAM ( <ref type="bibr" target="#b43">[Cui et al., 2024]</ref>), finetuning SAM by providing box level annotations, µSAM ( <ref type="bibr" target="#b44">[Archit et al., 2025]</ref>), fine-tuning SAM for light and electron microscopy, MedSAM <ref type="bibr" target="#b44">([Ma et al., 2024]</ref>), fine-tuning SAM on an unprecedented dataset with more than one million medical image-mask pairs. Unfortunately, fine-tuning SAM requires a large corpus of (expensive) domain-specific annotation data. In this paper we show how we can leverage existing models (e.g., SAM) as a teacher model to generate pseudo labels for training a more capable student model. In weakly supervised learning, for instance, co-teaching ( <ref type="bibr" target="#b45">[Han et al., 2018]</ref>), involves training two network to teach the other. <ref type="bibr">Co-teaching+ ([Yu et al., 2019]</ref>)builds on this strategy by selecting low-loss points from samples where the two networks disagree. <ref type="bibr">Co-learning ([Tan et al., 2021]</ref>) integrates supervised and self-supervised learning with a shared feature encoder with two exclusive heads, that provide different views of the data. JoCoR ( <ref type="bibr" target="#b48">[Zhang et al., 2018]</ref>) aims to reduce the diversity of two networks during training. Compared to classification, fewer studies focus on segmentation tasks. ADELE <ref type="bibr" target="#b49">([Liu et al., 2022]</ref>) employs an early stopping strategy to allow the network to fit clean labels before it memorizes false annotations. Recently, some authors have developed theoretic support for weak-to-strong learning <ref type="bibr" target="#b10">([Lang et al., 2024]</ref>) for classification tasks, and identified the conditions under which this strategy is successful. Our work aims to leverage these emerging insights and adapt weak to strong learning to instance segmentation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Weak To Strong Learning Method</head><p>Figure <ref type="figure" target="#fig_2">3</ref> depicts the main steps of the proposed weak-to-strong learning approach. For simplicity, we describe the detailed steps for fully automated training of a strong model given a single multiplex image I. This procedure is easily extended to a batch of images. The trained model can be used to segment similar other images (in inference mode). Given a large multiplex WSI image I, we dice it into a set {x i } K i=1 of K 512×512-pixel tiles. We extract a second set of two-channel tiles {x DAP I,Histone i } K i=1 composed of the nuclear markers DAPI and Pan-histone. From this set, we construct a dataset D = {(x DAP I,Histone i</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Automated Pseudo-label Generation using the Segment Anything Model</head><formula xml:id="formula_0">, ε i )} K i=1 where ε i = {e i,j } Ni j=1</formula><p>is the set of masks (pseudo labels) generated by SAM using an array of point prompts, N i is the number of masks in the i th tile, and e i,j is the j th mask in the i th tile. We also construct a multiplex version of the dataset D = {(x i , ε i )} K i=1 . At this stage, SAM does not identify the categories of the detected objects (e.g., nuclei/other). The masks ε i may include noisy labels due to false detections, over segmentations, under segmentations, or erroneous overlaps. Accurately identifying these errors requires human proofreading. However, we can filter the masks considerably using a simple rule-based strategy focused on two main types of errors: union masks (two or more smaller masks that are subsumed by a larger mask), and duplicate masks. The output of the rule-based filtering is denoted</p><formula xml:id="formula_1">D f = {(x DAP I,Histone i , ε f i )} K i=1 , where ε f i = {e f i,j } N f i j=1 ,</formula><p>and N f i indicates the revised count of instances in the i th image. Details of the rule-based filtering are presented in pseudocode form as Algorithm 1 in the Appendix.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Data Augmentation for Simulating Cell Overlaps</head><p>To generate a set of training examples of cell overlaps, we use a straightforward "copy and paste" strategy. Within each image x i , we select two nuclei from ε f i , one to serve as the 'copy' nucleus, which undergoes a combination of spatial and intensity transformations, and the other as the 'paste' nucleus, onto which the first nucleus is overlayed. Adjustments are made to the annotations to reflect these changes. Given that ε f i may still include noisy labels, we select the 'copy' and 'paste' nuclei based on four criteria: (1) choosing nuclei that are spatially isolated from others; (2) avoiding nuclei close to the image boundaries; (3) excluding nuclei with concave mask contours; and (4) discarding dim nuclei. For the transformation of 'copy' nuclei, we apply random rotation and opacity adjustments to the selected nuclei to simulate expected overlap patterns. To prevent extreme overlaps, we implement a threshold on the overlap ratio. The output of these augmentations is denoted</p><formula xml:id="formula_2">D aug = {(x aug i , ε aug i )} K i=1 ,</formula><p>where ε aug i = {e aug i,j } N aug i j=1 , N aug i represents the revised instance count in the i th image. A pseudo-code description is provided as Algorithm 2 in the Appendix. 3.3 The Proposed Strong Model (M 3 -RCNN) Figure 4 depicts the architecture of the proposed strong M 3 -RCNN model. We use the Mask-RCNN ([He et al., 2017]) as the starting point given its competitive performance in instance segmentation. It operates in two stages. The first stage employs a backbone network like ResNet-50 ([He et al., 2016]) and a feature pyramid network (FPN) to extract multiscale features of each image tile x i . A region proposal network (RPN) identifies boxed regions of interest (ROI), and their features f ROI i, j . The second stage consists of a bounding box regression head, classification head and a mask head that uses the ROI features f ROI i, j to generate bounding boxes, object classifications and segmentation masks. The composite loss function of Mask-RCNN is articulated as:</p><formula xml:id="formula_3">L M RCN N = λ 1 L reg + λ 2 L cls + λ 3 L mask .<label>(1)</label></formula><p>where L reg represents the smooth-L1 loss for bounding box regression in two stages, L cls is the cross-entropy loss for classification in two stages,L mask is the pixel-wise cross-entropy loss for segmentation in stage two, and λ 1 , λ 2 , λ 3 are loss weights. Here, given that we are analyzing eight-channel images, we use an Efficient Channel Attention (ECA) module ( <ref type="bibr" target="#b51">[Wang et al., 2020]</ref>) to weight each channel's feature map to compute the overall feature map f ECA i, j for each box. The ECA module consists of three components, global average pooling (GAP), one-dimensional convolution (W ), and a sigmoid function σ. The input to the ECM is f ROI i, j for the j th object from i th image tile, and the output f ECA i, j is given by:</p><formula xml:id="formula_4">f ECA i,j = σ W * GAP f ROI i,j</formula><p>.</p><p>(2)</p><p>Since nuclei can often overlap, traditional amodal segmentation approaches concentrate on the visible segments of objects, largely due to the inherent challenge of representing occluded areas where they are not directly observable. However, in our context, the objects are not fully occluded, and some visual cues of the occluded nuclei remain visible. To leverage these weak but important cues, we diverge from the conventional single-mask-head framework and introduce two additional mask heads specifically designed to capture the overlapping and complement parts of the objects, alongside the standard whole object representation, as illustrated in Figure <ref type="figure" target="#fig_3">4</ref>. We denote these mask heads head c , head w , head o, for the complement, whole mask, and overlap mask heads, respectively. As shown in Figure <ref type="figure" target="#fig_3">4</ref>, the inputs of head c and head o are f ECA i, j , and the output feature maps of the head c and head o from the 3 rd convolution layer are added with f ECA i, j to obtain the feature map f added i, j</p><p>of the whole mask head. The loss functions for the mask heads are formulated as follows:</p><formula xml:id="formula_5">L nonconcave mask = 1 K K i=1 1 N aug,nc i N aug,nc i j=1 (L w + L c + L o ),<label>(3)</label></formula><formula xml:id="formula_6">L w = L ce head w (f added i,j</formula><p>), e aug i,j ,</p><formula xml:id="formula_7">L o = L ce head o (f ECA i,j<label>(4)</label></formula><p>), e aug,o i,j ,</p><formula xml:id="formula_8">L c = L ce head c (f ECA i,j<label>(5)</label></formula><p>), e aug,c i,j .</p><p>where L non-concave mask is the loss for non-concave samples and N aug,nc i represents the total number of instances with non-concave contours, e aug, o i,j and e aug, c i,j represent the overlapping and complement parts of the augmented mask e aug i,j , respectively, and L ce is the cross-entropy loss function. Given two overlapping nuclei A and B, the segmentation from SAM generally yield a comprehensive mask for nucleus A and a complementary mask for nucleus B. When analyzing its segmentation output, denoted as e aug i,j and armed with the prior understanding that the typical shape of nuclei is non-concave, we categorize these masks into concave (caused by overlapping) and non-concave based on the morphology of their contours. Masks exhibiting non-concave outlines are considered accurate and can be accepted as is. Masks with concave or incomplete outlines are excluded from the mask loss computation due to their structural irregularity. However, these instances are still utilized in the classification and bounding box regression losses, as their bounding boxes can remain accurate when overlap is not severe, despite the mask being incomplete. Our M 3 -RCNN model is trained in an end-to-end manner using a composite loss function which is given by:</p><formula xml:id="formula_10">L M 3RCN N = λ 1 L reg + λ 2 L cls + λ 3 L nonconcave mask . (<label>7</label></formula><formula xml:id="formula_11">)</formula><p>4 Experimental Results</p><p>The materials and methods for the multiplex WSI imaging are described in our earlier paper and the data are publicly available ( <ref type="bibr" target="#b5">[Maric et al., 2021]</ref>). We evaluated the proposed method against five current methods (Table <ref type="table" target="#tab_1">1</ref>, Table <ref type="table" target="#tab_2">2</ref>) in two different ways: (i) automated (unsupervised) assessment using novel metrics described below; and (ii) manual (supervised) assessment against ground truth annotations. The natural near symmetry of the rat brain provides an efficient and practical way to perform these steps. First, our proposed M 3 -RCNN model was trained on K = 2, 494 image tiles of size 512 × 512 pixels cropped from the left side of the first whole rat brain slice image (S1). The unsupervised assessment was carried out over all the brain slices (S1, . . . S4), by dividing the WSI images into tiles of size 512 × 512 pixels with 50 pixels overlap. For the more effort-intensive supervised assessment, we randomly selected 100 tiles from the right side of the brain in the S1 dataset, annotated them using the semi-automated online computer vision annotation tool (CVAT), and used this as the ground truth dataset.</p><p>Finally, to show the pseudo-label correction phenomenon under our weak-to-strong generalization framework, we randomly selected 100 tiles from our training set (left side of the S1 brain), annotated them using the CVAT annotation tool, and visualized this phenomenon using t-SNE multi-dimensional projection ([Van der <ref type="bibr" target="#b52">Maaten and Hinton, 2008]</ref>).</p><p>For supervised evaluation, we use Aggregated Jaccard Index plus (AJI+) ( <ref type="bibr" target="#b17">[Graham et al., 2019]</ref>) and Panoptic Quality (PQ) ( <ref type="bibr" target="#b53">[Kirillov et al., 2019]</ref>) as our primary metrics. AJI+ improves upon the original Aggregated Jaccard Index (AJI) ( <ref type="bibr" target="#b54">[Kumar et al., 2017]</ref>) by penalizing unmatched ground truth instances. PQ jointly evaluate detection and segmentation quality in a single metric. As noted earlier, our goal is to assess segmentation quality in a fully automated manner, without the need for humangenerated ground truth annotations. We recognize that this goal cannot be met for instance segmentation in general. However, in the context of immunofluorescence imaging, especially multiplex imaging, it is indeed possible to develop practically useful quality metrics by examining the extent to which the fluorescence signal is accounted for by the segmentation masks ("signal coverage"), and the extent to which each object represents an individual cell of a certain type as indicated by the expression of a cell-type marker (we call that marker purity). These metrics are described below.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Automated (Unsupervised) Segmentation Quality Assessment Metrics</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.1">(1) Signal Coverage Metric Γ</head><p>This is a pixel-level measure that quantifies the number of foreground pixels that are missed by all the segmentation masks generated by the proposed model, collectively denoted M model . For this, we identify all the foreground pixels M DAP I, Histone by fitting a two-component Gaussian Mixture Model (GMM) to separate foreground and background. With this, the coverage metric Γ ∈ (0, 1) over the entire image is formulated as:</p><formula xml:id="formula_12">Γ = (x,y) (M model ∩ M DAP I, Histone ) (x,y) M DAP I, Histone .<label>(8)</label></formula><p>where (x, y) denotes all the pixel locations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.2">(2) Marker Purity Metric Π</head><p>This measure analyzes the expression of cell-type protein markers over each object, as illustrated in Figure <ref type="figure" target="#fig_5">6</ref>. We consider an object to be 'pure' if it contains foreground pixels for one cell type alone, and 'impure' otherwise. To make this notion precise, we model a nuclear mask M n as the union of multiple cell-type-specific masks M c n , with weights α c n ∈ (0, 1), where c = 1, ..C indexes the cell-type marker channels, and</p><formula xml:id="formula_13">α n = [α 1 n , . . . α C n ]</formula><p>is the vector of these weights. We perform a sparse decomposition using Orthogonal Matching Pursuit (OMP) <ref type="bibr" target="#b55">([Pati et al., 1993]</ref>) to find the most significant cell-type masks and use the corresponding coefficients α c n to define the purity metric for a single mask M n as follows.</p><formula xml:id="formula_14">α n = argmin αn ReLuOM P M n - C c=1 α c n M c n 2 2 , s.t. ||α n || 0 ≤ k. (<label>9</label></formula><formula xml:id="formula_15">)</formula><p>where k is the L 0 sparsity constraint (we use k = 3), and ReLuOMP is the rectified linear unit function.</p><p>With this, the purity metric for the n th object is given by Π n = max α 1 n , . . . α C n , and the global purity metric Π ∈ (0, 1) over all N detected masks is given by:</p><formula xml:id="formula_16">Π = 1 N N n=1 Π n . (<label>10</label></formula><formula xml:id="formula_17">)</formula><p>The object-wise purity metric Π n can also be used to identify erroneously segmented objects for corrective editing if desired. For the cell-type-specific masks M c n , we use a GMM model to identify the foreground pixels in the cell-type marker channel. In our case, the biomarkers were NeuN for neurons, Iba-1 for microglia, Olig2 for oligodendrocytes, S100 ensuremath beta for astrocytes and GFP for endothelial cells. Specifically, we first fit a GMM with three components and then identify the second largest and largest GMM clusters based on their mean intensity values. We then calculate the maximum intensity within the second-largest cluster and the minimum intensity within the largest cluster. The average of these two values is used as the foreground threshold. This method is simple yet effective, and filters out the cytoplasm, processes and auto-fluorescence signals.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Performance Summary</head><p>Table <ref type="table" target="#tab_1">1</ref> and Table 2 provide a performance summary of the proposed M 3 -RCNN model against five benchmarks (Cellpose2.0, StarDist, SAM-C, MRCNN, MRCNN-AUG). For the Cellpose2.0 and StarDist models, we used their default parameter settings. For the SAM-C method, we provided a 256 × 256 array of point prompts to SAM as input and used our rule-based filtering Algorithm 1 to eliminate minor errors. For MRCNN, we trained the MRCNN model on annotations generated by SAM, which were filtered using Algorithm 1. The MRCNN-AUG model was trained on the annotations generated by SAM, which were filtered using Algorithm 1, and in addition, we applied data augmentation using Algorithm 2. The proposed (strong) model was trained using the same annotations as the MRCNN-AUG model. To ensure a fair comparison, we trained M 3 -RCNN, MRCNN, and MRCNN-AUG for the 5000 iterations with a batch size 32, λ 1 = λ 2 = λ 3 = 1, β 1 = 0.8, β 2 = 0.7, β 3 = 0.5, t = 3, utilizing the same backbone ResNet-50, model hyperparameters, and post-processing. Post-processing was performed after supervised evaluation in two stages. First, false positive detections were removed by cross-referencing the results with those from MRCNN. Then, potentially missed detections were recovered by incorporating segmentation outputs from Cellpose2.0 and StarDist. For the S1 dataset, our method achieves the highest AJI+ and PQ scores. MRCNN and MRCNN-AUG both outperform Cellpose2.0, StarDist and SAM-C. In terms of the purity and coverage metrics for the S1 -S4 datasets, all three methods including M 3 -RCNN, MRCNN and MRCNN-AUG outperform Cellpose2.0, StarDist and SAM-C. This trend aligns with the results obtained using supervised metrics, further validating the reliability of our proposed evaluation metric. We can also see that our baseline SAM-C has surpassed StarDist and Cellpose2.0 due to its training on a large dataset, giving it a better generalization ability. It is not surprising that Cellpose2.0 and StarDist do not perform as well since they have not been trained on this specific dataset. M 3 -RCNN, MRCNN and MRCNN-AUG outperform SAM-C which shows the beneficial effect of the coverage expansion phenomenon in weak to strong generalization. Table <ref type="table" target="#tab_3">3</ref> provides an ablation study of the proposed M 3 -RCNN model. Removing ECA module or multi-heads causes a decrease in performance, showing that each component contributes independently. The complete model which combines both modules achieves the best performance. As shown in Figure <ref type="figure" target="#fig_4">5</ref>, our model effectively segments entire nuclei for overlapping cases, even in the densely packed regions. Our approach can be viewed as a fully automated refinement method, enhancing existing segmentation models without the need for expensive ground truth data for training or fine-tuning.  the strong student model. It is clear from Table <ref type="table" target="#tab_1">1</ref> that the M 3 -RCNN strong student model outperforms the teacher model on the 100-tiles ground truth dataset that was unseen by the student model and this is evidence for the coverage expansion phenomenon (generalizing to instances where the teacher either lacks confidence or to unlabeled data points that are not part of the training dataset) we expect in weak to strong generalization.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Evidence for Weak to Strong Generalization</head><p>Next, we compared the pseudo-label data before and after weak-to-strong learning to examine evidence for the pseudolabel correction phenomenon (a well-trained student model can learn to correct the weaker model's mistakes) in feature space (Figure <ref type="figure" target="#fig_6">7</ref>). For this, we extracted all nuclei from 100 labeled images from the training set by locating their centers and zero padded to 80 × 80 -pixel image patches. Each such patch (DAPI and Pan-histone) is represented by a seven-dimensional (7-D) feature vector that quantifies segmentation difficulty in terms of: (i) foreground contrast; (ii) occlusion score; (iii) boundary variability; (iv) nucleus size; (v) aspect ratio; (vi) edge intensity; and (vii) background variability. Foreground contrast measures the difference in intensity between the nucleus and its background. Occlusion score evaluates the proportion of a nucleus that is overlapped by other nuclei. Boundary variability evaluates the number of edge pixels relative to nucleus size. Nucleus size normalizes the nucleus area by image size. Aspect Ratio is the width-to-height ratio. Edge intensity is the mean intensity of nucleus edges. Lastly, Background variability measures the standard deviation of background pixel intensities.</p><p>We used the t-SNE algorithm to project these 7-D features to the plane for visualization and examined close-ups of image regions for visual confirmation. In the t-SNE projection, a green dot corresponds to a correctly predicted nucleus, and a red dot corresponds to an incorrectly predicted nucleus. To determine whether a prediction is correct (green) or incorrect (red), we used the following criteria. For non-overlapping nuclei, a prediction is considered correct if its IoU with the ground truth exceeds 0.7. For overlapping nuclei, a prediction must cover at least 10 pixels of the overlapping region and have an IoU &gt; 0.5 prediction to be considered as correct. In comparing SAM-C and our proposed model (Figure <ref type="figure" target="#fig_6">7</ref>), we clearly observe a decrease in the total number of red points indicating the pseudo-label correction phenomenon, and a visual confirmation of improved segmentation accuracy. Additionally, by visualizing the clusters of data points, particularly in regions where pseudo-label correction occurred, we see that our model achieves better segmentation of large, small and dim nuclei, as well as nuclei occluded by other nuclei.</p><p>Lang et al. ([Lang et al., 2024]) have calculated an upper bound for the error rate err (f, y|S i ) of a student model against ground truth data on a pseudo labeled training subset S i with known ground truth. Their estimate was formulated for classification rather than segmentation problems. With this in mind, we choose to consider our model M 3 -RCNN as a classifier f that classifies image patches, denoted x, that are centered on nuclei. Following the notation of Lang et al., we denote y as the ground truth labeler, and y as the pseudo labeler SAM-C. With this notation, err (f, y|S i ) is the error rate for f against the ground truth labels, where S i represents the set of extracted image patches around the nuclei (Figure 7C-F). We use S bad i to denote the incorrectly pseudo labeled image patches and S good i</p><p>to denote the correctly pseudo labeled patches. With this, the upper bound for err (f, y|S i ) is given by:</p><formula xml:id="formula_18">err (f, y|S i ) ≤ 2α i 1 -2α i P R(f ) S i err (f, y|S i ) α i 1 - 3 2 c .<label>(11)</label></formula><p>where α i = P (S bad i |S i ) is the error rate of the pseudo labeler against ground truth labels, and P R(f ) S i is a measure of the classifier f 's robustness, where a lower value corresponds to a higher robustness, and vice versa. Here,</p><formula xml:id="formula_19">R(f ) = {x : r(f, x) = 0}, where r(f, x) = P f x ′ ̸ = f (x) x ′ ∈ N (x)</formula><p>is the probability that f assigns different labels to x and its neighbor x ′ in feature space. In equation ( <ref type="formula" target="#formula_18">11</ref>), c is the expansion rate between S bad i and S good i , which measure how well two sets are mixed together, and is calculated using the same formulation described in <ref type="bibr" target="#b10">Lang et al. ([Lang et al., 2024]</ref>). The calculated values are shown in Table <ref type="table" target="#tab_4">4</ref>. Our model error rate err (f, y|S i ) is smaller than α i , this indicates the occurrence of the pseudo correction phenomenon. Also, the upper bound of err (f, y|S i ) equals to 0.32, which is reasonably close to the actual observed value of 0.17, indicating that the theoretical estimation aligns well with empirical results.</p><p>In summary, we see clear evidence of the two key phenomena associated with weak to strong generalization -pseudolabel correction and coverage expansion. Importantly, these phenomena result in a superior nuclear segmentation algorithm.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Conclusions and Discussion</head><p>We have demonstrated the practicality of building strong (more capable) nuclear segmentation models from weak (less capable) models in a fully automated manner under the framework of weak to strong generalization, for which evidence is clearly observed. Importantly, the entire process, starting from the image to segmentation results accompanied by performance metrics, is fully automated and does not require any manual annotation effort. This strategy is made possible by the availability of versatile and powerful foundational models like SAM, and the exploitation of image cues that are available in multiplex IF whole-slide images. Data cleanup and augmentation algorithms are the unsung but crucial enabler of weak to strong generalization.</p><p>Our method can be used to segment novel image datasets de novo (e.g., images from a new instrument using a new protocol) in a fully automated manner. The first run of the proposed method on a new dataset produces two outcomes: (i) accurate fully automated segmentation results for the new dataset accompanied by automated assessment metrics; and (ii) a trained M 3 -RCNN model that can be used for segmenting (in inference mode) a larger collection of similar datasets (e.g., images from the same instrument using the same protocols). For whole-slide images (WSIs) with dimensions of 29, 398 × 43, 054 pixels, our pipeline is capable of generating complete image predictions within ~9 hours (1 min to divide WSIs into tiles, 4 hours 25 mins to generate masks using SAM, 11 mins to run Algorithm 1, 2 mins to run Algorithm 2, 2 hours for training, 1 hour 2 mins for inferencing and postprocessing, 57 mins for merging results) on a computer with six NVIDIA RTX6000A GPUs, fully automatically. Once trained, subsequent inferencing using the model takes ~0.01 seconds per tile in the WSI image with 6,012 tiles (~1 hour total). By introducing ECA module and multi mask heads, our M 3 -RCNN model learned capabilities that are not present in the Mask-RCNN model (e.g., improved handling of overlapped nuclei). The proposed automated (unsupervised) evaluation metrics offer the ability to assess automated segmentation quality without the need for human inspection and proofreading. This becomes more valuable in the current content when automated multiplex IF systems are routinely producing massive images on a sufficiently large scale that manual proofreading is unaffordable. When manual editing is needed, the purity metric Π n can be used to identify the subset of objects that need corrective editing (efficient analytics-driven proofreading).</p><p>The proposed model is amenable to further refinement and can be adapted to other image analysis tasks. Going forward, it is possible to develop even stronger models and update the cleanup and augmentation modules in concert to develop novel capabilities, with full automation. Even with brain tissue images, there is an opportunity to refine the method in extremely dense regions (e.g., the hippocampus). While our data augmentation algorithm cannot fully simulate the full range of nuclear overlapping scenarios in such regions, we note that human analysis of these regions is so challenging that reliable human annotations are difficult to obtain. Ultimately, the proposed method cannot generalize to cases that are entirely absent from the training set.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Sample 8-plex image of a whole rat brain slice (29,398 × 43,054 pixels per channel, &gt;250,000 cells) showing major spatial variations in DAPI and histone labeling. (A) RGB rendering with DAPI in Red, Pan-Histone in Green, and their average in blue. (B1, B2) Close-up of boxed region B showing strong histone labeling but weak DAPI labeling. (C1, C2) Close-up of boxed region C showing strong DAPI labeling but weak histone labeling. (D1-D8) Close-ups of boxed region D in which we see a cluster of 3 cells that are difficult to separate based on nuclear stains alone that become possible to distinguish when cell-type channels Olig2 and Sox2 are utilized.</figDesc><graphic coords="3,72.00,108.43,468.00,250.95" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Figure 2. Current methods (StarDist, Cellpose, and SAM) exhibit poor performance in segmenting overlapping/clustered nuclei. For example, they either over segment (StarDist) or under segment (Cellpose) or only able to segment the clearly visible part of nuclei body (SAM). However, these methods can be used to generate automated weak annotations to train our strong model that produces accurate results without requiring any human annotation effort.</figDesc><graphic coords="3,72.00,514.68,468.00,116.25" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Illustrating our weak-to-strong learning framework, where the foundation model SAM serves as a weak teacher to generate annotations, and our proposed model acts as a strong student to learn from the generated annotations. (A) First, DAPI and Pan-Histone images, along with automated point prompts, are input into SAM (weak teacher) to produce mask annotations. (B) A rule-based filtering process is then applied to remove union masks and duplicate masks, ensuring high-quality annotations. (C) The filtered mask annotations, combined with 8-plex images, are then passed through a data augmentation module, performing instance-level augmentation. (D) Finally, the augmented data is used to train our proposed model (strong student) for improved segmentation post-processing is applied to produce (E).</figDesc><graphic coords="4,72.00,460.53,468.01,163.48" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Overview of the proposed M3-RCNN model architecture. At the detection stage, DAPI and Pan-Histone channels are used as inputs to generate bounding boxes. At the segmentation stage, all eight channels are utilized. For each detected box region, the corresponding channel features are processed through the Efficient Channel Attention (ECA) module, which dynamically determines the importance of each channel's contribution to the output. The weighted features are then passed through a series of convolutional layers to adjust their feature representations. The adjusted features are subsequently fed into three segmentation heads: the Overlap Mask Head, Complement Mask Head, and Whole Mask Head, each predicting different components of the final mask. The intermediate outputs from the Intersection Mask Head and Complement Mask Head are added as input to the Whole Mask Head for enhanced feature learning.</figDesc><graphic coords="5,72.00,319.04,467.99,146.61" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Close-ups of the proposed model's output across the brain slice, demonstrating its ability to segment overlapping nuclei despite the variability. The complete high-resolution segmentation files for four slices S1 -S4 are provided in the electronic supplement.</figDesc><graphic coords="7,72.00,518.70,468.01,159.56" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 6 :</head><label>6</label><figDesc>Figure 6: Four examples illustrate the sparse decomposition method for measuring marker purity for cells. DPH represents DAPI and Pan-Histone. The first column shows the nuclear segmentations, and the second to sixth columns show the segmentations of signals in five different channels containing cell-type markers. The last column shows the final type. The first row shows an example of a cell with low purity (0.5) since it contains a mixture of S100 (0.5) and GFP (0.5) signals. The second row shows an example of a cell with low purity (0.5) since it contains a mixture of IBA1 (0.5) and S100 (0.5) signals. The third and fourth rows show high-purity (1.0) examples.</figDesc><graphic coords="9,72.00,72.00,468.01,343.75" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 7 :</head><label>7</label><figDesc>Figure 7: Illustrating the occurrence of pseudo-label correction in feature space. (A) t-SNE plot with each point corresponding to a nucleus in the pseudo-label dataset before the weak-to-strong learning, where red/green indicate incorrect/correct predictions. (B) t-SNE plot after the weak-to-strong learning shows an increase in the number of green data points. By visualizing the clusters of data points (C-F), we observe improved segmentation of dim nuclei and overlapping nuclei, demonstrating the effectiveness of the learning process.</figDesc><graphic coords="11,72.00,72.00,518.40,280.86" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 1 :</head><label>1</label><figDesc>Performance Metrics on the S1 Dataset</figDesc><table><row><cell>Methods</cell><cell>Channels</cell><cell>S1 AJI+</cell><cell>PQ</cell><cell>Coverage</cell><cell>Purity</cell><cell>Cell Counts</cell></row><row><cell>Cellpose2.0</cell><cell>1-plex</cell><cell>65.6%</cell><cell>65.2%</cell><cell>82.89%</cell><cell>98.99%</cell><cell>193,658</cell></row><row><cell>StarDist</cell><cell>1-plex</cell><cell>67.4%</cell><cell>68.1%</cell><cell>88.47%</cell><cell>99.19%</cell><cell>247,103</cell></row><row><cell>SAM-C</cell><cell>2-plex</cell><cell>76.0%</cell><cell>74.7%</cell><cell>97.62%</cell><cell>99.12%</cell><cell>257,860</cell></row><row><cell>MRCNN</cell><cell>2-plex</cell><cell>76.3%</cell><cell>76.0%</cell><cell>98.04%</cell><cell>99.30%</cell><cell>260,267</cell></row><row><cell cols="2">MRCNN-AUG 2-plex</cell><cell>76.2%</cell><cell>75.9%</cell><cell>98.26%</cell><cell>99.17%</cell><cell>258,782</cell></row><row><cell>M3-RCNN</cell><cell>8-plex</cell><cell>77.3%</cell><cell>76.7%</cell><cell>98.22%</cell><cell>99.19%</cell><cell>255,726</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 2 :</head><label>2</label><figDesc>Performance Metrics on the S2, S3, S4 Datasets</figDesc><table><row><cell>Methods</cell><cell>Channels</cell><cell>S2</cell><cell>Cell</cell><cell>S3</cell><cell>Cell</cell><cell>S4</cell><cell>Cell</cell></row><row><cell></cell><cell></cell><cell>Coverage Purity</cell><cell>Counts</cell><cell>Coverage Purity</cell><cell>Counts</cell><cell>Coverage Purity</cell><cell>Counts</cell></row><row><cell cols="2">Cellpose2.0 1-plex</cell><cell cols="6">74.56% 98.57% 175,823 84.11% 99.11% 197,136 81.17% 98.60% 193,264</cell></row><row><cell>StarDist</cell><cell>1-plex</cell><cell cols="6">93.81% 98.94% 250,311 88.66% 99.40% 240,768 88.11% 99.11% 243,169</cell></row><row><cell>SAM-C</cell><cell>2-plex</cell><cell cols="6">91.88% 98.88% 248,263 97.65% 99.33% 266,559 97.40% 99.02% 272,346</cell></row><row><cell>MRCNN</cell><cell>2-plex</cell><cell cols="6">93.12% 99.00% 237,956 99.05% 99.40% 252,179 98.57% 99.11% 256,516</cell></row><row><cell>MRCNN-</cell><cell>2-plex</cell><cell cols="6">94.26% 98.93% 243,830 99.44% 99.36% 257,147 99.00% 99.03% 260,994</cell></row><row><cell>AUG</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>M3-</cell><cell>8-plex</cell><cell cols="6">93.93% 98.90% 241,796 98.39% 99.39% 255,823 98.61% 99.01% 256,789</cell></row><row><cell>RCNN</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="8">1-plex: DAPI, 2-plex: DAPI, Pan-histone, 8-plex: DAPI, Pan-histone, NeuN, Olig2, PCNA, Sox2,</cell></row><row><cell cols="2">Tbr1, Eomes</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="7">SAM-C: SAM-Cleaned (Teacher), MRCNN-AUG: Mask-RCNN + Augmentation</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 3 :</head><label>3</label><figDesc>Summary of Results from the Ablation Study</figDesc><table><row><cell>Components</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 4 :</head><label>4</label><figDesc>Measured Expansion and Error Boundsserves as the weak teacher, and the proposed M 3 -RCNN serves as the strong student model in the weak to strong generalization framework. The data augmentation in Algorithm 2 is a crucial link between the weak teacher and</figDesc><table><row><cell>Model</cell><cell>P ( R(f ) S i )</cell><cell>c</cell><cell>α i</cell><cell>err((f, y|S i ))</cell><cell>Bound</cell><cell>err((f, y|S i ))</cell></row><row><cell>M3-RCNN</cell><cell>0.15</cell><cell>0.43</cell><cell>0.19</cell><cell>0.17</cell><cell>0.32</cell><cell>0.16</cell></row><row><cell>SAM-C</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgments</head><p>This work was supported by the <rs type="funder">National Institutes of Health</rs> grant <rs type="grantNumber">R01NS109118</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_QUCBax9">
+					<idno type="grant-number">R01NS109118</idno>
+				</org>
+			</listOrg>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A3 -Supplemental Files</head><p>The code, four sample WSI images (S1 -S4), and full-resolution segmentation results are provided in open form for viewing, community adoption, and potential adaptation to other biomedical image analysis tasks. The WSI images (S1 -S4) can be found at figshare. The code and results are shared in Dropbox.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Improved automatic detection and segmentation of cell nuclei in histopathology images</title>
+		<author>
+			<persName><forename type="first">Yousef</forename><surname>Al-Kofahi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wiem</forename><surname>Lassoued</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">William</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Badrinath</forename><surname>Roysam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Biomedical Engineering</title>
+		<imprint>
+			<biblScope unit="volume">57</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="841" to="852" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m" type="main">Computational mapping of rat brain cytoarchitectonics using multiplex biomarker imaging and quantitative analysis</title>
+		<author>
+			<persName><forename type="first">Xiaoyang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jokubas</forename><surname>Jahanipour</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dragan</forename><surname>Maric</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Badrinath</forename><surname>Roysam</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note>Unpublished manuscript</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">A hybrid 3d watershed algorithm incorporating gradient cues and object models for automatic segmentation of nuclei in confocal image stacks</title>
+		<author>
+			<persName><forename type="first">Gang</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Umesh</forename><surname>Adiga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Karin</forename><surname>Olson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><forename type="middle">F</forename><surname>Guzowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carol</forename><forename type="middle">A</forename><surname>Barnes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Badrinath</forename><surname>Roysam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cytometry Part A: the journal of the International Society for Analytical Cytology</title>
+		<imprint>
+			<biblScope unit="volume">56</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="23" to="36" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">A multi-model approach to simultaneous segmentation and classification of heterogeneous populations of cell nuclei in 3d confocal microscope images</title>
+		<author>
+			<persName><forename type="first">Gang</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Monica</forename><forename type="middle">K</forename><surname>Chawla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Karin</forename><surname>Olson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carol</forename><forename type="middle">A</forename><surname>Barnes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><forename type="middle">F</forename><surname>Guzowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christoffer</forename><surname>Bjornsson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">William</forename><surname>Shain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Badrinath</forename><surname>Roysam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cytometry Part A: the journal of the International Society for Analytical Cytology</title>
+		<imprint>
+			<biblScope unit="volume">71</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="724" to="736" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Hierarchical, model-based merging of multiple fragments for improved three-dimensional segmentation of nuclei</title>
+		<author>
+			<persName><forename type="first">Gang</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Monica</forename><forename type="middle">K</forename><surname>Chawla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Karin</forename><surname>Olson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><forename type="middle">F</forename><surname>Guzowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carol</forename><forename type="middle">A</forename><surname>Barnes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Badrinath</forename><surname>Roysam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cytometry Part A: the journal of the International Society for Analytical Cytology</title>
+		<imprint>
+			<biblScope unit="volume">63</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="20" to="33" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Whole-brain tissue mapping toolkit using large-scale highly multiplexed immunofluorescence imaging and deep neural networks</title>
+		<author>
+			<persName><forename type="first">Dragan</forename><surname>Maric</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jokubas</forename><surname>Jahanipour</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Xiaoyang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adarsh</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aryan</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hien</forename><surname>Mobiny</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrea</forename><surname>Van Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kedar</forename><surname>Sedlock</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Badrinath</forename><surname>Grama</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Roysam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature communications</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">1550</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Fully automated sequential immunofluorescence (seqif) for hyperplex spatial proteomics</title>
+		<author>
+			<persName><forename type="first">François</forename><surname>Rivest</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Deniz</forename><surname>Eroglu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bjorn</forename><surname>Pelz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julia</forename><surname>Kowal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Annika</forename><surname>Kehren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vytautas</forename><surname>Navikas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maria</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Grazia</forename><surname>Procopio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Philippe</forename><surname>Bordignon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Emmanuel</forename><surname>Peres</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Ammann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Elodie</forename><surname>Dorel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sara</forename><surname>Scalmazzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luigi</forename><surname>Bruno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Markus</forename><surname>Ruegg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gael</forename><surname>Campargue</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guillermo</forename><surname>Casqueiro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luc</forename><surname>Arn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jonas</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Saska</forename><surname>Brajkovic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Denis</forename><surname>Dupouy</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41598-023-43435-w</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Sci Rep</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">2023</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Kirillov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Mintun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nikhila</forename><surname>Ravi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanzi</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chloe</forename><surname>Rolland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Laura</forename><surname>Gustafson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tete</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Spencer</forename><surname>Whitehead</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><forename type="middle">C</forename><surname>Berg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wan-Yen</forename><surname>Lo</surname></persName>
+		</author>
+		<title level="m">Proceedings of the IEEE/CVF International Conference on Computer Vision</title>
+		<meeting>the IEEE/CVF International Conference on Computer Vision</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note>Segment anything</note>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Learning transferable visual models from natural language supervision</title>
+		<author>
+			<persName><forename type="first">Alec</forename><surname>Radford</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jong</forename><forename type="middle">Wook</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Hallacy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aditya</forename><surname>Ramesh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gabriel</forename><surname>Goh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sandhini</forename><surname>Agarwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Girish</forename><surname>Sastry</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Amanda</forename><surname>Askell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pamela</forename><surname>Mishkin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jack</forename><surname>Clark</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International conference on machine learning</title>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<title level="m" type="main">Hierarchical text-conditional image generation with clip latents</title>
+		<author>
+			<persName><forename type="first">Aditya</forename><surname>Ramesh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Prafulla</forename><surname>Dhariwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alex</forename><surname>Nichol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Casey</forename><surname>Chu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mark</forename><surname>Chen</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2204.06125</idno>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page">3</biblScope>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title level="m" type="main">Theoretical analysis of weak-to-strong generalization</title>
+		<author>
+			<persName><forename type="first">Hunter</forename><surname>Lang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Sontag</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aravindan</forename><surname>Vijayaraghavan</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2405.16043</idno>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">A threshold selection method from gray-level histograms</title>
+		<author>
+			<persName><forename type="first">Nobuyuki</forename><surname>Otsu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Automatica</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="page" from="23" to="27" />
+			<date type="published" when="1975">1975</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Applying watershed algorithms to the segmentation of clustered nuclei</title>
+		<author>
+			<persName><forename type="first">Norberto</forename><surname>Malpica</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carlos</forename><surname>Ortiz De</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Juan</forename><forename type="middle">José</forename><surname>Solórzano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrés</forename><surname>Vaquero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Isabel</forename><surname>Santos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">José</forename><surname>Vallcorba</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Francisco</forename><surname>María García-Sagredo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pozo</forename><surname>Del</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cytometry: The Journal of the International Society for Analytical Cytology</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="289" to="297" />
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Active contours without edges</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Tony</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luminita</forename><forename type="middle">A</forename><surname>Chan</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Vese</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on image processing</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="266" to="277" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Mask r-cnn</title>
+		<author>
+			<persName><forename type="first">Kaiming</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Georgia</forename><surname>Gkioxari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Piotr</forename><surname>Dollár</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ross</forename><surname>Girshick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE international conference on computer vision</title>
+		<meeting>the IEEE international conference on computer vision</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">U-net: Convolutional networks for biomedical image segmentation</title>
+		<author>
+			<persName><forename type="first">Olaf</forename><surname>Ronneberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Philipp</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Brox</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical image computing and computer-assisted intervention-MICCAI 2015: 18th international conference</title>
+		<meeting><address><addrLine>Munich, Germany</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2015">October 5-9, 2015. 2015</date>
+			<biblScope unit="volume">18</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Yolact: Real-time instance segmentation</title>
+		<author>
+			<persName><forename type="first">Daniel</forename><surname>Bolya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chong</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fanyi</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yong Jae</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF international conference on computer vision</title>
+		<meeting>the IEEE/CVF international conference on computer vision</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Hover-net: Simultaneous segmentation and classification of nuclei in multi-tissue histology images</title>
+		<author>
+			<persName><forename type="first">Simon</forename><surname>Graham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc</forename><forename type="middle">Dang</forename><surname>Vu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shan</forename><forename type="middle">E</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ahmed</forename><surname>Raza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ayesha</forename><surname>Azam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yee</forename><forename type="middle">Wah</forename><surname>Tsang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jin</forename><forename type="middle">Tae</forename><surname>Kwak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nasir</forename><surname>Rajpoot</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical image analysis</title>
+		<imprint>
+			<biblScope unit="volume">58</biblScope>
+			<biblScope unit="page">101563</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Nuclei instance segmentation and classification in histopathological images using a dt-yolact</title>
+		<author>
+			<persName><forename type="first">Yuxin</forename><surname>Jia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chao</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mingxin</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhongyi</forename><surname>Pei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhengda</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Chen</surname></persName>
+		</author>
+		<ptr target="IUCC/CIT/DSCI/SmartCNS" />
+	</analytic>
+	<monogr>
+		<title level="m">2021 20th International Conference on Ubiquitous Computing and Communications</title>
+		<imprint>
+			<biblScope unit="page">2021</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<monogr>
+		<title level="m" type="main">Adapting mask-rcnn for automatic nucleus segmentation</title>
+		<author>
+			<persName><forename type="first">Johnson</forename><surname>Jacob</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1805.00500</idno>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Automatic nucleus segmentation with mask-rcnn</title>
+		<author>
+			<persName><forename type="first">Johnson</forename><surname>Jacob</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Computer Vision: Proceedings of the 2019 Computer Vision Conference (CVC)</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page">1</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Microscopy cell nuclei segmentation with enhanced u-net</title>
+		<author>
+			<persName><forename type="first">Fuxing</forename><surname>Long</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">BMC bioinformatics</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">8</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Nuclei r-cnn: Improve mask r-cnn for nuclei segmentation</title>
+		<author>
+			<persName><forename type="first">Guanbin</forename><surname>Lv</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kaigui</forename><surname>Wen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zeyu</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hong</forename><surname>An</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>He</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2019 IEEE 2nd International Conference on Information Communication and Signal Processing (ICICSP)</title>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Mask-rcnn and u-net ensembled for nuclei segmentation</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Antti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Saad</forename><surname>Vuola</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Juho</forename><surname>Ullah Akram</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Kannala</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE</title>
+		<imprint>
+			<date type="published" when="2019">2019. 2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Unet++: A nested u-net architecture for medical image segmentation</title>
+		<author>
+			<persName><forename type="first">Zongwei</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Md</forename><surname>Mahfuzur Rahman Siddiquee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nima</forename><surname>Tajbakhsh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianming</forename><surname>Liang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Deep learning in medical image analysis and multimodal learning for clinical decision support: 4th international workshop, DLMIA 2018, and 8th international workshop, ML-CDS 2018, held in conjunction with MICCAI 2018</title>
+		<meeting><address><addrLine>Granada, Spain</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2018-09-20">September 20, 2018. 2018</date>
+			<biblScope unit="volume">4</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Deep occlusion-aware instance segmentation with overlapping bilayers</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Ke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yu-Wing</forename><surname>Tai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chi-Keung</forename><surname>Tang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Nuclear segmentation in histopathological images using two-stage stacked u-nets with attention mechanism</title>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Georgi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaolei</forename><surname>Genchev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongyu</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hui</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Lu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Frontiers in Bioengineering and Biotechnology</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page">573866</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Accurate morphology preserving segmentation of overlapping cells based on active contours</title>
+		<author>
+			<persName><forename type="first">Csaba</forename><surname>Molnar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ian</forename><forename type="middle">H</forename><surname>Jermyn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zoltan</forename><surname>Kato</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vilja</forename><surname>Rahkama</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Päivi</forename><surname>Östling</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Piia</forename><surname>Mikkonen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peter</forename><surname>Vilja Pietiäinen</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Horvath</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Scientific reports</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">32412</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Nuclei-net: A multi-stage fusion model for nuclei segmentation in microscopy images</title>
+		<author>
+			<persName><forename type="first">Kallol</forename><surname>Roy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sanjoy</forename><surname>Saha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Debapriya</forename><surname>Banik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Debotosh</forename><surname>Bhattacharjee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Innovations in Systems and Software Engineering</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="1" to="8" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Irnet: Instance relation network for overlapping cervical cell segmentation</title>
+		<author>
+			<persName><forename type="first">Yanning</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiaqi</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qi</forename><surname>Dou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pheng-Ann</forename><surname>Heng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Image Computing and Computer Assisted Intervention-MICCAI 2019: 22nd International Conference</title>
+		<meeting><address><addrLine>Shenzhen, China</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2019">October 13-17, 2019. 2019</date>
+			<biblScope unit="volume">22</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Donet: Deep de-overlapping network for cytology instance segmentation</title>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rushan</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanning</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yumeng</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Modeling visual context is key to augmenting object detection datasets</title>
+		<author>
+			<persName><forename type="first">Nikita</forename><surname>Dvornik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julien</forename><surname>Mairal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cordelia</forename><surname>Schmid</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the European Conference on Computer Vision (ECCV)</title>
+		<meeting>the European Conference on Computer Vision (ECCV)</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<title level="m" type="main">Cut, paste and learn: Surprisingly easy synthesis for instance In Proceedings</title>
+		<author>
+			<persName><forename type="first">Debidatta</forename><surname>Dwibedi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ishan</forename><surname>Misra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martial</forename><surname>Hebert</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Instaboost: Boosting instance segmentation via probability map guided copy-pasting</title>
+		<author>
+			<persName><forename type="first">Jianhua</forename><surname>Hao-Shu Fang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Runzhong</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minghao</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yong-Lu</forename><surname>Gou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cewu</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Lu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF international conference on computer vision</title>
+		<meeting>the IEEE/CVF international conference on computer vision</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Simple copy-paste is a strong data augmentation method for instance segmentation</title>
+		<author>
+			<persName><forename type="first">Golnaz</forename><surname>Ghiasi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yin</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aravind</forename><surname>Srinivas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rui</forename><surname>Qian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tsung-Yi</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ekin</forename><forename type="middle">D</forename><surname>Cubuk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc V</forename><surname>Le</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Barret</forename><surname>Zoph</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Insmix: towards realistic generative data augmentation for nuclei instance segmentation</title>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zeyu</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kwang-Ting</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Medical Image Computing and Computer-Assisted Intervention</title>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Diffusion-based data augmentation for nuclei image segmentation</title>
+		<author>
+			<persName><forename type="first">Xinyi</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guanbin</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Lou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Siqi</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haofeng</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Medical Image Computing and Computer-Assisted Intervention</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Cutmix: Regularization strategy to train strong classifiers with localizable features</title>
+		<author>
+			<persName><forename type="first">Sangdoo</forename><surname>Yun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dongyoon</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Seong</forename><surname>Joon Oh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sanghyuk</forename><surname>Chun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junsuk</forename><surname>Choe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Youngjoon</forename><surname>Yoo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF international conference on computer vision</title>
+		<meeting>the IEEE/CVF international conference on computer vision</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<monogr>
+		<author>
+			<persName><forename type="first">Hongyi</forename><surname>Zhang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1710.09412</idno>
+		<title level="m">mixup: Beyond empirical risk minimization</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Cell detection with star-convex polygons</title>
+		<author>
+			<persName><forename type="first">Uwe</forename><surname>Schmidt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Weigert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Coleman</forename><surname>Broaddus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gene</forename><surname>Myers</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Image Computing and Computer Assisted Intervention-MICCAI 2018: 21st International Conference</title>
+		<meeting><address><addrLine>Granada, Spain</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2018">September 16-20, 2018. 2018</date>
+			<biblScope unit="volume">11</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">one-click image restoration for improved cellular segmentation</title>
+		<author>
+			<persName><forename type="first">Marius</forename><surname>Pachitariu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carsen</forename><surname>Stringer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Carsen Stringer and Marius Pachitariu. Cellpose</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">12</biblScope>
+			<biblScope unit="page" from="1" to="8" />
+			<date type="published" when="2022">2022. 2025</date>
+		</imprint>
+	</monogr>
+	<note>Nature methods Cellpose 2.0: how to train your own model Nature methods</note>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Cellpose: a generalist algorithm for cellular segmentation</title>
+		<author>
+			<persName><forename type="first">Carsen</forename><surname>Stringer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tim</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michalis</forename><surname>Michaelos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marius</forename><surname>Pachitariu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="100" to="106" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Cellseg: a robust, pre-trained nucleus segmentation and pixel quantification software for highly multiplexed fluorescence images</title>
+		<author>
+			<persName><forename type="first">Jake</forename><forename type="middle">S</forename><surname>Michael Y Lee</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Bedia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Salil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Graham</forename><forename type="middle">L</forename><surname>Bhate</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Darci</forename><surname>Barlow</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wendy</forename><forename type="middle">J</forename><surname>Phillips</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Fantl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christian</forename><forename type="middle">M</forename><surname>Garry P Nolan</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Schürch</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">BMC bioinformatics</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">46</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">All-in-sam: from weak annotation to pixel-wise nuclei segmentation with prompt-based finetuning</title>
+		<author>
+			<persName><forename type="first">Can</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruining</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quan</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianyuan</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shunxing</forename><surname>Bao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lucas</forename><forename type="middle">W</forename><surname>Remedios</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bennett</forename><forename type="middle">A</forename><surname>Landman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yucheng</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuankai</forename><surname>Huo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Physics: Conference Series</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Segment anything in medical images</title>
+		<author>
+			<persName><forename type="first">Anwai</forename><surname>Archit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luca</forename><surname>Freckmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Suganya</forename><surname>Nair</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nabeel</forename><surname>Khalid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Paul</forename><surname>Hilt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vikas</forename><surname>Rajashekar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marei</forename><surname>Freitag</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Charlotte</forename><surname>Teuber</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gerry</forename><surname>Buckley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuting</forename><surname>Sushmita Von Haaren ; Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Feifei</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lin</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chenyu</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bo</forename><surname>You</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature communications</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">654</biblScope>
+			<date type="published" when="2024">2025. Jun. 2024</date>
+		</imprint>
+	</monogr>
+	<note>Segment anything for microscopy Nature methods</note>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Co-teaching: Robust training of deep neural networks with extremely noisy labels</title>
+		<author>
+			<persName><forename type="first">Bo</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quanming</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xingrui</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gang</forename><surname>Niu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Miao</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weihua</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ivor</forename><surname>Tsang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Masashi</forename><surname>Sugiyama</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in neural information processing systems</title>
+		<imprint>
+			<biblScope unit="page">31</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">How does disagreement help generalization against label corruption</title>
+		<author>
+			<persName><forename type="first">Xingrui</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bo</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiangchao</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gang</forename><surname>Niu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ivor</forename><surname>Tsang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Masashi</forename><surname>Sugiyama</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International conference on machine learning</title>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Co-learning: Learning from noisy labels with self-supervision</title>
+		<author>
+			<persName><forename type="first">Cheng</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lirong</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stan</forename><forename type="middle">Z</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 29th ACM International Conference on Multimedia</title>
+		<meeting>the 29th ACM International Conference on Multimedia</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">W2f: A weakly-supervised to fully-supervised framework for object detection</title>
+		<author>
+			<persName><forename type="first">Yongqiang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yancheng</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mingli</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongqiang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bernard</forename><surname>Ghanem</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Adaptive early-learning correction for segmentation from noisy annotations</title>
+		<author>
+			<persName><forename type="first">Sheng</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kangning</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weicheng</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqiu</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carlos</forename><surname>Fernandez-Granda</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Deep residual learning for image recognition</title>
+		<author>
+			<persName><forename type="first">Kaiming</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangyu</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoqing</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Eca-net: Efficient channel attention for deep convolutional neural networks</title>
+		<author>
+			<persName><forename type="first">Qilong</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Banggu</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pengfei</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peihua</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wangmeng</forename><surname>Zuo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qinghua</forename><surname>Hu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Visualizing data using t-sne</title>
+		<author>
+			<persName><forename type="first">Laurens</forename><surname>Van Der Maaten</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Geoffrey</forename><surname>Hinton</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of machine learning research</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Panoptic segmentation</title>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Kirillov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kaiming</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ross</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carsten</forename><surname>Rother</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Piotr</forename><surname>Dollár</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">A dataset and a technique for generalized nuclear segmentation for computational pathology</title>
+		<author>
+			<persName><forename type="first">Neeraj</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruchika</forename><surname>Verma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sanuj</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Surabhi</forename><surname>Bhargava</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Abhishek</forename><surname>Vahadane</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Amit</forename><surname>Sethi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE transactions on medical imaging</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1550" to="1560" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Orthogonal matching pursuit: Recursive function approximation with applications to wavelet decomposition</title>
+		<author>
+			<persName><forename type="first">Yagyensh</forename><surname>Chandra Pati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ramin</forename><surname>Rezaiifar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Perinkulam</forename><surname>Sambamurthy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Krishnaprasad</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of 27th Asilomar conference on signals, systems and computers</title>
+		<meeting>27th Asilomar conference on signals, systems and computers</meeting>
+		<imprint>
+			<date type="published" when="1993">1993</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

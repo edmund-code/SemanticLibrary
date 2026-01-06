@@ -1,0 +1,2857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">SToFM: a Multi-scale Foundation Model for Spatial Transcriptomics</title>
+				<funder ref="#_Ufgcpby">
+					<orgName type="full">National Key R&amp;D Program of China</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">PharMolix Inc.</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2025-07-23">23 Jul 2025</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Suyuan</forename><surname>Zhao</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yizhen</forename><surname>Luo</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ganbo</forename><surname>Yang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yan</forename><surname>Zhong</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Hao</forename><surname>Zhou</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Zaiqing</forename><surname>Nie</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Cell</forename><surname>Encoder</surname></persName>
+						</author>
+						<title level="a" type="main">SToFM: a Multi-scale Foundation Model for Spatial Transcriptomics</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2025-07-23">23 Jul 2025</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">A4255DE75A8A146359AC367AB5E19BCA</idno>
+					<idno type="arXiv">arXiv:2507.11588v2[q-bio.GN]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:10+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Spatial Transcriptomics (ST) technologies provide biologists with rich insights into single-cell biology by preserving spatial context of cells. Building foundational models for ST can significantly enhance the analysis of vast and complex data sources, unlocking new perspectives on the intricacies of biological tissues. However, modeling ST data is inherently challenging due to the need to extract multi-scale information from tissue slices containing vast numbers of cells. This process requires integrating macro-scale tissue morphology, micro-scale cellular microenvironment, and gene-scale gene expression profile. To address this challenge, we propose SToFM, a multi-scale Spatial Transcriptomics Foundation Model. SToFM first performs multi-scale information extraction on each ST slice, to construct a set of ST sub-slices that aggregate macro-, micro-and gene-scale information. Then an SE(2) Transformer is used to obtain high-quality cell representations from the sub-slices. Additionally, we construct SToCorpus-88M, the largest high-resolution spatial transcriptomics corpus for pretraining. SToFM achieves outstanding performance on a variety of downstream tasks, such as tissue region semantic segmentation and cell type annotation, demonstrating its comprehensive understanding of ST data through capturing and integrating multi-scale information.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Introduction</head><p>In single-cell transcriptomics, single-cell RNA sequencing (scRNA-seq) data reflects the gene expression levels in † Corresponding author<ref type="foot" target="#foot_0">foot_0</ref> Institute for AI Industry Research (AIR), Tsinghua University 2 Department of Computer Science and Tecnology, Tsinghua University 3 PharMolix Inc. 4 School of Mathematical Sciences, Peking University. Correspondence to: Suyuan Zhao &lt;sxdtzsy@gmail.com&gt;, Zaiqing Nie &lt;zaiqing@air.tsinghua.edu.cn&gt;. cells, providing a digital representation of cells <ref type="bibr" target="#b74">(Ziegenhain et al., 2017)</ref>. Machine learning approaches have achieved great success in analyzing scRNA-seq data and enhancing the understanding of complex biological systems <ref type="bibr" target="#b48">(Szałata et al., 2024)</ref>. However, scRNA-seq technology disassociates cells from their tissue contexts, and therefore overlooks tissue-level information such as tissue morphology and intercellular relationships. This limitation compromises the application scope of scRNA-seq data in real-world studies involving cells. <ref type="bibr" target="#b56">(Williams et al., 2022;</ref><ref type="bibr" target="#b19">Du et al., 2023)</ref>.</p><p>Fortunately, Spatial Transcriptomics (ST) technology has opened up new possibilities to measure gene expression in cells without losing spatial arrangements of tissues. Specifically, ST data are obtained in the form of tissue slices and can be computationally described as a 2D point cloud containing tens of thousands of points. Each of these points represents a cell or a sequencing spot 1 containing up to approximately 20,000 gene expression values. Such rich information in ST data offers biologists a unique perspective on single-cell biology <ref type="bibr" target="#b19">(Du et al., 2023;</ref><ref type="bibr" target="#b39">Marx, 2021)</ref>. Effec-tively analyzing ST data can provide cell-level insights for various tissue structure-related studies, such as embryology <ref type="bibr" target="#b11">(Chen et al., 2022)</ref>, neuroscience <ref type="bibr" target="#b43">(Shi et al., 2023;</ref><ref type="bibr" target="#b25">Hasel et al., 2021)</ref>, tumor microenvironment analysis <ref type="bibr" target="#b58">(Wu et al., 2021;</ref><ref type="bibr" target="#b31">Jin et al., 2024)</ref>, and disease studies related to specific organs <ref type="bibr" target="#b57">(Wu et al., 2024;</ref><ref type="bibr" target="#b20">Franzén et al., 2024)</ref>.</p><p>The large amount of ST data generated in recent years pose growing demand for analysis <ref type="bibr" target="#b4">(Atta &amp; Fan, 2021)</ref>, which has promoted the application of machine learning methods in this field. Early attempts design specific approaches for various ST downstream tasks, such as deconvolution, imputation and clustering <ref type="bibr" target="#b6">(Biancalani et al., 2021;</ref><ref type="bibr" target="#b0">Abdelaal et al., 2020;</ref><ref type="bibr" target="#b18">Dong &amp; Zhang, 2022)</ref>. More recently, inspired by the success of pretrained models in single-cell transcriptomics <ref type="bibr" target="#b61">(Yang et al., 2022;</ref><ref type="bibr" target="#b16">Cui et al., 2023;</ref><ref type="bibr" target="#b23">Hao et al., 2023;</ref><ref type="bibr" target="#b50">Theodoris et al., 2023)</ref>, some research efforts have attempted to develop ST foundation models. For example, Nicheformer pretrains a Transformer-based model on single-cell gene expression profiles from both ST data and scRNA-seq data for transferability <ref type="bibr" target="#b42">(Schaar et al., 2024)</ref>. CellPLM further integrates spatial information by encoding cell coordinates with sinusoidal position embeddings <ref type="bibr" target="#b54">(Wen et al., 2023)</ref>. These models demonstrate superior performance and transferability across a series of downstream tasks.</p><p>Despite the promising advancements, we argue that one of the most important characteristics of ST data has not been well captured by existing works. As illustrated in Fig. <ref type="figure" target="#fig_0">1</ref>, ST data contain biological information from multiple scales. From a macro scale (Fig. <ref type="figure" target="#fig_0">1a</ref>), we can extract tissue morphology and organ structure information such as functional zones and anatomical layers. From a micro scale (Fig. <ref type="figure" target="#fig_0">1b</ref>), we can capture cellular contexts and cell-cell interactions by analyzing intercellular relationships with spatially adjacent cells. From a gene scale (Fig. <ref type="figure" target="#fig_0">1c</ref>), we can delve into detailed information for each cell by analyzing gene expression profiles. Analyzing ST data requires a comprehensive understanding of biological information across all the different scales. For example, in order to comprehend brain structure and function in neuroscience, macro-scale information like brain anatomical regions, micro-scale information like neuron connections, and gene-scale information like spatially variable genes are all indispensable <ref type="bibr" target="#b33">(Jung &amp; Kim, 2023)</ref>. This presents a unique challenge for establishing an ST foundation model: capturing and integrating multi-scale information from a large number of ST slices with appropriate model architecture and self-supervised objectives.</p><p>To address this challenge, we propose SToFM, a multi-scale ST foundation model, which is shown in Fig. <ref type="figure" target="#fig_1">2</ref>. Firstly, to capture gene-scale information, SToFM performs domain adaptation to an off-the-shelf pretrained cell encoder <ref type="bibr" target="#b50">(Theodoris et al., 2023)</ref> by continual pretraining on gene expression profiles from ST data. Secondly, to capture micro-scale information, we divide a ST slice into multiple ST sub-slices based on the cell coordinates, and use an SE(2) Transformer <ref type="bibr" target="#b72">(Zhou et al., 2023)</ref> to capture spatial information and cell-cell interactions. This division not only emphasizes the spatially localized cell-cell interactions <ref type="bibr" target="#b75">(Zormpas et al., 2023)</ref> but also improves the computational efficiency in fully harvesting ST data. Finally, to maintain macro-scale information within each sub-slice, we draw insights from multi-scale approaches in CV <ref type="bibr" target="#b9">(Cao et al., 2019;</ref><ref type="bibr" target="#b38">Liu et al., 2021)</ref> and GNNs <ref type="bibr" target="#b64">(Ying et al., 2018;</ref><ref type="bibr" target="#b59">Xu et al., 2018)</ref> and represent macro-scale information as a few virtual cells through clustering, and inject them into the sub-slices. We design two pretraining tasks: masked cell modeling and pairwise distance recovery, to capture both gene expressions and spatial characteristics of ST data.</p><p>To train SToFM, we construct SToCorpus-88M, the largest high-resolution ST pretraining corpus to date. This corpus includes approximately 2,000 high-resolution ST slices obtained by 6 different ST technologies, totaling 88 million cells. It surpasses the current largest ST corpus <ref type="bibr" target="#b42">(Schaar et al., 2024)</ref> by 1.5 fold in scale and 2 fold in ST technology diversity. SToCorpus-88M will be publicly released.</p><p>In order to validate the effectiveness of SToFM in integrating multi-scale information from ST data, we establish a comprehensive benchmark containing several significant biological tasks. Specifically, SToFM surpasses the best baseline by 11.6% and 14.34% on F 1 score in the crossslice tissue region semantic segmentation task <ref type="bibr" target="#b10">(Chan et al., 2019;</ref><ref type="bibr" target="#b26">He et al., 2024)</ref> and the cell type annotation task <ref type="bibr" target="#b61">(Yang et al., 2022;</ref><ref type="bibr" target="#b17">Domínguez Conde et al., 2022)</ref>, respectively. We further justify the informativeness and transferability of SToFM representations through additional qualitative and quantitative results. We attribute this to the integration of multi-scale information, since tissue morphology, cell-cell interaction patterns and gene expression semantics all contribute to obtaining consistent and transferable representations across different ST slices.</p><p>Our main contributions are summarized as follows:</p><p>(1) We propose SToFM, a multi-scale foundation model that captures and integrates information from macro, micro and gene scale of spatial transcriptomics.</p><p>(2) We construct SToCorpus-88M, the first large-scale spatial transcriptomics corpus suitable for pretraining. SToCorpus-88M will be publicly available.</p><p>(3) We demonstrate the outstanding performance of SToFM on various downstream tasks involving ST data. The output representations are then used to reconstruct the original cell embeddings and spatial distances. These two pretraining tasks are referred to as masked cell modeling (MCM) and pairwise distance recovery (PDR).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Related Work</head><p>Single-cell Foundation Models The development of scRNA-seq technology has led to an exponential growth of the data <ref type="bibr" target="#b47">(Svensson et al., 2018)</ref>, which provides the basis for single-cell foundation models. Innovated by pretrained models in the NLP domain, most existing single-cell foundation models such as scBERT and Geneformer leverage Transformers architecture and language modeling objectives like masked language modeling to capture the inherent gene expression patterns <ref type="bibr" target="#b61">(Yang et al., 2022;</ref><ref type="bibr" target="#b22">Gong et al., 2023;</ref><ref type="bibr" target="#b50">Theodoris et al., 2023;</ref><ref type="bibr" target="#b67">Zhao et al., 2023;</ref><ref type="bibr" target="#b16">Cui et al., 2023;</ref><ref type="bibr" target="#b23">Hao et al., 2023)</ref>. Other studies further integrate single-cell data with natural language for multi-modal pretraining to expand biological insights <ref type="bibr" target="#b68">(Zhao et al., 2024;</ref><ref type="bibr" target="#b34">Levine et al., 2023;</ref><ref type="bibr" target="#b15">Choi et al., 2024;</ref><ref type="bibr" target="#b65">Yuan et al., 2024)</ref>. Benefiting from large-scale pretraining, these single-cell foundation models have demonstrated effectiveness on a variety of downstream tasks in single-cell biology <ref type="bibr" target="#b55">(Wenteler et al., 2024;</ref><ref type="bibr" target="#b37">Liu et al., 2023)</ref> and provided novel insights to biologists <ref type="bibr" target="#b8">(Bordukova et al., 2024;</ref><ref type="bibr" target="#b62">Yang et al., 2024)</ref>. We refer readers to <ref type="bibr" target="#b48">(Szałata et al., 2024)</ref> for a more comprehensive review.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Deep Learning Methods for Spatial Transcriptomics</head><p>Early machine learning-based methods in ST data analysis primarily focus on specific downstream tasks, employing architectures with small parameter sizes and without large-scale pretraining. For example, Tangram <ref type="bibr" target="#b6">(Biancalani et al., 2021)</ref> effectively performs deconvolution on low-resolution ST data using reference scRNA-seq datasets. STAGATE <ref type="bibr" target="#b18">(Dong &amp; Zhang, 2022)</ref> excels in downstream tasks like tissue structure segmentation and spot deconvolution. SpaGE <ref type="bibr" target="#b0">(Abdelaal et al., 2020)</ref> integrates ST and scRNA-seq datasets to impute the gene expression profiles of ST data. More recently, developing ST foundation models with large-scale unsupervised ST data has attracted rising research interest. Nicheformer (Schaar et al., 2024) is a Transformer-based model pretrained on single-cell from ST data to mitigate the distributional gap introduced by spatial sequencing technology. It only utilizes gene expressions of ST data and ignores the spatial coordinates. To our best knowledge, CellPLM (Wen et al., 2023) is the only prior work that integrates spatial information with transcriptomics in pretraining by combining gene expression embeddings and position embeddings as the Transformer's input embeddings. As a nascent attempt, CellPLM has preliminarily validated the feasibility of establishing an ST foundation model. In contrast, SToFM captures fine-grained gene expression embeddings at gene scale and also proposes more advanced approaches for incorporating information at micro and macro scales.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Methods</head><p>In this section, we describe the implementation and workflow of SToFM, which is illustrated in Fig. <ref type="figure" target="#fig_1">2</ref>. First, we perform multi-scale information extraction to each ST slice, concentrating macro-, micro-and gene-scale information within sub-slices, which are feasible inputs for a neural network to handle, as described in Sec. 3.1. Then, for each sub-slice, we use an SE(2) Transformer to combine transcriptomics and spatial information for representation learning, as described in Sec. 3.2. Finally, in Sec. 3.3, we describe the pretraining objectives and strategies in detail.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.">Multi-scale Information Extraction</head><p>We represent an ST slice containing N cells as:</p><formula xml:id="formula_0">S 0 = (E, P ), where E = {E i ∈ R n } N i=1</formula><p>is the n-dimensional gene expression matrix, and</p><formula xml:id="formula_1">P = {P i ∈ R 2 } N</formula><p>i=1 represents the 2D positional coordinates. As shown in Fig. <ref type="figure" target="#fig_1">2a</ref>, in this process, we perform multi-scale information extraction on each slice to obtain a set of sub-slices that aggregate multiscale information, defined as Ŝ = {S (i) }. Ŝ will be used as model input for the next process.</p><p>Gene Scale Domain Adaptation Given the high dimensionality and sparsity of gene expression profiles, we need to obtain their dimensionality reduction embeddings. Due to technical limitations, ST data often exhibit deficiencies such as limited gene coverage and high rates of "dropout zeros" <ref type="bibr" target="#b5">(Avs ¸ar &amp; Pir, 2023;</ref><ref type="bibr" target="#b35">Li et al., 2023)</ref>. Consequently, compared to scRNA-seq data, the quality of ST data is considerably lower. Incrementally training scRNA-seq foundation models on ST data facilitates to transfer the knowledge learned from scRNA-seq data to ST data with different distributions, achieving higher-quality cell embeddings. We initialize our cell encoder with Geneformer, one of the most advanced Transformer-based single-cell foundation models, which achieves high-quality representation by encoding cells as gene sequences arranged in descending order of relative expressions <ref type="bibr" target="#b50">(Theodoris et al., 2023)</ref>. Please refer to Appendix A.1 for more details.</p><p>We incrementally train our cell encoder on the cells from ST data to achieve domain adaptation. The domain-adapted cell encoder f cell is then used to process the gene expression profiles E of the ST data, resulting in h-dimensional features</p><formula xml:id="formula_2">F = {F i ∈ R h } N i=1 , where F i = f cell (E i ).</formula><p>We add F as additional information of the cells to S 0 , and obtain S = (E, F, P ).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Micro-and Macro-scale Integration</head><p>We design a multiscale approach to effectively integrate information from micro scale and macro scale. We divide each slice into multiple sub-slices based on spatial locations P , with each sub-slice containing a manageable number of cells (approxi-Algorithm 1 Micro-and Macro-scale Integration</p><formula xml:id="formula_3">1: Input: E = {E i } N i=1 , F = {F i } N i=1 , P = {P i } N i=1 , α ∈ [0, 1]; 2: F c ← α • Normalize(PCA 2 (F )) + (1 -α) • Normalize(P ) 3: Clusters ← Clustering(F c ) 4: F VC ← ∅, P VC ← ∅ 5: for C in Clusters do 6: F VC ← F VC ∪ { j∈C F j /</formula><p>∥C∥} 7: P VC ← P VC ∪ { j∈C P j /∥C∥} 8: end for 9: SubSlices ← Split(P ) 10: Ŝ ← ∅ 11: for T in SubSlices do 12:</p><formula xml:id="formula_4">E (i) ← {E j |j ∈ T } 13: F (i) ← {F j |j ∈ T } ∪ F VC 14: P (i) ← {P j |j ∈ T } ∪ P VC 15: Ŝ ← Ŝ ∪ {S (i) = (E (i) , F (i) , P (i) )}</formula><p>16: end for 17: Return Ŝ mately 1,000). This division empirically achieves a trade-off between maintaining computational efficiency and preserving sufficient localized intercellular interactions. Then, to maintain macro-scale information, we use Leiden algorithm <ref type="bibr" target="#b51">(Traag et al., 2019)</ref> to cluster all cells in S based on both cell embeddings F and cell positions P . We aggregate each cluster into a virtual cell, whose embedding and position coordinates are averaged over all cells in the cluster. These virtual cells retain the main morphology and partition of the slice, serving as a compression of macro-scale information.</p><p>We incorporate the virtual cells into each sub-slice, allowing the model to learn micro-scale information while maintaining an ability to perceive macro-scale structural organization.</p><p>As shown in Algorithm 1, we split S = (E, F, P ) into a set of sub-slices Ŝ = {S (i) = (E (i) , F (i) , P (i) )} with virtual cells. The sub-slices encapsulate micro-scale information while also integrating macro-and gene-scale information through virtual cells and cell embeddings, respectively. Notably, we only calculate the embeddings F VC instead of the gene expressions for virtual cells, because the average gene expression profile of multiple cells is out of distribution and cannot be effectively encoded by the cell encoder.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.">Multi-scale ST Representation Learning</head><p>The multi-scale ST representation learning process is shown in Fig. <ref type="figure" target="#fig_1">2b</ref>. Given a sub-slice S (i) obtained from Sec. 3.1, we obtain cell representations that incorporate transcriptomics and multi-scale spatial information.</p><p>Second-time Forward with the Cell Encoder We perform a second-time forward with the cell encoder, so that the parameters of the cell encoder can be updated through gradient backpropagation. This step is only performed during training, and F (i) can be used directly during inference.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Representation Learning by SE(2) Transformer</head><p>SToFM aims to jointly encode the cell embeddings F (i) and the cell positions P (i) , to obtain spatial-aware representations and capture intercellular interactions. In addition, the output representations should be invariant to 2D translations and rotations to P ( i), which is known as SE(2)-invariance. For this purpose, we use a widelyadopted SE(2) Transformer architecture<ref type="foot" target="#foot_1">foot_1</ref>  <ref type="bibr" target="#b72">(Zhou et al., 2023)</ref>. This simple and efficient architecture has shown excellent performance in representing proteins <ref type="bibr" target="#b69">(Zheng et al., 2024)</ref> and small molecules <ref type="bibr" target="#b72">(Zhou et al., 2023)</ref>.</p><p>Specifically, a distance matrix D (i) is used as input for location information, where</p><formula xml:id="formula_5">D (i) jk = ∥P (i) j -P (i)</formula><p>k ∥ 2 . The distance matrix is first passed through a Gaussian module <ref type="bibr" target="#b44">(Shuaibi et al., 2021)</ref> to obtain the initial pairwise representations. At each Transformer layer, the pair representations are updated by adding the attention matrix calculated from cell representations to it. Then, the updated pair representations are used as the actual attention scores for updating cell representations. This approach of using pair representations as attention bias has been shown to be effective in various important works such as Graphformer <ref type="bibr" target="#b63">(Ying et al., 2021)</ref> and Alphafold series <ref type="bibr" target="#b32">(Jumper et al., 2021;</ref><ref type="bibr">Abramson et al., 2024)</ref>. Moreover, given the strong locality of cell-cell interactions <ref type="bibr" target="#b75">(Zormpas et al., 2023)</ref>, we envision that the distance information is suitable input for the pair representation in handling ST data. More details about the SE(2) Transformer architecture can be found in Appendix A.2.</p><p>We train the SE(2) Transformer f ST to encode each subslice S (i) , obtaining cell representations Y</p><p>(i) cell and pairwise representations Y (i) pair , as follows:</p><formula xml:id="formula_6">Y (i) cell , Y (i) pair = f ST F (i) , P (i) In pretraining, Y (i) cell and Y (i)</formula><p>pair are used to calculate the loss function. In downstream applications, we perform sub-slice division once and calculate the cell embeddings for each cell from the corresponding sub-slice.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3.">Pretraining Objectives and Strategies</head><p>Domain Adaptation Objectives During domain adaptation, we adopt the masked gene modeling objective in Geneformer <ref type="bibr" target="#b50">(Theodoris et al., 2023)</ref>, which is to predict the randomly masked genes in the input gene sequence arranged by relative expression levels. In addition, inspired by Zhao et al., we introduce a self-supervised contrastive learning task <ref type="bibr" target="#b21">(Gao et al., 2021)</ref> to enhance the representation quality of the cell encoder. See Appendix A.1 for details.</p><p>Multi-scale ST Representation Learning Objectives In order to better capture multi-scale information from ST data, we need to design objectives that harvest supervision signals from both gene expressions and cell coordinates. To this end, we design the following two tasks, masked cell modeling (MCM) and pairwise distance recovery (PDR):</p><p>In Masked Cell Modeling (MCM), we randomly mask 10% of the gene expression embeddings F (i) in the sub-slice, and use SToFM's output representations Y (i) cell to predict the masked embeddings through a regression head. Given the impracticality of using micro-scale information to reconstruct macro-scale information, we do not mask virtual cell embeddings. We use the Mean Squared Error (MSE) loss function. The objective is defined as:</p><formula xml:id="formula_7">L MCM = 1 ∥M 1 ∥ j∈M1 ∥ F (i) j -F (i) j ∥ 2 2</formula><p>Where M 1 is the set of masked cells, F</p><p>j is the j-th cell embedding, and</p><formula xml:id="formula_9">F (i) j</formula><p>is the restored j-th cell embedding predicted with the j-th cell representation from Y (i)</p><p>cell . In Pairwise Distance Recovery (PDR), we randomly select 10% cells in the sub-slice and add Gaussian noise to their 2D coordinates P (i) , which modifies the corresponding rows and columns of the distance matrix D (i) . Our model then attempts to reconstruct the unperturbed distance matrix through a regression head using the pair representation Y (i) pair .</p><p>For the same cell, we make sure not to mask its embedding and perturb its coordinates at the same time. We use the MSE loss function. The objective is defined as:</p><formula xml:id="formula_10">L PDR = 1 ∥M 2 ∥ (j,k)∈M2 ∥ D(i) jk -D (i) jk ∥ 2 2</formula><p>Where M 2 is the set of perturbed elements in the distance matrix, D</p><p>jk is the distance between cells j and k calculated from the unperturbed positions, and D(i) jk is the restored distance between cells j and k, predicted by a regression head using the pair representations</p><formula xml:id="formula_12">Y (i) pair .</formula><p>Pretraining Strategies We adopt some strategies to help stabilize the training and accelerate convergence. In the early stage of pretraining, since the domain-adapted cell encoder has undergone pretraining while the SE(2)-Transformer is trained from scratch, we perform synchronization by freezing the cell encoder and directly using F (i)  as the inputs of the SE(2) Transformer. Once the training of the SE(2) Transformer has mostly converged, we tune the parameters of both the cell encoder and the SE(2) Transformer. Considering the high computational cost of the cell encoder, we perform the second-time cell encoding mentioned in Sec. 3.2 only on some randomly sampled cells within the sub-slice. This allows us to update both the cell encoder and the SE(2) Transformer simultaneously via backpropagation, improving the model's learning capability.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">Experiments</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.">Experiment settings</head><p>Construction of SToCorpus-88M We organize publicly available ST data from multiple sources <ref type="bibr" target="#b60">(Xu et al., 2024;</ref><ref type="bibr" target="#b66">Yuan et al., 2023;</ref><ref type="bibr" target="#b7">Biology et al., 2023;</ref><ref type="bibr">10xGENOMICS, 2025;</ref><ref type="bibr" target="#b52">Vizgen, 2025;</ref><ref type="bibr">nanoString, 2025;</ref><ref type="bibr">SeekGene, 2025)</ref>. As some low-resolution ST data cannot accurately reflect gene expression at the gene level, we only select sequencing methods with single-cell resolution or those whose spot diameters are close to cell diameters. Specifically, we select six sequencing methods and construct SToCorpus-88M, the largest ST pretraining corpus, which contains approximately 2,000 tissue slices and 88 million cells, surpassing the largest ST corpus to date by 1.6 fold <ref type="bibr" target="#b42">(Schaar et al., 2024)</ref>. SToCorpus-88M includes slices from human and mouse, and gene expression profiles are aligned by homologous genes <ref type="bibr" target="#b24">(Harrison et al., 2024)</ref>. We standardize the corpus using gene names and Ensembl IDs, and filter out cells with less than 100 expressed genes to ensure data quality. Please refer to Appendix D.2 for more details.</p><p>Pretraining Setup Pretraining is performed on SToCorpus-88M after removing the data used for downstream tasks. We perform domain adaptation for one epoch. Then, we perform multi-scale ST representation learning for three epochs, where the cell encoder is frozen in the first two epochs, following the strategy in Sec. 3.3. The pretraining is performed with 4 NVIDIA Tesla A100 GPUs and takes approximately 20 days. Detailed pretraining hyperparameters are provided in Appendix C.1.</p><p>Baseline Selection and Downstream Task Setup For baseline comparisons, we select pretrained models that only process single-cell transcriptomics data or ST data, without incorporating other modalities like text <ref type="bibr" target="#b68">(Zhao et al., 2024;</ref><ref type="bibr" target="#b34">Levine et al., 2023)</ref> or image <ref type="bibr" target="#b36">(Lin et al., 2024)</ref>. The chosen baselines are single-cell models Geneformer <ref type="bibr" target="#b50">(Theodoris et al., 2023)</ref> and scGPT <ref type="bibr" target="#b16">(Cui et al., 2023)</ref>, the ST-specialized single-cell model Nicheformer <ref type="bibr" target="#b42">(Schaar et al., 2024)</ref>, and the first model combining gene expression and spatial in-formation in ST data, CellPLM <ref type="bibr" target="#b54">(Wen et al., 2023)</ref>. These models have demonstrated superior performance over traditional methods across various tasks. Since these models differ in parameters and architecture, their full-parameter fine-tuning performance could be heavily influenced by hyperparameter settings and fine-tuning strategies. To ensure a fair comparison of representation quality, we perform head tuning on downstream tasks by training task-specific heads on top of the pretrained model outputs <ref type="bibr" target="#b53">(Wei et al., 2021)</ref>. As a supplement, we also conduct full-parameter fine-tuning experiments in Appendix B.1.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.">Tissue Region Semantic Segmentation</head><p>Similar to image or point cloud semantic segmentation, tissue region semantic segmentation is one of the key tasks in spatial transcriptomics <ref type="bibr" target="#b73">(Zhou et al., 2024)</ref>, aiming to determine which structural or functional region each cell belongs to. Accurate region segmentation not only helps reveal spatial transcriptional patterns within tissues but also provides a foundation for understanding the functional specialization of cells in biological processes. We evaluate SToFM's performance on tissue region semantic segmentation in two biologically significant experimental scenarios: human embryonic structure segmentation and DLPFC layer segmentation. For each task, we collect a dataset consisting of four slices and evaluate the model performance on each slice separately. Additionally, to assess the model's transferability, we employ a more challenging cross-slice setting, where the classification head is trained on three slices and tested on the remaining slice.</p><p>Human Embryonic Structure Segmentation Human embryonic development is a highly dynamic and complex process. Accurately segmenting human embryonic structures aids in understanding cellular differentiation and tissue formation during development, and also uncovers the origins and regulatory mechanisms of key organs and tissues. In this experiment, we use human embryonic Stereo-seq ST data to perform structure segmentation <ref type="bibr" target="#b41">(Pan et al., 2023;</ref><ref type="bibr" target="#b28">HESTA, 2025)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>DLPFC Layer Segmentation</head><p>The dorsolateral prefrontal cortex (DLPFC), which is a key part of the brain's prefrontal cortex, plays a crucial role in various higher-order cognitive functions such as working memory and attention regulation. The DLPFC is part of the brain's neocortex and has a typical six-layer laminar structure. In this experiment, we use a human DLPFC 10x Visium ST dataset <ref type="bibr" target="#b40">(Maynard et al., 2021)</ref>, which has been manually annotated with layer information in previous studies. It is worth noting that 10x Visium data is not used during the pretraining process of SToFM or any of the baseline models. Therefore, this experiment also evaluates how well the models can adapt to data from a both gene expression and location information of the cells, CellPLM achieves second-best performance in most tasks, which further demonstrates the importance of jointly incorporating these two types of information. Notably, we observe that SToFM surpasses other models to a greater extent in the cross-slice setting, demonstrating its robustness and transferability. We attribute this to the integration of micro-and macro-scale information in SToFM, since tissue morphology and cell-cell interaction patterns are more likely to transfer across different ST slices. In conclusion, SToFM achieves high-precision tissue region segmentation in various complex biological contexts, providing a powerful tool for the biological interpretation of ST data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.">Cell Type Annotation in Spatial Transcriptomics</head><p>Cell type annotation is a fundamental problem in ST research. Compared to scRNA-seq data, the gene expression profiles of ST data have lower data quality due to fewer captured genes or a higher probability of dropout zeros. This poses challenges for cell type annotation based on gene expression profiles. For this task, we use two mouse brain datasets obtained using the Stereo-seq and SeekSpace technologies <ref type="bibr" target="#b14">(Cheng et al., 2022;</ref><ref type="bibr">SeekGene, 2025)</ref>. These two datasets have been manually annotated as 25 and 8 different cell types, respectively, as ground truth. The results in Table <ref type="table" target="#tab_3">2</ref> show that our model significantly outperforms existing methods on both datasets. This confirms that incorporating spatial information can help improve cell type annotation on ST data. Specifically, the tissue region where the cells are located and the cell type composition in the cell's neighborhood can aid in inferring cell types even in the scenes of low-quality gene expression data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4.">Zero-shot Clustering and Visualization</head><p>Clustering and visualizing cells is important in bioinformatics analysis. In this section, we use cell representations from SToFM and baseline models for clustering and visualization, and evaluate how well the clustering results align with the ground truth of cell types on a MERFISH mouse brain slice <ref type="bibr" target="#b3">(Allen et al., 2023)</ref>. The experimental results in Fig. <ref type="figure" target="#fig_3">3</ref> demonstrate that clustering based on SToFM cell embeddings achieves the best performance in terms of NMI and ARI scores when compared to true cell type labels. The visualization further illustrates the ability of SToFM to produce high-quality cell embeddings, where each cell type forms a distinct and tight cluster in the SToFM embedding space. Interestingly, the cell representations of SToFM also reflect some relationships between cells. For example, oligodendrocyte progenitor cell shares a common progenitor with neuron and can further differentiate into oligodendrocyte.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.5.">Spatial Deconvolution</head><p>As described in Appendix D.1, in some ST methods, each data point actually represents a small region called a spot which contains parts of different cells. Therefore, a spot can be described as a proportion of various cell types. Predicting the cell type proportion in ST data is known as spatial deconvolution. Considering that foundation models can   generate consistent representations for data from different slices, using foundation models to transfer deconvolution results from labeled slices to unlabeled slices provides a promising solution for this task. This section explores the potential of using SToFM for ST deconvolution in a simple quantitative experiment. The experiment is conducted on a Stereo-seq mouse liver dataset <ref type="bibr" target="#b57">(Wu et al., 2024)</ref>, testing the models' ability to transfer deconvolution labels both within the same slice and across different slices. The ground truth is annotated by biologists <ref type="bibr" target="#b57">(Wu et al., 2024)</ref>. We adopt 3 evaluation metrics for regression: Pearson correlation, RMSE and MAE. Table <ref type="table" target="#tab_4">3</ref> reports the results, showing that SToFM achieves the best performance in both within-slice and cross-slice deconvolution tasks. In addition, SToFM achieves more improvement under the cross-slice setting, which further emphasizes its excellent transferability.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.6.">Spatial Transcriptomics Imputation</head><p>ST technologies often cannot capture a large number of genes while maintaining high resolution, posing challenges for data analysis. ST imputation, i.e., inferring the uncaptured gene expression levels, is an important task in the analysis of these data <ref type="bibr" target="#b0">(Abdelaal et al., 2020;</ref><ref type="bibr" target="#b30">Jiang et al., 2024)</ref>. Similar to 4.5, we explore the potential of SToFM for ST imputation. We collect two 10x Xenium human skin datasets (10xGENOMICS, 2025) to be used as a training dataset and a test dataset. Each cell in these datasets has 377 known gene expressions, of which we randomly select 50 </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.7.">Ablation Study</head><p>In order to demonstrate the performance improvement resulting from modeling information at multiple scales, we conduct a set of ablation experiments as shown in Table <ref type="table" target="#tab_6">5</ref>. Specifically, we first ablate the macro-scale information by removing the virtual cells. Then, we ablate the model's ability to jointly model multiple cells at the micro scale by removing the SE(2) Transformer. Finally, we remove domain adaptation to test the model's original ability to handle gene-scale expression profiles. The ablation experiments are performed on two representative tasks: embryo structure segmentation and cell type annotation.</p><p>The results have demonstrated the performance gains brought by each scale, confirming that the integration of multi-scale information is helpful for various downstream tasks. In addition, the cross-slice results also prove that more macroscopic information greatly enhances the transferability of the model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Conclusions and Limitations</head><p>In this work, we propose SToFM, a multi-scale ST foundational model, pretrained on our large-scale ST corpus, SToCorpus-88M. By effectively capturing and integrating information across different scales, SToFM achieves a comprehensive understanding of biological information in ST data. It demonstrates outstanding performance in various downstream tasks, introducing a new perspective for the analysis of ST data and driving progress in the field.</p><p>Currently, SToFM still has some limitations. SToFM only considers three scales: macro, micro, and gene. In the future, we may consider modeling and integrating more scales using methods like image pyramid <ref type="bibr" target="#b2">(Adelson et al., 1984)</ref>, or introduce causal machine learning methods to model gene regulatory relationships <ref type="bibr" target="#b49">(Tejada-Lapuerta et al., 2025;</ref><ref type="bibr" target="#b70">Zhong et al., 2024)</ref>. Furthermore, it is also possible to enhance the model by using prior biological knowledge or other modalities, such as known ligand-receptor pairs or pathological images. We reserve these explorations for future works. Table A.1: Performance of cell type annotation on head tuning and full-parameter tuning. Models Brain1 Brain2 Accuracy Macro F 1 Accuracy Macro F 1 SToFM head tuning 0.6349 0.4951 0.9289 0.8362 SToFM full-parameter tuning 0.6987 0.5532 0.9725 0.8903 B.2. More Ablation Studies</p><p>The resolution of clustering and the scale of sub-slices. They are critical hyperparameters in SToFM. In our experiments, we used the Leiden algorithm for clustering, with the resolution set to 1.0, typically resulting in dozens of clusters. We ensured that each sub-slice contained approximately 1,000 cells, which aligns with the empirically suitable data scale for the SE(2) Transformer and includes sufficient microscopic information. Ablation experiments in Table <ref type="table">A</ref>.2 confirmed that these hyperparameter settings fall within a reasonable range. Additionally, SToFM demonstrates robustness to changes in these hyperparameters within a certain range.</p><p>Micro-scale components and spatial distance matrix. We ablate the micro scale by limiting the scale of sub-slices to 1, to ensure that the cells could only interact with the virtual cells that represent macro-scale information, but not with other cells in the micro-environment. Experimental results are shown in Table <ref type="table">A</ref>.3. A significant decrease in performance is observed, which demonstrates the effectiveness of incorporating the micro-scale information. Then, we conduct an ablation study on the spatial distance matrix. The spatial information is very underutilized in this case, only used to construct virtual cells and divide sub-slices. As shown in Table <ref type="table">A</ref>.3, the results demonstrate that removing the spatial distance matrix significantly decreases model performance.</p><p>Sample rate of the second-time cell encoding. The purpose of the second time cell encoding is to enable L M CM and L P DR to optimize the cell encoder through backpropagation. To balance the training cost and model performance, we use only a small number of cells for this computation, which is similar to selecting a smaller batch size to update the cell encoder. For the selection of the sampling number, we determined the number of samples to be 12, given that the original Geneformer paper gave a training batch size of 12. Considering the computational cost, we test the impact of the sample number on a small amount of data (1/8 of the SToCorpus-88M), as shown in Table <ref type="table">A</ref>.4. The results show that the model has some robustness to this hyperparameter, just as the batch size often only affects the convergence speed rather than the model performance. However, setting the sample size to 0, i.e. freezing the cell encoder, will lead to a decrease in model performance.</p><p>Table A.6: Ablation study of α in Algorithm 1. α Embryo2 Macro F 1 EmbryoCross Macro F 1 0 0.751 0.435 0.2 0.767 0.458 0.4 0.778 0.440 0.6 0.796 0.436 0.8 0.801 0.459 1.0 0.769 0.448 Table A.7: Ablation study of α in Algorithm 1. γ Embryo2 Macro F 1 EmbryoCross Macro F 1 0 0.683 0.409 0.2 0.729 0.423 0.5 0.758 0.423 0.8 0.753 0.429 1.0 0.701 0.415 D. Datasets D.1. Sequencing techniques data characteristics in ST Spatial transcriptomics is an advanced technology that allows simultaneous acquisition of spatial tissue information and gene expression data. The main sequencing technologies can be categorized into image-based single-cell resolution techniques and sequencing-based Spot techniques <ref type="bibr" target="#b35">(Li et al., 2023)</ref>.</p><p>Image-based single-cell resolution technologies These technologies typically rely on fluorescence in situ hybridization (FISH) techniques, such as MERFISH <ref type="bibr" target="#b13">(Chen et al., 2015)</ref>, 10x Xenium and CosMx <ref type="bibr" target="#b27">(He et al., 2022)</ref>. By labeling specific RNA molecules and imaging them, these technologies achieve spatial expression profiling at single-cell resolution. Their advantage lies in their high resolution, enabling precise localization of RNA within individual cells, but the number of genes that can be analyzed is usually limited. Some recent studies have compiled some image-based ST data <ref type="bibr" target="#b29">(Jaume et al., 2024;</ref><ref type="bibr" target="#b12">Chen et al., 2024)</ref>.</p><p>Sequencing-based spot technologies Sequencing-based technologies typically involve placing capture areas of a certain size, called spots, on tissue sections (e.g., 10x Visium <ref type="bibr" target="#b45">(Ståhl et al., 2016)</ref>). Each spot covers multiple cells, with a size of approximately 50-100 microns. Newer techniques like Slide-seq <ref type="bibr" target="#b46">(Stickels et al., 2021)</ref> use smaller beads with a diameter of about 10 microns, significantly improving resolution. Additionally, Stereo-seq <ref type="bibr" target="#b11">(Chen et al., 2022)</ref> leverages nanometerscale lithography arrays, achieving spot sizes of 220 nanometers, approaching single-cell or even subcellular resolution.</p><p>SeekSpace uses a special positional probe method to achieve a single-cell resolution sequencing-based method.</p><p>Considering that some low-resolution technologies have spot diameters much larger than cell diameters, which cannot accurately reflect the gene expression distribution at the single-cell level, we exclude these data when constructing the datasets for pretraining and the vast majority of downstream tasks. Specifically, we only use low-resolution data in the DLPFC layer segmentation task (Sec. 4.2) to evaluate the model's transferability on this type of data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>D.2. SToCorpus-88M</head><p>We selected data obtained from 6 high-resolution sequencing technologies to construct SToCorpus-88M. These include image-based technologies MERFISH, 10x Xenium, and CosMx, as well as sequencing-based technologies Stereo-seq, Slide-seqv2, and SeekSpace. Among them, MERFISH, 10x Xenium, CosMx, and SeekSpace are single-cell resolution data, while Stereo-seq and Slide-seqv2 are data where the diameter of spots is close to the diameter of cells.</p><p>Our data sources include six public databases or data release projects. We also obtain some unpublished SeekSpace data. The</p><p>Table A.10: SToCorpus-88M data sources and statistics. Sources Sequencing technologies Number of slices Number of cells/spots 10xGENOMICS 10x Xenium 20 6,496,946 CELLxGENE MERFISH, Slide-seqv2 762 23,531,670 nanoString CosMx 6 1,118,500 SODB Slide-seqv2, Stereo-seq, MERFISH 817 19,582,014 STOmicsDB Slide-seqv2, Stereo-seq, MERFISH 242 24,768,293 Vizgen MERFISH 32 12,344,989 SeekSpace SeekSpace 33 338,953 Total 6 technologies 1912 88,181,365</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: ST data contain biological information from multiple scales. (a). An example of a visualized ST slice of a mouse brain. (b). A microscopic sub-slice of the brain slice. (c). Gene expression profile of a single cell in the brain slice.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: An overview of SToFM architecture. (a). Multi-scale processing integrates information on macro, micro, and gene scales into sub-slices. At gene scale, we extract the representations of each cell using a cell encoder that has undergone domain adaptation. At micro scale, we divide the ST slice into several sub-slices. At macro scale, we cluster cells based on spatial and gene expression data, construct virtual cells for each cluster, and add the virtual cells into each sub-slice. Notably, The actual sub-slice contains a much larger number of cells (˜1000) and virtual cells (˜50) than are shown in the simplified figure. (b). During the pretraining process, first, the domain-adapted cell encoder is used to re-calculate cell embeddings, enabling the cell encoder to be trained through backpropagation. Next, an SE(2) Transformer is employed to jointly model the randomly masked cell embeddings and the noise-augmented distance matrix. The output representations are then used to reconstruct the original cell embeddings and spatial distances. These two pretraining tasks are referred to as masked cell modeling (MCM) and pairwise distance recovery (PDR).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: UMAP visualization of cell representations on a mouse brain slice, colored by cell types. ARI and NMI scores were calculated with Leiden clustering results and cell type labels.</figDesc><graphic coords="8,350.48,95.27,99.11,75.64" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><figDesc>Figure A.1: The architecture of SE(2) Transformer in SToFM</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 1 :</head><label>1</label><figDesc>Performance of tissue region semantic segmentation on human embryo and DLPFC slices. Expr: gene expressions. Pos: cell positions. M-S: Multi-scale. Acc: accuracy. F1: macro F1 score.We use classification accuracy and F 1 score as evaluation metrics. The results in Table1demonstrate that SToFM outperforms existing methods across different tissue region semantic segmentation tasks. As the only baseline that uses</figDesc><table><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell cols="2">Embryonic Structure Segmentation</cell><cell></cell></row><row><cell>Model</cell><cell cols="3">ST Pretraining Expr Pos M-S</cell><cell>Embryo1 Acc F 1</cell><cell>Embryo2 Acc F 1</cell><cell>Embryo3 Acc F 1</cell><cell>Embryo4 Acc F 1</cell><cell>Average Acc F 1</cell><cell>Cross-slice Acc F 1</cell></row><row><cell>scGPT</cell><cell>✗</cell><cell>✗</cell><cell>✗</cell><cell cols="5">0.7906 0.7872 0.7987 0.7210 0.7731 0.7146 0.8084 0.7572 0.7927 0.7450 0.5752 0.3947</cell></row><row><cell>Geneformer</cell><cell>✗</cell><cell>✗</cell><cell>✗</cell><cell cols="5">0.7891 0.7789 0.7810 0.6854 0.8028 0.7572 0.7986 0.7651 0.7929 0.7467 0.5293 0.3745</cell></row><row><cell>Nicheformer</cell><cell>✔</cell><cell>✗</cell><cell>✗</cell><cell cols="5">0.7260 0.7119 0.6870 0.5858 0.7180 0.6336 0.7306 0.6842 0.7154 0.6539 0.5359 0.3718</cell></row><row><cell>CellPLM</cell><cell>✔</cell><cell>✔</cell><cell>✗</cell><cell cols="5">0.8358 0.8261 0.8179 0.7325 0.8068 0.7566 0.8139 0.7737 0.8186 0.7722 0.5597 0.3985</cell></row><row><cell>SToFM</cell><cell>✔</cell><cell>✔</cell><cell>✔</cell><cell cols="5">0.8514 0.8312 0.8380 0.8014 0.8175 0.7716 0.8380 0.8143 0.8362 0.8046 0.6059 0.4588</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell cols="2">DLPFC Layer Segmentation</cell><cell></cell></row><row><cell>Model</cell><cell cols="3">ST Pretraining Expr Pos M-S</cell><cell>DLPFC1 Acc F 1</cell><cell>DLPFC2 Acc F 1</cell><cell>DLPFC3 Acc F 1</cell><cell>DLPFC4 Acc F 1</cell><cell>Average Acc F 1</cell><cell>Cross-slice Acc F 1</cell></row><row><cell>scGPT</cell><cell>✗</cell><cell>✗</cell><cell>✗</cell><cell cols="5">0.6943 0.6599 0.6565 0.5908 0.6919 0.6151 0.6696 0.6055 0.6781 0.6178 0.6689 0.5885</cell></row><row><cell>Geneformer</cell><cell>✗</cell><cell>✗</cell><cell>✗</cell><cell cols="5">0.6404 0.5770 0.6286 0.5464 0.6373 0.5677 0.6157 0.5513 0.6305 0.5606 0.5981 0.5440</cell></row><row><cell>Nicheformer</cell><cell>✔</cell><cell>✗</cell><cell>✗</cell><cell cols="5">0.5712 0.5319 0.5942 0.5300 0.5588 0.5192 0.5648 0.5141 0.5723 0.5238 0.5809 0.5138</cell></row><row><cell>CellPLM</cell><cell>✔</cell><cell>✔</cell><cell>✗</cell><cell cols="5">0.7005 0.6553 0.6960 0.5923 0.7143 0.6482 0.6725 0.5918 0.6958 0.6219 0.6908 0.5953</cell></row><row><cell>SToFM</cell><cell>✔</cell><cell>✔</cell><cell>✔</cell><cell cols="5">0.7082 0.6755 0.6974 0.6453 0.7157 0.6659 0.6856 0.6274 0.7014 0.6535 0.6981 0.6437</cell></row><row><cell cols="5">completely new sequencing technique.</cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 2 :</head><label>2</label><figDesc>Performance of cell type annotation on mouse brain slices.</figDesc><table><row><cell>Models</cell><cell cols="4">Brain1 Accuracy Macro F1 Accuracy Macro F1 Brain2</cell></row><row><cell>Geneformer</cell><cell>0.5646</cell><cell>0.3853</cell><cell>0.8540</cell><cell>0.6742</cell></row><row><cell>Nicheformer</cell><cell>0.5186</cell><cell>0.3550</cell><cell>0.8447</cell><cell>0.7575</cell></row><row><cell>CellPLM</cell><cell>0.6001</cell><cell>0.4186</cell><cell>0.9256</cell><cell>0.7332</cell></row><row><cell>SToFM</cell><cell>0.6349</cell><cell>0.4951</cell><cell>0.9289</cell><cell>0.8362</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 3 :</head><label>3</label><figDesc>Performance of spatial deconvolution on mouse liver slices.</figDesc><table><row><cell>Models</cell><cell cols="4">LiverSample Pearson↑ RMSE↓ MAE↓ Pearson↑ RMSE↓ MAE↓ LiverCross</cell></row><row><cell>Geneformer</cell><cell>0.7152</cell><cell>0.0909 0.0446</cell><cell>0.6906</cell><cell>0.0970 0.0456</cell></row><row><cell>Nicheformer</cell><cell>0.7143</cell><cell>0.0909 0.0440</cell><cell>0.6938</cell><cell>0.0976 0.0447</cell></row><row><cell>CellPLM</cell><cell>0.7458</cell><cell>0.0865 0.0423</cell><cell>0.7248</cell><cell>0.0921 0.0441</cell></row><row><cell>SToFM</cell><cell>0.7666</cell><cell>0.0833 0.0408</cell><cell>0.7546</cell><cell>0.0867 0.0430</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 4 :</head><label>4</label><figDesc>Performance of imputation on human skin slices.</figDesc><table><row><cell>Models</cell><cell cols="2">SkinCross Pearson↑ RMSE↓ MAE↓</cell></row><row><cell>Geneformer</cell><cell>0.3610</cell><cell>0.3671 0.1029</cell></row><row><cell>Nicheformer</cell><cell>0.2829</cell><cell>0.3772 0.1163</cell></row><row><cell>CellPLM</cell><cell>0.3985</cell><cell>0.3758 0.0905</cell></row><row><cell>SToFM</cell><cell>0.4877</cell><cell>0.3356 0.0886</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_6"><head>Table 5 :</head><label>5</label><figDesc>Ablation study of the effect of different scales on SToFM performance. VCs: virtual cells. DA: domain adaptation.</figDesc><table><row><cell>Ablated Models</cell><cell cols="3">Multi-scale Gene Micro Macro</cell><cell>EmbryoCross Macro F1</cell><cell>Brain1 Macro F1</cell></row><row><cell>Cell encoder w/o DA</cell><cell>✗</cell><cell>✗</cell><cell>✗</cell><cell>0.3745</cell><cell>0.3853</cell></row><row><cell>Cell encoder w/ DA</cell><cell>✔</cell><cell>✗</cell><cell>✗</cell><cell>0.4155</cell><cell>0.4725</cell></row><row><cell>SToFM w/o VCs</cell><cell>✔</cell><cell>✔</cell><cell>✗</cell><cell>0.4291</cell><cell>0.4893</cell></row><row><cell>SToFM</cell><cell>✔</cell><cell>✔</cell><cell>✔</cell><cell>0.4588</cell><cell>0.4951</cell></row><row><cell cols="6">as labels and the remaining 327 as inputs. The evaluation</cell></row><row><cell cols="6">metrics are Pearson correlation, RMSE and MAE. The ex-</cell></row><row><cell cols="6">perimental results in Table 4 show the excellent performance</cell></row><row><cell cols="2">of SToFM on this task.</cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1" xml:id="foot_0"><p>For simplicity, we refer to both cells and sequencing spots as "cells" in the remaining paper since we only use high-resolution ST data close to single-cell resolution. See Appendix D.1 for further explanations.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2" xml:id="foot_1"><p>This architecture is originally an SE(3) Transformer, but it can be applied to 2D scenes with little architectural modifications.</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgements</head><p>This research is supported by the <rs type="funder">National Key R&amp;D Program of China</rs> (No. <rs type="grantNumber">2022YFF1203002</rs>) and <rs type="funder">PharMolix Inc.</rs></p></div>
+<div><head>Impact Statement</head><p>This paper presents work whose goal is to advance the field of <rs type="person">Machine Learning</rs>. There are many potential societal consequences of our work, none which we feel must be specifically highlighted here.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_Ufgcpby">
+					<idno type="grant-number">2022YFF1203002</idno>
+				</org>
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Code Availability</head><p>SToFM will soon be added to the OpenBioMed toolkit: <ref type="url" target="https://github.com/PharMolix/OpenBioMed/">https://github.com/PharMolix/OpenBioMed</ref>.</p><p>Code is available at: <ref type="url" target="https://github.com/PharMolix/SToFM">https://github.com/PharMolix/SToFM</ref>.</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Appendix</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A. Architecture of the Model Components</head><p>In this section, we describe the detailed architecture of the model components.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.1. Cell Encoder</head><p>We use the single-cell foundation model, Geneformer <ref type="bibr" target="#b50">(Theodoris et al., 2023)</ref>, as the cell encoder of SToFM. The encoding process of Geneformer is as follows: (1) Normalize the gene expression matrix for each cell. Then, divide the expression level of each gene by the median of its non-zero expression values across all cells to obtain the relative expression level of each gene in the cell. (2) Rank the genes in each cell based on their relative expression levels to generate a sequence representation for the cell. (3) Use a BERT model to encode the serialized cell representation.</p><p>In the domain adaptation process, we follow Geneformer's pretraining task of Masked Gene Modeling(MGM), where some genes in the cell sequence representation are masked, and the model predicts the masked genes to reconstruct them. Additionally, we incorporate the self-supervised Contrastive Learning (CL) approach <ref type="bibr" target="#b21">(Gao et al., 2021;</ref><ref type="bibr" target="#b68">Zhao et al., 2024)</ref> to enhance the model's ability to capture global information. The loss function of domain adaptation (L DA ) is as follows:</p><p>where N is the number of masked genes, v ij and vij respectively represent the label and predicted probability of the i-th masked position being identified as the j-th gene, H is the cross entropy loss function. T is the batch size, sim is the cosine similarity function, τ is the temperature parameter, F i and F + i represent the embedding of the i-th cell and its positive sample, respectively.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.2. SE(2) Transformer</head><p>We draw inspiration from the Uni-Mol framework <ref type="bibr" target="#b72">(Zhou et al., 2023)</ref> to implement our SE(2) Transformer, using a simple yet effective architecture. The model structure is illustrated in Fig. <ref type="figure">A</ref>.1 and can be described as follows: (1). A distance matrix is used as the spatial input to ensure SE(2) invariance in a straightforward manner. (2). The initial cell input is obtained by adding the cell features to a learnable type embedding that distinguishes virtual cells from real cells. The distance matrix is passed through a learnable Gaussian module <ref type="bibr" target="#b44">(Shuaibi et al., 2021;</ref><ref type="bibr" target="#b72">Zhou et al., 2023)</ref> to project it to the dimensionality of the model's attention heads, serving as the initial pair representation. (3). Both cell representations and pair representations are propagated between layers. In each layer, a self-attention matrix is computed for the cell representations and is added with the pair representation which serve as attention bias. The resulting combination is used to update both the pair representation and the attention matrix. This process is illustrated as follows:</p><p>where R l,h is the pair representation matrix corresponding to the attention head h in layer l, and Q l,h , K l,h , V l,h are the attention parameters corresponding to the attention head in layer l and head h.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B. More Experimental Results</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B.1. Full-parameter tuning</head><p>In the main text, we aim to fairly compare the representation learning abilities of SToFM with a basic model serving as the baseline. Therefore, we only perform head-tuning on downstream tasks. However, achieving better results in downstream tasks through full-parameter tuning is also an important use case for foundation models. Therefore, in this section, we evaluate the performance of full-parameter tuned SToFM on the cell type annotation task. Data volume. We pretrain the multi-scale ST representation learning phase using 12.5% and 50% of the data, as shown in Table <ref type="table">A</ref>.5. The results show that reduction in data volume led to a significant decrease in model performance. Considering that the SToCorpus-88M consists of approximately 2,000 ST slices, we believe that reducing the amount of data may reduce data diversity and limit the model's transferability.</p><p>α in Algorithm 1. We have conducted experiments to show how different α values affect the model's performance, as shown in Table <ref type="table">A</ref>.6. The model has a certain robustness in alpha, and we believe this may be because cells that are closer in location are more likely to have similar gene expressions <ref type="bibr" target="#b75">(Zormpas et al., 2023)</ref>. The alpha=0.8 that we chose is essentially the optimal setting.</p><p>Combination ratio of the two loss functions. These two loss are relatively close in scale, and in our experiments, combining them in a 1:1 ratio allows both to converge normally. Considering the computational cost, we test the impact of the ratio of the two losses on the speed of convergence and the performance of the model on a small amount of data (1/8 of the SToCorpus-88M), as shown in Table <ref type="table">A</ref> It is worth noting that this is not a common task of batch integration in single-cell analysis. Our goal is not to make cells from different slices indistinguishable. Instead, we believe that the cell representation generated by SToFM contains some global information from the slices. As a result, as shown in the figure, SToFM establishes similar representations for cells of the same type from different slices, and preserve subtle differences brought by global slice information.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C. Experiment Settings for Pretraining and Downstream Tasks</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C.1. Pretraining settings</head><p>The training process is conducted using the PyTorch framework. We utilize the AdamW optimizer, with a learning rate strategy that involved a warm-up phase followed by linear decay. Pretraining is carried out on four NVIDIA Tesla A100 GPUs, with both Domain Adaptation and pretraining taking approximately 10 days each to complete. Additional experimental configurations are detailed in Table <ref type="table">A</ref>.8. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C.2. Downstream tasks settings</head><p>For downstream tasks, we adhere to the following standardized settings:</p><p>• All datasets are filtered to remove special categories such as "Other" or "Unknown" and categories with less than 1% of the total samples.</p><p>• Tasks with inherent randomness are run three times, and the results are averaged.</p><p>• For tasks involving splitting the same dataset into training and testing sets, an 8:2 random split is applied. Additionally, 10% of the training set is randomly selected as a validation set, and an early stopping strategy is applied based on performance on the validation set.</p><p>• Both the classification and regression heads are implemented as three-layer fully connected neural networks with LeakyReLU activation functions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C.3. Details of multi-class classification tasks</head><p>Tissue region semantic segmentation (Sec. 4.2) and cell type annotation (Sec. 4.3) are both multi-class classification tasks.</p><p>The number of categories are shown as Table <ref type="table">A</ref>.9. We filtered out categories with fewer cells than 1% of the total number of cells.   <ref type="table">A</ref>.10. We have removed the duplicated data obtained from different sources. In addition, individual slices in SToCorpus-88M are used for downstream tasks, and we exclude these data during pretraining.</p><p>These data are obtained from the following sources:</p><p>• 10xGENOMICS (10xGENOMICS, 2025): 10xgenomics.com/datasets</p><p>• CELLxGENE <ref type="bibr" target="#b7">(Biology et al., 2023)</ref>: cellxgene.cziscience.com</p><p>• nanoString (nanoString, 2025): nanostring.com/products/cosmx-spatial-molecular-imager/ ffpe-dataset/</p><p>• SODB <ref type="bibr" target="#b66">(Yuan et al., 2023)</ref>: gene.ai.tencent.com/SpatialOmics/</p><p>• STOmicsDB <ref type="bibr" target="#b60">(Xu et al., 2024)</ref>: db.cngb.org/stomics/</p><p>• Vizgen <ref type="bibr" target="#b52">(Vizgen, 2025)</ref>: vizgen.com/data-release-program/</p><p>• SeekSpace <ref type="bibr">(SeekGene, 2025)</ref>: not yet public, a demo can be found at seekgene.com/sjzszx and downloaded at seekonetools-release.oss-cn-beijing.aliyuncs.com/demo_data/link/ seekspace_WTH1092/WTH1092_filtered_feature_bc_matrix.zip</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Spage: spatial gene enhancement using scrna-seq</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Abdelaal</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Mourragui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mahfouz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Reinders</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nucleic acids research</title>
+		<imprint>
+			<biblScope unit="volume">48</biblScope>
+			<biblScope unit="issue">18</biblScope>
+			<biblScope unit="page" from="107" to="e107" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><surname>Abramson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Adler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Dunger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Evans</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Green</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pritzel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ronneberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Willmore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Ballard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bambrick</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+	<note>Accurate structure prediction of biomolecular interactions with alphafold 3. Nature, pp</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Pyramid methods in image processing</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">H</forename><surname>Adelson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">H</forename><surname>Anderson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Bergen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Burt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Ogden</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">RCA engineer</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="33" to="41" />
+			<date type="published" when="1984">1984</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Molecular and spatial signatures of mouse brain aging at single-cell resolution</title>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">E</forename><surname>Allen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">R</forename><surname>Blosser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><forename type="middle">A</forename><surname>Sullivan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Dulac</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhuang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">186</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="194" to="208" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Computational challenges and opportu-nities in spatially resolved transcriptomic data analysis</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Atta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Communications</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">5283</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">A comparative performance evaluation of imputation methods in spatially resolved transcriptomics data</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Avs ¸ar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Pir</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Molecular Omics</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="162" to="173" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Deep learning and alignment of spatially resolved single-cell transcriptomes with tangram</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Biancalani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Scalia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Buffoni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Avasthi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sanger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tokcan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">R</forename><surname>Vanderburg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Å</forename><surname>Segerstolpe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page" from="1352" to="1362" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Cz cellxgene discover: A singlecell data platform for scalable exploration, analysis and modeling of aggregated data</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">S</forename><surname>Biology</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">-C</forename><surname>Abdulla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Aevermann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Assis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Badajoz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Bezzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Cakir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Chaffer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chambers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page" from="2023" to="2033" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Generative artificial intelligence empowers digital twins in drug discovery and clinical trials</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bordukova</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Makarov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Rodriguez-Esteban</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Schmich</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">P</forename><surname>Menden</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Expert Opinion on Drug Discovery</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="33" to="42" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Gcnet: Non-local networks meet squeeze-excitation networks and beyond</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF international conference on computer vision workshops</title>
+		<meeting>the IEEE/CVF international conference on computer vision workshops</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="0" to="0" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Semantic segmentation of histological tissue type in whole slide images</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Hosseini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Rowsell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">N</forename><surname>Plataniotis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Damaskinos</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Histosegnet</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF International Conference on Computer Vision</title>
+		<meeting>the IEEE/CVF International Conference on Computer Vision</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="10662" to="10671" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Spatiotemporal transcriptomic atlas of mouse organogenesis using dna nanoball-patterned arrays</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Qiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Hao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">185</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="1777" to="1792" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Stimage-1k4m: A histopathology image-gene expression dataset for spatial transcriptomics</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ArXiv</title>
+		<imprint>
+			<biblScope unit="page">2406</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Spatially resolved, highly multiplexed rna profiling in single cells</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Boettiger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Moffitt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhuang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">348</biblScope>
+			<biblScope unit="issue">6233</biblScope>
+			<biblScope unit="page">6090</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">A cellular resolution spatial transcriptomic landscape of the medial structures in postnatal mouse brain</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Feng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Frontiers in Cell and Developmental Biology</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page">878346</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Cellama: Foundation model for single cell and spatial transcriptomics by cell embedding leveraging language model abilities</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Choi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Park</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bae</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Shin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page" from="2024" to="2025" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Towards building a foundation model for single-cell multi-omics using generative ai</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Maan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Pang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Scgpt</surname></persName>
+		</author>
+		<ptr target="https://api.semanticscholar.org/CorpusID" />
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page">258464426</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Cross-tissue immune cell analysis reveals tissue-specific features in humans</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Domínguez Conde</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Jarvis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Rainbow</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wells</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Gomes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Howlett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Suchanek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Polanski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>King</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">376</biblScope>
+			<biblScope unit="issue">6594</biblScope>
+			<biblScope unit="page">5197</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Deciphering spatial domains from spatially resolved transcriptomics with an adaptive graph attention auto-encoder</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature communications</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">1739</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Advances in spatial transcriptomics and related data analysis strategies</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y.-C</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z.-J</forename><surname>An</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M.-H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X.-H</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z.-F</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Hou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Translational Medicine</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">330</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Mapping spatially resolved transcriptomes in human and mouse pulmonary fibrosis</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Franzén</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Olsson Lindvall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hühn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Ptasinski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Setyo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">P</forename><surname>Keith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Collin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Oag</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Volckaert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Borde</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Genetics</title>
+		<imprint>
+			<biblScope unit="volume">56</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="1725" to="1736" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Simple contrastive learning of sentence embeddings</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Simcse</surname></persName>
+		</author>
+		<idno type="DOI">10.18653/v1/2021.-main.552</idno>
+		<ptr target="https://aclanthology.org/2021.emnlp-main.552" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing</title>
+		<meeting>the 2021 Conference on Empirical Methods in Natural Language Processing<address><addrLine>Dominican Republic</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2021-11">November 2021</date>
+			<biblScope unit="page" from="6894" to="6910" />
+		</imprint>
+		<respStmt>
+			<orgName>Online and Punta Cana</orgName>
+		</respStmt>
+	</monogr>
+	<note>Association for Computational Linguistics</note>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zeng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Xtrimogene</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2311.15156</idno>
+		<title level="m">An efficient and scalable representation learner for single-cell rna-seq data</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Large scale foundation model on single-cell transcriptomics</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zeng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">T</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<ptr target="https://api.semanticscholar.org/CorpusID" />
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page">259025739</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">W</forename><surname>Harrison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Amode</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Austine-Orimoloye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">G</forename><surname>Azov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Barba</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Barnes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Becker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bennett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Berry</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bhai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nucleic acids research</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="891" to="D899" />
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Neuroinflammatory astrocyte subtypes in the mouse brain</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Hasel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">V</forename><surname>Rose</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Sadick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Liddelow</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature neuroscience</title>
+		<imprint>
+			<biblScope unit="volume">24</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="1475" to="1487" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Detisseg: A dualencoder network for tissue semantic segmentation of histopathology image</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Qu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ding</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Biomedical Signal Processing and Control</title>
+		<imprint>
+			<biblScope unit="volume">87</biblScope>
+			<biblScope unit="page">105544</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">High-plex imaging of rna and proteins at subcellular resolution in fixed tissue by spatial molecular imaging</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bhatt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">A</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">L</forename><surname>Buhr</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Chantranuvatana</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Danaher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Dunaway</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">G</forename><surname>Garrison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Geiss</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Biotechnology</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="issue">12</biblScope>
+			<biblScope unit="page" from="1794" to="1806" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<monogr>
+		<title level="m" type="main">Human embryogenesis spatiotemporal transcriptomic atlas</title>
+		<author>
+			<persName><surname>Hesta</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Hesta</surname></persName>
+		</author>
+		<ptr target="db.cngb.org/stomics/hesta/brain/" />
+		<imprint>
+			<date type="published" when="2025">2025</date>
+			<biblScope unit="page" from="2025" to="2026" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Hest-1k: A dataset for spatial transcriptomics and histology image analysis</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Jaume</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Doucet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Y</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Almagro Pérez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wagner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Vaidya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Williamson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="page" from="53798" to="53833" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">A multimodal integration transformer for xenium gene imputation</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Xmint</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICML 2024 Workshop on Efficient and Accessible Foundation Models for Biological Discovery</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Advances in spatial transcriptomics and its applications in cancer research</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zuo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Peng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Molecular Cancer</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">129</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Highly accurate protein structure prediction with alphafold</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Jumper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Evans</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pritzel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Green</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Figurnov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ronneberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Tunyasuvunakool</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bates</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Žídek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Potapenko</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">nature</title>
+		<imprint>
+			<biblScope unit="volume">596</biblScope>
+			<biblScope unit="issue">7873</biblScope>
+			<biblScope unit="page" from="583" to="589" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Spatial transcriptomics in neuroscience</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Jung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T.-K</forename><surname>Kim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Experimental &amp; Molecular Medicine</title>
+		<imprint>
+			<biblScope unit="volume">55</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="2105" to="2115" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Cell2sentence: teaching large language models the language of biology</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Levine</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Rizvi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lévy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Pallikkavaliyaveetil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ghadermarzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Vrkic</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">BioRxiv</title>
+		<imprint>
+			<biblScope unit="page" from="2023" to="2029" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">A comprehensive benchmarking with practical guidelines for cellular deconvolution of spatial transcriptomics</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Gao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Communications</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">1548</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<monogr>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><surname>St-Align</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2411.16793</idno>
+		<title level="m">A multimodal foundation model for image-gene alignment in spatial transcriptomics</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Evaluating the utilities of foundation models in single-cell data analysis</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page" from="2023" to="2029" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Swin transformer: Hierarchical vision transformer using shifted windows</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Guo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF international conference on computer vision</title>
+		<meeting>the IEEE/CVF international conference on computer vision</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="10012" to="10022" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Method of the year: spatially resolved transcriptomics</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Marx</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="9" to="14" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Transcriptomescale spatial gene expression in the human dorsolateral prefrontal cortex</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">R</forename><surname>Maynard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Collado-Torres</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Weber</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Uytingco</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">K</forename><surname>Barry</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">R</forename><surname>Williams</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Catallini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">N</forename><surname>Tran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Besich</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tippani</surname></persName>
+		</author>
+		<ptr target="https://nanostring.com/products/cosmx-spatial-molecular-imager/ffpe-dataset/" />
+	</analytic>
+	<monogr>
+		<title level="m">Cosmx™ smi datasets</title>
+		<imprint>
+			<date type="published" when="2021">2021. 2025</date>
+			<biblScope unit="volume">24</biblScope>
+			<biblScope unit="page" from="2025" to="2026" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Spatiotemporal transcriptome atlas of human embryos after gastrulation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Lan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page" from="2023" to="2024" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Nicheformer: a foundation model for single-cell and spatial omics</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">C</forename><surname>Schaar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tejada-Lapuerta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Palla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Gutgesell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Halle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Minaeva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Vornholz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Dony</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Drummer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bahrami</surname></persName>
+		</author>
+		<ptr target="https://www.seekgene.com/seekspacdxbkjzlzjs" />
+	</analytic>
+	<monogr>
+		<title level="m">SeekGene. Seekspace single-cell transcriptomics technology</title>
+		<imprint>
+			<date type="published" when="2024">2024. 2025</date>
+			<biblScope unit="page" from="2025" to="2026" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Spatial atlas of the mouse central nervous system at molecular resolution</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Maher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">622</biblScope>
+			<biblScope unit="issue">7983</biblScope>
+			<biblScope unit="page" from="552" to="561" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<monogr>
+		<author>
+			<persName><forename type="first">M</forename><surname>Shuaibi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kolluru</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Das</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Grover</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sriram</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Ulissi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">L</forename><surname>Zitnick</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2106.09575</idno>
+		<title level="m">Rotation invariant graph neural networks using spin convolutions</title>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Visualization and analysis of gene expression in tissue sections by spatial transcriptomics</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">L</forename><surname>Ståhl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Salmén</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Vickovic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Lundmark</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">F</forename><surname>Navarro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Magnusson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Giacomello</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Asp</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">O</forename><surname>Westholm</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Huss</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">353</biblScope>
+			<biblScope unit="issue">6294</biblScope>
+			<biblScope unit="page" from="78" to="82" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Highly sensitive spatial transcriptomics at near-cellular resolution with slide-seqv2</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">R</forename><surname>Stickels</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Murray</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Marshall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Di Bella</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Arlotta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">Z</forename><surname>Macosko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature biotechnology</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="313" to="319" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Exponential scaling of single-cell rna-seq in the past decade</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Svensson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Vento-Tormo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Teichmann</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature protocols</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="599" to="604" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Transformers in single-cell omics: a review and new perspectives</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Szałata</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Hrovatin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Becker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tejada-Lapuerta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">J</forename><surname>Theis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature methods</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="1430" to="1443" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Causal machine learning for single-cell genomics</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tejada-Lapuerta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bertin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bauer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Aliee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Bengio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">J</forename><surname>Theis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Genetics</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="12" />
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Transfer learning enables predictions in network biology</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">V</forename><surname>Theodoris</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Chopra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">D</forename><surname>Chaffin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><forename type="middle">R A</forename><surname>Sayed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Hill</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Mantineo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">M</forename><surname>Brydon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zeng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><forename type="middle">S</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">T</forename><surname>Ellinor</surname></persName>
+		</author>
+		<ptr target="https://api.semanticscholar.org/CorpusID" />
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">618</biblScope>
+			<biblScope unit="page">259002047</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">From louvain to leiden: guaranteeing well-connected communities</title>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">A</forename><surname>Traag</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Waltman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">J</forename><surname>Van Eck</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Scientific reports</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="12" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<monogr>
+		<title level="m" type="main">Data release program</title>
+		<author>
+			<persName><surname>Vizgen</surname></persName>
+		</author>
+		<ptr target="https://vizgen.com/data-release-program/" />
+		<imprint>
+			<date type="published" when="2025">2025</date>
+			<biblScope unit="page" from="2025" to="2026" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Why do pretrained language models help in downstream tasks? an analysis of head and prompt tuning</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="16158" to="16170" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Cellplm: pre-training of cell language model beyond single cells</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Tang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page" from="2023" to="2033" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Perteval-scfm: Benchmarking single-cell foundation models for perturbation effect prediction</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Wenteler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Occhetta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Branson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Huebner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Curean</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Dee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Connell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hawkins-Hooker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Chung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Ektefaie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page" from="2024" to="2034" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">An introduction to spatial transcriptomics for biomedical research</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">G</forename><surname>Williams</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">J</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Asatsuma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Vento-Tormo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Haque</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Genome Medicine</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">68</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">A spatiotemporal atlas of cholestatic injury and repair in mice</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Shentu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Nan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Hao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Shangguan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Deng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Genetics</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="15" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">A single-cell and spatially resolved atlas of human breast cancers</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">Z</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Al-Eryani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">L</forename><surname>Roden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Junankar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Harvey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Andersson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Thennavan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Torpy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Bartonicek</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature genetics</title>
+		<imprint>
+			<biblScope unit="volume">53</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="1334" to="1347" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<monogr>
+		<author>
+			<persName><forename type="first">K</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Leskovec</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Jegelka</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1810.00826</idno>
+		<title level="m">How powerful are graph neural networks? arXiv preprint</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Stomicsdb: a comprehensive database for spatial transcriptomics data sharing, analysis and visualization</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gould</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Lu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nucleic acids research</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1053" to="D1061" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title level="a" type="main">Scbert as a large-scale pretrained deep language model for cell type annotation of single-cell rnaseq data</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Fang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yao</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s42256-022-00534-z</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Machine Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="852" to="866" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<analytic>
+		<title level="a" type="main">Genecompass: deciphering universal gene regulatory mechanisms with a knowledge-informed cross-species foundation model</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Bu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Miao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell Research</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="16" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<analytic>
+		<title level="a" type="main">Do transformers really perform badly for graph representation?</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ying</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Ke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T.-Y</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in neural information processing systems</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="28877" to="28888" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<monogr>
+		<title level="m" type="main">Hierarchical graph representation learning with differentiable pooling. Advances in neural information processing systems</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Ying</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>You</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Morris</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Hamilton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Leskovec</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page">31</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<monogr>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Tang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2408.12373</idno>
+		<title level="m">Cell-ontology guided transcriptome foundation model</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">Sodb facilitates comprehensive exploration of spatial omics data</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Q</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Methods</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="387" to="399" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<monogr>
+		<title level="m" type="main">Large-scale cell representation learning via divide-and-conquer contrastive learning</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Nie</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2306.04371</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<monogr>
+		<title level="m" type="main">Langcell: Language-cell pre-training for cell identity understanding</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Nie</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2405.06708</idno>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">Multi-scale protein language model for unified molecular modeling</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Long</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W.-Y</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page" from="2024" to="2027" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">Causal-iqa: Towards the generalization of image quality assessment based on causal inference</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Jiang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Forty-first International Conference on Machine Learning</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<monogr>
+		<title level="m" type="main">Ctd-inpainting: Towards the coherence of text-driven inpainting with blended diffusion</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Hao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2025">2025</date>
+			<biblScope unit="page">103163</biblScope>
+		</imprint>
+	</monogr>
+	<note>Information Fusion</note>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<monogr>
+		<title level="m" type="main">Uni-mol: A universal 3d molecular representation learning framework</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Ke</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<analytic>
+		<title level="a" type="main">Pianno: a probabilistic framework automating semantic annotation for spatial transcriptomics</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Hou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Communications</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">2848</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title level="a" type="main">Comparative analysis of single-cell rna sequencing methods</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ziegenhain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Vieth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Parekh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Reinius</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Guillaumet-Adkins</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Smets</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Leonhardt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Heyn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Hellmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Enard</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Molecular cell</title>
+		<imprint>
+			<biblScope unit="volume">65</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="631" to="643" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<analytic>
+		<title level="a" type="main">Mapping the transcriptome: Realizing the full potential of spatial data analysis</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Zormpas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Queen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Comber</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Cockell</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">186</biblScope>
+			<biblScope unit="issue">26</biblScope>
+			<biblScope unit="page" from="5677" to="5689" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<monogr>
+		<title level="m" type="main">HESTA, 2025), which can be downloaded at db.cngb.org/stomics/hesta/. The dataset includes human embryos at Carnegie Stages (CS) 12-23. Considering that the morphology of later embryos is too complex, we only use samples from CS12-13. We use four middle slices from CS12-13E2 (the slice position can be viewed from the visual function of the data website)</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Pan</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note>Details of DownStream Task Datasets Embryonic Structure Segmentation In this experiment, we use a human embryo Stereo-seq ST dataset i.e., CS12-13E2S3, CS12-13E2S4, CS12-13E2S5 and CS14-15E2S6, as Embryo1, Embryo2, Embryo3 and Embryo4 in Sec. 4.2. In addition, for the cross-slice task EmbryoCross in Sec. 4.2, we train on CS12-13E2S3, CS12-13E2S5, CS12-13E2S6, and test on CS12-13E2S4</note>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<analytic>
+		<title level="a" type="main">We select the four slices with the highest ids</title>
+		<author>
+			<persName><surname>Maynard</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">DLPFC Layer Segmentation In this experiment, we use a human DLPFC 10x Visium ST dataset</title>
+		<imprint>
+			<date type="published" when="2021">2021. 151673, 151674, 151675 and 151676</date>
+		</imprint>
+	</monogr>
+	<note>as DLPFC1, DLPFC2, DLPFC3 and DLPFC4 in section 4.2. For the cross-slice task DLPFCCross in Sec. 4.2, we train on slices 151674, 151675, and 151676, and test on slice 151673</note>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<analytic>
+		<title level="a" type="main">Cell Type Annotation In this experiment, we use a mouse brain Stereo-seq ST slice (Cheng et al., 2022) and a mouse brain SeekSpace ST slice. The former can be downloaded from STOmicsDB</title>
+		<ptr target="db.cngb.org/stomics/datasets/STDS0000139" />
+	</analytic>
+	<monogr>
+		<title level="m">The latter has not been publicly released before and will be released along</title>
+		<imprint/>
+	</monogr>
+	<note>with this paper. Both slices have been processed to single-cell resolution</note>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<analytic>
+		<title level="a" type="main">4, we use the first slice of this dataset, MsBrainAgingSpatialDonor 1 0. In Sec. B.3, we use two slices with some differences, MsBrainAgingSpatialDonor 1 0 and MsBrainAgingSpatialDonor 4 0. Spatial Deconvolution In this experiment, we use a mouse liver Stereo-seq ST dataset</title>
+		<author>
+			<persName><forename type="first">Allen</forename></persName>
+		</author>
+		<ptr target="www.10xgenomics.com/datasets/human-skin-data-xenium-human-multi-tissue-and-cancer-panel-1-standard" />
+	</analytic>
+	<monogr>
+		<title level="m">we train on slice D0 DY1 and test on slice D0 DY2. Imputation In this experiment, we use two human skin 10x Xenium ST slices</title>
+		<title level="s">which can be downloaded from SODB (gene.ai.tencent.com/SpatialOmics/dataset?datasetID=184). In Sec. 4.</title>
+		<imprint>
+			<date type="published" when="2023">2023. 2024. 10xGE-NOMICS, 2025</date>
+		</imprint>
+	</monogr>
+	<note>shot Clustering In this experiment, we use a mouse brain MERFISH ST dataset which can be downloaded from STOmicsDB We used the scores corresponding to the following 17 cell types as regression labels PP LVEC, Neutrophil, NK, cDC, pDC, ILC1, VSMC. We select the slice D17 FR 4 as LiverSample in Sec. 4.5. For the cross-slice task LiverCross in Sec. 4.5, For the cross-slice task SkinCross in Sec. 4.6, we train on slice Sample2, and test on slice Sample1</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

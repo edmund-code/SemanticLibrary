@@ -1,0 +1,3156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Cellpose-SAM: superhuman generalization for cellular segmentation</title>
+				<funder ref="#_dSTd6aR">
+					<orgName type="full">Howard Hughes Medical Institute at the Janelia Research Campus</orgName>
+				</funder>
+				<funder ref="#_UFDvFN3 #_x9MkJu2">
+					<orgName type="full">unknown</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>Cold Spring Harbor Laboratory</publisher>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2025-05-01">2025-05-01</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Marius</forename><surname>Pachitariu</surname></persName>
+							<idno type="ORCID">0000-0001-7106-814X</idno>
+							<affiliation key="aff0">
+								<orgName type="institution">HHMI Janelia Research Campus</orgName>
+								<address>
+									<settlement>Ashburn</settlement>
+									<region>VA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Michael</forename><surname>Rariden</surname></persName>
+							<idno type="ORCID">0000-0002-4328-1004</idno>
+							<affiliation key="aff0">
+								<orgName type="institution">HHMI Janelia Research Campus</orgName>
+								<address>
+									<settlement>Ashburn</settlement>
+									<region>VA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Carsen</forename><surname>Stringer</surname></persName>
+							<idno type="ORCID">0000-0002-9229-4100</idno>
+							<affiliation key="aff0">
+								<orgName type="institution">HHMI Janelia Research Campus</orgName>
+								<address>
+									<settlement>Ashburn</settlement>
+									<region>VA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Cellpose-SAM: superhuman generalization for cellular segmentation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<publisher>Cold Spring Harbor Laboratory</publisher>
+							<date type="published" when="2025-05-01" />
+						</imprint>
+					</monogr>
+					<idno type="MD5">6007A65AFB2552D93C8B1025B7FE9279</idno>
+					<idno type="DOI">10.1101/2025.04.28.651001</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:09+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Modern algorithms for biological segmentation can match inter-human agreement in annotation quality. This however is not a performance bound: a hypothetical human-consensus segmentation could reduce error rates in half. To obtain a model that generalizes better we adapted the pretrained transformer backbone of a foundation model (SAM) to the Cellpose framework. The resulting Cellpose-SAM model substantially outperforms inter-human agreement and approaches the human-consensus bound. We increase generalization performance further by making the model robust to channel shuffling, cell size, shot noise, downsampling, isotropic and anisotropic blur. The new model can be readily adopted into the Cellpose ecosystem which includes finetuning, human-in-the-loop training, image restoration and 3D segmentation approaches. These properties establish Cellpose-SAM as a foundation model for biological segmentation.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Introduction</head><p>The most important aspect of biological software is that it works well in the hands of biologists. This typically requires good performance on new data, acquired in new experiments, possibly in new tissues or using new stains or new microscopes. Such data is often outside of the input distribution that models have been trained on. Algorithm developers can make an effort to develop models that anticipate user needs, but it is difficult to predict what new datasets will require segmentation. Instead, developers may specifically focus on methods that can be proved to generalize well out-of-distribution. Pursuing this goal is not straightforward, because many of the existing datasets and challenges contain homogeneous datasets, in which test images are very similar to train images <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b1">2]</ref>. Successful models on these datasets are those that can best memorize training patterns and convert that knowledge into segmentations.</p><p>Converting knowledge into segmentations is not straightforward. Previous versions of Cellpose excel at this <ref type="bibr" target="#b2">[3]</ref><ref type="bibr" target="#b3">[4]</ref><ref type="bibr" target="#b4">[5]</ref>.</p><p>As we show below, they even outperform the latest foundation models such as the Segment Anything Model (SAM), that has been recently adapted to biological segmentation by multiple groups <ref type="bibr" target="#b5">[6]</ref><ref type="bibr" target="#b6">[7]</ref><ref type="bibr" target="#b7">[8]</ref><ref type="bibr" target="#b8">[9]</ref>. Models may perform better based on their architecture, loss function and post-processing steps <ref type="bibr" target="#b9">[10]</ref>. For example, the Cellpose loss function and post-processing has often proved advantageous, outperforming models like Stardist and Mask R-CNN when trained on biological data <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b10">11,</ref><ref type="bibr" target="#b11">12]</ref>. Other frameworks such as prompt-based segmentation have recently been developed in computer vision and adapted to biology <ref type="bibr" target="#b5">[6]</ref><ref type="bibr" target="#b6">[7]</ref><ref type="bibr" target="#b7">[8]</ref><ref type="bibr" target="#b8">[9]</ref>, but it is unclear if these frameworks perform as well as Cellpose, due to difficulty interpreting benchmarks in their respective studies and because the training strategies and model backbones (U-Net, Transformer etc <ref type="bibr" target="#b9">[10]</ref>) were also varied. In this study, we show that replacing computer vision segmentation frameworks with the Cellpose framework gives a major boost in performance in foundation models such as SAM.</p><p>Foundation models like SAM do have some unique properties. Due to being pretrained on very large datasets, these models develop representations that have strong inductive biases. Such biases can be highly beneficial for out-of-distribution generalization, especially when finetuning on limited data <ref type="bibr" target="#b12">[13,</ref><ref type="bibr" target="#b13">14]</ref>. In a "best case" scenario, foundation models may "understand" what tasks they are asked to do, and use their general purpose computations to complete these tasks, not unlike how a human may approach a new task. Metaphors aside, such models still require mechanisms and computation to transform knowledge into segmentations, a task that Cellpose is uniquely well-suited to achieve.</p><p>Thus, we designed a new Cellpose-SAM model that combines the Cellpose framework with the pretrained SAM weights, and we make it available locally 1 and online 2 . Below, we start by describing the model design.</p><p>Then we explain why interannotator agreement is not a true upper bound for model performance, and show that a hypothetical "average" or "consensus" annotation has about half the error rate.</p><p>We show that Cellpose-SAM approaches this hypothetical bound for the Cellpose test set, while previous models do not exceed interannotator agreement. From there we describe all the augmentations that were used for Cellpose-SAM; while these do not necessarily improve performance, they allow for much more flexibility in using Cellpose-SAM across a range of datasets. Then we show  that Cellpose-SAM can be adapted more quickly to new datasets, which also holds in 3D. Finally we show that Cellpose-SAM can be retrained as a panoptic segmentation model for joint segmentation and semantic classification.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Model design</head><p>Our goal in Cellpose-SAM was to take advantage of SAM as a foundation model that was pretrained on a large dataset. This pretraining allows SAM to learn the structure of natural images and this knowledge can be beneficial when training the model on a new task. However, SAM also has design choices that make it poorly suited for dense image segmentation. We wanted to replace those weak points with the advantages provided by the Cellpose framework. Briefly in Cellpose, a U-net type neural network is used to predict a set of vector flows, which form an intermediate representation of the segmentation <ref type="bibr" target="#b2">[3]</ref> (Figure <ref type="figure" target="#fig_1">1a</ref>). These vector flows can be iterated in parallel at every pixel by gradient tracking to produce a set of masks. Conversely, the flow fields can be constructed from the masks as training data for the neural network. By contrast, SAM predicts masks in an image sequentially one-by-one, based on prompts given to the algorithm either in the form of point(s), a box, or text and which get further processed by specialized modules <ref type="bibr" target="#b5">[6]</ref> (Figure <ref type="figure" target="#fig_1">1b</ref>). To densely predict all the cells in an image, biologically-adapted versions of SAM add another set of modules and neural networks <ref type="bibr" target="#b6">[7]</ref><ref type="bibr" target="#b7">[8]</ref><ref type="bibr" target="#b8">[9]</ref> (not shown in Figure <ref type="figure" target="#fig_1">1b</ref>). This strategy for generating dense segmentations is cumbersome and requires careful tuning of many different parts.</p><p>We decided to instead eliminate entirely the decoder modules of SAM and use the image encoder exclusively, which contains a majority of the parameters (305M out of 312M, Figure <ref type="figure" target="#fig_1">1c</ref>). From the encoder output, we directly predicted the vector flow fields of Cellpose, without any intermediate modules</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Style vector correlation between train and test images</head><p>50 25 test images train images a Cellpose 1 0 1 Nuclei Tissuenet Livecell YeaZ Omnipose phase-contrast Omnipose fluorescent DeepBacs C e ll p o s e N u c le i T is s u e n e t L iv e c e ll Y e a Z O m n ip o s e (P h C ) O m n ip o s e (f lu o r) D e e p B a c s 0.0 0.4 0.8 mean correlation per test image b Simulated annotations c Annotator 2 to 1 Annotator 1 false positives (FP) false negatives (FN) human consensus Annotator 1 to human consensus Annotator 2 to human consensus A n n o t a t o r 2 h u m a n c o n s e n s u s ( e s t i m a t e ) C e l l p o s e c y t o 3 C e l l S A M S A M C e l l C e l l p o s e -S A M 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 error rate relative to Annotator 1 d = FP + FN TP + FN error rate n = 67 images Performance on Cellpose test set *** *** *** 0.4 0.6 0.8 1.0 average precision (AP) @ 0.5 IoU e = TP TP + FN + FP average precision *** *** *** 200 1000 # of pixels per dimension 0.1 1 10 runtime (sec.) f per image segmentation time g AP@0.5=0.89</p><p>Example segmentations from Cellpose test set AP@0.5=0.89 AP@0.5=0.93</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Cellpose-SAM</head><p>AP@0.5=0.99 AP@0.5=0.92 AP@0.5=0.86 AP@0.5=0.96 AP@0.5=0.97 (Figure <ref type="figure" target="#fig_1">1c</ref>). In addition, we made a few modifications to the encoder itself. The default 1024x1024 image inputs and 16x16 patch sizes of SAM were designed for high-resolution photographs <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b14">15]</ref>. We reduced this to 256x256 and 8x8, which required us to adapt the position embeddings and patch embedding filters via appropriate subsampling. These modifications improved runtime performance and ensured that more computation is dedicated to each region of the image. We also reverted the local attention layers of the custom ViT transformer from SAM back to the default global attention of ViT-L, with almost no runtime penalty <ref type="bibr" target="#b15">[16]</ref>.</p><p>Despite making these modifications, we were still able to initialize Cellpose-SAM with the SAM weights pretrained on the SA-1B dataset <ref type="bibr" target="#b5">[6]</ref> (Figure <ref type="figure" target="#fig_1">1de</ref>). The model was then trained on an updated dataset of cells and nuclei containing 22,826 train images with a combined 3,341,254 training ROIs. This dataset combines major currently available datasets: Cellpose, Cellpose Nuclei, Omnipose, TissueNet, LiveCell, YeaZ, DeepBacs, Neurips 2022, MoNuSeg, MoNuSAC, CryoNuSeg, NuInsSeg, BCCD, CPM 15+17, TNBC, LynSec, IHC TMA, CoNIC, PanNuke <ref type="bibr" target="#b0">[1]</ref><ref type="bibr" target="#b1">[2]</ref><ref type="bibr" target="#b2">[3]</ref><ref type="bibr" target="#b16">[17]</ref><ref type="bibr" target="#b17">[18]</ref><ref type="bibr" target="#b18">[19]</ref><ref type="bibr" target="#b19">[20]</ref><ref type="bibr" target="#b20">[21]</ref><ref type="bibr" target="#b22">[22]</ref><ref type="bibr" target="#b23">[23]</ref><ref type="bibr" target="#b24">[24]</ref><ref type="bibr" target="#b25">[25]</ref><ref type="bibr" target="#b26">[26]</ref><ref type="bibr" target="#b27">[27]</ref><ref type="bibr" target="#b28">[28]</ref><ref type="bibr" target="#b29">[29]</ref><ref type="bibr" target="#b30">[30]</ref><ref type="bibr" target="#b31">[31]</ref><ref type="bibr" target="#b32">[32]</ref><ref type="bibr" target="#b33">[33]</ref><ref type="bibr" target="#b34">[34]</ref><ref type="bibr" target="#b35">[35]</ref><ref type="bibr" target="#b37">[36]</ref> (Figure <ref type="figure" target="#fig_1">1df</ref>, Figure <ref type="figure" target="#fig_1">S1</ref>).</p><p>We continued to use the Cellpose3 mixing probabilities for down-weighting homogeneous datasets with many images <ref type="bibr" target="#b4">[5]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Model validation</head><p>Since we are especially interested in generalization performance, we wanted to choose a test dataset in which images are relatively different from those in the training set. To determine this, we extracted feature vectors that describe the styles of images <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b38">37]</ref>, and correlated them between pairs of images (Figure <ref type="figure" target="#fig_3">2a</ref>). In most datasets, the style vectors were highly-correlated between all pairs of train/test images (Figure <ref type="figure" target="#fig_3">2b</ref>), matching our subjective experience of these images. The Cellpose dataset alone contained a high amount of variability between train/test exemplars, leading to low correlations between the styles of train/test images. We therefore chose to focus our benchmarking efforts on the Cellpose test set.</p><p>Before we evaluate performance, we must set our expectations.</p><p>In general computer vision applications, improvements on the order of a few percent can be considered major steps <ref type="bibr" target="#b39">[38]</ref><ref type="bibr" target="#b40">[39]</ref><ref type="bibr" target="#b41">[40]</ref>, and comparisons to human performance can help in setting targets for improvement <ref type="bibr" target="#b42">[41]</ref>. Previous biological segmentation models, including Cellpose, have described performance as matching interannotator agreement <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b6">7,</ref><ref type="bibr" target="#b43">42]</ref>, which is defined as the "performance" of one annotator when benchmarked against another (Figure <ref type="figure" target="#fig_3">2c</ref>). While this can be a useful reference, it is not a true upper bound, because both annotators make mistakes. Careful consideration shows that if we model each annotator as making errors randomly starting from the same underlying ground truth or "human consensus", then the number of errors for inter-annotator comparisons is less than twice as large as that between each annotator and the human consensus, and approaches the two-fold limit when the errors are relatively small (Figure <ref type="figure" target="#fig_3">2c</ref>, see Methods for exact calculations). Thus, setting the human consensus estimate for errors at half the inter-annotator rate results in a performance bound on performance that automated models may be able to reach.</p><p>To determine the inter-annotator variability we relabeled the Cellpose test set using a different annotator. Relative to the original Annotator1, the error rate of Annotator2 was 0.257 (Figure <ref type="figure" target="#fig_3">2d</ref>). Halving this error rate gives the human consensus estimate at 0.128. Previous models, like Cellpose3 and CellSAM approach the inter-annotator error rates, at 0.292 and 0.328 respectively (Figure <ref type="figure" target="#fig_3">2d</ref>). Cellpose-SAM however, achieves error rates of 0.163, substantially below inter-annotator agreement, and approaching the human consensus estimate.</p><p>Note this was possible despite the models being trained on data from Annotator1 exclusively. Rather than being "fooled" by the occasional errors of Annotator1, Cellpose-SAM reverts to its inductive biases to selectively learn the generalizable structure in the data. We can draw similar conclusions using the average precision @ 0.5 intersection-over-union (AP @ 0.5 IoU) score (Figure <ref type="figure" target="#fig_3">2e</ref>). While this metric is more widely used than the error rate, it does not scale linearly with the number of errors, so we cannot easily estimate the human consensus bound. Finally, we measured runtime performance (Figure <ref type="figure" target="#fig_3">2f</ref>, Table <ref type="table">S1</ref>). Despite having 50x more parameters than Cellpose, Cellpose-SAM is the fastest of the models considered here when benchmarked on a per-image basis. This is due to a few factors: 1) modern GPUs have specialized tensor cores that can vastly accelerate transformer computations; 2) the post-processing times account for a substantial fraction of the runtime; 3) Cellpose-SAM does not need to make two passes for every image like Cellpose 1/2/3, which need to first estimate the sizes of cells using a size model. As we describe below, Cellpose-SAM runs natively on images at a wide range of resolutions.</p><p>We also evaluated the performance of Cellpose-SAM on other public datasets that we used for training. All of these datasets are much more homogeneous than Cellpose, thus providing more images of the same type for training, and a much higher chance that images in the test set are similar to those in the training set (Figure <ref type="figure" target="#fig_3">2a</ref>, Figure <ref type="figure" target="#fig_1">S1</ref>). Thus, models are evaluated mainly for their in-sample generalization, and even models trained from scratch (like previous versions of Cellpose) can perform well given enough training data. Cellpose-SAM outperformed or matched other models on all datasets, but the performance gaps were typically smaller than those we reported above on the Cellpose test set Figure <ref type="figure" target="#fig_3">S2</ref>. We conclude that Cellpose-SAM especially shines on out-of-sample generalization, which is likely also the crucial property needed by users applying it to their own data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Invariance and robustness</head><p>To further drive our goal of increasing generalization, we were able to make the model robust to common image manipulations without loss of performance, thus simplifying the user experience. For example, users of Cellpose previously had to indicate which channel of an image represents the nucleus, and which channel represents a cytoplasmic or membrane marker. While this is not in itself an onerous task, it can lead to some confusion, especially when benchmarking against Cellpose, with some public challenges explicitly designed to break the order of image channels by random channel permutations <ref type="bibr" target="#b22">[22]</ref>. Thus, we trained Cellpose-SAM to be entirely channel order invariant, by randomly permuting channels at train time (Figure <ref type="figure" target="#fig_5">3a</ref>). Note this does effectively withhold information from the model: specifically information about which channel represents which stain.</p><p>Nonetheless, Cellpose-SAM had no performance loss from this modification (Figure <ref type="figure" target="#fig_5">3a</ref>). Similarly, users of Cellpose previously had to indicate the average cell diameters in an image, or rely on a built-in size estimation method. This also led to confusion in benchmarks by other studies <ref type="bibr" target="#b22">[22]</ref>, and we therefore trained Cellpose-SAM at a range of image diameters ranging from 7.5 pixels to 120 pixels. At test time, Cellpose-SAM runs natively on the provided images without resizing, and maintains its high-performance, with a small performance loss at small cell diameters, where information is effectively</p><p>a RGB invariance to channel order BRG ground-truth GBR R G B B R G G B R R a n d o m 0.00 0.25 0.50 0.75 1.00 AP @ 0.5 IoU Cellpose-SAM b cell diameter=10px invariance to size 30px 90px 10 15 30 60 90 cell diameter (pixels) 0.0 0.5 1.0 AP @ 0.5 IoU Cellpose-SAM Cellpose cyto3 CellSAM c low robustness to Poisson noise medium high low medium high noise 0.0 0.5 1.0 AP @ 0.5 IoU Cellpose-SAM --cyto3+denoising cyto3 CellSAM d low robustness to pixel size medium high low medium high pixel size 0.0 0.5 1.0 AP @ 0.5 IoU Cellpose-SAM --cyto3+upsampling cyto3 CellSAM e low robustness to blur medium high low medium high blur 0.0 0.5 1.0 AP @ 0.5 IoU Cellpose-SAM --cyto3+deblurring cyto3 CellSAM f low robustness to anisotropic blur medium high low medium high anisotropic blur 0.0 0.5 1.0 AP @ 0.5 IoU Cellpose-SAM --cyto3+anisotropic deconvolution cyto3 CellSAM . lost by downsampling (Figure <ref type="figure" target="#fig_5">3b</ref>).</p><p>To further take advantage of the high capacity of Cellpose-SAM, we trained it on a set of image degradations that are common in microscopy, and which we previously used in the Cellpose3 study. Specifically these degradations are the addition of perpixel noise ("shot noise"), downsampling or increasing pixel size and (an)isotropic blurring (Figure <ref type="figure" target="#fig_5">3c-f</ref>). Previously we had found that an additional image restoration step was required on such images for best performance <ref type="bibr" target="#b4">[5]</ref>; directly predicting the segmentation from the noisy image was inferior for the U-Net based version of Cellpose. The additional restoration step was however not required for Cellpose-SAM. Across all types of image alteration, the Cellpose-SAM model performed as well as our best previous image restoration models (Figure <ref type="figure" target="#fig_5">3c-f</ref>). Note that these restoration models are individually trained for each type of image degradation, while a single Cellpose-SAM model was used for all the benchmarks in this entire study. Thus, Cellpose-SAM can run out-of-thebox on images that have been acquired with varying levels of image degradation, at different pixel sizes or in arbitrary channel order, substantially simplifying the logistics typically associated with setting up an image segmentation pipeline.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Finetuning Cellpose-SAM in 2D and 3D and for other tasks</head><p>Next we wanted to test the integration of Cellpose-SAM with other aspects of the Cellpose framework, such as the finetuning and human-in-the-loop capabilities. Compared to inference, training and finetuning a neural network can require considerable more hardware resources. For example, other methods like microSAM have quoted computational concerns as preventing a human-in-the-loop approach for their SAM-based model <ref type="bibr" target="#b7">[8]</ref>. We do not find similar concerns when testing Cellpose-SAM, due to our customizations enabling the model to run on low resolution images. We find that it is always possible to train Cellpose-SAM with a batch size of one, even on GPUs with relatively low VRAM (8-12 GB) Table <ref type="table">S2</ref>. To test finetuning performance, we analyze a series of datasets that we did not use for training, specifically BlastoSPIM <ref type="bibr" target="#b44">[43]</ref> and PlantSeg <ref type="bibr" target="#b45">[44]</ref>. These datasets contain 3D annotations, from which we can extract both 2D ground-truth, and 3D ground-truth. From the PlantSeg categories, we used the "lateral root" and "ovules" datasets which contained higher-quality  <ref type="figure">c</ref>, Same as a for the "lateral root" and "ovules" categories of the PlantSeg dataset <ref type="bibr" target="#b45">[44]</ref>. d-f, 3D segmentations extended from 2D predictions using either Cellpose-SAM or Cellpose3. The 3D extension was made using the flow averaging method on XY, XZ and YZ slices from <ref type="bibr" target="#b2">[3]</ref>. Same datasets were used as in a-c.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>MoNuSAC 2020 challenge: segmentation and classification</head><p>cell classes: epithelial lymphocyte macrophage neutrophil a Cellpose SAM PL1 PL2 PL3 L2 0.0 0.2 0.4 0.6 0.8 error rate @ 0.5 IoU b *** ** *** *** Cellpose SAM PL1 PL2 PL3 L2 0.0 0.2 0.4 0.6 0.8 1.0 AP @ 0.5 IoU c *** *** ** *** </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>segmentations.</head><p>Across datasets, Cellpose-SAM provided a better starting point for finetuning than the cyto3 model and finetuned equally fast or faster, both in 2D (Figure <ref type="figure">4a-c</ref>) and in 3D (Figure <ref type="figure">4df</ref>). The performance gap generally narrowed with more training data (Figure <ref type="figure">4acdf</ref>) but in some cases persisted (Figure <ref type="figure">4be</ref>). The narrowing gap again illustrates the specific strengths of Cellpose-SAM: the model is especially good at generalizing with zeroshot or limited data. When enough labeled data is often referred to as "panoptic segmentation". After training, a Cellpose-SAM-based model outperformed the winners of the challenge both before and after the deadline, on nearly all types of cells, and substantially increased the classification accuracy overall (Figure <ref type="figure" target="#fig_8">5b</ref>).</p><p>This example shows what generalist or "foundational" models can achieve when simply trained on new tasks with minimal additional effort required.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Discussion</head><p>Here we have shown that Cellpose-SAM can generalize out-of-distribution to a wide range of test images, obtaining performance that is close to the theoretical bound. This was achieved by combining a pretrained foundation model (SAM), which has strong inductive biases due to the broad knowledge built-in to its weights <ref type="bibr" target="#b5">[6]</ref>, with the Cellpose framework, which is especially well-suited for converting knowledge into segmentations <ref type="bibr" target="#b2">[3]</ref>. To demonstrate out-of-distribution generalization, we used the Cellpose test dataset and multiple annotators. This dataset uniquely has a high dissimilarity between train and test images, due to being constructed as a generalist dataset. As such, performance on the test set indicates out-of-distribution generalization. This property, we believe, is the main indicator of how well a segmentation method will work in the hands of its end-users.</p><p>Looking ahead, Cellpose-SAM can be used as a basis for many different biological applications. We have shown here that the model can be easily finetuned, and that it can be extended to 3D segmentation. Similarly, 3D segmentations can be extended to 4D (including time) using other methods <ref type="bibr" target="#b46">[45]</ref><ref type="bibr" target="#b47">[46]</ref><ref type="bibr" target="#b48">[47]</ref>. The model can also be used on images with more than three channels, such as those arising from in-situ sequencing experiments, from "cell painting" or other multi-stain or multi-antibody methods <ref type="bibr" target="#b49">[48,</ref><ref type="bibr" target="#b50">49]</ref>, by replacing its three-channel inputs and retraining. The outputs can also be repurposed, for example for classification, as we have shown here <ref type="bibr" target="#b24">[24]</ref>. More generally, any task that used previous versions of Cellpose can now use Cellpose-SAM for a boost in performance <ref type="bibr" target="#b51">[50]</ref><ref type="bibr" target="#b52">[51]</ref><ref type="bibr" target="#b53">[52]</ref><ref type="bibr" target="#b54">[53]</ref>. We especially expect the boost to be high for images that are obtained with nonstandard and novel approaches, and for which large annotated datasets are not available for finetuning. Biologists developing new imaging methods or novel molecular approaches may thus especially benefit from the generalization performance of Cellpose-SAM.</p><p><ref type="url" target="https://huggingface.co/spaces/mouseland/cellpose">https://huggingface.co/spaces/mouseland/  cellpose</ref>. Scripts for recreating the analyses in the figures will be available at <ref type="url" target="https://github.com/MouseLand/cellpose/tree/main/paper/cpsam">https://github.com/Mou  seLand/cellpose/tree/main/paper/cpsam</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Methods</head><p>The Cellpose code library is implemented in Python 3 <ref type="bibr" target="#b56">[54]</ref>, using pytorch, numpy, scipy, opencv, imagecodecs, tifffile, fastremap, and tqdm <ref type="bibr" target="#b57">[55]</ref><ref type="bibr" target="#b58">[56]</ref><ref type="bibr" target="#b59">[57]</ref><ref type="bibr" target="#b60">[58]</ref><ref type="bibr" target="#b61">[59]</ref><ref type="bibr" target="#b62">[60]</ref><ref type="bibr" target="#b63">[61]</ref><ref type="bibr" target="#b64">[62]</ref>. The graphical user interface additionally uses PyQt, pyqtgraph, and superqt <ref type="bibr" target="#b65">[63]</ref><ref type="bibr" target="#b66">[64]</ref><ref type="bibr" target="#b67">[65]</ref>. The figures were made using matplotlib and jupyter-notebook <ref type="bibr" target="#b68">[66,</ref><ref type="bibr">67]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Cellpose-SAM network</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Model architecture</head><p>We used a customized version of the ViT-L transformer from the Segment Anything Model <ref type="bibr" target="#b5">[6]</ref>, which has 24 blocks and an embedding dimension of 1024. Each block contains the standard attention and MLP layers, common to most transformers. We used an input size 256x256 instead of 1024x1024, and we reduced the image patch size from 16x16 to 8x8. To this we add simple input and output operations to convert from pixel space to patch space and back again. Since the SAM model already had strided input convolutions, we adapt these from 16x16 to our 8x8 patch size by downsampling. The position embeddings from SAM were also downsampled by a factor of 2. Next, we changed the attention to global on all layers, rather than only global in layers 6, 12, 18, and 24 like the original SAM. Then, we added a transposed convolution layer to revert the patchified embeddings back into pixel space to predict three pixel maps corresponding to cell probabilities, horizontal and vertical flows (3x256x256, <ref type="bibr" target="#b2">[3]</ref>). We used the weights of SAM pretrained on segmentations from photographs. Note that only images not containing humans are shown in Figure <ref type="figure" target="#fig_1">1e</ref>. About half of the images in SA-1B do contain blurred humans with blurred faces.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Whole-dataset training and evaluation</head><p>We trained Cellpose-SAM on the combined dataset of 22,826 images with a combined 3,341,254 ROI annotations (see below for details). All training was performed with the AdamW optimizer <ref type="bibr" target="#b70">[68]</ref> using a learning rate of 5e-5, which we empirically found to lead to fast reductions in the training loss. We trained with a batch size of 256, divided across eight H200 GPUs. The learning rate increased linearly from 0 to its maximum value over the first 10 epochs, then decreased by a factor of 10 for the last 100 epochs and another factor of 10 for the last 50 epochs, similar to the SAM training recipe <ref type="bibr" target="#b5">[6]</ref>. Epochs were defined as random samples of 800 images per GPU drawn with the mixing probabilities described below, for a total of 6,400 images per "epoch". The network was trained for 2,000 epochs, which took around 20 hours. The weight decay parameter was set to 0.1, and additional regularization was performed by randomly dropping layers of the image encoder with a 0.4 layer drop rate as previously used for SAM <ref type="bibr" target="#b5">[6]</ref>.</p><p>The loss function was the Cellpose segmentation loss <ref type="bibr" target="#b2">[3]</ref>: the mean squared error between the XY flows from the ground-truth segmentation and the predicted XY flows, scaled by a factor of five, added to the binary cross-entropy between the ground-truth cell probability and the the predicted cell probability. The XY flows were computed from the ground-truth masks as described in <ref type="bibr" target="#b4">[5]</ref>. During training, all images were normalized such that 0 was set to the first percentile of the image intensity and 1 was the 99th percentile.</p><p>In each batch, images were randomly rotated, flipped, and resized with a scale factor logarithmically distributed between 0.25 and 4 relative to a mean cell diameter of 30 pixels, and randomly cropped to an image size of 256x256. Images were randomly converted to grayscale 10% of the time. For singlechannel images, grayscale conversion was done by replicating the non-zero channel across all three channels; for H&amp;E images, grayscale conversion was done by taking the mean across all channels and replicating that across all channels; while for images with nuclei, we discarded the nucleus channel and replicated the primary channel. We inverted the image contrast 25% of the time (x → 1x). After this operation, the third channel was randomly dropped on 10% of the images, and then the channels of each image were randomly permuted. Finally, the brightness level of each channel (the pixel mean) was randomly perturbed by a random normal jitter of standard deviation 0.2, and the contrast level (standard deviation) was uniformly rescaled by a randomly-drawn factor between -2 and 2. All 256 images in a batch underwent these augmentations.</p><p>On 50% of the images in a batch we added four types of degradations: Poisson noise, Gaussian blurring, downsampling, and anisotropic blurring with downsampling. Out of 256 images per batch, exactly 32 had each type of degradation, and the rest of the images were clean (except for the augmentations described in the previous paragraph). The degradation parameters for each of the four conditions were the same as in the Cellpose3 paper <ref type="bibr" target="#b4">[5]</ref>. After adding the image degradation, we renormalized the images to again set 0 to the first percentile and 1 to the 99th percentile of the image intensity. In this case, the brightness and contrast augmentations described above were applied after the degradations.</p><p>During testing, the tile size was 256. There was no diameter estimation and resizing performed like in previous versions of Cellpose. We did not perform test-time augmentations, and the default tile overlap of 0.1 was used. The default cell probability and flow error thresholds were used, 0.0 and 0.4 respectively. For memory benchmarking, we used 'memory profiler' ('mprof' command) for CPU RAM and 'torch.cuda.max memory allocated' for GPU RAMwhen the process used more GPU RAM than available on the GPU, the processing did slow down but was successful (e.g. the 9,600 x 9,600 image size testing).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Fine-tuning and evaluation</head><p>We varied the number of training images by powers of 2 (from 1 to 512 and additionally the full dataset of training images). The training images were not rescaled by the diameters of the labeled cells. The learning rate increased linearly from 0 to 1e-5 over the first 10 epochs, then decreased by factors of 2 every 10 epochs over the last 50 epochs. The network was trained for 100 epochs. Each epoch had at minimum 8 images. The batch size was set to 1. As in the wholedataset training, the weight decay parameter was set to 0.1 and a 0.4 layer drop rate. We used the same augmentations as the previous Cellpose papers: the images were randomly rotated, flipped, and resized with a scale factor uniformly distributed between 0.75 and 1.25, and then randomly cropped to an image size of 256x256.</p><p>During test time, the 2D masks were computed as described above, without resizing the images and without test-time augmentations. For 3D mask computation, we used the 2D to 3D mask creation step described in Cellpose <ref type="bibr" target="#b2">[3]</ref>. In brief, the flows and cell probabilities were computed on all 2D slices in XY, ZY and YZ, and then averaged to create flows in 3D, on which the dynamics steps were performed. We set the number of dynamics iterations to 1,000 and the 3D flow smoothing parameter to 2. Cell masks with fewer than 1,000 pixels were discarded.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Semantic segmentation training and evaluation</head><p>We retrained the Cellpose-SAM model to perform semantic segmentation on the MoNuSAC dataset, which has four classes of nuclei labeled in H&amp;E images <ref type="bibr" target="#b24">[24]</ref>. We added five additional output maps to Cellpose-SAM corresponding to background and the four nuclei classes, and initialized the weights of these maps with the weights from the cell probability output map, multiplied by -0.5 for the background class and 0.5 for the four nuclei classes. The loss function for the class maps was the cross-entropy loss, weighted by the inverse of the per-pixel class frequencies. The training images were not rescaled by the diameters of the labeled cells. The learning rate increased linearly from 0 to 5e-5 over the first 10 epochs, then decreased by factors of 2 every 10 epochs over the last 100 epochs. The network was trained for 500 epochs in total. The batch size was set to 16, weight decay to 0.1, and random layer drop rate to 0.4. We used the same augmentations as in the fine-tuning training.</p><p>During test time, we first computed the nucleus segmentation masks using the flows and cell probabilities as previously described. The map with the largest value across all classes was computed for each pixel, and the nucleus was assigned to the class with the most pixels within the nucleus. If this class was the background, then the nucleus mask was removed from the predicted masks. The predicted masks and classes were also shared for the challenge winners PL1, PL2, PL3 and L2 (the L1 link did not work). The winners used a hover-net architecture with a resnet, U-nets, or a feature pyramid network <ref type="bibr" target="#b71">[69]</ref><ref type="bibr" target="#b72">[70]</ref><ref type="bibr" target="#b73">[71]</ref><ref type="bibr" target="#b74">[72]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Other models</head><p>Cellpose cyto3 <ref type="bibr" target="#b4">[5]</ref>: This model was trained on the Cellpose cellular dataset, the nuclear dataset, TissueNet, LiveCell, Omnipose, YeaZ, and DeepBacs, and thus we ran the model on the test set images from these datasets (excluding the YeaZ and nuclear datasets as our test splits differed from other algorithms). Two channels -cytoplasm and optionally nuclei -were used as inputs for these models. The Cellpose segmentation models are trained such that all cells and nuclei are approximately the same size in pixels across all images, by resizing each image such that the average ROI diameter is 30.0. We trained an ROI size estimation model for the cyto3 model in <ref type="bibr" target="#b4">[5]</ref>, which was used for Figure <ref type="figure" target="#fig_1">1</ref> and Figure <ref type="figure" target="#fig_3">S2</ref>. In Figure <ref type="figure" target="#fig_5">3</ref>, the images were either resized as described below or the model was run directly on the image without the size model estimation. In Figure <ref type="figure">4</ref>, as in the Cellpose 2.0 paper, the test images were rescaled using the average diameter from the training ROIs. For all analyses, the flow error threshold (quality control step) was set to 0.4, the cell probability threshold was set to 0, and test-time augmentations were on, with the tile overlap set to 0.5. In Figure <ref type="figure" target="#fig_8">5</ref>, for all models we turned on test-time augmentations during evaluation, as in <ref type="bibr" target="#b2">[3]</ref> and <ref type="bibr" target="#b75">[73]</ref>. When segmenting bacterial images, we set the number of iterations 'niter' for the dynamics post-processing to 2,000 for all images, to improve the convergence for long and thin cells. For the fine-tuning experiments, we retrained the cyto3 model using the AdamW optimizer with a learning rate of 5e-3, weight decay of 1e-4, batch size of 8, and for 300 epochs, with the same learning rate schedule and augmentations as in the Cellpose 2.0 paper.</p><p>CellSAM <ref type="bibr" target="#b6">[7]</ref>: The CellSAM model was trained on many datasets, including the Cellpose cellular dataset, TissueNet, Omnipose, DeepBacs, and MoNuSeg, on which we tested the performance of the model. We ran the 'segment cellular image' function available from CellSAM. CellSAM takes as input 3 channel images, with the cytoplasmic channel in blue and the nuclear channel in green. For all the test sets considered, the cells were placed in the blue channel, and the nuclear channel was optionally filled. For H&amp;E images, the channels were averaged and input as a single channel in the blue channel as described in the paper. We used the image resizing conventions for each dataset that the authors provided in their shared datasets, available in our benchmarking script. We normalized all test images such that the minimum was set to 0 and the maximum set to 1. We enabled the histogram normalization (normalize=True) for the DeepBacs dataset as this improved performance.</p><p>SAMCell <ref type="bibr" target="#b8">[9]</ref>: SAMCell trained two separate models, one on the Cellpose cellular dataset and one on the LiveCell dataset, which we applied to the Cellpose test set and the LiveCell test set respectively. We ran the 'SlidingWindowPipeline' 'run' method available from SAMCell. SAMCell only takes single channel inputs (and was trained using the grayscale version of the 'cyto' dataset), so we input the Cellpose test set using the average of the two channels. The Cellpose test set images were resized such that their longest side was 512, as described in their code. The LiveCell test set images were not resized and were input directly.</p><p>MicroSAM <ref type="bibr" target="#b7">[8]</ref>: MicroSAM was trained on a variety of datasets, including TissueNet, LiveCell, and DeepBacs, on which we tested the performance of the model. MicroSAM was trained only on grayscale images (averaging multiple channels if available such as in TissueNet), input as the same value in all three channels. Thus, we input grayscale versions of all the test images. We used the 'vit l lm' model and computed the automatic instance segmentations (AIS).</p><p>PathoSAM: PathoSAM was trained on H&amp;E image datasets, including MoNuSeg <ref type="bibr" target="#b76">[74]</ref>, and thus we tested its performance on the MoNuSeg test set. We ran the 'automatic segmentation wsi' function using the 'vit l histopathology' model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Human-consensus bound</head><p>Consider annotators 1 and 2, each making mistakes relative to an absolute ground truth, or average human consensus. Consider their false positive FP i and false negative FN i rates relative to this consensus, and their relative rates FP i j and FN i j between each other, where i, j ∈ {1, 2}, i ̸ = j. It can be easily seen that FP i j = FN ji . We assume that if the same absolute ground truth ROI is present in both the annotations of Annotator 1 and 2, then it will be matched also when comparing annotators against each other. This is not always true, but we can approximately assume it is true for the relatively low IoU threshold we require to considered two ROIs matched (0.5). Under these conditions, FP i j ≤ FP j + FN i , because the false positives of Annotator j compared to annotator i originate from either mistakes of Annotator j where a new ROI is introduced compared to ground truth (FP j ) or mistakes of Annotator i where an ROI from the ground truth was omitted (FN i ) but it was not omitted by Annotator j so it appears as a false positive of Annotator j. Furthermore, there are no other kinds of mistakes that can be counted in the FP i j . If the Annotator 1 and 2 happen to make some of the same mistakes compared to the absolute ground truth (same false positives or same false negative), then the inequality becomes strict: FP i j &lt; FP j + FN i .</p><p>Note however that the absolute ground truth is defined as a consensus across a large number of annotators, so on average the mistakes will only be identical at a rate that is the square of the single annotator mistake rates (10% error rates becomes 1% common error rates between two annotators). If we ignore this small overlap in errors, we get an approximate equality FP i j ≈ FP j + FN i , and since FN i j = FP ji , we get</p><formula xml:id="formula_0">FP i j + FN i j = FP i j + FP ji ≈ FP j + FN i + FP i + FN j = (FP j + FN j ) + (FN i + FP i ) ≈ 2(FP j + FN j )</formula><p>where the last approximation arises from the symmetry of considering two random annotators from the same distribution of annotators. Thus, the interannotator errors are approximately twice the errors between each annotator and a hypothetical "mean" or consensus annotator.</p><p>This bound may never exactly be achieved due to the approximations above, and in practice we should expect the best possible scores to be somewhere between inter-annotator performance and half of this value (where Cellpose-SAM is Figure <ref type="figure" target="#fig_3">2c</ref>). An additional confound is that the models are trained exclusively on data from a single annotator. The ability to match segmentations from a different annotator thus is an indication of its generalization.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Segmentation benchmarks</head><p>We tested Cellpose-SAM on the test set images from the following datasets: Cellpose, TissueNet, LiveCell, Omnipose, DeepBacs, and MoNuSeg.</p><p>We make a note about comparisons between models from different research groups. For this study, we chose to exclusively compare against models that were trained by their respective teams, and to report performance exclusively on those datasets where the models were trained with the same train/test splits (Figure <ref type="figure" target="#fig_3">2</ref>, Figure <ref type="figure" target="#fig_3">S2</ref>). This removes the possibility of major errors when re-training a model designed by a different group. In contrast, other studies like <ref type="bibr" target="#b6">[7]</ref> and <ref type="bibr" target="#b77">[75]</ref> retrain the Cellpose model. To further facilitate comparisons for future studies, we will publicly release the combined dataset that was used in this study, with train/test splits for every dataset upon publication of the study. We have previously reported separately <ref type="bibr" target="#b9">[10]</ref> on the issues of training Cellpose in <ref type="bibr" target="#b77">[75]</ref>. Note that <ref type="bibr" target="#b6">[7]</ref> reports better performance compared to the old Cellpose3 model ("cyto3"), but these are either reported on datasets Cellpose3 has not been trained on, or retrained by the authors from scratch. When we directly compare cyto3 to CellSAM on datasets both have been trained on, cyto3 performs better on every dataset. As described above, Cellpose-SAM performs better still, and by a substantial margin for the Cellpose test images.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Color and size invariance</head><p>To test color invariance we permuted the channels of images from the Cellpose test set to RGB, BRG and GBR, and also performed a random permutation per image ('Random'), and then quantified the segmentation quality for each image (Figure <ref type="figure" target="#fig_5">3a</ref>). To test size invariance, we resized images in the Cellpose test set such that the ROI diameters were set to 10, 15, 30, 60 and 90 (Figure <ref type="figure" target="#fig_5">3b</ref>). We ran Cellpose-SAM, Cellpose cyto3, and CellSAM on these images without image resizing.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Robustness to image degradation</head><p>We tested robustness to image degradation using the images from the Cellpose test set (Figure <ref type="figure" target="#fig_5">3c-f</ref>). We added three levels of degradation for each of the four degradation type. For Poisson noise we multiplied the image by scaling factors of 5, 2.5, and 0.5 and used this as the mean for the Poisson distribution to randomly sample from for each pixel. For blurring, the Gaussian standard deviations were 2, 4, and 8, and we generated the images with Poisson noise after multiplying by 120 (small amount of Poisson noise degradation). For varying pixel size and anisotropic downsampling, the images were rescaled such that the diameter of the cells was 30 pixels for each image before downsampling. The pixel size downsampling factors were 2, 5, and 10, and the images were blurred with a Gaussian with a standard deviation of half the downsampling factor. The anisotropic downsampling factors were 2, 6, and 12 along one dimension, with blurring with a Gaussian with a standard deviation of half the downsampling factor along the same dimension. After downsampling, the images were bilinearly interpolated to their original size to be input to the networks. After these operations, each of the degraded images was normalized such that 0 was the first percentile and 1 was the 99th percentile, as in the Cellpose3 paper <ref type="bibr" target="#b4">[5]</ref>.</p><p>The noisy and blurry images were at their original size with varied sizes of cells in pixels. As in the Cellpose3 paper, for the 'cyto3' network and the restoration networks, we first resized these images such that the cells were 30 pixels in diameter, as we did not train size models on the degraded images. The images were not resized for Cellpose-SAM or CellSAM.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Quantification of segmentation quality</head><p>As described in Cellpose 1 and 2, we quantified the predictions of the segmentation algorithms by matching each predicted mask to the ground-truth mask that is most similar, as defined by the intersection over union metric (IoU) between the predicted and ground-truth. We used an IoU threshold of 0.5 for all analyses in the paper. The error rate for each test image is defined using the true positives (matches with IoU above a threshold of 0.5), false positives (predicted masks without matches), and false negatives (missed ground-truth masks): error rate = FN + FP TP + FN .</p><p>The average precision is defined for each test image as AP = TP TP + FP + FN .</p><p>The error rates and average precisions were reported per image, with the full distribution across images shown in each violin plot.</p><p>For the semantic segmentation performance, the error rate and average precision were computed per image and per class, resulting in four scores per image, and then these four scores were averaged across classes. If an image did not contain any groundtruth masks of a certain class, then the error rate and average precision for that class were not used in the average across classes.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Datasets</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Main retraining</head><p>We used 18 publicly available datasets for training Cellpose-SAM. The sampling probability of each image varied depending on the image set: PhC yeast images and fluorescent bacterial images were sampled at a probability of 1% each; bright-field yeast images, phase bacterial images, and DeepBacs images at 2% each; livecell images at 5%; tissuenet images at 8%; nuclei images at 20%; and cyto2 images at 59%. We upweighted images in the cyto2 and nuclei training sets because they contained the most variability across images.</p><p>• Cellpose (updated) dataset: The cyto2 training dataset contains 796 training images from various sources <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b78">[76]</ref><ref type="bibr" target="#b79">[77]</ref><ref type="bibr" target="#b80">[78]</ref><ref type="bibr" target="#b81">[79]</ref><ref type="bibr" target="#b82">[80]</ref>. The dataset is available at h t t p s : / / w w w . c e l l p o s e . o r g / d a t a s et.</p><p>The original test dataset contained 13 images of non-biological structures, that we remove from evaluation. We instead added 12 new test images that were segmented by our annotator after the Cellpose dataset was originally published, resulting in 67 test images for the updated Cellpose test set.</p><p>• Cellpose nuclei dataset: This dataset of nuclear images was described in detail in <ref type="bibr" target="#b2">[3]</ref>. It consists of 1025 training images from various sources, with about half of the images originating from the 2018 DataBowl competition <ref type="bibr" target="#b16">[17,</ref><ref type="bibr" target="#b17">18,</ref><ref type="bibr" target="#b23">23,</ref><ref type="bibr" target="#b83">81]</ref>.</p><p>• TissueNet <ref type="bibr" target="#b1">[2]</ref>: The TissueNet dataset consists of 2601 training and 1249 test images collected using fluorescent microscopy on 6 tissue types with labeled cells and nuclei (<ref type="url" target="https://datasets.deepcell.org/">https://datasets.dee   pcell.org/</ref>) -we used the cellular segmentations for all images.</p><p>• LiveCell <ref type="bibr" target="#b0">[1]</ref>: The LiveCell dataset consists of 3188 training and 1516 test images of 8 different cell lines collected using phase-contrast microscopy (ht tps://sartorius-research.github.io/ L I V E C e l l /). Overlapping mask regions were removed, as described in the Cellpose 2.0 paper <ref type="bibr" target="#b3">[4]</ref>. Many images in this dataset are incompletely annotated, which is reflected in the high error rates from Figure <ref type="figure" target="#fig_3">S2</ref>. • YeaZ <ref type="bibr" target="#b19">[20]</ref>: The YeaZ dataset consists of bright-field and phase contrast images of yeast cells. We used 16 2D images from the phase contrast dataset for training, and 229 images from the bright-field dataset for training.</p><p>• DeepBacs <ref type="bibr" target="#b20">[21]</ref>: We used the following segmentation datasets from DeepBacs: S. aureus bright-field and fluorescence with 56 training patches and 10 test images <ref type="bibr" target="#b84">[82]</ref>, E. coli bright-field with 19 training images and 15 test images <ref type="bibr" target="#b85">[83]</ref>, and B. subtilis fluorescence with 80 training images and 10 test images <ref type="bibr" target="#b86">[84]</ref>; in total this is 155 training images and 35 test images.</p><p>• Neurips 2022 challenge dataset <ref type="bibr" target="#b22">[22]</ref>:</p><p>The Neurips 2022 challenge training dataset consists of 1,000 images with labeled cells from bright-field, fluorescent, phase-constrast and differential interference contrast imaging modalities (<ref type="url" target="https://neurips22-cellseg.grand-challenge.org/neurips22-cellseg/">https://neurips22-cellseg.grand-challen   ge.org/neurips22-cellseg/</ref>). There are ∼10 categories of images, with each containing between 5-200 homogeneous image types. Also, a large fraction of these images are annotated sparsely. We manually selected a subset of 504 images for training, which contained more dense annotations, and with the aim of equalizing to some degree the number of images across image types. We did not evaluate performance on the validation or test set for this dataset, since the test images have the same biases and homogeneities as the training set.</p><p>• MoNuSeg <ref type="bibr" target="#b23">[23]</ref>: The MoNuSeg dataset consists of 37 training images and 14 test images with labeled nuclei, available at <ref type="url" target="https://monuseg.grand-challenge.org/">https://monuseg.grand-cha  llenge.org/</ref>. 30 of the training images were also included in our Cellpose Nuclei train/test datasets in grayscale and inverted -we removed them for the visualization in Figure <ref type="figure" target="#fig_3">2a</ref>. • CryoNuSeg <ref type="bibr" target="#b25">[25]</ref>: The CryoNuSeg dataset consists of H&amp;E images from 10 different human organs with labeled nuclei (<ref type="url" target="https://www.kaggle.com/datasets/ipateam/segmentation-of-nuclei-in-cryosectioned-he-images">https://www.kaggle.com/datas   ets/ipateam/segmentation-of-nuclei-in-c  ryosectioned-he-images</ref>). We used all available images <ref type="bibr" target="#b30">(30)</ref> as training images.</p><p>• NuInsSeg <ref type="bibr" target="#b26">[26]</ref>: The NuInsSeg dataset consists of H&amp;E images from 31 different human and mouse organs with labeled nuclei, available at <ref type="url" target="https://www.kaggle.com/datasets/ipateam/nuinsseg">https://  www.kaggle.com/datasets/ipateam/nuinss</ref> eg. We used all available images (665) as training images.</p><p>• BCCD <ref type="bibr" target="#b27">[27]</ref>: The blood cell segmentation dataset consists of blood smear images taken with a light microscope (<ref type="url" target="https://www.kaggle.com/datasets/jeetblahiri/bccd-dataset-with-mask">https://www.kaggle.com/datas   ets/jeetblahiri/bccd-dataset-with-mask</ref>).</p><p>There 1,169 training images in the dataset, all of which were used for training.</p><p>• CPM 15+17 and TNBC <ref type="bibr" target="#b28">[28,</ref><ref type="bibr" target="#b29">29]</ref>: CPM 15 and 17 and TNBC consist of H&amp;E images with labeled nuclei. CPM 15 + 17 are from brain cancer patients, with 15 and 32 training images per dataset respectively. TNBC consists of 50 images from triple negative breast cancer patients, all of which were used for training. The datasets are available at <ref type="url" target="https://drive.google.com/drive/folders/1l55cv3DuY-f7-JotDN7N5nbNnjbLWchK">https:  //drive.google.com/drive/folders/1l55c</ref> v3DuY-f7-JotDN7N5nbNnjbLWchK.</p><p>• LynSec <ref type="bibr" target="#b30">[30,</ref><ref type="bibr" target="#b31">31]</ref>: LynSec consists of 699 IHC and H&amp;E images from lymphoma patients with labeled nuclei (<ref type="url" target="https://zenodo.org/records/8065174">https://zenodo.org/records/80651   74</ref>). We chose 616 of these images randomly to use in our training set.</p><p>• IHC TMA <ref type="bibr" target="#b32">[32,</ref><ref type="bibr" target="#b33">33]</ref>: The IHC TMA dataset consists of TMA sections from non-small cell lung cancer patients with labeled nuclei (<ref type="url" target="https://doi.org/10.5281/zenodo.7647846">https://doi.org/   10.5281/zenodo.7647846</ref>). There are 195 and 36 images in the training and validation sets, we used all of these for training.</p><p>• CoNIC <ref type="bibr" target="#b34">[34]</ref>: The CoNIC dataset consists of 4,981 H&amp;E images with labeled nuclei and nuclei classification (<ref type="url" target="https://www.kaggle.com/datasets/aadimator/conic-challenge-dataset?select=data">https://www.kaggle.com/dat   asets/aadimator/conic-challenge-datas  et?select=data</ref>). We randomly chose 3,863 of the images for training, all of which had at least one labeled nuclei (a subset of images in the dataset had no labels). We used all nuclei labels.</p><p>• PanNuke <ref type="bibr" target="#b35">[35,</ref><ref type="bibr" target="#b37">36]</ref>: The PanNuke dataset consists of 7,898 H&amp;E images from 19 tissues types from cancer patients with labeled nuclei and nuclei classification (<ref type="url" target="https://warwick.ac.uk/fac/cross_fac/tia/data/pannuke">https://warwick.ac.uk/fac/   cross_fac/tia/data/pannuke</ref>). We randomly chose 6,053 of the images for training, all of which had at least one labeled nuclei (a subset of images in the dataset had no labels). We used all nuclei labels.</p><p>For testing we used the datasets with a welldefined test set, as described above, and on which other models had been trained, because those were the only datasets in which we could ensure train/test splits were consistent across available models.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Fine-tuning datasets</head><p>We tested fine-tuning performance on three publicly available datasets:</p><p>• The lateral root dataset consists of 27 volumes from three different Arabidopsis thaliana lateral root primordia timelapse recordings, acquired every 30 minutes with a voxel size of 0.1625 × 0.1625 × 0.250 um (X x Y x Z), with ground-truth 3D segmentations <ref type="bibr" target="#b45">[44]</ref> (<ref type="url" target="https://osf.io/2rszy/">https://osf.io/2rszy/</ref>). We reduced the size of the volumes by a factor of 4 in XY and by a factor of 2.6 in Z (to create an isotropic volume). We used all 17 of the volumes from Movies 1 and 3 for training, and two of the ground-truth volumes from Movie 2 for testing, which were in the original test set (timepoint 10 and 20). We divided by movie id to avoid any relationship between the train and test set. From each training and test stack we took 40 slices, 20 in XY and 10 in each ZY and ZX. These slices were evenly spaced within the volume, with a padding of 10 on each side of the dimension being sampled. This resulted in 680 2D training slices and 80 2D test slices. We tested 3D segmentation using the 3D ground-truth for the two 3D test volumes.</p><p>• The ovule dataset consists of 31 volumes from Arabidopsis thaliana ovule recordings with a voxel size of 0.075 × 0.075 × 0.235 um, with ground-truth 3D segmentations <ref type="bibr" target="#b45">[44]</ref> (<ref type="url" target="https://osf.io/w38uf/">https://osf.io/w38uf/</ref>). We reduced the size of the volumes by 1.33 in XY and by a factor of 2.35 in Z (to create an isotropic volume). We used the 22 defined training volumes for the training set and the 7 defined test set volumes for testing. As in the lateral root dataset, we took 40 2D slices from each stack, resulting in 880 2D training slices and 280 2D test slices, and tested 3D segmentation on the 7 full volumes.</p><p>• The BlastoSPIM dataset consists of 231 3D volumes of early-stage mouse embryos from 55 different embryos, and 80 3D volumes of late-stage mouse embryos ('Blast') acquired on a confocal microscope, with a voxel size of 0.208 x 0.208 x 2.0 um <ref type="bibr" target="#b44">[43]</ref>. We defined the test set as the volumes from 5 random early-stage embryos (16 volumes in total), and 10 random volumes from the late-stage embryo dataset. The training set contained volumes from the other 50 early-stage embryos and 70 Blast volumes. We upsampled the volumes in Z by a factor of 10 to create isotropic volumes. We used 3 2D slices from each training and test volume, 1 in XY, ZY and ZX. These slices were sampled randomly, until a slice with at least one mask was obtained, with a padding of 30 pixels on each side of the dimension being sampled. This resulted in 855 2D training slices and 78 2D test slices. We tested 3D segmentation on the <ref type="bibr" target="#b26">26</ref> full 3D test volumes. image size (pixels) file size GPU RAM used (reported) RAM used (reported) batch size runtime 150 270KB 2.45 GB 2.18 GB 1 0.37 sec 300 1.08MB 2.45 GB 2.18 GB 4 0.41 sec 600 4.32MB 3.39 GB 2.23 GB 9 0.87 sec 1,200 17.2MB 8.90 GB 3.57 GB 32 3.24 sec 2,400 69MB 8.90 GB 3.84 GB 32 12.48 sec 4,800 276MB 8.90 GB 4.80 GB 32 46.71 sec 9,600 1.11GB 12.28 GB 18.40 GB 32 368.88 sec Table S1: GPU statistics for inference. Runtimes and memory profiling for model inference on a consumer GPU (RTX 4070S, $600, 12 GB of GPU RAM) on Windows with a maximum batch size of 32 for different images sizes. GPUs MSRP GPU RAM max GPU RAM used (reported) RAM used (reported) runtime RTX 4060 $300 8GB 8.53 GB 3.01 GB 363.58 sec T4 (colab) free 16GB 8.53 GB 1.81 GB 185.17 sec RTX 4070S $600 12GB 8.53 GB 1.87 GB 55.08 sec RTX 5090 $2,000 32GB 8.53 GB 2.56 GB 33.71 sec A100 &gt;$10,000 80GB 8.53 GB 2.26 GB 27.30 sec Table S2: GPU statistics for training. Runtimes and memory profiling for model training with a small number (8) of user provided annotated images with a batch size of 1, epoch size of 8, and 100 epochs. Typical for the human-in-the-loop retraining stage. . Performance is reported with either error rates (top) or AP @ IoU = 0.5 (bottom). Algorithms are included in each panel if : 1) they have been trained on the respective dataset; 2) they used the publicly available train/test split. We did not retrain any of the algorithms from other groups. Specialist models were only trained on a single dataset. Wilcoxon signed-rank test performed -CellposeSAM performs as well as (n.s.) or significantly better than all other algorithms, besides the specialist Omnipose model on the Omnipose (fluor) dataset.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><figDesc>images, 10.2 million manual ROIsTraining dataset for SAM (SA-1B)</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Defining and training the Cellpose-SAM model. a, Schematic of the U-net backbone used in the original Cellpose model with skip connections and global style vector. Shown on the right is the representation of the flow vectors that Cellpose predicts as an intermediate to mask reconstruction. b, Schematic of the Segment Anything Model that includes an encoder based on a ViT backbone with a few modifications, as well as complex mask and prompt decoders required for both training and inference. c, Schematic of the Cellpose-SAM model combining a customized encoder backbone based on SAM, with the flow field prediction and gradient tracking of Cellpose. d, Training stages for Cellpose-SAM. e, Example images used to train the original SAM model. f, Example images and flow fields for the updated training dataset for Cellpose-SAM.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Performance relative to other methods and to humans. a, Simulated annotations to illustrate human-to-human variability and the human consensus as a hypothetical absolute bound on performance. b, Performance on the updated Cellpose test set shown as error rates (left) and average precision (right). Per-image segmentation time on an A100 GPU (bottom). c, Example segmentations of Cellpose-SAM, taken from the updated Cellpose test set.</figDesc><graphic coords="3,65.97,328.44,54.24,54.24" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Quality of life improvements for Cellpose-SAM. a, Cellpose-SAM is invariant to channel order, because it was trained with channel shuffling. b, Cellpose-SAM is mostly invariant to image resizing because it was trained with a wide range of image augmentations. Note that previous Cellpose versions relied on an intermediate size prediction model. c-f, Cellpose-SAM is robust to c Poisson noise, d blurring, e image downsampling and f anisotropic blur, because it was trained on such images . Note that the previous version of Cellpose relied on intermediate image restoration models to achieve similar performance.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>35 #Figure 4 :</head><label>354</label><figDesc>Figure 4: Finetuning performance. a, Cellpose-SAM segmentations on the BlastoSPIM dataset [43] either (left) out-of-the-box or (center) after finetuning with a medium number of manually-annotated ROIs. (right) Performance as a function of the number of training ROIs for Cellpose-SAM and Cellpose3.b-c, Same as a for the "lateral root" and "ovules" categories of the PlantSeg dataset<ref type="bibr" target="#b45">[44]</ref>. d-f, 3D segmentations extended from 2D predictions using either Cellpose-SAM or Cellpose3. The 3D extension was made using the flow averaging method on XY, XZ and YZ slices from<ref type="bibr" target="#b2">[3]</ref>. Same datasets were used as in a-c.</figDesc><graphic coords="6,390.84,251.28,69.84,51.60" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Finetuning Cellpose-SAM for panoptic segmentation. a, Representative examples from the MoNuSac 2020 challenge containing four different cell classes. b, Segmentation error rate averaged across classes for Cellpose-SAM and four leading algorithms from the challenge (n=85 test images, Wilcoxon signed-rank test). c, Same as b for average precision.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>•</head><figDesc>Omnipose<ref type="bibr" target="#b18">[19]</ref>: The Omnipose dataset consists of fluorescent bacterial images (143 training and 75 test images), and phase-contrast microscopy bacterial images (249 training and 148 test images).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head>•</head><figDesc>MoNuSAC<ref type="bibr" target="#b24">[24]</ref>: The MoNuSAC dataset consists of H&amp;E images from 4 different organs with labeled nuclei and nuclei classification, with 209 training images and 85 test images, available at https://mo nusac-2020.grand-challenge.org/. The main model was only trained on the training images. The nuclei classification labels from the training images were used to train the semantic segmentation model described in Figure5, with the performance on test images shown in the figure.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><head>C e ll p</head><figDesc>o s e -S A M C e ll p o s e c y t o 3 C e ll S A M m ic r o S A M C e ll p o s e -S A M C e ll p o s e c y t o 3 m ic r o S A M S A M C e ll C e ll p o s e -S A M C e ll p o s e c y t o 3 O m n ip o s e C e ll S A M C e ll p o s e -S A M C e ll p o s e c y t o 3 O m n ip o s e C e ll S A M C e ll p o s e -S A M C e ll p o s e c y t o 3 C e ll S A M m ic r o S A M C e ll p o s eperformance on other datasets. Similar to Figure 2de</figDesc></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>available for training, good inductive biases are no longer necessary, and models with less generalization capacity can still perform well.Generalist models like Cellpose-SAM are often good initializations for other image-based tasks. To demonstrate this, we chose the MoNuSAC 2020 challenge<ref type="bibr" target="#b24">[24]</ref>, where participants were asked to segment cells in histopathology images and classify them into four classes: epithelial, lymphocyte, macrophage and neutrophil (Figure5a). This task is</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgments</head><p>This research was funded by the <rs type="funder">Howard Hughes Medical Institute at the Janelia Research Campus</rs>. We thank the authors of [1-3, <rs type="grantNumber">17-36</rs>, <rs type="grantNumber">43</rs>, <rs type="grantNumber">44</rs>]  for sharing their datasets.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_dSTd6aR">
+					<idno type="grant-number">17-36</idno>
+				</org>
+				<org type="funding" xml:id="_UFDvFN3">
+					<idno type="grant-number">43</idno>
+				</org>
+				<org type="funding" xml:id="_x9MkJu2">
+					<idno type="grant-number">44</idno>
+				</org>
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data availability</head><p>The 'cyto2' dataset is publicly available at <ref type="url" target="https://www.cellpose.org/dataset">https://ww  w.cellpose.org/dataset</ref>, and the other datasets were generated and shared by other labs [1, 2, 17-36, 43, 44].</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Code availability</head><p>Cellpose-SAM was used to perform all analyses in the paper. The code and GUI are available at <ref type="url" target="https://www.github.com/mouseland/cellpose">https://  www.github.com/mouseland/cellpose</ref>. An online version of the algorithm is running on Hugging Face</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0" />			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Livecell-a large-scale dataset for label-free live cell segmentation</title>
+		<author>
+			<persName><forename type="first">Christoffer</forename><surname>Edlund</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Timothy</forename><forename type="middle">R</forename><surname>Jackson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nabeel</forename><surname>Khalid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nicola</forename><surname>Bevan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Timothy</forename><surname>Dale</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andreas</forename><surname>Dengel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sheraz</forename><surname>Ahmed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Johan</forename><surname>Trygg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rickard</forename><surname>Sj Ögren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="1038" to="1045" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Whole-cell segmentation of tissue images with human-level performance using large-scale data annotation and deep learning</title>
+		<author>
+			<persName><forename type="first">Geneva</forename><surname>Noah F Greenwald</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Erick</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alex</forename><surname>Moen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adam</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Kagel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christine</forename><forename type="middle">Camacho</forename><surname>Dougherty</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Brianna</forename><forename type="middle">J</forename><surname>Fullaway</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Mcintosh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuan</forename><surname>Leow</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Morgan</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sarah</forename><surname>Schwartz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cole</forename><surname>Pavelchek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sunny</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Isabella</forename><surname>Camplisson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Omer</forename><surname>Bar-Tal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jaiveer</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mara</forename><surname>Fong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gautam</forename><surname>Chaudhry</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zion</forename><surname>Abraham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jackson</forename><surname>Moseley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shiri</forename><surname>Warshawsky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Erin</forename><surname>Soon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shirley</forename><surname>Greenbaum</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tyler</forename><surname>Risom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Travis</forename><surname>Hollmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sean</forename><forename type="middle">C</forename><surname>Bendall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Leeat</forename><surname>Keren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">William</forename><surname>Graf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Angelo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Van Valen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature biotechnology</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="11" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Cellpose: a generalist algorithm for cellular segmentation</title>
+		<author>
+			<persName><forename type="first">Carsen</forename><surname>Stringer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tim</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michalis</forename><surname>Michaelos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marius</forename><surname>Pachitariu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="100" to="106" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Cellpose 2.0: how to train your own model</title>
+		<author>
+			<persName><forename type="first">Marius</forename><surname>Pachitariu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carsen</forename><surname>Stringer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature methods</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">12</biblScope>
+			<biblScope unit="page" from="1634" to="1641" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Cellpose3: one-click image restoration for improved cellular segmentation</title>
+		<author>
+			<persName><forename type="first">Carsen</forename><surname>Stringer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marius</forename><surname>Pachitariu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Methods</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="8" />
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Segment anything</title>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Kirillov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Mintun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nikhila</forename><surname>Ravi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanzi</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chloe</forename><surname>Rolland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Laura</forename><surname>Gustafson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tete</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Spencer</forename><surname>Whitehead</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><forename type="middle">C</forename><surname>Berg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wan-Yen</forename><surname>Lo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF international conference on computer vision</title>
+		<meeting>the IEEE/CVF international conference on computer vision</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="4015" to="4026" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">A foundation model for cell segmentation</title>
+		<author>
+			<persName><forename type="first">Uriah</forename><surname>Israel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Markus</forename><surname>Marks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rohit</forename><surname>Dilip</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qilin</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Morgan</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sarah</forename><surname>Schwartz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Elora</forename><surname>Pradhan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Edward</forename><surname>Pao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shenyi</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Pearson-Goulart</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pietro</forename><surname>Perona</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Georgia</forename><surname>Gkioxari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ross</forename><surname>Barnowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yisong</forename><surname>Yue</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Van Valen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page" from="2023" to="2034" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Segment anything for microscopy</title>
+		<author>
+			<persName><forename type="first">Anwai</forename><surname>Archit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sushmita</forename><surname>Nair</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nabeel</forename><surname>Khalid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Paul</forename><surname>Hilt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vikas</forename><surname>Rajashekar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marei</forename><surname>Freitag</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sagnik</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andreas</forename><surname>Dengel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sheraz</forename><surname>Ahmed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Constantin</forename><surname>Pape</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page" from="2023" to="2028" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Samcell: Generalized label-free biological cell segmentation with segment anything</title>
+		<author>
+			<persName><forename type="first">Alexandra</forename><forename type="middle">D</forename><surname>Vandeloo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nathan</forename><forename type="middle">J</forename><surname>Malta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Emilio</forename><surname>Aponte</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Caitlin</forename><surname>Van Zyl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Danfei</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Craig</forename><forename type="middle">R</forename><surname>Forest</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page" from="2025" to="2027" />
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Benchmarking cellular segmentation methods against cellpose</title>
+		<author>
+			<persName><forename type="first">Carsen</forename><surname>Stringer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marius</forename><surname>Pachitariu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page" from="2024" to="2024" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title level="m" type="main">StarDist -Object Detection with Star-convex Shapes</title>
+		<author>
+			<persName><forename type="first">Uwe</forename><surname>Schmidt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Weigert</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Kaiming</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Georgia</forename><surname>Gkioxari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Piotr</forename><surname>Doll</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ross</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R-Cnn</forename><surname>Mask</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1703.06870</idno>
+		<idno>arXiv: 1703.06870</idno>
+		<imprint>
+			<date type="published" when="2018-01">January 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<title level="m" type="main">Pretrained transformers improve outof-distribution robustness</title>
+		<author>
+			<persName><forename type="first">Dan</forename><surname>Hendrycks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoyuan</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Wallace</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adam</forename><surname>Dziedzic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rishabh</forename><surname>Krishnan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dawn</forename><surname>Song</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2004.06100</idno>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Exploring the limits of out-of-distribution detection</title>
+		<author>
+			<persName><forename type="first">Stanislav</forename><surname>Fort</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Balaji</forename><surname>Lakshminarayanan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in neural information processing systems</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="7068" to="7081" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Masked autoencoders are scalable vision learners</title>
+		<author>
+			<persName><forename type="first">Kaiming</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinlei</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Saining</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanghao</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="16000" to="16009" />
+		</imprint>
+	</monogr>
+	<note>Piotr Doll ár, and Ross Girshick</note>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<title level="m" type="main">An image is worth 16x16 words: Transformers for image recognition at scale</title>
+		<author>
+			<persName><forename type="first">Alexey</forename><surname>Dosovitskiy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lucas</forename><surname>Beyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Kolesnikov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dirk</forename><surname>Weissenborn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaohua</forename><surname>Zhai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Unterthiner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mostafa</forename><surname>Dehghani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matthias</forename><surname>Minderer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Georg</forename><surname>Heigold</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sylvain</forename><surname>Gelly</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2010.11929</idno>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Nucleus segmentation across imaging experiments: the 2018 Data Science Bowl</title>
+		<author>
+			<persName><forename type="first">Juan</forename><forename type="middle">C</forename><surname>Caicedo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Allen</forename><surname>Goodman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kyle</forename><forename type="middle">W</forename><surname>Karhohs</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Beth</forename><forename type="middle">A</forename><surname>Cimini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeanelle</forename><surname>Ackerman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marzieh</forename><surname>Haghighi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cherkeng</forename><surname>Heng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tim</forename><surname>Becker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minh</forename><surname>Doan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Claire</forename><surname>Mcquin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mohammad</forename><surname>Rohban</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shantanu</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anne</forename><forename type="middle">E</forename><surname>Carpenter</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Methods</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="issue">12</biblScope>
+			<biblScope unit="page" from="1247" to="1253" />
+			<date type="published" when="2019-12">December 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Nuclear segmentation in microscope cell images: A hand-segmented dataset and comparison of algorithms</title>
+		<author>
+			<persName><forename type="first">Pedro</forename><surname>Luis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aabid</forename><surname>Coelho</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robert</forename><forename type="middle">F</forename><surname>Shariff</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Murphy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2009 IEEE International Symposium on Biomedical Imaging: From Nano to Macro</title>
+		<imprint>
+			<date type="published" when="2009-06">June 2009</date>
+			<biblScope unit="page" from="518" to="521" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Omnipose: a highprecision morphology-independent solution for bacterial cell segmentation</title>
+		<author>
+			<persName><forename type="first">Kevin</forename><forename type="middle">J</forename><surname>Cutler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carsen</forename><surname>Stringer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Teresa</forename><forename type="middle">W</forename><surname>Lo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luca</forename><surname>Rappez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nicholas</forename><surname>Stroustrup</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Brook</forename><surname>Peterson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Paul</forename><forename type="middle">A</forename><surname>Wiggins</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">D</forename><surname>Mougous</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature methods</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page" from="1438" to="1448" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">A convolutional neural network segments yeast microscopy images with high accuracy</title>
+		<author>
+			<persName><forename type="first">Nicola</forename><surname>Dietler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matthias</forename><surname>Minder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vojislav</forename><surname>Gligorovski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maria</forename><surname>Augoustina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Denis</forename><surname>Economou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alain</forename><surname>Henri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lucien</forename><surname>Joly</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ahmad</forename><surname>Sadeghi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chun</forename><surname>Hei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Chan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mateusz</forename><surname>Kozi Ński</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Weigert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anne-Florence</forename><surname>Bitbol</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature communications</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">5723</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<title level="m" type="main">Deepbacs for multi-task bacterial image analysis using open-source deep learning approaches</title>
+		<author>
+			<persName><forename type="first">Christoph</forename><surname>Spahn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Estibaliz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Romain</forename><forename type="middle">F</forename><surname>Ómez-De Mariscal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pedro</forename><forename type="middle">M</forename><surname>Laine</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Pereira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mia</forename><surname>Lucas Von Chamier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mariana</forename><forename type="middle">G</forename><surname>Conduit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guillaume</forename><surname>Pinho</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Jacquemet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mike</forename><surname>Éamus Holden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ricardo</forename><surname>Heilemann</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Henriques</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title/>
+	</analytic>
+	<monogr>
+		<title level="j">Communications Biology</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">688</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">The multimodality cell segmentation challenge: toward universal solutions</title>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ronald</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shamini</forename><surname>Ayyadhury</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cheng</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anubha</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ritu</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Song</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yao</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gihun</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joonkee</forename><surname>Kim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature methods</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="11" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">A Multi-organ Nucleus Segmentation Challenge</title>
+		<author>
+			<persName><forename type="first">Neeraj</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruchika</forename><surname>Verma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Deepak</forename><surname>Anand</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanning</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Omer</forename><forename type="middle">Fahri</forename><surname>Onder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Efstratios</forename><surname>Tsougenis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pheng</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ann</forename><surname>Heng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiahui</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhiqiang</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yunzhi</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Navid</forename><surname>Alemi Koohbanani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mostafa</forename><surname>Jahanifar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Neda</forename><surname>Zamani Tajeddin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ali</forename><surname>Gooya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nasir</forename><surname>Rajpoot</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuhua</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sihang</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qian</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dinggang</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cheng</forename><surname>Kun Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chi</forename><forename type="middle">Hung</forename><surname>Weng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Hsiang Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chao</forename><surname>Yuan Yeh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuang</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuoyu</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hei</forename><surname>Pak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peng</forename><surname>Yeung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Amirreza</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gerald</forename><surname>Mahbod</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Isabella</forename><surname>Schaefer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rupert</forename><surname>Ellinger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Orjan</forename><surname>Ecker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chunliang</forename><surname>Smedby</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Benjamin</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">That</forename><surname>Chidester</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minh-Triet</forename><surname>Vinh Ton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Tran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minh</forename><forename type="middle">N</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Simon</forename><surname>Do</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc</forename><forename type="middle">Dang</forename><surname>Graham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jin</forename><forename type="middle">Tae</forename><surname>Vu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Akshaykumar</forename><surname>Kwak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Raviteja</forename><surname>Gunda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Corey</forename><surname>Chunduri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoyang</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dariush</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Reza</forename><surname>Lotfi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Antanas</forename><surname>Safdari</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Kascenas</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<editor>
+			<persName><forename type="first">Johannes</forename><surname>Stegmaier</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Yanping</forename><surname>Cui</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Baocai</forename><surname>Yin</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Kailin</forename><surname>Chen</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Xinmei</forename><surname>Tian</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Philipp</forename><surname>Gruening</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Erhardt</forename><surname>Barth</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Elad</forename><surname>Arbel</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Itay</forename><surname>Remer</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Amir</forename><surname>Ben-Dor</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Ekaterina</forename><surname>Sirazitdinova</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Matthias</forename><surname>Kohl</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Stefan</forename><surname>Braunewell</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Yuexiang</forename><surname>Li</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Xinpeng</forename><surname>Xie</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Linlin</forename><surname>Shen</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Jun</forename><surname>Ma</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Krishanu</forename><surname>Das Baksi</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Mohammad</forename><surname>Azam Khan</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Jaegul</forename><surname>Choo</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Valery</forename><surname>Adri Á N Colomer</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Linmin</forename><surname>Naranjo</surname></persName>
+		</editor>
+		<editor>
+			<persName><surname>Pei</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Khan</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Kaushiki</forename><surname>Iftekharuddin</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Debotosh</forename><surname>Roy</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Anibal</forename><surname>Bhattacharjee</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Maria</forename><surname>Pedraza</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Gloria</forename><surname>Bueno</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Sabarinathan</forename><surname>Devanathan</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Saravanan</forename><surname>Radhakrishnan</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Praveen</forename><surname>Koduganty</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Zihan</forename><surname>Wu</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Guanyu</forename><surname>Cai</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Xiaojie</forename><surname>Liu</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Yuqin</forename><surname>Wang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Amit</forename><surname>Sethi</surname></persName>
+		</editor>
+		<imprint>
+			<biblScope unit="page" from="1" to="1" />
+			<date type="published" when="2019">2019</date>
+			<pubPlace>Alison O&apos;Neil, Dennis Eschweiler</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Monusac2020: A multi-organ nuclei segmentation and classification challenge</title>
+		<author>
+			<persName><forename type="first">Ruchika</forename><surname>Verma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Neeraj</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Abhijeet</forename><surname>Patil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Swapnil</forename><surname>Nikhil Cherian Kurian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Simon</forename><surname>Rane</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc</forename><forename type="middle">Dang</forename><surname>Graham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mieke</forename><surname>Vu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shan</forename><forename type="middle">E</forename><surname>Zwager</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ahmed</forename><surname>Raza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nasir</forename><surname>Rajpoot</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="issue">12</biblScope>
+			<biblScope unit="page" from="3413" to="3423" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Deep neural network pruning for nuclei instance segmentation in hematoxylin and eosin-stained histological images</title>
+		<author>
+			<persName><forename type="first">Amirreza</forename><surname>Mahbod</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rahim</forename><surname>Entezari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Isabella</forename><surname>Ellinger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Olga</forename><surname>Saukh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Workshop on Applications of Medical AI</title>
+		<imprint>
+			<biblScope unit="page" from="108" to="117" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<author>
+			<persName><forename type="first">Amirreza</forename><surname>Mahbod</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christine</forename><surname>Polak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Katharina</forename><surname>Feldmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rumsha</forename><surname>Khan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Katharina</forename><surname>Gelles</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Georg</forename><surname>Dorffner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ramona</forename><surname>Woitek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sepideh</forename><surname>Hatamikia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Isabella</forename><surname>Ellinger</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2308.01760</idno>
+		<title level="m">Nuinsseg: A fully annotated dataset for nuclei instance segmentation in h&amp;e-stained histological images</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title/>
+		<author>
+			<persName><surname>Ds Depto</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Rahman</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Hosen</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ms Akter</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Tr Reme</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Rahman</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Zunai</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Mahdy</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ms Rahman</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Lahiri</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Blood cell segmentation dataset</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Methods for segmentation and classification of digital microscopy tissue images</title>
+		<author>
+			<persName><forename type="first">Quoc Dang</forename><surname>Vu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Simon</forename><surname>Graham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tahsin</forename><surname>Kurc</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minh</forename><surname>Nguyen Nhat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Muhammad</forename><surname>To</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Talha</forename><surname>Shaban</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Qaiser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alemi</forename><surname>Navid</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Koohbanani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ali</forename><surname>Syed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jayashree</forename><surname>Khurram</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianhao</forename><surname>Kalpathy-Cramer</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Zhao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Frontiers in bioengineering and biotechnology</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page">53</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Segmentation of nuclei in histopathology images by deep regression of the distance map</title>
+		<author>
+			<persName><forename type="first">Peter</forename><surname>Naylor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marick</forename><surname>La É</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fabien</forename><surname>Reyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Walter</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE transactions on medical imaging</title>
+		<imprint>
+			<biblScope unit="volume">38</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="448" to="459" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Segmentation of nuclei in histopathology images by deep regression of the distance map</title>
+		<author>
+			<persName><forename type="first">Peter</forename><surname>Naylor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marick</forename><surname>La É</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fabien</forename><surname>Reyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Walter</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE transactions on medical imaging</title>
+		<imprint>
+			<biblScope unit="volume">38</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="448" to="459" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<monogr>
+		<title level="m" type="main">Lynsec: Lymphoma nuclear segmentation and classification</title>
+		<author>
+			<persName><forename type="first">Naji</forename><surname>Hussein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Üttner Reinhard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Simon</forename><surname>Adrian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eich</forename><surname>Marie-Lisa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lohneis</forename><surname>Philipp</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bozek</forename><surname>Katarzyna</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2023-06">June 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Simultaneously segmenting and classifying cell nuclei by using multitask learning in multiplex immunohistochemical tissue microarray sections</title>
+		<author>
+			<persName><forename type="first">Ranran</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yusong</forename><surname>Qiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinyu</forename><surname>Hao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shan</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junxiu</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Heng</forename><surname>Qi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qi</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yong</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongming</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Biomedical Signal Processing and Control</title>
+		<imprint>
+			<biblScope unit="volume">93</biblScope>
+			<biblScope unit="page">106143</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<monogr>
+		<title level="m" type="main">Image dataset from multiplex ihc stained tma sections</title>
+		<author>
+			<persName><forename type="first">Ranran</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yusong</forename><surname>Qiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yong</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongming</forename><surname>Xu</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2023-02">February 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Conic challenge: Pushing the frontiers of nuclear detection, segmentation, classification and counting</title>
+		<author>
+			<persName><forename type="first">Simon</forename><surname>Graham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc</forename><forename type="middle">Dang</forename><surname>Vu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mostafa</forename><surname>Jahanifar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Weigert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Uwe</forename><surname>Schmidt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenhua</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sen</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jinxi</forename><surname>Xiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiyue</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical image analysis</title>
+		<imprint>
+			<biblScope unit="volume">92</biblScope>
+			<biblScope unit="page">103047</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Pannuke: an open pan-cancer histology dataset for nuclei instance segmentation and classification</title>
+		<author>
+			<persName><forename type="first">Jevgenij</forename><surname>Gamper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alemi</forename><surname>Navid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ksenija</forename><surname>Koohbanani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ali</forename><surname>Benet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nasir</forename><surname>Khuram</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Rajpoot</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Digital Pathology</title>
+		<imprint>
+			<biblScope unit="page">15</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title/>
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="11" to="19" />
+			<date type="published" when="2019-04-10">2019. April 10-13, 2019</date>
+			<publisher>European Congress</publisher>
+			<pubPlace>Warwick, UK</pubPlace>
+		</imprint>
+	</monogr>
+	<note>ECDP</note>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<monogr>
+		<author>
+			<persName><forename type="first">Jevgenij</forename><surname>Gamper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alemi</forename><surname>Navid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Simon</forename><surname>Koohbanani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mostafa</forename><surname>Graham</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Jahanifar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ali</forename><surname>Syed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ayesha</forename><surname>Khurram</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Katherine</forename><surname>Azam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nasir</forename><surname>Hewitt</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Rajpoot</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2003.10778</idno>
+		<title level="m">Pannuke dataset extension, insights and baselines</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Image style transfer using convolutional neural networks</title>
+		<author>
+			<persName><forename type="first">Leon</forename><forename type="middle">A</forename><surname>Gatys</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><forename type="middle">S</forename><surname>Ecker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matthias</forename><surname>Bethge</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="2414" to="2423" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Masked autoencoders are scalable vision learners</title>
+		<author>
+			<persName><forename type="first">Kaiming</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinlei</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Saining</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanghao</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="16000" to="16009" />
+		</imprint>
+	</monogr>
+	<note>Piotr Doll ár, and Ross Girshick</note>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<monogr>
+		<author>
+			<persName><forename type="first">Hangbo</forename><surname>Bao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Songhao</forename><surname>Piao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Furu</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Beit</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2106.08254</idno>
+		<title level="m">Bert pre-training of image transformers</title>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Alexandre Sablayrolles, and Herv é J égou. Training data-efficient image transformers &amp; distillation through attention</title>
+		<author>
+			<persName><forename type="first">Hugo</forename><surname>Touvron</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matthieu</forename><surname>Cord</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matthijs</forename><surname>Douze</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Francisco</forename><surname>Massa</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International conference on machine learning</title>
+		<imprint>
+			<publisher>PMLR</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="10347" to="10357" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Imagenet large scale visual recognition challenge</title>
+		<author>
+			<persName><forename type="first">Olga</forename><surname>Russakovsky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jonathan</forename><surname>Krause</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sanjeev</forename><surname>Satheesh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sean</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhiheng</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrej</forename><surname>Karpathy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aditya</forename><surname>Khosla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Bernstein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International journal of computer vision</title>
+		<imprint>
+			<biblScope unit="volume">115</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="211" to="252" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Whole-cell segmentation of tissue images with human-level performance using large-scale data annotation and deep learning</title>
+		<author>
+			<persName><forename type="first">Geneva</forename><surname>Noah F Greenwald</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Erick</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alex</forename><surname>Moen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adam</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Kagel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christine</forename><forename type="middle">Camacho</forename><surname>Dougherty</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Brianna</forename><forename type="middle">J</forename><surname>Fullaway</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Mcintosh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuan</forename><surname>Leow</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Morgan</forename><forename type="middle">Sarah</forename><surname>Schwartz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature biotechnology</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="555" to="565" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Nuclear instance segmentation and tracking for preimplantation mouse embryos</title>
+		<author>
+			<persName><forename type="first">Hayden</forename><surname>Nunley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Binglun</forename><surname>Shao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Denberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Prateek</forename><surname>Grover</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jaspreet</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maria</forename><surname>Avdeeva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bradley</forename><surname>Joyce</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rebecca</forename><surname>Kim-Yip</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Abraham</forename><surname>Kohrman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Abhishek</forename><surname>Biswas</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Development</title>
+		<imprint>
+			<biblScope unit="volume">151</biblScope>
+			<biblScope unit="issue">21</biblScope>
+			<date type="published" when="2024">202817. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Adrian</forename><surname>Wolny</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lorenzo</forename><surname>Cerrone</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Athul</forename><surname>Vijayan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rachele</forename><surname>Tofanelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Amaya</forename><surname>Vilches Barro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marion</forename><surname>Louveaux</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christian</forename><surname>Wenzl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Strauss</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rena</forename><surname>Wilson-S Ánchez</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Lymbouridou</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note>et al. Accurate and versatile 3d segmentation of plant tissues at cellular resolution. Elife, 9:e57613</note>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Trackmate 7: integrating stateof-the-art segmentation algorithms into tracking pipelines</title>
+		<author>
+			<persName><forename type="first">Dmitry</forename><surname>Ershov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minh-Son</forename><surname>Phan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joanna</forename><forename type="middle">W</forename><surname>Pylv Än Äinen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Laure</forename><forename type="middle">Le</forename><surname>St Éphane U Rigaud</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Arthur</forename><surname>Blanc</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">James Rw</forename><surname>Charles-Orszag</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Romain</forename><forename type="middle">F</forename><surname>Conway</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nathan</forename><forename type="middle">H</forename><surname>Laine</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Daria</forename><surname>Roy</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Bonazzi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature methods</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="829" to="832" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Automated reconstruction of whole-embryo cell lineages by learning from sparse annotations</title>
+		<author>
+			<persName><forename type="first">Caroline</forename><surname>Malin-Mayor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peter</forename><surname>Hirsch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Leo</forename><surname>Guignard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Katie</forename><surname>Mcdole</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yinan</forename><surname>Wan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dagmar</forename><surname>William C Lemon</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Kainmueller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Philipp</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stephan</forename><surname>Keller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jan</forename><surname>Preibisch</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Funke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature biotechnology</title>
+		<imprint>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="44" to="49" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Ultrack: pushing the limits of cell tracking across biological scales</title>
+		<author>
+			<persName><forename type="first">Ilan</forename><surname>Jord Ão Bragantini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Theodoro</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Apm</forename><surname>Teun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eduardo</forename><surname>Huijben</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shruthi</forename><surname>Hirata-Miyasaki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Akilandeswari</forename><surname>Vijaykumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tiger</forename><surname>Balasubramanian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Richa</forename><surname>Lao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sheng</forename><surname>Agrawal</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Xiao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Cell painting, a high-content imagebased assay for morphological profiling using multiplexed fluorescent dyes</title>
+		<author>
+			<persName><forename type="first">Mark-Anthony</forename><surname>Bray</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shantanu</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Han</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chadwick</forename><forename type="middle">T</forename><surname>Davis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Blake</forename><surname>Borgeson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cathy</forename><surname>Hartland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maria</forename><surname>Kost-Alimova</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sigrun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christopher</forename><forename type="middle">C</forename><surname>Gustafsdottir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anne</forename><forename type="middle">E</forename><surname>Gibson</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Carpenter</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature protocols</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="1757" to="1774" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Spatially resolved, highly multiplexed rna profiling in single cells</title>
+		<author>
+			<persName><forename type="first">Alistair</forename><forename type="middle">N</forename><surname>Kok Hao Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeffrey</forename><forename type="middle">R</forename><surname>Boettiger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Siyuan</forename><surname>Moffitt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaowei</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Zhuang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">348</biblScope>
+			<biblScope unit="issue">6233</biblScope>
+			<biblScope unit="page">6090</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">High-plex imaging of rna and proteins at subcellular resolution in fixed tissue by spatial molecular imaging</title>
+		<author>
+			<persName><forename type="first">Shanshan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruchir</forename><surname>Bhatt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carl</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Emily</forename><forename type="middle">A</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Derek</forename><forename type="middle">L</forename><surname>Buhr</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kan</forename><surname>Chantranuvatana</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Patrick</forename><surname>Danaher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dwayne</forename><surname>Dunaway</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ryan</forename><forename type="middle">G</forename><surname>Garrison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gary</forename><surname>Geiss</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature biotechnology</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="issue">12</biblScope>
+			<biblScope unit="page" from="1794" to="1806" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">A high-resolution transcriptomic and spatial atlas of cell types in the whole mouse brain</title>
+		<author>
+			<persName><forename type="first">Zizhen</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cindy Tj</forename><surname>Van Velthoven</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Kunst</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Delissa</forename><surname>Mcmillen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Changkyu</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Won</forename><surname>Jung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeff</forename><surname>Goldy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aliya</forename><surname>Abdelhak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matthew</forename><surname>Aitken</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">624</biblScope>
+			<biblScope unit="issue">7991</biblScope>
+			<biblScope unit="page" from="317" to="332" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Cellprofiler 4: improvements in speed, utility and usability</title>
+		<author>
+			<persName><forename type="first">Madison</forename><forename type="middle">J</forename><surname>David R Stirling</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alice</forename><forename type="middle">M</forename><surname>Swain-Bowden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anne</forename><forename type="middle">E</forename><surname>Lucas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Beth</forename><forename type="middle">A</forename><surname>Carpenter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Allen</forename><surname>Cimini</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Goodman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">BMC bioinformatics</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="1" to="11" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Giovanni</forename><surname>Palla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hannah</forename><surname>Spitzer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michal</forename></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Squidpy: a scalable framework for spatial omics analysis</title>
+		<author>
+			<persName><forename type="first">David</forename><surname>Klein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anna</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christina</forename><surname>Schaar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Louis</forename><surname>Benedikt Kuemmerle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sergei</forename><surname>Rybakov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ignacio</forename><forename type="middle">L</forename><surname>Ibarra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Olle</forename><surname>Holmberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Isaac</forename><surname>Virshup</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature methods</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="171" to="178" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Python 3 Reference Manual</title>
+		<author>
+			<persName><forename type="first">Guido</forename><surname>Van Rossum</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fred</forename><forename type="middle">L</forename><surname>Drake</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">CreateSpace</title>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<pubPlace>Scotts Valley, CA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Pytorch: An imperative style, highperformance deep learning library</title>
+		<author>
+			<persName><forename type="first">Adam</forename><surname>Paszke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sam</forename><surname>Gross</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Francisco</forename><surname>Massa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adam</forename><surname>Lerer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">James</forename><surname>Bradbury</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gregory</forename><surname>Chanan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Trevor</forename><surname>Killeen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zeming</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Natalia</forename><surname>Gimelshein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luca</forename><surname>Antiga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alban</forename><surname>Desmaison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andreas</forename><surname>Kopf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Edward</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zachary</forename><surname>Devito</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Raison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alykhan</forename><surname>Tejani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sasank</forename><surname>Chilamkurthy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Benoit</forename><surname>Steiner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lu</forename><surname>Fang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junjie</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Soumith</forename><surname>Chintala</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="8024" to="8035" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">The numpy array: a structure for efficient numerical computation</title>
+		<author>
+			<persName><forename type="first">Stefan</forename><surname>Van Der Walt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Colbert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gael</forename><surname>Varoquaux</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computing in Science &amp; Engineering</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page">22</biblScope>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<monogr>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Travis</forename><surname>Oliphant</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pearu</forename><surname>Peterson</surname></persName>
+		</author>
+		<title level="m">Open source scientific tools for Python</title>
+		<imprint>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<monogr>
+		<author>
+			<persName><forename type="first">G</forename><surname>Bradski</surname></persName>
+		</author>
+		<title level="m">The OpenCV Library. Dr. Dobb&apos;s Journal of Software Tools</title>
+		<imprint>
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<monogr>
+		<author>
+			<persName><forename type="first">Christoph</forename><surname>Gohlke</surname></persName>
+		</author>
+		<title level="m">cgohlke/imagecodecs: v2024</title>
+		<imprint>
+			<date type="published" when="2024-01">v2024.1.1)., 2024</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page">1</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<monogr>
+		<author>
+			<persName><forename type="first">Christoph</forename><surname>Gohlke</surname></persName>
+		</author>
+		<title level="m">cgohlke/tifffile</title>
+		<imprint>
+			<date type="published" when="2004">2022. v2022.5.4</date>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page">2022</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">William</forename><surname>Silversmith</surname></persName>
+		</author>
+		<ptr target="https://github.com/seung-lab/fastremap" />
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title level="a" type="main">&apos;tqdm&apos;: A fast, extensible progress meter for python and cli</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Casper</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Da Costa-Luis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Open Source Software</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="issue">37</biblScope>
+			<biblScope unit="page">1277</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<monogr>
+		<title level="m" type="main">Rapid GUI Programming with Python and Qt: The Definitive Guide to PyQt Programming (paperback)</title>
+		<author>
+			<persName><forename type="first">Mark</forename><surname>Summerfield</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+			<publisher>Pearson Education</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<monogr>
+		<title level="m" type="main">Scientific graphics and gui library for python</title>
+		<author>
+			<persName><forename type="first">Luke</forename><surname>Campagnola</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Talley</forename><surname>Lambert</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Superqt</surname></persName>
+		</author>
+		<ptr target="https://github.com/pyapp-kit/superqt" />
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Matplotlib: A 2d graphics environment</title>
+		<author>
+			<persName><forename type="first">John D</forename><surname>Hunter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Kluyver</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computing in science &amp; engineering</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page">90</biblScope>
+			<date type="published" when="2007">2007</date>
+			<pubPlace>Benjamin Ragan-Kelley</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">Jupyter notebooks-a publishing format for reproducible computational workflows</title>
+		<author>
+			<persName><forename type="first">Brian</forename><forename type="middle">E</forename><surname>Fernando P Érez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matthias</forename><surname>Granger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jonathan</forename><surname>Bussonnier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kyle</forename><surname>Frederic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jessica</forename><forename type="middle">B</forename><surname>Kelley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Hamrick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sylvain</forename><surname>Grout</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Corlay</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ELPUB</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="87" to="90" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<monogr>
+		<author>
+			<persName><forename type="first">Ilya</forename><surname>Loshchilov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Frank</forename><surname>Hutter</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1711.05101</idno>
+		<title level="m">Decoupled weight decay regularization</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title level="a" type="main">Hover-net: Simultaneous segmentation and classification of nuclei in multi-tissue histology images</title>
+		<author>
+			<persName><forename type="first">Simon</forename><surname>Graham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc</forename><forename type="middle">Dang</forename><surname>Vu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shan</forename><forename type="middle">E</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ahmed</forename><surname>Raza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ayesha</forename><surname>Azam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yee</forename><forename type="middle">Wah</forename><surname>Tsang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jin</forename><forename type="middle">Tae</forename><surname>Kwak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nasir</forename><surname>Rajpoot</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical image analysis</title>
+		<imprint>
+			<biblScope unit="volume">58</biblScope>
+			<biblScope unit="page">101563</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">Deep residual learning for image recognition</title>
+		<author>
+			<persName><forename type="first">Kaiming</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangyu</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoqing</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="770" to="778" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<monogr>
+		<author>
+			<persName><forename type="first">Olaf</forename><surname>Ronneberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Philipp</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Brox</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">. U-Net</forename></persName>
+		</author>
+		<idno type="arXiv">arXiv:1505.04597</idno>
+		<idno>arXiv: 1505.04597</idno>
+		<title level="m">Convolutional Networks for Biomedical Image Segmentation</title>
+		<imprint>
+			<date type="published" when="2015-05">May 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title level="a" type="main">Feature pyramid networks for object detection</title>
+		<author>
+			<persName><forename type="first">Tsung-Yi</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Piotr</forename><surname>Doll Ár</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ross</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kaiming</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bharath</forename><surname>Hariharan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Serge</forename><surname>Belongie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="2117" to="2125" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<monogr>
+		<title level="m" type="main">Harmony of data-centric and model-centric for multi-modality microscopy</title>
+		<author>
+			<persName><forename type="first">Gihun</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sangmook</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joonkee</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Se-Young</forename><surname>Yun</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Mediar</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2212.03465</idno>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<monogr>
+		<author>
+			<persName><forename type="first">Titus</forename><surname>Griebel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anwai</forename><surname>Archit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Constantin</forename><surname>Pape</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2502.00408</idno>
+		<title level="m">Segment anything for histopathology</title>
+		<imprint>
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<monogr>
+		<title level="m" type="main">The multi-modality cell segmentation challenge: towards universal solutions</title>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ronald</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shamini</forename><surname>Ayyadhury</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cheng</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anubha</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ritu</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Song</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yao</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gihun</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joonkee</forename><surname>Kim</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2308.05864</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<analytic>
+		<title level="a" type="main">Ccdb:6843, mus musculus, neuroblastoma</title>
+		<author>
+			<persName><forename type="first">Weimiao</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hwee</forename><surname>Kuan Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Srivats</forename><surname>Hariharan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wen</forename><surname>Yu Bu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sohail</forename><surname>Ahmed</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell Image Library</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<analytic>
+		<title level="a" type="main">Annotated high-throughput microscopy image sets for validation</title>
+		<author>
+			<persName><forename type="first">Vebjorn</forename><surname>Ljosa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Katherine</forename><forename type="middle">L</forename><surname>Sokolnicki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anne</forename><forename type="middle">E</forename><surname>Carpenter</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Methods</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="637" to="637" />
+			<date type="published" when="2012-07">July 2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b80">
+	<analytic>
+		<title level="a" type="main">Voronoi-Based Segmentation of Cells on Image Manifolds</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Thouis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anne</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Polina</forename><surname>Carpenter</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Golland</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Computer Vision for Biomedical Image Applications</title>
+		<title level="s">Lecture Notes in Computer Science</title>
+		<editor>
+			<persName><forename type="first">Yanxi</forename><surname>Liu</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Tianzi</forename><surname>Jiang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Changshui</forename><surname>Zhang</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Berlin, Heidelberg</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2005">2005</date>
+			<biblScope unit="page" from="535" to="543" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b81">
+	<monogr>
+		<title level="m" type="main">Image data resource</title>
+		<author>
+			<persName><surname>Omero</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b82">
+	<analytic>
+		<title level="a" type="main">Micro-Net: A unified model for segmentation of various objects in microscopy images</title>
+		<author>
+			<persName><forename type="first">Shan</forename><forename type="middle">E</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ahmed</forename><surname>Raza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Linda</forename><surname>Cheung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Muhammad</forename><surname>Shaban</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Simon</forename><surname>Graham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Epstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stella</forename><surname>Pelengaris</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Khan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nasir</forename><forename type="middle">M</forename><surname>Rajpoot</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical Image Analysis</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="page" from="160" to="173" />
+			<date type="published" when="2019-02">February 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b83">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Konstantin</forename><surname>Lopuhin</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">kaggle-dsbowl-2018dataset-fixes</note>
+</biblStruct>
+
+<biblStruct xml:id="b84">
+	<monogr>
+		<title level="m" type="main">Deepbacs -staphylococcus aureus widefield segmentation dataset</title>
+		<author>
+			<persName><forename type="first">Pedro</forename><forename type="middle">Matos</forename><surname>Pereira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mariana</forename><surname>Pinho</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2021-10">October 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b85">
+	<monogr>
+		<title level="m" type="main">Deepbacs -escherichia coli bright field segmentation dataset</title>
+		<author>
+			<persName><forename type="first">Christoph</forename><surname>Spahn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mike</forename><surname>Heilemann</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2021-10">October 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b86">
+	<monogr>
+		<title level="m" type="main">Deepbacs -bacillus subtilis fluorescence segmentation dataset</title>
+		<author>
+			<persName><forename type="first">Holden</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mia</forename><surname>Conduit</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2021-10">October 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

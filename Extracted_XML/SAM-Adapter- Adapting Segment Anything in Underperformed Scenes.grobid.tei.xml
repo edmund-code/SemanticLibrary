@@ -1,0 +1,1964 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">SAM-Adapter: Adapting Segment Anything in Underperformed Scenes</title>
+				<funder ref="#_zjfsVfn">
+					<orgName type="full">Ltd</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Tianrun</forename><surname>Chen</surname></persName>
+							<email>tianrun.chen@zju.edu.cn</email>
+							<affiliation key="aff0">
+								<orgName type="institution">Zhejiang University</orgName>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="laboratory">KOKONI</orgName>
+								<address>
+									<settlement>Moxin</settlement>
+									<country>Huzhou) Technology</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff2">
+								<orgName type="institution">Huzhou University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Lanyun</forename><surname>Zhu</surname></persName>
+							<email>zhu@mymail.sutd.edu.sg</email>
+							<affiliation key="aff4">
+								<orgName type="institution">Beihang University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Chaotao</forename><surname>Ding</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="institution">Singapore University of Technology and Design</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Runlong</forename><surname>Cao</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="institution">Singapore University of Technology and Design</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Yan</forename><surname>Wang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Shangzhan</forename><surname>Zhang</surname></persName>
+							<email>zhang3z@zju.edu.cn</email>
+							<affiliation key="aff1">
+								<orgName type="laboratory">KOKONI</orgName>
+								<address>
+									<settlement>Moxin</settlement>
+									<country>Huzhou) Technology</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Zejian</forename><surname>Li</surname></persName>
+							<email>zejianlee@zju.edu.cn</email>
+							<affiliation key="aff1">
+								<orgName type="laboratory">KOKONI</orgName>
+								<address>
+									<settlement>Moxin</settlement>
+									<country>Huzhou) Technology</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Lingyun</forename><surname>Sun</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="laboratory">KOKONI</orgName>
+								<address>
+									<settlement>Moxin</settlement>
+									<country>Huzhou) Technology</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Ying</forename><surname>Zang</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="institution">Singapore University of Technology and Design</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Papa</forename><surname>Mao</surname></persName>
+						</author>
+						<title level="a" type="main">SAM-Adapter: Adapting Segment Anything in Underperformed Scenes</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">4BAD926632659F68ABF19127D7B29240</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:09+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>The emergence of large models, also known as foundation models, has brought significant advancements to AI research. One such model is Segment Anything (SAM), which is designed for image segmentation tasks. However, as with other foundation models, our experimental findings suggest that SAM may fail or perform poorly in certain segmentation tasks, such as shadow detection and camouflaged object detection (concealed object detection). This study first paves the way for applying the large pre-trained image segmentation model SAM to these downstream tasks, even in situations where SAM performs poorly. Rather than finetuning the SAM network, we propose SAM-Adapter, which incorporates domain-specific information or visual prompts into the segmentation network by using simple yet effective adapters. By integrating task-specific knowledge with general knowledge learnt by the large model, SAM-Adapter can significantly elevate the performance of SAM in challenging tasks as shown in extensive experiments. We can even outperform task-specific network models and achieve stateof-the-art performance in the task we tested: camouflaged object detection, shadow detection. Our code of adapting SAM in downstream applications have been released publicly at <ref type="url" target="https://github.com/tianrun-chen/SAM-Adapter-">https://github.com/tianrun-chen/SAM-Adapter-</ref>PyTorch/ and has benefited many researchers. We believe our work opens up opportunities for utilizing SAM in downstream tasks, with potential applications in various fields, including medical image processing, agriculture, remote sensing, and more.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Introduction</head><p>AI research has witnessed a paradigm shift with models trained on vast amounts of data at scale. These models, or known as foundation models, such as BERT, DALL-E, and GPT-3 have shown promising results in many language or vision tasks <ref type="bibr" target="#b1">[2]</ref>. Recently, among the foundation models, Segment Anything (SAM) <ref type="bibr" target="#b23">[24]</ref> has a distinct position as a generic image segmentation model trained on the large visual corpus <ref type="bibr" target="#b23">[24]</ref>. It has been demonstrated that SAM has successful segmentation capabilities in diverse scenarios, which makes it a groundbreaking step toward image segmentation and related fields of computer vision.</p><p>However, as computer vision encompasses a broad spectrum of problems, SAM's incompleteness is evident, which is similar to other foundation models since the training data cannot encompass the entire corpus, and working scenarios are subject to variation <ref type="bibr" target="#b1">[2]</ref>. In this study, we first test SAM in some challenging low-level structural segmentation tasks including camouflaged object detection (concealed scenes) and shadow detection, and we find that the SAM model trained on general images cannot perfectly "Segment Anything" in these cases.</p><p>As such, a crucial research problem is: How to harness the capabilities acquired by large models from massive corpora and leverage them to benefit downstream tasks?</p><p>Here, we introduce the SAM-Adapter, which serves as a solution to the research problem mentioned above. To the best of our knowledge, this pioneering work has been the first attempt to adapt the large pre-trained image segmentation model SAM to specific downstream tasks with enhanced performance. As its name states, SAM-Adapter is a very simple yet effective adaptation technique that leverages internal knowledge and external control signal. Specif-ically, it is a lightweight model that can learn alignment with a relatively small amount of data and serves as an additional network to inject task-specific guidance information from the samples of that task. Information is conveyed to the network using visual prompts <ref type="bibr" target="#b48">[49,</ref><ref type="bibr" target="#b32">33]</ref>, which has been demonstrated to be efficient and effective in adapting a frozen large foundation model to many downstream tasks with a minimum number of additional trainable parameters and less fine-tuning time and resource consumption.</p><p>Specifically, we show that our method is:</p><p>• Generalizable: SAM-Adapter can be directly applied to customized datasets of various tasks to enhance performance with the assistance of SAM.</p><p>• Composable: It is effortless to combine multiple explicit conditions to fine-tune SAM with multicondition control.</p><p>• Efficient and Effective: Our method is more time and resource-efficient and obtains better result than datadriven fine-tuning without the injection of task-specific information, as demonstrated in our ablation experiment.</p><p>We perform extensive experiments on multiple tasks and datasets, including ISTD for shadow detection <ref type="bibr" target="#b46">[47]</ref> and COD10K <ref type="bibr" target="#b11">[12]</ref>, CHAMELEON <ref type="bibr" target="#b42">[43]</ref>, CAMO <ref type="bibr" target="#b26">[27]</ref> for camouflaged object detection task. Benefiting from the capability of SAM and our SAM-Adapter, our method achieves state-of-the-art (SOTA) performance on both tasks. The contributions of this work can be summarized as follows:</p><p>• First, we pioneer the analysis of the incompleteness of the Segment Anything (SAM) model as a foundation model and propose a research problem of how to utilize the SAM model to serve downstream tasks.</p><p>• Second, we are the first to propose the adaptation approach, SAM-Adapter, to adapt SAM to downstream tasks and achieve enhanced performance. The adapter integrates the task-specific knowledge with general knowledge learnt by the large model. The task-specific knowledge can be flexibly designed.</p><p>• Third, despite SAM's backbone being a simple plain model lacking specialized structures tailored for the two specific downstream tasks, our approach still surpasses existing methods and attains state-of-the-art (SOTA) performance in these downstream tasks.</p><p>To the best of our knowledge, this work pioneers to demonstrate the exceptional ability of SAM to transfer to other specific data domains with remarkable accuracy. While we only tested it on a few datasets, we expect SAM-Adapter can serve as an effective and adaptable tool for various downstream segmentation tasks in different fields, including medical and agriculture. Within two weeks of the SAM model's release, we made our SAM-Adapter's training and evaluation code, along with its checkpoints, publicly available, which has already been a valuable resource for many researchers in the community to experiment with and build upon.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Related Work</head><p>Semantic Segmentation. In recent years, semantic segmentation has made significant progress, primarily due to the remarkable advancements in deep-learning-based methods such as fully convolutional networks (FCN) <ref type="bibr" target="#b34">[35]</ref>, encoder-decoder structures <ref type="bibr" target="#b40">[41,</ref><ref type="bibr" target="#b49">50,</ref><ref type="bibr" target="#b13">14,</ref><ref type="bibr" target="#b0">1,</ref><ref type="bibr" target="#b28">29]</ref>, dilated convolutions <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b3">4,</ref><ref type="bibr" target="#b4">5,</ref><ref type="bibr" target="#b5">6,</ref><ref type="bibr" target="#b33">34]</ref>, pyramid structures <ref type="bibr" target="#b59">[60,</ref><ref type="bibr" target="#b4">5,</ref><ref type="bibr" target="#b51">52,</ref><ref type="bibr" target="#b5">6,</ref><ref type="bibr" target="#b56">57]</ref>, attention modules <ref type="bibr" target="#b50">[51,</ref><ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b61">62]</ref>, and transformers <ref type="bibr" target="#b53">[54,</ref><ref type="bibr" target="#b47">48,</ref><ref type="bibr" target="#b44">45,</ref><ref type="bibr" target="#b7">8]</ref>. Building upon previous research, Segment Anything (SAM) <ref type="bibr" target="#b23">[24]</ref> introduces a large ViT-based model trained on a large visual corpus. This work aims to leverage the SAM to solve specific downstream image segmentation tasks.</p><p>Adapters. The concept of Adapters was first introduced in the NLP community <ref type="bibr" target="#b18">[19]</ref> as a tool to fine-tune a large pre-trained model for each downstream task with a compact and scalable model. In <ref type="bibr" target="#b43">[44]</ref>, multi-task learning was explored with a single BERT model shared among a few task-specific parameters. In the computer vision community, <ref type="bibr" target="#b29">[30]</ref> suggested fine-tuning the ViT <ref type="bibr" target="#b10">[11]</ref> for object detection with minimal modifications. Recently, ViT-Adapter <ref type="bibr" target="#b6">[7]</ref> leveraged Adapters to enable a plain ViT to perform various downstream tasks. <ref type="bibr" target="#b32">[33]</ref> introduce an Explicit Visual Prompting (EVP) technique that can incorporate explicit visual cues to the Adapter. However, no prior work has tried to apply Adapters to leverage pretrained image segmentation model SAM trained at large image corpus. Here, we mitigate the research gap. Camouflaged Object Detection (COD). Camouflaged object detection, or concealed object detection is a challenging but useful task that identifies objects blend in with their surroundings. COD has wide applications in medicine, agriculture, and art. Initially, researches of camouflage detection relied on low-level features like texture, brightness, and color <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b39">40,</ref><ref type="bibr" target="#b17">18,</ref><ref type="bibr" target="#b41">42]</ref> to distinguish foreground from background. It is worth noting that some of these prior knowledge is critical in identifying the objects, and is used to guide the neural network in this paper.</p><p>Le et al. <ref type="bibr" target="#b26">[27]</ref> first proposed an end-to-end network consisting of a classification and a segmentation branch. Recent advances in deep learning-based methods have shown a superior ability to detect complex camouflaged objects <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b36">37,</ref><ref type="bibr" target="#b30">31]</ref>. In this work, we leverage the advanced neural network backbone (a foundation model -SAM) with the input of task-specific prior knowledge to achieve the stateof-the-art (SOTA) performance. Shadow Detection. Shadows can occur when an object surface is not directly exposed to light. They offer hints on light source direction and scene illumination that can aid scene comprehension <ref type="bibr" target="#b22">[23,</ref><ref type="bibr" target="#b24">25]</ref>. They can also negatively impact the performance of computer vision tasks <ref type="bibr" target="#b38">[39,</ref><ref type="bibr" target="#b8">9]</ref>. Early method use hand-crafted heuristic cues like chromacity, intensity and texture <ref type="bibr" target="#b20">[21,</ref><ref type="bibr" target="#b24">25,</ref><ref type="bibr" target="#b55">56]</ref>. Deep learning approaches leverage the knowledge learnt from data and use delicately designed neural network structure to capture the information (e.g. learned attention modules) <ref type="bibr" target="#b25">[26,</ref><ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b57">58]</ref>. This work leverage the heuristic priors with large neural network models to achieve the state-of-the-art (SOTA) performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Method</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.">Using SAM as the Backbone</head><p>As previously illustrated, the goal of the SAM-Adapter is to leverage the knowledge learned from the SAM. Therefore, we use SAM as the backbone of the segmentation network. The image encoder of SAM is a ViT-H/16 model with 14x14 windowed attention and four equally-spaced global attention blocks. We keep the weight of pretrained image encoder frozen. We also leverage the mask decoder of the SAM, which consists of a modified transformer decoder block followed by a dynamic mask prediction head. We use the pretrained SAM's weight to initialize the weight of the mask decoder of our approach and tune the mask decoder during training. We input no prompts into the original mask decoder of SAM.</p><p>Next, the task-specific knowledge F i is learned and injected into the network via Adapters. We employ the concept of prompting, which utilizes the fact that foundation models have been trained on large-scale datasets. Using appropriate prompts to introduce task-specific knowledge <ref type="bibr" target="#b32">[33]</ref> can enhance the model's generalization ability on downstream tasks, especially when annotated data is scarce.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.">Adapters</head><p>The architecture of the proposed SAM-Adapter is illustrated in Figure <ref type="figure" target="#fig_0">1</ref>. We aim to keep the design of the adapter to be simple and efficient. Therefore, we choose to use an adapter that consists of only two MLPs and an activate function within two MLPs <ref type="bibr" target="#b32">[33]</ref>. Specifically, the adapter takes the information F i and obtains the prompt P i :</p><formula xml:id="formula_0">P i = MLP up GELU MLP i tune (F i )<label>(1)</label></formula><p>in which MLP i tune are linear layers used to generate taskspecific prompts for each Adapter. MLP up is an upprojection layer shared across all Adapters that adjusts the dimensions of transformer features. P i refers to the output prompt that is attached to each transformer layer of SAM model. GELU is the GELU activation function <ref type="bibr" target="#b16">[17]</ref>. The information F i can be chosen to be in various forms.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3.">Input Task-Specific Information</head><p>It is worth noting that the information F i can be in various forms depending on the task and flexibly designed. For example, it can be extracted from the given samples of the specific dataset of the task in some form, such as texture or frequency information, or some hand-crafted rules. Moreover, the F i can be in a composition form consisting multiple guidance information:</p><formula xml:id="formula_1">F i = N 1 w j F j (2)</formula><p>in which F j can be one specific type of knowledge/features and w j is an adjustable weight to control the composed strength.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">Experiments</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.">Tasks and Datasets</head><p>We select two challenging low-level structural segmentation task for SAM -camouflaged object detection and shadow detection. For camouflaged object detection, we choose COD10K dataset <ref type="bibr" target="#b11">[12]</ref>, CHAMELEON dataset <ref type="bibr" target="#b42">[43]</ref>, and CAMO dataset <ref type="bibr" target="#b26">[27]</ref> in our experiment. COD10K is the largest dataset for camouflaged object detection containing 3,040 training and 2,026 testing samples. CHAMELEON includes 76 images collected from the Internet for testing. CAMO dataset consists of 1250 images (1000 images for the training set and 250 images for the testing set). Following the training protocol in <ref type="bibr" target="#b11">[12]</ref>, we use combined dataset of CAMO and COD10K (the training set of camouflaged images) for training, and use the test set of CAMO, COD10K and the entire CHAMELEON dataset for performance evaluation. For shadow detection, we use ISTD dataset <ref type="bibr" target="#b46">[47]</ref>, which contains 1,330 training images and 540 test images. For SAM model, we use the official implementation and tried different prompting approaches.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.">Implementation Details</head><p>In the experiment, we choose two types of visual knowledge, patch embedding F pe and high-frequency components F hf c , following the same setting in <ref type="bibr" target="#b32">[33,</ref><ref type="bibr" target="#b47">48]</ref>, which has been demonstrated effective in many vision tasks. Specifically, the effectiveness of high-frequency component has long been investigated in shadow detection (Shadow edges are generally characterized by high-frequency variations in illumination) <ref type="bibr" target="#b21">[22]</ref> and camouflage detection <ref type="bibr" target="#b54">[55]</ref>. In the experiment, we w j is set to 1. Therefore, the F i is derived by</p><formula xml:id="formula_2">F i = F hf c + F pe . (<label>3</label></formula><formula xml:id="formula_3">)</formula><p>The MLP i tune has 32 linear layers and MLP i up is one linear layer that maps the output from GELU activation to  </p><formula xml:id="formula_4">Method CHAMELEON [43] CAMO [27] COD10K [12] S α ↑ E φ ↑ F ω β ↑ MAE ↓ S α ↑ E φ ↑ F ω β ↑ MAE ↓ S α ↑ E φ ↑ F ω β ↑ MAE ↓ SINet[</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.">Experimental Result for Camouflaged Object Detection</head><p>We first evaluate SAM in camouflaged object detection task, which is a very challenging task as foreground objects are often with visual similar patterns to the background. Our experiments revealed that SAM did not perform well in this task. As shown in Figure <ref type="figure" target="#fig_1">2</ref>, SAM failed to detect some concealed objects. This can be further confirmed by the quantitative results presented in Table <ref type="table" target="#tab_0">1</ref>. In fact, SAM's performance was significantly lower than the existing stateof-the-art methods in all metrics evaluated.</p><p>In Figure <ref type="figure" target="#fig_1">2</ref>, it can be found clearly that by introducing the SAM-Adapter, our method significantly elevates the performance of the model (+17.9% in S α ). Our approach successfully identifies concealed objects, as evidenced by clear visual results. Quantitative results also show that our method outperforms the existing state-of-the-art method.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4.">Experimental Result for Shadow Detection</head><p>We also evaluated SAM on the task of shadow detection. However, as depicted in Figure <ref type="figure" target="#fig_2">3</ref>, SAM struggled to differentiate between the shadow and the background information with parts missing or mistakenly added.</p><p>In our study, we evaluated various methods for shadow detection and found that our results were significantly poorer than existing methods. However, by integrating the  SAM-Adapter, we were able to significantly improve the performance of our approach. The SAM-Adapter was able to improve the detection of shadow regions, making them more clearly identifiable. Our results were verified through quantitative analysis, and Table <ref type="table" target="#tab_1">2</ref> demonstrates the performance boost that was brought about by the SAM-Adapter for shadow detection.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.5.">Experimental Result for Different Prompting Approaches of SAM</head><p>It is also worth noticing that the results of SAM model are heavily influenced by different prompting approaches, especially when multiple objects in an image are presence. We argue that in the two settings we tested, the desired seg-mentation mask is only one region per image, which do not have the ambiguity. As illustrated in Fig. <ref type="figure" target="#fig_3">4</ref>, we also test the different prompting techniques without human explicitly assign regions that need to be segmented, but allow the network to find the segmentation region. Following the official SAM implementation, with input point prompts sampled in a unified manner across the image (SAM online in the figure <ref type="figure" target="#fig_3">4</ref>), and a box of a whole image (SAM in the figure), both prompting settings cannot allow SAM find the right regions to be segmented.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.6.">Ablation Study for SAM-Adapter</head><p>Our ablation study demonstrates the importance of incorporating adapter to improve the performance of the pre-Method CHAMELEON <ref type="bibr" target="#b42">[43]</ref> CAMO <ref type="bibr" target="#b26">[27]</ref> COD10K</p><formula xml:id="formula_5">[12] S α ↑ E φ ↑ F ω β ↑ MAE ↓ S α ↑ E φ ↑ F ω β ↑ MAE ↓ S α ↑ E φ ↑ F ω β ↑ MAE ↓ w/o SAM-</formula><p>Adapter 0.796 0.802 0.676 0.062 0.750 0.756 0.639 0.105 0.789 0.817 0.596 0.049 w/ SAM-Adapter 0.896 0.919 0.824 0.033 0.847 0.873 0.765 0.070 0.883 0.918 0.801 0.025</p><p>Table 3. The Ablation Study. We remove the adapter (w/o SAM-Adapter) and fine-tune the SAM decoder. The result shows the effectiveness of SAM-Adapter. trained foundation model. By removing the input of F hf c and F pe while keeping the training and testing protocols constant, we confirm that introducing visual prompting information is effective, further validating the effectiveness of SAM-Adapter. The experiment is conducted at the camouflage detection task.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Conclusion</head><p>In this work, we first extend the Segment Anything (SAM) model and apply it to some downstream tasks. Our experiments reveal that, like other foundational models, SAM is not effective in some vision tasks, for example, dealing with concealed objects. Therefore, we propose the SAM-Adapter, which utilizes SAM as the backbone and injects customized information into the network through simple yet effective Adapters to enhance performance in specific tasks. We evaluate our approach in camouflaged object detection and shadow detection tasks and demonstrate that the SAM-Adapter not only significantly improves SAM's performance but also achieves state-of-the-art (SOTA) results. We anticipate that this work will pave the way for applying SAM in downstream tasks and will have significant impacts in various image segmentation and computer vision fields.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">Future Work</head><p>This study showcases the effectiveness and versatility of using adapters and large foundation models. Our SAM-Adapter's training and evaluation code, as well as its checkpoints, have been made publicly available, providing a valuable resource for researchers in the community to experiment with and build upon. Moving forward, we plan to extend the SAM-Adapter to tackle even more challenging image segmentation tasks and broaden its application to other fields. We also anticipate the development of more specialized designs tailored to specific tasks.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 .</head><label>1</label><figDesc>Figure 1. The Architecture of the Proposed SAM-Adapter.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 .</head><label>2</label><figDesc>Figure 2. The Visualization Results of Camouflaged Image Segmentation. The 1-5 columns are results from CAMO dataset, the 6-9 colums are results from the COD-10K dataset. As illustrated in the figure, the SAM failed to perceive those animals that are visually 'hidden'/concealed in their natural surroundings. By using SAM-Adapter, our approach can significantly elevate the performance of object segmentation with SAM.</figDesc><graphic coords="5,58.17,71.06,250.67,159.89" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 .</head><label>3</label><figDesc>Figure 3. The Visualization Results of Shadow Detection.As illustrated in the figure, the SAM failed to distinguish the shadow and the background object. The SAM is used with the box prompt with the size of a whole image as the input and no input point prompts. By using SAM-adaptor, our approach can significantly elevate the performance of object segmentation with SAM.</figDesc><graphic coords="5,100.71,288.37,415.86,206.55" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 4 .</head><label>4</label><figDesc>Figure 4. The Visualization Results of Object Segmentation with Different Prompting Approach of SAM. The first row is the camouflage detection task, the second row is the shadow detection task. We use the SAM with input point prompts sampled in a unified manner across the image (the everything mode that produce multiple masks of the SAM online demo, denoted SAM online in the figure), and no input points but a mask box with the size of the image as the prompt, denoted SAM. It can be found that in different prompting mode, SAM cannot fully identify the desired region. SAM-Adapter can significantly elevate the performance of object segmentation with SAM.</figDesc><graphic coords="6,131.62,165.12,350.78,164.49" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 .</head><label>1</label><figDesc>Quantitative Result for Camouflage Detection</figDesc><table><row><cell>13]</cell><cell cols="2">0.869 0.891 0.740</cell><cell>0.440</cell><cell cols="2">0.751 0.771 0.606</cell><cell>0.100</cell><cell cols="2">0.771 0.806 0.551</cell><cell>0.051</cell></row><row><cell>RankNet[36]</cell><cell cols="2">0.846 0.913 0.767</cell><cell>0.045</cell><cell cols="2">0.712 0.791 0.583</cell><cell>0.104</cell><cell cols="2">0.767 0.861 0.611</cell><cell>0.045</cell></row><row><cell>JCOD [28]</cell><cell>0.870 0.924</cell><cell>-</cell><cell>0.039</cell><cell>0.792 0.839</cell><cell>-</cell><cell>0.82</cell><cell>0.800 0.872</cell><cell>-</cell><cell>0.041</cell></row><row><cell>PFNet [38]</cell><cell cols="2">0.882 0.942 0.810</cell><cell>0.330</cell><cell cols="2">0.782 0.852 0.695</cell><cell>0.085</cell><cell cols="2">0.800 0.868 0.660</cell><cell>0.040</cell></row><row><cell>FBNet [32]</cell><cell cols="2">0.888 0.939 0.828</cell><cell>0.032</cell><cell cols="2">0.783 0.839 0.702</cell><cell>0.081</cell><cell cols="2">0.809 0.889 0.684</cell><cell>0.035</cell></row><row><cell>SAM [24]</cell><cell cols="2">0.727 0.734 0.639</cell><cell>0.081</cell><cell cols="2">0.684 0.687 0.606</cell><cell>0.132</cell><cell cols="2">0.783 0.798 0.701</cell><cell>0.050</cell></row><row><cell cols="3">SAM-Adapter (Ours) 0.896 0.919 0.824</cell><cell>0.033</cell><cell cols="2">0.847 0.873 0.765</cell><cell>0.070</cell><cell cols="2">0.883 0.918 0.801</cell><cell>0.025</cell></row><row><cell cols="5">the number of inputs of the transformer layer. We use ViT-</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">H version of SAM. Balanced BCE loss is used for shadow</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">detection. BCE loss and IOU loss are used for camouflaged</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">object detection. AdamW optimizer is used for all the ex-</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">periments. The initial learning rate is set to 2e-4. Cosine</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">decay is applied to the learning rate. The training of cam-</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">ouflaged object segmentation is performed for 20 epochs.</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">Shadow segmentation is trained for 90 epochs. The ex-</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">periments are implemented using PyTorch on four NVIDIA</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>Tesla A100 GPUs.</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 .</head><label>2</label><figDesc>Quantitative Result -Shadow Detection</figDesc><table><row><cell>Method</cell><cell>BER ↓</cell></row><row><cell>Stacked CNN [46]</cell><cell>8.60</cell></row><row><cell>BDRAR [59]</cell><cell>2.69</cell></row><row><cell>DSC [20]</cell><cell>3.42</cell></row><row><cell>DSD [53]</cell><cell>2.17</cell></row><row><cell>FDRNet [61]</cell><cell>1.55</cell></row><row><cell>SAM [24]</cell><cell>40.51</cell></row><row><cell>SAM-Adapter (Ours)</cell><cell>1.43</cell></row></table></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head n="7.">Acknowledgement</head><p>This work is partially funded by and done at <rs type="institution">Moxin (Huzhou) Technology Co.</rs>, <rs type="funder">Ltd</rs> (<rs type="grantNumber">KOKONI 3D</rs>). We thank <rs type="person">Prof. Jun Liu</rs> at <rs type="affiliation">Singapore University of Technology and Design</rs> for meaningful discussion.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_zjfsVfn">
+					<idno type="grant-number">KOKONI 3D</idno>
+				</org>
+			</listOrg>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Segnet: A deep convolutional encoder-decoder architecture for image segmentation</title>
+		<author>
+			<persName><forename type="first">Vijay</forename><surname>Badrinarayanan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alex</forename><surname>Kendall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Roberto</forename><surname>Cipolla</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE transactions on pattern analysis and machine intelligence</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="page" from="2481" to="2495" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m" type="main">On the opportunities and risks of foundation models</title>
+		<author>
+			<persName><forename type="first">Rishi</forename><surname>Bommasani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Drew</forename><forename type="middle">A</forename><surname>Hudson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ehsan</forename><surname>Adeli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Russ</forename><surname>Altman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Simran</forename><surname>Arora</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Sydney Von Arx</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeannette</forename><surname>Michael S Bernstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Antoine</forename><surname>Bohg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Emma</forename><surname>Bosselut</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Brunskill</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2108.07258</idno>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title level="m" type="main">Semantic image segmentation with deep convolutional nets and fully connected crfs</title>
+		<author>
+			<persName><forename type="first">Liang-Chieh</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">George</forename><surname>Papandreou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Iasonas</forename><surname>Kokkinos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kevin</forename><surname>Murphy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1412.7062</idno>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Deeplab: Semantic image segmentation with deep convolutional nets, atrous convolution, and fully connected crfs</title>
+		<author>
+			<persName><forename type="first">Liang-Chieh</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">George</forename><surname>Papandreou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Iasonas</forename><surname>Kokkinos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kevin</forename><surname>Murphy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE transactions on pattern analysis and machine intelligence</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="834" to="848" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<title level="m" type="main">Rethinking atrous convolution for semantic image segmentation</title>
+		<author>
+			<persName><forename type="first">Liang-Chieh</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">George</forename><surname>Papandreou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Florian</forename><surname>Schroff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hartwig</forename><surname>Adam</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1706.05587</idno>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Encoder-decoder with atrous separable convolution for semantic image segmentation</title>
+		<author>
+			<persName><forename type="first">Liang-Chieh</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yukun</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">George</forename><surname>Papandreou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Florian</forename><surname>Schroff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hartwig</forename><surname>Adam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the European conference on computer vision (ECCV)</title>
+		<meeting>the European conference on computer vision (ECCV)</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="801" to="818" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title level="m" type="main">Vision transformer adapter for dense predictions</title>
+		<author>
+			<persName><forename type="first">Zhe</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuchen</forename><surname>Duan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenhai</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junjun</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tong</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jifeng</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Qiao</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2205.08534</idno>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Masked-attention mask transformer for universal image segmentation</title>
+		<author>
+			<persName><forename type="first">Bowen</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ishan</forename><surname>Misra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><forename type="middle">G</forename><surname>Schwing</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Kirillov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rohit</forename><surname>Girdhar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1290" to="1299" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Detecting moving objects, ghosts, and shadows in video streams</title>
+		<author>
+			<persName><forename type="first">Rita</forename><surname>Cucchiara</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Costantino</forename><surname>Grana</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Massimo</forename><surname>Piccardi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrea</forename><surname>Prati</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE transactions on pattern analysis and machine intelligence</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="1337" to="1342" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Towards ghost-free shadow removal via dual hierarchical aggregation network and shadow matting gan</title>
+		<author>
+			<persName><forename type="first">Xiaodong</forename><surname>Cun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chi-Man</forename><surname>Pun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cheng</forename><surname>Shi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI Conference on Artificial Intelligence</title>
+		<meeting>the AAAI Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="10680" to="10687" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title level="m" type="main">An image is worth 16x16 words: Transformers for image recognition at scale</title>
+		<author>
+			<persName><forename type="first">Alexey</forename><surname>Dosovitskiy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lucas</forename><surname>Beyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Kolesnikov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dirk</forename><surname>Weissenborn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaohua</forename><surname>Zhai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Unterthiner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mostafa</forename><surname>Dehghani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matthias</forename><surname>Minderer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Georg</forename><surname>Heigold</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sylvain</forename><surname>Gelly</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2010.11929</idno>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Camouflaged object detection</title>
+		<author>
+			<persName><forename type="first">Deng-Ping</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ge-Peng</forename><surname>Ji</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guolei</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming-Ming</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianbing</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ling</forename><surname>Shao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="2777" to="2787" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Camouflaged object detection</title>
+		<author>
+			<persName><forename type="first">Deng-Ping</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ge-Peng</forename><surname>Ji</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guolei</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming-Ming</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianbing</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ling</forename><surname>Shao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="2777" to="2787" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Rethinking bisenet for real-time semantic segmentation</title>
+		<author>
+			<persName><forename type="first">Mingyuan</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shenqi</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junshi</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoming</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhenhua</forename><surname>Chai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junfeng</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaolin</forename><surname>Wei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="9716" to="9725" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Camouflage texture evaluation using saliency map</title>
+		<author>
+			<persName><forename type="first">Xue</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cui</forename><surname>Guoying</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Song</forename><surname>Wei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Fifth International Conference on Internet Multimedia Computing and Service</title>
+		<meeting>the Fifth International Conference on Internet Multimedia Computing and Service</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="93" to="96" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Dual attention network for scene segmentation</title>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haijie</forename><surname>Tian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yong</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongjun</forename><surname>Bao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhiwei</forename><surname>Fang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanqing</forename><surname>Lu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="3146" to="3154" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<monogr>
+		<author>
+			<persName><forename type="first">Dan</forename><surname>Hendrycks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kevin</forename><surname>Gimpel</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1606.08415</idno>
+		<title level="m">Gaussian error linear units (gelus)</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Detection of the mobile object with camouflage color under dynamic background based on optical flow</title>
+		<author>
+			<persName><forename type="first">Jianqin</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanbin</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wendi</forename><surname>Hou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jinping</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Procedia Engineering</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="2201" to="2205" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Parameter-efficient transfer learning for nlp</title>
+		<author>
+			<persName><forename type="first">Neil</forename><surname>Houlsby</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrei</forename><surname>Giurgiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stanislaw</forename><surname>Jastrzebski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bruna</forename><surname>Morrone</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quentin</forename><surname>De Laroussilhe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrea</forename><surname>Gesmundo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mona</forename><surname>Attariyan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sylvain</forename><surname>Gelly</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Machine Learning</title>
+		<imprint>
+			<publisher>PMLR</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="2790" to="2799" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Direction-aware spatial context features for shadow detection</title>
+		<author>
+			<persName><forename type="first">Xiaowei</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chi-Wing</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pheng-Ann</forename><surname>Heng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="7454" to="7462" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">What characterizes a shadow boundary under the sun and sky</title>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gang</forename><surname>Hua</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jack</forename><surname>Tumblin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lance</forename><surname>Williams</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2011 international conference on computer vision</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="898" to="905" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Shadow detection based on colour segmentation and estimated illumination</title>
+		<author>
+			<persName><forename type="first">Xiaoyue</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrew</forename><forename type="middle">J</forename><surname>Schofield</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeremy</forename><forename type="middle">L</forename><surname>Wyatt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The British Machine Vision Conference (BMVC)</title>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="1" to="11" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Rendering synthetic objects into legacy photographs</title>
+		<author>
+			<persName><forename type="first">Kevin</forename><surname>Karsch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Varsha</forename><surname>Hedau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Forsyth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Derek</forename><surname>Hoiem</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Graphics (TOG)</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1" to="12" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Kirillov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Mintun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nikhila</forename><surname>Ravi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanzi</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chloe</forename><surname>Rolland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Laura</forename><surname>Gustafson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tete</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Spencer</forename><surname>Whitehead</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><forename type="middle">C</forename><surname>Berg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wan-Yen</forename><surname>Lo</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2304.02643</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Segment anything. arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Estimating the natural illumination conditions from a single outdoor image</title>
+		<author>
+			<persName><forename type="first">Jean-Franc ¸ois</forename><surname>Lalonde</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexei</forename><forename type="middle">A</forename><surname>Efros</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Srinivasa G Narasimhan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Computer Vision</title>
+		<imprint>
+			<biblScope unit="volume">98</biblScope>
+			<biblScope unit="page" from="123" to="145" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">A+ d net: Training a shadow detector with adversarial shadow attenuation</title>
+		<author>
+			<persName><forename type="first">Hieu</forename><surname>Le</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tomas F Yago</forename><surname>Vicente</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vu</forename><surname>Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minh</forename><surname>Hoai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dimitris</forename><surname>Samaras</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the European Conference on Computer Vision (ECCV)</title>
+		<meeting>the European Conference on Computer Vision (ECCV)</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="662" to="678" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<title level="m" type="main">Anabranch network for camouflaged object segmentation. Computer vision and image understanding</title>
+		<author>
+			<persName><forename type="first">Trung-Nghia</forename><surname>Le</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tam</forename><forename type="middle">V</forename><surname>Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhongliang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minh-Triet</forename><surname>Tran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Akihiro</forename><surname>Sugimoto</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="volume">184</biblScope>
+			<biblScope unit="page" from="45" to="56" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Uncertainty-aware joint salient object and camouflaged object detection</title>
+		<author>
+			<persName><forename type="first">Aixuan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yunqiu</forename><surname>Lv</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bowen</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tong</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuchao</forename><surname>Dai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="10071" to="10081" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Semantic flow for fast and accurate scene parsing</title>
+		<author>
+			<persName><forename type="first">Xiangtai</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ansheng</forename><surname>You</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhen</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Houlong</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maoke</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kuiyuan</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaohua</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yunhai</forename><surname>Tong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">European Conference on Computer Vision</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="775" to="793" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Exploring plain vision transformer backbones for object detection</title>
+		<author>
+			<persName><forename type="first">Yanghao</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanzi</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ross</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kaiming</forename><surname>He</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Computer Vision-ECCV 2022: 17th European Conference</title>
+		<meeting><address><addrLine>Tel Aviv, Israel</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2022">October 23-27, 2022. 2022</date>
+			<biblScope unit="page" from="280" to="296" />
+		</imprint>
+	</monogr>
+	<note>Proceedings, Part IX</note>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Frequency-aware camouflaged object detection</title>
+		<author>
+			<persName><forename type="first">Jiaying</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lizhuang</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rynson Wh</forename><surname>Lau</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Multimedia Computing, Communications and Applications</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="1" to="16" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Frequency-aware camouflaged object detection</title>
+		<author>
+			<persName><forename type="first">Jiaying</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lizhuang</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rynson Wh</forename><surname>Lau</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Multimedia Computing, Communications and Applications</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="1" to="16" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<author>
+			<persName><forename type="first">Weihuang</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xi</forename><surname>Shen</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2303.10883</idno>
+		<title level="m">Chi-Man Pun, and Xiaodong Cun. Explicit visual prompting for low-level structure segmentations</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Label-guided attention distillation for lane segmentation</title>
+		<author>
+			<persName><forename type="first">Zhikang</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lanyun</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neurocomputing</title>
+		<imprint>
+			<biblScope unit="volume">438</biblScope>
+			<biblScope unit="page" from="312" to="322" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Fully convolutional networks for semantic segmentation</title>
+		<author>
+			<persName><forename type="first">Jonathan</forename><surname>Long</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Evan</forename><surname>Shelhamer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Trevor</forename><surname>Darrell</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="3431" to="3440" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Simultaneously localize, segment and rank the camouflaged objects</title>
+		<author>
+			<persName><forename type="first">Yunqiu</forename><surname>Lv</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuchao</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aixuan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bowen</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nick</forename><surname>Barnes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Deng-Ping</forename><surname>Fan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="11591" to="11601" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Camouflaged object segmentation with distraction mining</title>
+		<author>
+			<persName><forename type="first">Haiyang</forename><surname>Mei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ge-Peng</forename><surname>Ji</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ziqi</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaopeng</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Deng-Ping</forename><surname>Fan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="8772" to="8781" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Camouflaged object segmentation with distraction mining</title>
+		<author>
+			<persName><forename type="first">Haiyang</forename><surname>Mei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ge-Peng</forename><surname>Ji</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ziqi</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaopeng</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Deng-Ping</forename><surname>Fan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="8772" to="8781" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Physical models for moving shadow and object detection in video</title>
+		<author>
+			<persName><forename type="first">Sohail</forename><surname>Nadimi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bir</forename><surname>Bhanu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE transactions on pattern analysis and machine intelligence</title>
+		<imprint>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="1079" to="1087" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Quantifying camouflage and conspicuousness using visual salience</title>
+		<author>
+			<persName><surname>Thomas W Pike</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Methods in Ecology and Evolution</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="1883" to="1895" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Unet: Convolutional networks for biomedical image segmentation</title>
+		<author>
+			<persName><forename type="first">Olaf</forename><surname>Ronneberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Philipp</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Brox</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Medical image computing and computer-assisted intervention</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="234" to="241" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Performance of decamouflaging through exploratory image analysis</title>
+		<author>
+			<persName><forename type="first">Amitabh</forename><surname>Sengottuvelan</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Wahi</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Shanmugam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2008 First International Conference on Emerging Trends in Engineering and Technology</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="6" to="10" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">Przemysław</forename><surname>Skurowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hassan</forename><surname>Abdulameer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Błaszczyk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tomasz</forename><surname>Depta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adam</forename><surname>Kornacki</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Kozieł</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Animal camouflage analysis: Chameleon database. Unpublished manuscript</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page">7</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Bert and pals: Projected attention layers for efficient adaptation in multi-task learning</title>
+		<author>
+			<persName><forename type="first">Asa</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cooper</forename><surname>Stickland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Iain</forename><surname>Murray</surname></persName>
+		</author>
+		<idno>PMLR</idno>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Machine Learning</title>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="5986" to="5995" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Transformer for semantic segmentation</title>
+		<author>
+			<persName><forename type="first">Robin</forename><surname>Strudel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ricardo</forename><surname>Garcia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ivan</forename><surname>Laptev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cordelia</forename><surname>Schmid</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Segmenter</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF International Conference on Computer Vision</title>
+		<meeting>the IEEE/CVF International Conference on Computer Vision</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="7262" to="7272" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Large-scale training of shadow detectors with noisily-annotated shadow examples</title>
+		<author>
+			<persName><forename type="first">Yago</forename><surname>Tomás</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Le</forename><surname>Vicente</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chen-Ping</forename><surname>Hou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minh</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dimitris</forename><surname>Hoai</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Samaras</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Computer Vision-ECCV 2016: 14th European Conference, Amsterdam</title>
+		<meeting><address><addrLine>The Netherlands</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2016">October 11-14, 2016. 2016</date>
+			<biblScope unit="page" from="816" to="832" />
+		</imprint>
+	</monogr>
+	<note>Proceedings, Part VI 14</note>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Stacked conditional generative adversarial networks for jointly learning shadow detection and shadow removal</title>
+		<author>
+			<persName><forename type="first">Jifeng</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Yang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="1788" to="1797" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Segformer: Simple and efficient design for semantic segmentation with transformers</title>
+		<author>
+			<persName><forename type="first">Enze</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenhai</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhiding</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anima</forename><surname>Anandkumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jose</forename><forename type="middle">M</forename><surname>Alvarez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ping</forename><surname>Luo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="12077" to="12090" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<monogr>
+		<title level="m" type="main">Exploring sparse visual prompt for cross-domain semantic segmentation</title>
+		<author>
+			<persName><forename type="first">Senqiao</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiarui</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiaming</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoqi</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qizhe</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mingjie</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shanghang</forename><surname>Zhang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2303.09792</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Bisenet: Bilateral segmentation network for real-time semantic segmentation</title>
+		<author>
+			<persName><forename type="first">Changqian</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jingbo</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chao</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Changxin</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gang</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nong</forename><surname>Sang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the European Conference on Computer Vision (ECCV)</title>
+		<meeting>the European Conference on Computer Vision (ECCV)</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="325" to="341" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Acfnet: Attentional class feature network for semantic segmentation</title>
+		<author>
+			<persName><forename type="first">Fan</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanqin</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhihang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhibin</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jingtuo</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Feifei</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junyu</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Errui</forename><surname>Ding</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF International Conference on Computer Vision</title>
+		<meeting>the IEEE/CVF International Conference on Computer Vision</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="6798" to="6807" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Pyramid scene parsing network</title>
+		<author>
+			<persName><forename type="first">Hengshuang</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianping</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaojuan</forename><surname>Qi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaogang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiaya</forename><surname>Jia</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="2881" to="2890" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Distraction-aware shadow detection</title>
+		<author>
+			<persName><forename type="first">Quanlong</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaotian</forename><surname>Qiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ying</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rynson Wh</forename><surname>Lau</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="5167" to="5176" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Rethinking semantic segmentation from a sequence-to-sequence perspective with transformers</title>
+		<author>
+			<persName><forename type="first">Sixiao</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiachen</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hengshuang</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiatian</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zekun</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yabiao</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanwei</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianfeng</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tao</forename><surname>Xiang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Philip Hs Torr</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="6881" to="6890" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Detecting camouflaged object in frequency domain</title>
+		<author>
+			<persName><forename type="first">Yijie</forename><surname>Zhong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bo</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lv</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Senyun</forename><surname>Kuang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuang</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shouhong</forename><surname>Ding</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="4504" to="4513" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Learning to recognize shadows in monochromatic natural images</title>
+		<author>
+			<persName><forename type="first">Jiejie</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">G</forename><surname>Kegan</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Samuel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marshall</forename><forename type="middle">F</forename><surname>Syed Z Masood</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Tappen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Computer Society</title>
+		<imprint>
+			<biblScope unit="page" from="223" to="230" />
+			<date type="published" when="2010">2010. 2010</date>
+			<publisher>IEEE</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<monogr>
+		<title level="m" type="main">Continual semantic segmentation with automatic memory sample selection</title>
+		<author>
+			<persName><forename type="first">Lanyun</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianrun</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianxiong</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Simon</forename><surname>See</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Liu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2304.05015</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Jing Qin, and Pheng-Ann Heng. Bidirectional feature pyramid network with recurrent attention residual modules for shadow detection</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zijun</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaowei</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chi-Wing</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuemiao</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the European Conference on Computer Vision (ECCV)</title>
+		<meeting>the European Conference on Computer Vision (ECCV)</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="121" to="136" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">Jing Qin, and Pheng-Ann Heng. Bidirectional feature pyramid network with recurrent attention residual modules for shadow detection</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zijun</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaowei</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chi-Wing</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuemiao</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the European Conference on Computer Vision (ECCV)</title>
+		<meeting>the European Conference on Computer Vision (ECCV)</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="121" to="136" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Learning statistical texture for semantic segmentation</title>
+		<author>
+			<persName><forename type="first">Lanyun</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Deyi</forename><surname>Ji</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shiping</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weihao</forename><surname>Gan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junjie</forename><surname>Yan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="12537" to="12546" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Mitigating intensity bias in shadow detection via feature decomposition and reweighting</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhanghan</forename><surname>Ke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rynson Wh</forename><surname>Lau</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF International Conference on Computer Vision</title>
+		<meeting>the IEEE/CVF International Conference on Computer Vision</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="4702" to="4711" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title level="a" type="main">Asymmetric non-local neural networks for semantic segmentation</title>
+		<author>
+			<persName><forename type="first">Zhen</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mengde</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Song</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tengteng</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Bai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE International Conference on Computer Vision</title>
+		<meeting>the IEEE International Conference on Computer Vision</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="593" to="602" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

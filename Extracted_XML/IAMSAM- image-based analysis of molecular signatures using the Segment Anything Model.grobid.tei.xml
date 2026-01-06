@@ -1,0 +1,1056 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">IAMSAM: image-based analysis of molecular signatures using the Segment Anything Model</title>
+				<funder ref="#_AZH8dvA">
+					<orgName type="full">Korean government (MOTIE)</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Korea Evaluation Institute of Industrial Technology</orgName>
+					<orgName type="abbreviated">KEIT</orgName>
+				</funder>
+				<funder ref="#_Zzhadmk #_PntYT3R #_zFMKRdT">
+					<orgName type="full">National Research Foundation of Korea</orgName>
+				</funder>
+				<funder ref="#_BrVHfBQ">
+					<orgName type="full">Korea Technology and information Promotion Agency</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>Springer Science and Business Media LLC</publisher>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2024-11-11">2024-11-11</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Dongjoo</forename><surname>Lee</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Portrai, Inc</orgName>
+								<address>
+									<addrLine>78-18, Dongsulla-Gil Jongno-Gu</addrLine>
+									<postCode>03136</postCode>
+									<settlement>Seoul</settlement>
+									<country key="KR">Republic of Korea</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jeongbin</forename><surname>Park</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Portrai, Inc</orgName>
+								<address>
+									<addrLine>78-18, Dongsulla-Gil Jongno-Gu</addrLine>
+									<postCode>03136</postCode>
+									<settlement>Seoul</settlement>
+									<country key="KR">Republic of Korea</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Seungho</forename><surname>Cook</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Portrai, Inc</orgName>
+								<address>
+									<addrLine>78-18, Dongsulla-Gil Jongno-Gu</addrLine>
+									<postCode>03136</postCode>
+									<settlement>Seoul</settlement>
+									<country key="KR">Republic of Korea</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Seongjin</forename><surname>Yoo</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Portrai, Inc</orgName>
+								<address>
+									<addrLine>78-18, Dongsulla-Gil Jongno-Gu</addrLine>
+									<postCode>03136</postCode>
+									<settlement>Seoul</settlement>
+									<country key="KR">Republic of Korea</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Daeseung</forename><surname>Lee</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Portrai, Inc</orgName>
+								<address>
+									<addrLine>78-18, Dongsulla-Gil Jongno-Gu</addrLine>
+									<postCode>03136</postCode>
+									<settlement>Seoul</settlement>
+									<country key="KR">Republic of Korea</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Hongyoon</forename><surname>Choi</surname></persName>
+							<idno type="ORCID">0000-0002-8895-2449</idno>
+							<affiliation key="aff0">
+								<orgName type="institution">Portrai, Inc</orgName>
+								<address>
+									<addrLine>78-18, Dongsulla-Gil Jongno-Gu</addrLine>
+									<postCode>03136</postCode>
+									<settlement>Seoul</settlement>
+									<country key="KR">Republic of Korea</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Nuclear Medicine</orgName>
+								<orgName type="institution">Seoul National University Hospital</orgName>
+								<address>
+									<postCode>03080</postCode>
+									<settlement>Seoul</settlement>
+									<country key="KR">Republic of Korea</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Nuclear Medicine</orgName>
+								<orgName type="institution">Seoul National University College of Medicine</orgName>
+								<address>
+									<postCode>03080</postCode>
+									<settlement>Seoul</settlement>
+									<country key="KR">Republic of Korea</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">IAMSAM: image-based analysis of molecular signatures using the Segment Anything Model</title>
+					</analytic>
+					<monogr>
+						<title level="j" type="main">Genome Biology</title>
+						<title level="j" type="abbrev">Genome Biol</title>
+						<idno type="eISSN">1474-760X</idno>
+						<imprint>
+							<publisher>Springer Science and Business Media LLC</publisher>
+							<biblScope unit="volume">25</biblScope>
+							<biblScope unit="issue">1</biblScope>
+							<date type="published" when="2024-11-11" />
+						</imprint>
+					</monogr>
+					<idno type="MD5">5EE5F6ACA1EFC31ECABBF458BED81948</idno>
+					<idno type="DOI">10.1186/s13059-024-03380-x</idno>
+					<note type="submission">Received: 21 June 2023 Accepted: 28 August 2024</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:10+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Spatial transcriptomics</term>
+					<term>Image segmentation</term>
+					<term>H&amp;E image</term>
+					<term>Deep learning</term>
+					<term>Histology</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Spatial transcriptomics is a cutting-edge technique that combines gene expression with spatial information, allowing researchers to study molecular patterns within tissue architecture. Here, we present IAMSAM, a user-friendly web-based tool for analyzing spatial transcriptomics data focusing on morphological features. IAMSAM accurately segments tissue images using the Segment Anything Model, allowing for the semiautomatic selection of regions of interest based on morphological signatures. Furthermore, IAMSAM provides downstream analysis, such as identifying differentially expressed genes, enrichment analysis, and cell type prediction within the selected regions. With its simple interface, IAMSAM empowers researchers to explore and interpret heterogeneous tissues in a streamlined manner.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Background</head><p>Spatial transcriptomics (ST) enables the analysis of gene expression patterns inside tissues while maintaining their spatial context <ref type="bibr" target="#b0">[1]</ref>. However, researchers often encounter difficulties when working with ST data due to its complexity, high-dimensionality, spatial constraints, large data volumes, and the lack of user-friendly tools <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b1">2]</ref>. For instance, clustering spots or cells within one or multiple ST libraries must exhibit spatial continuity for each cluster, which requires the use of a complex algorithm <ref type="bibr" target="#b2">[3]</ref>. Furthermore, the manual process of identifying genes associated with specific regions, based on domain knowledge such as pathologist-labeled annotation, introduces a subjective analytic workflow <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b4">5]</ref>. Integrating the interpretation of tissue image patterns, along with multidimensional molecular information, allows researchers to gain a deeper understanding of the pathophysiology within spatial contexts <ref type="bibr" target="#b5">[6]</ref><ref type="bibr" target="#b6">[7]</ref><ref type="bibr" target="#b7">[8]</ref>. Therefore, an interactive and userfriendly interface for ST to analyze tissue images should also be developed to facilitate improved communication for basic researchers, clinicians, and bioinformaticians.</p><p>Here, we introduce IAMSAM (Image-based Analysis of Molecular signatures using the Segment Anything Model), a user-friendly web-based tool designed to comprehensively analyze ST data, enabling a better understanding of complex tissues by integrating images with molecular information. IAMSAM leverages the power of the "Segmentanything, " a state-of-the-art deep learning model developed by Meta <ref type="bibr" target="#b8">[9]</ref>, to identify regions of interest (ROIs) from tissue images in ST datasets. The SAM model exhibits exceptional performance, achieving real-time performance and efficiently utilizing computational resources. Moreover, it stands as the first foundation model for general image segmentation, providing interactive prompting capabilities. It has been specifically designed to address the problem of zero-shot image segmentation pre-trained on an extensive and diverse dataset consisting of over 1 billion masks derived from 11 million images, ensuring its robust performance. We used this model to handle various tissue images (e.g., H&amp;E, DAPI, and immunofluorescence images), taking advantage of its effectiveness and adaptability to handle different image distributions and workloads through zero-shot or few-shot learning. This excellence leads to conducting various downstream analyses such as identifying differentially expressed genes (DEGs), enrichment analysis, and cell type prediction of user-selected regions. Moreover, the regions can be determined by image patterns rather than gene expression, providing an opportunity to analyze gene expression patterns and features based on image-based key patterns. In this study, we demonstrated the usage of IAMSAM with publicly available ST datasets. With its simple and accessible interface, IAMSAM enables researchers to explore and interpret their ST data user-friendly, which can lead to new insights into gene expression patterns associated with pathophysiology and potential biomarkers for diseases.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Overview of IAMSAM</head><p>IAMSAM is a web-based tool designed for analyzing ST data, based on a generalpurpose image segmentation algorithm named "Segment-anything" (Fig. <ref type="figure" target="#fig_0">1</ref>). It utilizes the SAM for H&amp;E image segmentation, which allows for morphological guidance in selecting ROIs for users. IAMSAM offers users with two modes for running the SAM algorithm: everything-mode and prompt-mode. In the everything-mode, IAMSAM automatically generates segment masks based on morphological features along whole tissues. On the other hand, the prompt-mode allows users to draw rectangle boxes, which serve as input prompts for the SAM model. Afterwards, users have the option to select one or multiple masks for ROI 1 and ROI 2 from the mask lists before proceeding with downstream analysis. IAMSAM automatically extracts the gene expression profile from the chosen ROIs, identifying not only DEGs between the ROIs but also enriched functional terms associated with these DEGs. Furthermore, IAMSAM provides cell type estimation of the selected regions, which can help users gain valuable insights into the cellular composition and heterogeneity of the tissue.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>H&amp;E image segmentation</head><p>Hematoxylin and eosin (H&amp;E) are widely employed to observe tissue structure, distinguish different histological features, and are considered a gold standard in the field of histopathology <ref type="bibr" target="#b9">[10]</ref>. Most ST platforms, particularly the 10x Visium platform, involve the inclusion of H&amp;E staining and tissue imaging steps in the tissue preparation protocol <ref type="bibr" target="#b10">[11]</ref>. This unique feature of the Visium platform allows IAMSAM to utilize the H&amp;E image. When users select the samples to analyze on the dropdown menu, the H&amp;E The H&amp;E image of the ST data is segmented using the SAM in two different modes: everything-mode and prompt-mode. The selected ROIs are then subjected to downstream analysis, which includes DEG identification, enrichment analysis, and cell type proportion analysis image of the sample appears in the main visualization panel (Fig. <ref type="figure" target="#fig_1">2a</ref>). After configuring multiple parameters, such as mask confidence threshold, mask opacity, and mask size, users can click the "Run SAM" button to make inferences from the SAM. SAM takes the H&amp;E slide images as input and creates a binary mask for each morphologically segmented region. IAMSAM visualizes these segment masks on the main visualization panel with a distinct palette, offering a user-friendly approach for researchers to analyze their ST data. Users can generate SAM masks and specify ROIs in two different modes, depending on their requirements or preferences. This approach not only reduces the time and effort required for manual annotation but also provides a more objective way of identifying morphological features and molecular signatures within the tissue.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Downstream analysis</head><p>The following downstream analysis consists of three panels: identifying DEGs (Fig. <ref type="figure" target="#fig_1">2b</ref>), enrichment analysis (Fig. <ref type="figure" target="#fig_1">2c</ref>), and cell type proportion (Fig. <ref type="figure" target="#fig_1">2d</ref>). As all the downstream plots are interactively made, the various convenient features including auto-scaling, manual scaling, zoom-in, zoom-out, capture, and the management of the coordinates are supported for each plot. The first panel is the DEG module, which includes both the volcano plot and the box plot. The volcano plot represents the log-fold change on the x-axis, where positive values indicate up-regulation in the ROIs, and the statistical significance on the y-axis. Users can set the "logFC cutoff " and "p-adj cutoff " in the parameter panel (Fig. <ref type="figure" target="#fig_1">2b</ref>). Genes that meet the criteria of having a fold change value exceeding the FC cutoff and an adjusted p-value less than the adjusted p-value cutoff are displayed in purple for ROI 1 and brown for ROI 2, while the remaining genes are shown in gray. The box plot, on the other hand, focuses on the top 10 genes selected from the up-regulated DEGs within the ROI 1. These genes are ranked based on their fold changes, reflecting the relative difference in expression levels between the ROI 1 and ROI 2.</p><p>In the second panel, IAMSAM performs over-representation analysis (ORA) on the DEGs identified in the selected ROIs. The goal of ORA is to assess whether specific gene sets or functional categories are overrepresented among the DEGs, indicating their potential involvement in specific biological processes or molecular functions. IAMSAM offers users a choice of gene sets for enrichment analysis, including three GO (Gene Ontology) terms (biological process, cellular component, and molecular function), as well as gene sets from MSigDB (Molecular Signatures Database) and KEGG (Kyoto Encyclopedia of Genes and Genomes). Users can select the gene sets of interest based on their preferences to perform the enrichment analysis. IAMSAM calculates the statistical significance of the enrichment terms and filters them based on adjusted p-values. Only the terms that demonstrate statistical significance, with adjusted p-values below 0.05, are displayed in the form of a bar plot. This visualization allows users to easily identify the enriched terms and gain insights into the functional annotations associated with the DEGs.</p><p>For the last panel, IAMSAM provides cell type proportion within the selected ROIs. We exploit CellDART <ref type="bibr" target="#b11">[12]</ref> to annotate Visium data with reference scRNAseq data by default, but users can also choose other cell-type deconvolution algorithms in the preprocessing step. The proportions of cell types are visualized as a bar chart, displaying the differences between ROI 1 and ROI 2 for clarity and simplicity. This concise representation offers a clear overview of the predominant cell types present in the tissue sample and aids in understanding the cellular composition within the spatial context.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Two modes of IAMSAM: everything-mode and prompt-mode</head><p>In the everything-mode, users can obtain segmented masks for the entire tissue image by simply clicking the "Run SAM" button. IAMSAM automatically segments the entire image, creating masks that distinguish various morphological features or regions within the tissue without requiring any additional prompts.</p><p>The "Mask confidence threshold" parameter (Fig. <ref type="figure" target="#fig_2">3a</ref>) is a crucial factor for users to consider because it determines the threshold value used to decide whether a predicted object or region in an image is considered a true positive or not. It is described as an intersection-over-union (IOU) score in the original literature, which is a metric used to measure the overlap between the predicted segmentation mask and the ground truth mask during training <ref type="bibr" target="#b8">[9]</ref>. By increasing the threshold value, the model becomes more stringent in accepting predicted masks. This means that only masks with a higher predicted IOU value, indicating better quality and accuracy, will be included in the final segmentation results. Consequently, the number of selected masks may decrease. Conversely, reducing the threshold makes the model more permissive in accepting masks, even if their predicted IOU is low. This relaxation of criteria can yield a higher number of masks, including those with potentially lower quality. Users should control the balance between the number of masks and their quality in the segmentation results, based on their specific requirements and preferences. everything-mode and prompt-mode. a In the everything-mode, IAMSAM generates segmentation masks for the entire tissue images. The mask confidence threshold directly affects the segmentation result, where a higher threshold leads to more precise segmentation but fewer selected masks. b In the prompt-mode, users can provide prompts to the SAM model by drawing rectangle boxes on the visualization panel using the drawing tool provided by Plotly. When users input three rectangle boxes as drawn, IAMSAM returns the corresponding ROIs. c By combining the zoom-in interface with the prompt-mode, IAMSAM allows for the detailed examination of microscopic histology features, enhancing analysis capabilities. d IAMSAM can also process data from platforms like Xenium, following appropriate preprocessing steps. e IAMSAM is applicable to various imaging modalities, including fluorescence imaging, thereby expanding its utility in different experimental settings</p><p>After the segmentation, masks that do not contain any spots are filtered out, and the remaining masks are numbered in descending order based on their respective areas. Users can choose the mask number from a dropdown menu to assign masks as ROI 1 or ROI 2. Alternatively, they can directly click on the masks in the main visualization panel. This feature is enabled through the interactive interface of Plotly <ref type="bibr" target="#b12">[13]</ref>, which allows users to visualize the segmented regions and select the ROIs with ease. For an improved user experience, we have also added a feature that allows users to deselect a selected mask by simply re-clicking on it. If users want to perform a one-versus-others analysis, they can leave ROI 2 empty.</p><p>After all ROIs have been chosen, users can run downstream analysis on the ROIs with the "Run ST Analysis" button. By enabling users to select the masks of interest through a simple click, IAMSAM streamlines the analysis of ST data and allows researchers to quickly identify relevant cell types and gene expression patterns in their samples.</p><p>IAMSAM offers another mode called prompt-mode, which provides users with the flexibility to manually define the desired segments using rectangle boxes. This mode utilizes the prompt-input method of the original SAM algorithm, allowing users to specify boxes in the image that correspond to the objects they want to segment. Before running SAM, users can easily draw rectangles on the main visualization panel using the default rectangle drawing tool (Fig. <ref type="figure" target="#fig_2">3b</ref>). Users can also conveniently track the number of boxes added and have the button to reset if any mistakes are made. Since box prompts are available in advance before running SAM, IAMSAM can run SAM in a batched manner, generating corresponding masks for multiple boxes simultaneously. If needed, users can utilize the zoom feature provided by Plotly when selecting ROIs in the prompt-mode. Upon clicking "Run SAM", one or more masks are interpreted as the user's areas of interest, and subsequent downstream analysis is performed in the same way as the everything-mode (Additional file 1: Fig. <ref type="figure" target="#fig_0">S1</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Versatility and expanded capabilities of IAMSAM</head><p>To uncover microscopic histological features, the prompt-mode in IAMSAM can be particularly powerful, especially when used with magnification. When applying IAMSAM to human prostate cancer Visium data, we demonstrated its capability to identify and select microvessels as ROIs using the prompt-mode and the zoomin interface (Fig. <ref type="figure" target="#fig_2">3c</ref>, Additional file 1: Fig. <ref type="figure" target="#fig_1">S2</ref>). Zooming in on specific tissue areas helped identify microvessels, which may not be readily apparent on a larger scale. Furthermore, our analysis revealed that pan-endothelial cell markers, such as CAV1 (log FC = 3.21, -log10 P-adj = 2.93), CAV2 (log FC = 2.14, -log10 P-adj = 1.56), and CAVIN1 (log FC = 1.50, -log10 P-adj = 1.94), were up-regulated within the ROIs. In line with these findings, a GO term related to "focal adhesion, " specific to endothelial cells, was enriched, indicating the involvement of endothelial cells in these ROIs <ref type="bibr" target="#b13">[14]</ref>. We also validated these microvessel areas with pathologists to ensure the accuracy of our identification.</p><p>Although IAMSAM is designed for analyzing Visium data, it can also process imagebased ST technologies like Xenium and MERSCOPE if proper preprocessing steps are executed. Expanding IAMSAM to include image-based ST data allows for a broader range of applications and greater flexibility in analyzing different types of ST datasets.</p><p>We demonstrated the capability of IAMSAM to analyze Xenium data using the publicly available Xenium human colon cancer dataset. If a post-Xenium H&amp;E image is available, users can preprocess Xenium data with affine transformation and resizing (Fig. <ref type="figure" target="#fig_2">3d</ref>, Additional file 1: Fig. <ref type="figure" target="#fig_2">S3</ref>). This expansion enhances the versatility of IAMSAM, making it a powerful tool for integrating and analyzing ST data from various sources. Lastly, we explored the application of IAMSAM with an optical image different from H&amp;E staining (Fig. <ref type="figure" target="#fig_2">3e</ref>). We utilized a combined image of three distinct color channels corresponding to DAPI (4′,6-diamidino-2-phenylindole), anti-GFAP, and anti-NeuN staining. In this case, the successful identification of the dentate gyrus (DG) structure demonstrated the versatility and feasibility of IAMSAM in handling different imaging modalities. This finding further solidifies SAM as a general image segmentation algorithm that can be applied across various experimental setups. This feature highlights the broad applicability of IAMSAM and its potential to provide valuable information from diverse imaging modalities that spatially correspond to ST data <ref type="bibr" target="#b14">[15]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Characterizing spatial tumor heterogeneity in a breast cancer sample using IAMSAM</head><p>To demonstrate an example of IAMSAM to discover the finding by integrating ST with morphological features, we inspected cancer heterogeneity within a Human breast cancer block A Sect. 1.1 dataset. We selected two ROIs (Fig. <ref type="figure" target="#fig_3">4a-d</ref>) based on distinct morphological features observed in the dataset as an automatic method for delineating morphologically characteristic regions based on IAMSAM. Notably, ROI1 is identified as an invasive region, while ROI2 is classified as a ductal carcinoma in situ (DCIS) portion according to the pathological annotation of the previous literature <ref type="bibr" target="#b15">[16]</ref>. The IAMSAM analysis identified ROI 1 as primarily characterized by immune-related processes compared to ROI 2. Differential gene expression analysis identified top genes such as PLA2G2A, GPR143, LINC00052, UNC5C, and PLA2G2D as significantly upregulated in ROI 1 compared to ROI 2 (Fig. <ref type="figure" target="#fig_3">4e</ref>). Enrichment analysis revealed terms such as MHC protein complex, cellular response to interferongamma, and cytokine-mediated signaling pathway (Fig. <ref type="figure" target="#fig_3">4f</ref> ). These enrichments suggest a significant presence of immune cell infiltration and activity within ROI 1. The cell type proportion analysis further supported this, showing a high presence of immune cells such as monocytes/macrophages and CD4 T-cells (Fig. <ref type="figure" target="#fig_3">4i</ref>). These findings align with the characteristics of invasive ductal carcinoma (IDC), where immune interactions are progressed compared with DCIS <ref type="bibr" target="#b16">[17,</ref><ref type="bibr" target="#b17">18]</ref>. In contrast to ROI 1, genes such as CEACAM1, TGFBR1, ZNF737, and PLK2 were significantly upregulated in ROI 2 (Fig. <ref type="figure" target="#fig_3">4g</ref>). The enriched GO terms for ROI 2 included epidermis development, cell-substrate junction assembly, and hemidesmosome assembly, which are indicative of epithelial processes and cell adhesion (Fig. <ref type="figure" target="#fig_3">4h</ref>). The cell type proportion analysis revealed a predominance of epithelial cells and malignant cells, consistent with the features of the tumor core where malignant cells are predominant and exhibit strong epithelial characteristics (Fig. <ref type="figure" target="#fig_3">4i</ref>). This result aligns with previous histological annotations <ref type="bibr" target="#b15">[16]</ref>, which identified ROI2 as the tumor region of DCIS and ROI1 as the invasive region of breast cancer. Beyond identifying distinct molecular and cellular characteristics within ROIs, IAMSAM can extend its utility by integrating with advanced bioinformatics tools for further analyses. For example, users can employ tools such as stLearn <ref type="bibr" target="#b4">[5]</ref> to analyze cell-cell communication within ROIs selected by IAMSAM. This integration allows for the identification of top-scored ligand-receptor pairs for each ROI, providing insights into the molecular interactions within specific tissue regions (Additional file 1: Fig. <ref type="figure" target="#fig_3">S4 b</ref>). Additionally, ROIs can be inspected using compositional frameworks like TACCO <ref type="bibr" target="#b18">[19]</ref>, calculating distances from the ROI and illustrating changes in cell type deconvolution along these distances (Additional file 1: Fig. <ref type="figure" target="#fig_3">S4 c-d</ref>). This compatibility facilitates seamless integration with other tools, enabling more comprehensive and advanced analyses for researchers. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Workflow advantages of IAMSAM over traditional methods in analyzing spatial heterogeneity</head><p>The workflow of IAMSAM in analyzing the spatial morphological heterogeneity surpasses that of traditional methods, as illustrated in Fig. <ref type="figure">5</ref>. Traditional methods involve a manual and time-consuming workflow, requiring multiple steps and tools. Typically, for Visium data, a loupe file is examined using Loupe Browser, where ROIs are manually drawn from scratch (Fig. <ref type="figure">5a</ref>). This manual process is time-consuming and highly dependent on the analyst's skill and consistency, leading to variability and reproducibility issues due to human error and subjective judgment. IAMSAM addresses this gap by automating the identification of ROIs using advanced image processing techniques that leverage morphological features (Fig. <ref type="figure">5b</ref>). The use of box prompting in IAMSAM simplifies the process and ensures consistency, allowing multiple inspections of various regions. This automation eliminates the need for manual intervention, significantly reducing the time required for ROI identification and improving reproducibility. Additionally, traditional workflows often involve multiple disjointed steps and tools, such as exporting barcode Fig. <ref type="figure">5</ref> Comparative performance analysis of traditional method and IAMSAM method. a Traditional method involves manual drawing of ROIs in Loupe Browser, exporting barcode data, and performing downstream bioinformatic analysis using R or Python. This process is manual, time-consuming, and involves multiple steps and tools. b IAMSAM method utilizes a preprocessing script to create an AnnData file, followed by automated ROI identification and downstream analysis within the IAMSAM framework. This method leverages morphological features, is streamlined and automated, reducing manual effort and increasing reproducibility tables, matching with matrix data, and performing separate downstream analyses using R or Python. This fragmentation is inefficient and prone to errors, as each step requires separated code, increasing the overall processing time and introducing potential points of failure. IAMSAM addresses this gap by providing a seamless, end-to-end workflow that integrates data preprocessing, ROI identification, and downstream analysis within a single platform. This streamlined workflow highlights the efficiency and accuracy of IAMSAM, making it a superior alternative to traditional methods for inspecting morphological heterogeneity and spatial patterns of the tissue, especially in tumor heterogeneity. The reduction in analysis time and manual intervention not only enhances productivity but also improves the consistency and reliability of the results, making IAMSAM an invaluable tool for cancer research.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Discussion</head><p>Integrating SAM into ST libraries has shown great promise as a new workflow to enhance the interpretation of image-based characteristics in ST data analysis, leading to a more comprehensive molecular interpretation. This integration allows for accurate segmentation of histologically distinct structures and produces segments that align closely with gene expression clusters. By bridging the gap between histological features and molecular information, IAMSAM enables a comprehensive analysis of ST data. One of the strengths of IAMSAM lies in its user-friendly nature. This application has the potential to facilitate ST research by providing real-time and interactive tools for acquiring gene signatures from ST libraries. By lowering the barriers to entry in the field of ST, IAMSAM enables researchers to explore and analyze resolved transcriptomic data more effectively.</p><p>While IAMSAM offers powerful analysis capabilities, users must consider several factors to utilize the tool effectively. First, it is crucial to select the proper mode when using IAMSAM. Our observations indicate that specific tissues may be better suited for the prompt-mode in IAMSAM, as this mode allows for capturing subtle and local differences that the everything-mode may overlook. As demonstrated by several use cases, we have significantly improved the segmentation performance by introducing an interactive function to IAMSAM. Second, users must select the proper preprocessing methods for analyzing their own data. Although IAMSAM provides example tutorials for preprocessing starting from the raw data, researchers should carefully consider variables like tissue type, species, and other pertinent characteristics. This decision guarantees reliable and precise downstream analysis. Despite the numerous advantages of IAMSAM in identifying meaningful regions of interest within ST data, some limitations warrant further discussion and future improvement. Firstly, IAMSAM currently does not support processing of multiple images. One of the primary motivations for computer-assisted ROI selection is to ensure reproducibility across different fields of view and datasets. However, the segmentation process with SAM could be varied in multiple images due to batch effects of images. This limitation underscores the need for developing and integrating unified processing capabilities of segmentation to enhance efficiency, especially in large-scale studies. In this regard, the stability of SAM's segmentation results may be influenced by variations in H&amp;E staining intensity. Differences in staining intensity can impact the accuracy of segmentation, potentially leading to inconsistent results. Future improvements for IAMSAM should focus on enhancing the tool's robustness to accommodate such variations. This could involve the implementation of normalization techniques or adaptive algorithms that adjust to staining intensity changes, ensuring more reliable segmentation outcomes. Exploring the impact of varying image dimensions and the number of images on segmentation performance can be a future direction for the applicability of this tool. Future developments should aim to assess and optimize the performance across a range of image sizes and dataset volumes.</p><p>Although IAMSAM has its limitations, it is true that the spatial context of single-cell omics studies can provide further insights into biology. Integrating this spatial information with diverse tissue images holds particular value, as it enhances the interpretability of the data <ref type="bibr" target="#b5">[6]</ref>. In this regard, exploring the implications of visually discernible histological characteristics, such as dense cancerous areas or stroma-rich regions on images, becomes crucial. The critical role of IAMSAM is to elucidate the molecular characteristics associated with these distinctive image regions and determine which cells exhibit such image-specific characteristics through the integration of ST data and image data analysis. In essence, this approach allows for a comprehensive understanding of the molecular attributes underlying visually distinctive patterns in the images and the specific cellular contributions to these patterns. Moreover, ST analysis effectively reveals heterogeneity based on tissue image characteristics, extending beyond a mere assessment of cellular composition. IAMSAM presents a workflow that explains visually identifiable image features with molecular information, offering a new direction for ST analysis.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Conclusions</head><p>IAMSAM is a user-friendly web-based tool designed to analyze ST data. The tool utilizes the SAM algorithm to segment H&amp;E images of Visium data and performs statistical analysis to identify DEGs and their corresponding GO terms for each segmented region. With its simple and accessible interface, IAMSAM makes it easy for researchers to analyze and interpret their ST data. IAMSAM will be a valuable resource for researchers in the field of ST.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Methods</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Dataset and preprocessing</head><p>We used four publicly accessible ST datasets, as shown in Fig. <ref type="figure" target="#fig_3">4</ref>, to illustrate the utility of IAMSAM. These datasets were chosen to represent a variety of tissues and experimental setups, allowing for a thorough assessment of IAMSAM's capabilities. We employed the Scanpy package <ref type="bibr" target="#b19">[20]</ref> to perform initial data manipulation steps for preprocessing. Specifically, spots containing fewer than 200 transcripts were excluded from the feature matrix. Subsequently, a default log-normalization process was applied to each spot, facilitating the normalization and scaling of gene expression values across the dataset. For calculating cell type proportions, we used the CellDART <ref type="bibr" target="#b11">[12]</ref> methods with default parameters. Additionally, the pixel coordinates in the ST images were adjusted by multiplying them with the scale factor to align the image coordinates with the corresponding spot positions in the dataset. The image was then cropped to focus on the tissue area, excluding fiducial spots, while minimizing the padding around the image. This cropped image was used as input for SAM.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Segment Anything Model</head><p>IAMSAM uses the SAM to segment tissue images derived from ST data. SAM enables users to define ROIs effortlessly by detecting morphologically distinct regions within the images. SAM consists of three components: an image encoder, a prompt encoder, and a mask decoder. The image encoder uses a pre-trained Vision Transformer (ViT) adapted to handle high-resolution inputs <ref type="bibr" target="#b20">[21,</ref><ref type="bibr" target="#b21">22]</ref>. This encoder runs once per image and can be applied before prompting the model. It encodes the input image into a highdimensional vector that is then used as input for the mask decoder. The prompt encoder considers two types of prompts: sparse (points, boxes, text) and dense (masks). Sparse prompts include points and boxes, which are represented by positional encodings that are summed with learned embeddings for each prompt type <ref type="bibr" target="#b22">[23]</ref>.</p><p>In contrast, text prompts are handled differently compared to other sparse prompts. Instead of using positional encodings, text prompts are embedded using the CLIP framework <ref type="bibr" target="#b23">[24]</ref>. Dense prompts, which include masks, are embedded using convolutions and summed elementwise with the image embedding. The mask decoder maps the image embedding, prompt embeddings, and an output token to a mask. This component employs a modified Transformer decoder block and a dynamic mask prediction head <ref type="bibr" target="#b24">[25]</ref>. The decoder block uses prompt self-attention and cross-attention in two directions (prompt-to-image embedding and vice-versa) to update all embeddings. After running two blocks, the image embedding is upsampled, and an MLP maps the output token to a dynamic linear classifier, which computes the mask foreground probability at each image location. To address ambiguity in the prompt, the model is modified to predict multiple output masks for a single prompt, with each mask having a confidence score (estimated IoU) assigned to it.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Two-modes of IAMSAM: everything-mode and prompt-mode</head><p>As SAM can perform ROI segmentation incorporating manual prompts and automatic prompting, IAMSAM offers two main modes of operation: everything-mode and prompt-mode. In the everything-mode, the model performs image segmentation without any manual input from the user. It takes the input image and automatically generates masks for all different objects in the image. IAMSAM project segmentation masks on the tissue image with a distinct colormap, enabling users to select ROI conveniently. When the user clicks on a mask, IAMSAM captures the coordinates of the click event and adds the corresponding mask to the list of selected regions.</p><p>On the other hand, the prompt-mode allows the user to provide additional information about the model. Users can draw multiple rectangles on the main visualization panel with "modeBarButtons.drawrect, " the drawing tool in Plotly, by default. IAMSAM tracks the coordinates of rectangles and uses those as box prompts given to the SAM model. The model then generates the segmentation masks based on those input prompts, treating these masks as ROIs for further analysis.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Mask filtering in the everything-mode</head><p>A mask filtering step was applied to remove unnecessary masks that do not contain any spots before visualizing the masks on the main visualization panel. Since the SAM model generates masks for the entire tissue image in the everything-mode, some masks may not have ST spots. To address this, a proportion-based filtering approach was implemented to retain only the masks that contain ST spots. The proportion of co-location between each mask and the spot coordinates was calculated by examining the overlap of mask pixels with the spot coordinates. If the calculated proportion is below 0.01, indicating a mask does not contain sufficient spots, the corresponding mask is removed from the segmentation list. This filtering process ensured that only masks containing ST spots were retained for further analysis.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Downstream analysis</head><p>We utilized various tools and packages to extract meaningful insights from the ST data in the downstream analysis step. To identify DEGs, we employed the "sc.tl.rank_ genes_groups" function in Scanpy, employing the Wilcoxon method. This analysis allows for the calculation of statistical significance and enables the identification of genes that exhibit significant differences in expression between conditions or cell types. Users have the flexibility to modify the cutoff values for adjusted p-value and log fold changes, enabling manual DEG definition. We specifically focus on displaying the top 10 genes with the biggest fold changes for the box plots representing DEGs. Enrichment analysis uses the "enrichr" function from the GSEApy package <ref type="bibr" target="#b25">[26]</ref>. Cell type proportions of ROI 1 and ROI 2 that were calculated in the preprocessing step are shown as barplot. All visualizations in IAMSAM are created using the Plotly package.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>User interface and web application</head><p>IAMSAM is built as a Dash application, leveraging its powerful framework for creating interactive web-based data visualization and analysis tools <ref type="bibr" target="#b12">[13]</ref>. The Dash framework, built on top of Flask, Plotly, and React, provides a highly customizable and responsive user interface. The user interface of IAMSAM is designed to provide a seamless and intuitive experience for researchers analyzing ST data. The main components of the user interface include a visualization panel with a dropdown menu to select samples to analyze, parameter panels that affect the SAM model and analysis result, and downstream analysis panels. IAMSAM offers two main modes, everything-mode, and prompt-mode, accessible through a tab menu. This allows users to easily navigate between the modes. Being a web application, IAMSAM takes advantage of various interactive features to enhance user interaction and data exploration. Users can dynamically adjust parameters, such as fold change and p-value cutoff, to customize the analysis results. The visualizations, such as volcano plots and box plots, are interactive and allow users to zoom in, zoom out, and capture specific ROI for further examination.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1</head><label>1</label><figDesc>Fig. 1 Workflow of IAMSAM. This figure provides an overview of the workflow of IAMSAM. The gene expression of ST data is preprocessed through spot filtering, gene filtering, and normalization step.The H&amp;E image of the ST data is segmented using the SAM in two different modes: everything-mode and prompt-mode. The selected ROIs are then subjected to downstream analysis, which includes DEG identification, enrichment analysis, and cell type proportion analysis</figDesc><graphic coords="3,131.93,103.24,336.14,463.70" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 2</head><label>2</label><figDesc>Fig. 2 Overview of IAMSAM interface panels. a The main visualization panel displays the H&amp;E slides of the ST data, along with the corresponding segmentation masks. These masks highlight different ROIs within the tissue image, allowing users to visually explore and select specific ROIs. After pressing "Run ST analysis, " the downstream analysis panel presents the results of downstream analysis, including (b) DEG analysis, c enrichment analysis, and d cell type proportion</figDesc><graphic coords="4,127.69,361.24,339.98,306.98" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 3</head><label>3</label><figDesc>Fig.3Main characteristics of IAMSAM. This figure introduces the two main modes of operation in IAMSAM: everything-mode and prompt-mode. a In the everything-mode, IAMSAM generates segmentation masks for the entire tissue images. The mask confidence threshold directly affects the segmentation result, where a higher threshold leads to more precise segmentation but fewer selected masks. b In the prompt-mode, users can provide prompts to the SAM model by drawing rectangle boxes on the visualization panel using the drawing tool provided by Plotly. When users input three rectangle boxes as drawn, IAMSAM returns the corresponding ROIs. c By combining the zoom-in interface with the prompt-mode, IAMSAM allows for the detailed examination of microscopic histology features, enhancing analysis capabilities. d IAMSAM can also process data from platforms like Xenium, following appropriate preprocessing steps. e IAMSAM is applicable to various imaging modalities, including fluorescence imaging, thereby expanding its utility in different experimental settings</figDesc><graphic coords="6,134.62,106.85,333.14,391.70" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 4</head><label>4</label><figDesc>Fig. 4 Analysis of cancer heterogeneity in human breast cancer using IAMSAM. a H&amp;E-stained image of the human breast cancer block A Sect. 1.1 dataset, showing the selected ROIs. b Close-up image of ROI 1, highlighting distinct morphological features. c Close-up image of ROI 2, highlighting distinct morphological features. d IAMSAM analysis showing the identified ROIs based on distinct morphological features. e Box plot showing the top 10 high fold change DEGs in ROI 1 compared to ROI 2. f Bar plot of the top enriched GO terms (adjusted p-value &lt; 0.05) in ROI 1. g Box plot showing the top 10 high fold change DEGs in ROI 2 compared to ROI 1. h Bar plot of the top enriched GO terms (adjusted p-value &lt; 0.05) in ROI 2. i Cell type proportion analysis showing the distribution of cell types within ROI 1 and ROI 2</figDesc><graphic coords="9,127.54,88.58,340.20,369.72" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="10,200.27,366.27,262.46,245.42" type="bitmap" /></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgements</head><p>We would like to express our sincere gratitude to <rs type="institution">Meta AI</rs> for their invaluable contribution in making the source code of Segment-anything available to the public. Their unwavering commitment to the open-community ethos has not only greatly facilitated our research but has also empowered researchers and developers worldwide to explore and innovate in the field of image segmentation. We would like to express our gratitude to all the researchers at <rs type="institution">Portrai, Inc.</rs> for their support and contributions.</p></div>
+			</div>
+			<div type="funding">
+<div><head>Funding</head><p>This research was supported by the <rs type="funder">National Research Foundation of Korea</rs> (<rs type="grantNumber">NRF-2020M3A9B6038086</rs>, <rs type="grantNumber">NRF-2023R1A2C2006636</rs>, and <rs type="grantNumber">NRF-2022M3A9D3016848</rs>). In addition, this research was supported by a grant from the <rs type="funder">Korea Evaluation Institute of Industrial Technology (KEIT)</rs> funded by the <rs type="funder">Korean government (MOTIE)</rs> (No. <rs type="grantNumber">20018522</rs>) and supported by a grant from the <rs type="funder">Korea Technology and information Promotion Agency</rs> (<rs type="grantNumber">RS-2023-00304101</rs>).</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_Zzhadmk">
+					<idno type="grant-number">NRF-2020M3A9B6038086</idno>
+				</org>
+				<org type="funding" xml:id="_PntYT3R">
+					<idno type="grant-number">NRF-2023R1A2C2006636</idno>
+				</org>
+				<org type="funding" xml:id="_zFMKRdT">
+					<idno type="grant-number">NRF-2022M3A9D3016848</idno>
+				</org>
+				<org type="funding" xml:id="_AZH8dvA">
+					<idno type="grant-number">20018522</idno>
+				</org>
+				<org type="funding" xml:id="_BrVHfBQ">
+					<idno type="grant-number">RS-2023-00304101</idno>
+				</org>
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Availability of data and materials</head><p>The datasets analyzed during the current study are available in the 10x Genomics repository: Human breast cancer block A Sect. 1.1 dataset <ref type="bibr" target="#b26">[27]</ref>, Human breast cancer ductal carcinoma in situ and invasive carcinoma FFPE dataset <ref type="bibr" target="#b27">[28]</ref>, Human prostate cancer adenocarcinoma with invasive carcinoma FFPE dataset <ref type="bibr" target="#b28">[29]</ref> and Xenium Human colon preview data <ref type="bibr" target="#b29">[30]</ref>. The mouse colon Visium data provided in the demo is available from the Gene Expression Omnibus (GEO) under the accession number GSM5213483 <ref type="bibr" target="#b30">[31]</ref>. The code for IAMSAM is publicly available at the GitHub repository <ref type="bibr" target="#b31">[32]</ref> and Zenodo <ref type="bibr" target="#b32">[33]</ref> under the Apache License 2.0. Users who want to try IAMSAM without installing the code can access a demo at (<ref type="url" target="https://iamsam.portrai.io">https:// iamsam. portr ai. io</ref>).</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Supplementary Information</head><p>The online version contains supplementary material available at <ref type="url" target="https://doi.org/10.1186/s13059-024-03380-x">https:// doi. org/ 10. 1186/ s13059-024-03380-x</ref>.</p><p>Additional file 1: Supplementary Figures. Description: </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Peer review information</head><p>Andrew Cosgrove was the primary editor of this article and managed its editorial process and peer review in collaboration with the rest of the editorial team.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Review history</head><p>The review history is available as Additional File 2.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Declarations</head><p>Ethics approval and consent to participate Not applicable.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Consent for publication</head><p>Not applicable. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Competing interests</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Publisher's Note</head><p>Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Spatially resolved transcriptomes-next generation tools for tissue exploration</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Asp</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bergenstråhle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lundeberg</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">BioEssays</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page">1900221</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">An introduction to spatial transcriptomics for biomedical research</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">G</forename><surname>Williams</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">J</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Asatsuma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Vento-Tormo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Haque</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Genome Med</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="18" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Spatially informed clustering, integration, and deconvolution of spatial transcriptomics with GraphST</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Long</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">S</forename><surname>Ang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Klk</forename><surname>Chong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Sethi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat Commun</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">1155</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Giotto: a toolbox for integrative analysis and visualization of spatial expression data</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Dries</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chl</forename><surname>Eng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Genome Biol</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="31" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Robust mapping of spatiotemporal trajectories and cell-cell interactions in healthy and diseased tissues</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Pham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Balderson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">F</forename><surname>Grice</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yoon</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat Commun</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">7739</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Discovery of molecular features underlying the morphological landscape by integrating spatial transcriptomic data with deep features of tissue images</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bae</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Choi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">S</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nucleic Acids Res</title>
+		<imprint>
+			<biblScope unit="volume">49</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="55" to="e55" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Integrating spatial gene expression and breast tumour morphology via deep learning</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Bergenstråhle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Stenbeck</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Abid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Andersson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Å</forename><surname>Borg</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat Biomed Eng</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="827" to="834" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Define and visualize pathological architectures of human tissues from spatially resolved transcriptomics using deep learning</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Comput Struct Biotechnol J</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page" from="4600" to="4617" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title level="m" type="main">Segment anything</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kirillov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Mintun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ravi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Rolland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Gustafson</surname></persName>
+		</author>
+		<idno>ArXiv. 2023</idno>
+		<imprint/>
+	</monogr>
+	<note type="report_type">ArXiv Prepr</note>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">The wonderful colors of the hematoxylin-eosin stain in diagnostic surgical pathology</title>
+		<author>
+			<persName><forename type="first">Jkc</forename><surname>Chan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Int J Surg Pathol</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="12" to="32" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">H&amp;E staining &amp; imaging for visium spatial protocols. Document Number CG000160 Rev C</title>
+	</analytic>
+	<monogr>
+		<title level="j">Genomics. Methanol fixation</title>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">CellDART: cell type inference by domain adaptation of single-cell and spatial transcriptomic data</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bae</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Na</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Koh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">S</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Choi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">T</forename><surname>Kim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nucleic Acids Res</title>
+		<imprint>
+			<biblScope unit="volume">50</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="57" to="e57" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<title level="m" type="main">Collaborative data science</title>
+		<ptr target="https://plot.ly" />
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<publisher>Plotly Technologies Inc</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Endothelial focal adhesions and barrier function</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">H</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">H</forename><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Physiol</title>
+		<imprint>
+			<biblScope unit="volume">569</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="359" to="366" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Spatial transcriptomics-based identification of molecular markers for nanomedicine distribution in tumor tissue</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Park</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Choi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Choi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">J</forename><surname>Im</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Small Methods</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page">2201091</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Accurate identification of spatial domain by incorporating global spatial proximity and local expression proximity</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Xie</surname></persName>
+		</author>
+		<ptr target="https://www.mdpi.com/2218-273X/14/6/674" />
+	</analytic>
+	<monogr>
+		<title level="j">Biomolecules</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Genomic alterations during the in situ to invasive ductal breast carcinoma transition shaped by the immune system</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Trinh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Crgd</forename><surname>Alcazar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Shukla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Chin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">H</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Thibault</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Mol Cancer Res</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="623" to="635" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Progression from ductal carcinoma in situ to invasive breast cancer: molecular features and clinical significance</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zheng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Signal Transduct Target Ther</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="28" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">TACCO unifies annotation transfer and decomposition of cell identities for single-cell and spatial omics</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mages</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Moriel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Avraham</forename><forename type="middle">-</forename><surname>Davidi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Murray</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Watter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="1465" to="1473" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">SCANPY: Large-scale single-cell gene expression data analysis</title>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">A</forename><surname>Wolf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Angerer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">J</forename><surname>Theis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Genome Biol</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="5" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Masked autoencoders are scalable vision learners</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dollar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proc IEEE Comput Soc Conf Comput Vis Pattern Recognit</title>
+		<imprint>
+			<biblScope unit="page" from="15979" to="15988" />
+			<date type="published" when="2021">2021. 2022</date>
+			<pubPlace>June</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<monogr>
+		<title level="m" type="main">An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. ArXiv Prepr ArXiv</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Dosovitskiy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Beyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kolesnikov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Weissenborn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Unterthiner</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tancik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">P</forename><surname>Srinivasan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Mildenhall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Fridovich-Keil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Raghavan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Singhal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Adv Neural Inf Process Syst</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="7537" to="7547" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title level="m" type="main">Learning Transferable Visual Models From Natural Language Supervision</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Radford</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">W</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hallacy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ramesh</forename><forename type="middle">A</forename><surname>Goh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Agarwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename></persName>
+		</author>
+		<idno>ArXiv. 2021</idno>
+		<imprint/>
+	</monogr>
+	<note type="report_type">ArXiv Prepr</note>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Attention is all you need</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Vaswani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Shazeer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Parmar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Uszkoreit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Gomez</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Adv Neural Inf Process Syst</title>
+		<imprint>
+			<biblScope unit="page" from="5999" to="6009" />
+			<date type="published" when="2017">2017. 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">GSEApy: a comprehensive package for performing gene set enrichment analysis in Python</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Fang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Peltz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bioinforma Oxf Engl</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">757</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Human Breast Cancer (Block A Section 1)</title>
+		<ptr target="https://www.10xgenomics.com/datasets/human-breast-cancer-block-a-section-1-1-standard-1-1-0" />
+	</analytic>
+	<monogr>
+		<title level="m">Datasets. 10X Genomics Repository</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Human Breast Cancer: Ductal Carcinoma</title>
+		<ptr target="https://www.10xgenomics.com/datasets/human-breast-cancer-ductal-carcinoma-in-situ-invasive-carcinoma-ffpe-1-standard-1-3-0" />
+	</analytic>
+	<monogr>
+		<title level="m">Situ, Invasive Carcinoma (FFPE). Datasets. 10X Genomics Repository</title>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">-prost ate-cancer-adeno carci noma-with-invas ive-carci noma-ffpe-1-stand ard</title>
+		<ptr target="https://www.10xgenomics.com/datasets/human" />
+	</analytic>
+	<monogr>
+		<title level="m">Adenocarcinoma with Invasive Carcinoma (FFPE). Datasets. 10X Genomics Repository</title>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note>Human Prostate Cancer</note>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Human Colon Preview Data (Xenium Human Colon Gene Expression Panel)</title>
+		<ptr target="https://www.10xgenomics.com/datasets/human-colon-preview-data-xenium-human-colon-gene-expression-panel-1-standard2023" />
+	</analytic>
+	<monogr>
+		<title level="m">Datasets. 10X Genomics Repository</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<author>
+			<persName><forename type="first">L</forename><surname>Larsson</surname></persName>
+		</author>
+		<ptr target="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=" />
+	</analytic>
+	<monogr>
+		<title level="m">GSM5213483. Datasets. Gene Expression Omnibus</title>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="page">13483</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="middle">Iamsam</forename><surname>Portrai-Io</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Github</surname></persName>
+		</author>
+		<ptr target="https://github.com/portrai-io/IAMSAM.2023" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">IAMSAM: Image-based Analysis of Molecular Signatures using Segment-Anything Model</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Lee</surname></persName>
+		</author>
+		<ptr target="https://zenodo.org/record/12175" />
+	</analytic>
+	<monogr>
+		<title level="j">Dataset. Zenodo</title>
+		<imprint>
+			<biblScope unit="page">539</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

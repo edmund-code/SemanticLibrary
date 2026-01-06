@@ -1,0 +1,1469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Evaluating cell AI foundation models in kidney pathology with human-in-the-loop enrichment</title>
+				<funder ref="#_PVJEjyT">
+					<orgName type="full">Vanderbilt Seed Success Grant</orgName>
+				</funder>
+				<funder ref="#_WfV9Cje">
+					<orgName type="full">National Center for Advancing Translational Sciences (NCATS) Clinical Translational Science Award</orgName>
+					<orgName type="abbreviated">CTSA</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Halpin Foundation</orgName>
+				</funder>
+				<funder ref="#_8pGQ6Px #_afdmpab #_e3j6uZd #_PjJc52Y #_M6UDY6f #_HaVZJ3m #_6XhzUnU #_MmNXtnQ #_aXtnWnZ #_yRMkRaD #_mxmXxrs #_P6GPx7J #_wQFMgUG #_6A6x6SX #_M4RuhFP #_vqrqzYn #_tSGQpN7 #_bQHFE9C #_fX3WRha #_5c3SFMQ #_WDEYP7z">
+					<orgName type="full">NIDDK</orgName>
+				</funder>
+				<funder ref="#_Z7psFhb">
+					<orgName type="full">Vanderbilt Institute for Clinical and Translational Research</orgName>
+					<orgName type="abbreviated">VICTR</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">NCATS</orgName>
+				</funder>
+				<funder ref="#_HAHp62K #_ZtXk3Cv #_yDpXcyB">
+					<orgName type="full">National Science Foundation</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">NIH or NSF</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">National Institutes of Health (NIH) Rare Disease Clinical Research Network</orgName>
+					<orgName type="abbreviated">RDCRN</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">National Institute of Diabetes, Digestive, and Kidney Diseases</orgName>
+				</funder>
+				<funder ref="#_EgRurQp">
+					<orgName type="full">National Center for Research Resources</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">NephCure Kidney International</orgName>
+				</funder>
+				<funder ref="#_dHgbBGG #_ksQaF2C #_K9B85Fk">
+					<orgName type="full">unknown</orgName>
+				</funder>
+				<funder ref="#_MjxAYfR #_4HPbtYz #_tTWXUYB #_D7bujed">
+					<orgName type="full">National Institutes of Health</orgName>
+				</funder>
+				<funder ref="#_AMnYpS2">
+					<orgName type="full">Nephrotic Syndrome Study Network Consortium (NEPTUNE)</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">University of Michigan</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>Springer Science and Business Media LLC</publisher>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2025-11-24">2025-11-24</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Junlin</forename><surname>Guo</surname></persName>
+							<idno type="ORCID">0000-0001-9300-0314</idno>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Siqi</forename><surname>Lu</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Can</forename><surname>Cui</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Ruining</forename><surname>Deng</surname></persName>
+							<idno type="ORCID">0000-0001-6300-8518</idno>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Tianyuan</forename><surname>Yao</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Zhewen</forename><surname>Tao</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Yizhe</forename><surname>Lin</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Mathematics</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Marilyn</forename><surname>Lionts</surname></persName>
+							<idno type="ORCID">0000-0002-9889-3390</idno>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Quan</forename><surname>Liu</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Juming</forename><surname>Xiong</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Yu</forename><surname>Wang</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="department">Department of Biostatistics</orgName>
+								<orgName type="institution">Vanderbilt University Medical Center</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Shilin</forename><surname>Zhao</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="department">Department of Biostatistics</orgName>
+								<orgName type="institution">Vanderbilt University Medical Center</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Catie</forename><surname>Chang</surname></persName>
+							<idno type="ORCID">0000-0003-1541-9579</idno>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Mitchell</forename><surname>Wilkes</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Agnes</forename><surname>Fogo</surname></persName>
+							<affiliation key="aff4">
+								<orgName type="department">Department of Pathology, Microbiology and Immunology</orgName>
+								<orgName type="institution">Vanderbilt University Medical Center</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Mengmeng</forename><surname>Yin</surname></persName>
+							<affiliation key="aff4">
+								<orgName type="department">Department of Pathology, Microbiology and Immunology</orgName>
+								<orgName type="institution">Vanderbilt University Medical Center</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff5">
+								<orgName type="institution">Shanghai Ninth People&apos;s Hospital affiliated to Shanghai JiaoTong University School of Medicine</orgName>
+								<address>
+									<settlement>Shanghai</settlement>
+									<region>China</region>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Haichun</forename><surname>Yang</surname></persName>
+							<affiliation key="aff4">
+								<orgName type="department">Department of Pathology, Microbiology and Immunology</orgName>
+								<orgName type="institution">Vanderbilt University Medical Center</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">Yuankai</forename><surname>Huo</surname></persName>
+							<email>yuankai.huo@vanderbilt.edu</email>
+							<idno type="ORCID">0000-0002-2096-8065</idno>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Vanderbilt University</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff4">
+								<orgName type="department">Department of Pathology, Microbiology and Immunology</orgName>
+								<orgName type="institution">Vanderbilt University Medical Center</orgName>
+								<address>
+									<settlement>Nashville</settlement>
+									<region>TN</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Evaluating cell AI foundation models in kidney pathology with human-in-the-loop enrichment</title>
+					</analytic>
+					<monogr>
+						<title level="j" type="main">Communications Medicine</title>
+						<title level="j" type="abbrev">Commun Med</title>
+						<idno type="eISSN">2730-664X</idno>
+						<imprint>
+							<publisher>Springer Science and Business Media LLC</publisher>
+							<biblScope unit="volume">5</biblScope>
+							<biblScope unit="issue">1</biblScope>
+							<date type="published" when="2025-11-24" />
+						</imprint>
+					</monogr>
+					<idno type="MD5">FE0E65C9CA85AE02BB8BF71C0F955802</idno>
+					<idno type="DOI">10.1038/s43856-025-01205-x</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:10+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Large-scale artificial intelligence foundation models have emerged as promising tools for addressing healthcare challenges, including digital pathology. While many have been developed for complex tasks such as disease diagnosis and tissue quantification using extensive and diverse datasets, their readiness for seemingly simpler tasks, such as nuclei segmentation within a single organ (for example, the kidney), remains unclear. This study answers two questions: How good are current cell foundation models? and How can we improve them? We curated a multi-center, multi-disease, and multi-species dataset sampled from 2542 kidney whole slide images. Three state-of-the-art cell foundation models—Cellpose, StarDist, and CellViT—were evaluated. To enhance performance, we developed a human-in-the-loop strategy that distilled multi-model predictions, improving data quality while reducing reliance on pixel-level annotation. Fine-tuning was performed using the enriched datasets, and segmentation performance was quantitatively assessed. Here we show that cell nuclei segmentation in kidney pathology still requires improvement with more organ-targeted foundation models. Among the evaluated models, CellViT achieves the highest baseline performance, with an F1 score of 0.78. Fine-tuning with enriched data improves all three models, with StarDist achieving the highest F1 score of 0.82. The combination of the foundation model-generated pseudo-labels and a subset of pathologist-corrected “hard” patches yields consistent performance gains across all models. This study establishes a benchmark for the development and deployment of cell AI foundation models tailored to real-world data. The proposed framework, which leverages foundation models with reduced expert annotation, supports more efficient workflows in clinical pathology.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Plain Language Summary</head><p>The rise of digital pathology has transformed traditional histology slides into vast collections of high-resolution images, enabling medical research on a much larger scale. However, analysing this data remains challenging. Foundation models-advanced AI systems trained on diverse datasets-offer a promising solution, but their ability to perform simpler yet essential tasks, such as identifying cell nuclei in kidney tissue, is unclear. We evaluated three leading models on a large, curated kidney image dataset and found that cell nuclei segmentation in kidney pathology still requires improvement with more organ-targeted foundation models. To enhance performance, we introduced a "human-in-the-loop" approach that combines multiple foundation models with expert labeling of only the most difficult cases, improving accuracy, reducing manual labeling, and enabling more efficient pathology workflows.</p><p>marker-controlled watershed segmentation <ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b19">20</ref> , active contour models <ref type="bibr" target="#b20">21</ref> , and multi-pass watershed methods <ref type="bibr" target="#b21">22</ref> . While effective in specific contexts, these methods depended on hand-crafted features and were sensitive to parameter tuning, making them less robust for heterogeneous or overlapping nuclei. The advent of deep learning (DL) addressed many of these limitations by replacing manual feature design with learned representations. Two-stage DL approaches, such as Mask R-CNN <ref type="bibr" target="#b22">23</ref> , first localize nuclei before refining their boundaries, whereas one-stage methods integrate detection and segmentation into a unified process. Notable one-stage models include Micro-Net <ref type="bibr" target="#b23">24</ref> , HoVer-Net <ref type="bibr" target="#b24">25</ref> , StarDist <ref type="bibr" target="#b25">26</ref> , CPP-Net <ref type="bibr" target="#b26">27</ref> , Cellpose <ref type="bibr" target="#b27">28</ref> , and CellViT <ref type="bibr" target="#b28">29</ref> , which vary in architectural design but share the advantages of efficiency and standardization.</p><p>More recently, foundation models for cell segmentation <ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b27">[28]</ref><ref type="bibr" target="#b28">[29]</ref><ref type="bibr" target="#b29">[30]</ref> have emerged, which are trained on large and diverse datasets encompassing multiple cell types, microscopy techniques, and experimental conditions. These models have demonstrated impressive cross-domain generalization, enabling strong performance in unfamiliar settings. However, despite their success in complex tasks such as disease diagnosis and tissue quantification, it remains unclear whether they can generalize to simpler yet essential tasks, such as cell nuclei segmentation within a single organ. This is a relevant and underexplored question in kidney pathology, where WSIs feature high cellular diversity-at least 16 specialized epithelial types along with endothelial, immune, and interstitial cells <ref type="bibr" target="#b30">31</ref> -and where common stains such as Periodic Acid-Schiff (PAS) are rarely represented in training datasets.</p><p>Beyond large-scale training and model architecture, the availability of high-quality training data remains a critical bottleneck. Producing pixellevel annotations for instance segmentation is time-consuming and expensive (typically requiring 10 -2 to 10 0 hours per image) <ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b31">32,</ref><ref type="bibr" target="#b32">33</ref> . Humanin-the-loop (HITL) strategies can mitigate this burden by iteratively refining model predictions with expert feedback <ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b32">33,</ref><ref type="bibr" target="#b33">34</ref> . For example, Cellpose 2.0 <ref type="bibr" target="#b33">34</ref> fine-tunes pretrained models using as few as 100-200 region-of-interest annotations. While effective, most HITL pipelines are built around a single model, leaving the potential benefits of combining multiple foundation models largely unexplored.</p><p>In this study, we address these gaps by evaluating three widely used cell AI foundation models-Cellpose <ref type="bibr" target="#b27">28</ref> , StarDist <ref type="bibr" target="#b25">26</ref> , and CellViT <ref type="bibr" target="#b28">29</ref> -on a diverse evaluation dataset that includes kidney nuclei data sampled from 2542 kidney WSIs sourced from humans and rodents across both public and inhouse datasets. To our knowledge, the scale of this study's kidney WSIs surpasses all publicly available labeled nuclei datasets that include the kidney. Here we show that cell nuclei segmentation in kidney pathology still requires improvement with more organ-targeted models. To enhance performance, we introduce a HITL data enrichment strategy that combines foundation model predictions with expert corrections for the most challenging cases. Fine-tuning with these enriched datasets improves all three models, with StarDist achieving an F1 score of 0.82. Pairing pseudo-labels with a subset of pathologist-corrected "hard" patches consistently boosts performance, improves segmentation accuracy, and streamlines workflows in research and clinical pathology.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Methods</head><p>In this section, we first introduce the overall framework of the study, followed by details of its design. Specifically, we describe the construction of a diverse, large-scale dataset for evaluating foundation models, the human-inthe-loop strategy for enriching the training data by leveraging these models, the continual fine-tuning of models with the enriched dataset, and the experimental setup.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Overall framework</head><p>Figure <ref type="figure" target="#fig_1">1</ref> illustrates the overall framework of this study. First, we curated a diverse, large-scale evaluation dataset comprising samples from 2542 kidney whole slide images (Fig. <ref type="figure" target="#fig_1">1a-c</ref>). Next, kidney cell nuclei instance segmentation was performed using three state-of-the-art foundation models: Cellpose 28 , StarDist <ref type="bibr" target="#b25">26</ref> , and CellViT <ref type="bibr" target="#b28">29</ref> . Model performance was then assessed, as shown in the bottom panel, through qualitative human evaluation of each prediction mask. Lastly, to address the more challenging task of improving model performance, the Fig. <ref type="figure" target="#fig_1">1</ref> Data Enrichment stage employs a human-in-the-loop framework that integrates foundation model predictions with expert corrections for the most difficult cases into the model's continual learning process, thereby reducing reliance on pixel-level human annotation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Curating a diverse large-scale dataset</head><p>To provide a comprehensive assessment of their performance in segmenting kidney nuclei, we constructed a diverse evaluation dataset. Our dataset comprises both public and private kidney data, with a total of 2542 wholeslide images (WSIs). As illustrated in Fig. <ref type="figure" target="#fig_1">1b</ref>, 57% (1449 WSIs) come from publicly available sources, including the Kidney Precision Medicine Project (KPMP) <ref type="bibr" target="#b34">35</ref> , NEPTUNE <ref type="bibr" target="#b35">36</ref> , and HUBMAP <ref type="bibr" target="#b36">37,</ref><ref type="bibr" target="#b37">38</ref> , while the remaining 43% (1093 WSIs) originate from an internal collection at Vanderbilt University Medical Center. To increase the diversity of our dataset, we incorporated WSIs from both human and rodent samples. As depicted in Fig. <ref type="figure" target="#fig_1">1c</ref>, these WSIs were stained using Hematoxylin and Eosin (H&amp;E), Periodic acid-Schiff methenamine (PASM), and Periodic acid-Schiff (PAS), with PAS being widely used in kidney pathology but less frequently in other organs. We randomly extracted four 512 × 512-pixel image patches from each kidney WSI at 40× magnification. Patches that were contaminated, of low imaging quality, from dead tissue, or with incorrect staining methods were discarded. This process resulted in an evaluation dataset of 8818 image patches.</p><p>Data enrichment with multiple foundation models and HITL Rating image patches. As shown in Fig. <ref type="figure" target="#fig_2">2a</ref>, nuclei instance segmentation was performed on these kidney nuclei image patches using three cell foundation models: Cellpose 28 , StarDist <ref type="bibr" target="#b25">26</ref> , and CellViT <ref type="bibr" target="#b28">29</ref> . Then, instead of directly correcting their predicted instance masks, we use a rating-based system to evaluate the predictions from the three foundation models (as shown in Fig. <ref type="figure" target="#fig_2">2b</ref>). The ratings, conducted in a blinded experiment, were performed separately by two pathologist-trained students evaluating model predictions. An experienced renal pathologist subsequently reviewed and validated the samples where the students' assessments disagreed. As shown in Fig. <ref type="figure" target="#fig_3">3</ref>, ratings-categorized as "good," "medium," or "bad" based on the criteria set by an expert renal pathologist-defined "good" predictions as capturing ~90% of nuclei in a patch, "bad" as capturing less than 50%, and all others as "medium."</p><p>Pseudo-labels and hard data annotation. In this work, we leveraged the image patch curation results to reduce the pixel-level labeling effort in the HITL design. Specifically, we scaled up the training dataset by directly utilizing the "easy" (pseudo-labeled) samples (shown as Fig. <ref type="figure" target="#fig_2">2d</ref>). To bridge the domain gap, we also incorporated a small set of representative "hard" samples (shown as Fig. <ref type="figure" target="#fig_2">2c</ref>), manually annotated by pathologists at a cost of roughly 20 min per patch.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data-enriched foundation models fine-tuning</head><p>Leveraging curated data from multiple foundation models, we fine-tune them with "easy" patches (pseudo-labels), "hard" patches (pathologistcorrected), or a combination of both to improve kidney-nuclei segmentation. In this section, we (1) introduce the three foundation models used for image-patch curation and continuous fine-tuning, and (2) address a key fine-tuning challenge: the imbalance between "easy" and "hard" image patches. To mitigate this imbalance, we apply a customized weightedoversampling method.</p><p>Cell AI foundation models. This section outlines the three cell foundation models used in this study. Details for each foundation model can be found in Cellpose <ref type="bibr" target="#b27">28</ref> , StarDist <ref type="bibr" target="#b25">26</ref> , and CellViT <ref type="bibr" target="#b28">29</ref> .</p><p>Cellpose. Cellpose <ref type="bibr" target="#b27">28</ref> is a generalist segmentation model that utilizes a U-Net backbone to predict the horizontal and vertical gradients of topological maps, as well as a binary map. Then, a gradient tracking algorithm is employed to enable precise delineation of cellular boundaries. According to ref. 28, Cellpose was trained on highly varied images of cells, containing over 70,000 segmented objects, capturing a wide range of imaging modalities and cellular morphologies. The training dataset includes fluorescent microscopy with cytoplasmic markers and DAPI-stained nuclei, brightfield microscopy, membrane-labeled cells, as well as non-cellular and atypical cellular images from Google search to enhance the model's generalization beyond conventional biological images. Morphologically, it featured diverse cell types, including for example, neurons with complex dendritic processes, bone marrow-derived macrophages, cultured Drosophila and mouse cortical cells, pancreatic stem cells, cancer cell lines such as U2OS osteosarcoma cells, and histological samples from various human organs (e.g., MoNuSeg <ref type="bibr" target="#b38">39</ref> ). This comprehensive diversity in both imaging types and cell morphologies increases its segmentation ability across a wide range of biological and imaging contexts without requiring retraining or parameter adjustments.</p><p>StarDist. StarDist 26 employs a unique star-convex polygon representation for nuclei segmentation, which is particularly effective for roundish objects such as cell nuclei. The model is built on a U-Net backbone and predicts object probabilities and radial distances from the center of each nucleus to its boundary, forming star-convex polygons. StarDist was originally developed for fluorescence microscopy images. To enhance its applicability to histopathology images, the model was further trained on the Lizard dataset <ref type="bibr" target="#b39">40</ref>   containing six different cell types (neutrophil, epithelial, lymphocyte, plasma, eosinophil, and connective tissue cells). During the post-processing stage, non-maximum suppression (NMS) is used to remove redundant polygons, ensuring that only unique instances are retained. Additionally, test-time augmentations and model ensembling were employed to further enhance segmentation performance, making StarDist a robust solution for diverse microscopy image types. CellViT. CellViT 29 employs a U-Net shaped hierarchical encoder-decoder Vision Transformer (ViT)[] backbone, designed specifically for nuclei segmentation and classification in histopathology images. The encoder utilizes pre-trained weights from a ViT trained on 104 million histological images (ViT 256 ) 41 , a model that demonstrated superior performance in cancer subtyping and survival prediction tasks. CellViT is further trained on the PanNuke dataset 42 , which includes 189,744 annotated nuclei across 19 tissue types, grouped into five clinically relevant classes: neoplastic, inflammatory, epithelial, dead, and connective. The images in this dataset are captured at 40× magnification with a resolution of 0.25 μm/pixel, making it a challenging benchmark due to its diversity and class imbalance.</p><p>CellViT's post-processing pipeline follows the HoVer-Net methodology <ref type="bibr" target="#b24">25</ref> , using gradient maps of horizontal and vertical distances for accurate boundary delineation. Additionally, the network benefits from extensive data augmentation techniques and transfer learning strategies to overcome the scarcity of annotated medical data, achieving SOTA performance on both the PanNuke and MoNuSeg datasets.</p><p>Class-wise weighted oversampling. To mitigate the severe imbalance between "easy" and "hard" patches (≈50:1), we adopt the customized weighted-oversampling strategy described in ref. 29. By controlling an oversampling factor γ s ∈ [0, 1], higher sample weights will be assigned to underrepresented class ("hard"), ensuring they are sampled more frequently during training. Thus, challenging nuclei samples are emphasized while catastrophic forgetting is reduced by retaining large-scale "easy" labels. A detailed derivation of the weighted oversampling method is provided in the Supplementary Methods.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Experimental setup Dataset</head><p>Evaluation dataset. As described in the previous section, the evaluation dataset in this study is highly diverse, comprising 2542 whole-slide images (WSIs) from both public and private sources. It includes samples from both human and rodent tissue, stained with H&amp;E, PASM, and PAS. After discarding contaminated or poor-quality patches, we randomly extracted four 512 × 512-pixel patches from each WSI at 40× magnification, resulting in an evaluation dataset of 8818 image patches. As illustrated in Fig. <ref type="figure" target="#fig_1">1b</ref>, 57% (1449 WSIs) were collected from publicly available sources, b Model performance was evaluated by rating each prediction mask as "good," "medium," or "bad" according to criteria from a renal pathologist. "Good" predictions captured ~90% of the nuclei in a patch, "bad" predictions captured less than 50%, and the rest were classified as "medium." We used this rating system to both qualitatively and quantitatively evaluate and categorize each model's predictions within our dataset. c-e The lower panel illustrates the data enrichment strategy that utilizes these curation outcomes to enhance model performance through continuous fine-tuning. Specifically, to enrich the training dataset while minimizing pixel-level annotation, we used both pseudo-labeled images from multiple foundation models (termed as "easy") and "hard" samples that all models failed.</p><p>including the Kidney Precision Medicine Project (KPMP) <ref type="bibr" target="#b34">35</ref> , NEPTUNE <ref type="bibr" target="#b35">36</ref> , and HUBMAP <ref type="bibr" target="#b36">37,</ref><ref type="bibr" target="#b37">38</ref> , while the remaining 43% (1093 WSIs) were acquired from an internal collection at Vanderbilt University Medical Center. To increase the diversity of our dataset, we incorporated WSIs from both human and rodent samples.</p><p>Fine-tuning dataset. Building on the evaluation dataset construction described above, three foundation models were used for inference and curation. "Good" prediction masks and corresponding images from all three foundation models were collected as "easy" image-pseudo-label pairs and added to the fine-tuning dataset. Additionally, a small set of 198 hard image patches, which were consistently rated as "bad" by student raters across all foundation models, were manually annotated by pathologists and included in the fine-tuning dataset. As shown in Table <ref type="table" target="#tab_1">1</ref>, This resulted in a total of 12,005 image-label pairs. For the training and validation split, 11,807 pairs were used for training, while a diverse set of 100 pairs was reserved for validation. Lastly, an additional 185 images, sampled from all kidney WSI sources, were annotated by pathologists and designated as the hold-out testing set to evaluate the performance of the fine-tuned foundation models. Each 512 × 512 image patch contains 50-300 cell nuclei, providing substantial signals for effective fine-tuning. We ensure that no overlap existed between WSIs used for training/validation and those in the hold-out test set.</p><p>Evaluation of foundation model performance. Nuclei instance segmentation results from the three foundation models were evaluated using the criteria shown in Fig. <ref type="figure" target="#fig_3">3</ref>. This rating system quantitatively assesses each model's predictions on the evaluation dataset.</p><p>Single model performance evaluation. First, we evaluated the performance of each individual foundation model by analyzing the distribution of rating assignments across our evaluation dataset. This analysis provided insights into each cell foundation model's performance and behavior by examining the frequency of prediction classes ("good," "medium," "bad") for each foundation model.</p><p>Fused model performance evaluation. Building on the evaluation of each individual cell foundation model's performance, we conducted a joint model performance evaluation. Specifically, an image patch was assigned to the "good" prediction class if any model rated it as "good." Conversely, an image patch was categorized as "bad" only if all foundation models were assigned a "bad" rating. The remaining image patches were categorized as "medium." This joint analysis indicates the upper bound of applying multiple foundation models to our domain-specific task and highlight the potential for fine-tuning these models through our data enrichment strategies. Furthermore, a taxonomy of common errors made by all cell foundation models in this study can be derived from the fused "bad" image patches.</p><p>Cross-model performance evaluation. In this work, we also evaluated crossmodel performance on our kidney nuclei dataset by conducting an agreement analysis among the foundation models. First, we computed an Agreement Matrix that quantified the percentage of agreement between each pair of models, indicating how often they assigned the same rating to image patch predictions. This matrix highlights the consistency among the foundation models in their rating assignments. Next, we examined Class-Specific Agreement by categorizing image patches into three groups: All Three Models Agree, where all models assigned the same rating; Two Models Agree, where any two models assigned matching ratings; and No Agreement, where none of the models assigned the same rating to the image patch.</p><p>Data-enriched fine-tuning with multiple foundation models. As described earlier, Each foundation model was fine-tuned using either "easy" image patches (foundation model-generated pseudo labels), "hard" image patches (pathologist-corrected), or both. Table <ref type="table" target="#tab_1">1</ref> shows the details of the fine-tuning experiments. For each fine-tuning setting, we used different scales of the training dataset. Specifically, we selected common proportions-25%, 50%, 75%, and 100%-to evaluate whether the impact of annotation strategies across the three models remains consistent under different dataset sizes.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Evaluation metrics and implementation details</head><p>Evaluation metrics. To assess the instance segmentation performance of the foundation models after fine-tuning, we used Recall, Precision, and F1 score as evaluation metrics. Details are provided in the Supplementary Experiments.</p><p>Implementations. Both training and inference experiments were implemented using Python 3.9 and PyTorch 2.0.1, with GPU acceleration provided by CUDA 11.7. The experiments were conducted on an NVIDIA RTX A5000 GPU with 24GB of memory. For a simple implementation of model inference using each foundation model's released pretrained weights with GPU support, our previous work <ref type="bibr" target="#b42">43</ref> provides customized object-oriented python modules.</p><p>During fine-tuning, to ensure consistency in experimental settings and enable meaningful comparison, we applied the same oversampling factor γ s = 0.85 across all experiments that used both "easy" and "hard" patches. Due to the imbalance between "easy" and "hard" samples, the number of training epochs was set to 50 for all fine-tuning experiments involving "easy" image patches, while experiments using only "hard" image patches were trained for 25 epochs. The batch size was consistently set to 16 across all experiments. Detailed information about model fine-tuning is provided in the Supplementary Experiments.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Statistics and reproducibility</head><p>Model evaluation was performed on 8818 image patches sampled from 2542 curated kidney whole slide images. Each patch was assigned a qualitative rating ("good," "medium," or "bad") using established criteria. For inference with the publicly available Cellpose, StarDist, and CellViT models, we used our previously published object-oriented Python modules <ref type="bibr" target="#b42">43</ref> to ensure consistent preprocessing and execution. To assessed the fine-tuned models, instance segmentation performance was assessed on the test dataset using Recall, Precision, and F1 score, calculated at the image-patch level with mean and standard deviation reported. Training parameters were standardized across models to enable fair comparison. Replicates refer to independent evaluations of each model on the same test dataset under identical inference conditions. All experiments were deterministic, with identical hardware to ensure reproducibility.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Ethical consideration</head><p>This work was conducted with approval and oversight from the Vanderbilt University Institutional Review Board (IRB 230223). This is a retrospective study on archival tissue. No interventions and experimental manipulations were included. We did not recruit participants. We retrieved the archival kidney tissue biopsy samples from the tissue bank. We used pre-collected and de-identified microscopy data only without knowing the information (e.g., age, genotypic information, past and current diagnosis and treatment categories) of the population characteristics.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results</head><p>Evaluation of foundation model performance Individual model performance evaluation. First, we rated the segmentation performance of each foundation model shown in the upper panel of Fig. <ref type="figure">4</ref>. CellViT demonstrated superior performance in segmenting nuclei in these kidney images, with 5609 (63.6%) "good" predictions, which outperforms Cellpose (40.5%) and StarDist (40.2%). This indicates that, despite not being specifically trained on kidney pathology nuclei data, the models retain some transferable knowledge applicable to our task. However, even with the best CellViT model, there is still an existence of ~37% of rated predictions from "medium" and "bad," which underscores the need for a kidney domain-specific foundation model. Thus, the fused evaluation dataset-with enriched "good" image patches (6001; 68%) and a reduced number of "bad" patches (534; 6%)-were further utilized for continuous fine-tuning.</p><p>Taxonomy of model failures. As illustrated in the lower panel of Fig. <ref type="figure">4</ref>, a taxonomy of common errors made by all cell foundation models is summarized from the fused set of "bad" image patches. It is evident long and flat nuclei, nuclei with blurred boundaries, and densely distributed nuclei within glomeruli are particularly difficult to segment accurately.</p><p>Additionally, slides with faint staining, those containing fatty tissues, or slides with an excessive number of red blood cells can result in a higher incidence of model failures.</p><p>Cross-model performance agreement. Next, we assess their collective behavior by examining the agreement and disagreement among their predictions. Figure <ref type="figure" target="#fig_4">5a</ref> shows the consistency between model predictions. As illustrated, no pair of models reaches over 90% agreement or complete disagreement. The highest agreement occurs between Cellpose and StarDist (0.76), while the lowest is between Cellpose and CellViT (0.67). These non-extreme values, ranging from 0.67 to 0.76, suggest that the current SOTA nuclei foundation models in digital pathology do not generalize exceptionally well to large-scale, diverse kidney datasets. Each model exhibits its own strengths, highlighting the potential for combining multiple SOTA foundation models to improve performance in downstream kidney nuclei tasks. Figure <ref type="figure" target="#fig_4">5b</ref> shows the percentages of image patches where all three models agree, two models agree, or no models agree for each rated prediction class ("good", "medium", "bad"). It is evident that "bad" samples exhibit the highest inter-model reliability, with over 70% agreement among all three models, indicating the nature of our design that prioritizes human annotation effort for consensus "bad" image patches.</p><p>Inter-rater agreement. Lastly, we also randomly selected 300 images to assess inter-rater reliability, as shown in Supplementary Table <ref type="table" target="#tab_1">S1</ref>. Cell-ViT, which has the strongest baseline performance, achieved the highest agreement of 94.3% between the two raters.</p><p>Data-enriched foundation models fine-tuning Baseline performance. First, We used the pretrained weights of each foundation model as the baseline and evaluated their performance on our hold-out test set; results are shown in blue in Table <ref type="table">2</ref>. Consistent with prior human feedback, CellViT outperforms the other two models, with an F1 score of 0.7838, followed by StarDist at 0.7380, and Cellpose at 0.6748. Although StarDist achieves a high precision score of 0.9158, its lower recall of 0.6331 suggests that it misses certain amount of kidney cell nuclei. Cellpose exhibits the largest domain gap with the lowest F1 score and shows at least 10% decrease in all evaluation metrics compared to CellViT.</p><p>Fine-tuned performance. Then, we investigated the performance of foundation models from our data-enriched fine-tuning strategies. The details of instance segmentation performance gains are provided below with the evaluation metric values referenced in Table <ref type="table">2</ref>.</p><p>(1) Cellpose: As shown, training on "hard" patches alone significantly degrades performance, particularly in the F1 score and Recall. In contrast, the inclusion of large-scale "easy" (pseudo-labeled) training samples consistently improves performance, with optimal results achieved using only "easy" patches, significantly boosting all metrics over the baseline (F1: 0.6748 → 0.7529).</p><p>(2) StarDist: All fine-tuning strategies lead to strong instance segmentation performance gains, especially in F1 (0.738 → 0.8229) and Recall (0.6331 → 0.7802). While Precision saw a slight drop from 0.9158 to Fig. <ref type="figure">4</ref> | Distribution of rated predictions from cell foundation models across the evaluation dataset. Each row represents the foundation model's predictions, with three values corresponding to the number of predictions rated as "good," "medium," and "bad," respectively. Then, data enrichment (shown as "Fused" Model) was performed based on the evaluation results of individual models, resulting in an increase in "good" image patches and a decrease in "bad" image patches. Lastly, we summarized a taxonomy of "bad" image patches that all foundation models failed. shows the percentages of image patches where all three models agree, two models agree, or no models agree, for each prediction class ("good", "medium", "bad").</p><p><ref type="url" target="https://doi.org/10.1038/s43856-025-01205-x">https://doi.org/10.1038/s43856-025-01205-x</ref> around 0.89, the decrease is minimal compared to the substantial improvements in F1 and Recall. "Easy" patches support knowledge distillation, while "hard" ones close domain gaps, confirming the effectiveness of HITL-guided data enrichment.</p><p>(3) CellViT: Performance remains stable across strategies. Combining both "easy" and "hard" patches yields the highest F1 score (0.7952) and the most balanced results, though the gains are smaller than those observed for Cellpose or StarDist. This may be due to noise introduced by pseudo-labels from less accurate models, which will be examined in the next Section "Effect of label imbalance on model performance".</p><p>Optimal annotation strategies. Lastly, we summarize the optimal training and annotation strategies for the three foundation models in Fig. <ref type="figure" target="#fig_5">6</ref>. We use the F1-score as the primary evaluation metric, as it balances both precision and recall. Among the models, the Fluorescent-dominant model, Cellpose, achieves optimal performance when trained with only "easy" labels. Its performance degrades with the inclusion of "hard" labels, likely due to their significant domain difference from the model's pre-training data. In this context, "hard" cases are the training cases where automatic segmentation fails human QA and employ pixel-level manual corrections, while "easy" cases are those where the automatic results successfully pass human QA without modification. In contrast, the H&amp;E-dominant models consistently benefit from incorporating human-corrected labels ("hard"), outperforming their respective baselines. Specifically, StarDist achieves the best performance with "hard" labels (attaining the highest F1 score of 0.8229), while CellViT performs optimally when trained with both "easy" and "hard" labels. In summary, the combined use of "easy" and "hard" patches proved to be the most effective and broadly applicable annotation strategy, consistently enhancing performance across all three models.</p><p>Choice of training dataset size. In this study, we selected common proportions-25%, 50%, 75%, and 100%-to evaluate whether the impact of annotation strategies across the three models remains consistent under different dataset sizes. Given that the annotation efforts are limited to only a total of 198 "hard" labels and a majority comes from pseudo-labels. We hypothesize that maintaining the overall scale of the training dataset to include enough representative samples is important. To further assess this, we conducted additional experiments using only 10% of "easy" labels (N = 1181), "hard" labels (N = 20), and their combination to validate the results. The outcomes are also presented in Table <ref type="table">2</ref>.</p><p>As shown in Table <ref type="table">2</ref>, reducing the training dataset to 10% results in smaller performance gains across all models, though the overall trend remains consistent-particularly for the CNN-based models (Cellpose and StarDist), as illustrated in Fig. <ref type="figure" target="#fig_5">6</ref>. In contrast, performance drops more noticeably below the baseline for the ViT-based CellViT. With only 20 "hard" samples, fine-tuning becomes challenging, making comparisons between groups (e.g., "easy" vs. "easy" + "hard") less reliable. To broadly improve model performance, a sufficient amount of both "hard" and "easy" data (e.g., at least 25%) is essential for effective fine-tuning. Alternatively, maintaining segmentation accuracy with smaller datasets requires additional data curation to ensure representative coverage.</p><p>Robustness. To better evaluate the robustness of the experiments, we applied 5-fold cross-validation and compared F1-scores as part of an ablation study. As shown in Supplementary Table <ref type="table">S2</ref>, the results compare model performance under different training annotation strategies.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Effect of label imbalance on model performance</head><p>Compared to Cellpose and StarDist, CellViT shows a smaller performance gain over its baseline, which we hypothesize is due to imbalanced annotation quality. (1) variation in pseudo-label quality introduces noise. As shown in Fig. <ref type="figure">4</ref>, CellViT-the strongest baseline model-generates the majority of pseudo labels; however, incorporating pseudo labels from weaker models may introduce noise that hinders its fine-tuning. (2) There is an imbalance between pseudo labels (from "easy" cases) and gold-standard annotations (from "hard" cases). To investigate these effects, we conducted an ablation study in which we incrementally added noise-free, pathologist-corrected "hard" image patches to the training set, as shown in Fig. <ref type="figure">7</ref>.</p><p>Consistent with Fig. <ref type="figure" target="#fig_5">6</ref>, the Fluorescent-dominant Cellpose model shows decreased performance when "hard" patches are included, although the annotations are gold-standard, but the usually faintly stained patches are too different from its pre-training dataset. In contrast, the H&amp;E-dominant models, CellViT and StarDist, show consistent performance improvement as more high-quality "hard" annotations are added. The differing trend may be attributed to the training data used for each model: the Cellpose model was predominantly trained on fluorescence microscopy images with Fluorescent staining (a "Fluorescent-dominant" model), while CellViT and StarDist were primarily trained on histology images with H&amp;E staining (forming "H&amp;E-dominant" models). Since the "hard" dataset is composed mostly of H&amp;E-stained images, this domain gap likely contributes to the observed differences in performance. Notably, CellViT achieves its highest F1 score of 0.798 when all "hard" image patches are included. This aligns with the optimal annotation strategies shown in Fig. <ref type="figure" target="#fig_5">6</ref>, where the combined use of "easy" (pseudo-labeled) and "hard" (pathologist-corrected) patches proves to be the most effective and broadly applicable approach, consistently improving performance across all three models. Visualization of improved model performance In this section, we present the qualitative visualization results of our enhanced kidney cell nuclei instance segmentation, evaluated using the best fine-tuning strategies from three foundation models. Three example image patches (A, B, and C) are presented in Fig. 8. The upper panel for each example shows the baseline performance across all models, while the lower panel displays the segmentation performance following data-enriched finetuning. As shown in Fig. 8A, our fine-tuned Cellpose model improves the instance segmentation on long and flat nuclei. (B) highlights the improvement of our StarDist model in segmenting dense nuclei in a glomerulus. The last panel shows the improvement in segmenting nuclei in PAS-stained images, which are underrepresented in the current histology dataset. Most faintly stained nuclei that were missing in the original predictions within a glomerulus are detected by the fine-tuned StarDist and CellViT models. In contrast, the fine-tuned Cellpose model generates fewer false positive predictions compared to its baseline. Additionally, as illustrated in both (A) and (B), the highlighted regions in the image patches represent knowledge gaps in the target domain where the inferior model struggles with certain types of image patches, while the other models do not. Examples of our fine-tuning results demonstrate that this less effective model can benefit from the knowledge of the other models to improve its performance. Additional visualizations of the qualitative results (D)-(L) are provided in Supplementary Figs. S1-S3.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Discussion</head><p>The evaluation of Cellpose, StarDist, and CellViT reveals a persistent performance gap between general and kidney-specific nuclei segmentation, indicating that domain-specific tuning is still required. Our foundation model-based data enrichment strategies aim to meet the need for a kidneylevel cell foundation model and to reduce labeling costs. In this process, the collective image curation from multiple foundation models is crucial, as a single model may not capture the diversity of segmentation styles in the target kidney domain. By leveraging the versatility of multiple foundation models, annotation efforts are minimized and transformed into timeefficient image rating curation, which can be further enhanced through the model's uncertainty analysis. In the first round of HITL fine-tuning, all three foundation models demonstrated improved performance over their baselines, with StarDist achieving the highest segmentation performance, achieving an F1 score of 0.82. The combined use of "easy" (pseudo-labeled) and "hard" (pathologist-corrected) patches proved to be the most effective and broadly applicable strategy, consistently improving performance across all three models. Although Cellpose shows a significant increase in performance (with the F1 score rising from 0.67 to 0.75) with our fine-tuning, it demonstrates lower efficacy when only hard image samples are included. This is primarily because the Cellpose model is primarily designed for fluorescently labeled images (Fluorescent-dominant model). For the training of segmentation task, 512 × 512 images were converted into grayscale nuclear bands, which can lead to information loss, particularly for hard images with very light staining colors and complex tissue morphological patterns. In contrast, the other two models have been adapted for H&amp;E-stained images.</p><p>To clarify the definition of pathology-related foundation models in our study, the three models are image-only foundation models, highlighting scale, data modalities (incorporating different microscopy techniques). Among three models, CellViT is a transformer-based model built upon DINO/SAM and regarded as a foundation model in recent works <ref type="bibr" target="#b29">30,</ref><ref type="bibr" target="#b43">44,</ref><ref type="bibr" target="#b44">45</ref> . Cellpose and StarDist are CNN-based generalist models. CNN-based models that are pre-trained with large-scale representative data are also regarded as foundation models in <ref type="bibr" target="#b45">46,</ref><ref type="bibr" target="#b46">47</ref> .</p><p>While applying multiple foundation models leverages each model's specialty and reduces annotation costs, our data enrichment and continual learning strategy still heavily relies on pseudo-labels, a weakly supervised approach. Thus, label quality may introduce noise. As shown in Table <ref type="table">2</ref> and Fig. <ref type="figure" target="#fig_5">6</ref>, baseline model performance varies. For instance, although both the Cellpose and StarDist models contribute a similar number of "easy" (i.e., "good") patches, the inferior baseline model (e.g., Cellpose for our kidney images) might produce lower-quality pseudolabels compared to others. Additionally, since the image-level rating category does not fully capture local performance, it cannot completely reflect mask quality. These factors suggest that disparities can introduce noise into the fine-tuning dataset.</p><p>Biases can be introduced by the rating system. (1) Limited rating categories ("good", "medium", "bad"). We quantify the percentage of correctly predicted nuclei per category, yet the "medium" class often exhibits the highest variance, as demonstrated in Fig. <ref type="figure" target="#fig_4">5</ref>'s cross-model evaluation. This ambiguity can lead to inconsistent ratings and uncertainty. (2) Inter-Fig. <ref type="figure">7</ref> | Impact of incrementally increasing percentage (%) of noise-free, pathologist-corrected "hard" labeled data on model performance. As shown, the inclusion of "hard" labeled images decreases the performance of Cellpose. In contrast, for both CellViT and StarDist, incorporating these data leads to increased F1 scores. rater variability may stem from subjective observation practices, particularly since nuclei are small and their boundaries are indistinct. Even with a pathologist's final review, these biases cannot be entirely eliminated. (3) Image-level ratings may overlook fine-grained details in patch predictions. Therefore, introducing local-level ratings, along with improved rating categories, could enhance the system's generalizability and robustness.</p><p>As the models become better adapted to the specific kidney organ and the performance gap decreases among three models after the first round of fine-tuning, we anticipate generating improved curation results, including a higher number of "good" ratings and more accurate prediction masks in the next round of HITL fine-tuning. Additionally, improved accuracy in nuclei instance segmentation is critical for the extraction and reliability of cell pathomic features (e.g., size, shape, area). As in our previous studies <ref type="bibr" target="#b47">48,</ref><ref type="bibr" target="#b48">49</ref> , the future work will involve implementing a joint training scheme that combines classification with segmentation, enabling the classification task to guide the segmentation process.</p><p>In conclusion, our evaluation of a comprehensive kidney dataset shows that cell nuclei segmentation in histopathology requires further improvement through more organ-targeted foundation models (e.g., kidney-specific). The proposed human-in-the-loop data enrichment strategycombining predictions from multiple models with limited expert corrections on challenging cases-consistently enhances performance across all models. Improved organ-specific foundation models can further increase the accuracy and reliability of cell pathomic feature extraction (e.g., size, shape, area) and can be integrated into QuPath 50 software to support more efficient workflows in clinical kidney pathology. </p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><figDesc>, which includes 4981 histopathology images, each of size 256 × 256 × 3,</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 1 |</head><label>1</label><figDesc>Fig. 1 | Overall framework. The upper panel (a-c) illustrates the diverse evaluation dataset consisting of 2542 kidney WSIs. a shows the number of kidney WSIs in publicly available cell nuclei datasets versus our evaluation dataset, which exceeds existing datasets by a large margin. b depicts the diverse data sources included in our dataset. c indicates that these WSIs were stained using Hematoxylin and Eosin (H&amp;E), Periodic acid-Schiff methenamine (PASM), and Periodic acid-Schiff (PAS). Performance: Kidney cell nuclei instance segmentation was performed using three SOTA cell foundation models: Cellpose, StarDist, and CellViT. Model performance was evaluated based on qualitative human feedback for each prediction mask. Data Enrichment: A human-in-the-loop (HITL) design integrates prediction masks from performance evaluation into the model's continual learning process, reducing reliance on pixel-level human annotation.</figDesc><graphic coords="3,60.49,50.00,479.80,479.80" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 2 |</head><label>2</label><figDesc>Fig.2| Human-in-the-loop (HITL) data enrichment design. The upper panel shows the inference and curation of prediction masks from three foundation models (Cellpose, StarDist, and CellViT) in this study. a First, kidney nuclei instance segmentation was performed on the evaluation dataset using three cell foundation models. b Model performance was evaluated by rating each prediction mask as "good," "medium," or "bad" according to criteria from a renal pathologist. "Good" predictions captured ~90% of the nuclei in a patch, "bad" predictions captured less</figDesc><graphic coords="4,60.58,49.70,480.04,344.80" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 3 |</head><label>3</label><figDesc>Fig. 3 | Illustrations of rating criteria. This Figure illustrates the rating criteria, showing examples and their ratings for "good", "medium", and "bad" categories.</figDesc><graphic coords="5,60.49,49.72,479.96,199.28" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Fig. 5 |</head><label>5</label><figDesc>Fig. 5 | Cross-model performance agreement. a Shows the agreement matrix between each pair of foundation models. To further assess the cross-model performance, bshows the percentages of image patches where all three models agree, two models agree, or no models agree, for each prediction class ("good", "medium", "bad").</figDesc><graphic coords="7,290.80,534.77,219.61,166.24" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Fig. 6 |</head><label>6</label><figDesc>Fig. 6 | Comparison of F1-score across training/annotation strategies. The horizontal axis represents the percentage (%) of labels included under different strategies.Cellpose achieves optimal performance with "easy" labels, StarDist with "hard" labels, and CellViT with both. In this context, "hard" cases refer to training instances where automatic segmentation fails human quality assurance (QA) and employ pixel-level corrections, whereas "easy" cases are those where automatic results pass human QA.</figDesc><graphic coords="9,60.49,49.72,479.96,154.32" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Fig. 8 |</head><label>8</label><figDesc>Fig. 8 | Qualitative results of enhanced kidney cell nuclei instance segmentation. Three example image patches (A-C) are presented. Particularly, the predicted nuclei and ground truth are represented as overlaid green contours on the image patch, with areas of improvement highlighted by rectangles.</figDesc><graphic coords="11,126.40,66.71,383.56,485.80" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="10,60.49,49.72,479.96,221.16" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 1 |</head><label>1</label><figDesc>The table summarizes the model fine-tuning experiments conducted under three settings: using "easy" image patches (foundation model-generated pseudo labels), "hard" image patches (pathologist-corrected), and a combination of both Each data-enriched fine-tuning experiment was performed at different scales of the training dataset (25%, 50%, 75%, and 100%) for the three foundation models: Cellpose, StarDist, and CellViT. The numerical values indicate the size of the scaled training dataset for each individual fine-tuning experiment.</figDesc><table><row><cell>Fine-tuning experiments</cell><cell>Data labeling source</cell><cell cols="2">Incremental training dataset settings</cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell>25%</cell><cell>50%</cell><cell>75%</cell><cell>100%</cell></row><row><cell>"Easy" patches only</cell><cell>Models' Predictions</cell><cell>2952</cell><cell>5901</cell><cell>8854</cell><cell>11,807</cell></row><row><cell>"Hard" patches only</cell><cell>Pathologists' correction</cell><cell>50</cell><cell>99</cell><cell>149</cell><cell>198</cell></row><row><cell>"Easy" + "Hard" patches</cell><cell>Combine Both</cell><cell>3002</cell><cell>6000</cell><cell>9003</cell><cell>12,005</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>Communications Medicine | (2025) 5:495</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgements</head><p>This work was supported by the <rs type="funder">National Institutes of Health</rs> under award numbers <rs type="grantNumber">R01EB017230</rs>, <rs type="grantNumber">R01DK135597</rs>, <rs type="grantNumber">T32EB001628</rs>, <rs type="grantNumber">K01AG073584</rs>, and <rs type="grantNumber">5T32GM007347</rs>, <rs type="grantNumber">DoD HT9425-23-1-0003</rs> (HCY), and in part by the <rs type="funder">National Center for Research Resources</rs> and Grant <rs type="grantNumber">UL1 RR024975-01</rs>. This study was also supported by the <rs type="funder">National Science Foundation</rs> (<rs type="grantNumber">1452485</rs>, <rs type="grantNumber">1660816</rs>, and <rs type="grantNumber">1750213</rs>). The <rs type="funder">Vanderbilt Institute for Clinical and Translational Research (VICTR)</rs> is funded by the <rs type="funder">National Center for Advancing Translational Sciences (NCATS) Clinical Translational Science Award (CTSA) Program</rs>, Award Number <rs type="grantNumber">5UL1TR002243-03</rs>. The content is solely the responsibility of the authors and does not necessarily represent the official views of the <rs type="funder">NIH or NSF</rs>. This work was also supported by <rs type="funder">Vanderbilt Seed Success Grant</rs>, <rs type="grantName">Vanderbilt Discovery Grant</rs>, and <rs type="grantName">VISE Seed Grant</rs>. We extend gratitude to <rs type="institution">NVIDIA</rs> for their support by means of the NVIDIA hardware grant. This work was also supported by <rs type="funder">NSF</rs> <rs type="grantNumber">NAIRR Pilot</rs> Award <rs type="grantNumber">NAIRR240055</rs>. The KPMP is funded by the following grants from the <rs type="funder">NIDDK</rs>: <rs type="grantNumber">U01DK133081</rs>, <rs type="grantNumber">U01DK133091</rs>, <rs type="grantNumber">U01DK133092</rs>, <rs type="grantNumber">U01DK133093</rs>, <rs type="grantNumber">U01DK133095</rs>, <rs type="grantNumber">U01DK133097</rs>, <rs type="grantNumber">U01DK114866</rs>, <rs type="grantNumber">U01DK114908</rs>, <rs type="grantNumber">U01DK133090</rs>, <rs type="grantNumber">U01DK133113</rs>, <rs type="grantNumber">U01DK133766</rs>, <rs type="grantNumber">U01DK133768</rs>, <rs type="grantNumber">U01DK114907</rs>, <rs type="grantNumber">U01DK114920</rs>, <rs type="grantNumber">U01DK114923</rs>, <rs type="grantNumber">U01DK114933</rs>, <rs type="grantNumber">U24DK114886</rs>, <rs type="grantNumber">UH3DK114926</rs>, <rs type="grantNumber">UH3DK114861</rs>, <rs type="grantNumber">UH3DK114915</rs>, <rs type="grantNumber">UH3DK114937</rs>. The content is solely the responsibility of the authors and does not necessarily represent the official views of the National Institutes of Health. The results here are in whole or part based upon data generated by the HuBMAP Program: <ref type="url" target="https://hubmapconsortium.org">https://hubmapconsortium.org</ref>. The <rs type="funder">Nephrotic Syndrome Study Network Consortium (NEPTUNE)</rs>, <rs type="grantNumber">U54-DK-083912</rs>, is a part of the <rs type="funder">National Institutes of Health (NIH) Rare Disease Clinical Research Network (RDCRN)</rs>, supported through a collaboration between the <rs type="institution">Office of Rare Diseases Research (ORDR)</rs>, <rs type="funder">NCATS</rs>, and the <rs type="funder">National Institute of Diabetes, Digestive, and Kidney Diseases</rs>. Additional funding and/or programmatic support for this project has also been provided by the <rs type="funder">University of Michigan</rs>, the <rs type="funder">NephCure Kidney International</rs> and the <rs type="funder">Halpin Foundation</rs>. The views expressed in written materials or publications do not necessarily reflect the official policies of the <rs type="affiliation">Department of Health and Human Services</rs>; nor does mention by trade names, commercial practices, or organizations imply endorsement by the <rs type="institution">U.S. Government</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_MjxAYfR">
+					<idno type="grant-number">R01EB017230</idno>
+				</org>
+				<org type="funding" xml:id="_4HPbtYz">
+					<idno type="grant-number">R01DK135597</idno>
+				</org>
+				<org type="funding" xml:id="_tTWXUYB">
+					<idno type="grant-number">T32EB001628</idno>
+				</org>
+				<org type="funding" xml:id="_D7bujed">
+					<idno type="grant-number">K01AG073584</idno>
+				</org>
+				<org type="funding" xml:id="_dHgbBGG">
+					<idno type="grant-number">5T32GM007347</idno>
+				</org>
+				<org type="funding" xml:id="_EgRurQp">
+					<idno type="grant-number">DoD HT9425-23-1-0003</idno>
+				</org>
+				<org type="funding" xml:id="_HAHp62K">
+					<idno type="grant-number">UL1 RR024975-01</idno>
+				</org>
+				<org type="funding" xml:id="_ksQaF2C">
+					<idno type="grant-number">1452485</idno>
+				</org>
+				<org type="funding" xml:id="_K9B85Fk">
+					<idno type="grant-number">1660816</idno>
+				</org>
+				<org type="funding" xml:id="_Z7psFhb">
+					<idno type="grant-number">1750213</idno>
+				</org>
+				<org type="funding" xml:id="_WfV9Cje">
+					<idno type="grant-number">5UL1TR002243-03</idno>
+				</org>
+				<org type="funding" xml:id="_PVJEjyT">
+					<orgName type="grant-name">Vanderbilt Discovery Grant</orgName>
+				</org>
+				<org type="funding" xml:id="_ZtXk3Cv">
+					<idno type="grant-number">NAIRR Pilot</idno>
+					<orgName type="grant-name">VISE Seed Grant</orgName>
+				</org>
+				<org type="funding" xml:id="_yDpXcyB">
+					<idno type="grant-number">NAIRR240055</idno>
+				</org>
+				<org type="funding" xml:id="_8pGQ6Px">
+					<idno type="grant-number">U01DK133081</idno>
+				</org>
+				<org type="funding" xml:id="_afdmpab">
+					<idno type="grant-number">U01DK133091</idno>
+				</org>
+				<org type="funding" xml:id="_e3j6uZd">
+					<idno type="grant-number">U01DK133092</idno>
+				</org>
+				<org type="funding" xml:id="_PjJc52Y">
+					<idno type="grant-number">U01DK133093</idno>
+				</org>
+				<org type="funding" xml:id="_M6UDY6f">
+					<idno type="grant-number">U01DK133095</idno>
+				</org>
+				<org type="funding" xml:id="_HaVZJ3m">
+					<idno type="grant-number">U01DK133097</idno>
+				</org>
+				<org type="funding" xml:id="_6XhzUnU">
+					<idno type="grant-number">U01DK114866</idno>
+				</org>
+				<org type="funding" xml:id="_MmNXtnQ">
+					<idno type="grant-number">U01DK114908</idno>
+				</org>
+				<org type="funding" xml:id="_aXtnWnZ">
+					<idno type="grant-number">U01DK133090</idno>
+				</org>
+				<org type="funding" xml:id="_yRMkRaD">
+					<idno type="grant-number">U01DK133113</idno>
+				</org>
+				<org type="funding" xml:id="_mxmXxrs">
+					<idno type="grant-number">U01DK133766</idno>
+				</org>
+				<org type="funding" xml:id="_P6GPx7J">
+					<idno type="grant-number">U01DK133768</idno>
+				</org>
+				<org type="funding" xml:id="_wQFMgUG">
+					<idno type="grant-number">U01DK114907</idno>
+				</org>
+				<org type="funding" xml:id="_6A6x6SX">
+					<idno type="grant-number">U01DK114920</idno>
+				</org>
+				<org type="funding" xml:id="_M4RuhFP">
+					<idno type="grant-number">U01DK114923</idno>
+				</org>
+				<org type="funding" xml:id="_vqrqzYn">
+					<idno type="grant-number">U01DK114933</idno>
+				</org>
+				<org type="funding" xml:id="_tSGQpN7">
+					<idno type="grant-number">U24DK114886</idno>
+				</org>
+				<org type="funding" xml:id="_bQHFE9C">
+					<idno type="grant-number">UH3DK114926</idno>
+				</org>
+				<org type="funding" xml:id="_fX3WRha">
+					<idno type="grant-number">UH3DK114861</idno>
+				</org>
+				<org type="funding" xml:id="_5c3SFMQ">
+					<idno type="grant-number">UH3DK114915</idno>
+				</org>
+				<org type="funding" xml:id="_WDEYP7z">
+					<idno type="grant-number">UH3DK114937</idno>
+				</org>
+				<org type="funding" xml:id="_AMnYpS2">
+					<idno type="grant-number">U54-DK-083912</idno>
+				</org>
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Code availability</head><p>Code will be made publicly available at the AFM_kidney_cells repository <ref type="bibr" target="#b50">51</ref> .</p><p>Received: 11 November 2024; Accepted: 14 October 2025;</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>This table consists of three subtables summarizing the instance segmentation performance metrics (F1 score, Precision, and Recall) for each foundation model across three data enrichment experimental settings (using only "easy" images, only pathologist-corrected "hard" images, and a combination of both). Each sub-table compares the baseline performance (highlighted in Bold Underline) of the model against its fine-tuned counterparts. The highest values of each evaluation metric for the fine-tuned models are highlighted in Bold Italic.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data availability</head><p>The source data that support the plots within this manuscript is included in the Supplementary Data. The raw data is available upon reasonable request to the corresponding author [Y.H.] (yuankai.huo@vanderbilt.edu) and after satisfying Vanderbilt University and Vanderbilt University Medical Center's data use agreement. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Author contributions</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Competing interests</head><p>The authors declare no competing interests.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Additional information</head><p>Supplementary information The online version contains supplementary material available at <ref type="url" target="https://doi.org/10.1038/s43856-025-01205-x">https://doi.org/10.1038/s43856-025-01205-x</ref>.</p><p>Correspondence and requests for materials should be addressed to Yuankai Huo. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Peer review information</head></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Foundation models for generalist medical artificial intelligence</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Moor</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">616</biblScope>
+			<biblScope unit="page" from="259" to="265" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m" type="main">On the opportunities and risks of foundation models</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bommasani</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/2108.07258" />
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Segment anything in medical images</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page">654</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Segment anything model (SAM) for digital pathology: Assess zero-shot segmentation on whole-slide imaging</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IS&amp;T Int. Symp. Electron. Imaging</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="page">132</biblScope>
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Segment anything model for medical image analysis: an experimental study</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Mazurowski</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Med. Image Anal</title>
+		<imprint>
+			<biblScope unit="volume">89</biblScope>
+			<biblScope unit="page">102918</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Enhancing physician flexibility: Prompt-guided multiclass pathological segmentation for diverse outcomes</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Cui</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2024 IEEE EMBS International Conference on Biomedical and Health Informatics (BHI)</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="1" to="8" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Medical sam adapter: adapting segment anything model for medical image segmentation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Med. Image Anal</title>
+		<imprint>
+			<biblScope unit="volume">102</biblScope>
+			<biblScope unit="page">103547</biblScope>
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Data-analysis strategies for image-based cell profiling</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">C</forename><surname>Caicedo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page" from="849" to="863" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Deep learning in digital pathology image analysis: a survey</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Deng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Front. Med</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page" from="470" to="487" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Whole-cell segmentation of tissue images with human-level performance using large-scale data annotation and deep learning</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">F</forename><surname>Greenwald</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="555" to="565" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">A structured tumor-immune microenvironment in triple negative breast cancer revealed by multiplexed ion beam imaging</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Keren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">174</biblScope>
+			<biblScope unit="page" from="1373" to="1387" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">A survey on deep learning in medical image analysis</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Litjens</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Med. image Anal</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="page" from="60" to="88" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Image-based cell phenotyping with deep learning</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pratapa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Doron</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">C</forename><surname>Caicedo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Curr. Opin. Chem. Biol</title>
+		<imprint>
+			<biblScope unit="volume">65</biblScope>
+			<biblScope unit="page" from="9" to="17" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Acute lymphoblastic leukemia cells image analysis with deep bagging ensemble learning</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Long</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ISBI 2019 C-NMC Challenge</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="113" to="121" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Blood cell images segmentation using deep learning semantic segmentation</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Tran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O.-H</forename><surname>Kwon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K.-R</forename><surname>Kwon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S.-H</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K.-W</forename><surname>Kang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2018 IEEE International Conference on Electronics and Communication Engineering (ICECE)</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="13" to="16" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Asign: an anatomy-aware spatial imputation graphic network for 3d spatial transcriptomics</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Computer Vision and Pattern Recognition Conference</title>
+		<meeting>the Computer Vision and Pattern Recognition Conference</meeting>
+		<imprint>
+			<date type="published" when="2025">2025</date>
+			<biblScope unit="page" from="30829" to="30838" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Large-scale image-based screening and profiling of cellular phenotypes</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Bougen-Zhukov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">Y</forename><surname>Loh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">K</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L.-H</forename><surname>Loo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cytom. Part A</title>
+		<imprint>
+			<biblScope unit="volume">91</biblScope>
+			<biblScope unit="page" from="115" to="125" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Nuclei and glands instance segmentation in histology images: a narrative review</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">S</forename><surname>Nasir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Parvaiz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Fraz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Artif. Intell. Rev</title>
+		<imprint>
+			<biblScope unit="volume">56</biblScope>
+			<biblScope unit="page" from="7909" to="7964" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Nuclei segmentation using markercontrolled watershed, tracking using mean-shift, and kalman filter in time-lapse microscopy</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Circuits Syst. I Regul. Pap</title>
+		<imprint>
+			<biblScope unit="volume">53</biblScope>
+			<biblScope unit="page" from="2405" to="2414" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Segmentation of clustered nuclei with shape markers and marking function</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cheng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Biomed. Eng</title>
+		<imprint>
+			<biblScope unit="volume">56</biblScope>
+			<biblScope unit="page" from="741" to="748" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">An integrated region-, boundary-, shapebased active contour for multiple object overlap resolution in histological imagery</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ali</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Madabhushi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Med. imaging</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="1448" to="1460" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Multi-pass fast watershed for accurate segmentation of overlapping cervical cells</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tareef</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Med. Imaging</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="page" from="2044" to="2059" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Gkioxari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dollár</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R-Cnn</forename><surname>Mask</surname></persName>
+		</author>
+		<title level="m">Proceedings of the IEEE International Conference on Computer Vision</title>
+		<meeting>the IEEE International Conference on Computer Vision</meeting>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="2961" to="2969" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Micro-net: a unified model for segmentation of various objects in microscopy images</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">E A</forename><surname>Raza</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Med. Image Anal</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="page" from="160" to="173" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Hover-Net: simultaneous segmentation and classification of nuclei in multi-tissue histology images</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Graham</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Med. Image Anal</title>
+		<imprint>
+			<biblScope unit="volume">58</biblScope>
+			<biblScope unit="page">101563</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Nuclei instance segmentation and classification in histopathology images with stardist</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Weigert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Schmidt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2022 IEEE International Symposium on Biomedical Imaging Challenges (ISBIC)</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1" to="4" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">CPP-Net: contextaware polygon proposal network for nucleus segmentation</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Tao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Image Process</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="980" to="994" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Cellpose: a generalist algorithm for cellular segmentation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Stringer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Michaelos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pachitariu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="100" to="106" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">CellViT: vision transformers for precise cell segmentation and classification</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Hörst</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Med. Image Anal</title>
+		<imprint>
+			<biblScope unit="volume">94</biblScope>
+			<biblScope unit="page">103143</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<monogr>
+		<title level="m" type="main">A foundation model for cell segmentation</title>
+		<author>
+			<persName><forename type="first">U</forename><surname>Israel</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/2311.11004" />
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">How many cell types are in the kidney and what do they do?</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Balzer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Rohacs</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Susztak</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Annu. Rev. Physiol</title>
+		<imprint>
+			<biblScope unit="volume">84</biblScope>
+			<biblScope unit="page" from="507" to="531" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Deep learning automates the quantitative analysis of individual cells in live-cell imaging experiments</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A</forename><surname>Van Valen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS Comput. Biol</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page">1005177</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<title level="m" type="main">Caliban: Accurate cell tracking and lineage construction in live-cell imaging experiments with deep learning</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Schwartz</surname></persName>
+		</author>
+		<ptr target="https://www.biorxiv.org/content/early/2023/09/12/803205" />
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Cellpose 2.0: how to train your own model</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pachitariu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Stringer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. methods</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page" from="1634" to="1641" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Funded by the National Institute of Diabetes and Digestive and Kidney Diseases (Grant numbers: U01DK133081, U01DK133091, U01DK133092, U01DK133093, U01DK133095, U01DK133097, U01DK114866, U01DK114908, U01DK133090, U01DK133113, U01DK133766, U01DK133768, U01DK114907, U01DK114920, U01DK114923, U01DK114933</title>
+		<ptr target="https://www.kpmp.org" />
+	</analytic>
+	<monogr>
+		<title level="m">Kidney precision medicine project data</title>
+		<imprint>
+			<date type="published" when="2024-03-08">March 8, 2024</date>
+		</imprint>
+	</monogr>
+	<note>U24DK114886, UH3DK114926, UH3DK114861, UH3DK114915, UH3DK114937</note>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Digital pathology evaluation in the multicenter nephrotic syndrome study network (neptune)</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Barisoni</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Clin. J. Am. Soc. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="1449" to="1459" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<monogr>
+		<author>
+			<persName><forename type="first">A</forename><surname>Howard</surname></persName>
+		</author>
+		<ptr target="https://kaggle.com/competitions/hubmap-kidney-segmentation" />
+		<title level="m">Hubmap -hacking the kidney</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">The human body at cellular resolution: the nih human biomolecular atlas program</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">P</forename><surname>Snyder</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">574</biblScope>
+			<biblScope unit="page" from="187" to="192" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">A dataset and a technique for generalized nuclear segmentation for computational pathology</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Kumar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Med. imaging</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="page" from="1550" to="1560" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Lizard: A large-scale dataset for colonic nuclear instance segmentation and classification</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Graham</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s43856-025-01205-xCVF</idno>
+		<ptr target="https://doi.org/10.1038/s43856-025-01205-xCVF" />
+	</analytic>
+	<monogr>
+		<title level="m">international conference on computer vision</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="684" to="693" />
+		</imprint>
+	</monogr>
+	<note>Proceedings of the IEEE</note>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Scaling vision transformers to gigapixel images via hierarchical self-supervised learning</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="16144" to="16155" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Pannuke: an open pan-cancer histology dataset for nuclei instance segmentation and classification</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gamper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Alemi Koohbanani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Benet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Khuram</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Rajpoot</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Digital Pathology: 15th European Congress</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2019">2019. 2019</date>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="11" to="19" />
+		</imprint>
+	</monogr>
+	<note>ECDP</note>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Assessment of cell nuclei ai foundation models in kidney pathology</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Guo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Imaging 2025: Image Perception, Observer Performance, and Technology Assessment</title>
+		<imprint>
+			<publisher>SPIE</publisher>
+			<date type="published" when="2025">2025</date>
+			<biblScope unit="volume">13409</biblScope>
+			<biblScope unit="page" from="76" to="82" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<monogr>
+		<title level="m" type="main">Foundation models in computational pathology: a review of challenges, opportunities, and impact</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bilal</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/2502.08333" />
+		<imprint>
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<monogr>
+		<title level="m" type="main">Foundation models for biomedical image segmentation: a survey</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">H</forename><surname>Lee</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/2401.07654" />
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Foundation models for quantitative biomarker discovery in cancer imaging</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Pai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Mach. Intell</title>
+		<imprint>
+			<biblScope unit="volume">2023</biblScope>
+			<biblScope unit="page" from="1" to="33" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Vista3d: a unified segmentation foundation model for 3d medical imaging</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>He</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF International Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>the IEEE/CVF International Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Hats: Hierarchical adaptive taxonomy segmentation for panoramic pathology image analysis</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Medical Image Computing and Computer-Assisted Intervention</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="155" to="166" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">CASC-AI: Consensus-aware self-corrective learning for cell segmentation with Noisy labels</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">In Medical Imaging with Deep Learning</title>
+		<imprint>
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Qupath: open source software for digital pathology image analysis</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bankhead</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sci. Rep</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page" from="1" to="7" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<monogr>
+		<title/>
+		<author>
+			<persName><surname>Afm_Kidney_Cells</surname></persName>
+		</author>
+		<ptr target="https://github.com/hrlblab/AFM_kidney_cells" />
+		<imprint>
+			<date type="published" when="2025-10-10">2025. 10 Oct 2025</date>
+		</imprint>
+	</monogr>
+	<note>github repository</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

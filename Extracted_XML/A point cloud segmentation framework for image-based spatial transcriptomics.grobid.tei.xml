@@ -1,0 +1,1399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">A point cloud segmentation framework for image-based spatial transcriptomics</title>
+				<funder ref="#_XZe3VyQ #_NB32fQC #_qCaW88b">
+					<orgName type="full">Agence Nationale de la Recherche</orgName>
+					<orgName type="abbreviated">ANR</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Industry</orgName>
+				</funder>
+				<funder ref="#_JKXKysb">
+					<orgName type="full">Paris-Saclay University</orgName>
+				</funder>
+				<funder ref="#_2bg5gtE">
+					<orgName type="full">European Union</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">French Ministry of Education</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>Springer Science and Business Media LLC</publisher>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2024-07-06">2024-07-06</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Thomas</forename><surname>Defard</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="laboratory">Centre for Computational Biology (CBIO)</orgName>
+								<orgName type="institution">PSL University</orgName>
+								<address>
+									<addrLine>Mines Paris</addrLine>
+									<postCode>75006</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Institut Curie</orgName>
+								<orgName type="institution">PSL University</orgName>
+								<address>
+									<postCode>75005</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff2">
+								<orgName type="institution">INSERM</orgName>
+								<address>
+									<postCode>U900 75005</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff3">
+								<orgName type="institution" key="instit1">Institut Pasteur</orgName>
+								<orgName type="institution" key="instit2">Université Paris Cité, Imaging and Modeling Unit</orgName>
+								<address>
+									<postCode>F-75015</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff4">
+								<orgName type="laboratory">Centre de Ressources et Recherches Technologiques (UTechS-PBI</orgName>
+								<orgName type="institution" key="instit1">Institut Pasteur</orgName>
+								<orgName type="institution" key="instit2">Université Paris Cité</orgName>
+								<address>
+									<addrLine>Photonic Bio-Imaging C2RT)</addrLine>
+									<postCode>F-75015</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Hugo</forename><surname>Laporte</surname></persName>
+							<affiliation key="aff5">
+								<orgName type="department">Institut Curie</orgName>
+								<orgName type="laboratory">UMR 3347</orgName>
+								<orgName type="institution">University Paris-Saclay</orgName>
+								<address>
+									<postCode>U1021-CNRS</postCode>
+									<settlement>Inserm</settlement>
+								</address>
+							</affiliation>
+							<affiliation key="aff6">
+								<orgName type="department">Institute of Cell Biology (Cancer Research)</orgName>
+								<orgName type="institution">PSL Research University</orgName>
+								<address>
+									<addrLine>Centre Universitaire</addrLine>
+									<settlement>Orsay Cedex</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Mallick</forename><surname>Ayan</surname></persName>
+							<affiliation key="aff5">
+								<orgName type="department">Institut Curie</orgName>
+								<orgName type="laboratory">UMR 3347</orgName>
+								<orgName type="institution">University Paris-Saclay</orgName>
+								<address>
+									<postCode>U1021-CNRS</postCode>
+									<settlement>Inserm</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Juliette</forename><surname>Soulier</surname></persName>
+							<idno type="ORCID">0000-0002-0609-367X</idno>
+							<affiliation key="aff5">
+								<orgName type="department">Institut Curie</orgName>
+								<orgName type="laboratory">UMR 3347</orgName>
+								<orgName type="institution">University Paris-Saclay</orgName>
+								<address>
+									<postCode>U1021-CNRS</postCode>
+									<settlement>Inserm</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Sandra</forename><surname>Curras-Alonso</surname></persName>
+							<affiliation key="aff5">
+								<orgName type="department">Institut Curie</orgName>
+								<orgName type="laboratory">UMR 3347</orgName>
+								<orgName type="institution">University Paris-Saclay</orgName>
+								<address>
+									<postCode>U1021-CNRS</postCode>
+									<settlement>Inserm</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Christian</forename><surname>Weber</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="institution" key="instit1">Institut Pasteur</orgName>
+								<orgName type="institution" key="instit2">Université Paris Cité, Imaging and Modeling Unit</orgName>
+								<address>
+									<postCode>F-75015</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff4">
+								<orgName type="laboratory">Centre de Ressources et Recherches Technologiques (UTechS-PBI</orgName>
+								<orgName type="institution" key="instit1">Institut Pasteur</orgName>
+								<orgName type="institution" key="instit2">Université Paris Cité</orgName>
+								<address>
+									<addrLine>Photonic Bio-Imaging C2RT)</addrLine>
+									<postCode>F-75015</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Florian</forename><surname>Massip</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="laboratory">Centre for Computational Biology (CBIO)</orgName>
+								<orgName type="institution">PSL University</orgName>
+								<address>
+									<addrLine>Mines Paris</addrLine>
+									<postCode>75006</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Institut Curie</orgName>
+								<orgName type="institution">PSL University</orgName>
+								<address>
+									<postCode>75005</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff2">
+								<orgName type="institution">INSERM</orgName>
+								<address>
+									<postCode>U900 75005</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">José-Arturo</forename><surname>Londoño-Vallejo</surname></persName>
+							<idno type="ORCID">0000-0003-3535-7563</idno>
+							<affiliation key="aff5">
+								<orgName type="department">Institut Curie</orgName>
+								<orgName type="laboratory">UMR 3347</orgName>
+								<orgName type="institution">University Paris-Saclay</orgName>
+								<address>
+									<postCode>U1021-CNRS</postCode>
+									<settlement>Inserm</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Charles</forename><surname>Fouillade</surname></persName>
+							<affiliation key="aff5">
+								<orgName type="department">Institut Curie</orgName>
+								<orgName type="laboratory">UMR 3347</orgName>
+								<orgName type="institution">University Paris-Saclay</orgName>
+								<address>
+									<postCode>U1021-CNRS</postCode>
+									<settlement>Inserm</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Florian</forename><surname>Mueller</surname></persName>
+							<email>fmueller@pasteur.fr</email>
+							<idno type="ORCID">0000-0002-9622-4396</idno>
+							<affiliation key="aff3">
+								<orgName type="institution" key="instit1">Institut Pasteur</orgName>
+								<orgName type="institution" key="instit2">Université Paris Cité, Imaging and Modeling Unit</orgName>
+								<address>
+									<postCode>F-75015</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff4">
+								<orgName type="laboratory">Centre de Ressources et Recherches Technologiques (UTechS-PBI</orgName>
+								<orgName type="institution" key="instit1">Institut Pasteur</orgName>
+								<orgName type="institution" key="instit2">Université Paris Cité</orgName>
+								<address>
+									<addrLine>Photonic Bio-Imaging C2RT)</addrLine>
+									<postCode>F-75015</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Thomas</forename><surname>Walter</surname></persName>
+							<email>thomas.walter@minesparis.psl.eu</email>
+							<idno type="ORCID">0000-0003-1225-7092</idno>
+							<affiliation key="aff0">
+								<orgName type="laboratory">Centre for Computational Biology (CBIO)</orgName>
+								<orgName type="institution">PSL University</orgName>
+								<address>
+									<addrLine>Mines Paris</addrLine>
+									<postCode>75006</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Institut Curie</orgName>
+								<orgName type="institution">PSL University</orgName>
+								<address>
+									<postCode>75005</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff2">
+								<orgName type="institution">INSERM</orgName>
+								<address>
+									<postCode>U900 75005</postCode>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff7">
+								<orgName type="institution">University Hospital Essen</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">A point cloud segmentation framework for image-based spatial transcriptomics</title>
+					</analytic>
+					<monogr>
+						<title level="j" type="main">Communications Biology</title>
+						<title level="j" type="abbrev">Commun Biol</title>
+						<idno type="eISSN">2399-3642</idno>
+						<imprint>
+							<publisher>Springer Science and Business Media LLC</publisher>
+							<biblScope unit="volume">7</biblScope>
+							<biblScope unit="issue">1</biblScope>
+							<date type="published" when="2024-07-06" />
+						</imprint>
+					</monogr>
+					<idno type="MD5">F39FC70D4D6317EF12A597162457D2B0</idno>
+					<idno type="DOI">10.1038/s42003-024-06480-3</idno>
+					<note type="submission">Received: 6 December 2023; Accepted: 20 June 2024;</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:09+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Recent progress in image-based spatial RNA profiling enables to spatially resolve tens to hundreds of distinct RNA species with high spatial resolution. It presents new avenues for comprehending tissue organization. In this context, the ability to assign detected RNA transcripts to individual cells is crucial for downstream analyses, such as in-situ cell type calling. Yet, accurate cell segmentation can be challenging in tissue data, in particular in the absence of a high-quality membrane marker. To address this issue, we introduce ComSeg, a segmentation algorithm that operates directly on single RNA positions and that does not come with implicit or explicit priors on cell shape. ComSeg is applicable in complex tissues with arbitrary cell shapes. Through comprehensive evaluations on simulated and experimental datasets, we show that ComSeg outperforms existing state-of-the-art methods for insitu single-cell RNA profiling and in-situ cell type calling. ComSeg is available as a documented and open source pip package at <ref type="url" target="https://github.com/fish-quant/ComSeg">https://github.com/fish-quant/ComSeg</ref>.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Understanding the spatial organization of tissues at the single-cell level is crucial to study disease and development <ref type="bibr" target="#b0">[1]</ref><ref type="bibr" target="#b1">[2]</ref><ref type="bibr" target="#b2">[3]</ref> . Molecular profiling of single cells in their spatial context allows us to infer cell states and cell types, cell-cell interactions, and cell-fate decision-making <ref type="bibr" target="#b3">4</ref> , as well as the study of the overall tissue architecture, under normal and diseased conditions, leading to the definition of spatial domains and disease signatures <ref type="bibr" target="#b4">5</ref> .</p><p>Spatial transcriptomics denotes a large panel of technologies that allow to measure gene expression and to retrieve the spatial positions of the mRNA molecules. These methods can largely be divided into two groups: sequencing-based <ref type="bibr" target="#b5">6,</ref><ref type="bibr" target="#b6">7</ref> and imaging-based <ref type="bibr" target="#b7">[8]</ref><ref type="bibr" target="#b8">[9]</ref><ref type="bibr" target="#b9">[10]</ref> spatial transcriptomics (SST and IST, respectively). The former measures the entire transcriptome, but has a lower spatial resolution, while the latter relies on measuring a subset of genes at high resolution. Such a subset consists of pre-defined marker genes that are specific for the cell states or types of interest. Since IST captures only a subset of the transcriptome, we will refer to these approaches as RNA profiling. These imaging-based approaches are variants of single-molecule fluorescence in situ hybridization (smFISH) methodologies and can detect RNAs with single-molecule sensitivity with high spatial resolution, several orders of magnitude below the scale of a single cell. A typical dataset consists of 2D or 3D point clouds of the imaged RNA species. One challenge in the analysis of these data is the correct assignment of each RNA to its cell of origin. Indeed, in contrast to single-cell RNA sequencing (scRNA-seq), the information on which RNA molecules belong to the same cell has to be inferred from the image. This assignment is crucial, as it impacts cell type identification and, thus, the major aspect of the analysis we would like to perform.</p><p>One frequently used approach to perform this assignment is to segment the cells from additional channels employing markers for cell and nucleus segmentation. RNAs are then assigned to the cells based on their spatial positions with respect to this segmentation. Such stainings typically encompass labeling of the nucleus with DAPI, cellular staining with one or more cell membrane dyes, or labeling all RNAs as a proxy for the cytoplasm <ref type="bibr" target="#b9">[10]</ref><ref type="bibr" target="#b10">[11]</ref><ref type="bibr" target="#b11">[12]</ref> . However, cell membrane staining is often not an option <ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b13">14</ref> . Besides, staining can be technically complex <ref type="bibr" target="#b14">15</ref> , and may not work equally well for the entire tissue, thus leading to inhomogeneous cell segmentation and cell type calling accuracy. Further, the boundaries of individual cells can be challenging to segment, especially for tissue with complex 3D cellular morphologies.</p><p>More recently, several computational approaches have been presented to detect individual cells in the images and establish their RNA profile without relying on a dedicated cell marker. These methods rely only on the RNA positions and in some cases a DAPI stain, to regroup RNAs according to local transcription profiles. Such RNA point clouds can then act as an approximation for cell shape, by establishing a hull that encompasses all RNAs that were deemed to belong together <ref type="bibr" target="#b14">[15]</ref><ref type="bibr" target="#b15">[16]</ref><ref type="bibr" target="#b16">[17]</ref> . Methods like pciSeq <ref type="bibr" target="#b15">16</ref> and Baysor <ref type="bibr" target="#b14">15</ref> leverage statistical models to group RNAs. pciSeq segments cells to match external scRNA-seq datasets and Baysor divides RNAs into spatially homogeneous areas. Recently, deep-learning approaches were proposed. JSTA <ref type="bibr" target="#b16">17</ref> and BIDCell <ref type="bibr" target="#b17">18</ref> train a cell membrane segmentation model exploiting nuclei segmentation and external scRNA-seq while SCS trains a membrane segmentation transformer network using solely nuclei segmentation as input. While these approaches hold great promise for the analysis of spatial RNA profiling data, their use is limited by implicit priors on cell shape <ref type="bibr" target="#b14">15,</ref><ref type="bibr" target="#b15">16</ref> leading to low performance in complex tissues, requirement of additional scRNA-seq data <ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b16">17</ref> or manual annotations which are scarce and errorprone <ref type="bibr" target="#b17">18,</ref><ref type="bibr" target="#b18">19</ref> (see Table <ref type="table" target="#tab_0">1</ref>).</p><p>While there already exist methods for spatial RNA profiling, these methods usually come with requirements that are not always met in practice. For instance, some methods require a high RNA density, which often implies a large panel of marker genes. However, while current commercial spatial RNA profiling approaches provide hundreds of marker genes, they remain extremely costly, and for many questions, fewer marker genes will be sufficient, which can be probed with simpler custom-built solutions <ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b20">21</ref> . Furthermore, most methods <ref type="bibr" target="#b14">15,</ref><ref type="bibr" target="#b15">16</ref> implicitly assume convex or even round cell shapes. In contrast, the cell shapes in some tissues can be complex and often deviate from such simple shapes. Approaches relying on strong assumptions on cell shape are, therefore, suboptimal for many of these tissue types. Lastly, some methods require parallel scRNA-seq data <ref type="bibr" target="#b15">[16]</ref><ref type="bibr" target="#b16">[17]</ref><ref type="bibr" target="#b17">[18]</ref> , which in practice is not always readily available, so ideally the use of such information should be only optional.</p><p>To alleviate these issues, we propose a method named ComSeg. ComSeg uses as input only the coordinates of the RNA molecules and the nucleus positions obtained with staining such as DAPI. ComSeg then groups RNAs with similar expression profiles aided by these landmarks. It does not require scRNA-seq data or cytoplasmic markers, nor does it make implicit use of any prior assumptions regarding cell morphology. Instead, the method describes RNA point clouds as graphs weighted by gene coexpression and relies on graph community detection. Our method is easy to apply by design as it does not require complex machine learning model training. Furthermore, we provide the tool as an open-source Python package (<ref type="url" target="https://github.com/fish-quant/ComSeg">https://github.com/fish-quant/ComSeg</ref>) with extensive documentation: <ref type="url" target="https://comseg.readthedocs.io">https://comseg.readthedocs.io</ref>, compatible with the scverse environment <ref type="bibr" target="#b21">22</ref> . To facilitate the application of ComSeg on large datasets, we ensured its compatibility with SOPA <ref type="bibr" target="#b22">23</ref> , as documented on <ref type="url" target="https://comseg.readthedocs.io">https://comseg.  readthedocs.io</ref>.</p><p>Development of such analysis approaches requires annotated ground truth to assess their performance. Experimental ground truth can be obtained in some cases by employing membrane markers, from which the cytoplasmic membrane might be segmented with deep neural networks or manual annotation <ref type="bibr" target="#b23">24</ref> . However, the ground truth quality is affected by the heterogeneity of the staining quality which may be low on complex and dense tissue <ref type="bibr" target="#b14">15</ref> . Furthermore, experimental data does not permit a more systematic exploration of parameters such as the expression level or cell morphology. Hence, similarly to previous studies <ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b16">17</ref> , we address the lack of high-quality ground truth by generating simulated data, allowing us to control the complexity of the input data. We developed SimTissue (<ref type="url" target="https://github.com/tdefa/SimTissue">https://  github.com/tdefa/SimTissue</ref>), an open-source Python simulation package to reproduce in silico fluorescent-based spatial transcriptomic experiments.</p><p>We used the SimTissue framework to validate ComSeg on simulated data with increasing complexity in terms of RNA abundance, the number of marker genes, and tissue morphology. ComSeg outperforms other methods in terms of the Jaccard index for RNA-cell association in most of the tested scenarios. We also validated ComSeg on an in-house experimental dataset of mouse lung tissue imaged with smFISH and human embryonic lung tissue <ref type="bibr" target="#b24">25</ref> imaged with HyBISS <ref type="bibr" target="#b25">26</ref> . On these experimental data, ComSeg estimates accurate RNA profiles that match established scRNA-seq datasets. Finally, we benchmark ComSeg on two MERFISH 8 datasets with cell membrane staining, the mouse ileum dataset <ref type="bibr" target="#b14">15</ref> and a human breast cancer dataset from VizGen from the MERSCOPE FFPE Human Immuno-Oncology Data Release. We leverage areas with high-quality membrane staining to obtain segmentation ground truth. Overall, the shape-agnostic approach of ComSeg demonstrates notable efficacy for complex tissue composed of cells with non-convex shapes.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>ComSeg overview</head><p>Here we present ComSeg, a graph-based method to perform cell segmentation from spatial RNA profiling data. The method operates directly on RNA point clouds and leverages nuclear staining to increase segmentation quality. For this, we define a KNN graph, where each RNA molecule is a node and where edges are weighted according to the co-expression score of the corresponding genes. Instead of relying on external data to compute these co-expression weights, we leverage the input images by estimating the local gene expression vector in a close environment of each RNA molecule (see Material and Methods). We then detect groups of RNA molecules with similar gene expression in their local environment, by the use of a modified version of the Louvain community detection method <ref type="bibr" target="#b26">27</ref> . Our community detection method can leverage spatial landmarks like DAPI segmentation as prior knowledge. Lastly, we group the detected RNA communities with similar expression profiles using the Leiden algorithm <ref type="bibr" target="#b27">28</ref> and obtain a transcriptomic domain map at the tissue scale. To obtain single-cell RNA profiles, we exploit the nucleus position concurrently with the transcriptomic domain map. An overview of the method is displayed in Fig. <ref type="figure" target="#fig_0">1a</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>State-of-the-art methods for cell segmentation</head><p>We benchmarked ComSeg against methods that can be used in an equivalent setting i.e., single-cell spatial RNA profiling approaches requiring no external dataset. As a first baseline, we calculated the Watershed transformation <ref type="bibr" target="#b28">29</ref> as this method is often used for RNA-nuclei association in tissue <ref type="bibr" target="#b29">30,</ref><ref type="bibr" target="#b30">31</ref> . This method effectively calculates a Voronoi tessellation with the nuclear regions as markers with an additional distance constraint, and is thus equivalent to assigning RNA transcripts to their nearest nucleus. The method, hence, perfectly works for convex cells of homogeneous size if all nuclei are detected, but may fail otherwise. Second, we benchmarked Baysor <ref type="bibr" target="#b31">32</ref> , a cell marker-free segmentation method optimizing the joint likelihood of transcriptional composition and prior cell morphology. It is particularly suited for cases where only nuclear staining or weak cytoplasmic staining are available. Baysor uses an elliptic function as cell shape prior. We also applied a method leveraging external scRNA-seq data, pciSeq <ref type="bibr" target="#b15">16</ref> , a Bayesian model leveraging prior scRNA-Seq data to estimate a probability of cell assignment for each read. Given the observed RNA spot configuration, the method performs cell assignment to match known transcriptomic profiles from scRNA-seq. Hence, it also simultaneously assigns each cell to a cell type. Leveraging prior knowledge may help pciSeq avoid wrong RNA-cell assignment. However, pciSeq implicitly uses a spherical cell shape prior that may hinder its application on complex tissue. Finally, we benchmarked our method against SCS <ref type="bibr" target="#b18">19</ref> , a recently published deeplearning-based method primarily designed for Stereo-seq data, but also applicable to IST data. The method trains transformers to predict, for each transcriptomic spot measurement, the direction to the nucleus it belongs to. All of these methods require hyperparameter tuning. For the Watershed method, we had to set the maximum distance parameter to avoid the incorrect assignment of RNA to nuclei that were too distant. This maximum distance parameter had to be optimized to account for differences in tissue complexity and cell density. For pciSeq and Baysor, we kept the default settings for all experiments, with the exception of the scaling parameter for Baysor, which was automatically set using prior nucleus segmentation. For the analysis of the mouse ileum with Baysor, we used the compartmentspecific gene list provided <ref type="bibr" target="#b14">15</ref> as additional parameters. SCS was trained over 100 epochs with a bin size of 15 pixels for all the experiments. Lastly, the mean cell size parameter of ComSeg was manually adjusted for each dataset. More details regarding hyperparameter settings of the benchmarked methods can be found in Supplementary Note 1.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Benchmark on simulation of lung tissue</head><p>To benchmark the methods on challenging data, we first turned to simulations mimicking lung tissue (see Methods). Here, cells have complex shapes in 3D, and airways add empty space devoid of any transcripts. Moreover, we also simulated some cells without nuclei, which can occur in tissue sections. Further, we sampled real expression profiles from our recent scRNA-seq data <ref type="bibr" target="#b32">33</ref> . We simulated 34 cell-type marker genes selected with the NS-forest algorithm <ref type="bibr" target="#b33">34</ref> . This marker list enabled us to classify 19 different cell types present in lung tissues with an accuracy of 0.88 for cell type calling when having a perfect RNA assignment to cells (Methods).</p><p>To quantitatively compare the different methods, we implemented different metrics (see Methods). We assessed the quality of the RNA-cell assignment with the mean Jaccard index per cell, which is calculated for the RNA positions.</p><p>The ultimate goal of all the methods is to obtain a gene expression vector for each cell. In this context, not all types of RNA-cell association errors are equivalent. If a cell misses some RNAs, it may still be possible to accurately assess its RNA profile, similar to cell type classification in scRNAseq, where only a fraction of all RNAs are sequenced. However, if some RNAs are wrongly associated with a cell, this can create a mixed expression profile resulting in incorrect cell type classification. We thus reported the mean percentage of wrongly associated RNA per cell (WA) and the mean percentage of missing RNA per cell (MS) separately. Lastly, we assessed cell type calling accuracy by comparing each method's results to the ground truth cell type defined by scRNA-seq data. To classify cell types, we computed the cosine distance between predicted cell expression vectors derived from images and the scRNA-seq cell type cluster centroid (see Methods).</p><p>Examples of RNA-cell assignment from the different approaches on lung tissue simulation are shown in Fig. <ref type="figure" target="#fig_1">2a</ref>. ComSeg outperforms Baysor, pciSeq, SCS, and the Watershed algorithm with a Jaccard index of 0.57 against 0.30, 0.33, 0.21, and 0.50 for Baysor, pciSeq, SCS, and Watershed, respectively (Fig. <ref type="figure" target="#fig_1">2b</ref>, left panel). The lower Jaccard index of SCS could be attributed to its original design for sequencing-based data with access to the complete transcriptome, whereas in our case, we only simulate a limited number of markers. Furthermore, SCS does not utilize the 3D information provided by the simulation and the spatial resolution must be reduced to accommodate SCS to image data. A closer look at the results reveals that the type of error is not the same for the four models. Baysor, SCS and pciSeq have a high percentage (more than 50%) of missing RNA per cell (Fig. <ref type="figure" target="#fig_1">2c</ref>, right panel) while Watershed has a very low (15%) mean percentage of missing RNA per cell. This is not surprising, as the Watershed computes a Voronoi tessellation and hence assigns all RNAs except those that are very far from nuclei. Watershed, SCS, and pciSeq have a higher mean percentage of wrongly associated RNA per cell (about 40%), while it is low for Baysor and ComSeg (roughly 20% on average) (Fig. <ref type="figure" target="#fig_1">2c</ref>, left panel).</p><p>Next, we compared the estimated expression profiles from the simulated images to the known, underlying scRNA-seq ground truth, by performing cell type calling. Here, ComSeg reaches 74% accuracy, compared to 60, 62, 35, and 62% for Watershed, pciSeq, SCS, and Baysor respectively (Fig. <ref type="figure" target="#fig_1">2b</ref>, right panel). The higher accuracy of ComSeg for cell-type calling can be explained by the lower misassociation error rate (Fig. <ref type="figure" target="#fig_1">2c</ref>, left panel). Of note, the best cell type calling accuracy that could be achieved is 88%, which is thus the value that would be reached if all RNAs were correctly assigned to the cell they belong to. This value is not 100% because the selected marker genes do not perfectly recapitulate the full transcriptomic profiles. On the other hand, we observe that cell-type calling is heavily impacted by wrong RNA assignments.</p><p>In conclusion, ComSeg performs better in terms of RNA-cell association and substantially improves downstream tasks like cell type calling on lung tissue simulation compared to the current state-of-the-art. In view of these results, we next turned in Supplementary Note 2 to simulations with a simpler tissue geometry, in order to better understand the limitations of each method.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Application to experimental data without cell membrane staining</head><p>We applied ComSeg to two different experimental lung datasets with solely nuclei staining, and each with a specific challenge for the analysis. The first dataset was created in-house. In this experiment, we visualized 6 different marker genes in 3D mouse lung tissue. Our approach has a very high RNA detection efficiency, but many cells display no RNA transcripts as only a subset of cell types is targeted. The second dataset is from a recent study of human embryonic lung mapping 147 genes in 2D <ref type="bibr" target="#b24">25</ref> . The HybISS approach used for this dataset has a lower capture rate <ref type="bibr" target="#b14">15</ref> but enables the visualization of many more genes.</p><p>For such experimental data, no ground truth is available. In tissue with complex morphology such as lung, having no ground truth makes it particularly challenging to assess the method's quality. An existing validation strategy is based on the gene expression correlation between the overlap region provided by different methods and the non-overlapping regions <ref type="bibr" target="#b14">15,</ref><ref type="bibr" target="#b18">19</ref> . However, this validation does not compare with respect to a ground truth. Errors in existing methods could thus be propagated to the next generation of methods. Moreover, the method implicitly assumes a homogeneous spatial distribution of RNAs, including for the nuclear region. In the absence of direct access to ground truth for these imaging datasets, we chose to leverage available scRNA-seq datasets obtained from identical organ samples. These scRNA-seq datasets serve as a means to assess the consistency of single-cell spatial RNA profiling. As for simulations, we calculate the cosine distance between cell expression vectors derived from images and the nearest scRNA-seq cluster centroid. Consequently, the cosine distance between single-cell RNA profiles from the image dataset and scRNA-seq clusters serves as a surrogate measure for the quality of single-cell spatial RNA profiling.</p><p>Similarly to what we did with simulations, we applied SCS, Baysor, pciSeq, Watershed and, ComSeg on the 3D mouse lung tissue dataset (Fig. <ref type="figure" target="#fig_2">3a</ref>) and on the 2D embryonic lung tissue dataset.</p><p>On mouse lung tissue, ComSeg identifies more cells than the other tested methods, for which an RNA profile can be assigned (Supplementary Fig. <ref type="figure" target="#fig_2">3</ref>). We obtain similar results for human embryonic lung tissue (Supplementary Fig. <ref type="figure" target="#fig_2">3</ref>) where ComSeg also detects more cells than the four other methods we tested. We took into account only cells with more than five RNAs. Importantly, the number of cells with matching expression profiles in the scRNA-seq data is higher for ComSeg both for mouse (Fig. <ref type="figure" target="#fig_2">3b</ref>) and human lung tissue (Fig. <ref type="figure" target="#fig_2">3c</ref>) at the different cosine distance thresholds.</p><p>In summary, ComSeg detects more cells than other methods, and our analysis revealed that the RNA profiles measured in the segmented cells also better fit external datasets, thus suggesting better segmentation quality.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Application to experimental data with cell membrane staining</head><p>In order to investigate the performance of experimental data, we applied ComSeg to two publicly available MERFISH datasets, containing both DAPI and membrane staining. While the cell membrane staining does not cover all cells, it provides a valuable ground truth in some parts of the image.</p><p>The first dataset comprises a mouse ileum tissue section measuring 400 × 600 μm 15 with 241 genes. This dataset presents challenges, as mouse ileum is known to contain RNAs with preferential intracellular distributions (Fig. <ref type="figure" target="#fig_3">4a</ref> and Supplementary Fig. <ref type="figure" target="#fig_3">4</ref>). The authors of this dataset leveraged a pan-cell-type cell surface marker to visualize the cell membrane. However, this surface marker tends to work more effectively in specific locations and cell types, as evidenced in Fig. <ref type="figure" target="#fig_3">4a</ref>, where the membrane staining is more pronounced on the tissue periphery.</p><p>In addition, we applied the benchmarked methods to another MER-FISH dataset featuring human breast cancer tissue. This dataset is part of the publicly released MERSCOPE FFPE Human Immuno-Oncology Data Release by the Vizgen company. It encompasses 550 genes spatially resolved over a section of approximately 10 mm × 8 mm. For the purpose of this study, we analyzed a 2D subsection measuring 1900 × 970 μm. Similarly to the previous dataset, it includes nuclei staining and membrane staining.</p><p>These two datasets exhibit partial membrane staining, which we used as annotated ground truth to evaluate the performance of the benchmarked method. To ensure a substantial number of annotated cells, we automated the annotation process as follows: first, we independently segmented the nuclei and the cell membrane using Cellpose <ref type="bibr" target="#b34">35</ref> . Then we defined as ground truth the cells containing exactly one nucleus, thus removing cell segmentation errors likely to correspond to artifacts (e.g., visual patterns in the image that Cellpose erroneously detected as cells) and segmentation errors due to low-quality membrane stain, resulting in multiple nuclei per cell (e.g., by missing the separating membrane). As a result, we obtained a <ref type="url" target="https://doi.org/10.1038/s42003-024-06480-3">https://doi.org/10.1038/s42003-024-06480-3</ref> </p><p>high-confidence ground truth segmentation map (see Methods for details). The ground truth segmentation maps used in this study, as well as the corresponding segmentation map from the benchmarked methods, can be found at (<ref type="url" target="https://zenodo.org/records/11237477">https://zenodo.org/records/11237477</ref>). An example of the annotations generated using this process is depicted in Fig. <ref type="figure" target="#fig_3">4a</ref>.</p><p>We used these high-confidence datasets to evaluate the performance of the benchmarked methods. We first associated each annotated cell with its best match from each benchmarked method (Fig. <ref type="figure" target="#fig_3">4b</ref>). Subsequently, we calculated the Jaccard index on the RNA set. On the mouse ileum dataset, Watershed and ComSeg performed slightly better than pciSeq and Baysor with a Jaccard index of around 0.4 against 0.36 and 0.31 for Baysor and pciSeq (Fig. <ref type="figure" target="#fig_3">4c</ref>). In the breast cancer dataset, Baysor, pciSeq, Watershed, and ComSeg yield comparable Jaccard index, around 0.5 (Fig. <ref type="figure" target="#fig_3">4d</ref>). Across both datasets, SCS exhibited a lower Jaccard index than the other methods, potentially due to the fewer resolved RNA species compared to the original study and the need for SCS to lower spatial resolution to be applied to IST data. Besides, the Jaccard index metric can hide disparities in terms of segmentation error as shown in the simulation section. In summary, this last section shows that ComSeg can handle datasets with a high number of genes and with RNA with preferential intracellular distribution like in the mouse ileum dataset (Supplementary Fig. <ref type="figure" target="#fig_3">4</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Discussion</head><p>Imaging-based spatial RNA profiling methods provide RNA point cloud coordinates without information about the cell of origin of each molecule. Still, it is essential to correctly assign RNAs to cells to perform downstream tasks at the single-cell level such as cell type calling or inference of cell interaction. In this study, we present a method called ComSeg, a graphbased method operating directly on the RNA coordinates and nucleus positions. In addition, ComSeg is cell shape agnostic which makes it particularly useful for complex tissues, where cell shape convexity cannot be assumed. As such, ComSeg is a flexible method able to handle various situations, demonstrating good performances even in challenging experimental settings. In order to compare ComSeg to other methods, we have developed a simulation framework (SimTissue) that provides tissue architectures which are generated from real images and are therefore reasonably realistic. Our simulation environment also encompasses simple geometric shapes which are ideally suited to study failure modes and limitations of algorithms thanks to the simplified geometry. Indeed, quality assessment is a critical aspect of segmentation, but actually difficult to perform. So far, there are no manually annotated ground truth datasets for imaging-based spatial RNA profiling. In this study, we use an automated workflow to create ground-truth data for cells with high-quality membrane stains. However, considering solely these cells for assessing spatial RNA profiling performance could introduce bias as membrane staining may work more effectively in specific locations of the tissue or only for certain cell types. Comparison to a consensus is an option that has been adopted by several authors <ref type="bibr" target="#b14">15,</ref><ref type="bibr" target="#b18">19</ref> . We argue that this can lead to the propagation of systematic errors. For instance, all competing methods rely on shape priors that are not always met in complex tissues. A comparison to the consensus would not be able to reveal such systematic errors. Furthermore, in most cases, the consensus region will contain the nuclear region, and it is possible that the expression profile measured in the nuclear region is different from peripheral regions in the cell.</p><p>We found that most methods have difficulties with non-convex shapes and large differences in gene expression density. Our simulations suggest that error rates in cell-type calling are non-negligible: as much as 26% of celltype assignments are erroneous because of segmentation errors when using previously published methods. ComSeg outperforms competing methods by a large margin on complex tissues. However, even with ComSeg, cell classification errors due to wrong segmentations amount to 14%, thus suggesting that the development of novel segmentation methods remains an important topic for imaging-based spatial RNA profiling data. Besides, as the number of methods and datasets continues to increase, finding optimal parameters for each of them to obtain fair comparison becomes increasingly challenging. We believe that independent benchmark studies for spatial RNA profiling data would be beneficial for the community.</p><p>Beyond these benchmark results, ComSeg has several other compelling aspects that make it interesting for the scientific community. First, it does not require membrane stainings. Indeed, existing membrane stainings are highly variable and not very robust. Moreover, they are inhomogeneous and can, therefore, lead to spatial biases in cell-type calling accuracies. In this context, methods like ComSeg, directly operating on RNA point clouds, complement cell membrane staining-based approaches like Cellpose, in cases where cell membrane staining is unfeasible, e.g., in regions of low staining quality or for certain cell types. Second, ComSeg does not require external datasets, such as scRNA-seq, which makes it also applicable in small-scale studies, where such data is not available. Moreover, ComSeg does not rely on annotated data, which is very tedious and sometimes impossible to provide. Its modular structure makes it easy to tailor ComSeg to particularities in the datasets. Lastly, ComSeg demands only basic desktop computational resources and exhibits reasonable runtime and memory requirements (see Supplementary Table <ref type="table" target="#tab_0">1</ref>).</p><p>One of the limitations of ComSeg is that it is dependent on the choice of cell type marker genes. The model may fail if the spatially resolved RNA species are not discriminative of cell type or cell state. A potential improvement of ComSeg would be to incorporate in the model several landmark stainings. Another potential enhancement could be to include more spatial information in the clustering of the RNA communities expression profiles. In ComSeg, RNA communities with similar expression profiles are grouped into clusters using the Leiden algorithm which leverages solely expression profiles. However recent clustering methods for spatial transcriptomic were proposed leveraging both spatial information and expression profile <ref type="bibr" target="#b35">36,</ref><ref type="bibr" target="#b36">37</ref> . For instance, if an RNA community with a given transcriptomic profile is erroneously linked to another profile, this mistake could potentially be corrected by taking neighboring profiles into account. For instance, if the RNA community is surrounded by other communities from the same correct transcriptomic profile, a wrong assignment could be avoided. Finally, ComSeg relies on the position of single RNA molecules which prevents its application on sequencing-based spatial transcriptomic data with low spatial resolution. Indeed, the edge weights are defined with gene co-expression as similarity metrics. Applying ComSeg on sequencingbased data with low spatial resolution would require defining an expression vector similarity metric between binned spots which might be an interesting extension. Finally, ComSeg could, in principle, be used on sequencing-based data if the spatial resolution is close to IST, such as Stereo-seq <ref type="bibr" target="#b13">14</ref> .</p><p>Altogether, we believe that this model will be of great interest to the community and has the potential to overcome current shortcomings in cell segmentation and cell type calling from spatial RNA profiling data. To facilitate the use of ComSeg, we have made it available as an open-source and documented Python package: <ref type="url" target="https://github.com/fish-quant/ComSeg">https://github.com/fish-quant/ComSeg</ref>. We also make the simulation framework SimTissue (<ref type="url" target="https://github.com/tdefa/SimTissue">https://github.com/  tdefa/SimTissue</ref>) available to the community, which might help researchers in the future to benchmark their methods.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Material and methods</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Description of ComSeg algorithm</head><p>We assume that we have for each cell its centroid. In practice, this cell centroid is inferred from the nuclear stain, which are available in virtually all IST datasets. ComSeg associates the detected RNA molecules with their corresponding cell centroid. It leverages a k-nearest neighbor (KNN) graph, where the nodes are the detected RNAs. The method can be decomposed into five steps:</p><p>1. Computation of a proximity-weighted expression matrix 2. Construction of KNN graph weighted by co-expression 3. Graph community detection using the cell nucleus. 4. Cell segmentation-free in situ clustering of communities 5. Final RNA assignment</p><p>The only hyper-parameters exposed to the user are the mean cell diameter D and the maximum cell radius R max . The numerical values of these hyper-parameters are detailed in Supplementary Note 1.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Proximity-weighted expression matrix</head><p>ComSeg leverages gene co-expression information. In principle, coexpression information can originate from parallel scRNA-seq data or from other published resources. However, such external datasets are not always available for the biological system under study. Hence, we estimate co-expression using only the spatial arrangements of detected RNA molecules in the image. For this, we leverage the spatial correlation between the different RNA species molecules as a proxy for gene co-expression.</p><p>For each RNA position x, we define a local proximity-weighted expression vector (PE) V(x). For this, we consider a maximum of K = 40 neighbors y, positioned at a maximal distance of R PE ¼D=2 from x. A subset of these neighbors are transcripts of the gene g. We thus define a local expression score of gene g in proximity of x:</p><formula xml:id="formula_0">V g x ð Þ ¼ Σ y2KNNðxÞ;geneðyÞ¼g ðR PE À jjx À yjjÞ=R PE<label>ð1Þ</label></formula><p>We note that each transcript at position y is weighted by a score that linearly decreases between x and the circle around x with radius R PE . The underlying idea is that close transcripts should contribute more to the local expression estimation.</p><p>The local proximity-weighted expression vector V(x) is then defined as:</p><p>V x ð Þ ¼ ½V g1 ðxÞ; V g2 ðxÞ; :::; V gN ðxÞ ð2Þ</p><p>Of note, the proposed PE are similar to the Neighborhood Composition Vectors proposed in ref. 15 with the difference that it weights RNA positions by a distance score, such that closer RNAs contribute more than RNAs that are far.</p><p>By stacking the V(x) for all positions x, we get a proximity-weighted expression matrix V 2 R N x × N g where N x is the number of detected RNA and N g the number of marker genes. From this, we can finally compute the co-expression matrix W 2 R N g × N g , where each element w i;j is the Pearson correlation of the columns of V corresponding to the expression of genes i and j:</p><formula xml:id="formula_1">w i;j ¼ CorrðV i; V j Þ<label>ð3Þ</label></formula><p>The computation of these co-expression values is implemented by the Python class ComSegDataset of our package. Of note, the co-expressions could alternatively be computed from external data, e.g., from single-cell RNA sequencing data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>KNN graph weighted by co-expression</head><p>Our algorithm operates on a weighted KNN graph, where the RNA molecules (across all genes) are the nodes (K = 10 and the max edge distance R knn between molecules is set to D/4) and the weights are the estimated coexpression values w i;j defined in (3): edges between RNA molecules from strongly co-expressed genes obtain a large weight, while RNA molecules from genes that are not co-expressed are assigned a small weight. The rationale is that RNAs from co-expressed genes are likely to belong to the same cell, while RNA molecules from genes that are usually not expressed together are more likely to belong to different cells.</p><p>It is worth mentioning that we opted to keep the value of K fixed at K = 10. Indeed, modifying this parameter has a negligible impact on performance, as illustrated in Supplementary Fig. <ref type="figure">5</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Graph community detection algorithm</head><p>In the previous section, we generated a graph strongly connecting RNA nodes that are likely to belong to the same cell. Now, our objective is to partition this graph into sets of RNAs belonging to the same cells. To achieve this, we developed a modified version of the Louvain method <ref type="bibr" target="#b26">27</ref> for community detection so it can accommodate prior knowledge given by nuclei segmentation or other landmarks.</p><p>The original Louvain algorithm is a widely used method to partition a graph into sets of strongly connected nodes. These strongly connected sets of nodes are called communities. The algorithm optimizes a metric of graph structure called the modularity, noted Q 38 . Q is the sum of the differences between intra-community weights and their expected value in a randomly rewired graph. Q can be expressed as a sum over the edges (u,v) of the graph.</p><formula xml:id="formula_2">Q ¼ 1 2m Σ u;v w g u ;g v À k u k v 2m δðC u ; C v Þ ð<label>4Þ</label></formula><p>Where g u and g v are the gene index of the RNA nodes u and v. w g u ;g v is the corresponding weight from the co-expression matrix W. k u is the degree of node u defined as k u ¼ Σ v w g u ;g v , m is the sum of the weights in the network m ¼ 1 2 Σ u;v w g u ;g v and the function δ is 1 if the nodes u and v belong to the same community C (i.e., C u = C v ) and 0 otherwise. This method iterates two elementary phases: in the first step, modularity Q is greedily optimized. For this, we start from an initialization where each node is assigned to its own community. Nodes are then moved in a random order to neighboring communities to greedily maximize modularity. This first step stops when no node move improves the modularity Q. The randomness of this phase has a negligible effect on the final ComSeg output as studied in Supplementary Note 3.</p><p>In the second step, a new aggregated network is built where communities found in the first step become nodes. Edge weights between those new nodes are calculated as the sum of the edge weights between the identified communities. We can then re-apply the first step on this aggregated network until there is no modularity gain.</p><p>When applying the Louvain method, we only consider positively weighted edges as negatively co-expressed genes are not likely to belong to the same cell. Besides, in order to introduce prior knowledge in the form of landmark segmentation, we modify the method as follows: before running the community detection method, RNA nodes inside the same segmented nucleus or chosen cell landmark are merged together into one node, which we refer to as "cell nodes". When we apply the Louvain method, different cell nodes cannot be merged together. During the first step of local moving of nodes, nodes take the cell label of the community they are assigned to.</p><p>Of note, in most cases, nuclear staining is available, and this therefore represents the most frequent use case. However, the landmarks can also originate from other stainings (such as membrane staining).</p><p>The input graph strongly connects RNAs that are likely to belong to the same cell. Hence the resulting community partitions of RNAs are supposed to form sets of RNAs belonging to only one cell. In contrast, a cell might contain several communities.</p><p>The graph construction and partitioning are implemented in the Python class ComSegGraph of our Python package.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Cell segmentation-free in situ clustering</head><p>In the previous step, we split our graph into communities of RNAs that are supposed to belong to the same cell. Hence, while a cell can be composed of several RNA communities, we assume that each community does not extend beyond cytoplasmic boundaries. This mimics the mechanism of superpixel segmentation in computer vision <ref type="bibr" target="#b38">39</ref> .</p><p>To ease the identification of RNA communities that may belong to the same cell, we first identify communities that have similar RNA profiles.</p><p>We associate with each community C of RNA, an expression vector V C .</p><formula xml:id="formula_3">V C ¼ 1 C Σ x2C VðxÞ<label>ð5Þ</label></formula><p>where V(x) are proximity-weighted expression vectors (PE) computed as defined above. Summing the PE of each RNA node in the community helps to capture the local transcriptomic information missing in the global coexpression matrix W. Hence, each community is associated with a community expression vector V C composed of co-expressed genes at the global scale but also containing the local transcriptomic information of the cell it belongs to. Then, similarly to what is commonly done in scRNA-seq analysis <ref type="bibr" target="#b39">40</ref> , we cluster our set of community expression vectors V C using optionally PCA for dimensionality reduction (depending on the number of marker genes) and the modularity-based algorithm Leiden <ref type="bibr" target="#b27">28</ref> . It defines community clusters fL i g that exhibit similar expression profiles. Each community (and each member x) thus receives a community profile label L i . However, we do not cluster community expression vectors of less than three RNAs as they might be too small to reliably capture their local transcriptomic neighborhood. We assign to these small communities the majority label of the K nearest neighbors.</p><p>This step thus provides a map of RNAs labeled with their community profile label L i . We refer to this map of labeled RNAs as the transcriptomic domain map. The in situ clustering step is implemented in the class InSi-tuClustering of our Python package.</p><p>Of note, previous studies have utilized KNN graphs to investigate transcriptomic similarity <ref type="bibr" target="#b40">[41]</ref><ref type="bibr" target="#b41">[42]</ref><ref type="bibr" target="#b42">[43]</ref> . These studies aimed to identify similarities in gene expression profiles between individual cells or groups of cells (spots). However, our method differs from these approaches in that we seek to uncover similarities between groups of RNA molecules that are not cells but represent subsets of cells.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Final RNA assignment</head><p>In the final step, the goal is to associate the RNAs with the cell they belong to. First, we add a centroid node, a node that does not correspond to an RNA molecule. If the landmarks contain nuclear staining, this centroid node is the centroid of the nucleus, all nuclear RNAs are merged into this node, and the centroid node gets the community profile L i of the nuclear RNAs. In case there is no nuclear RNA, the community profile of the centroid is defined as the majority profile among the K nearest neighbors (K = 15, R = D/ 2). In case there is no nuclear staining, the centroid node can be defined based on other landmarks (e.g., the maximum distance function of a cellular landmark). Cell centroid nodes are required to estimate the single-cell RNA profiles.</p><p>Once every cell centroid is associated with a community profile L i , we can finally estimate the single-cell RNA profiles. We associate each cell centroid of label L i to their nearest RNAs of the same label. We employ the geodesic distances between cell centroids and RNA nodes. The geodesic distance is the graph's shortest path distance between the centroids and RNA nodes and is computed with the Dijkstra algorithm <ref type="bibr" target="#b43">44</ref> . We apply the Dijkstra algorithm with Euclidean distance weight on the edges. Besides, when an RNA node's geodesic distance to its nearest centroid is superior to a chosen maximum cell radius R max , the RNA molecule is not associated with any cell. Using the geodesic distance helps to better estimate the cell size of non-convex cells when applying the cell radius R max cut-off. Moreover, geodesic distance accommodates potential lacunar spaces within the tissue when calculating the centroid-RNA distance.</p><p>In summary, our method treats RNA positions as nodes in a graph with edges weighted by co-expression. This permits an accurate separation of cells with different expression profiles without the need for explicit cell segmentation. Our method can further use landmarks, such as nuclei, to initiate community detection in spatial RNA graphs. In the absence of clear differences in expression profiles, cells will then be separated based on RNAcentroid distance in the graph.</p><p>Our method does not use an explicit cell shape prior other than mean cell diameter D and maximal cell radius R max as the goal is to make this method suitable for tissues harboring arbitrary cell shapes. Furthermore, ComSeg is not based on machine learning, and does therefore not need annotated data or time-consuming learning steps; which simplifies its application and interpretability.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Simulation Python package</head><p>In order to validate our method and perform quantitative benchmarks against other approaches, we designed a simulation framework SimTissue capable of creating ground-truth data with tunable complexity for tissue morphology, cell type compositions, and marker-gene expression levels.</p><p>Our simulation framework can be divided into two steps: 1. Simulation of tissue morphology. 2. Simulation of RNA composition and spatial distribution.</p><p>SimTissue is implemented in Python and available at <ref type="url" target="https://github.com/tdefa/SimTissue">https://github.  com/tdefa/SimTissue</ref> and documented at <ref type="url" target="https://simtissue.readthedocs.io">https://simtissue.readthedocs.io</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Simulation of tissue morphology</head><p>Our framework offers two possible simulation scenarios. In the first scenario, we consider regular geometric patterns. While these are not realistic scenarios, they are well suited to point to potential problems and limitations of the algorithms. They can thus be seen as a purely methodological test scenario. Examples include the checkerboard arrangement or the simulation of clamped L-shapes with random nuclei positions.</p><p>In the second scenario, we consider more realistic tissue simulations. For this, SimTissue takes as input segmented nuclei from experimental data. These segmentation masks can often be generated easily from DAPI or other nuclei stainings and are widely used for image-based spatial transcriptomic experiments <ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b32">33</ref> . Individual cytoplasms are defined by growing cells from segmented nuclei. Each cell grows at a random speed to add irregularity to the cell size. Still, some organs, such as lung tissue, contain lacunar space without cells. Therefore, optional masks can be added to indicate these lacunar spaces where cells cannot grow into.</p><p>In experimental data, the tissue section is cut at an arbitrary location and some nuclei are removed from the rest of the cell. It is, hence, possible to simulate cells without nuclei to better mimic experimental fluorescentbased experiments.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Simulation of RNA composition and spatial distribution</head><p>Once the nuclei positions and cell shapes are simulated, we have to simulate the RNA composition and distribution within each cell. RNA expression levels can either be set as constant or be directly sampled from experimental measures, e.g. from scRNA-seq data. When sampling profiles from scRNAseq, we sample for each simulated cell an expression profile of a single cell from scRNA-seq, then multiply the number of RNAs by a factor. Here, we choose a factor of 3 as the fraction of mRNA transcripts captured per cell in scRNA-seq data can reach 30% (depending on reagent chemistry) <ref type="bibr" target="#b44">45</ref> while the capture rate of smFISH experiment is close to 100% <ref type="bibr" target="#b45">46</ref> . Finally, RNA molecules are randomly positioned in the available space of the cell with a uniform spatial distribution.</p><p>In summary, SimTissue allows to simulate experiments of incremental complexity. The full control over the ground truth and the difficulty of the segmentation task aims to understand the limitations of the benchmarked methods.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Simulations in this article</head><p>Regular pattern simulations. We simulated 2D square grids (15 μm × 15 μm) and nested L-shape patterns (four squares of 15 μm × 15 μm). The pixel size is 0.150 µm and thus similar to the pixel size obtained with a 60x objective. Nuclei are spheres of 3.75 μm rays. Nuclei are in the center of the cell for square cell shape. For an L-shaped cell, the nucleus is randomly positioned in the center of one of the four squares composing the L-shaped cell.</p><p>Lung tissue simulations. We simulated 3D mouse lung tissue leveraging experimental FISH data from ref. 33. The original data were composed of images of 112 µm × 150 μm in XY and 15 μm in Z with a DAPI staining and a Cy3 fluorescent channel. The original pixel size is 0.103 × 0.103 µm and the Z spacing is 0.300 µm. The positions of the nuclei in our simulation are the positions of the segmented nuclei in the original images. The nuclei were segmented with Cellpose 35 on DAPI staining.</p><p>Next, we identified the space occupied by cells by thresholding the Cy3 FISH signal (first quintile of the Cy3 distribution). Individual cytoplasms were defined by growing cells with random irregular speed from segmented nuclei inside the allowed space. Random growth speed allows to add irregularity in the cell size. Finally, we removed 20% of nuclei in our simulation to simulate nuclei missed during sample preparation, as explained above.</p><p>We used a list of 34 cell-type marker genes with the objective to classify 19 different cell types present in mouse lung tissue. The list of marker genes was selected using the NS-forest algorithm <ref type="bibr" target="#b33">34</ref> on our external scRNA-seq dataset of mouse lung tissue <ref type="bibr" target="#b32">33</ref> . Then, we associated each individual cytoplasm with an expression vector sampled from our scRNA-seq dataset so that all the RNA profiles in our simulation are taken from real experimental data. This dataset can be found at <ref type="url" target="https://zenodo.org/records/10172316">https://zenodo.org/records/10172316</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Statistics and reproducibility</head><p>We benchmark ComSeg against pciSeq <ref type="bibr" target="#b15">16</ref> , Baysor 15 , SCS <ref type="bibr" target="#b18">19</ref> , and Watershed method on both simulation and experimental data. These are among the frequently cited and most widely used methods today if membrane markers are absent. The hyperparameter setting of the benchmarked methods can be found in the Supplementary Note 1. The details of the metrics and datasets that were used are described in the following sections.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Benchmarking on simulations</head><p>To assess the RNA profiling quality we compute the mean Jaccard index as follows:</p><p>For each cell c, J c ¼ jX c \Y c j jX c ∪ Y c j where X c is the ground truth set of RNAs associated with the cell c (ground truth) and Y c is the set of RNAs predicted as associated with the cell c. The final mean Jaccard index per cell is:</p><formula xml:id="formula_4">J ¼ 1 fcg Σ c J c<label>ð6Þ</label></formula><p>For each cell c, we compute the percentage of wrongly associated RNA WA c as follows (False Discovery Rate):</p><formula xml:id="formula_5">WA c ¼ jY c X c j jY c j<label>ð7Þ</label></formula><p>We compute the percentage of missing RNA MS c (False Negative Rate) per cell as follows:</p><formula xml:id="formula_6">MS c ¼ jX c Y c j jX c j<label>ð8Þ</label></formula><p>To perform cell type calling from the cell expression vector from Baysor, Watershed, SCS, and Comseg, we first normalize the count matrix from both scRNA-seq and from RNA-cell association using the scTransform normalization <ref type="bibr" target="#b46">47</ref> . Then we compute the cosine distance between the cell expression vector and the cell type median centroid defined in the reference scRNA-seq data from <ref type="bibr" target="#b32">33</ref> . Cells are classified into their nearest cell type cluster in terms of cosine distance. For lung tissue simulation, we also employ this cell-type calling method on the ground truth expression vector of each cell to assess the maximum accuracy achievable with the 34 selected markers. Conversely, to previously cited methods, pciSeq performs cell type classification and RNA-nuclei association simultaneously. For this reason, the cell type classification described here was not applied to pciSeq.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Experimental evaluation</head><p>We applied the benchmarked methods on two datasets of lung tissue. The first one exhibits 6 different marker genes in 3D mouse lung tissue acquired with a home-built sequential smFISH system. This mouse lung tissue was irradiated with 17 gy 5 months prior to mouse sacrifice as described in ref. 33. The second dataset was acquired with HybISS 26 , consisting of a human embryonic lung and 147 genes in 2D <ref type="bibr" target="#b24">25</ref> . In both cases, we perform a nucleus segmentation with Cellpose <ref type="bibr" target="#b34">35</ref> and use this segmentation as initialization in our benchmark.</p><p>Reference scRNA-seq cluster As we do not have ground truth for all experimental data, we leverage scRNA-seq to check the consistency of the single-cell spatial RNA profiles obtained from images. We argue that it should be possible to match the spatial profiles obtained from images to the scRNA-seq data, and that the percentage of cells that can be matched is thus a quality metric for the segmentation method.</p><p>Reference clusters from scRNA-seq for mouse lung tissue We re-cluster our single-cell data 33 using only the six mapped genes and cells from the same condition (i.e., 5 months after irradiation with 17 gy). The final clustering is composed of five different clusters.</p><p>Reference clusters from scRNA-seq for embryonic lung tissue In the original study <ref type="bibr" target="#b24">25</ref> , the authors applied pciSeq to perform single-cell spatial RNA profiling. Their final expression matrix provided in the study displays 89 genes over the 147 genes map in the HyBISS data. We also keep the same subset of 89 genes for evaluation. We use the same reference scRNA-seq dataset and clustering annotation as provided by the authors.</p><p>Matching in situ single-cell RNA profile and scRNA-seq As for simulation, we normalize both scRNA-seq data and the count expression matrix from spatially resolved RNA profiling data with scTransform <ref type="bibr" target="#b46">47</ref> . Many methods exist to match single-cell spatial transcriptomic data and scRNA-seq <ref type="bibr" target="#b47">48</ref> . We chose to leverage the cosine distance as it is robust with respect to different capture rates among the two modalities.</p><p>Each cell expression vector was matched to the closest median centroid cluster from scRNA-seq. The cosine distance acts as a proxy for the matching quality.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Automatic generation of ground truth for high-quality staining area</head><p>We segment the nuclei and the cell using Cellpose 2.0 <ref type="bibr" target="#b48">49</ref> . We manually finetuned the Cellpose models with the provided human-in-the-loop GUI except for the nuclei human breast cancer dataset where we kept the default cellpose nuclei model. Specifically, in the human breast cancer dataset, we segmented cells based on the third cellbound marker across three different available. For the cells in the mouse ileum dataset, we kept the fine-tuned Cellpose segmentation proposed in the original publication. After segmentation, we identified cells with exactly one nucleus. However, in dense tissue areas, cells might mistakenly include a few pixels from another nearby nucleus due to segmentation inaccuracies. In order to be robust with respect to this kind of variations, we assigned a nucleus to a cytoplasmic region if there was an overlap of at least 20-pixel width between them. The final list of cells containing exactly one nucleus is then employed to generate the ground truth, as these cells are likely to correspond to high-quality staining areas.</p><p>To compute the Jaccard index on the generated ground truth mask, we associate each cell from the ground truth with the predicted cell with the most molecules in common. We then apply the formula described in (6).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Ethics statement</head><p>For the generation of the in-house mouse lung tissue dataset displayed in Fig. <ref type="figure" target="#fig_2">3</ref>: studies were performed in accordance with the recommendations of the European Community (2010/63/UE) for the care and use of laboratory animals. Experimental procedures were specifically approved by the ethics committee of the Institut Curie CEEA-IC #118 (Authorization number APAFIS#5479-201605271 0291841 given by the National Authority) in compliance with the international guidelines. Females C57BL/6J mice purchased from Charles River Laboratories at the age of 6 weeks were housed in Institut Curie animal facilities.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 |</head><label>1</label><figDesc>Fig. 1 | Overview of the method and simulated and experimental data. a Overview of the ComSeg method. b 3D lung tissue simulation with 34 marker genes represented by different colors. c Mouse Lung tissue from our in-house dataset with six marker genes represented by different colors.</figDesc><graphic coords="3,81.92,49.72,436.99,612.00" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 2 |</head><label>2</label><figDesc>Fig. 2 | Benchmarking on simulated lung tissue. a 3D lung simulation and RNA assignment of the different models. The ground truth takes into account only cells with a nucleus. b Performance metrics of the benchmarked models with the mean Jaccard index per cell and cell type calling accuracy, the red line is the maximum accuracy when having a perfect RNA assignment to cells. c Error metrics of the benchmarked models with the mean percentage of wrongly associated RNA per cell (WA) and mean percentage of missing RNA per cell (MS).</figDesc><graphic coords="5,90.48,49.72,419.98,519.59" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 3 |</head><label>3</label><figDesc>Fig. 3 | Benchmark on experimental data without cell membrane staining. a Mouse lung tissue and RNA assignment of the benchmarked models. b, c Number of single-cell RNA profiles identified in images matched with a scRNA-seq reference dataset at different cosine distance thresholds for mouse lung tissue (b) and human embryonic lung tissue (c).</figDesc><graphic coords="6,90.48,49.72,419.98,534.33" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 4 |</head><label>4</label><figDesc>Fig. 4 | Benchmark on experimental data with partial cell membrane staining. a Mouse ileum tissue with Membrane staining (right) is employed to establish a segmentation ground truth (left). b RNA assignment of the benchmarked models on the mouse ileum dataset. c, d Jaccard index on the established ground truth from membrane staining for benchmarked models on mouse ileum tissue (c) and human breast cancer tissue (d).</figDesc><graphic coords="7,90.48,49.72,419.98,551.85" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 |</head><label>1</label><figDesc>Characteristics of existing methods for spatial RNA profiling</figDesc><table><row><cell>Watershed</cell><cell>pciSeq 16</cell><cell>JSTA 17</cell><cell>SSAM 32</cell><cell>Baysor 15</cell><cell>BIDCell 18</cell><cell>SCS 19</cell><cell>ComSeg</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>Communications Biology | (2024) 7:823</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_1"><p>© The Author(s) 2024 https://doi.org/10.1038/s42003-024-06480-3</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgements</head><p>This work has received financial support through the <rs type="funder">Agence Nationale de la Recherche (ANR)</rs> for grants (<rs type="projectName">LUSTRA</rs>, reference <rs type="grantNumber">ANR-19-CE14-0015-04</rs> to J.-A.L.-V., C.F., F.Mu., and T.W.) and (<rs type="projectName">TRANSFACT</rs>, reference <rs type="grantNumber">ANR-19-CE12-0007-02</rs>, to F.Mu. and T.W.). F.Mu. and C.W. acknowledge funding by <rs type="funder">Institut Pasteur. Furthermore</rs>, this work was supported by the <rs type="funder">French government</rs> under the management of <rs type="institution">Agence Nationale de la Recherche</rs> as part of the "<rs type="programName">Investissements d'avenir" program</rs>, reference <rs type="grantNumber">ANR-19-P3IA-0001</rs> (<rs type="projectName">PRAIRIE 3IA Institute</rs>). S.C.-A. and J.-A.L.-V. also received support from <rs type="person">La Ligue</rs> Contre Le cancer. S.C.-A. and M.A. were recipients of PhD fellowships from the <rs type="funder">European Union</rs>'s <rs type="programName">Horizon 2020 research and innovation program</rs> under the <rs type="grantName">Marie Skłodowska-Curie</rs> grant agreement No <rs type="grantNumber">666003</rs> and No 847718 respectively. H.L. is the recipient of a PhD fellowship from the <rs type="programName">International Student program</rs> from <rs type="funder">Paris-Saclay University</rs>. J.S. is the recipient of a PhD fellowship from the <rs type="funder">French Ministry of Education</rs>, research and <rs type="funder">Industry</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funded-project" xml:id="_XZe3VyQ">
+					<idno type="grant-number">ANR-19-CE14-0015-04</idno>
+					<orgName type="project" subtype="full">LUSTRA</orgName>
+				</org>
+				<org type="funded-project" xml:id="_NB32fQC">
+					<idno type="grant-number">ANR-19-CE12-0007-02</idno>
+					<orgName type="project" subtype="full">TRANSFACT</orgName>
+				</org>
+				<org type="funded-project" xml:id="_qCaW88b">
+					<idno type="grant-number">ANR-19-P3IA-0001</idno>
+					<orgName type="project" subtype="full">PRAIRIE 3IA Institute</orgName>
+					<orgName type="program" subtype="full">Investissements d&apos;avenir&quot; program</orgName>
+				</org>
+				<org type="funding" xml:id="_2bg5gtE">
+					<idno type="grant-number">666003</idno>
+					<orgName type="grant-name">Marie Skłodowska-Curie</orgName>
+					<orgName type="program" subtype="full">Horizon 2020 research and innovation program</orgName>
+				</org>
+				<org type="funding" xml:id="_JKXKysb">
+					<orgName type="program" subtype="full">International Student program</orgName>
+				</org>
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data availability</head><p>The simulated dataset of lung tissue can be downloaded from Zenodo (<ref type="url" target="https://zenodo.org/records/10172316">https://zenodo.org/records/10172316</ref>). The generated ground truth of the two MerFISH datasets and the corresponding segmentation results from our benchmark are available at <ref type="url" target="https://zenodo.org/records/11237477">https://zenodo.org/records/11237477</ref>. Our in-house mouse dataset is available at <ref type="url" target="https://zenodo.org/records/11068509">https://zenodo.org/records/11068509</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Code availability</head><p>ComSeg is available at <ref type="url" target="https://github.com/fish-quant/ComSeg">https://github.com/fish-quant/ComSeg</ref>. The implementation code of SimTissue is available at <ref type="url" target="https://github.com/tdefa/SimTissue">https://github.com/tdefa/  SimTissue</ref>. Scripts to reproduce the benchmark are available also on github <ref type="url" target="https://github.com/tdefa/script_Benchmark">https://github.com/tdefa/script_Benchmark</ref> and also available at this Zenodo repository 50 : <ref type="url" target="https://doi.org/10.5281/zenodo.11505979">https://doi.org/10.5281/zenodo.11505979</ref>.</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Author contributions</head><p>T.D., F.Ma, F.Mu, and T.W. designed and developed the method ComSeg and carried out the computational analysis. H.L., M.A., J.S., S.C.-A., C.W., <ref type="url" target="https://doi.org/10.1038/s42003-024-06480-3">https://doi.org/10.1038/s42003-024-06480-3</ref> </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Article</head><p>J.-A.L.-V., and C.F. performed the experimental studies for the in-house dataset. T.D., F.Ma, F.Mu, and T.W. participated in the writing of the paper. F.Mu and T.W. supervised the work. All the co-authors contributed to the data discussion.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Competing interests</head><p>The authors declare no competing interests.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Additional information</head><p>Supplementary information The online version contains supplementary material available at <ref type="url" target="https://doi.org/10.1038/s42003-024-06480-3">https://doi.org/10.1038/s42003-024-06480-3</ref>.</p><p>Correspondence and requests for materials should be addressed to Florian Mueller or Thomas Walter.</p><p>Peer review information Communications Biology thanks Viktor Petukhov, Xun Xu and the other, anonymous, reviewer(s) for their contribution to the peer review of this work. Primary Handling Editors: Ruby Yun-Ju Huang and Manuel Breuer. A peer review file is available.</p><p>Reprints and permissions information is available at <ref type="url" target="http://www.nature.com/reprints">http://www.nature.com/reprints</ref> Publisher's note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.</p><p>Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this article are included in the article's Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the article's Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit <ref type="url" target="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</ref>.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Spatially resolved transcriptomics adds a new dimension to genomics</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Larsson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Frisén</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lundeberg</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="15" to="18" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Spatially resolved single-cell genomics and transcriptomics by imaging</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Xiaowei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="15" to="18" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Spatial biology of cancer evolution</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Seferbekova</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Lomakin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">R</forename><surname>Yates</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Gerstung</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Rev. Genet</title>
+		<imprint>
+			<biblScope unit="volume">24</biblScope>
+			<biblScope unit="page" from="295" to="313" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Spatial components of molecular tissue biology</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Palla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">S</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Regev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">J</forename><surname>Theis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="308" to="318" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Spatial genomics maps the structure, nature and evolution of cancer clones</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Lomakin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">611</biblScope>
+			<biblScope unit="page" from="594" to="602" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Spatiotemporal transcriptomic atlas of mouse organogenesis using DNA nanoball-patterned arrays</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">185</biblScope>
+			<biblScope unit="page" from="1777" to="1792" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Exploring tissue architecture using spatial transcriptomics</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Rao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Barkley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">S</forename><surname>França</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Yanai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">596</biblScope>
+			<biblScope unit="page" from="211" to="220" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Spatially resolved, highly multiplexed RNA profiling in single cells</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Boettiger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Moffitt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhuang</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s42003-024-06480-3</idno>
+		<ptr target="https://doi.org/10.1038/s42003-024-06480-3" />
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">348</biblScope>
+			<biblScope unit="page">6090</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Transcriptome-scale super-resolved imaging in tissues by RNA seqFISH +</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">H L</forename><surname>Eng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">568</biblScope>
+			<biblScope unit="page" from="235" to="239" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">In situ sequencing for RNA analysis in preserved tissue and cells</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Ke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page" from="857" to="860" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Spatial organization of the somatosensory cortex revealed by osmFISH</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Codeluppi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="932" to="935" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Molecular, spatial, and functional single-cell profiling of the hypothalamic preoptic region</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Moffitt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">362</biblScope>
+			<biblScope unit="page">5324</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<title level="m" type="main">Optimizing Xenium In Situ data utility by quality assessment and best practice analysis workflows</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Salas</surname></persName>
+		</author>
+		<idno type="DOI">10.1101/2023.02.13.528102</idno>
+		<ptr target="https://doi.org/10.1101/2023.02.13.528102" />
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at bioRxiv</note>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Single-cell Stereo-seq reveals induced progenitor cells involved in axolotl brain regeneration</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">377</biblScope>
+			<biblScope unit="page">9444</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Cell segmentation in imaging-based spatial transcriptomics</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Petukhov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="345" to="354" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Probabilistic cell typing enables fine mapping of closely related cell types in situ</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Qian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="page" from="101" to="106" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Joint cell segmentation and cell type annotation for spatial transcriptomics</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Littman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Mol. Syst. Biol</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="page">10108</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">BIDCell: Biologically-informed self-supervised learning for segmentation of subcellular spatial transcriptomics data</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Fu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page">509</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">SCS: cell segmentation for highresolution spatial transcriptomics</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Bar-Joseph</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page" from="1237" to="1243" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Tracing DNA paths and RNA profiles in cultured cells and tissues with ORCA</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">J</forename><surname>Mateo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Sinnott-Armstrong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Boettiger</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Protoc</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="1647" to="1713" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">RNA imaging with multiplexed error-robust fluorescence in situ hybridization (MERFISH)</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Moffitt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhuang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Methods Enzymol</title>
+		<imprint>
+			<biblScope unit="volume">572</biblScope>
+			<biblScope unit="page" from="1" to="49" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">The scverse project provides a computational ecosystem for single-cell omics data analysis</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Virshup</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="page" from="604" to="606" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Sopa: a technology-invariant pipeline for analyses of image-based spatial omics</title>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Blampey</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page">4981</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Whole-cell segmentation of tissue images with human-level performance using large-scale data annotation and deep learning</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">F</forename><surname>Greenwald</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="555" to="565" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">A topographic atlas defines developmental origins of cell heterogeneity in the human embryonic lung</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sountoulidis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Cell Biol</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="page" from="351" to="365" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Hybridization-based in situ sequencing (HybISS) for spatially resolved transcriptomics in human and mouse brain tissue</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Gyllborg</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nucleic Acids Res</title>
+		<imprint>
+			<biblScope unit="volume">48</biblScope>
+			<biblScope unit="page">112</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Fast unfolding of communities in large networks</title>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">D</forename><surname>Blondel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J.-L</forename><surname>Guillaume</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Lambiotte</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Lefebvre</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Stat. Mech. Theory Exp</title>
+		<imprint>
+			<biblScope unit="page">10008</biblScope>
+			<date type="published" when="2008">2008. 2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">From Louvain to Leiden: guaranteeing well-connected communities</title>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">A</forename><surname>Traag</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Waltman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">J</forename><surname>Van Eck</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sci. Rep</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page">5233</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<monogr>
+		<title level="m" type="main">Use of watersheds in contour detection</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Beucher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Lantuéjoul</surname></persName>
+		</author>
+		<ptr target="http://cmm.ensmp.fr/~beucher/publi/watershed.pdf" />
+		<imprint>
+			<date type="published" when="1979">1979</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">In situ transcription profiling of single cells reveals spatial organization of cells in the mouse hippocampus</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Shah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Lubeck</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Cai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neuron</title>
+		<imprint>
+			<biblScope unit="volume">92</biblScope>
+			<biblScope unit="page" from="342" to="357" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Three-dimensional intact-tissue sequencing of singlecell transcriptional states</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">361</biblScope>
+			<biblScope unit="page">5691</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Cell segmentation-free inference of cell types from in situ transcriptomics data</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Park</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page">3545</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">An interactive murine single-cell atlas of the lung responses to radiation injury</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Curras-Alonso</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page">2445</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">A machine learning method for the discovery of minimum marker gene combinations for cell type identification from single-cell RNA sequencing</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Aevermann</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Genome Res</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="1767" to="1780" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Cellpose: a generalist algorithm for cellular segmentation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Stringer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Michaelos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pachitariu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="100" to="106" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Clustering spatial transcriptomics data</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Teng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Bar-Joseph</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bioinformatics</title>
+		<imprint>
+			<biblScope unit="volume">38</biblScope>
+			<biblScope unit="page" from="997" to="1004" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Stardust: improving spatial transcriptomics data analysis through space-aware modularity optimization-based clustering</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Avesani</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Gigascience</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="page">75</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Finding and evaluating community structure in networks</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Newman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Girvan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Phys. Rev. E</title>
+		<imprint>
+			<biblScope unit="volume">69</biblScope>
+			<biblScope unit="page">26113</biblScope>
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">SLIC superpixels compared to state-of-the-art superpixel methods</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Achanta</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Pattern Anal. Mach. Intell</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="2274" to="2281" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">SCANPY: large-scale single-cell gene expression data analysis</title>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">A</forename><surname>Wolf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Angerer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">J</forename><surname>Theis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Genome Biol</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page">15</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Cell clustering for spatial transcriptomics data with graph neural networks</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H.-B</forename><surname>Shen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Comput. Sci</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="399" to="408" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Spatially informed clustering, integration, and deconvolution of spatial transcriptomics with GraphST</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Long</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page">1155</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">SpaGCN: integrating gene expression, spatial location and histology to identify spatial domains and spatially variable genes by graph convolutional network</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Hu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="1342" to="1351" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">A note on two problems in connexion with graphs</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">W</forename><surname>Dijkstra</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Numer. Math</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="269" to="271" />
+			<date type="published" when="1959">1959</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Massively parallel digital transcriptional profiling of single cells</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">X Y</forename><surname>Zheng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page">14049</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">An introduction to spatial transcriptomics for biomedical research</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">G</forename><surname>Williams</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">J</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Asatsuma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Vento-Tormo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Haque</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Genome Med</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page">68</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hafemeister</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Satija</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Genome Biol</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page">296</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Reference-free cell type deconvolution of multi-cellular pixel-resolution spatially resolved transcriptomics data</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">F</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Atta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sahoo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="page">2339</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Cellpose 2.0: how to train your own model</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pachitariu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Stringer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page" from="1634" to="1641" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<monogr>
+		<title level="m" type="main">Scripts to reproduce the benchmark of ComSeg</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Thomas</surname></persName>
+		</author>
+		<idno type="DOI">10.5281/zenodo.11505979</idno>
+		<ptr target="https://doi.org/10.5281/zenodo.11505979" />
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

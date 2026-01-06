@@ -1,0 +1,1320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">clDice -a Novel Topology-Preserving Loss Function for Tubular Structure Segmentation</title>
+				<funder ref="#_3Wg7mEU">
+					<orgName type="full">TRABIT</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">GCB and Translatum, TU Munich. S.Shit</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Suprosanna</forename><surname>Shit</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Technical University of Munich</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Johannes</forename><forename type="middle">C</forename><surname>Paetzold</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Technical University of Munich</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Anjany</forename><surname>Sekuboyina</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Technical University of Munich</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Ivan</forename><surname>Ezhov</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Technical University of Munich</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Alexander</forename><surname>Unger</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Technical University of Munich</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Andrey</forename><surname>Zhylka</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="institution">Eindhoven University of Technology</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Josien</forename><forename type="middle">P W</forename><surname>Pluim</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="institution">Eindhoven University of Technology</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Ulrich</forename><surname>Bauer</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Technical University of Munich</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Bjoern</forename><forename type="middle">H</forename><surname>Menze</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Technical University of Munich</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">clDice -a Novel Topology-Preserving Loss Function for Tubular Structure Segmentation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">3D2A1EC5CC5BBDCBDD1EC8D2303155AA</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:10+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Accurate segmentation of tubular, network-like structures, such as vessels, neurons, or roads, is relevant to many fields of research. For such structures, the topology is their most important characteristic; particularly preserving connectedness: in the case of vascular networks, missing a connected vessel entirely alters the blood-flow dynamics. We introduce a novel similarity measure termed center-lineDice (short clDice), which is calculated on the intersection of the segmentation masks and their (morphological) skeleta. We theoretically prove that clDice guarantees topology preservation up to homotopy equivalence for binary 2D and 3D segmentation. Extending this, we propose a computationally efficient, differentiable loss function (soft-clDice) for training arbitrary neural segmentation networks. We benchmark the soft-clDice loss on five public datasets, including vessels, roads and neurons (2D  and 3D). Training on soft-clDice leads to segmentation with more accurate connectivity information, higher graph similarity, and better volumetric scores.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Introduction</head><p>Segmentation of tubular and curvilinear structures is an essential problem in numerous domains, such as clinical and biological applications (blood vessel and neuron segmentation from microscopic, optoacoustic, or radiology images), remote sensing applications (road network segmentation from satellite images) and industrial quality control, etc. In the aforementioned domains, a topologically accurate segmentation is necessary to guarantee error-free downstream tasks, such as computational hemodynamics, route planning, Alzheimer's disease prediction <ref type="bibr" target="#b17">[18]</ref>, or stroke modeling <ref type="bibr" target="#b19">[20]</ref>. When optimizing computational algorithms for segmenting curvilinear structures, the two most commonly used categories of quantitative performance measures for evaluating segmentation accuracy of tubular struc-* The authors contributed equally to the work Figure <ref type="figure">1</ref>. Motivation: The figure shows a 3D rendering of a complex, whole brain vascular dataset <ref type="bibr" target="#b47">[48]</ref>, where an exemplary 2D slice of the data is chosen and segmented by two different models, see purple (middle) and red (right), respectively. The two segmentation results achieve identical quality in terms of the traditional Dice score. Note that the purple segmentation does not capture the small vessels while segmenting the large vessel very accurately; on the other side, the red segmentation captures all vessels in the image while being less accurate on the radius of the large vessel. Skeleta are drawn in yellow. From a topology or network perspective, the red segmentation is evidently preferred. tures, are 1) overlap based measures such as Dice, precision, recall, and Jaccard index; and 2) volumetric distance measures such as the Hausdorff and Mahalanobis distance <ref type="bibr" target="#b20">[21,</ref><ref type="bibr" target="#b39">40,</ref><ref type="bibr" target="#b35">36,</ref><ref type="bibr" target="#b15">16]</ref>.</p><p>However, in most segmentation problems, where the object of interest is 1) locally a tubular structure and 2) globally forms a network, the most important characteristic is the connectivity of the global network topology. Note that network in this context implies a physically connected structure, such as a vessel network, a road network, etc., which is also the primary structure of interest for the given image data. As an example, one can refer to brain vasculature analysis, where a missed vessel segment in the segmentation mask can pathologically be interpreted as a stroke or may lead to dramatic changes in a global simulation of blood flow. On the other hand, limited over-or undersegmentation of vessel radius can be tolerated, because it does not affect clinical diagnosis.</p><p>For evaluating segmentations in such tubular-network structures, traditional volume-based performance indices are sub-optimal. For example, Dice and Jaccard rely on the average voxel-wise hit or miss prediction <ref type="bibr" target="#b45">[46]</ref>. In a task like network-topology extraction, a spatially contiguous sequence of correct voxel prediction is more meaningful than a spurious correct prediction. This ambiguity is relevant for objects of interest, which are of the same thickness as the resolution of the signal. For them, it is evident that a singlevoxel shift in the prediction can change the topology of the whole network. Further, a globally averaged metric does not equally weight tubular-structures with large, medium, and small radii (cf. <ref type="bibr">Fig 1)</ref>. In real vessel datasets, where vessels of wide radius ranges exist, e.g. 30 µm for arterioles and 5 µm for capillaries <ref type="bibr" target="#b47">[48,</ref><ref type="bibr" target="#b8">9]</ref>, training on a globally averaged loss induces a strong bias towards the volumetric segmentation of large vessels. Both scenarios are pronounced in imaging modalities, such as fluorescence microscopy <ref type="bibr" target="#b47">[48,</ref><ref type="bibr" target="#b57">58]</ref> and optoacoustics, which focus on mapping small capillary structures.</p><p>To this end, we are interested in a topology-aware image segmentation, eventually enabling a correct network extraction. Therefore, we ask the following research questions: Q1. What is a good pixelwise measure to benchmark segmentation algorithms for tubular, and related linear and curvilinear structure segmentation while guaranteeing the preservation of the network-topology?</p><p>Q2. Can we use this improved measure as a loss function for neural networks, which is a void in existing literature?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.1.">Related Literature</head><p>Achieving topology preservation can be crucial to obtain meaningful segmentation, particularly for elongated and connected shapes, e.g. vascular structures or roads. However, analyzing preservation of topology while simplifying geometries is a difficult analytical and computational problem <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b9">10]</ref>.</p><p>For binary geometries, various algorithms based on thinning and medial surfaces have been proven to be topologypreserving according to varying definitions of topology <ref type="bibr" target="#b22">[23,</ref><ref type="bibr" target="#b24">25,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b34">35]</ref>. For non-binary geometries, existing methods applied topology and connectivity constraints onto variational and Markov random field-based methods: tree shape priors for vessel segmentation <ref type="bibr" target="#b43">[44]</ref>, graph representation priors to natural images <ref type="bibr" target="#b1">[2]</ref>, higher-order cliques which connect superpixels <ref type="bibr" target="#b52">[53]</ref> and adversarial learning for road segmentation <ref type="bibr" target="#b50">[51]</ref>, integer programming to general curvilinear structures <ref type="bibr" target="#b48">[49]</ref>, and proposed a tree-structured convolutional gated recurrent unit <ref type="bibr" target="#b21">[22]</ref>, morphological optimization <ref type="bibr" target="#b13">[14]</ref>, among others <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b14">15,</ref><ref type="bibr" target="#b31">32,</ref><ref type="bibr" target="#b30">31,</ref><ref type="bibr" target="#b32">33,</ref><ref type="bibr" target="#b36">37,</ref><ref type="bibr" target="#b40">41,</ref><ref type="bibr" target="#b51">52,</ref><ref type="bibr" target="#b56">57,</ref><ref type="bibr" target="#b55">56]</ref>. Further, topological priors of containment were applied to histology scans <ref type="bibr" target="#b4">[5]</ref>, a 3D CNN with graph refinement was used to improve airway connectivity <ref type="bibr" target="#b18">[19]</ref>, and recently, Mosinska et al. trained networks which perform segmentation and path classification simultaneously <ref type="bibr" target="#b29">[30]</ref>. Another approach enables the predefinition of Betti numbers and enforces them on the training <ref type="bibr" target="#b7">[8]</ref>.</p><p>The aforementioned literature has advanced the communities understanding of topology-preservation, but critically, they do not possess end-to-end loss functions that optimize topology-preservation. In this context, the literature remains sparse. Recently, Mosinska et al. suggested that pixel-wise loss-functions are unsuitable and used selected filter responses from a VGG19 network as an additional penalty <ref type="bibr" target="#b28">[29]</ref>. Nonetheless, their approach does not prove topology preservation. Importantly, Hu et al. proposed the first continuous-valued loss function based on the Betti number and persistent homology <ref type="bibr" target="#b16">[17]</ref>. However, this method is based on matching critical points, which, according to the authors makes the training very expensive and error-prone for real image-sized patches <ref type="bibr" target="#b16">[17]</ref>. While this is already limiting for a translation to large real world data set, we find that none of these approaches have been extended to three dimensional (3D) data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.2.">Our Contributions</head><p>The objective of this paper is to identify an efficient, general, and intuitive loss function that enables topology preservation while segmenting tubular objects. We introduce a novel connectivity-aware similarity measure named clDice for benchmarking tubular-segmentation algorithms. Importantly, we provide theoretical guarantees for the topological correctness of the clDice for binary 2D and 3D segmentation. As a consequence of its formulation based on morphological skeletons, our measure pronounces the network's topology instead of equally weighting every voxel. Using a differentiable soft-skeletonization, we show that the clDice measure can be used to train neural networks. We show experimental results for various 2D and 3D network segmentation tasks to demonstrate the practical applicability of our proposed similarity measure and loss function.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Let's Emphasize Connectivity</head><p>We propose a novel connectivity-preserving metric to evaluate tubular and linear structure segmentation based on intersecting skeletons with masks. We call this metric cen-terlineDice or clDice. We consider two binary masks: the ground truth mask (V L ) and the predicted segmentation masks (V P ). First, the skeletons S P and S L are extracted from V P and V L respectively. Subsequently, we compute the fraction of S P that lies within V L , which we call Topology Precision or Tprec(S P ,V L ), and vice-a-versa we obtain Topology Sensitivity or Tsens(S L ,V P ) as defined bellow;</p><formula xml:id="formula_0">Tprec(S P ,V L )= |S P \ V L | |S P | ;T s e n s ( S L ,V P )= |S L \ V P | |S L |<label>(1)</label></formula><p>We observe that the measure Tprec(S P ,V L ) is susceptible to false positives in the prediction while the measure Tsens(S L ,V P ) is susceptible to false negatives. This explains our rationale behind referring to the Tprec(S P ,V L ) as topology's precision and to the Tsens(S L ,V P ) as its sensitivity. Since we want to maximize both precision and sensitivity (recall), we define clDice to be the harmonic mean (also known as F1 or Dice) of both the measures:</p><formula xml:id="formula_1">clDice(V P ,V L )=2⇥ Tprec(S P ,V L ) ⇥ Tsens(S L ,V P ) Tprec(S P ,V L )+Tsens(S L ,V P )<label>(2)</label></formula><p>Note that our clDice formulation is not defined for Tprec = 0 and Tsens = 0, but can easily be extended continuously with the value 0.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Topological Guarantees for clDice</head><p>The following section provides general theoretical guarantees for the preservation of topological properties achieved by optimizing clDice under mild conditions on the input. Roughly, these conditions state that the object of interest is embedded in S 3 in a non-knotted way, as is typically the case for blood vessel and road structures. Specifically, we assume that both ground truth and prediction admit foreground and background skeleta, which means that both foreground and background are homotopyequivalent to topological graphs, which we assume to be embedded as skeleta. Here, the voxel grid is considered as a cubical complex, consisting of elementary cubes of dimensions 0, 1, 2, and 3. This is a special case of a cell complex (specifically, a CW complex), which is a space constructed inductively, starting with isolated points (0-cells), and gluing a collection of topological balls of dimension k (called k-cells) along their boundary spheres to a k 1dimensional complex. The voxel grid, seen as a cell complex in this sense, can be completed to an ambient complex that is homeomorphic to the 3-sphere S 3 by attaching a single exterior cell to the boundary. In order to consider foreground and background of a binary image as complementary subspaces, the foreground is now assumed to be the union of closed unit cubes in the voxel grid, corresponding to voxels with value 1; and the background is the complement in the ambient complex. This convention is commonly used in digital topology <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b22">23]</ref>. The assumption on the background can then be replaced by a convenient equivalent condition, stating that the foreground is also homotopy equivalent to a subcomplex obtained from the ambient complex by only removing 3-cells and 2-cells. Such a subcomplex is then clearly homotopy-equivalent to the complement of a 1-complex.</p><p>We will now observe that the above assumptions imply that the foreground and the background are connected and have a free fundamental group and vanishing higher fundamental groups. In particular, the homotopy type is already determined by the first Betti number<ref type="foot" target="#foot_0">foot_0</ref> ; moreover, a map inducing an isomorphism in homology is already a homotopy equivalence. To see this, first note that both foreground and background are assumed to have the homology of a graph, in particular, homology is trivial in degree 2. By Alexander duality <ref type="bibr" target="#b0">[1]</ref>, then, both foreground and background have trivial reduced cohomology in degree 0, meaning that they are connected. This implies that both have a free fundamental group (as any connected graph) and vanishing higher homotopy groups. In particular, since homology in degree 1 is the Abelianization of the fundamental group, these two groups are isomorphic. This in turn implies that in our setting a map that induces isomorphisms in homology already induces isomorphisms between all homotopy groups. By Whitehead's theorem <ref type="bibr" target="#b53">[54]</ref>, such a map is then a homotopy equivalence.</p><p>The following theorem shows that under our assumptions on the images admitting foreground and background skeleta, the existence of certain nested inclusions already implies the homotopy-equivalence of foreground and background, which we refer to as topology preservation.</p><formula xml:id="formula_2">Theorem 1. Let L A ✓ A ✓ K A and L B ✓ B ✓ K B</formula><p>be connected subcomplexes of some cell complex. Assume that the above inclusions are homotopy equivalences. If the subcomplexes also are related by inclusions L A ✓ B ✓ K A and L B ✓ A ✓ K B , then these inclusions must be homotopy equivalences as well. In particular, A and B are homotopy-equivalent.</p><p>Proof. An inclusion of cell complexes map is a homotopy equivalence if and only if it induces isomorphisms on all homotopy groups. Since the inclusion L A ✓ B ✓ K A induces an isomorphism, the inclusion L A ✓ B induces a left-inverse, and since B ✓ K B induces an isomorphism, the inclusion L A ✓ K B also induces a left-inverse. At the same time, since the inclusion L B ✓ A ✓ K B induces an isomorphism, the inclusion A ✓ K B induces a left-inverse, and since L A ✓ A induces an isomorphism, the inclusion L A ✓ K B also induces a right-inverse. Together, this implies that the inclusion L A ✓ K B induces an isomorphism.</p><p>Together with the isomorphisms induced by L A ✓ A and B ✓ K B , we obtain isomorphisms induced by L A ✓ B and by A ✓ K B , which compose to an isomorphism between the homotopy groups of A and B.</p><p>Corollary 1.1. Let V L and V P be two binary masks admitting foreground and background skeleta, such that the foreground skeleton of V L is included in the foreground of V P and vice versa, and similarly for the background. Then the foregrounds of V L and V P are homotopy equivalent, and the same is true for their backgrounds.</p><p>Note that the inclusion condition in this corollary is satisfied if and only if clDice evaluates to 1 on both foreground and background of (V L ,V P ).</p><p>This proof lays the ground for a general interpretation of clDice as a topology preserving metric. Additionally, we provide an elaborate explanation of clDice topological properties, using concepts of applied digital topology in the theory section of the Supplementary material <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b22">23]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">Training Neural Networks with clDice</head><p>In the previous section we provided general theoretic guarantees how clDice has topology preserving properties. The following chapter shows how we applied our theory to efficiently train topology preserving networks using the clDice formulation. <ref type="foot" target="#foot_1">2</ref><ref type="foot" target="#foot_2">2</ref>4.1. Soft-clDice using Soft-skeletonization:</p><p>Extracting accurate skeletons is essential to our method. For this task, a multitude of approaches has been proposed. However, most of them are not fully differentiable and therefore unsuited to be used in a loss function. Popular approaches use the Euclidean distance transform or utilize repeated morphological thinning. Euclidean distance transform has been used on multiple occasions <ref type="bibr" target="#b41">[42,</ref><ref type="bibr" target="#b54">55]</ref>, but remains a discrete operation and, to the best of our knowledge, an end-to-end differentiable approximation remains to be developed, preventing the use in a loss function for training neural networks. On the contrary, morphological thinning is a sequence of dilation and erosion operations [c.f. Fig. <ref type="figure">3</ref>].</p><p>Importantly, thinning using morphological operations (skeletonization) on curvilinear structures can be topologypreserving <ref type="bibr" target="#b34">[35]</ref>. Min-and max filters are commonly used as the grey-scale alternative of morphological dilation and erosion. Motivated by this, we propose 'soft-skeletonization', where an iterative min-and max-pooling is applied as a proxy for morphological erosion and dilation. The Algorithm 1 describes the iterative processes involved in its computation. The hyper-parameter k involved in its computation represents the iterations and has to be greater than or equal to the maximum observed radius. In our experiments, this parameter depends on the dataset. For example, it is k =5...25 in our experiments, matching the pixel radius of the largest observed tubular structures. Choosing a larger k does not reduce performance but increases computation Algorithm 1: soft-skeleton Input: I,k I 0 maxpool(minpool(I)) S ReLU(I I 0 ) for i 0 to k do I minpool(I) I 0 maxpool(minpool(I)) S S +(1 S) ReLU(I I 0 ) end Output: S Algorithm 2: soft-clDice Input: V P ,V L S P soft-skeleton(V P ) S L soft-skeleton(V L ) Tprec(S P ,V L ) |SP VL|+✏ |SP |+✏ Tsens(S L ,V P ) |SL VP |+✏ |SL|+✏ clDice 2 ⇥ Tprec(SP ,VL)⇥Tsens(SL,VP ) Tprec(SP ,VL)+Tsens(SL,VP ) Output: clDice time. On the other hand, a too low k leads to incomplete skeletonization.</p><p>In Figure <ref type="figure">3</ref>, the successive steps of our skeletonization are intuitively represented. In the early iterations, the structures with a small radius are skeletonized and preserved until the later iterations when the thicker structures become skeletonized. This enables the extraction of a parameter-free, morphologically motivated soft-skeleton. The aforementioned soft-skeletonization enables us to use clDice as a fully differentiable, real-valued, optimizable measure. The Algorithm 2 describes its implementation. We refer to this as the soft-clDice.</p><p>For a single connected foreground component and in the absence of knots, the homotopy type is specified by the number of linked loops. Hence, if the reference and the predicted volumes are not homotopy equivalent, they do not have pairwise linked loops. To include these missing loops or exclude the extra loops, one has to add or discard deformation retracted skeleta of the solid foreground. This implies adding new correctly predicted voxels. In contrast to other volumetric losses such as Dice, cross-entropy, etc., clDice only considers the deformation-retracted graphs of the solid foreground structure. Thus, we claim that clDice requires the least amount of new correctly predicted voxels to guarantee the homotopy equivalence. Along these lines, Dice or cross-entropy can only guarantee homotopy equivalence if every single voxel is segmented correctly. On the other hand, clDice can guarantee homotopy equivalence for a broader combinations of connected-voxels. Intuitively, this is a very much desirable property as it makes clDice robust towards outliers and noisy segmentation labels.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.">Cost Function</head><p>Since our objective here is to preserve topology while achieving accurate segmentations, and not to learn skeleta, we combine our proposed soft-clDice with soft-Dice in the following manner:</p><formula xml:id="formula_3">L c =(1 α)(1 softDice) + α(1 softclDice) (3)</formula><p>where α 2 [0, 0.5]. In stark contrast to previous works, where segmentation and centerline prediction has been learned jointly as multi-task learning <ref type="bibr" target="#b49">[50,</ref><ref type="bibr" target="#b46">47]</ref>, we are not interested in learning the centerline. We are interested in learning a topology-preserving segmentation. Therefore, we restrict our experimental choice of alpha to α 2 [0, 0.5].</p><p>We test clDice on two state-of-the-art network architectures: i) a 2D and 3D U-Net <ref type="bibr" target="#b37">[38,</ref><ref type="bibr" target="#b5">6]</ref>, and ii) a 2D and 3D fully connected networks (FCN) <ref type="bibr" target="#b46">[47,</ref><ref type="bibr" target="#b12">13]</ref>. As baselines, we use the same architectures trained using soft-Dice <ref type="bibr" target="#b26">[27,</ref><ref type="bibr" target="#b44">45]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.">Adaption for Highly Imbalanced Data</head><p>Our theory (Section 3), describes a two-class problem where clDice should be computed on both the foreground and the background channels. In our experiments, we show that for complex and highly imbalanced dataset it is sufficient to calculate the clDice loss on the underrepresented foreground class. We attribute this to the distinct properties of tubularness, sparsity of foreground and the lack of cavities (Betti number 2) in our data. An intuitive interpretation how these assumptions are valid in terms of digital topology can be found in the supplementary material.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Experiments</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1.">Datasets</head><p>We employ five public datasets for validating clDice and soft-clDice as a measure and an objective function, respectively. In 2D, we evaluate on the DRIVE retina dataset <ref type="bibr" target="#b42">[43]</ref>, the Massachusetts Roads dataset <ref type="bibr" target="#b27">[28]</ref> and the CREMI neuron dataset <ref type="bibr" target="#b11">[12]</ref>. In 3D, a synthetic vessel dataset with an added Gaussian noise term <ref type="bibr" target="#b38">[39]</ref> and the Vessap dataset of multi-channel volumetric scans of brain vessels is used <ref type="bibr" target="#b47">[48,</ref><ref type="bibr" target="#b33">34]</ref>. For the Vessap dataset we train different models for one and two input channels. For all of the datasets, we perform three fold cross-validation and test on held-out, large, and highly-variant test sets. Details concerning the experimental setup can be found in the supplementary material.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2.">Evaluation Metrics</head><p>We compare the performance of various experimental setups using three types of metrics: volumetric, topologybased, and graph-based.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Volumetric: We compute volumetric scores such as</head><p>Dice coefficient, Accuracy, and the proposed clDice.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Topology-based: We calculate the mean of absolute</head><p>Betti Errors for the Betti Numbers β 0 and β 1 and the mean absolute error of Euler characteristic, χ = V E +F , where V, E, and F denotes number of vertices, edges, and faces. 3. Graph-based: we extract random patch-wise graphs for the 2D/3D images. We uniformly sample fixed number of points from the graph and compute the Street-moverDistance (SMD) <ref type="bibr" target="#b3">[4]</ref>. SMD captures a Wasserstein distance between two graphs. Additionally we compute the F1 score of junction-based metric <ref type="bibr" target="#b6">[7]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3.">Results and Discussion</head><p>We trained two segmentation architectures, a U-Net and an FCN, for the various loss functions in our experimental setup. As a baseline, we trained the networks using soft-dice and compared it with the ones trained using the proposed loss (Eq. 3), by varying α from (0.1 to 0.5).</p><p>Quantitative: We observe that including soft-clDice in any proportion (α&gt;0) leads to improved topological, volumetric and graph similarity for all 2D and 3D datasets, see Table <ref type="table" target="#tab_0">1</ref>. We conclude that α can be interpreted as a hyper parameter which can be tuned per-dataset. Intuitively, increasing the α improves the clDice measure for most experiments. Most often, clDice is high or highest when the graph and topology based measures are high or highest, particularly the β 1 Error, Streetmover distance and Opt-J F1 score; quantitatively indicating that topological properties are indeed represented in the clDice measure.</p><p>In spite of not optimizing for a high soft-clDice on the background class, all of our networks converge to superior segmentation results. This not only reinforces our assumptions on dataset-specific necessary conditions but also validates the practical applicability of our loss. Our findings hold for the different network architectures, for 2D or 3D, and for tubular or curvilinear structures, strongly indicating its generalizability to analogous binary segmentation tasks.</p><p>Observe that CREMI and the synthetic vessel dataset (see Supplementary material) appear to have the smallest increase in scores over the baseline. We attribute this to them being the least complex datasets in the collection, with CREMI having an almost uniform thickness of radii and the synthetic data having a high signal-to-noise ratio and insignificant illumination variation. More importantly, we observe larger improvements for all measures in case of the more complex Vessap and Roads data see Figure <ref type="figure" target="#fig_3">5</ref>. In direct comparison to performance measures reported in two recent publications by Hu et al. and Mosinska et al. <ref type="bibr" target="#b16">[17,</ref><ref type="bibr" target="#b28">29]</ref>, we find that our approach is on par or better in terms of Accuracy and Betti Error for the Roads and CREMI dataset. It is important to note that we used a smaller subset of training data for the Road dataset compared to both while using the same test set.</p><p>Hu et al. reported a Betti error for the DRIVE data, which exceeds ours; however, it is important to consider that their approach explicitly minimizes the mismatch of the persistence diagram, which has significantly higher computational complexity during training, see the section below. We find that our proposed loss performs superior to the baseline in almost every scenario. The improvement appears to be pronounced when evaluating the highly relevant graph and topology based measures, including the recently Qualitative: In Figure <ref type="figure" target="#fig_3">5</ref>, typical results for our datasets are depicted. Our networks trained on the proposed loss term recover connections, which were false negatives when trained with the soft-Dice loss. These missed connections appear to be particularly frequent in the complex road and DRIVE dataset. For the CREMI dataset, we observe these situations less frequently, which is in line with the very high quantitative scores on the CREMI data. Interestingly, in the real 3D vessel dataset, the soft-Dice loss oversegments vessels, leading to false positive connections. This is not the case when using our proposed loss function, which we attribute to its topology-preserving nature. Additional qualitative results can be inspected in the supplementary.</p><p>Computational Efficiency: Naturally, inference times of CNNs with the same architecture but different training losses are identical. However, during training, our soft-skeleton algorithm requires O(kn 2 ) complexity for an n ⇥ n 2D image where k is the number of iterations. As a comparison, <ref type="bibr" target="#b16">[17]</ref> needs O(c 2 mlog(m)) (see <ref type="bibr" target="#b14">[15]</ref>) complexity to compute the 1d persistent homology where d is the number of points with zero gradients in the prediction and m is the number of simplices. Roughly, c is proportional to n 2 , and m is of O(n 2 ) for a 2D Euclidean grid. Thus, the worst complexity of <ref type="bibr" target="#b16">[17]</ref> is O(n 6 log(n)).</p><p>Additionally, their approach requires an O(clog(c)) complexity to find an optimal matching of the birth-death pairs. We note that the total run-time overhead for soft-clDice compared to soft-Dice is marginal, i.e., for batch-size of 4 and 1024x1024 image resolution, the former takes 1.35s while the latter takes 1.24s on average (&lt;10% increase) on an RTX-8000.</p><p>Future Work: Although our proposed soft-skeleton approximation works well in practice, a better differentiable skeletonization can only improve performance, which we reserve for future research. Any such skeletonization can be readily plugged into our approach. Furthermore, theoretical and experimental multi-class studies would sensibly extend our study.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">Conclusive Remarks</head><p>We introduce clDice, a novel topology-preserving similarity measure for tubular structure segmentation. Importantly, we present a theoretical guarantee that clDice enforces topology preservation up to homotopy equivalence. Next, we use a differentiable version of the clDice, soft-clDice, in a loss function, to train state-of-the-art 2D and 3D neural networks. We use clDice to benchmark segmentation quality from a topology-preserving perspective along with multiple volumetric, topological, and graph-based measures. We find that training on soft-clDice leads to segmentations with more accurate connectivity information, better graph-similarity, better Euler characteristics, and improved Dice and Accuracy. Our soft-clDice is computationally efficient and can be readily deployed to any other deep learning-based segmentation tasks such as neuron segmentation in biomedical imaging, crack detection in industrial quality control, or remote sensing. </p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 2 .</head><label>2</label><figDesc>Figure 2. Schematic overview of our proposed method: Our proposed clDice loss can be applied to any arbitrary segmentation network. The soft-skeletonization can be easily implemented using pooling functions from any standard deep-learning toolbox.</figDesc><graphic coords="3,97.68,127.30,384.33,194.50" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 3 . 2 ⇥</head><label>32</label><figDesc>Figure 3. Based on the initial vessel structure (purple), sequential bagging of skeleton voxels (red) via iterative skeletonization leads to a complete skeletonization, where d denotes the diameter and k&gt;j&gt;iiterations.</figDesc><graphic coords="5,86.57,125.24,110.08,125.49" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 4 .</head><label>4</label><figDesc>Figure 4. Algorithm 1 calculates the proposed soft-skeleton, here I is the mask to be soft-skeletonized and k is the number of iterations for skeletonization. Algorithm 2, calculates the soft-clDice loss, where VP is a real-valued probabilistic prediction from a segmentation network and VL is the true mask. We denote Hadamard product using .</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 5 .</head><label>5</label><figDesc>Figure 5. Qualitative results: from top to bottom we show two rows of results for: the Massachusetts road dataset, the DRIVE retina dataset, the CREMI neuron data and 2D slices from the 3D Vessap dataset. From left to right, the real image, the label, the prediction using soft-Dice and the U-Net predictions using Lc(α =0.5) are shown, respectively. The images indicate that clDice segments road, retina vessel connections and neuron connections which the soft-Dice loss misses, but also does not segment false-positive vessels in 3D. Some, but not all, missed connections are indicated with solid red arrows, false positives are indicated with red-yellow arrows. More qualitative results can be found in the Supplementary material.</figDesc><graphic coords="8,460.03,465.50,51.28,53.12" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 .</head><label>1</label><figDesc>Quantitative experimental results for the Massachusetts road dataset (Roads), the CREMI dataset, the DRIVE retina dataset and the Vessap dataset (3D). Bold numbers indicate the best performance. The performance according to the clDice measure is highlighted in rose. For all experiments we observe that using soft-clDice in Lc results in improved scores compared to soft-Dice. This improvement holds for almost α&gt;0; α can be interpreted as a dataset specific hyper-parameter.</figDesc><table><row><cell>Dataset</cell><cell>Network</cell><cell>Loss</cell><cell>Dice</cell><cell>Accuracy</cell><cell>clDice</cell><cell cols="2">β 0 Error β 1 Error</cell><cell>SMD [4]</cell><cell>χerror</cell><cell>Opt-J F1 [7]</cell></row><row><cell></cell><cell>FCN</cell><cell>soft-dice Lc,α =0.1</cell><cell>64.84 66.52</cell><cell>95.16 95.70</cell><cell>70.79 74.80</cell><cell>1.474 0.987</cell><cell>1.408 1.227</cell><cell>0.1216 0.1002</cell><cell>2.634 2.625</cell><cell>0.766 0.768</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.2</cell><cell>67.42</cell><cell>95.80</cell><cell>76.25</cell><cell>0.920</cell><cell>1.280</cell><cell>0.0954</cell><cell>2.526</cell><cell>0.770</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.3</cell><cell>65.90</cell><cell>95.35</cell><cell>74.86</cell><cell>0.974</cell><cell>1.197</cell><cell>0.1003</cell><cell>2.448</cell><cell>0.775</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.4</cell><cell>67.18</cell><cell>95.46</cell><cell>76.92</cell><cell>0.934</cell><cell>1.092</cell><cell>0.0991</cell><cell>2.183</cell><cell>0.803</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.5</cell><cell>65.77</cell><cell>95.09</cell><cell>75.22</cell><cell>0.947</cell><cell>1.184</cell><cell>0.0991</cell><cell>2.361</cell><cell>0.782</cell></row><row><cell>Roads</cell><cell></cell><cell>soft-dice</cell><cell>76.23</cell><cell>96.75</cell><cell>86.83</cell><cell>0.491</cell><cell>1.256</cell><cell>0.0589</cell><cell>1.120</cell><cell>0.881</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.1</cell><cell>76.66</cell><cell>96.77</cell><cell>87.35</cell><cell>0.359</cell><cell>0.938</cell><cell>0.0457</cell><cell>0.980</cell><cell>0.878</cell></row><row><cell></cell><cell>U-NET</cell><cell>Lc,α =0.2 Lc,α =0.3</cell><cell>76.25 74.85</cell><cell>96.76 96.57</cell><cell>87.29 86.10</cell><cell>0.312 0.322</cell><cell>1.031 1.062</cell><cell>0.0415 0.0504</cell><cell>0.865 0.827</cell><cell>0.900 0.913</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.4</cell><cell>75.38</cell><cell>96.60</cell><cell>86.16</cell><cell>0.344</cell><cell>1.016</cell><cell>0.0483</cell><cell>0.755</cell><cell>0.916</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.5</cell><cell>76.45</cell><cell>96.64</cell><cell>88.17</cell><cell>0.375</cell><cell>0.953</cell><cell>0.0527</cell><cell>1.080</cell><cell>0.894</cell></row><row><cell></cell><cell cols="2">Mosinska et al. [29, 17]</cell><cell>-</cell><cell>97.54</cell><cell>-</cell><cell>-</cell><cell>2.781</cell><cell>-</cell><cell>-</cell><cell>-</cell></row><row><cell></cell><cell>Hu et al.</cell><cell>[17]</cell><cell>-</cell><cell>97.28</cell><cell>-</cell><cell>-</cell><cell>1.275</cell><cell>-</cell><cell>-</cell><cell>-</cell></row><row><cell></cell><cell></cell><cell>soft-dice</cell><cell>91.54</cell><cell>97.11</cell><cell>95.86</cell><cell>0.259</cell><cell>0.657</cell><cell>0.0461</cell><cell>1.087</cell><cell>0.904</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.1</cell><cell>91.76</cell><cell>97.21</cell><cell>96.05</cell><cell>0.222</cell><cell>0.556</cell><cell>0.0395</cell><cell>1.000</cell><cell>0.900</cell></row><row><cell></cell><cell>U-NET</cell><cell>Lc,α =0.2 Lc,α =0.3</cell><cell>91.66 91.78</cell><cell>97.15 97.18</cell><cell>96.01 96.21</cell><cell>0.231 0.204</cell><cell>0.630 0.537</cell><cell>0.0419 0.0437</cell><cell>0.991 0.919</cell><cell>0.902 0.913</cell></row><row><cell>CREMI</cell><cell></cell><cell>Lc,α =0.4</cell><cell>91.56</cell><cell>97.12</cell><cell>96.09</cell><cell>0.250</cell><cell>0.630</cell><cell>0.0444</cell><cell>0.995</cell><cell>0.902</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.5</cell><cell>91.66</cell><cell>97.16</cell><cell>96.16</cell><cell>0.231</cell><cell>0.620</cell><cell>0.0455</cell><cell>0.991</cell><cell>0.907</cell></row><row><cell></cell><cell cols="2">Mosinska et al. [29, 17]</cell><cell>82.30</cell><cell>94.67</cell><cell>-</cell><cell>-</cell><cell>1.973</cell><cell>-</cell><cell>-</cell><cell>-</cell></row><row><cell></cell><cell>Hu et al.</cell><cell>[17]</cell><cell>-</cell><cell>94.56</cell><cell>-</cell><cell>-</cell><cell>1.113</cell><cell>-</cell><cell>-</cell><cell>-</cell></row><row><cell></cell><cell></cell><cell>soft-Dice</cell><cell>78.23</cell><cell>96.27</cell><cell>78.02</cell><cell>2.187</cell><cell>1.860</cell><cell>0.0429</cell><cell>3.275</cell><cell>0.773</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.1</cell><cell>78.36</cell><cell>96.25</cell><cell>79.02</cell><cell>2.100</cell><cell>1.610</cell><cell>0.0393</cell><cell>3.203</cell><cell>0.777</cell></row><row><cell></cell><cell>FCN</cell><cell>Lc,α =0.2 Lc,α =0.3</cell><cell>78.75 78.29</cell><cell>96.29 96.20</cell><cell>80.22 80.28</cell><cell>1.892 1.888</cell><cell>1.382 1.332</cell><cell>0.0383 0.0318</cell><cell>2.895 2.918</cell><cell>0.793 0.798</cell></row><row><cell>DRIVE retina</cell><cell></cell><cell>Lc,α =0.4 Lc,α =0.5</cell><cell>78.00 77.76</cell><cell>96.11 96.04</cell><cell>80.43 80.95</cell><cell>2.036 1.836</cell><cell>1.602 1.408</cell><cell>0.0423 0.0394</cell><cell>3.141 2.848</cell><cell>0.764 0.794</cell></row><row><cell></cell><cell>U-Net</cell><cell>soft-Dice Lc,α =0.5</cell><cell>74.25 75.21</cell><cell>95.63 95.82</cell><cell>75.71 76.86</cell><cell>1.745 1.538</cell><cell>1.455 1.389</cell><cell>0.0649 0.0586</cell><cell>2.997 2.737</cell><cell>0.760 0.767</cell></row><row><cell></cell><cell cols="2">Mosinska et al. [29, 17]</cell><cell>-</cell><cell>95.43</cell><cell>-</cell><cell>-</cell><cell>2.784</cell><cell>-</cell><cell>-</cell><cell>-</cell></row><row><cell></cell><cell>Hu et al.</cell><cell>[17]</cell><cell>-</cell><cell>95.21</cell><cell>-</cell><cell>-</cell><cell>1.076</cell><cell>-</cell><cell>-</cell><cell>-</cell></row><row><cell></cell><cell>FCN, 1 ch</cell><cell>soft-dice Lc,α =0.5</cell><cell>85.21 85.44</cell><cell>96.03 95.91</cell><cell>90.88 91.32</cell><cell>3.385 2.292</cell><cell>4.458 3.677</cell><cell>0.00459 0.00417</cell><cell>5.850 5.620</cell><cell>0.862 0.864</cell></row><row><cell></cell><cell></cell><cell>soft-dice</cell><cell>85.31</cell><cell>95.82</cell><cell>90.10</cell><cell>2.833</cell><cell>4.771</cell><cell>0.00629</cell><cell>6.080</cell><cell>0.849</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.1</cell><cell>85.96</cell><cell>95.99</cell><cell>91.02</cell><cell>2.896</cell><cell>4.156</cell><cell>0.00447</cell><cell>5.980</cell><cell>0.860</cell></row><row><cell></cell><cell>FCN, 2 ch</cell><cell>Lc,α =0.2 Lc,α =0.3</cell><cell>86.45 85.72</cell><cell>96.11 95.93</cell><cell>91.22 91.20</cell><cell>2.656 2.719</cell><cell>4.385 4.469</cell><cell>0.00466 0.00423</cell><cell>5.530 5.470</cell><cell>0.869 0.866</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.4</cell><cell>85.65</cell><cell>95.95</cell><cell>91.65</cell><cell>2.719</cell><cell>4.469</cell><cell>0.00423</cell><cell>5.670</cell><cell>0.869</cell></row><row><cell>Vessap data</cell><cell>U-Net, 1 ch</cell><cell>Lc,α =0.5 soft-dice Lc,α =0.5</cell><cell>85.28 87.46 87.82</cell><cell>95.76 96.35 96.52</cell><cell>91.22 91.18 93.03</cell><cell>2.615 3.094 2.656</cell><cell>4.615 5.042 4.615</cell><cell>0.00433 0.00549 0.00533</cell><cell>5.320 5.300 4.910</cell><cell>0.870 0.863 0.872</cell></row><row><cell></cell><cell></cell><cell>soft-dice</cell><cell>87.98</cell><cell>96.56</cell><cell>90.16</cell><cell>2.344</cell><cell>4.323</cell><cell>0.00507</cell><cell>5.550</cell><cell>0.855</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.1</cell><cell>88.13</cell><cell>96.59</cell><cell>91.12</cell><cell>2.302</cell><cell>4.490</cell><cell>0.00465</cell><cell>5.180</cell><cell>0.872</cell></row><row><cell></cell><cell>U-Net, 2 ch</cell><cell>Lc,α =0.2 Lc,α =0.3</cell><cell>87.96 87.70</cell><cell>96.74 96.71</cell><cell>92.52 92.56</cell><cell>2.208 2.115</cell><cell>3.979 4.521</cell><cell>0.00342 0.00309</cell><cell>4.830 5.260</cell><cell>0.861 0.858</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.4</cell><cell>88.57</cell><cell>96.87</cell><cell>93.25</cell><cell>2.281</cell><cell>4.302</cell><cell>0.00327</cell><cell>5.370</cell><cell>0.868</cell></row><row><cell></cell><cell></cell><cell>Lc,α =0.5</cell><cell>88.14</cell><cell>96.74</cell><cell>92.75</cell><cell>2.135</cell><cell>4.125</cell><cell>0.00328</cell><cell>5.390</cell><cell>0.864</cell></row><row><cell cols="5">introduced OPT-Junction F1 by Citraro et al. [7]. Our re-</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">sults are consistent across different network architectures,</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">indicating that soft-clDice can be deployed to any network</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>architecture.</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1" xml:id="foot_0"><p>Betti numbers: β 0 represents the number of distinct connectedcomponents, β 1 represents the number of circular holes, and β</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2" xml:id="foot_1"><p>represents the number of cavities, for depictions see Supplementary material</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2" xml:id="foot_2"><p>https://github.com/jocpae/clDice</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><p>Acknowledgement: J. C. Paetzold. and S. <rs type="person">Shit</rs>. are supported by the <rs type="funder">GCB and Translatum, TU Munich. S.Shit</rs>., A. Zhylka. and <rs type="institution">I. Ezhov</rs>. are supported by <rs type="funder">TRABIT</rs> (<rs type="grantName">EU Grant</rs>: <rs type="grantNumber">765148</rs>). We thank <rs type="person">Ali Ertuerk</rs>, <rs type="person">Mihail I. Todorov</rs>, <rs type="person">Nils Börner</rs> and <rs type="person">Giles Tetteh</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_3Wg7mEU">
+					<idno type="grant-number">765148</idno>
+					<orgName type="grant-name">EU Grant</orgName>
+				</org>
+			</listOrg>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title/>
+		<author>
+			<persName><surname>Pavel S Aleksandrov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Combinatorial topology</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<date type="published" when="1998">1998</date>
+		</imprint>
+		<respStmt>
+			<orgName>Courier Corporation</orgName>
+		</respStmt>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Probabilistic image segmentation with closedness constraints</title>
+		<author>
+			<persName><forename type="first">Bjoern</forename><surname>Andres</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICCV</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="2611" to="2618" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">A deep learning design for improving topology coherence in blood vessel segmentation</title>
+		<author>
+			<persName><forename type="first">Ricardo</forename><forename type="middle">J</forename><surname>Araújo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jaime</forename><forename type="middle">S</forename><surname>Cardoso</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Hélder</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Oliveira</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Medical Image Computing and Computer-Assisted Intervention</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="93" to="101" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title level="m" type="main">Image-conditioned graph generation for road network extraction</title>
+		<author>
+			<persName><forename type="first">Davide</forename><surname>Belli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Kipf</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1910.14388</idno>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Topology aware fully convolutional networks for histology gland segmentation</title>
+		<author>
+			<persName><forename type="first">Aïcha</forename><surname>Bentaieb</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ghassan</forename><surname>Hamarneh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">MICCAI</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="460" to="468" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Özgün C ¸ic ¸ek and Aothers. 3D U-Net: learning dense volumetric segmentation from sparse annotation</title>
+	</analytic>
+	<monogr>
+		<title level="m">MICCAI</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="424" to="432" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Towards reliable evaluation of algorithms for road network reconstruction from aerial images</title>
+		<author>
+			<persName><forename type="first">Leonardo</forename><surname>Citraro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mateusz</forename><surname>Koziński</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pascal</forename><surname>Fua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">European Conference on Computer Vision</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="703" to="719" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">A topological loss function for deep-learning based image segmentation using persistent homology</title>
+		<author>
+			<persName><forename type="first">James</forename><surname>Clough</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nicholas</forename><surname>Byrne</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ilkay</forename><surname>Oksuz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Veronika</forename><forename type="middle">A</forename><surname>Zimmer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julia</forename><forename type="middle">A</forename><surname>Schnabel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrew</forename><surname>King</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Pattern Analysis and Machine Intelligence</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Whole-brain vasculature reconstruction at the single capillary level</title>
+		<author>
+			<persName><forename type="first">Antonino</forename><surname>Paolo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Di</forename><surname>Giovanna</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Scientific reports</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">12573</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Topological persistence and simplification</title>
+		<author>
+			<persName><forename type="first">Herbert</forename><surname>Edelsbrunner</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">FOCS</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="page" from="454" to="463" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title level="m" type="main">Computational topology: an introduction</title>
+		<author>
+			<persName><forename type="first">Herbert</forename><surname>Edelsbrunner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Harer</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<publisher>American Mathematical Soc</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Large scale image segmentation with structured loss based deep learning for connectome reconstruction</title>
+		<author>
+			<persName><forename type="first">Jan</forename><surname>Funke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fabian</forename><surname>Tschopp</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">William</forename><surname>Grisaitis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Arlo</forename><surname>Sheridan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chandan</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stephan</forename><surname>Saalfeld</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Srinivas</forename><forename type="middle">C</forename><surname>Turaga</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Pattern Analysis and Machine Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1669" to="1680" />
+			<date type="published" when="2019-07">Jul 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">A distance-based loss for smooth and continuous skin layer segmentation in optoacoustic images</title>
+		<author>
+			<persName><forename type="first">Stefan</forename><surname>Gerl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Medical Image Computing and Computer-Assisted Intervention</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="309" to="319" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Unsupervised microvascular image segmentation using an active contours mimicking neural network</title>
+		<author>
+			<persName><forename type="first">Shir</forename><surname>Gur</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lior</forename><surname>Wolf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lior</forename><surname>Golgher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pablo</forename><surname>Blinder</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF International Conference on Computer Vision</title>
+		<meeting>the IEEE/CVF International Conference on Computer Vision</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="10722" to="10731" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">A topology preserving level set method for geometric deformable models</title>
+		<author>
+			<persName><forename type="first">Xiao</forename><surname>Han</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE TPAMI</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="755" to="768" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Retinal vessel segmentation of color fundus images using multiscale convolutional neural network with an improved cross-entropy loss function</title>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Hu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neurocomputing</title>
+		<imprint>
+			<biblScope unit="volume">309</biblScope>
+			<biblScope unit="page" from="179" to="191" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Topology-preserving deep image segmentation</title>
+		<author>
+			<persName><forename type="first">Xiaoling</forename><surname>Hu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NeurIPS</title>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="5658" to="5669" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Morphological and pathological evolution of the brain microcirculation in aging and Alzheimer&apos;s disease</title>
+		<author>
+			<persName><forename type="first">Jesse</forename><forename type="middle">M</forename><surname>Hunter</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PloS one</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page">36893</biblScope>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">3d convolutional neural networks with graph refinement for airway segmentation using incomplete data labels</title>
+		<author>
+			<persName><forename type="first">Dakai</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ziyue</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adam</forename><forename type="middle">P</forename><surname>Harrison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kevin</forename><surname>George</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Daniel</forename><forename type="middle">J</forename><surname>Mollura</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Workshop on Machine Learning in Medical Imaging</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="141" to="149" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Cerebrovascular dysfunction and microcirculation rarefaction precede white matter lesions in a mouse genetic model of cerebral ischemic small vessel disease</title>
+		<author>
+			<persName><forename type="first">Anne</forename><surname>Joutel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">JCI</title>
+		<imprint>
+			<biblScope unit="volume">120</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="433" to="445" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">A review of vessel extraction techniques and algorithms</title>
+		<author>
+			<persName><forename type="first">Cemil</forename><surname>Kirbas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Francis</forename><surname>Quek</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">CSUR</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="81" to="121" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Learning tree-structured representation for 3d coronary artery segmentation</title>
+		<author>
+			<persName><forename type="first">Bin</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junjie</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Feng</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kunlin</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qi</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Youbing</forename><surname>Yin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computerized Medical Imaging and Graphics</title>
+		<imprint>
+			<biblScope unit="volume">80</biblScope>
+			<biblScope unit="page">101688</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">On topology preservation in 2-D and 3-D thinning</title>
+		<author>
+			<persName><forename type="first">T</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yung</forename><surname>Kong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International journal of pattern recognition and artificial intelligence</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">05</biblScope>
+			<biblScope unit="page" from="813" to="844" />
+			<date type="published" when="1995">1995</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<author>
+			<persName><forename type="first">Yung</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Azriel</forename><surname>Rosenfeld</surname></persName>
+		</author>
+		<title level="m">Digital topology: Introduction and survey. Vision, Graphics, and Image Processing</title>
+		<imprint>
+			<date type="published" when="1989">1989</date>
+			<biblScope unit="volume">48</biblScope>
+			<biblScope unit="page" from="357" to="393" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Building skeleton models via 3-D medial surface axis thinning algorithms</title>
+		<author>
+			<persName><forename type="first">Ta-Chih</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">CVGIP: Graphical Models and Image Processing</title>
+		<imprint>
+			<biblScope unit="volume">56</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="462" to="478" />
+			<date type="published" when="1994">1994</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Cherng</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">On topology preservation in 3D thinning</title>
+		<imprint>
+			<date type="published" when="1994">1994</date>
+			<biblScope unit="volume">59</biblScope>
+			<biblScope unit="page" from="328" to="339" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">V-net: Fully convolutional neural networks for volumetric medical image segmentation</title>
+		<author>
+			<persName><forename type="first">Fausto</forename><surname>Milletari</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">DV</title>
+		<imprint>
+			<biblScope unit="page" from="565" to="571" />
+			<date type="published" when="2016">2016</date>
+			<publisher>IEEE</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<monogr>
+		<author>
+			<persName><forename type="first">Volodymyr</forename><surname>Mnih</surname></persName>
+		</author>
+		<title level="m">Machine Learning for Aerial Image Labeling</title>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+		<respStmt>
+			<orgName>University of Toronto</orgName>
+		</respStmt>
+	</monogr>
+	<note type="report_type">PhD thesis</note>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Beyond the pixel-wise loss for topology-aware delineation</title>
+		<author>
+			<persName><forename type="first">Agata</forename><surname>Mosinska</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CVPR</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="3136" to="3145" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Joint segmentation and path classification of curvilinear structures</title>
+		<author>
+			<persName><forename type="first">Agata</forename><surname>Mosinska</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mateusz</forename><surname>Koziński</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pascal</forename><surname>Fua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Pattern Analysis and Machine Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1515" to="1521" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Shape-aware complementary-task learning for multi-organ segmentation</title>
+		<author>
+			<persName><forename type="first">Fernando</forename><surname>Navarro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Suprosanna</forename><surname>Shit</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Workshop on MLMI</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="620" to="627" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Global connectivity potentials for random field models</title>
+		<author>
+			<persName><forename type="first">Sebastian</forename><surname>Nowozin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christoph</forename><forename type="middle">H</forename><surname>Lampert</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CVPR</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="818" to="825" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Generalized connectivity constraints for spatio-temporal 3D reconstruction</title>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Ralf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Oswald</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ECCV</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="32" to="46" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Transfer learning from synthetic data reduces need for labels to segment brain vasculature and neural pathways in 3d</title>
+		<author>
+			<persName><forename type="first">Oliver</forename><surname>Johannes C Paetzold</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Schoppe</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Medical Imaging with Deep Learning-Extended Abstract Track</title>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">A 3-subiteration 3D thinning algorithm for extracting medial surfaces</title>
+		<author>
+			<persName><forename type="first">Kálmán</forename><surname>Palágyi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognition Letters</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="663" to="675" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Vascular segmentation in TOF MRA images of the brain using a deep convolutional neural network</title>
+		<author>
+			<persName><forename type="first">Renzo</forename><surname>Phellan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">MICCAI Workshop</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="39" to="46" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Efficient algorithms for moral lineage tracing</title>
+		<author>
+			<persName><forename type="first">Markus</forename><surname>Rempfler</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICCV</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="4695" to="4704" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">U-net: Convolutional networks for biomedical image segmentation</title>
+		<author>
+			<persName><forename type="first">Olaf</forename><surname>Ronneberger</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">MICCAI</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="234" to="241" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Tissue metabolism driven arterial tree generation</title>
+		<author>
+			<persName><forename type="first">Matthias</forename><surname>Schneider</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Med Image Anal</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1397" to="1414" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Joint 3-D vessel segmentation and centerline extraction using oblique Hough forests with steerable filters</title>
+		<author>
+			<persName><forename type="first">Matthias</forename><surname>Schneider</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Med Image Anal</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="220" to="249" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Active contours under topology control-genus preserving level sets</title>
+		<author>
+			<persName><forename type="first">Florent</forename><surname>Ségonne</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Computer Vision</title>
+		<imprint>
+			<biblScope unit="volume">79</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="107" to="117" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">A skeletonization algorithm by maxima tracking on euclidean distance transform</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Frank</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christopher</forename><forename type="middle">C</forename><surname>Shih</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Pu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognition</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="331" to="341" />
+			<date type="published" when="1995">1995</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Ridge-based vessel segmentation in color images of the retina</title>
+		<author>
+			<persName><forename type="first">Joes</forename><surname>Staal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meindert</forename><surname>Michael D Abràmoff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Max</forename><forename type="middle">A</forename><surname>Niemeijer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bram</forename><surname>Viergever</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Van Ginneken</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE transactions on medical imaging</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="501" to="509" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Tree shape priors with connectivity constraints using convex relaxation on general graphs</title>
+		<author>
+			<persName><forename type="first">Jan</forename><surname>Stuhmer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICCV</title>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="2336" to="2343" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Generalised dice overlap as a deep learning loss function for highly unbalanced segmentations</title>
+		<author>
+			<persName><forename type="first">Carole</forename><forename type="middle">H</forename><surname>Sudre</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">MICCAI Workshop</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="240" to="248" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Metrics for evaluating 3D medical image segmentation: analysis, selection, and tool</title>
+		<author>
+			<persName><forename type="first">Abdel</forename><surname>Aziz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Taha</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Allan</forename><surname>Hanbury</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">BMC Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">29</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<monogr>
+		<title level="m" type="main">Deepvesselnet: Vessel segmentation, centerline prediction, and bifurcation detection in 3-d angiographic volumes</title>
+		<author>
+			<persName><forename type="first">Giles</forename><surname>Tetteh</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1803.09340</idno>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Automated analysis of whole brain vasculature using machine learning</title>
+		<author>
+			<persName><forename type="first">Ivilinov</forename><surname>Mihail</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Johannes</forename><forename type="middle">C</forename><surname>Todorov</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Paetzold</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">bioRxiv</title>
+		<imprint>
+			<biblScope unit="page">613257</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Reconstructing curvilinear networks using path classifiers and integer programming</title>
+		<author>
+			<persName><forename type="first">Engin</forename><surname>Türetken</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE TPAMI</title>
+		<imprint>
+			<biblScope unit="volume">38</biblScope>
+			<biblScope unit="issue">12</biblScope>
+			<biblScope unit="page" from="2515" to="2530" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">A multitask network to detect junctions in retinal vasculature</title>
+		<author>
+			<persName><forename type="first">Fatmatülzehra</forename><surname>Uslu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anil</forename><surname>Anthony</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bharath</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">MICCAI</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="92" to="100" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<monogr>
+		<title level="m" type="main">Topoal: An adversarial learning approach for topology-aware road segmentation</title>
+		<author>
+			<persName><forename type="first">Subeesh</forename><surname>Vasu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mateusz</forename><surname>Kozinski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Leonardo</forename><surname>Citraro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pascal</forename><surname>Fua</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2007.09084</idno>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Graph cut based image segmentation with connectivity priors</title>
+		<author>
+			<persName><forename type="first">Sara</forename><surname>Vicente</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CVPR</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="1" to="8" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">A higher-order CRF model for road network extraction</title>
+		<author>
+			<persName><forename type="first">Jan</forename><forename type="middle">D</forename><surname>Wegner</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CVPR</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="1698" to="1705" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">John Hc</forename><surname>Whitehead</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Combinatorial homotopy. i. Bulletin of the American Mathematical Society</title>
+		<imprint>
+			<biblScope unit="volume">55</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="213" to="245" />
+			<date type="published" when="1949">1949</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Skeletonization using an extended euclidean distance transform</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Mark</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Wright</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Image and Vision Computing</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="367" to="375" />
+			<date type="published" when="1995">1995</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Deep vessel tracking: A generalized probabilistic approach via deep learning</title>
+		<author>
+			<persName><forename type="first">Aaron</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ziyue</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mingchen</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mario</forename><surname>Buty</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Daniel</forename><forename type="middle">J</forename><surname>Mollura</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2016 IEEE 13th International Symposium on Biomedical Imaging (ISBI)</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="1363" to="1367" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Topology cuts: A novel min-cut/max-flow algorithm for topology preserving segmentation in n-d images</title>
+		<author>
+			<persName><forename type="first">Yun</forename><surname>Zeng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">CVIU</title>
+		<imprint>
+			<biblScope unit="volume">112</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="81" to="90" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Cellular and molecular probing of intact human organs</title>
+		<author>
+			<persName><forename type="first">Shan</forename><surname>Zhao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

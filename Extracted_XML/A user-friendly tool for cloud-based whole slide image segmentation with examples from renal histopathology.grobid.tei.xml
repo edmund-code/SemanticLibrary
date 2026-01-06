@@ -1,0 +1,2446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">A user-friendly tool for cloud-based whole slide image segmentation with examples from renal histopathology</title>
+				<funder ref="#_45UMrEz">
+					<orgName type="full">European Rare Kidney Disease Network and the Deutsche Forschungsgemeinschaft</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Ministry of Health and Welfare, Republic of Korea</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">NIH-NIDDK CKD Biomarker New York</orgName>
+				</funder>
+				<funder ref="#_VmhEjDY #_29Adh6w #_amwxqFa #_ETW2X67 #_r5MMW6x #_nYCtMtE #_ursCVb6 #_GTxSFYH #_9xFrzkW #_NvP6fK9 #_CeVHRnp #_fy8BeCc">
+					<orgName type="full">NIDDK</orgName>
+				</funder>
+				<funder ref="#_4yFjdVy">
+					<orgName type="full">NIDDK Diabetic Complications Consortium</orgName>
+				</funder>
+				<funder ref="#_Xa5gAC9 #_HrA7zXw">
+					<orgName type="full">unknown</orgName>
+				</funder>
+				<funder ref="#_YEC5RXp">
+					<orgName type="full">University of Buffalo&apos;s Clinical and Translational Science Institute</orgName>
+					<orgName type="abbreviated">CTSI</orgName>
+				</funder>
+				<funder ref="#_FANNWUN #_JW8zX4F">
+					<orgName type="full">NIH-OD Human Biomolecular Atlas Project (HuBMAP)</orgName>
+				</funder>
+				<funder ref="#_7nAzw4z #_WgCqdeD #_KPSnTHe #_PH8Vhrr #_zuG2D3f #_4GfZqBf">
+					<orgName type="full">NIH-NIDDK</orgName>
+				</funder>
+				<funder ref="#_avNPvSc">
+					<orgName type="full">NIH-OD</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>Springer Science and Business Media LLC</publisher>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2022-08-19">2022-08-19</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Brendon</forename><surname>Lutnick</surname></persName>
+							<idno type="ORCID">0000-0001-7360-3302</idno>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Pathology and Anatomical Sciences</orgName>
+								<orgName type="institution">SUNY Buffalo</orgName>
+								<address>
+									<settlement>Buffalo</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">David</forename><surname>Manthey</surname></persName>
+							<idno type="ORCID">0000-0002-4580-8770</idno>
+							<affiliation key="aff1">
+								<orgName type="institution">Kitware Incorporated</orgName>
+								<address>
+									<addrLine>Clifton Park</addrLine>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jan</forename><forename type="middle">U</forename><surname>Becker</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Institute of Pathology</orgName>
+								<orgName type="institution">University Hospital Cologne</orgName>
+								<address>
+									<settlement>Cologne</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Brandon</forename><surname>Ginley</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Pathology and Anatomical Sciences</orgName>
+								<orgName type="institution">SUNY Buffalo</orgName>
+								<address>
+									<settlement>Buffalo</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Katharina</forename><surname>Moos</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Institute of Pathology</orgName>
+								<orgName type="institution">University Hospital Cologne</orgName>
+								<address>
+									<settlement>Cologne</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jonathan</forename><forename type="middle">E</forename><surname>Zuckerman</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="department">Department of Pathology and Laboratory Medicine</orgName>
+								<orgName type="institution">University of California at Los Angeles</orgName>
+								<address>
+									<settlement>Los Angeles</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Luis</forename><surname>Rodrigues</surname></persName>
+							<affiliation key="aff4">
+								<orgName type="department">Faculty of Medicine</orgName>
+								<orgName type="institution" key="instit1">University Clinic of Nephrology</orgName>
+								<orgName type="institution" key="instit2">University of Coimbra</orgName>
+								<address>
+									<settlement>Coimbra</settlement>
+									<country key="PT">Portugal</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Alexander</forename><forename type="middle">J</forename><surname>Gallan</surname></persName>
+							<affiliation key="aff5">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Medical College of Wisconsin</orgName>
+								<address>
+									<settlement>Milwaukee</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Laura</forename><surname>Barisoni</surname></persName>
+							<idno type="ORCID">0000-0003-0848-9683</idno>
+							<affiliation key="aff6">
+								<orgName type="department">Departments of Pathology and Medicine</orgName>
+								<orgName type="institution">Duke University</orgName>
+								<address>
+									<settlement>Durham</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Charles</forename><forename type="middle">E</forename><surname>Alpers</surname></persName>
+							<idno type="ORCID">0000-0002-1859-1772</idno>
+							<affiliation key="aff7">
+								<orgName type="department">Department of Laboratory Medicine and Pathology</orgName>
+								<orgName type="institution">University of Washington</orgName>
+								<address>
+									<settlement>Seattle</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Xiaoxin</forename><forename type="middle">X</forename><surname>Wang</surname></persName>
+							<affiliation key="aff8">
+								<orgName type="department">Departments of Biochemistry and Molecular &amp; Cellular Biology</orgName>
+								<orgName type="institution">Georgetown University</orgName>
+								<address>
+									<settlement>Washington</settlement>
+									<region>DC</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Komuraiah</forename><surname>Myakala</surname></persName>
+							<idno type="ORCID">0000-0003-3233-047X</idno>
+							<affiliation key="aff8">
+								<orgName type="department">Departments of Biochemistry and Molecular &amp; Cellular Biology</orgName>
+								<orgName type="institution">Georgetown University</orgName>
+								<address>
+									<settlement>Washington</settlement>
+									<region>DC</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Bryce</forename><forename type="middle">A</forename><surname>Jones</surname></persName>
+							<idno type="ORCID">0000-0002-6950-8414</idno>
+							<affiliation key="aff9">
+								<orgName type="department">Department of Pharmacology and Physiology</orgName>
+								<orgName type="institution">Georgetown University</orgName>
+								<address>
+									<settlement>Washington</settlement>
+									<region>DC</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Moshe</forename><surname>Levi</surname></persName>
+							<idno type="ORCID">0000-0001-6403-2261</idno>
+							<affiliation key="aff8">
+								<orgName type="department">Departments of Biochemistry and Molecular &amp; Cellular Biology</orgName>
+								<orgName type="institution">Georgetown University</orgName>
+								<address>
+									<settlement>Washington</settlement>
+									<region>DC</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jeffrey</forename><forename type="middle">B</forename><surname>Kopp</surname></persName>
+							<idno type="ORCID">0000-0001-9052-186X</idno>
+							<affiliation key="aff10">
+								<orgName type="institution" key="instit1">Kidney Disease Section</orgName>
+								<orgName type="institution" key="instit2">NIDDK</orgName>
+								<address>
+									<region>NIH Bethesda</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Teruhiko</forename><surname>Yoshida</surname></persName>
+							<idno type="ORCID">0000-0002-2049-7347</idno>
+							<affiliation key="aff10">
+								<orgName type="institution" key="instit1">Kidney Disease Section</orgName>
+								<orgName type="institution" key="instit2">NIDDK</orgName>
+								<address>
+									<region>NIH Bethesda</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jarcy</forename><surname>Zee</surname></persName>
+							<idno type="ORCID">0000-0003-0586-1160</idno>
+							<affiliation key="aff11">
+								<orgName type="department">Department of Biostatistics, Epidemiology, &amp; Informatics</orgName>
+								<orgName type="institution">University of Pennsylvania</orgName>
+								<address>
+									<settlement>Philadelphia</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Seung</forename><forename type="middle">Seok</forename><surname>Han</surname></persName>
+							<idno type="ORCID">0000-0003-0137-5261</idno>
+							<affiliation key="aff12">
+								<orgName type="department">Department of Internal Medicine</orgName>
+								<orgName type="institution">Seoul National University College of Medicine</orgName>
+								<address>
+									<settlement>Seoul</settlement>
+									<country key="KR">South Korea</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Sanjay</forename><surname>Jain</surname></persName>
+							<affiliation key="aff13">
+								<orgName type="department">Department of Medicine</orgName>
+								<orgName type="institution">Washington University School of Medicine</orgName>
+								<address>
+									<settlement>Nephrology St. Louis</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Avi</forename><forename type="middle">Z</forename><surname>Rosenberg</surname></persName>
+							<idno type="ORCID">0000-0003-2356-950X</idno>
+							<affiliation key="aff14">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Johns Hopkins University</orgName>
+								<address>
+									<settlement>Baltimore</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Kuang</forename><forename type="middle">Yu. </forename><surname>Jen</surname></persName>
+							<idno type="ORCID">0000-0003-2815-5912</idno>
+							<affiliation key="aff15">
+								<orgName type="department">Department of Pathology and Laboratory Medicine</orgName>
+								<orgName type="institution">University of California at Davis</orgName>
+								<address>
+									<settlement>Sacramento</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">Pinaki</forename><surname>Sarder</surname></persName>
+							<email>pinaki.sarder@ufl.edu</email>
+							<idno type="ORCID">0000-0003-2450-5233</idno>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Pathology and Anatomical Sciences</orgName>
+								<orgName type="institution">SUNY Buffalo</orgName>
+								<address>
+									<settlement>Buffalo</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Brendon</forename><surname>Lutnick</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Pathology and Anatomical Sciences</orgName>
+								<orgName type="institution">SUNY Buffalo</orgName>
+								<address>
+									<settlement>Buffalo</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Brandon</forename><surname>Ginley</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Pathology and Anatomical Sciences</orgName>
+								<orgName type="institution">SUNY Buffalo</orgName>
+								<address>
+									<settlement>Buffalo</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Richard</forename><surname>Knight</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Stewart</forename><forename type="middle">H</forename><surname>Lecker</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Isaac</forename><surname>Stillman</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Steve</forename><surname>Bogen</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Afolarin</forename><forename type="middle">A</forename><surname>Amodu</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Titlayo</forename><surname>Ilori</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Insa</forename><surname>Schmidt</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Shana</forename><surname>Maikhor</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Laurence</forename><forename type="middle">H</forename><surname>Beck</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ashish</forename><surname>Verma</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Joel</forename><forename type="middle">M</forename><surname>Henderson</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ingrid</forename><surname>Onul</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Sushrut</forename><surname>Waikar</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Gearoid</forename><forename type="middle">M</forename><surname>Mcmahon</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Astrid</forename><surname>Weins</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Mia</forename><forename type="middle">R</forename><surname>Colona</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><forename type="middle">Todd</forename><surname>Valerius</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Nir</forename><surname>Hacohen</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Paul</forename><forename type="middle">J</forename><surname>Hoover</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Anna</forename><surname>Greka</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jamie</forename><forename type="middle">L</forename><surname>Marshall</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Mark</forename><surname>Aulisio</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yijiang</forename><forename type="middle">M</forename><surname>Chen</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Andrew</forename><surname>Janowczyk</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Catherine</forename><surname>Jayapandian</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Vidya</forename><forename type="middle">S</forename><surname>Viswanathan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">William</forename><forename type="middle">S</forename><surname>Bush</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Dana</forename><forename type="middle">C</forename><surname>Crawford</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Anant</forename><surname>Madabhushi</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">John</forename><surname>O’toole</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Emilio</forename><surname>Poggio</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">John</forename><surname>Sedor</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Leslie</forename><surname>Cooperman</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Stacey</forename><surname>Jolly</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Leal</forename><surname>Herlitz</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jane</forename><surname>Nguyen</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Agustin</forename><surname>Gonzalez-Vicente</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ellen</forename><surname>Palmer</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Dianna</forename><surname>Sendrey</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jonathan</forename><surname>Taliercio</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Lakeshia</forename><surname>Bush</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Kassandra</forename><surname>Spates-Harden</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Carissa</forename><surname>Vinovskis</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Petter</forename><forename type="middle">M</forename><surname>Bjornstad</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Laura</forename><surname>Pyle</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Paul</forename><surname>Appelbaum</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jonathan</forename><forename type="middle">M</forename><surname>Barasch</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Andrew</forename><forename type="middle">S</forename><surname>Bomback</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Vivette</forename><forename type="middle">D</forename><surname>D’agati</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Krzysztof</forename><surname>Kiryluk</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Karla</forename><surname>Mehl</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Pietro</forename><forename type="middle">A</forename><surname>Canetta</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ning</forename><surname>Shang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Olivia</forename><surname>Balderes</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Satoru</forename><surname>Kudose</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Theodore</forename><surname>Alexandrov</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Helmut</forename><surname>Rennke</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Tarek</forename><forename type="middle">M</forename><surname>El-Achkar</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yinghua</forename><surname>Cheng</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Pierre</forename><forename type="middle">C</forename><surname>Dagher</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Michael</forename><forename type="middle">T</forename><surname>Eadon</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Kenneth</forename><forename type="middle">W</forename><surname>Dunn</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Katherine</forename><forename type="middle">J</forename><surname>Kelly</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Timothy</forename><forename type="middle">A</forename><surname>Sutton</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Daria</forename><surname>Barwinska</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Michael</forename><forename type="middle">J</forename><surname>Ferkowicz</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Seth</forename><surname>Winfree</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Sharon</forename><surname>Bledsoe</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Marcelino</forename><surname>Rivera</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">James</forename><forename type="middle">C</forename><surname>Williams</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ricardo</forename><forename type="middle">Melo</forename><surname>Ferreira</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Katy</forename><surname>Borner</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Andreas</forename><surname>Bueckle</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Bruce</forename><forename type="middle">W</forename><surname>Herr</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ellen</forename><forename type="middle">M</forename><surname>Quardokus</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Elizabeth</forename><surname>Record</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jing</forename><surname>Su</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Debora</forename><surname>Gisch</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Stephanie</forename><surname>Wofford</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yashvardhan</forename><surname>Jain</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Chirag</forename><forename type="middle">R</forename><surname>Parikh</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Celia</forename><forename type="middle">P</forename><surname>Corona-Villalobos</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Steven</forename><surname>Menez</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yumeng</forename><surname>Wen</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Camille</forename><surname>Johansen</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Sylvia</forename><forename type="middle">E</forename><surname>Rosas</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Neil</forename><surname>Roy</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Mark</forename><surname>Williams</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jennifer</forename><surname>Sun</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Joseph</forename><surname>Ardayfio</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jack</forename><surname>Bebiak</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Keith</forename><surname>Brown</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Catherine</forename><forename type="middle">E</forename><surname>Campbell</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">John</forename><surname>Saul</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Anna</forename><surname>Shpigel</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Christy</forename><surname>Stutzke</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Robert</forename><surname>Koewler</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Taneisha</forename><surname>Campbell</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Lynda</forename><surname>Hayashi</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Nichole</forename><surname>Jefferson</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Glenda</forename><forename type="middle">V</forename><surname>Roberts</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Roy</forename><surname>Pinkeney</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Evren</forename><forename type="middle">U</forename><surname>Azeloglu</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Cijang</forename><surname>He</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ravi</forename><surname>Iyengar</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jens</forename><surname>Hansen</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yuguang</forename><surname>Xiong</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Pottumarthi</forename><surname>Prasad</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Anand</forename><surname>Srivastava</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Brad</forename><surname>Rovin</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Samir</forename><surname>Parikh</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">John</forename><forename type="middle">P</forename><surname>Shapiro</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Sethu</forename><forename type="middle">M</forename><surname>Madhavan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Christopher</forename><forename type="middle">R</forename><surname>Anderton</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ljiljana</forename><surname>Pasa-Tolic</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Dusan</forename><surname>Velickovic</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jessica</forename><surname>Lukowski</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">George</forename><forename type="middle">Holt</forename><surname>Oliver</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Olga</forename><surname>Troyanskaya</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Rachel</forename><surname>Sealfon</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Aaron</forename><surname>Wong</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Katherine</forename><forename type="middle">R</forename><surname>Tuttle</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ari</forename><surname>Pollack</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yury</forename><surname>Goltsev</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Kun</forename><surname>Zhang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Blue</forename><forename type="middle">B</forename><surname>Lake</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Zoltan</forename><forename type="middle">G</forename><surname>Laszik</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Garry</forename><surname>Nolan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Patrick</forename><surname>Boada</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Minnie</forename><surname>Sarwal</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Kavya</forename><surname>Anjani</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Tara</forename><surname>Sigdel</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Tariq</forename><surname>Mukatash</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Paul</forename><forename type="middle">J</forename><surname>Lee</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Rita</forename><forename type="middle">R</forename><surname>Alloway</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">E</forename><forename type="middle">Steve</forename><surname>Woodle</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ashley</forename><forename type="middle">R</forename><surname>Burg</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Adele</forename><surname>Rike</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Tiffany</forename><surname>Shi</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Heather</forename><surname>Ascani</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ulysses</forename><forename type="middle">G J</forename><surname>Balis</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jeffrey</forename><forename type="middle">B</forename><surname>Hodgin</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Matthias</forename><surname>Kretzler</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Chrysta</forename><surname>Lienczewski</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Laura</forename><forename type="middle">H</forename><surname>Mariani</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Rajasree</forename><surname>Menon</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Becky</forename><surname>Steck</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yougqun</forename><surname>He</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Edgar</forename><surname>Otto</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jennifer</forename><surname>Schaub</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Victoria</forename><forename type="middle">M</forename><surname>Blanc</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Sean</forename><surname>Eddy</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ninive</forename><forename type="middle">C</forename><surname>Conser</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jinghui</forename><surname>Luo</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Renee</forename><surname>Frey</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Paul</forename><forename type="middle">M</forename><surname>Palevsky</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Matthew</forename><surname>Rosengart</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">John</forename><forename type="middle">A</forename><surname>Kellum</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Daniel</forename><forename type="middle">E</forename><surname>Hall</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Parmjeet</forename><surname>Randhawa</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Mitchell</forename><surname>Tublin</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Raghavan</forename><surname>Murugan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Michele</forename><forename type="middle">M</forename><surname>Elder</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">James</forename><surname>Winters</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Tina</forename><surname>Vita</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Filitsa</forename><surname>Bender</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Roderick</forename><surname>Tan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Matthew</forename><surname>Gilliam</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Kristina</forename><forename type="middle">N</forename><surname>Blank</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jonas</forename><surname>Carson</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ian</forename><forename type="middle">H</forename><surname>De Boer</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ashveena</forename><forename type="middle">L</forename><surname>Dighe</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jonathan</forename><surname>Himmelfarb</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Sean</forename><forename type="middle">D</forename><surname>Mooney</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Stuart</forename><surname>Shankland</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Kayleen</forename><surname>Williams</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Christopher</forename><surname>Park</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Frederick</forename><surname>Dowd</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Robyn</forename><forename type="middle">L</forename><surname>Mcclelland</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Stephen</forename><surname>Daniel</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Andrew</forename><forename type="middle">N</forename><surname>Hoofnagle</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Adam</forename><surname>Wilcox</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Stephanie</forename><forename type="middle">M</forename><surname>Grewenow</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ashley</forename><surname>Berglund</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Christine</forename><surname>Limonte</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Kasra</forename><surname>Rezaei</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ruikang</forename><surname>Wang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jamie</forename><surname>Snyder</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Brooke</forename><surname>Berry</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yunbi</forename><surname>Nam</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Natalya</forename><surname>Sarkisova</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Shweta</forename><surname>Bansal</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Kumar</forename><surname>Sharma</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Manjeri</forename><surname>Venkatachalam</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Guanshi</forename><surname>Zhang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Annapurna</forename><surname>Pamreddy</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Hongping</forename><surname>Ye</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Richard</forename><surname>Montellano</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Robert</forename><forename type="middle">D</forename><surname>Toto</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Miguel</forename><surname>Vazquez</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Simon</forename><forename type="middle">C</forename><surname>Lee</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">R</forename><forename type="middle">Tyler</forename><surname>Miller</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Orson</forename><forename type="middle">W</forename><surname>Moe</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jose</forename><surname>Torrealba</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Nancy</forename><surname>Wang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Asra</forename><surname>Kermani</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Kamalanathan</forename><surname>Sambandam</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Harold</forename><surname>Park</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><forename type="middle">Susan</forename><surname>Hedayati</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Christopher</forename><forename type="middle">Y</forename><surname>Lu</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Natasha</forename><surname>Wen</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jiten</forename><surname>Patel</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Anil</forename><surname>Pillai</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Dianbo</forename><surname>Zhang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Mujeeb</forename><surname>Basit</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Allen</forename><forename type="middle">H</forename><surname>Hendricks</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Richard</forename><forename type="middle">M</forename><surname>Caprioli</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Nathan</forename><surname>Patterson</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Kavya</forename><surname>Sharman</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jeffrey</forename><forename type="middle">M</forename><surname>Spraggins</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Raf</forename><surname>Van De Plas</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Anitha</forename><surname>Vijayan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Joseph</forename><forename type="middle">P</forename><surname>Gaut</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jeanine</forename><surname>Basta</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Sabine</forename><forename type="middle">M</forename><surname>Diettman</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Michael</forename><forename type="middle">I</forename><surname>Rauchman</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Dennis</forename><surname>Moledina</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Francis</forename><forename type="middle">P</forename><surname>Wilson</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ugochukwu</forename><surname>Ugwuowo</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Tanima</forename><surname>Arora</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Melissa</forename><forename type="middle">M</forename><surname>Shaw</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Lloyd</forename><forename type="middle">G</forename><surname>Cantley</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Vijaykumar</forename><forename type="middle">R</forename><surname>Kakade</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Angela</forename><surname>Victoria-Castro</surname></persName>
+						</author>
+						<title level="a" type="main">A user-friendly tool for cloud-based whole slide image segmentation with examples from renal histopathology</title>
+					</analytic>
+					<monogr>
+						<title level="j" type="main">Communications Medicine</title>
+						<title level="j" type="abbrev">Commun Med</title>
+						<idno type="eISSN">2730-664X</idno>
+						<imprint>
+							<publisher>Springer Science and Business Media LLC</publisher>
+							<biblScope unit="volume">2</biblScope>
+							<biblScope unit="issue">1</biblScope>
+							<date type="published" when="2022-08-19" />
+						</imprint>
+					</monogr>
+					<idno type="MD5">3AE1BD4082D0ACAB955E009711ABD1F8</idno>
+					<idno type="DOI">10.1038/s43856-022-00138-z</idno>
+					<note type="submission">Received: 23 August 2021; Accepted: 9 June 2022;</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:10+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Background Image-based machine learning tools hold great promise for clinical applications in pathology research. However, the ideal end-users of these computational tools (e.g., pathologists and biological scientists) often lack the programming experience required for the setup and use of these tools which often rely on the use of command line interfaces. Methods We have developed Histo-Cloud, a tool for segmentation of whole slide images (WSIs) that has an easy-to-use graphical user interface. This tool runs a state-of-the-art convolutional neural network (CNN) for segmentation of WSIs in the cloud and allows the extraction of features from segmented regions for further analysis. Results By segmenting glomeruli, interstitial fibrosis and tubular atrophy, and vascular structures from renal and non-renal WSIs, we demonstrate the scalability, best practices for transfer learning, and effects of dataset variability. Finally, we demonstrate an application for animal model research, analyzing glomerular features in three murine models. Conclusions Histo-Cloud is open source, accessible over the internet, and adaptable for segmentation of any histological structure regardless of stain.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Plain language summary</head><p>Artificial intelligence (AI) is the ability of a computer to conduct complex tasks that humans are capable of performing. AI is useful in the field of pathology, which involves analyzing images of the microscopic structure of different tissues. However, AI can be difficult to set up and apply to the task. One specific task, segmentation, involves picking specific structures out of tissue images and is a prime candidate for automation with AI. In our study, we have created a tool for pathology image segmentation which runs in the cloud (is accessible over the web). We demonstrate the tool by using it to segment various structures from kidney tissue. Our experiments show that the tool is easy to use, accurate, and can estimate the presence of one type of scarring as reliably as human experts.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>R</head><p>ecent advances in machine learning techniques have led to previously unachievable performance for image analysis tasks. In particular, convolutional neural networks (CNNs) <ref type="bibr" target="#b0">1</ref> , a form of deep learning, have great potential for impactful applications in the computational analysis of image structures. Successful adoption of these tools to biomedical image data promises a paradigm shift in both biological science and healthcare <ref type="bibr" target="#b1">2</ref> .</p><p>In the field of pathology, the practice of digitizing histological slides has become common practice <ref type="bibr" target="#b2">3</ref> , facilitating the application of CNNs for analysis. Digitally scanned histology slides, known as whole slide images (WSIs), are often gigapixels in size. Parsing WSIs into biologically relevant sub-compartments (commonly known as segmentation) is often an important first step for tissue analysis and pathological examination <ref type="bibr" target="#b3">4</ref> . Due to the size of WSIs and the diversity of structures that can be present, downstream machine learning tasks (such as slide classification) can also benefit from segmentation, which can help limit the regions of interest considered <ref type="bibr" target="#b4">5</ref> .</p><p>CNNs have been successfully utilized by many research groups for the segmentation of WSIs <ref type="bibr" target="#b3">[4]</ref><ref type="bibr" target="#b4">[5]</ref><ref type="bibr" target="#b5">[6]</ref><ref type="bibr" target="#b6">[7]</ref><ref type="bibr" target="#b7">[8]</ref><ref type="bibr" target="#b8">[9]</ref> . However, thus far tools to segment WSIs have been complex to deploy and use, requiring knowledge of the command line interface and computational expertize <ref type="bibr" target="#b9">[10]</ref><ref type="bibr" target="#b10">[11]</ref><ref type="bibr" target="#b11">[12]</ref> . The ideal user for these tools is the pathologist or biological scientist, whose clinical workflow or research questions could benefit from fast and accurate segmentation of relevant structures <ref type="bibr" target="#b1">2</ref> .</p><p>To address this gap, we have developed Histo-Cloud, a powerful tool for the segmentation of WSIs and deployed it as a suite of easy-to-use plugins using the Digital Slide Archive (DSA) <ref type="bibr" target="#b12">13</ref> , an open-source cloud-based WSI repository with a built-in slide viewer. Histo-Cloud was designed with flexibility in mind and is agnostic to tissue type or structure. Segmentation of new structures of interest is possible by retraining the CNN used for segmentation, which can be conveniently performed within the cloud interface.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Methods</head><p>Human data collection followed a protocol approved by the Institutional Review Board at University at Buffalo (STUDY00002731, STUDY00003929, STUDY00004044, STUDY00004235, STUDY 00005089, and STUDY00005541) prior to commencement. Computational image analysis is done in this study using retrospective data qualified for a waiver of the consent process.</p><p>WSIs for GlomTrainSet, GlomTestSet 1, and GlomTestSet 4. These datasets were used for the segmentation of glomeruli. This dataset consists of both human and murine renal tissue WSIs from various institutes as well as publicly available repositories, using diverse stains and different scanners. The institutions included the University of California at Davis (UC Davis), Johns Hopkins University (JHU), Kidney Translational Research Center (KTRC) at Washington University School of Medicine at St. Louis (WUSTL), Seoul National University Hospital Human Biobank (SNUHHB), Vanderbilt University Medical Center (VUMC), University at Buffalo (UB), University Hospital Cologne (UHC), and the publicly available Genotype-Tissue Expression (GTEx) portal, a repository that hosts human autopsy WSIs.</p><p>The GlomTrainSet consisted of 743 WSIs, 428 from humans and 315 from murine tissues, containing a total of 61,734 manually verified glomerular annotations. GlomTestSet 1 consisted of 100 holdout slides from the same data sources as GlomTrainSet. This included 3816 glomeruli, 37.8 GB of compressed image data, and a combined total of more than 0.24 trillion image pixels. GlomTestSet 4 contained an additional 1528 WSIs from the same sources that were used to study the scalability and prediction time of the method.</p><p>The human renal tissues manifest disease pathology spanning various stages of diabetic nephropathy; various classes of lupus nephritis; renal transplant protocol biopsies, including time-zero, protocol, and indication biopsy cases; human autopsy renal tissues publicly available via GTEx with diversity in age, sex, and race; and renal biopsies with pathologies that include membranous nephropathy, thrombotic microangiopathy, pauci-immune glomerulonephritis, focal segmental glomerulosclerosis (FSGS), mesangiopathic glomerulonephritis, arteriolosclerosis, hypertension, IgA nephropathy, chronic tubulointerstitial nephritis, acute tubular necrosis, Fabry disease, amyloid nephropathy, membranoproliferative glomerulonephritis, light chain cast nephropathy, minimal change disease, post-infectious glomerulonephritis, idiopathic nodular glomerulosclerosis, and anti-glomerular basement membrane disease. The human data were collected in accordance with protocols approved by Institutional Review Board at the UC Davis, JHU, KTRC, WUSTL, SNUHHB, VUMC, and UB. The SNUHHB data were shared under IRB number H-1812-159-998.</p><p>Murine renal tissues included in GlomTrainSet and Glom-TestSet 1 came from three different models. For the first model wild-type, FVB/N mice were subjected to a combination of four interventions that induce a post-adaptive form of FSGS. The interventional process includes 0.9% saline drinking water, angiotensin II infused via an osmotic pump, uni-nephrectomy, and deoxycorticosterone delivered by implantation of a subcutaneous pellet, summarized as the SAND model <ref type="bibr" target="#b13">14,</ref><ref type="bibr" target="#b15">15</ref> . The second model was a streptozotocin (STZ) diabetes murine model that manifests nephropathy; a detailed description of this model is discussed in our prior work <ref type="bibr" target="#b16">16</ref> . The third model was a nephrin knockdown (nephrin KD) murine model, was implemented using a published protocol <ref type="bibr">17</ref> , and shows mesangial hypercellularity and sclerosis, glomerular basement membrane thickening, and podocyte loss.</p><p>The tissues were sectioned at 2-5 µm thickness for staining and imaging. The data consist of tissues stained with diverse histological stains, including hematoxylin &amp; eosin (H&amp;E), periodic acid-Schiff (PAS) with hematoxylin (PAS-H) counterstain, Silver, Trichrome, Verhoeff's Van Gieson, Jones, and Congo red. The slides were scanned using different brightfield microscopy WSI scanners, including Aperio VERSA digital whole slide scanner (Leica Biosystems, Buffalo Grove, IL), Nanozoomer (Hamamatsu, Shizuoka, Japan), and MoticEasyScan Pro (Motic, San Antonio, TX), at 40X resolution. The pixel resolution of the images used was 0.13 to 0.25 µm.</p><p>WSIs for VessTrainSet, VessTestSet, and GlomTestSet 2. This human dataset was used to test the adaptability of the model for vessels. In total there were 939 annotated arteries, 6023 arterioles, and 4507 glomeruli. VessTrainSet contained 226 renal tissue WSIs. VessTestSet contained an additional 58 holdout slides. Multiple stains per case were used. This dataset was manually annotated for relevant structures to establish a ground-truth.</p><p>The renal tissue WSIs came from UHC via co-author J.U.B. Diagnoses included thrombotic microangiopathy, hypertensionassociated nephropathy, and vasculitis. Tissues were sectioned at 2-3 µm thickness. Diverse histologic stains were used, including H&amp;E, PAS-H, Masson trichome, and Jones methenamine silver, for staining the tissue to depict different pathobiological features. A brightfield microscopy scanner Nanozoomer (Hamamatsu, Shizuoka, Japan) was used for WSI scanning at 40X resolution. The pixel resolution of the images used was 0.25 µm. Note that the VessTestSet dataset was used to construct the GlomTestSet 2 dataset to conduct the study discussed in Glomeruli segmentation -scalability.</p><p>WSIs for IFTASet 1, IFTASet 2, IFTASet 3, IFTATestSet 2, and GlomTestSet 3. These datasets were used for the segmentation of IFTA. The human renal tissues for this part of the study came from four institutions: the University of California, Davis; the University of California, Los Angeles (UCLA); University of Coimbra (Portugal); and University Hospital Cologne (UHC).</p><p>Tissues were obtained from renal allograft nephropathy with no prior history of rejection. For this study, periodic acid-Schiff (PAS)-stained renal tissue WSIs of renal allograft nephropathy were used for training (IFTASet 1, n = 20; IFTASet 2, n = 48; and IFTASet 3, n = 22). One slide was selected per case for each institution. The WSIs per set were uniformly chosen from four IFTA classes defined based on semiquantitative scores (ci/ct scores: 0, 1, 2, and 3); ci/ct scoring is a method defined in Banff 2018 criteria <ref type="bibr" target="#b18">18</ref> for assessing IFTA in transplant biopsies. A minimum of five slides per class were used for each set. The cases were reviewed to ensure the following selection criteria were met:</p><p>(1) the amount of early or evolving IFTA with variable intermixed edema was minimized, (2) no active inflammation, (3) no prior history of rejection, and (4) cases were selected to represent the full range of IFTA severity. All types of IFTA, including classic, endocrinization, and thyroidization patterns, were included in the analysis, without distinguishing between the types. IFTATestSet 2 was provided by UHC, and contained 17 WSIs. This dataset followed similar case selection criteria as above with two slides from class 0 and five slides each from the remaining three classes.</p><p>The human data were collected in accordance with protocols approved by Institutional Review Boards at the UC Davis, UCLA, University of Coimbra, and the University at Buffalo. Deidentified images from UHC throughout this paper were used for retrospective research, and such is permitted under German law to conduct without IRB approval. The tissues were sectioned at 2-3 µm thickness and stained using PAS-H. Imaging was done using different brightfield microscopy WSI scanners, including Aperio CS virtual slide imaging system, Aperio AT2 (Leica Biosystems, Buffalo Grove, IL), and Nanozoomer (Hamamatsu, Shizuoka, Japan) at 40X resolution. Pixel resolution of the images used was 0.25 µm. Note that the IFTATestSet 2 dataset was used to construct the GlomTestSet 3 dataset to conduct the study discussed in Glomeruli segmentation-scalability. KPMP WSI dataset. This dataset was used to test the adaptability of the model for IFTA. This part of the study used 26 renal tissue biopsy whole slide images (WSIs) of 26 chronic kidney disease (CKD) subjects from the Kidney Precision Medicine Project. The selection of these slides followed the same criteria described in the section above: WSIs for IFTASet 1, IFTASet 2, IFTASet 3, IFTATestSet 2, and GlomTestSet 3. The recruitment sites were Brigham &amp; Women's Hospital, Cleveland Clinic, Joslin Diabetes Center/ Beth Israel Deaconess Medical Center, and the University of Texas at Southwestern. The inclusion criteria for CKD subjects for biopsy include subjects diagnosed with diabetic kidney disease (type 1 or 2) and hypertensive kidney disease. For the former, the subjects are included based on eGFR in the range of 30-59 mL/ min/1.73 m 2 or eGFR ≥ 60 with urinary protein to creatinine ratio (uPCR) &gt;150 mg/g or urinary albumin to creatinine ratio (uACR) &gt;30 mg/g. For the latter, the subjects are included based on eGFR in the range of 30-59 mL/min/1.73 m 2 or eGFR ≥ 60 with uPCR in the range of 150-2000 mg/g or uACR in the range of 30-2000 mg/g. The study is overseen by three independent bodies, including a data safety monitoring board, a central institutional review board (WUSTL), and an NIH-NIDDK convened the external expert panel. More details about the rationale and design of KPMP cases are available in a recent publication <ref type="bibr" target="#b19">19</ref> . The tissues were sectioned at 2-3 µm thickness, and the PAS-H stained tissues were used for the study presented in this work. Imaging was done using an Aperio GT450 brightfield microscopy WSI scanner (Leica Biosystems, Buffalo Grove, IL) at 40X resolution. The pixel resolution of the images used was 0.25 µm.</p><p>WSIs for murine kidney tissue for the study discussed in murine model analysis-utility. For this part of study three murine model renal tissue WSIs were employed. These models include an aging model, and two type 2 diabetic nephropathy (T2DN) models (KKAy and Db/Db). We used eight mice (four young and four old) WSIs for the aging model, 20 mice (ten KKAy or disease and ten C57/BL6 or control) WSIs for the KKAy model, and 14 mice (7 Db/Db or disease and 7 Db/m or wild-type control) WSIs for the Db/Db model.</p><p>The aging studies were performed in 4-month-old and 21month-old C57/BL6 male mice obtained from the NIA aging rodent colony <ref type="bibr" target="#b20">20</ref> . For the KKAy model (see published description <ref type="bibr" target="#b21">21</ref> ), male mice that develop spontaneous diabetes of polygenic origin were used. For the Db/Db model, male mice with a BKS background featuring a leptin receptor mutation were used. These mice depict spontaneous/congenital diabetes due to leptin signaling abnormalities <ref type="bibr" target="#b22">22</ref> . Animal studies were performed in accordance with protocols approved by the Institutional Animal Care and Use Committee at the Georgetown University, National Institutes of Health, JHU, and UB, are consistent with federal guidelines and regulations, and are in accordance with recommendations of the American Veterinary Medical Association guidelines on euthanasia. Tissues were sectioned at 2-3 µm thickness, and the PAS-H was used for staining. The slides were scanned using different brightfield microscopy WSI scanners, including Nanozoomer (Hamamatsu, Shizuoka, Japan) and MoticEasyScan Pro (Motic, San Antonio, TX), at 40X resolution. The pixel resolution of the images used was 0.25 µm.</p><p>Software. With the goal of developing a tool with class-leading WSI segmentation accuracy as well as easy accessibility to computational non-experts, we have integrated the popular semantic segmentation network Deeplab V3+ <ref type="bibr" target="#b23">23</ref> with the DSA <ref type="bibr" target="#b12">13</ref> , an opensource cloud-based histology management program. Specifically, we have created a suite of easy-to-use plugins using HistomicsUI, an application programming interface of the DSA for running Python codes. These plugins efficiently run the DeepLab network for native segmentation of WSIs, making testing new slides accessible through the HistomicsUI graphical user interface (the slide-viewing component of the DSA). Using the HistomicsUI interface, users can interactively view the computational annotations, and further refine such annotations for training new models. The modified HistomicsTK-Deeplab codebase is available via GitHub and also as a pre-built Docker image for easy installation. This software is deployed in the cloud and is accessible via the web, making it easily accessible to the community as a plug-and-play tool (Fig. <ref type="figure" target="#fig_0">1</ref>). The open-source plugins are available to the digital pathology community for use and further development.</p><p>Functionality. We have developed several plugin tools with various functions. (1) The &lt;Segment WSI&gt; plugin (Fig. <ref type="figure" target="#fig_0">1a</ref>) segments WSIs using a previously trained model. (2) The &lt;Train-Network&gt; plugin can be used to train new models from a folder of annotated WSIs (Fig. <ref type="figure" target="#fig_0">1b</ref>). Histo-Cloud generates predictions as a series of image contours or sparse heatmaps which are written to JavaScript Object Notation (JSON) format for display in His-tomicsUI as annotation layers. The code is modular, with the ability to handle multi-class segmentation, and includes the option to tweak the network hyperparameters for advanced users. We include the ability to ignore image regions (Supp. Fig. <ref type="figure">5</ref>), this is useful to exclude ambiguous image regions from the training set, and may also be of interest for users who wish to only annotate part of a large WSI. During training and testing, a progress bar is shown so the user can gauge the time to completion (Supp. Fig. <ref type="figure">5</ref>). (3) Functionality was included for conversion between JSON annotations and the XML format (&lt;IngestAperioXML&gt; and &lt;ExportAperioXML&gt; plugins). The XML format is used to display contours in Aperio ImageScope (Leica, Buffalo Grove, IL) which is a popular WSI viewer. (4) The &lt;ExtractFeaturesFromAnnotations&gt; plugin (see Fig. <ref type="figure" target="#fig_0">1c</ref>) was built for extraction of image and contour-based features from annotated regions in the slides. The features are written into the slide metadata (on DSA) in JSON format. For further data exploration, features saved into the slide metadata can be plotted pairwise using a scatterplot tool available in HistomicsUI (Fig. <ref type="figure" target="#fig_0">1c</ref>) for a single slide or across a folder of WSIs. Features can also be saved in spreadsheet format for local download and further analysis.</p><p>Computational model. We used the official implementation of the Deeplab V3 + segmentation network <ref type="bibr" target="#b23">23</ref> , modified to work natively on WSIs. This implementation was accomplished by adapting the way the network ingests data and extracting patches from WSIs as needed during training using the large_image Python library <ref type="bibr">24</ref> . A similar method (HistoFetch) is described more extensively in a recently published preprint <ref type="bibr" target="#b25">25</ref> , which shows on-the-fly patch extraction speeds and overall training time for unsupervised tasks. The HistoFetch method was adapted in this work to perform a supervised segmentation task by creating additional patch selection criteria intended to proactively balance uneven class distributions during patch extraction. Note that during development the code was migrated to use large_image <ref type="bibr">24</ref> for reading WSI data rather than the openslide <ref type="bibr" target="#b26">26</ref> library, as the former supports a larger number of slide formats. To convert the ground-truth annotations to masks for semantic segmentation, the HistomicsUI JSON annotations are converted into the Aperio ImageScope XML format, and the XML_to_mask conversion code from the original H-AI-L study <ref type="bibr" target="#b6">7</ref> was reused for generating ground-truth masks. This code follows the way openslide and large_image read WSI patches via specifying the location and scale of the patches. The min and max indices of each contour annotation are written into the metadata of the XML, allowing for faster reference of which contours are in the image region requested.</p><p>A flowchart providing an overview of this training input pipeline is presented in Supp. Fig. <ref type="figure" target="#fig_0">1</ref>. A similar pipeline is used during prediction (segmentation of slides), but patches are extracted deterministically from an overlapping grid pattern (excluding non-tissue regions) to ensure full tissue segmentation. The training and testing perform fast color thresholding of the tissue region which is saved as a portable network graphics (PNG) mask for reference (to avoid repeated operations). This process ensures the network does not train on non-tissue regions, and thus speeds the prediction process. During the development, we found that occasionally providing the network with background (non-tissue) patches helped generalize the batch normalization parameters during training. We, therefore, implemented a parameter that defines the probability of selection of patches that may include the background region. Default of 0.1 was found to work well in generalizing the batch normalization layers.</p><p>Iterative learning and annotation ingestion. In a previous study, we showed that the human-in-the-loop annotation strategy significantly reduces the annotation burden when developing a tissue segmentation model <ref type="bibr" target="#b6">7</ref> . This strategy uses a model trained on a limited dataset to run inference on new slides, which are corrected by an annotator. We find that the correction of computational annotations is faster than fully annotating newly added data, reducing the amount of effort required to build a robust training set. Additionally, this strategy allows the annotator to constantly interact with the system, monitoring its performance, and selecting slides where the model struggles the most for incorporation into the training set.</p><p>Human-in-the-loop annotation is possible using Histo-cloud through alternating use of the training and testing plugins. Practically, we expect that most users will start an annotation project from scratch and have made using pretrained ImageNet weights the default behavior of the training plugin. However, if a user would like to import data annotated in another system or format, we have included the &lt;IngestAperioXML&gt; plugin (which is described in the Functionality section above). This plugin is capable of ingestion of data annotations in the Aperio XML format and could be used to incorporate additional externally annotated data.</p><p>If an advanced user wishes to convert previously annotated data into the XML format for ingestion into the system, we direct them to the mask_to_xml script: <ref type="url" target="https://github.com/SarderLab/Histo-cloud/blob/main/histomicstk/deeplab/utils/mask_to_xml.py">https://github.com/SarderLab/  Histo-cloud/blob/main/histomicstk/deeplab/utils/mask_to_xml.  py</ref> This script was developed for the conversion of rasterized annotations into the XML format and is used internally by Histo-Cloud for a display of network predictions in HistomicsUI. For advanced users who wish to upload and manage XML annotations from the command line interface, we have also included scripts which satisfy these requirements in the source code: <ref type="url" target="https://github.com/SarderLab/Histo-cloud/tree/main/batch_upload_xmls_to_girder_client">https://github.com/SarderLab/Histo-cloud/tree/  main/batch_upload_xmls_to_girder_client</ref>.</p><p>Training and testing. Training of models was done on a server equipped with two Intel Xeon Silver 4114 (10 core) processors, with 64 GB RAM and dual Nvidia Quadro RTX 5000 graphical processing units (GPU) with 16 GB of video random access memory (VRAM). These resources allowed training with a batch size of 12 using image patches of size 512 × 512 pixels. A batch size of 12 is the minimum recommended for training the batch normalization parameters in the DeepLab implementation document. The Athena server (open for public use) has only one GPU with 8 GB of VRAM. We have therefore disabled training of the batch normalization parameters by default in the training plugin (which can be enabled in the advanced parameter section) and have set a default batch size of 2. All trained networks used a base learning rate of 1e -3 with polynomial decay using the momentum optimizer (momentum value = 0.9).</p><p>All models use the Xception 65 network backbone <ref type="bibr" target="#b23">23</ref> , with DeepLab parameters atrous_rates = 6, 12, and 18, output_stride = 16, and decoder_output_stride = 4 for both training and prediction. The glomerulus model was trained for 400,000 steps and was initialized using the ImageNet model. The vessel segmentation models were trained for 100,000 steps, and the IFTA segmentation models were trained for 50,000 steps using the ImageNet model as a starting point for transfer learning. Details on the trained models are outlined in Table <ref type="table" target="#tab_0">1</ref>.</p><p>As part of the input pipeline, WSI patches can be extracted efficiently at downsampled resolutions. The patch downsample rate is user-specified, and multiple downsample rates can be specified during training, which are randomly cycled for patch extraction. For training, downsample rates of 1, 2, 3, and 4 with respect to the native slide resolution were used, a randomly selected downsample rate from the list was used for each extracted training patch. For prediction, a downsample rate of 2 was used for all experiments, we found this choice was a good compromise between prediction speed and accuracy. We believe that the multi-resolution training strategy helped the network to generalize. We found the glomerulus model works equally well in both 40X and 20X WSIs (both using a prediction downsample of 2). Further, the vessel segmentation model was trained using 40X WSIs, and successfully applied to the 20X GTEx WSIs for testing.</p><p>Using a large patch size for prediction increased segmentation performance, giving the network a larger field of view and reducing-edge artifacts. For practical purposes, we settled on a default patch size of 2000 × 2000 pixels. For prediction, it was found that using a stride of 1000 pixels gave sufficient overlap between extracted patches. During prediction, the indices of the extracted patches are tracked, and the resulting bitmap prediction is used to populate a full WSI mask using the similar method as discussed in the original H-AI-L study <ref type="bibr" target="#b6">7</ref> . To reduce the number of artifacts at the edge of the predicted patches, a parameter to remove the border of the predictions was included. Practically this parameter was set to remove 100 pixels from the border of each prediction.</p><p>To improve speed and to keep the memory requirements of code implementation low, network predictions are not upsampled. Instead, the coordinates of the extracted contours or heatmap indices are up-sampled prior to JSON creation. Using DeepLab parameters, namely, output_stride = 16 and decoder_-output_stride = 4, result in a prediction bitmap that is 25% of the size of the input resolution. With a default downsample of 2 used for prediction, the resultant WSI mask is one-eighth of the size of the pixel resolution of the original WSI. We found that 32 GB of RAM is enough to successfully segment even very large slides.</p><p>When experimenting with the network logits for the generation of the ROC plots (Fig. <ref type="figure" target="#fig_4">4a</ref>, <ref type="figure">b</ref>), we converted the code to stitch the patch predictions together by averaging the logits of overlapping patches.</p><p>Statistical analysis. Intraclass correlation coefficient measure (ICC) <ref type="bibr" target="#b27">27,</ref><ref type="bibr" target="#b28">28</ref> was used for the study shown in Fig. <ref type="figure" target="#fig_4">4c</ref>, and corresponding r with null hypothesis r = 0 vs alternative r &gt; 0 was used to measure significance. The ICC values were calculated using two-way random effects, absolute agreement, and single rater/ measurement.</p><p>Reporting summary. Further information on research design is available in the Nature Research Reporting Summary linked to this article.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results</head><p>To demonstrate Histo-Cloud's performance characteristics and segmentation potential, a variety of segmentation tasks from renal biopsy WSIs were tested. For each task, performance was evaluated on holdout WSIs and independent test slides selected from datasets never used for training. A description of the datasets used for the studies below, including sources, disease pathology, tissue thickness, staining, and image acquisition is available in the Methods section and is summarized in Table <ref type="table" target="#tab_0">1</ref>. A list of abbreviations is listed in Supp. Table <ref type="table" target="#tab_0">1</ref>.</p><p>Histo-cloud. Using the simple cloud-based interface, users can upload WSIs and train a segmentation network using their own annotations (see Fig. <ref type="figure" target="#fig_0">1b</ref>). Users can iteratively apply Histo-Cloud's training and prediction plugins in an active learning framework, to build up powerful segmentation models with reduced effort <ref type="bibr" target="#b6">7</ref> . The segmentations produced by Histo-Cloud are converted to contours or heatmaps for direct display on the WSIs. When developing new segmentation models, the slide-viewing environment of this tool enables rapid qualitative evaluation of algorithm progress by displaying the network predictions (Fig. <ref type="figure" target="#fig_0">1a</ref>).</p><p>Going beyond segmentation, an included modular plugin extracts features from segmented WSI tissue regions. These features are written into the metadata of uploaded slides and can be exported in spreadsheet form for further analysis. We have included a plotting tool in the user interface of the online slide viewer for quick exploration of these extracted features, Fig. <ref type="figure" target="#fig_0">1c</ref>.</p><p>The source code can be run traditionally via the command line, but we expect the majority of users will utilize the intuitive HistomicsUI-based cloud interface (Fig. <ref type="figure" target="#fig_0">1d</ref>). The source code is available on GitHub at <ref type="url" target="https://github.com/SarderLab/Histo-cloud">https://github.com/SarderLab/Histo-cloud</ref> and packaged as a pre-built Docker image 29 <ref type="url" target="https://hub.docker.com/r/sarderlab/histo-cloud">https://hub.docker.  com/r/sarderlab/histo-cloud</ref>. This data sharing allows for easy deployment on a remote server for use as well as further development by the community over the web. Additionally, a publicly available instance of Histo-Cloud is available for the community at: athena.ccr.buffalo.edu. All the models described are available in the &lt;Collections&gt; section in the &lt;Segmentation models&gt; folder on athena.ccr.buffalo.edu or at <ref type="url" target="https://bit.ly/3ejZhab">https://bit.ly/  3ejZhab</ref>. Documentation for using this tool is available at <ref type="url" target="https://bit.ly/3nNMpfH">https://  bit.ly/3nNMpfH</ref>. A video overview of Histo-Cloud is available at <ref type="url" target="https://bit.ly/3r5GrZr">https://bit.ly/3r5GrZr</ref>. Glomerular segmentation-scalability. To assess the computational scalability of Histo-Cloud during training, a network model for glomeruli segmentation (glomerulus model) was trained using a very large dataset of renal tissue WSIs, containing 743 WSIs (GlomTrainSet). In total GlomTrainSet contained 1.8 trillion image pixels. Network performance was evaluated on a holdout set of 100 additional human renal tissue WSIs (GlomTestSet 1). The computationally generated segmentation was robust when compared with manual annotations for glomeruli and generated the following statistics: F-score = 0.97, Matthews correlation coefficient (MCC) = 0.97, Cohen's kappa = 0.97, intersection over union (IoU) = 0.94, sensitivity = 0.95, specificity = 1.0, precision = 0.99, and accuracy = 1.0. This model also performed robustly on two independent test WSI datasets (GlomTestSet 2 and 3) originating from an institution not included in the training dataset with ground-truth established by a separate annotator (MCC = 0.83 and 0.90 on GlomTestSets 2 and 3, respectively) (Fig. <ref type="figure" target="#fig_2">2a</ref>). Figure <ref type="figure" target="#fig_2">2c</ref> shows examples of glomerulus segmentation performance for a diverse set of glomerular pathologic changes and histochemical stains.</p><p>We have found the performance of Histo-Cloud continually improves while achieving high specificity when deployed in a human-in-the-loop setting, using the method described in our previous work H-AI-L <ref type="bibr" target="#b6">7</ref> . This process allows experts to iteratively correct the network predictions on holdout WSIs before incorporating them into the training set, and the subsequent training reduces future annotation burden <ref type="bibr" target="#b6">7</ref> . This process is facilitated due to the ability of our system to view predictions interactively on the WSIs via the web interface, which is helpful to determine WSIs where the trained model struggles. We used this strategy to train the glomerulus model iteratively and obtained a decreasing number of incorrect segmentations with increasing iterations.</p><p>c 10 7 10 8 10 9 10 10 Image pixels 10 0 10 1 Time (min) Segmentation time Tissue pixels (log 10 ) 6.4 6.8 7.2 7.6 8.0 c a b GlomTest Set 1 GlomTest Set 2 GlomTest Set 3 Data source 0.0 0.2 0.4 0.6 0.8 1.0 MCC Glomeruli segmentation performance As part of the scalability study, the segmentation speed was assessed. Prediction time as a function of WSI size was tracked on a set of 1528 WSIs (median time = 4.7 min, median size = 1.9 Gigapixels) from a set that have similar diversity as in GlomTrainSet, we refer to this set as GlomTestSet 4. Histo-Cloud uses hardware acceleration on the host server to speed processing and can segment a large histology section in as little as 1 min. The segmentation time depends (approximately linearly) on the size of the tissue section; Fig. <ref type="figure" target="#fig_2">2b</ref> quantifies segmentation speed as a function of image pixels on WSIs from GlomTestSet 4. The algorithm performs fast thresholding of the tissue region within the slide to reduce the computational burden for slides with large non-tissue areas. There is a slight programmatical overhead when opening, caching, and streaming data from larger slides, this appears as a gentle upslope of points of the same color in Fig. <ref type="figure" target="#fig_2">2b</ref>.</p><p>Vessel segmentation-adaptability. To evaluate the adaptability of Histo-Cloud for segmenting multiple structures from WSIs, we retrained the glomerulus model to segment glomeruli, arterioles, and arteries. The training set is referred to as VessTrainSet, and the test set is VessTestSet.</p><p>Transfer learning is a machine learning technique where a model developed for one purpose is retrained for another purpose <ref type="bibr" target="#b30">30</ref> . Using the glomerulus model as the starting point for transfer learning, MCC of 0.91, 0.66, and 0.84 were obtained for segmenting glomeruli, arterioles, and arteries, respectively. The MCC metric was computed based on a pixel-wise agreement between computational segmentation and manual ground-truth.</p><p>To study the effect of transfer learning on segmentation performance, we trained another model by randomly initializing the network parameters (random model); performance decreased to MCC of 0.55, 0.22, and 0.54, respectively, in segmenting the compartments.</p><p>We further explored the possibility of improving the computational performance without access to a model trained from a large segmented dataset. Toward this goal, we used the Genotype-Tissue Expression dataset (GTEx) <ref type="bibr" target="#b31">31</ref> , which contains 15,989 H&amp;E stained WSIs from 40 different tissue types, to pretrain a segmentation model to detect the tissue type. This was accomplished without any human annotation, by thresholding the tissue region of each slide and training a model to classify the tissue type of each slide. The goal was to create a model for transfer learning which had been exposed to diverse tissue morphologies, and therefore had learned filters useful for more fine-grained segmentation tasks. While transfer learning using the resulting model (GTEx model) did improve the segmentation performance of glomeruli, arteries, and arterioles (MCC = 0.77, 0.44, and 0.62, respectively) over random initialization, performance was below that achieved using the glomerulus model.</p><p>Finally, we trained a fourth model, transfer learning with a model pretrained on the ImageNet 32 dataset, this same model was originally used to train the glomerulus model. Surprisingly, this model (ImageNet model) achieved the segmentation performance comparable to the glomerulus model (MCC = 0.91, 0.66, and 0.86, respectively). A more detailed comparison of these results is shown in Fig. <ref type="figure" target="#fig_3">3a</ref>, with randomly selected holdout predictions from VessTestSet in Fig. <ref type="figure" target="#fig_3">3b</ref>. To explore the performance of the ImageNet model on an independent test set, we segmented GTEx WSIs from different organs, examples are shown in Fig. <ref type="figure" target="#fig_3">3c</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Interstitial fibrosis and tubular atrophy (IFTA) segmentation</head><p>-adaptability. To further evaluate the adaptability of Histo-Cloud, the effect of dataset variability on the segmentation of IFTA was studied in a distributed setting; namely, our web-based setup (in cloud). IFTA is morphological changes in the renal cortex reflecting "chronic" injury with resultant scar formation and is an important indicator to predict renal disease prognosis <ref type="bibr" target="#b8">9</ref> .</p><p>To generate a ground-truth, three pathologists provided WSIs from their institutions and manually annotated IFTA. Past studies have shown significant disagreement among pathologists in manually annotating IFTA <ref type="bibr" target="#b8">9</ref> . To minimize such disagreement, the pathologists used the definition of IFTA based on Banff 2018 criteria <ref type="bibr" target="#b18">18</ref> , and also collaborated via our web-based tool in a distributed setup for IFTA annotation. Further, the inclusion criteria of cases (discussed in the Methods-WSIs from IFTASet 1, IFTASet 2, IFTASet 3, IFTATestSet 2, and GlomTestSet 3 section) minimized the variability of the annotation process.</p><p>A holdout dataset was randomly selected by pooling one-third of the slides from each institution (n = 29). We refer to this set as IFTATestSet 1. Another dataset from a fourth institution (IFTATestSet 2, n = 17) was used for independent testing. A pathologist from this fourth institution manually annotated IFTA in IFTATestSet 2 to generate the ground-truth.</p><p>We trained five models for IFTA segmentation using the pathologist-provided ground-truth: the first three models were trained using slides from a single institution-IFTASet 1 (12 slides), IFTASet 2 (24 slides), and IFTASet 3 (12 slides). We refer to these as Institution 1, 2, and 3 models respectively. The fourth model used the combined training data from all the three sets (48 slides), referred to as Combined full. A final model used 1/3rd of this combined set (16 WSIs), ensuring the amount of training data was comparable to the first three models. This model is referred to as Combined 1/3rd.</p><p>To better assess the performance of the trained models, we output the network logits (predictions prior to using the argmax function) which were used to construct ROC plots for each model. This process allowed us to display IFTA predictions as heatmaps in HistomicsUI (Fig. <ref type="figure" target="#fig_4">4d</ref>). Interestingly on IFTATestSet 1 training with 1/3rd of the combined dataset (Combined 1/3rd model) yielded better IFTA segmentation (AUC = 0.93) than training with a single institution dataset alone (Fig. <ref type="figure" target="#fig_4">4a</ref>) (AUC = 0.78, 0.76, and 0.91 for models Institutions 1, 2, and 3, respectively). When we tested the Combined full model, the performance improved to AUC = 0.95. The same trend was observed when segmenting IFTA in the independent test set IFTATestSet 2 (Fig. <ref type="figure" target="#fig_4">4b</ref>), with AUC = 0.68, 0.75, and 0.83 for models Institution 1, 2, and 3, respectively, AUC = 0.86 for Combined 1/3rd model, and AUC = 0.88 for Combined full model.</p><p>The IFTA segmentation models were trained to simultaneously segment IFTA and glomeruli. We observed the same performance trend for glomerulus segmentation via the IFTA models in both IFTATestSet 1 and 2; these results are available in Supp. Fig. <ref type="figure" target="#fig_2">2</ref>. The ROC plots (generated by thresholding the network logits) for all the glomeruli, artery, and arteriole segmentations conducted in this work are shown in Supp. Fig. <ref type="figure">5</ref>.</p><p>To demonstrate the robustness in another independent cohort and compare the trained model to a visual manual estimation of IFTA done in the clinical setting, we used an additional 26 PASstained chronic kidney disease renal biopsy cases from the Kidney Precision Medicine Project (KPMP) <ref type="bibr" target="#b33">33</ref> consortium. We refer to this set as KPMPTestSet. Three KPMP pathologists, provided a percent IFTA score to the nearest 10 percent for each slide following Banff 2018 definitions <ref type="bibr" target="#b18">18</ref> . This scoring was done via visual estimation, without any annotation on the slides. The five IFTA segmentation models discussed above were used to segment IFTA boundaries in the KPMPTestSet, percent IFTA was estimated as segmented IFTA area over total renal cortex area, and the resulting computationally estimated scores were correlated with the manual visual estimation. Figure <ref type="figure" target="#fig_4">4c</ref> shows a confusion matrix describing intraclass correlation coefficients (p value &lt; 0.05) between pathologists and the computer for the Combined full model. We found that the correlation measures among pathologists and the computer models were excellent as per the convention provided by ref. <ref type="bibr" target="#b34">34</ref> , and thus is comparable. Supp. Fig. <ref type="figure" target="#fig_4">4</ref> shows a full comparison of the five IFTA segmentation models and each KPMP pathologist, the raw data for this calculation is available in Supp. Table <ref type="table">2</ref>. Figure <ref type="figure" target="#fig_4">4d</ref> depicts examples of qualitative IFTA segmentation performance.</p><p>Murine model analysis-utility. Finally, we show the utility of Histo-Cloud in a basic research application, analyzing digital image features extracted from computationally segmented glomeruli (via the Glomerulus model) from three murine models. A description of the models used is available in Methods-WSI from murine kidney tissue. WSI from each model contained multiple sections obtained from one murine, with an average of 90-200 glomeruli per section. For the current analysis, we extracted 315 engineered image features from each segmented glomerulus. Feature definitions and quantification methods are discussed in our prior work <ref type="bibr" target="#b4">5</ref> , a description is also available in Supp. Data 7. The features were selected to reflect active, present, and physical manifestations of kidney pathophysiology. We used an unsupervised uniform manifold approximation and projection (UMAP) <ref type="bibr" target="#b35">35</ref> to learn a two-dimensional manifold in the feature space (performing dimensionality reduction). Each glomerulus was plotted (with label) in this space to visualize the separability between classes (control vs disease) in each murine model (Fig. <ref type="figure">5</ref>). To quantify this separability, we trained a K-nearest neighbor (KNN) <ref type="bibr" target="#b36">36</ref> classifier using the UMAP features with fivefold cross-validation and computed the optimal Cohen's kappa achieved over multiple K for each murine model (Fig. <ref type="figure">5d</ref>). Overall, we found the aging, KKAy, and Db/Db diabetes models to have good unsupervised class separability (Fig. <ref type="figure">5a-c</ref>). We also applied Seurat <ref type="bibr" target="#b37">37</ref> software to analyze the image feature data and to characterize differential feature abundance. The distribution of the top feature separating control from disease, and the most representative glomeruli image patches depicting differences between these two classes are shown in Fig. <ref type="figure">5</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Discussion</head><p>In this work, we contribute three elements to the digital pathology community to advance tissue analysis: an online tool, the source code, and trained segmentation networks. We believe that easyto-use AI tools and collaborative development of powerful models will benefit the digital pathology research community. This work was motivated by our previously developed Human-AI-Loop (H-AI-L) <ref type="bibr" target="#b6">7</ref> which allows for iterative annotation of WSIs significantly reducing the annotation burden. As most work in computational pathology, H-AI-L has found limited utilization by the pathology research community due to the complexities of installation. To address this limitation, we implemented Histo-Cloud as an online tool which does not require the installation of any software on the user's local computer. All processing occurs on the remote server, which hosts the web client. Like the original H-AI-L work, we use the DeepLab segmentation network <ref type="bibr" target="#b23">23</ref> for processing image patches, but Histo-Cloud uses on-the-fly processing of WSI patches, streaming data directly from the slides to increase the tool's performance and scalability. Data permissions (set via the digital slide archive-DSA <ref type="bibr" target="#b12">13</ref> ) can be adjusted to keep uploaded data secure.</p><p>Annotation done interactively on the WSI fits easily into pathologist workflow, and the cloud-based nature of Histo-Cloud abstracts any computational overhead away from the end-user. Annotation can be done on any internet-connected device without any software installation. If the user prefers to annotate locally, we have added options to ingest and export annotations in</p><p>8 6 4 2 0 2 4 6 UMAP 1 3 2 1 0 1 2 3 UMAP 2 Unsupervised UMAP C57 KKAy C57 KKay Class label 0 200 400 600 800 1000 1200 1400 1600 Expression level Selected feature: 69 Mean area of objects with PAS+ distance transform value 1.13µm&lt;d&lt;=2.25µm KKAy -T2DN Model KNN Kappa=0.84 b 4 2 0 2 4 UMAP 1 4 2 0 2 4 UMAP 2 Unsupervised UMAP Young Old Young Old Class label 1.6 1.8 2.0 2.2 2.4 2.6 Expression level Selected feature: 62 Mean of PAS+ distance transform values 0µm&lt;d&lt;=1.13µm Aging Model KNN Kappa=0.81 a Selected feature: 79 Number pixels PAS+ distance transform 2.03µm&lt;d&lt;2.25µm Db/M Db/Db Class label 0 200 400 600 800 1000 1200 1400 1600 Expression level 4 2 0 2 4 UMAP 1 3 2 1 0 1 2 3 4 UMAP 2 Unsupervised UMAP Db/M Db/Db Db/Db -T2DN Model KNN Kappa=0.71 c d Murine models KKAy -T2DN Aging Db/Db -T2DN 10 1 10 2 K neighbors 0.0 0.2 0.4 0.6 0.8 1.0 Kappa Quantifying UMAP separability μ 50μm</p><p>Fig. <ref type="figure">5</ref> Murine model glomerulus feature analysis-utility study. Feature analysis from glomeruli segmented from renal tissue whole slide images (WSIs) from three murine models: a is an aging model and b, c are two type 2 diabetic nephropathy (DN) models (KKAy and Db/Db). In each panel, the left plot shows an unsupervised uniform manifold approximation and projection for dimension reduction (UMAP) representations of 315 engineered image features extracted from the murine glomeruli, where the glomeruli were segmented using the glomerulus model. Here each dot is a glomerulus and the red and blue colors differentiate the disease from the control. Definitions and quantification strategy of the 315 engineered image features are available in our prior work <ref type="bibr" target="#b4">5</ref> . The right plot shows the highest differentially expressed feature as predicted using the Seurat software <ref type="bibr" target="#b37">37</ref> . The representative glomeruli from each murine depicting this differentially expressed feature, and the feature value, are shown on the right for each murine model. Each dot in the UMAP and violin plots in [a-c] represents a WSI. d shows a K-nearest neighbors (KNN) classifier performance plotting the Cohen's Kappa measure as a function of K neighbors for classifying the unsupervised UMAP features with respect to disease vs control status for the murine models. This analysis was done using tenfold cross-validation using a similar method as formalized in a previous work <ref type="bibr" target="#b35">35</ref> . Definitions of the 315 features are provided in Supp. Table <ref type="table">2</ref>. This study suggests that the seamless segmentation of glomeruli from large WSIs using our tool facilitates conducting deep glomerular feature analysis to study novel murine models.</p><p>an extensible markup language (XML) <ref type="bibr" target="#b38">38</ref> format readable by the commonly used WSI viewer Aperio ImageScope <ref type="bibr" target="#b39">39</ref> . The authors note two complimentary works: HistomicsML <ref type="bibr" target="#b40">40</ref> and Quick Annotator <ref type="bibr" target="#b41">41</ref> , both use superpixels <ref type="bibr" target="#b42">42</ref> and active learning <ref type="bibr" target="#b43">43</ref> to speed the annotation process. HistomicsML also uses Histo-micsUI for deployment, and Quick Annotator is run locally in the QuPath slide viewer <ref type="bibr" target="#b44">44</ref> . A future extension of our tool will combine edge detection and snapping <ref type="bibr" target="#b45">45</ref> to speed up the initial segmentation by human annotators.</p><p>Conducting the transfer learning study using the GTEx tissue histology WSIs (Fig. <ref type="figure" target="#fig_3">3a</ref>) (15,989 WSIs containing 2.6 trillion total image pixels, 4.7 TB of data) and training the glomerulus model for glomeruli segmentation (Fig. <ref type="figure" target="#fig_2">2a</ref>) (743 WSIs, 1.8 trillion pixels, 276 GB) were stress tests for scalability. Setting Histo-Cloud's accessibility benefits aside, the study of glomeruli segmentation (Fig. <ref type="figure" target="#fig_2">2</ref>) not only uses the largest most-diverse cohort of WSIs, but also reports the best performance in the literature for glomerular segmentation. In our previous work on H-AI-L <ref type="bibr" target="#b6">7</ref> we trained Deeplab-v2 46 using a dataset of 13 PAS and hematoxylin and eosin (H&amp;E) stained murine WSIs containing 913 glomeruli, and achieved an F-score = 0.92. Kannan et al. <ref type="bibr" target="#b47">47</ref> used Inception-V3 <ref type="bibr" target="#b48">48</ref> for the sliding window classification of glomeruli with a set of 885 patches from 275 trichrome-stained biopsies and reported MCC = 0.63. Bueno et al. <ref type="bibr" target="#b49">49</ref> trained U-net 6 with 47 PAS-stained WSIs and reported Accuracy = 0.98. Gadermayr et al. <ref type="bibr" target="#b50">50</ref> used 24 PAS-stained murine WSIs to train U-net <ref type="bibr" target="#b5">6</ref> , reporting Precision = 0.97 and Sensitivity = 0.86.</p><p>Jayapandian et al. <ref type="bibr" target="#b51">51</ref> present the most comprehensive results on glomeruli segmentation, training U-net 6 on a dataset containing 1196 glomeruli from 459 human WSIs stained with H&amp;E, PAS, Silver, and Trichrome, reporting F-score = 0.94. However, their analysis is limited to glomeruli with minimal change disease <ref type="bibr" target="#b52">52</ref> . In contrast, our training dataset (GlomTrainSet) contained a large dataset of 743 WSIs from both humans and mice, stained with diverse histological stains, with 61,734 total glomeruli, from disease pathologies beyond minimal glomerular changes. The holdout dataset GlomTestSet 1 contained similar diversity (Fig. <ref type="figure" target="#fig_2">2c</ref>). Our trained model also performed well on independent test datasets GlomTestSet 2 and 3 (Fig. <ref type="figure" target="#fig_2">2a</ref>). Predictably, performance on GlomTestSet 2 and 3 (which contain slides from institutions never seen during training) was lower than the holdout dataset. Despite this, a visual assessment of the independent test set segmentation by expert pathologists was favorable. The modularity of Histo-Cloud will allow others to adapt the trained model to include more structurally abnormal glomeruli.</p><p>When testing the effectiveness of transfer learning, we found that adapting the ImageNet model for segmenting glomeruli, arteries, and arterioles using the VesselTrainSet, performed equivalently to using the glomerulus model as the starting point. The ImageNet model was trained on thousands of natural image classes and is widely used in computer vision literature as a generalized feature extractor <ref type="bibr" target="#b32">32</ref> . It is surprising that despite having refined its convolutional features on renal tissue the glomerulus model did not offer a performance improvement for another renal tissue segmentation task. This result suggests that it may be better to start network training using the ImageNet parameters which offer a very generalized set of features more applicable to the segmentation of any tissue type (this is now the default for training Histo-Cloud models in the cloud). Encouragingly, when applying the developed vessel segmentation model to different tissue types from the publicly available GTEx tissue WSIs <ref type="bibr" target="#b31">31</ref> , the segmentation of arteries and arterioles was found to be consistent with expert opinion (Fig. <ref type="figure" target="#fig_3">3c</ref>).</p><p>Perhaps the most interesting aspect of a cloud-based segmentation tool is the ease of crowdsourcing annotation and developing collaborative models across centers or institutions <ref type="bibr" target="#b53">53</ref> . As discussed above and also known that manual annotation of IFTA boundaries by multiple pathologists suffer from a high degree of disagreement <ref type="bibr" target="#b8">9</ref> . In contrast, Histo-Cloud's web-based system allowed the annotators to view each other's annotations in annotating IFTASet 1, 2, and 3, and IFTATestSet 2 for the multiinstitute IFTA study (see IFTA segmentation-adaptability under Results). We further note that visualizing IFTA prediction confidence using heatmaps was more reflective of the underlying biology than using contours, confirmed by subject matter experts via visual assessment. Namely, a heatmap depicts a probability, which is more informative than contours, which display binary predictions. Examples of IFTA segmentations on the holdout data IFTATestSet 2 as both contours and heatmaps are shown in Fig. <ref type="figure" target="#fig_4">4d</ref>. The functionality to output segmented regions as heatmaps is available using the segmentation plugin.</p><p>The IFTA segmentation study further highlights the importance of training set diversity. Training using data from more institutions improved segmentation performance, even when less WSIs from each institution were used. Namely the performance of the Combined 1/3rd model in comparison to Institution 1, Institution 2, and Institution 3 models (see IFTA segmentationadaptability under Results). This and the results described in the previous paragraph suggest a cloud-based environment is ideal for the development of models for histology segmentation, avoiding bias and allowing easy interaction between annotators for generating ground-truth by centralizing data from multiple institutions. Users can choose to pool their data or simply utilize models trained by others to aid in annotation or for transfer learning.</p><p>Finally, the murine model analysis case study suggests that our tool will enable basic science laboratories working on murine experiments to study differential abundant image features in various disease models as well as in treatment groups. In summary, the analytic approaches described here will enable researchers who lack software engineering skills to analyze histopathology from murine models or human tissue, using an intuitive online cloud-based framework. In the future, we plan to extend the capabilities of Histo-cloud to include instance segmentation as well as classification of tissues. athena.ccr.buffalo.edu or at <ref type="url" target="https://bit.ly/3ejZhab">https://bit.ly/3ejZhab</ref>. Documentation for using this tool is available at <ref type="url" target="https://bit.ly/3nNMpfH">https://bit.ly/3nNMpfH</ref>. A video overview of Histo-Cloud is available at <ref type="url" target="https://bit.ly/3r5GrZr">https://bit.ly/3r5GrZr</ref>. The code at the time of publishing is archived on Zenodo <ref type="bibr" target="#b55">55</ref> .</p><p>Consortium grant U01 DK103225 (P.S.), via the opportunity pool funding mechanism, namely via glue grant mechanism (P.S.) of the NIH-NIDDK Kidney Precision Medicine Project (KPMP) consortium grant U2C DK114886 (Contact: Dr. Jonathan Himmelfarb), a multi-disciplinary small team grant RSG201047.2 (P.S.) from the State University of</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1</head><label>1</label><figDesc>Fig. 1 The user interface of the segmentation tool (available via the web). a The left &lt;Segment WSI &gt; column shows the controls for the segmentation plugin: &lt;IO&gt; is required arguments and &lt;WSI Analysis&gt; contains optional parameters. WSI stands for whole slide image and IO stands for Input/Output. The right column shows the WSI viewer controls and annotations created by the plugin. The green annotations are computationally predicted and are easily editable by the user. Slides are analyzed by clicking the &lt;Submit&gt; button in the top left corner. b The options from the &lt;Train Segmentation Network&gt; plugin. Under the &lt;IO&gt; section, a user can specify a directory full of annotated WSIs to use for network training with the &lt;Training Data Folder&gt; option, and where to save the trained model with the &lt;Output Model Name&gt; option. The &lt;Training layers&gt; option gives users the ability to choose which annotation layers should be used for training and multi-class segmentation models can be trained. To speed up the training process, a previously trained segmentation model can be used for transfer learning by specifying the &lt;Input Model File&gt;. Hyperparameters for training the network is automatically set to defaults that work well but can be modified using the options in the &lt;WSI Training Parameters&gt; section. c shows the &lt;Extract Features&gt; plugin which can be used to extract image and morphology features from annotated objects. These features are written to the slide metadata and can be plotted from within the online interface via the &lt;Metadata Plot&gt; tab (on the right). d shows the welcome screen of the online interface athena.ccr.buffalo.edu.</figDesc><graphic coords="4,57.64,297.41,318.98,203.62" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 2</head><label>2</label><figDesc>Fig. 2 Glomeruli segmentation results-scalability study. a The segmentation performance of glomerulus model for glomeruli detection. Matthews correlation coefficients were calculated for three renal tissue whole slide image (WSI) datasets, as specified in subsection Glomeruli segmentationscalability under the section Results. GlomTestSet 1 contained 100 WSIs holdout from the training set GlomTrainSet, GlomTestSet 2 had 58 WSIs, and GlomTestSet 3 had 17 WSIs. Both GlomTestSet 2 and GlomTestSet 3 were from an institution independent of the institutions from where the training dataset GlomTrainSet was formed for training the glomerulus model. Further, glomerular boundaries in GlomTestSet 2 and GlomTestSet 3 were annotated by an independent annotator who was not involved in annotating glomeruli in GlomTrainSet. Each dot represents a WSI. Box plot elements: The plot starts with the median as the centerline. Each successive level outward contains half of the remaining data. Namely, the first two sections out from the centerline contain 50% of the data. After that, the next two sections contain 25% of the data. This continues until we are at the outlier level. Each level out is shaded lighter. We used around 5-8 outliers in each tail. b shows the prediction time in minutes as a function of the WSI size in pixels for glomeruli predictions on 1528 WSIs in GlomTestSet 4. The color and size of the points represent the size of the automatically extracted tissue region of the slide (the analyzed region) in pixels. The proposed glomerular segmentation model scales roughly linearly in time for increasing WSI size. Each dot represents a WSI. c A batch of randomly selected glomeruli with the computationally segmented boundaries from the 100 holdout WSIs in GlomTestSet 1. This selection is intended to highlight the diversity of pathology and staining of the holdout dataset. The scale bar is 50 µm.</figDesc><graphic coords="7,57.94,501.14,96.86,96.22" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 3</head><label>3</label><figDesc>Fig. 3 Vessel segmentation results-transfer learning study. a Segmentation performance as a function of network initialization (measured as Matthews correlation coefficient [MCC]) for the VessTestSet (58 holdout WSIs). The ground-truth annotations of structures were generated for segmenting three classes: glomeruli, arterioles, and arteries. The colors represent different transfer learning sources for parameter initialization. Namely, the glomerulus model is the model originally used for glomerular segmentation results in Fig. 2, offering MCC = 0.91, 0.66, and 0.84 for segmenting glomeruli, arteriole, and arteries, respectively. The random model does not use transfer learning for parameter initialization, offering MCC = 0.55, 0.22, and 0.54 in segmenting the three respective compartments. GTEx (genotype-tissue expression) model is a model originally trained to identify the diverse tissue types from the publicly available GTEx tissue WSI dataset (15,989 WSIs with 40 different tissue types), offering MCC = 0.77, 0.44, and 0.62 for the segmenting three respective compartments after transfer learning. ImageNet model uses a model pretrained on the ImageNet dataset, offering MCC = 0.91, 0.66, and 0.86 in segmenting the three respective compartments. Each dot in the box plot represents a WSI. Box plot elements:The plot starts with the median as the centerline. Each successive level outward contains half of the remaining data. Namely, the first two sections out from the centerline contain 50% of the data. After that, the next two sections contain 25% of the data. This continues until we are at the outlier level. Each level out is shaded lighter. We used around 5-8 outliers in each tail. b shows randomly selected crops of WSIs from the holdout set (VessTestSet) with computational segmentations by the model trained based on the ImageNet model as the starting point. The scale bar is 150 µm. c shows randomly selected crops of various types of tissues from GTEx WSIs, computationally segmented using the model trained based on the ImageNet model. Despite being trained only on kidney tissues, the trained model is able to segment arteries and arterioles in diverse tissue types. We also note that the GTEx slides are autopsy tissues scanned at 20X, and the training set for this study VessTrainSet was scanned at 40X, and did not contain autopsy tissue WSIs. The scale bar is 300 µm.</figDesc><graphic coords="9,59.47,463.88,110.94,82.45" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Fig. 4</head><label>4</label><figDesc>Fig. 4 Interstitial fibrosis and tubular atrophy (IFTA) segmentation results-multi-institute study. a Receiver operating characteristic (ROC) plots showing the segmentation performance of five trained IFTA models on 29 holdout whole slide images (WSIs), IFTATestSet 1. Models-Institution 1, Institution 2, and Institution 3 were trained using datasets from three different institutions (with 12, 24, and 12 WSIs respectively). The Combined full model was trained by pooling these three datasets (48 WSIs). The Combined 1/3rd model used 1/3rd of the pooled training set, randomly selected (16 WSIs). This last model yielded better IFTA segmentation performance than the first three models, highlighting the importance of dataset diversity. The combined full model offered slightly better performance than the Combined 1/3rd model. b shows the performance of the five models on the independent test dataset IFTATestSet 2 with 17 WSIs. This dataset originated from an independent institution than those used in [a] and was annotated by an independent annotator. We observed the same performance trend as in [a]. c shows the pairwise Intraclass correlation coefficients (ICC) (p value &lt; 0.05) for percent IFTA scored visually by three additional annotators and estimated based on computational segmentation using the Combined full model (computer) for the 26 WSIs in KPMPTestSet. The kidney precision medicine project (KPMP) cohort acted as another independent test set which was never seen by our trained model. d shows computational IFTA predictions using the Combined full model on the holdout WSIs IFTATestSet 1. The left shows the traditional contour predictions, the right shows the corresponding heatmap predictions developed specifically for structures with poorly defined boundaries.</figDesc><graphic coords="10,58.45,389.48,238.36,76.24" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1</head><label>1</label><figDesc>Data used and models trained.Different segmentation tasks, corresponding trained models, segmented structures, an initial model used for transfer learning, whole slide images (WSIs) used for training, hold-out testing, independent testing, and training steps. We note that GlomTestSet 2 is the same as the vessel segmentation holdout dataset (58 WSIs). GlomTestSet 3 is also the same as IFTATestSet 2 (17 WSIs).</figDesc><table><row><cell>Tasks</cell><cell>Structures</cell><cell>Models</cell><cell>Initialization for</cell><cell cols="2">Training WSIs Holdout</cell><cell>Independent test WSIs</cell><cell>Training steps</cell></row><row><cell></cell><cell>segmented</cell><cell>trained</cell><cell>transfer learning</cell><cell></cell><cell>test WSIs</cell><cell></cell><cell></cell></row><row><cell>Data and models</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>Glomeruli</cell><cell>Glomeruli</cell><cell>Glomerulus</cell><cell>ImageNet</cell><cell>743</cell><cell>100</cell><cell>58 (GlomTestSet 2)</cell><cell>400,000</cell></row><row><cell>segmentation</cell><cell></cell><cell>model</cell><cell></cell><cell></cell><cell></cell><cell>17 (GlomTestSet 3)</cell><cell></cell></row><row><cell>Vessel</cell><cell>Glomeruli,</cell><cell></cell><cell>Random model</cell><cell>226</cell><cell>58</cell><cell>Qualitative assessment of</cell><cell>100,000</cell></row><row><cell>segmentation</cell><cell>Arterioles,</cell><cell></cell><cell>GTEx model</cell><cell></cell><cell></cell><cell>publicly available GTEx</cell><cell></cell></row><row><cell></cell><cell>Arteries</cell><cell></cell><cell>Glomerulus model</cell><cell></cell><cell></cell><cell>tissue WSIs from</cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell>ImageNet</cell><cell></cell><cell></cell><cell>multiple organs</cell><cell></cell></row><row><cell>IFTA</cell><cell>IFTA,</cell><cell>Institution 1</cell><cell>ImageNet</cell><cell>12</cell><cell>29</cell><cell>17 (IFTATestSet 2)</cell><cell>50,000</cell></row><row><cell>segmentation</cell><cell>Glomeruli</cell><cell>Institution 2</cell><cell>ImageNet</cell><cell>24</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell>Institution 3</cell><cell>ImageNet</cell><cell>12</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell cols="2">Combined 1/3rd ImageNet</cell><cell>16</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell>Combined full</cell><cell>ImageNet</cell><cell>48</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>26 (KPMPTestSet)</cell><cell></cell></row><row><cell>Murine model</cell><cell>Glomeruli</cell><cell cols="3">Used Glomerulus model for segmentation</cell><cell></cell><cell>4 old, 4 young</cell><cell>0</cell></row><row><cell>feature analysis</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>10 KKAy T2DN, 10 C57</cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>control</cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>7 Db/Db T2DN, 7 Db/M</cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>control</cell><cell></cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>COMMUNICATIONS MEDICINE | (2022) 2:105 | https://doi.org/10.1038/s43856-022-00138-z | www.nature.com/commsmed</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgements</head><p>This project was supported by <rs type="funder">NIH-NIDDK</rs> grant <rs type="grantNumber">R01 DK114485</rs> (P.S.), <rs type="funder">NIH-OD</rs> grants <rs type="grantNumber">R01 DK114485 02S1 &amp; 03S1</rs> (P.S.), a pilot grant from the <rs type="funder">NIH-NIDDK CKD Biomarker New York</rs>, a pilot grant (P.S.) from the <rs type="funder">University of Buffalo's Clinical and Translational Science Institute (CTSI)</rs> grant <rs type="grantNumber">3UL1TR00141206 S1</rs> (Contact: <rs type="person">Dr. Timothy Murphy</rs>), a DiaComp Pilot &amp; Feasibility Project <rs type="grantNumber">21AU4180</rs> (P.S.) with support from <rs type="funder">NIDDK Diabetic Complications Consortium</rs> grants <rs type="grantNumber">U24 DK076169</rs> and <rs type="grantNumber">U24 DK115255</rs> (Contact: <rs type="person">Dr. Richard A. McIndoe</rs>), and <rs type="funder">NIH-OD Human Biomolecular Atlas Project (HuBMAP)</rs> consortium grant <rs type="grantNumber">U54 HL145608</rs> (P.S.). The project was also supported by <rs type="funder">European Rare Kidney Disease Network and the Deutsche Forschungsgemeinschaft</rs> (<rs type="grantNumber">BE-3801</rs>) (J.U.B.), an intramural grant <rs type="person">Cologne Fortune</rs> (K.M.), <rs type="funder">NIH-NIDDK</rs> <rs type="grantNumber">R01</rs> grants <rs type="grantNumber">DK127830</rs> and <rs type="grantNumber">DK116567</rs> (M.L.), and <rs type="funder">NIH-NIDDK</rs> <rs type="programName">Intramural Research Program</rs> (J.B.K.). The KPMP CKD biopsy collection was supported by <rs type="funder">NIH-NIDDK</rs> grants <rs type="grantNumber">UH3 DK114915</rs> (Contact: <rs type="person">Dr. Sushrut Waikar</rs> and <rs type="person">Dr. Sylvia Rosas</rs>), <rs type="grantNumber">UH3 DK114908</rs> (Contact: <rs type="person">Dr. Emilio Poggio</rs>), and <rs type="grantNumber">UH3 DK114870</rs> (Contact: <rs type="person">Dr. Miguel Vazquez</rs>). We thank <rs type="affiliation">Seoul National University Hospital Human Biobank</rs>, a member of the <rs type="institution" subtype="infrastructure">National Biobank of Korea</rs>, which is supported by the <rs type="funder">Ministry of Health and Welfare, Republic of Korea</rs>. We thank <rs type="person">Dr. Agnes Fogo</rs> for providing the human renal biopsy WSIs from VUMC which were used in our earlier publications and are reused in this work for training the glomerulus model. We thank <rs type="person">Dr. Rabi Yacoub</rs> for generating the STZ and nephrin KD murine models which were used in our earlier publications and are reused in this work for training the glomerulus model. We thank <rs type="person">Ms. Briana Santo</rs>, <rs type="person">Ms. Darshana Govind</rs>, <rs type="person">Mr. Nicholas Lucarelli</rs>, and <rs type="person">Mr. Samuel Boarder</rs> (graduate students of <rs type="person">Dr. Sarder</rs>) for their help in glomeruli annotations for training the glomerulus model. We also thank <rs type="person">Ms. Stephanie Grewenow</rs> and <rs type="person">Ms. Becky Steck</rs> for their help in organizing the KPMP renal tissue biopsy WSIs. The KPMP is funded by the following grants from the <rs type="funder">NIDDK</rs>: <rs type="grantNumber">U2CDK114886</rs>, <rs type="grantNumber">UH3DK114861</rs>, <rs type="grantNumber">UH3DK114866</rs>, <rs type="grantNumber">UH3DK114870</rs>, <rs type="grantNumber">UH3DK114908</rs>, <rs type="grantNumber">UH3DK114915</rs>,<rs type="grantNumber">UH3DK114926</rs>, <rs type="grantNumber">UH3DK114907</rs>, <rs type="grantNumber">UH3DK114920</rs>, <rs type="grantNumber">UH3DK114923</rs>, <rs type="grantNumber">UH3DK114933</rs>, and <rs type="grantNumber">UH3DK114937</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_7nAzw4z">
+					<idno type="grant-number">R01 DK114485</idno>
+				</org>
+				<org type="funding" xml:id="_avNPvSc">
+					<idno type="grant-number">R01 DK114485 02S1 &amp; 03S1</idno>
+				</org>
+				<org type="funding" xml:id="_YEC5RXp">
+					<idno type="grant-number">3UL1TR00141206 S1</idno>
+				</org>
+				<org type="funding" xml:id="_4yFjdVy">
+					<idno type="grant-number">21AU4180</idno>
+				</org>
+				<org type="funding" xml:id="_Xa5gAC9">
+					<idno type="grant-number">U24 DK076169</idno>
+				</org>
+				<org type="funding" xml:id="_FANNWUN">
+					<idno type="grant-number">U24 DK115255</idno>
+				</org>
+				<org type="funding" xml:id="_JW8zX4F">
+					<idno type="grant-number">U54 HL145608</idno>
+				</org>
+				<org type="funding" xml:id="_45UMrEz">
+					<idno type="grant-number">BE-3801</idno>
+				</org>
+				<org type="funding" xml:id="_WgCqdeD">
+					<idno type="grant-number">R01</idno>
+				</org>
+				<org type="funding" xml:id="_HrA7zXw">
+					<idno type="grant-number">DK127830</idno>
+				</org>
+				<org type="funding" xml:id="_KPSnTHe">
+					<idno type="grant-number">DK116567</idno>
+					<orgName type="program" subtype="full">Intramural Research Program</orgName>
+				</org>
+				<org type="funding" xml:id="_PH8Vhrr">
+					<idno type="grant-number">UH3 DK114915</idno>
+				</org>
+				<org type="funding" xml:id="_zuG2D3f">
+					<idno type="grant-number">UH3 DK114908</idno>
+				</org>
+				<org type="funding" xml:id="_4GfZqBf">
+					<idno type="grant-number">UH3 DK114870</idno>
+				</org>
+				<org type="funding" xml:id="_VmhEjDY">
+					<idno type="grant-number">U2CDK114886</idno>
+				</org>
+				<org type="funding" xml:id="_29Adh6w">
+					<idno type="grant-number">UH3DK114861</idno>
+				</org>
+				<org type="funding" xml:id="_amwxqFa">
+					<idno type="grant-number">UH3DK114866</idno>
+				</org>
+				<org type="funding" xml:id="_ETW2X67">
+					<idno type="grant-number">UH3DK114870</idno>
+				</org>
+				<org type="funding" xml:id="_r5MMW6x">
+					<idno type="grant-number">UH3DK114908</idno>
+				</org>
+				<org type="funding" xml:id="_nYCtMtE">
+					<idno type="grant-number">UH3DK114915</idno>
+				</org>
+				<org type="funding" xml:id="_ursCVb6">
+					<idno type="grant-number">UH3DK114926</idno>
+				</org>
+				<org type="funding" xml:id="_GTxSFYH">
+					<idno type="grant-number">UH3DK114907</idno>
+				</org>
+				<org type="funding" xml:id="_9xFrzkW">
+					<idno type="grant-number">UH3DK114920</idno>
+				</org>
+				<org type="funding" xml:id="_NvP6fK9">
+					<idno type="grant-number">UH3DK114923</idno>
+				</org>
+				<org type="funding" xml:id="_CeVHRnp">
+					<idno type="grant-number">UH3DK114933</idno>
+				</org>
+				<org type="funding" xml:id="_fy8BeCc">
+					<idno type="grant-number">UH3DK114937</idno>
+				</org>
+			</listOrg>
+
+			<listOrg type="infrastructure">
+				<org type="infrastructure">					<orgName type="extracted">National Biobank of Korea</orgName>
+				</org>
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data availability</head><p>The digital pathology WSI data are in.svs or.scn format which uses lossless compression to represent the information content in images in pyramidal form. Images used in this work can be accessed based on shared data from our earlier publications; namely, from <ref type="url" target="https://bit.ly/3PmcO1F">https://bit.ly/3PmcO1F</ref> 5 , <ref type="url" target="https://bit.ly/3eywm0J">https://bit.ly/3eywm0J</ref> 9 , <ref type="url" target="https://bit.ly/3e6XZzs">https://bit.ly/3e6XZzs</ref>  <ref type="bibr" target="#b54">54</ref> , and <ref type="url" target="https://goo.gl/cFVxjn">https://  goo.gl/cFVxjn</ref>  <ref type="bibr" target="#b6">7</ref> . Further, the dataset from the KPMP consortium is openly available via <ref type="url" target="https://www.kpmp.org/available-data">https://www.kpmp.org/available-data</ref>. The KPMP renal tissue biopsy WSI database contains more than 1000 WSIs and can be used for validating as well as additional training of the computational tools developed in this article. Moreover, a running instance (Athena) of Histo-Cloud is available for public testing and select WSIs have been made available via this public instance. Links to these resources can be found in the Introduction-Histo-Cloud section. We also include Supp. Data 1-6 in.xlsx format to provide the source data used for generating graphs and plots in Figs. <ref type="figure">2</ref><ref type="figure">3</ref><ref type="figure">4</ref><ref type="figure">5</ref>as well as Supp. Figs. <ref type="figure">2</ref>, <ref type="figure">3</ref>, respectively. Other reasonable requests for data can be submitted to the corresponding author, and the data will be shared following local institutional regulatory requirements.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Code availability</head><p>The source code can be run traditionally via the command line, but we expect most users will utilize the intuitive HistomicsUI-based cloud interface (Fig. <ref type="figure">1d</ref>). The source code is available on GitHub at <ref type="url" target="https://github.com/SarderLab/Histo-cloud">https://github.com/SarderLab/Histo-cloud</ref> and packaged as a prebuilt Docker image 29 <ref type="url" target="https://hub.docker.com/r/sarderlab/histo-cloud">https://hub.docker.com/r/sarderlab/histo-cloud</ref>. This data sharing allows for easy deployment on a remote server for use as well as further development by the community over the web. Additionally, a publicly available instance of Histo-Cloud is available for the community at: athena.ccr.buffalo.edu. All the models described are available in the &lt;Collections&gt; section in the &lt;Segmentation models&gt; folder on</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Author contributions</head><p>B.L. wrote the Histo-Cloud code, created the plugins, performed the analysis, and wrote the manuscript. D.M. added features to HistomicsUI and offered advice for developing plugins. S.S.H. and S.J. provided human renal tissue WSIs for training the glomerulus model. B.G. performed murine glomerular quantitation and assisted with glomeruli annotation. J.U.B. provided data for the IFTA and vessel segmentation tasks, and annotated arteries, arterioles, and IFTA. K.M. assisted J.U.B. in an annotation. K.Y.J. organized the data for the IFTA study and annotated IFTA. L.R. and J.E.Z. provided data for the IFTA study and annotated IFTA. A.J.G. annotated IFTA. L.B. and C.E.A. con-ducted manual IFTA scoring in the KPMP biopsy cases. A.Z.R. organized the data for the murine model study and conducted manual IFTA scoring in the KPMP biopsy cases. X.X.W., K.M., B.A.J., and M.L. generated KKAy, Db/Db, and aging cohorts. J.B.K. and T.Y. edited the manuscript. J.Z. helped with statistical analysis. P.S. conceived the overall research plan, coordinated with the multi-disciplinary study team on the project, and edited the manuscript.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Competing interests</head><p>J.E.Z. is a paid consultant for Leica Biosystems. The remaining authors declare no competing interests.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Additional information</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Supplementary information</head><p>The online version contains supplementary material available at <ref type="url" target="https://doi.org/10.1038/s43856-022-00138-z">https://doi.org/10.1038/s43856-022-00138-z</ref>.</p><p>Correspondence and requests for materials should be addressed to Pinaki Sarder.</p><p>Peer review information Communications Medicine thanks the anonymous reviewers for their contribution to the peer review of this work. Peer reviewer reports are available.</p><p>Reprints and permission information is available at <ref type="url" target="http://www.nature.com/reprints">http://www.nature.com/reprints</ref> Publisher's note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Gradient-based learning applied to document recognition</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lecun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Bottou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Bengio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Haffner</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings of the IEEE</title>
+		<imprint>
+			<biblScope unit="volume">86</biblScope>
+			<biblScope unit="page" from="2278" to="2324" />
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Computational pathology definitions, best practices, and recommendations for regulatory guidance: a white paper from the Digital Pathology Association</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Abels</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. pathol</title>
+		<imprint>
+			<biblScope unit="volume">249</biblScope>
+			<biblScope unit="page" from="286" to="294" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Whole slide imaging in pathology: advantages, limitations, and emerging perspectives</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Farahani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">V</forename><surname>Parwani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Pantanowitz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pathol. Lab. Med. Int</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page" from="23" to="33" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Artificial intelligence driven nextgeneration renal histomorphometry</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">A</forename><surname>Santo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">Z</forename><surname>Rosenberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Sarder</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Curr. Opin. Nephrol. Hypertens</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="page" from="265" to="272" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Computational segmentation and classification of diabetic glomerulosclerosis</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Ginley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Am. Soc. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="1953" to="1967" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ronneberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Brox</surname></persName>
+		</author>
+		<title level="m">International Conference on Medical Image Computing and Computer-Assisted Intervention</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="234" to="241" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">An integrated iterative annotation technique for easing neural network training in medical image analysis</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Lutnick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Mach. Intell</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="112" to="119" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Development and validation of a deep learning model to quantify glomerulosclerosis in kidney biopsy specimens</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">N</forename><surname>Marsh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T.-C</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">C</forename><surname>Wilson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Swamidass</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">P</forename><surname>Gaut</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">JAMA Netw. Open</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="page" from="2030939" to="e2030939" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Automated computational detection of interstitial fibrosis, tubular atrophy, and glomerulosclerosis</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Ginley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Am. Soc. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="837" to="850" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Batch mode active learning on the Riemannian manifold for automated scoring of nuclear pleomorphism in breast cancer</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Das</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Nair</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">S</forename><surname>Peter</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Artif. Intell. Med</title>
+		<imprint>
+			<biblScope unit="volume">103</biblScope>
+			<biblScope unit="page">101805</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Reducing annotation effort in digital pathology: a Co-Representation learning framework for classification tasks</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Pati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Foncubierta-Rodríguez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Goksel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Gabrani</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Med. Image Anal</title>
+		<imprint>
+			<biblScope unit="volume">67</biblScope>
+			<biblScope unit="page">101859</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Strategies to reduce the expert supervision required for deep learning-based segmentation of histopathological images</title>
+		<author>
+			<persName><forename type="first">Y.-R</forename><surname>Van Eycke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Foucart</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Decaestecker</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Front. Med</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page">222</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">The digital slide archive: a software platform for management, integration, and analysis of histology for cancer research</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A</forename><surname>Gutman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cancer Res</title>
+		<imprint>
+			<biblScope unit="volume">77</biblScope>
+			<biblScope unit="page" from="75" to="e78" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title level="m" type="main">An APOL1-induced FSGS mouse model that mimics human FSGS nephropathy</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">Z</forename><surname>Rosenberg</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+	<note>Abstract</note>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title/>
+	</analytic>
+	<monogr>
+		<title level="j">J. Am. Soc. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="page">48</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">DOCA-salt hypertension: an update</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Basting</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Lazartigues</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Curr. Hypertens. Rep</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page">32</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Multi-radial LBP features as a tool for rapid glomerular detection and assessment in whole slide histopathology images</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Simon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Yacoub</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Jain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Tomaszewski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Sarder</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sci. Rep</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page">2032</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Nephrin preserves podocyte viability and glomerular structure and function in adult kidneys</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Am. Soc. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="page" from="2361" to="2377" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">A 2018 reference guide to the Banff classification of renal allograft pathology</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Roufosse</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Transplantation</title>
+		<imprint>
+			<biblScope unit="volume">102</biblScope>
+			<biblScope unit="page" from="1795" to="1814" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Rationale and design of the kidney precision medicine project</title>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">H</forename><surname>De Boer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Kidney Int</title>
+		<imprint>
+			<biblScope unit="volume">99</biblScope>
+			<biblScope unit="page" from="498" to="510" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Study of longitudinal aging in mice: presentation of experimental techniques (SLAM POET)</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">L</forename><surname>Palliyaguru</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Gerontol. A Biol. Sci. Med. Sci</title>
+		<imprint>
+			<biblScope unit="volume">76</biblScope>
+			<biblScope unit="page" from="552" to="560" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Lessons from the KK-Ay mouse, a spontaneous animal model for the treatment of human type 2 diabetic nephropathy</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tomino</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nephrourol. Mon</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="page">524</biblScope>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Leptin-and leptin receptor-deficient rodent models: relevance for human type 2 diabetes</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Charukeshi Chandrasekera</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Pippin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Curr. Diabetes Rev</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page" from="131" to="145" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<author>
+			<persName><forename type="first">L.-C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Papandreou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Schroff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Adam</surname></persName>
+		</author>
+		<title level="m">Proceedings of the European Conference on Computer Vision (ECCV)</title>
+		<meeting>the European Conference on Computer Vision (ECCV)</meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="801" to="818" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">D</forename><surname>Manthey</surname></persName>
+		</author>
+		<idno type="DOI">10.5281/zenodo.4562626</idno>
+		<ptr target="https://doi.org/10.5281/zenodo.4562626" />
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Histo-fetch-On-the-fly processing of gigapixel whole slide images simplifies and speeds neural network training</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Lutnick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Krishna</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Ginley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">Z</forename><surname>Rosenberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Sarder</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Pathol. Inform</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="page" from="1" to="5" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">OpenSlide: a vendor-neutral software foundation for digital pathology</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Goode</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Gilbert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Harkes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Jukic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Satyanarayanan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Pathol. Inform</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="page">27</biblScope>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">A guideline of selecting and reporting intraclass correlation coefficients for reliability research</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">K</forename><surname>Koo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Y</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Chiropr. Med</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="155" to="163" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>Benesty</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Cohen</surname></persName>
+		</author>
+		<title level="m">Noise Reduction in Speech Processing</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">An introduction to Docker for reproducible research</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Boettiger</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM SIGOPS Operating Syst. Rev</title>
+		<imprint>
+			<biblScope unit="volume">49</biblScope>
+			<biblScope unit="page" from="71" to="79" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">A survey on transfer learning</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Know. Data Eng</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="1345" to="1359" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">The genotype-tissue expression (GTEx) pilot analysis: multitissue gene regulation in humans</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Consortium</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">348</biblScope>
+			<biblScope unit="page" from="648" to="660" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>Deng</surname></persName>
+		</author>
+		<title level="m">Proc. 2009 IEEE Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>2009 IEEE Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Modelling kidney disease using ontology: insights from the Kidney Precision Medicine Project</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Ong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Rev. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="686" to="696" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Guidelines, criteria, and rules of thumb for evaluating normed and standardized assessment instruments in psychology</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">V</forename><surname>Cicchetti</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Psychol. Assess</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page" from="284" to="290" />
+			<date type="published" when="1994">1994</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<monogr>
+		<title level="m" type="main">Umap: uniform manifold approximation and projection for dimension reduction</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Mcinnes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Healy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Melville</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1802.03426</idno>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">An introduction to kernel and nearest-neighbor nonparametric regression</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">S</forename><surname>Altman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Am. Stat</title>
+		<imprint>
+			<biblScope unit="volume">46</biblScope>
+			<biblScope unit="page" from="175" to="185" />
+			<date type="published" when="1992">1992</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Comprehensive integration of single-cell data</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Stuart</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">177</biblScope>
+			<biblScope unit="page">1821</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<monogr>
+		<author>
+			<persName><forename type="first">T</forename><surname>Bray</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Paoli</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Sperberg-Mcqueen</surname></persName>
+		</author>
+		<title level="m">Extensible Markup Language (XML) 1.0</title>
+		<editor>
+			<persName><forename type="first">C</forename><forename type="middle">M</forename></persName>
+		</editor>
+		<imprint>
+			<publisher>W3C Recommendation</publisher>
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+	<note>nd Ed</note>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<monogr>
+		<title level="m" type="main">Image analysis using the Aperio ScanScope. Technical manual</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">H</forename><surname>Olson</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2006">2006</date>
+			<publisher>Aperio Technologies Inc</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Interactive classification of whole-slide imaging data for cancer researchers</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cancer Res</title>
+		<imprint>
+			<biblScope unit="volume">81</biblScope>
+			<biblScope unit="page" from="1171" to="1177" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Quick annotator: an open-source digital pathology based rapid image annotation tool</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Miao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Toth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Madabhushi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Janowczyk</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Pathol Clin Res</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page" from="542" to="547" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<monogr>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">P</forename><surname>Moore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Prince</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Warrell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Mohammed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Jones</surname></persName>
+		</author>
+		<title level="m">Proc. 2008 IEEE Conference on Computer Vision and Pattern Recognition</title>
+		<meeting>2008 IEEE Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<monogr>
+		<title level="m" type="main">Active Learning Literature Survey</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Settles</surname></persName>
+		</author>
+		<idno>No. 1648</idno>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+		<respStmt>
+			<orgName>University of Wisconsin</orgName>
+		</respStmt>
+	</monogr>
+	<note type="report_type">Report</note>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">QuPath: open source software for digital pathology image analysis</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bankhead</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sci. Rep</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page" from="1" to="7" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Lazy snapping</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C.-K</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H.-Y</forename><surname>Shum</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Trans. Graphics</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="page" from="303" to="308" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Deeplab: semantic image segmentation with deep convolutional nets, atrous convolution, and fully connected crfs</title>
+		<author>
+			<persName><forename type="first">L.-C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Papandreou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Kokkinos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Murphy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Pattern Anal. Mach. Intell</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="834" to="848" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Segmentation of glomeruli within trichrome images using deep learning</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Kannan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Kidney Int. Rep</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="page" from="955" to="962" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<monogr>
+		<author>
+			<persName><forename type="first">C</forename><surname>Szegedy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Vanhoucke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ioffe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Shlens</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wojna</surname></persName>
+		</author>
+		<title level="m">Proc. IEEE conference on computer vision and pattern recognition</title>
+		<meeting>IEEE conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<biblScope unit="page" from="2818" to="2826" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Glomerulosclerosis identification in whole slide images using semantic segmentation</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Bueno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Fernandez-Carrobles</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Gonzalez-Lopez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Deniz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Comput. Methods Programs Biomed</title>
+		<imprint>
+			<biblScope unit="volume">184</biblScope>
+			<biblScope unit="page">105273</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">CNN cascades for segmenting sparse objects in gigapixel whole slide images</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Gadermayr</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A.-K</forename><surname>Dombrowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">M</forename><surname>Klinkhammer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Boor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Merhof</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Comput. Med. Imag. Graph</title>
+		<imprint>
+			<biblScope unit="volume">71</biblScope>
+			<biblScope unit="page" from="40" to="48" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Development and evaluation of deep learning-based segmentation of histologic structures in the kidney cortex with multiple histologic stains</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">P</forename><surname>Jayapandian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Kidney Int</title>
+		<imprint>
+			<biblScope unit="volume">99</biblScope>
+			<biblScope unit="page" from="86" to="101" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Adult minimal-change disease: clinical characteristics, treatment, and outcomes</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Waldman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Clin. J. Am. Soc. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="445" to="453" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Structured crowdsourcing enables convolutional segmentation of histology images</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Amgad</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bioinformatics</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="page" from="3461" to="3467" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">PodoSighter: a cloud-based tool for label-free podocyte detection in kidney whole-slide images</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Govind</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Am. Soc. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="2795" to="2813" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">B</forename><surname>Lutnick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">/</forename><surname>Sarderlab</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Histo-Cloud</surname></persName>
+		</author>
+		<idno type="DOI">10.5281/zenodo.6374390</idno>
+		<ptr target="https://doi.org/10.5281/zenodo.6374390" />
+	</analytic>
+	<monogr>
+		<title level="s">Nature Communications Medicine</title>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<publisher>Histo-cloud</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">✉</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Brendon</forename><surname>Lutnick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Brandon Ginley</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+		</imprint>
+	</monogr>
+	<note>Laura Barisoni 7 , Charles E. Alpers 8 , Sanjay Jain 14</note>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Seth Winfree 31 , Sharon Bledsoe 31 , Marcelino Rivera 31 , James C. Williams Jr 31 , Ricardo Melo Ferreira 31 , Katy Borner 31 , Andreas Bueckle 31 , Bruce W. Herr 31 , Ellen M. Quardokus 31 , Elizabeth Record 31 , Jing Su 31 , Debora Gisch 31 , Stephanie Wofford 31 , Yashvardhan Jain 31</title>
+	</analytic>
+	<monogr>
+		<title level="j">Kamalanathan Sambandam</title>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Paul</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Matthew</forename><surname>Palevsky</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">John</forename><forename type="middle">A</forename><surname>Rosengart 49</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Daniel</forename><forename type="middle">E</forename><surname>Kellum</surname></persName>
+		</editor>
+		<editor>
+			<persName><surname>Hall</surname></persName>
+		</editor>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="page">55</biblScope>
+			<pubPlace>Neil Roy 33 , Mark Williams; Ari Pollack; Blue B. Lake; Ulysses G; Laura H. Mariani; James Winters; Tina Vita; Christopher Park; Stephen Daniel 50 , Andrew N. Hoofnagle 50 , Adam Wilcox; Brooke Berry; Manjeri Venkatachalam; Nancy Wang; Harold Park; Christopher Y. Lu; Allen H. Hendricks; Angela Victoria-Castro</pubPlace>
+		</imprint>
+	</monogr>
+	<note>Helmut Rennke 30 , Tarek M. El-Achkar 31 , Yinghua Cheng 31 , Pierre C. Dagher 31 , Michael T. Eadon 31 , Kenneth W. Dunn 31 , Katherine J. Kelly 31 , Timothy A. Sutton 31 , Daria Barwinska 31 Jennifer Sun Joseph Ardayfio Michael J. Ferkowicz Anna Shpigel Christy Stutzke Robert Koewler Taneisha Campbell Lynda Hayashi Glenda V. Roberts Roy Pinkeney Evren U. Azeloglu Cijang He Ravi Iyengar Jens Hansen Yuguang Xiong Pottumarthi Prasad Anand Srivastava Brad Rovin Samir Parikh Olga Troyanskaya Rachel Sealfon Aaron Wong Katherine R. Tuttle Yury Goltsev Kun Zhang Zoltan G. Laszik Garry Nolan Patrick Boada Kavya Anjani Tara Sigdel Tariq Mukatash Paul J. Lee Rita R. Alloway E. Steve Woodle Ashley R. Burg Adele Rike Tiffany Shi J. Balis Jeffrey B. Hodgin Matthias Kretzler Chrysta Lienczewski Rajasree Menon Becky Steck Jennifer Schaub Victoria M. Blanc Ninive C. Conser Jinghui Luo Renee Frey Parmjeet Randhawa Mitchell Tublin Raghavan Murugan Michele M. Elder Filitsa Bender Roderick Tan 49 , Matthew Gilliam 49 , Kristina N. Blank 50 , Jonas Carson 50 Ian H. De Boer Ashveena L. Dighe Jonathan Himmelfarb 50 , Sean D. Mooney 50 Minnie Sarwal Kayleen Williams Frederick Dowd Robyn L. McClelland Stephanie M. Grewenow Ashley Berglund Christine Limonte Kasra Rezaei Ruikang Wang Yunbi Nam Natalya Sarkisova Shweta Bansal Kumar Sharma Guanshi Zhang Annapurna Pamreddy Hongping Ye 51 , Richard Montellano 51 , Robert D. Toto 52 , Miguel Vazquez 52 , Simon C. Lee 52 , R. Tyler Miller 52 , Orson W. Moe 52 , Jose Torrealba 52 Asra Kermani Catherine E. Campbell Stuart Shankland Natasha Wen Jiten Patel Anil Pillai Dianbo Zhang Mujeeb Basit Richard M. Caprioli 53 , Nathan Patterson 53 , Kavya Sharman 53 , Jeffrey M. Spraggins 53 , Raf Van de Plas 53 , Anitha Vijayan 54 , Joseph P. Gaut 54 , Jeanine Basta 54 , Sabine M. Diettman 54 , Michael I. Rauchman 54 , Dennis Moledina 55 , Francis P. Wilson 55 , Ugochukwu Ugwuowo 55 , Tanima Arora 55 , Melissa M. Shaw 55 , Lloyd G. Cantley 55 , Vijaykumar R. Kakade 55</note>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<monogr>
+		<title level="m" type="main">18 American Association for Kidney Patients</title>
+		<author>
+			<persName><surname>Suny Buffalo</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Buffalo</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Usa</surname></persName>
+		</author>
+		<imprint>
+			<biblScope unit="page">19</biblScope>
+			<pubPlace>Tampa, USA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title level="a" type="main">20 Boston Cell Standards, Boston, USA. 21 Boston Medical Center</title>
+		<author>
+			<persName><forename type="first">Beth</forename><surname>Israel Deaconess</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Usa</forename><surname>Boston</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">23 Brigham &amp; Women&apos;s Hospital</title>
+		<meeting><address><addrLine>Boston, USA; Boston, USA; Boston, USA</addrLine></address></meeting>
+		<imprint/>
+		<respStmt>
+			<orgName>22 Boston University</orgName>
+		</respStmt>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">39 Pacific Northwest National Laboratories</title>
+	</analytic>
+	<monogr>
+		<title level="m">43 Seattle Children&apos;s Hospital</title>
+		<meeting><address><addrLine>New York, USA; Baltimore, USA; Boston; Seattle, USA. 35 Mount Sinai, New York, USA; Columbus, USA; Seattle, USA. 40 Parkland Hospital, Dallas, USA. 41 Princeton University; New Jersey, USA. 42 Providence Health, Portland, USA; Seattle, USA; Cincinnati, USA; San Antonio, USA; Nashville, USA; St. Louis, USA; New Haven, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>San Francisco, USA. 47 University of Cincinnati</publisher>
+			<date>29</date>
+			<biblScope unit="volume">48</biblScope>
+		</imprint>
+		<respStmt>
+			<orgName>Broad Institute, Boston, USA. 25 Case Western Reserve University, Cleveland, USA. 26 Cleveland Clinic, Cleveland, USA. 27 Colorado Children&apos;s Hospital, Aurora, USA. 28 Columbia University ; European Molecular Biology Laboratory, Heidelberg, Germany. 30 Harvard University, Boston, USA. 31 Indiana University, Bloomington, USA. 32 Johns Hopkins University ; 36 Northshore University, Evanston, USA. 37 Northwestern University, Chicago, USA. 38 Ohio State University ; 44 Stanford University, Stanford, USA. 45 University of California, San Diego, USA. 46 University of California ; University of Michigan, Michigan, USA. 49 University of Pittsburgh, Pittsburgh, USA. 50 University of Washington, Seattle, USA. 51 University of Texas Health San Antonio ; University of Texas Southwestern, Dallas, USA. 53 Vanderbilt University ; Washington University School of Medicine ; 55 Yale University</orgName>
+		</respStmt>
+	</monogr>
+	<note>33 Joslin Diabetes Center USA. 34 KPMP Patient Partner</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

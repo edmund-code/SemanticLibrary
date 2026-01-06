@@ -1,0 +1,1691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Deep Distance Transform for Tubular Structure Segmentation in CT Scans</title>
+				<funder>
+					<orgName type="full">Lustgarten Foundation for Pancreatic Cancer Research</orgName>
+				</funder>
+				<funder ref="#_wkq6wdG">
+					<orgName type="full">NSFC</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Yan</forename><surname>Wang</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Johns Hopkins University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">†</forename><surname>Xu</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="institution">University of California San Diego</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Fengze</forename><surname>Liu</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Johns Hopkins University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jieneng</forename><surname>Chen</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="institution">Tongji University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Yuyin</forename><surname>Zhou</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Johns Hopkins University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Wei</forename><surname>Shen</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Johns Hopkins University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Elliot</forename><forename type="middle">K</forename><surname>Fishman</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="institution">The Johns Hopkins University School of Medicine</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Alan</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Johns Hopkins University</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Deep Distance Transform for Tubular Structure Segmentation in CT Scans</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">338FA96E3428DBCE061AFCECC2301440</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:10+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Tubular structure segmentation in medical images, e.g., segmenting vessels in CT scans, serves as a vital step in the use of computers to aid in screening early stages of related diseases. But automatic tubular structure segmentation in CT scans is a challenging problem, due to issues such as poor contrast, noise and complicated background. A tubular structure usually has a cylinder-like shape which can be well represented by its skeleton and cross-sectional radii (scales). Inspired by this, we propose a geometryaware tubular structure segmentation method, Deep Distance Transform (DDT), which combines intuitions from the classical distance transform for skeletonization and modern deep segmentation networks. DDT first learns a multitask network to predict a segmentation mask for a tubular structure and a distance map. Each value in the map represents the distance from each tubular structure voxel to the tubular structure surface. Then the segmentation mask is refined by leveraging the shape prior reconstructed from the distance map. We apply our DDT on six medical image datasets. Results show that (1) DDT can boost tubular structure segmentation performance significantly (e.g., over 13% DSC improvement for pancreatic duct segmentation), and (2) DDT additionally provides a geometrical measurement for a tubular structure, which is important for clinical diagnosis (e.g., the cross-sectional scale of a pancreatic duct can be an indicator for pancreatic cancer).</p><p>* This work was done when Xu Wei and Jieneng Chen were at JHU. † Equal Contribution.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Introduction</head><p>Tubular structures are ubiquitous throughout the human body, with notable examples including blood vessels, pancreatic duct and urinary tract. They occur in specific environments at the boundary of liquids, solids or air and surrounding tissues, and play a prominent role in sustaining physiological functions of the human body. Figure <ref type="figure" target="#fig_0">1</ref>. A tubular shape is presented as the envelope of a family of spheres with continuously changing center points and radii <ref type="bibr" target="#b8">[9]</ref>.</p><p>In this paper, we investigate automatic tubular organ/tissue segmentation from CT scans, which is important for the characterization of various diseases <ref type="bibr" target="#b17">[18]</ref>. For example, pancreatic duct dilatation or abrupt pancreatic duct caliber change signifies high risk for pancreatic ductal adenocarcinoma (PDAC), which is the third most common cause of cancer death in the US <ref type="bibr" target="#b10">[11]</ref>. Another example is that obstructed vessels lead to coronary heart disease, which is the leading cause of death in the US <ref type="bibr" target="#b26">[27]</ref>.</p><p>Segmenting tubular organs/tissues from CT scans is a popular but challenging problem. Existing methods addressing this problem can be roughly categorized into two groups: (1) Geometry-based methods, which build deformable shape models to fit tubular structures by exploiting their geometrical properties <ref type="bibr" target="#b42">[43,</ref><ref type="bibr" target="#b44">45,</ref><ref type="bibr" target="#b2">3,</ref><ref type="bibr" target="#b24">25]</ref>, e.g., a tubular structure can be well represented by its skeleton, aka symmetry axis or medial axis, and it has a cylindrical surface. But, due to the lack of powerful learning models, these methods cannot deal with poor contrast, noise and complicated background. (2) Learning-based methods, which learn a per-pixel classification model to detect tubular structures. The performance of this type of methods is largely boosted by deep learning, especially fully convolutional networks (FCN) <ref type="bibr" target="#b22">[23,</ref><ref type="bibr" target="#b48">49,</ref><ref type="bibr" target="#b47">48]</ref>. FCN and its variants have become out-of-the-box models for tubular organ/tissue segmentation and achieve state-of-the-art results <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b46">47]</ref>. But, these networks simply try to learn a class label per voxel, which inevitably ignores the geometric arrangement of the voxels in a tubular structure, and consequently can not guarantee that the obtained segmentation has the right shape.</p><p>Since a tubular structure can be well represented by its skeleton and the cross-sectional radius of each skeleton point, as shown in Fig. <ref type="figure" target="#fig_0">1</ref>, these intrinsic geometric characteristics should be taken into account to serve as a valuable prior. To this end, a straightforward strategy is to first train a model, e.g., a deep network, to directly predict whether each voxel is on the skeleton of the tubular structure or not as well as the cross-sectional radius of each skeleton point, and then reconstruct the segmentation of the tubular structure from its skeleton and radii <ref type="bibr" target="#b33">[34]</ref>. However, such a strategy has severe limitations: <ref type="bibr" target="#b0">(1)</ref> The ground-truth skeletons used for training are not easily obtained. Although they can be approximately computed from the ground-truth segmentation mask by 3D skeletonization methods, skeleton extraction from 3D mesh representation itself is a hard and unsolved problem <ref type="bibr" target="#b4">[5]</ref>. Without reliable skeleton ground-truths, the performance of tubular structure segmentation cannot be guaranteed. <ref type="bibr" target="#b1">(2)</ref> It is hard for the classifier to distinguish voxels on the skeleton itself from those immediately next to it, as they have similar features but different labels.</p><p>To tackle the obstacles mentioned above, we propose to perform tubular structure segmentation by training a multitask deep network to predict not only a segmentation mask, but also a distance map, consisting of the distance transform value from each tubular structure voxel to the tubular structure surface, rather than a single skeleton/non-skeleton label. Distance transform <ref type="bibr" target="#b27">[28]</ref> is a classical image processing operator to produce a distance map with the same size of the input image, each value in which is the distance from each foreground pixel/voxel to the foreground boundary. Distance transform is also known as the basis of one type of skeletonization algorithms <ref type="bibr" target="#b16">[17]</ref>, i.e., the ridge of the distance map is the skeleton. Thus, the predicted distance map encodes the geometric characteristics of the tubular structure. This motivated us to design a geometryaware approach to refine the output segmentation mask by leveraging the shape prior reconstructed from the distance map. Essentially, our approach performs tubular structure segmentation by an implicit skeletonization-reconstruction procedure with no requirements for skeleton ground-truths. We stress that the distance transform brings two benefits for our approach: (1) Distance transform values are defined on each voxel inside a tubular structure, which eliminates the problem of the discontinuity between the skeleton and its surrounding voxels; (2) distance transform values on the skeleton (the ridge of the distance map) are exactly the cross-sectional radii (scales) of the tubular structure, which is an important geometrical measurement. To make the distance transform value prediction more precise, we additionally propose a distance loss term used for network training, which indicates a penalty when predicted distance transform value is far away from its ground-truth.</p><p>We term our method Deep Distance Transform (DDT), as it naturally combines intuitions from the classical distance transform for skeletonization and modern deep seg-mentation networks. We emphasize that DDT has two advantages over vanilla segmentation networks: (1) It guides tubular structure segmentation by taking the geometric property of tubular structures into account. This reduces the difficulty to segment tubular structures from complex surrounding structures and ensures that the segmentation results have a proper shape prototype; (2) It predicts the crosssectional scales of a tubular structure as by-products, which are important for the further study of the tubular structure, such as clinical diagnosis and virtual endoscopy <ref type="bibr" target="#b6">[7]</ref>.</p><p>We verify DDT on six datasets, including five datasets for segmentation task, and one dataset for clinical diagnosis. For segmentation task, the performance of our DDT exceeds all backbone networks by a large margin, with even over 13% improvement in terms of Dice-Sørensen coefficient for pancreatic duct segmentation on the famous 3D-Unet <ref type="bibr" target="#b11">[12]</ref>. The ablation study further shows the effectiveness of each proposed module in DDT. The experiment for clinical diagnosis leverages dilated pancreatic duct as cue for finding missing PDAC tumors by original deep networks, which verifies the potential of our DDT for early diagnosis of pancreatic cancer. Various methods have been proposed to improve the performance of tubular structure segmentation by considering the geometric characteristics, and a non-exhaustive overview is given here. (1) Contour-based methods extracted the segmentation mask of a tubular structure by means of approximating its shape in the cross-sectional domain <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b9">10]</ref>. <ref type="bibr" target="#b1">(2)</ref> Minimal path approaches conducted tubular structure tracking and were usually interactive. They captured the global minimum curve (energy weighted by the image potential) between two points given by the user <ref type="bibr" target="#b8">[9]</ref>. (3) Modelbased tracking methods required to refine a tubular structure model, which most of the time adopted a 3D cylinder with elliptical or circular section. At each tracking step, they calculated the new model position by seeking for the optimal model match among all possible new model positions <ref type="bibr" target="#b7">[8]</ref>. (4) Centerline based methods found the centerline and estimated the radius of linear structures. For example, multiscale centerline detection method proposed in <ref type="bibr" target="#b33">[34]</ref> adopted the idea of distance transform, and reformulated centerline detection and radius estimation in terms of a regression problem in 2D. Our work fully leverages the geometric information of a tubular structure, proposing a distance transform algorithm to implicitly learn the skeleton and cross-sectional radius, and the final segmentation mask is reconstructed by adopting the shape prior of the tubular structure. The training and testing stage of DDT, illustrated on an example of veins segmentation. Our DDT has two head branches: the first one is targeting on the ground-truth label map, which performs per-voxel veins/non-veins classification, and the second head branch is targeting on the scale class map, which performs scale prediction for veins voxels. Then a geometry-aware refinement approach is proposed to leverage the shape prior obtained from the scale class map and the pseudo skeleton map to refine the segmentation mask.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Related Work</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.2">Learning-based Method</head><p>Learning-based method for tubular structure segmentation infers a rule from labeled training pairs, one for each pixel.</p><p>Traditional methods such as 2-D Gabor wavelet and classifier combination <ref type="bibr" target="#b34">[35]</ref>, ridge-based segmentation <ref type="bibr" target="#b35">[36]</ref>, and random decision forest based method <ref type="bibr" target="#b1">[2]</ref> achieved considerable progress. In the past years, various 2D and 3D deep segmentation networks have become very popular. Some multi-organ segmentation methods <ref type="bibr" target="#b40">[41,</ref><ref type="bibr" target="#b28">29]</ref> were proposed to segment multiple organs simultaneously, including tubular organs. DeepVessel <ref type="bibr" target="#b15">[16]</ref> put a four-stage HED-like CNN and conditional random field into an integrated deep network to segment retinal vessel. Kid-Net <ref type="bibr" target="#b36">[37]</ref>, inspired from 3D-Unet <ref type="bibr" target="#b11">[12]</ref>, was a two-phase 3D network for kidney vessels segmentation. ResDSN <ref type="bibr" target="#b49">[50,</ref><ref type="bibr" target="#b50">51]</ref> and 3D-Unet <ref type="bibr" target="#b11">[12]</ref> were used in Hyper-pairing network <ref type="bibr" target="#b46">[47]</ref> to segment tissues in pancreas including duct by combining information from dual-phase imaging. Besides, 3D-HED and its variant were applied for vascular boundary detection <ref type="bibr" target="#b23">[24]</ref>. Other scenarios such as using synthetic data to improve endotracheal tube segmentation <ref type="bibr" target="#b14">[15]</ref>. Cross-modality domain adaptation framework with adversarial learning which dealt with the domain shift in segmenting biomedical images including as-cending aorta was also proposed <ref type="bibr" target="#b12">[13]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2.">Learning-based Skeleton Extraction</head><p>Learning-based skeleton extraction from natural images has been widely studied in recent decades <ref type="bibr" target="#b37">[38,</ref><ref type="bibr" target="#b30">31,</ref><ref type="bibr" target="#b33">34,</ref><ref type="bibr" target="#b21">22,</ref><ref type="bibr" target="#b20">21]</ref> and achieved promising progress with the help of deep learning <ref type="bibr" target="#b31">[32,</ref><ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b45">46,</ref><ref type="bibr" target="#b39">40]</ref>. Shen et al. <ref type="bibr" target="#b31">[32]</ref> showed that multitask learning, i.e., jointly learning skeleton pixel classification and skeleton scale regression, was important to obtain accurate predicted scales, and it was useful for skeletonbased object segmentation. One recent work for bronchus segmentation calculated the distance from each voxel to its nearest skeleton point <ref type="bibr" target="#b38">[39]</ref>.</p><p>However, these methods cannot be directly applied to our tasks, since they require the skeleton ground-truth, which is not easy to obtain from a tiny and highly distorted 3D mask due to the commonly existed annotation errors for medical images <ref type="bibr" target="#b41">[42]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Methodology</head><p>We first define a 3D volume X of size L × W × H as a function on the coordinate set</p><formula xml:id="formula_0">V = {v|v ∈ N L × N W × N H }, i.e., X : V → R ⊂ R where the value on position v is defined as x v = X(v). N L , N W , N H represent</formula><p>for the integer set ranging from 1 to L, W , H respectively, so that the Cartesian product of them can form the coordinate set. Given a 3D CT scan X, the goal of tubular structure segmentation is to predict the label Ŷ of all voxels in the CT scan, where ŷv ∈ {0, 1} denotes the predicted label for each voxel at position v, i.e., if the voxel at v is predicted as a tubular structure voxel, then ŷv = 1, otherwise ŷv = 0. We also use v to denote the voxel at position v in the remaining of the paper for convenience sake. Fig. <ref type="figure" target="#fig_1">2</ref> illustrates our tubular structure segmentation network, i.e., DDT.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.">Distance Transform for Tubular Structure</head><p>In this section, we discuss how to perform distance transform for tubular structure voxels. Given the ground-truth label map Y of the CT scan X in the training phase, let C V be the set of voxels on the tubular structure surface, which can be defined by</p><formula xml:id="formula_1">C V = {v| y v = 1, ∃ u ∈ N (v), y u = 0},<label>(1)</label></formula><p>where N (v) denotes the 6-neighbour voxels of v. Then, by performing distance transform on the CT scan X, the distance map D is computed by</p><formula xml:id="formula_2">d v = min u∈C V v -u 2 , if y v = 1 0, if y v = 0 .<label>(2)</label></formula><p>Note that, for each tubular structure voxel v, the distance transform assigns it a distance transform value which is the nearest distance from v to the tubular structure surface C V . Here we use Euclidean distance, as skeletons from Euclidean distance maps are robust to rotations <ref type="bibr" target="#b3">[4]</ref>. We further quantize each d v into one of K bins by rounding d v to the nearest integer, which converts the continuous distance map D to a discrete quantized distance map Z, where z v ∈ {0, . . . , K}. We do this quantization, because training a deep network directly for regression is relatively unstable, since outliers, i.e., the commonly existed annotation errors for medical images <ref type="bibr" target="#b41">[42]</ref>, cause a large error term, which makes it difficult for the network to converge and leads to unstable predictions <ref type="bibr" target="#b29">[30]</ref>. Based on quantization, we rephrase the distance prediction problem as a classification problem, i.e., to determine the corresponding bin for each quantized distance. We term the K bins of the quantized distances as K scale classes. We use the term scale since the distance transform values at the skeleton voxels of a tubular structure are its cross-sectional scales.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.">Network Training for Deep Distance Transform</head><p>Given a 3D CT scan X and its ground-truth label map Y , we can compute its scale class map (quantized distance map) Z according to the method given in Sec. 3.1. In this section, we describe how to train a deep network for tubular structure segmentation by targeting on both Y and Z.</p><p>As shown in Fig. <ref type="figure" target="#fig_1">2</ref>, our DDT model has two head branches. The first one is targeting on the ground-truth label map Y , which performs per-voxel classification for semantic segmentation with a weighted cross-entropy loss function L cls :</p><formula xml:id="formula_3">L cls = - v∈V β p y v log p v (W, w cls ) + β n (1 -y v ) log 1 -p v (W, w cls ) ,<label>(3)</label></formula><p>where W is the parameters of the network backbone, w cls is the parameters of this head branch and p v (W, w cls ) is the probability that v is a tubular structure voxel as predicted by this head branch. β p = 0.5 v yv and β n = 0.5</p><p>v (1-yv) are loss weights for tubular structure and background classes respectively.</p><p>The second head branch is predicting on the scale class map Z, which performs scale prediction for tubular structure voxels (i.e., z v &gt; 0). We introduce a new distance loss function L dis to learn this head branch:</p><formula xml:id="formula_4">L dis = -β p v∈V K k=1 1(z v = k) log g k v (W, w dis ) + λω v log 1 -max l g l v (W, w dis ) ,<label>(4)</label></formula><p>where W is the parameters of the network backbone, w dis is the parameters of the second head branch, 1(•) is an indication function, λ is a trade-off parameter which balances the two loss terms (we simply set λ = 1 in our implementation), g k v (W, w dis ) is the probability that the scale of v belongs to k-th scale class and ω v is a normalized weight defined by ω v = | arg max l g l v (W,wdis)-zv| K</p><p>. Note that, the first term of Eq. 4 is the standard softmax loss which penalizes the classification error for each scale class equally. The second term of Eq. 4 is termed as distance loss term, which penalizes the difference between each predicted scale class (i.e., max l g l v (W, w dis )) and its groundtruth scale class z v , where the penalty is controlled by ω v . Finally, the loss function for our segmentation network is L = L cls + L dis and the optimal network parameters are obtained by (W * , w * cls , w * dis ) = arg min W,wcls,wdis L.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3.">Geometry-aware Refinement</head><p>Shape reconstruction from skeletons is a simple and well-known operation, which often achieves better segmentation performance than pure segmentation methods <ref type="bibr" target="#b31">[32]</ref>. Inspired by this, we propose a soft version of such reconstruction, termed as geometry-aware refinement (GAR), where skeletons are obtained by thinning probability maps and maximal balls centered at skeleton points are softened to Gaussian kernels. GAR ensures smoothness between similar voxels, and spatial and appearance consistency of the segmentation output, especially from clutter background.</p><p>Given a 3D CT scan X in the testing phase, for each voxel v, our tubular structure segmentation network, DDT, outputs two probabilities, p v (W * , w * cls ), which is the probability that v is a tubular structure voxel and g k v (W * , w * dis ), which is the probability that the scale of v belongs to kth scale class. For notational simplicity, we use p v and g k v to denote p v (W * , w * cls ) and g k v (W * , w * dis ), respectively, in the rest of the paper. p v provides per-voxel tubular structure segmentation, and g k v encodes the geometric characteristics of the tubular structure. Our GAR obtains the final segmentation result by refining p v according to g k v . This approach is shown in Fig. <ref type="figure" target="#fig_1">2</ref> and is processed as follows: a. Pseudo skeleton generation. The probability map P is thinned by thresholding it to generate a binary pseudo skeleton map S for the tubular structure. If p v &gt; T p , s v = 1; otherwise, s v = 0, and T p is the threshold. b. Shape reconstruction. For each voxel v, its predicted scale ẑv is given by ẑv = arg max k g k v . We fit a Gaussian kernel to soften each ball and obtain a soft reconstructed shape Ỹ s :</p><formula xml:id="formula_5">ỹs v = u∈{u ′ |s u ′ &gt;0} c u Φ(v; u, Σ u ),<label>(5)</label></formula><p>where Φ(•) denotes the density function of a multivariate normal distribution, u is the mean and Σ u is the co-variance matrix. According to the 3-sigma rule, we set Σ u = ( ẑu 3 ) 2 I, where I is an identity matrix. We notice that the peak of Φ(•; u, Σ u ) becomes smaller if ẑu is larger. To normalize the peak of each normal distribution, we introduce a normalization factor c u = (2π) 3 det(Σ u ). c. Segmentation refinement. We use the soft reconstructed shape Ỹ s to refine the segmentation probability p u , which results in a refined segmentation map Ỹ r :</p><formula xml:id="formula_6">ỹr v = u∈{u ′ |s u ′ &gt;0} p u c u Φ(v; u, Σ u ).<label>(6)</label></formula><p>The final segmentation mask Ŷ is obtained by thresholding Ỹ r , i.e., if ỹr v &gt; T r , ŷv = 1, otherwise, ŷv = 0, where ỹr v and ŷv are the value of voxel at position v of Ỹ r and Ŷ , respectively.</p><p>As mentioned in Sec. 1, the predicted scale ẑv is a geometrical measurement for a tubular structure, which is essential for clinical diagnosis. We will show one clinical application in Sec. 4.2.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">Experiments</head><p>In this section, we conduct the following experiments: we first evaluate our approach on five segmentation datasets, including (1) the dataset used in <ref type="bibr" target="#b46">[47]</ref>, (2) three tubular structure datasets created by radiologists in our team, and (3) hepatic vessels dataset in Medical Segmentation Decathlon (MSD) challenge <ref type="bibr" target="#b32">[33]</ref>. Then, as we mentioned in Sec. 1, our DDT predicts cross-sectional scales as by-products, which are important for applications such as clinical diagnosis. We show that the cross-sectional scale is an important measurement for predicting the dilation degree of a pancreatic duct, which can help find the PDAC tumors missed in <ref type="bibr" target="#b50">[51]</ref>, without increasing the false positives.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.">Tubular Structure Segmentation</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.1">Implementation Details and Evaluation Metric</head><p>Our implementation is based on PyTorch. For data preprocessing, followed by <ref type="bibr" target="#b46">[47]</ref>, we truncate the raw intensity values within the range of [-100, 240] HU and normalize each CT scan into zero mean and unit variance. Data augmentation (i.e.,translation, rotation and flipping) is conducted in all the methods, leading to an augmentation factor of 24. During training, we randomly sample patches of a specified size (i.e., 64) due to memory issue. We use exponential learning rate decay with γ = 0.99. During testing, we employ the sliding window strategy to obtain the final predictions. The groundtruth distance map for each tubular structure is computed by finding the euclidean distance of each foreground voxel to its nearest boundary voxels. The segmentation accuracy is measured by the well-known Dice-Sørensen coefficient (DSC) in the rest of the paper, unless otherwise specified. <ref type="bibr" target="#b46">[47]</ref> We first study the PDAC segmentation dataset <ref type="bibr" target="#b46">[47]</ref> which has 239 patients with pathologically proven PDAC. All CT scans are contrast enhanced images and our experiments are conducted on only portal venous phase. We follow the same setting and the same cross-validation as reported in <ref type="bibr" target="#b46">[47]</ref>. DSCs for three structures were reported in <ref type="bibr" target="#b46">[47]</ref>: abnormal pancreas, PDAC mass and pancreatic duct. We only show the average and standard deviation over all cases for pancreatic duct, which is a tubular structure.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.2">The PDAC Segmentation Dataset</head><p>Results and Discussions. To evaluate the performance of the proposed DDT framework, we compare it with a pervoxel classification method <ref type="bibr" target="#b46">[47]</ref>, termed as SegBaseline in Table <ref type="table" target="#tab_0">1</ref>. It can be seen that our approach outperforms the baseline reported in <ref type="bibr" target="#b46">[47]</ref> by a large margin. It is also worth mentioning that although our DDT is only tested on venous phase, the performance is comparable with the hyper- paring network <ref type="bibr" target="#b46">[47]</ref> (i.e., Multi-phase HPN), which integrates multi-phase information (i.e., arterial phase and venous phase). For 3D-UNet, our DDT even outperforms the multi-phase method by more than 13% in terms of DSC.</p><p>Ablation Study. We conduct ablation experiments on the PDAC segmentation dataset, using ResDSN as the backbone. These variants of our methods are considered:</p><p>• SegfromSkel: This is the straightforward strategy mentioned in Sec. 1 for skeleton-based tubular structure segmentation, i.e., segmenting by reconstructing from the predicted skeleton. The ground-truth skeleton is obtained by the mesh contraction algorithm <ref type="bibr" target="#b4">[5]</ref>, and the scale of each skeleton point is defined as its shortest distance to the duct surface. We use the same method in Sec. 3 to instantiate this strategy, but the learning target is the skeleton instead of the duct mask. • DDT λ = 0, w/o GAR: DDT without distance loss term (λ = 0 in Eq. 4), and without geometry-aware refinement.</p><p>• DDT λ = 0, w/ GAR: DDT without distance loss term, and with geometry-aware refinement. • DDT λ = 1, w/o GAR: DDT with distance loss term, and without geometry-aware refinement. • DDT λ = 1, w/ GAR: DDT with distance loss term, and with geometry-aware refinement.</p><p>The results of the ablation experiments are summarized in Table <ref type="table" target="#tab_1">2</ref>. We also show examples of the predicted duct for better understanding how each component (i.e., distance loss term and geometry-aware refinement) learns the geometry information in the supplementary material. Then, we aim at discussing parameters in the geometry-aware refinement component. In our implementation, we set T p = 0.98 and T r = 0.5 in Sec. 3.3. Now we vary each of them and fix the other one to the default value to see how the performance changes. As shown in Fig. <ref type="figure" target="#fig_2">3</ref>(a), setting a larger T p leads to better performance. This phenomenon further verifies the advantage of leveraging scale class map to refine the per-voxel segmentation results, i.e., a thinner pseudo skeleton combined with a scale class map can better represent a  tubular structure. Fig. 3(b) shows that the performance is not sensitive within the range of T r ∈ [0.1, 1].</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.3">Tubular Structure Datasets</head><p>We then evaluate our algorithm on multiple tubular structures datasets. Radiologists in our team collected 229 abdominal CT scans of normal cases with aorta annotation, 204 normal cases with veins annotation, and 494 abdominal CT scans of biopsy-proven PDAC cases with pancreatic duct annotation. All these three datasets are under IRB approved protocol.</p><p>We conduct experiments by comparing our DDT with SegBaseline on three backbone networks: 3D-HED <ref type="bibr" target="#b23">[24]</ref>, 3D-UNet <ref type="bibr" target="#b11">[12]</ref> and ResDSN <ref type="bibr" target="#b49">[50,</ref><ref type="bibr" target="#b50">51]</ref>. The results in terms of DSC and mean surface distance (in mm) are reported in Table <ref type="table" target="#tab_2">3</ref>. SegBaseline methods on all backbone networks are significantly lower than our approach. In particular, for 3D-HED, DDT outperforms SegBaseline by 8%, making its strong ability in segmenting small tubular structures like pancreatic duct in medical images. The results are obtained by cross-validation. We also illustrate segmentation results of aorta and veins in Fig. <ref type="figure">4</ref> for qualitative comparison. We can see that compared with SegBaseline, DDT captures geometry information, which is more robust to the noise and complicated background.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.4">Hepatic Vessels Dataset in MSD Challenge</head><p>We also test our DDT on a public hepatic vessels dataset in MSD challenge <ref type="bibr" target="#b32">[33]</ref>. There are two targets in hepatic vessels dataset: vessels and tumor. As our goal is to segment  Dilated Duct Tumor Pancreas Dilated Duct Tumor Pancreas Figure 5. Examples of PDAC cases. In most PDAC cases, the tumor blocks the duct and causes it to dilate.</p><p>tubular structure, we aim at vessel segmentation. Although this challenge is over, it is still open for submissions. We train our DDT on 303 training cases, and submit vessel predictions of the testing cases to the challenge. We simply use ResDSN <ref type="bibr" target="#b50">[51]</ref> as our backbone network, and follow the same data augmentation as introduced in Sec. 4.1.1. We summarize some leading quantitative results reported in the leaderboard in Table <ref type="table" target="#tab_3">4</ref>. This comparison shows the effectiveness of our DDT.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.">Finding PDAC Tumor by Dilated Duct</head><p>Background. PDAC is one of the most deadly disease, whose survival is dismal as when it comes to the time of diagnosis, there are more than half of patients have evidence of metastatic disease. As mentioned in Sec. 1, dilated duct is a vital cue for the presence of a PDAC tumor. The rea-  <ref type="bibr" target="#b18">[19]</ref> 63.00 UMCT <ref type="bibr" target="#b43">[44]</ref> 63.00 K.A.V.athlon 62.00 LS Wang's Group 55.00 MIMI 60.00 MPUnet <ref type="bibr" target="#b25">[26]</ref> 59.00 son lies in that in most cases, the tumor blocks the duct and causes it to dilate, as shown in Fig. <ref type="figure">5</ref>. Experienced radiologists usually trace the duct from the pancreas tail onward to see if there exists a truncated duct. If they see the predicted duct pattern as illustrated in Fig. <ref type="figure">5</ref>, they will be alarmed and treat it as a suspicious PDAC case. For computer-aided diagnosis, given a mixture of normal and abnormal CT scans (PDAC cases), if some voxels are segmented as a tumor by a state-of-the-art deep network, we can provide radiologists with tumor locations <ref type="bibr" target="#b50">[51]</ref>. But, as reported <ref type="bibr" target="#b50">[51]</ref>, even a state-of-the-art deep network failed to detect 8 PDACs out of 136 abnormal cases. As emphasized in <ref type="bibr" target="#b50">[51]</ref>, for clinical purposes, we shall guarantee a high sensitivity with a reasonable specificity. Then how can we use dilated duct as a cue to help find the PDAC tumor in an abnormal case even if it does NOT have any PDAC tumor prediction by directly applying deep networks?</p><p>Clinical Workflow. The flowchart of our strategy is illustrated in Fig. <ref type="figure" target="#fig_4">6</ref>. We apply our DDT on the cases which do not have tumor prediction by <ref type="bibr" target="#b50">[51]</ref>. Then the predictions of DDT are processed as follows:</p><p>1. Find cases with predicted dilated duct. Let's assume a case has N predicted duct voxels. If N = 0, then we regard this case as negative. If N &gt; 0, let's denote the predicted associated scales (radii) are {ẑ vi } N i=1 . If arg max i ẑvi &gt; T s , i.e., the largest cross-sectional scale is larger than T s , we regard this is a dilated duct, and a tumor may present on its head location. Otherwise, we treat this case as negative. We set T s = 3, since the radius of a dilated duct should be larger than 1.5 mm <ref type="bibr" target="#b13">[14]</ref>, and the voxel spatial resolution of the dataset <ref type="bibr" target="#b50">[51]</ref> is around 0.5 mm 3 .</p><p>2. Extract candidate tumor regions by the location of dilated duct. We use geodesic distance to find the extreme points of the duct <ref type="bibr" target="#b5">[6]</ref>. Then we crop a set of square regions of size ℜ 3 centered on the extreme points not lying on the tail of the pancreas, since a tumor presenting on the tail of the pancreas will not block a duct. This set of square regions are candidate tumor regions.</p><p>3. Verify candidate tumor regions. As candidate tumor regions may come from both normal and abnormal cases. We should verify whether the candidate region is a real tumor region. From the training set, we randomly crop regions of size ℜ 3 around PDAC tumor region as positive training data, and randomly crop regions of size ℜ 3 from normal pancreas as negative training data. Then we train a ResDSN <ref type="bibr" target="#b50">[51]</ref> to verify these candidate tumor regions. We follow the same criterion used in <ref type="bibr" target="#b50">[51]</ref> to compute sensitivity and specificity.</p><p>Experiment Settings. We follow the same data split as used in <ref type="bibr" target="#b50">[51]</ref>. We only test our algorithm on the 8 PDAC cases and 197 normal cases which do not have tumor prediction by <ref type="bibr" target="#b50">[51]</ref>, aiming at finding missing tumor by dilated duct, while not introducing more false positives. ℜ = 48.</p><p>Analysis. We compare our results with those of <ref type="bibr" target="#b50">[51]</ref> in Table <ref type="table" target="#tab_4">5</ref>. In our experiment, 4 out of 8 abnormal cases and 3 out of 197 normal cases have predicted dilated duct by step 1. An example is shown in Fig. <ref type="figure" target="#fig_6">7</ref>(a). The tubular structure residing inside the ground-truth pancreas, right behind the ground-truth tumor is our predicted dilated duct. This leads to overall 18 3D candidate tumor regions by step 2, shown as the yellow dashed box in Fig. <ref type="figure" target="#fig_6">7</ref>(b) visualized in 2D. In step 3, we can successfully find all tumor regions in abnormal cases, and discard non-tumor regions in normal cases.</p><p>As shown in Fig. <ref type="figure" target="#fig_6">7</ref>(c), our algorithm can find the right tumor, which overlaps with the tumor annotation in Fig. <ref type="figure" target="#fig_6">7(d</ref>).</p><p>It should be emphasized that dilated duct helps us to narrow the searching space of the tumor, so that we are able to focus on a finer region. Though we train a same network used in <ref type="bibr" target="#b50">[51]</ref>, half of the missing tumors in <ref type="bibr" target="#b50">[51]</ref> can be found. In this way, we are imitating how radiologists detect</p><p>Tumor DSC = 85.64% (a) (b) (c) (d) Predicted Dilated Duct GT Pancreas GT Tumor Predicted Dilated Duct Predicted &amp; GT Tumor  PDAC, i.e., they can find visible PDAC tumors easily, but for difficult ones, they will seek help from dilated ducts.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Conclusions</head><p>In this paper, we present Deep Distance Transform (DDT) for accurate tubular structure segmentation, which combines intuitions from the classical distance transform for skeletonization and modern deep segmentation networks. DDT guides segmentation by taking the geometric property of the tubular structure into account, which not only leads to a better segmentation result, but also provides the cross-sectional scales, i.e., a geometric measure for the thickness of tubular structures. We evaluated our approach on six datasets including four tubular structures. Experiment shows the superiority of the proposed DDT for tubular structure segmentation and clinical application.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>2. 1 .</head><label>1</label><figDesc>Tubular Structure Segmentation 2.1.1 Geometry-based Methods</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 .</head><label>2</label><figDesc>Figure2. The training and testing stage of DDT, illustrated on an example of veins segmentation. Our DDT has two head branches: the first one is targeting on the ground-truth label map, which performs per-voxel veins/non-veins classification, and the second head branch is targeting on the scale class map, which performs scale prediction for veins voxels. Then a geometry-aware refinement approach is proposed to leverage the shape prior obtained from the scale class map and the pseudo skeleton map to refine the segmentation mask.</figDesc><graphic coords="3,300.39,283.87,83.09,55.88" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 .</head><label>3</label><figDesc>Figure 3. Performance changes by varying (a) pseudo skeleton generation parameter T p and (b) segmentation refinement parameter T r .</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 4 .Figure 5 .</head><label>45</label><figDesc>Figure 4. Illustration of aorta (upper row) and veins (lower row) segmentation results for selected example images. Numbers on the bottom right show segmentation DSCs.</figDesc><graphic coords="7,43.07,369.02,150.59,144.97" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 6 .</head><label>6</label><figDesc>Figure 6. Flowchart of finding missing PDAC tumor by dilated duct.</figDesc><graphic coords="8,233.09,85.78,83.48,78.92" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 7 .</head><label>7</label><figDesc>Figure 7. Examples of finding missed tumor of [51] by dilated duct. (a) The ground-truth tumor is right behind one end of the predicted dilated duct. The ground-truth pancreas is shown as a reference. (b) A cropped CT slice with predicted duct (we choose green for better visualization). The yellow dashed box is a candidate tumor region, shown in 2D. (c) and (d) are the same zoomed in image region with predicted and ground-truth tumor, respectively.</figDesc><graphic coords="8,381.84,181.86,74.75,61.49" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 .</head><label>1</label><figDesc>Performance comparison (DSC, %) on pancreatic duct segmentation (mean ± standard deviation of all cases). SegBaseline stands for per-voxel classification. Multi-phase HPN is a hyper-paring network combining CT scans from both venous (V) and arterial (A) phases. Noted that only CT scans in venous phase are used for SegBaseline and DDT. Bold denotes the best results.</figDesc><table><row><cell>Methods</cell><cell>Phase</cell><cell cols="2">Backbone Networks</cell></row><row><cell></cell><cell></cell><cell>3D-UNet</cell><cell>ResDSN</cell></row><row><cell>SegBaseline [47]</cell><cell>V</cell><cell cols="2">40.25 ± 27.89 49.81 ± 26.23</cell></row><row><cell cols="4">Multi-phase HPN [47] A+V 44.93 ± 24.88 56.77 ± 23.33</cell></row><row><cell>DDT (Ours)</cell><cell>V</cell><cell cols="2">58.20 ± 23.39 55.97 ± 24.76</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 .</head><label>2</label><figDesc>Ablation study of pancreatic duct segmentation using ResDSN as backbone network. GAR indicates the proposed geometry-aware refinement.</figDesc><table><row><cell></cell><cell></cell><cell>Method</cell><cell>Average DSC (%)</cell></row><row><cell></cell><cell></cell><cell>SegBaseline [47]</cell><cell>49.81</cell></row><row><cell></cell><cell></cell><cell>SegfromSkel</cell><cell>51.88</cell></row><row><cell></cell><cell></cell><cell>DDT λ = 0, w/o GAR</cell><cell>52.73</cell></row><row><cell></cell><cell></cell><cell>DDT λ = 0, w/ GAR</cell><cell>54.70</cell></row><row><cell></cell><cell></cell><cell>DDT λ = 1, w/o GAR</cell><cell>53.69</cell></row><row><cell></cell><cell></cell><cell>DDT λ = 1, w/ GAR</cell><cell>55.97</cell></row><row><cell></cell><cell>57</cell></row><row><cell></cell><cell>56.5</cell></row><row><cell></cell><cell>56</cell></row><row><cell>DSC (%)</cell><cell>55 55.5</cell></row><row><cell></cell><cell>54.5</cell></row><row><cell></cell><cell>54</cell></row><row><cell></cell><cell>! "</cell><cell>0.9 0.92 0.94 0.96 0.98</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 .</head><label>3</label><figDesc>Performance comparison (in average DSC, % and mean surface distance in mm) on three tubular structure datasets by using different backbones. "↑" and "↓" indicate the larger and the smaller the better, respectively. Bold denotes the best results for each tubular structure per measurement.</figDesc><table><row><cell></cell><cell></cell><cell></cell><cell></cell><cell>Aorta</cell><cell></cell><cell>Veins</cell><cell cols="2">Pancreatic duct</cell></row><row><cell></cell><cell>Backbone</cell><cell>Methods</cell><cell cols="6">Average Mean Surface Average Mean Surface Average Mean surface</cell></row><row><cell></cell><cell></cell><cell></cell><cell>DSC ↑</cell><cell>Distance ↓</cell><cell>DSC ↑</cell><cell>Distance ↓</cell><cell>DSC ↑</cell><cell>Distance ↓</cell></row><row><cell></cell><cell>3D-HED [24]</cell><cell>SegBaseline DDT</cell><cell>90.85 92.94</cell><cell>1.15 0.82</cell><cell>73.57 76.20</cell><cell>5.13 3.78</cell><cell>46.43 54.43</cell><cell>7.06 4.91</cell></row><row><cell></cell><cell>3D-UNet [12]</cell><cell>SegBaseline DDT</cell><cell>92.01 93.30</cell><cell>0.94 0.61</cell><cell>71.57 75.59</cell><cell>4.46 4.07</cell><cell>56.63 62.31</cell><cell>3.64 3.56</cell></row><row><cell></cell><cell>ResDSN [50]</cell><cell>SegBaseline DDT</cell><cell>89.89 92.57</cell><cell>1.12 1.10</cell><cell>71.10 76.60</cell><cell>6.25 5.03</cell><cell>55.91 59.29</cell><cell>4.24 4.19</cell></row><row><cell>Image</cell><cell>Label</cell><cell cols="2">SegBaseline</cell><cell>DDT</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell>83.27%</cell><cell>92.83%</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell>76.48%</cell><cell>82.82%</cell><cell></cell><cell></cell><cell></cell></row><row><cell>aorta</cell><cell>veins</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 4 .</head><label>4</label><figDesc>Comparison to competing submissions of MSD challenge: http://medicaldecathlon.com</figDesc><table><row><cell>Methods</cell><cell>Average DSC (%)</cell></row><row><cell>DDT (Ours)</cell><cell>63.43</cell></row><row><cell>nnU-Net</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 5 .</head><label>5</label><figDesc>Normal vs. abnormal classification results. Zhu et al.<ref type="bibr" target="#b50">[51]</ref> + ours denotes applying our method to find the missing tumor of Zhu et al.. "↑" and "↓" indicate the larger and the smaller the better, respectively.</figDesc><table><row><cell>Methods</cell><cell cols="3">Misses ↓ Sensitivity ↑ Specificity ↑</cell></row><row><cell>Zhu et al. [51]</cell><cell>8/136</cell><cell>94.1%</cell><cell>98.5%</cell></row><row><cell>Zhu et al. [51] + Ours</cell><cell>4/136</cell><cell>97.1%</cell><cell>98.5%</cell></row></table></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><p>Acknowledgements. This work was supported by the <rs type="funder">Lustgarten Foundation for Pancreatic Cancer Research</rs> and also supported by <rs type="funder">NSFC</rs> No. <rs type="grantNumber">61672336</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_wkq6wdG">
+					<idno type="grant-number">61672336</idno>
+				</org>
+			</listOrg>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Tracking the aortic lumen geometry by optimizing the 3d orientation of its cross-sections</title>
+		<author>
+			<persName><forename type="first">Luis</forename><surname>Álvarez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Agustín</forename><surname>Trujillo-Pino</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carmelo</forename><surname>Cuenca</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Esther</forename><surname>González</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julio</forename><surname>Esclarín</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luis</forename><surname>Gómez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luis</forename><surname>Mazorra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Miguel</forename><surname>Alemán-Flores</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pablo</forename><forename type="middle">G</forename><surname>Tahoces</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">José</forename><forename type="middle">M</forename><surname>Carreira-Villamor</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. MICCAI</title>
+		<meeting>MICCAI</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Scale and curvature invariant ridge detector for tortuous and fragmented structures</title>
+		<author>
+			<persName><forename type="first">Roberto</forename><surname>Annunziata</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ahmad</forename><surname>Kheirkhah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pedram</forename><surname>Hamrah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Emanuele</forename><surname>Trucco</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. MICCAI</title>
+		<meeting>MICCAI</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="588" to="595" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Computational geometry for patient-specific reconstruction and meshing of blood vessels from angiography</title>
+		<author>
+			<persName><forename type="first">Luca</forename><surname>Antiga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bogdan</forename><surname>Ene-Iordache</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrea</forename><surname>Remuzzi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Med. Imaging</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="674" to="684" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Ridge points in euclidean distance maps</title>
+		<author>
+			<persName><forename type="first">Carlo</forename><surname>Arcelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gabriella Sanniti Di</forename><surname>Baja</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognition Letters</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="237" to="243" />
+			<date type="published" when="1992">1992</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Skeleton extraction by mesh contraction</title>
+		<author>
+			<persName><forename type="first">Kin-Chung</forename><surname>Oscar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chiew-Lan</forename><surname>Au</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hung-Kuo</forename><surname>Tai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Daniel</forename><surname>Chu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tong-Yee</forename><surname>Cohen-Or</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Trans. Graph</title>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="1" to="44" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">A data-driven approach for real-time full body pose reconstruction from a depth camera</title>
+		<author>
+			<persName><forename type="first">Andreas</forename><surname>Baak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meinard</forename><surname>Müller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gaurav</forename><surname>Bharaj</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hans-Peter</forename><surname>Seidel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christian</forename><surname>Theobalt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. ICCV</title>
+		<meeting>ICCV</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Extracting curve skeletons from gray value images for virtual endoscopy</title>
+		<author>
+			<persName><forename type="first">Christian</forename><surname>Bauer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Horst</forename><surname>Bischof</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Workshop on Medical Imaging and Virtual Reality</title>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="393" to="402" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Segmentation of interwoven 3d tubular tree structures utilizing shape priors and graph cuts</title>
+		<author>
+			<persName><forename type="first">Christian</forename><surname>Bauer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Pock</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Erich</forename><surname>Sorantin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Horst</forename><surname>Bischof</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Reinhard</forename><surname>Beichel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical Image Analysis</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="172" to="184" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Tubular structure segmentation based on minimal path method and anisotropic enhancement</title>
+		<author>
+			<persName><forename type="first">Fethallah</forename><surname>Benmansour</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Laurent</forename><forename type="middle">D</forename><surname>Cohen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Computer Vision</title>
+		<imprint>
+			<biblScope unit="volume">92</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="192" to="210" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Geodesic active contours</title>
+		<author>
+			<persName><forename type="first">Vicent</forename><surname>Caselles</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ron</forename><surname>Kimmel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guillermo</forename><surname>Sapiro</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Computer Vision</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="61" to="79" />
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Diagnosis and detection of pancreatic cancer</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Linda</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Chu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Michael</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Elliot</forename><forename type="middle">K</forename><surname>Goggins</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Fishman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Cancer Journal</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="333" to="342" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">3d u-net: Learning dense volumetric segmentation from sparse annotation</title>
+		<author>
+			<persName><forename type="first">Ahmed</forename><surname>Özgün C ¸ic ¸ek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Soeren</forename><forename type="middle">S</forename><surname>Abdulkadir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Lienkamp</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Olaf</forename><surname>Brox</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ronneberger</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. MICCAI</title>
+		<meeting>MICCAI</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Unsupervised cross-modality domain adaptation of convnets for biomedical image segmentations with adversarial loss</title>
+		<author>
+			<persName><forename type="first">Qi</forename><surname>Dou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cheng</forename><surname>Ouyang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cheng</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pheng-Ann</forename><surname>Heng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IJCAI</title>
+		<meeting>IJCAI</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Clinical significance of main pancreatic duct dilation on computed tomography: Single and double duct dilation</title>
+		<author>
+			<persName><forename type="first">Maarouf</forename><surname>Mark D Edge</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Hoteit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Amil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoping</forename><surname>Patel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Deborah</forename><forename type="middle">A</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qiang</forename><surname>Baumgarten</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Cai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">World J Gastroenterol</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page" from="1701" to="1705" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Endotracheal tube detection and segmentation in chest radiographs using synthetic data</title>
+		<author>
+			<persName><forename type="first">Maayan</forename><surname>Frid-Adar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rula</forename><surname>Amer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hayit</forename><surname>Greenspan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. MICCAI</title>
+		<meeting>MICCAI</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="784" to="792" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Deepvessel: Retinal vessel segmentation via deep learning and conditional random field</title>
+		<author>
+			<persName><forename type="first">Huazhu</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanwu</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stephen</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Damon</forename><forename type="middle">Wing</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kee</forename><surname>Wong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiang</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. MICCAI</title>
+		<meeting>MICCAI</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="132" to="139" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">On the generation of skeletons from discrete euclidean distance maps</title>
+		<author>
+			<persName><forename type="first">Yaorong</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">Michael</forename><surname>Fitzpatrick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Pattern Anal. Mach. Intell</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page" from="1055" to="1066" />
+			<date type="published" when="1996">1996</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">New methods for the geometrical analysis of tubular organs</title>
+		<author>
+			<persName><forename type="first">Florent</forename><surname>Grélard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fabien</forename><surname>Baldacci</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anne</forename><surname>Vialard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jean-Philippe</forename><surname>Domenger</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical Image Analysis</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="page" from="89" to="101" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<title level="m" type="main">nnu-net: Breaking the spell on successful medical image segmentation</title>
+		<author>
+			<persName><forename type="first">Fabian</forename><surname>Isensee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jens</forename><surname>Petersen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">A</forename><surname>Simon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Paul</forename><forename type="middle">F</forename><surname>Kohl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Klaus</forename><forename type="middle">H</forename><surname>Jäger</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Maier-Hein</surname></persName>
+		</author>
+		<idno>CoRR, abs/1904.08128</idno>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">SRN: side-output residual network for object symmetry detection in the wild</title>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Ke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianbin</forename><surname>Jiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guoying</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qixiang</forename><surname>Ye</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. CVPR</title>
+		<meeting>CVPR</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Detecting curved symmetric parts using a deformable disc model</title>
+		<author>
+			<persName><forename type="first">Tom</forename><surname>Sie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ho</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sanja</forename><surname>Fidler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sven</forename><forename type="middle">J</forename><surname>Dickinson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. ICCV</title>
+		<meeting>ICCV</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Multiscale symmetric part detection and grouping</title>
+		<author>
+			<persName><forename type="first">Alex</forename><surname>Levinshtein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cristian</forename><surname>Sminchisescu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sven</forename><forename type="middle">J</forename><surname>Dickinson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Computer Vision</title>
+		<imprint>
+			<biblScope unit="volume">104</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="117" to="134" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Fully Convolutional Networks for Semantic Segmentation</title>
+		<author>
+			<persName><forename type="first">Jonathan</forename><surname>Long</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Evan</forename><surname>Shelhamer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Trevor</forename><surname>Darrell</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. CVPR</title>
+		<meeting>CVPR</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title level="m" type="main">Dense volume-to-volume vascular boundary detection</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Merkow</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Kriegman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Marsden</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Tu</surname></persName>
+		</author>
+		<editor>MICCAI</editor>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Vessel segmentation using a shape driven flow</title>
+		<author>
+			<persName><forename type="first">Delphine</forename><surname>Nain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anthony</forename><forename type="middle">J</forename><surname>Yezzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Greg</forename><surname>Turk</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. MICCAI</title>
+		<meeting>MICCAI</meeting>
+		<imprint>
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<title level="m" type="main">One network to segment them all: A general, lightweight system for accurate 3d medical image segmentation</title>
+		<author>
+			<persName><forename type="first">Mathias</forename><surname>Perslev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Erik</forename><surname>Bjørnager Dam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Akshay</forename><surname>Pai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christian</forename><surname>Igel</surname></persName>
+		</author>
+		<editor>MICCAI</editor>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Heart disease and stroke statistics-2008 update</title>
+		<author>
+			<persName><forename type="first">Wayne</forename><surname>Rosamond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Katherine</forename><surname>Flegal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Karen</forename><surname>Furie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan</forename><surname>Go</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kurt</forename><surname>Greenlund</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nancy</forename><surname>Haase</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Susan</forename><forename type="middle">M</forename><surname>Hailpern</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Ho</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Virginia</forename><surname>Howard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Brett</forename><surname>Kissela</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Steven</forename><surname>Kittner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Donald</forename><surname>Lloyd-Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mary</forename><surname>Mcdermott</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">James</forename><surname>Meigs</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Claudia</forename><surname>Moy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Graham</forename><surname>Nichol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O'</forename><surname>Christopher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Veronique</forename><surname>Donnell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Paul</forename><surname>Roger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julia</forename><surname>Sorlie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Steinberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matt</forename><surname>Thom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuling</forename><surname>Wilson</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Hong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Circulation</title>
+		<imprint>
+			<biblScope unit="volume">117</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Distance functions on digital pictures</title>
+		<author>
+			<persName><forename type="first">Azriel</forename><surname>Rosenfeld</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><forename type="middle">L</forename><surname>Pfaltz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognition</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="33" to="61" />
+			<date type="published" when="1968">1968</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<monogr>
+		<title level="m" type="main">Hierarchical 3d fully convolutional networks for multi-organ segmentation</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Holger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hirohisa</forename><surname>Roth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuichiro</forename><surname>Oda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Masahiro</forename><surname>Hayashi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Natsuki</forename><surname>Oda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michitaka</forename><surname>Shimizu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kazunari</forename><surname>Fujiwara</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kensaku</forename><surname>Misawa</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Mori</surname></persName>
+		</author>
+		<idno>CoRR, abs/1704.06382</idno>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Deep expectation of real and apparent age from a single image without facial landmarks</title>
+		<author>
+			<persName><forename type="first">Radu</forename><surname>Rasmus Rothe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luc</forename><surname>Timofte</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Van Gool</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Computer Vision</title>
+		<imprint>
+			<biblScope unit="volume">126</biblScope>
+			<biblScope unit="issue">2-4</biblScope>
+			<biblScope unit="page" from="144" to="157" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Multiple instance subspace learning via partial random projection tree for local reflection symmetry in natural images</title>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zihao</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhijiang</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognition</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="page" from="306" to="316" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Deepskeleton: Learning multi-task scale-associated deep side outputs for object skeleton extraction in natural images</title>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuan</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Image Processing</title>
+		<imprint>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page" from="5298" to="5311" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<title level="m" type="main">A large annotated image dataset for the development and evaluation of segmentation algorithms</title>
+		<author>
+			<persName><forename type="first">Amber</forename><forename type="middle">L</forename><surname>Simpson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michela</forename><surname>Antonelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Spyridon</forename><surname>Bakas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michel</forename><surname>Bilello</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Keyvan</forename><surname>Farahani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Annette</forename><surname>Bram Van Ginneken</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bennett</forename><forename type="middle">A</forename><surname>Kopp-Schneider</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Landman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Geert</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Litjens</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Bjoern</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Olaf</forename><surname>Menze</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ronald</forename><forename type="middle">M</forename><surname>Ronneberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Patrick</forename><surname>Summers</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Bilic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ferdinand</forename><surname>Patrick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Richard</forename><forename type="middle">K G</forename><surname>Christ</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marc</forename><surname>Do</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jennifer</forename><surname>Gollub</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stephan</forename><surname>Golia-Pernicka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">William</forename><forename type="middle">R</forename><surname>Heckers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maureen</forename><surname>Jarnagin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sandy</forename><surname>Mchugo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eugene</forename><surname>Napel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lena</forename><surname>Vorontsov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Jorge</forename><surname>Maier-Hein</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Cardoso</surname></persName>
+		</author>
+		<idno>CoRR, abs/1902.09063</idno>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Multiscale centerline detection by learning a scale-space distance transform</title>
+		<author>
+			<persName><forename type="first">Amos</forename><surname>Sironi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vincent</forename><surname>Lepetit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pascal</forename><surname>Fua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CVPR</title>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Retinal vessel segmentation using the 2-d gabor wavelet and supervised classification</title>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">B</forename><surname>João</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jorge</forename><forename type="middle">J G</forename><surname>Soares</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Roberto</forename><forename type="middle">M</forename><surname>Leandro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Herbert</forename><forename type="middle">F</forename><surname>Cesar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><forename type="middle">J</forename><surname>Jelinek</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Cree</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Med. Imaging</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="1214" to="1222" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Ridge-based vessel segmentation in color images of the retina</title>
+		<author>
+			<persName><forename type="first">Joes</forename><surname>Staal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><forename type="middle">D</forename><surname>Abràmoff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meindert</forename><surname>Niemeijer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Max</forename><forename type="middle">A</forename><surname>Viergever</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bram</forename><surname>Van Ginneken</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Med. Imaging</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="501" to="509" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Kid-net: Convolution networks for kidney vessels segmentation from ct-volumes</title>
+		<author>
+			<persName><forename type="first">Ahmed</forename><surname>Taha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pechin</forename><surname>Lo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junning</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tao</forename><surname>Zhao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. MICCAI</title>
+		<meeting>MICCAI</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Learning-based symmetry detection in natural images</title>
+		<author>
+			<persName><forename type="first">Stavros</forename><surname>Tsogkas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Iasonas</forename><surname>Kokkinos</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. ECCV</title>
+		<meeting>ECCV</meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="41" to="54" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Tubular structure segmentation using spatial fully connected network with radial distance loss for 3d medical images</title>
+		<author>
+			<persName><forename type="first">Chenglong</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuichiro</forename><surname>Hayashi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Masahiro</forename><surname>Oda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hayato</forename><surname>Itoh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Takayuki</forename><surname>Kitasaka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alejandro</forename><forename type="middle">F</forename><surname>Frangi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kensaku</forename><surname>Mori</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. MICCAI</title>
+		<meeting>MICCAI</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Deepflux for skeletons in the wild</title>
+		<author>
+			<persName><forename type="first">Yukang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongchao</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stavros</forename><surname>Tsogkas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sven</forename><forename type="middle">J</forename><surname>Dickinson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kaleem</forename><surname>Siddiqi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. CVPR</title>
+		<meeting>CVPR</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Abdominal multi-organ segmentation with organ-attention networks and statistical fusion</title>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuyin</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Seyoun</forename><surname>Park</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Elliot</forename><forename type="middle">K</forename><surname>Fishman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical Image Analysis</title>
+		<imprint>
+			<biblScope unit="volume">55</biblScope>
+			<biblScope unit="page" from="88" to="102" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Training multi-organ segmentation networks with sample selection by relaxed upper confident bound</title>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuyin</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peng</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Elliot</forename><forename type="middle">K</forename><surname>Fishman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. MICCAI</title>
+		<meeting>MICCAI</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Fast delineation and visualization of vessels in 3d angiographic images</title>
+		<author>
+			<persName><forename type="first">Onno</forename><surname>Wink</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wiro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Max</forename><forename type="middle">A</forename><surname>Niessen</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Viergever</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Med. Imaging</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="337" to="346" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">3d semi-supervised learning with uncertainty-aware multi-view co-training</title>
+		<author>
+			<persName><forename type="first">Yingda</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fengze</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dong</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jinzheng</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lequan</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhuotun</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Daguang</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Holger</forename><surname>Roth</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WACV</title>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Vessel surface reconstruction with a tubular deformable model</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Peter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Juan</forename><forename type="middle">R</forename><surname>Yim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rakesh</forename><surname>Cebral</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peter</forename><forename type="middle">L</forename><surname>Mullick</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Choyke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Med. Imaging</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="issue">12</biblScope>
+			<biblScope unit="page" from="1411" to="1421" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Hi-fi: Hierarchical feature integration for skeleton detection</title>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shanghua</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dandan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming-Ming</forename><surname>Cheng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IJCAI</title>
+		<meeting>IJCAI</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Hyper-pairing network for multi-phase pancreatic ductal adenocarcinoma segmentation</title>
+		<author>
+			<persName><forename type="first">Yuyin</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yingwei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhishuai</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Angtian</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan</forename><forename type="middle">L</forename><surname>Elliot K Fishman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Seyoun</forename><surname>Yuille</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Park</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc.MICCAI</title>
+		<meeting>.MICCAI</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Prioraware neural network for partially-supervised multi-organ segmentation</title>
+		<author>
+			<persName><forename type="first">Yuyin</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhe</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Song</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinlei</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mei</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chong</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Elliot</forename><forename type="middle">K</forename><surname>Fishman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. ICCV</title>
+		<meeting>ICCV</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">A fixed-point model for pancreas segmentation in abdominal CT scans</title>
+		<author>
+			<persName><forename type="first">Yuyin</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lingxi</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Elliot</forename><forename type="middle">K</forename><surname>Fishman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. MIC-CAI</title>
+		<meeting>MIC-CAI</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">A 3d coarse-to-fine framework for volumetric medical image segmentation</title>
+		<author>
+			<persName><forename type="first">Zhuotun</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yingda</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Elliot</forename><forename type="middle">K</forename><surname>Fishman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. 3DV</title>
+		<meeting>3DV</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Multi-scale coarse-to-fine segmentation for screening pancreatic ductal adenocarcinoma</title>
+		<author>
+			<persName><forename type="first">Zhuotun</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yingda</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lingxi</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Elliot</forename><forename type="middle">K</forename><surname>Fishman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. MICCAI</title>
+		<meeting>MICCAI</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

@@ -1,0 +1,2708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">UCS: Universal Model for Curvilinear Structure Segmentation</title>
+				<funder ref="#_Dv7P5Nu">
+					<orgName type="full">National Natural Science Foundation of China</orgName>
+				</funder>
+				<funder ref="#_RbvYNGV">
+					<orgName type="full">Agency for Science, Technology and Research (A*STAR)</orgName>
+				</funder>
+				<funder ref="#_eDBMcTw">
+					<orgName type="full">MTC Programmatic Funds</orgName>
+				</funder>
+				<funder ref="#_5uzDcY5">
+					<orgName type="full">unknown</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2025-12-22">22 Dec 2025</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Kai</forename><surname>Zhu</surname></persName>
+							<email>zhukai@wust.edu.cn</email>
+							<affiliation key="aff0">
+								<orgName type="department">School of Com- puter Science and Technology</orgName>
+								<orgName type="institution">Wuhan University of Science and Technology</orgName>
+								<address>
+									<settlement>Wuhan</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Hubei Province Key Laboratory of Intelligent Information Processing and Real-time Industrial System</orgName>
+								<orgName type="institution">Wuhan University of Science and Technology</orgName>
+								<address>
+									<postCode>430065</postCode>
+									<settlement>Wuhan</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+							<email>chenli@wust.edu.cn</email>
+							<affiliation key="aff0">
+								<orgName type="department">School of Com- puter Science and Technology</orgName>
+								<orgName type="institution">Wuhan University of Science and Technology</orgName>
+								<address>
+									<settlement>Wuhan</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Hubei Province Key Laboratory of Intelligent Information Processing and Real-time Industrial System</orgName>
+								<orgName type="institution">Wuhan University of Science and Technology</orgName>
+								<address>
+									<postCode>430065</postCode>
+									<settlement>Wuhan</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Dianshuo</forename><surname>Li</surname></persName>
+							<email>lidianshuo@wust.edu.cn</email>
+							<affiliation key="aff0">
+								<orgName type="department">School of Com- puter Science and Technology</orgName>
+								<orgName type="institution">Wuhan University of Science and Technology</orgName>
+								<address>
+									<settlement>Wuhan</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Hubei Province Key Laboratory of Intelligent Information Processing and Real-time Industrial System</orgName>
+								<orgName type="institution">Wuhan University of Science and Technology</orgName>
+								<address>
+									<postCode>430065</postCode>
+									<settlement>Wuhan</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Yunxiang</forename><surname>Cao</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">School of Com- puter Science and Technology</orgName>
+								<orgName type="institution">Wuhan University of Science and Technology</orgName>
+								<address>
+									<settlement>Wuhan</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Hubei Province Key Laboratory of Intelligent Information Processing and Real-time Industrial System</orgName>
+								<orgName type="institution">Wuhan University of Science and Technology</orgName>
+								<address>
+									<postCode>430065</postCode>
+									<settlement>Wuhan</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><roleName>Senior Member, IEEE</roleName><forename type="first">Jun</forename><surname>Cheng</surname></persName>
+							<email>chengjun@a-star.edu.sg</email>
+							<affiliation key="aff0">
+								<orgName type="department">School of Com- puter Science and Technology</orgName>
+								<orgName type="institution">Wuhan University of Science and Technology</orgName>
+								<address>
+									<settlement>Wuhan</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">UCS: Universal Model for Curvilinear Structure Segmentation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2025-12-22">22 Dec 2025</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">218C19BA323AB66C6CC9ECBCC967AC3C</idno>
+					<idno type="arXiv">arXiv:2504.04034v2[cs.CV]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:10+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Curvilinear structure segmentation</term>
+					<term>domain adaptation</term>
+					<term>universal segmentation</term>
+					<term>sparse adapter</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Curvilinear structure segmentation (CSS) is essential in various domains, including medical imaging, landscape analysis, industrial surface inspection, and plant analysis. While existing methods achieve high performance within specific domains, their generalizability is limited. On the other hand, large-scale models such as Segment Anything Model (SAM) exhibit strong generalization but are not optimized for curvilinear structures. Existing adaptations of SAM primarily focus on general object segmentation and lack specialized design for CSS tasks. To bridge this gap, we propose the Universal Curvilinear structure Segmentation (UCS) model, which adapts SAM to CSS tasks while further enhancing its cross-domain generalization. UCS features a novel encoder architecture integrating a pretrained SAM encoder with two innovations: a Sparse Adapter, strategically inserted to inherit the pre-trained SAM encoder's generalization capability while minimizing the number of fine-tuning parameters, and a Prompt Generation module, which leverages Fast Fourier Transform with a high-pass filter to generate curve-specific prompts. Furthermore, the UCS incorporates a mask decoder that eliminates reliance on manual interaction through a dual-compression module: a Hierarchical Feature Compression module, which aggregates the outputs of the sampled encoder to enhance detail preservation, and a Guidance Feature Compression module, which extracts and compresses image-driven guidance features. Evaluated on a comprehensive multi-domain dataset, including an in-house dataset covering eight natural curvilinear structures, UCS demonstrates state-ofthe-art generalization and open-set segmentation performance across medical, engineering, natural, and plant imagery, establishing a new benchmark for universal CSS. The source code is available at <ref type="url" target="https://github.com/kylechuuuuu/UCS">https://github.com/kylechuuuuu/UCS</ref>.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>I. INTRODUCTION</head><p>C URVILINEAR structures [1], [2], characterized by in- tertwined slender structures with varying lengths and thicknesses, pose challenges in segmentation tasks, requiring precise extraction of their locations and distributions for further analysis and processing. Widely present across diverse domains, their accurate segmentation is essential for many applications. In medical images <ref type="bibr" target="#b11">[3]</ref>, <ref type="bibr" target="#b12">[4]</ref>, the accurate extraction of blood vessels facilitates the early diagnosis and monitoring of vascular diseases, directly impacting patient care and treatment planning. In pavement engineering <ref type="bibr" target="#b13">[5]</ref>- <ref type="bibr" target="#b16">[8]</ref>, detecting cracks ensures structural integrity and operational safety, minimizing the risk and reducing maintenance costs. Similarly, in plant biology <ref type="bibr" target="#b17">[9]</ref>, the accurate segmentation of leaf venation enables an understanding of the adaptive and ecological significance of leaf vein network structure, representing an essential component of plant phenotyping in ecological and genetic studies <ref type="bibr" target="#b18">[10]</ref>.</p><p>Although curvilinear structures across various domains share similar geometric characteristics, their representations exhibit substantial variations depending on the specific domain. This domain gap poses a considerable challenge for curvilinear structure segmentation. In this work, we use the term universal in a task-specific sense: a single model that can be trained once and then applied, without architecture changes, to segment curvilinear structures across heterogeneous domains (e.g., medical, engineering, natural, and plant imagery) and imaging modalities (e.g., fundus, OCTA, X-ray, RGB) under both seen and unseen scenarios. Developing such a universal model that can overcome cross-domain limitations is essential. It would enable cross-domain applications and drive innovation in transfer learning, open-set segmentation, and resource-efficient model deployment, while also highlighting the remaining challenges in extending universality to even broader modalities such as MRI or CT.</p><p>Given the need for such a universal model, we first examined the characteristics and limitations of traditional curvilinear structure segmentation approaches. These methods <ref type="bibr" target="#b16">[8]</ref>, <ref type="bibr" target="#b19">[11]</ref>- <ref type="bibr" target="#b24">[16]</ref> typically require domain-specific training, and the domain gap between datasets limits their direct application to novel domains, impeding their wider adoption for curvilinear structure segmentation across diverse fields. Additionally, the trend of large-scale models has had a profound impact across the field of AI. The emergence of general-purpose AI models, such as GPT-4V <ref type="bibr" target="#b25">[17]</ref>, DINO <ref type="bibr" target="#b26">[18]</ref>, SegGPT <ref type="bibr" target="#b27">[19]</ref>, APE <ref type="bibr" target="#b28">[20]</ref>, SAM <ref type="bibr" target="#b29">[21]</ref>, facilitates the use of foundation model to solve multiple different downstream tasks.</p><p>The SAM <ref type="bibr" target="#b29">[21]</ref> marks a significant advancement in extending the capabilities of segmentation models, offering powerful zero-shot capabilities and flexible prompting mechanisms. Thus, many works <ref type="bibr" target="#b30">[22]</ref>- <ref type="bibr" target="#b35">[27]</ref> have explored the application of SAM in several research fields. MedSAM <ref type="bibr" target="#b31">[23]</ref> and SAM-Med2d <ref type="bibr" target="#b32">[24]</ref> have explored applying SAM to medical image segmentation. SAM for Remote Sensing <ref type="bibr" target="#b34">[26]</ref> has adapted SAM's prior knowledge to the remote sensing domain. Although these methods have achieved promising results in their respective domains, these methods are domain-specific and lack multi-domain applicability.</p><p>In contrast, we propose UCS, which leverages the pretrained knowledge of SAM to enable cross-domain curvilinear structure segmentation. Extensive experiments demonstrate that UCS achieves remarkable domain adaptation capability through fine-tuning on limited data (3,244 images), successfully segmenting curvilinear structures in both seen and unseen domains. As illustrated in Fig. <ref type="figure" target="#fig_1">2</ref>, UCS exhibits exceptional zero-shot generalization across images from diverse scenes. In summary, our main contributions are summarized as follows:</p><p>1) We introduce UCS, the first universal framework for cross-domain curvilinear structure segmentation. It achieves state-of-the-art zero-shot performance and robust generalization to unseen domains with fine-tuning on limited data.</p><p>2) We introduce an encoder built upon a pretrained image encoder, featuring two key innovations: (1) Different from one-block, one-adapter idea, the adapters are sparsely inserted at the encoder blocks. This Sparse Adapter inherits the SAM encoder's generalization capabilities and minimizes the number of fine-tuning parameters. (2) The Prompt Generation (PG) module integrated a Fast Fourier Transform with a high-pass filter to extract high-frequency responses via a residual connection. It's designed to generate domain-adaptive initial prompts by exploiting frequency-domain representations of the input data. 3) We propose a mask decoder that enhances feature representation and eliminates reliance on manual interaction through a dual-compression module: (1) Hierarchical Feature Compression (HFC) module compresses the sampled encoder outputs with an interval of 6 and adds them to the decoder layer outputs. It provides multi-layered information, enriching the feature space available to the decoder. (2) The Guidance Feature Compression (GFC) module employed Principal Component Analysis (PCA) to extract the guidance features of the decoder layer. It enables image-based automatic segmentation and eliminates the need for manual prompts. 4) Extensive experiments demonstrate that UCS achieves excellent performance across multiple in-house and public benchmark datasets, confirming its robustness and cross-domain generalization.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>II. RELATED WORK A. Curvilinear Structure Segmentation with CNN</head><p>Since the invention of U-Net <ref type="bibr" target="#b20">[12]</ref>, designed to integrate low-level and high-level information for image segmentation, numerous U-Net variants have been proposed. Among these, the FR-UNet <ref type="bibr" target="#b23">[15]</ref> enhances the connectivity of U-Net segmentation through a multi-resolution convolution interactive mechanism and a dual-threshold iterative algorithm.</p><p>Building upon U-Net, several CNN-based models have been optimized to achieve more accurate segmentation. Wang et al. <ref type="bibr" target="#b36">[28]</ref> integrated VGG into U-Net and enhanced the performance of curve segmentation by cyclically sampling patches of varying sizes from the images. Xu et al. <ref type="bibr" target="#b37">[29]</ref> proposed an N-pair consistency loss function and introduced geometric transformation data augmentation to facilitate semi-supervised learning for curvilinear segmentation tasks.</p><p>In the medical field, extensive research has focused on developing more accurate vessel segmentation methods. Zhang et al. <ref type="bibr" target="#b38">[30]</ref> introduces a unified multi-task learning framework for joint segmentation and registration, effectively enhancing the accuracy and robustness of vessel segmentation and registration through a bi-fusion of structure and deformation at multiple scales. VSR-Net <ref type="bibr" target="#b39">[31]</ref> leverages CNN for initial coarse segmentation of vessel-like structures, followed by a graph clustering approach to dynamically rehabilitate subsection ruptures, thereby enhancing topological integrity and segmentation quality. Zhou et al. <ref type="bibr" target="#b40">[32]</ref> proposed a backboneagnostic MaskVSC method to reconstruct the retinal vascular network by simulating missing sections of blood vessels and using this simulation to train the model to predict the missing parts and their connections.</p><p>In the crack segmentation field, DeepCrack <ref type="bibr" target="#b41">[33]</ref> introduced a deep convolutional neural network that optimizes crack segmentation through hierarchical convolutional fusion of multi-scale deep features. Crack Segmentation with Super-Resolution <ref type="bibr" target="#b16">[8]</ref> jointly learns semantic segmentation and superresolution tasks to segment cracks from low-resolution images. By incorporating boundary combo loss to address the class imbalance, CSSR achieves crack segmentation while enhancing image resolution. SFIAN <ref type="bibr" target="#b42">[34]</ref> effectively models irregular crack objects through selective feature fusion and irregularityaware mechanisms, achieving pavement crack detection.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B. Curvilinear Structure Segmentation with Transformer</head><p>The emergence of Transformer architectures has demonstrated capabilities in modeling long-range dependencies, offering promising potential to overcome the receptive field limitations of CNN <ref type="bibr" target="#b43">[35]</ref>. This characteristic has led researchers to explore Transformer architectures for curvilinear segmentation tasks.</p><p>In retinal vascular segmentation, the Group Transformer Network <ref type="bibr" target="#b44">[36]</ref> includes a set of bottleneck structures that reduce the computational complexity of the Transformer, facilitating the combination of CNN and Transformer. Yu et al. <ref type="bibr" target="#b45">[37]</ref> first predicted the gamma values through CNN to adjust the intensity distribution of retinal images and the channel-attention Vision Transformer (ViT) enhanced edge feature maps both spatially and channel-wise. TUnet-LBF <ref type="bibr" target="#b46">[38]</ref> integrates Transformer Unet and local binary energy function model for coarse to fine segmentation of retinal vessels. The Stimulus-Guided Adaptive Transformer Network <ref type="bibr" target="#b19">[11]</ref> introduces a hybrid CNN-Transformer architecture with the Stimulus-Guided Adaptive Pooling Transformer to enhance global context capture and suppress redundant information. This approach effectively distinguishes blood vessels from lesions and handles blurred regions in fundus images. In crack segmentation, Qi et al. <ref type="bibr" target="#b47">[39]</ref> introduced an end-to-end model based on ViT and level set theory for segmenting bridge pavement defects, achieving precise segmentation by merging the outputs of two parallel decoders.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C. Segmentation with Large-Scale Model</head><p>While CNN-based methods and Transformer hybrid models excel in their trained domains, the recent push towards universal models signals a shift towards large-scale model architectures. Thus, developing vision systems that can transfer to new concepts or domains has become a vital research topic <ref type="bibr" target="#b28">[20]</ref>. Many open-vocabulary models <ref type="bibr" target="#b48">[40]</ref>- <ref type="bibr" target="#b50">[42]</ref> leverage large pretrained multimodal models (e.g., CLIP <ref type="bibr" target="#b51">[43]</ref>) to extract or transfer visual semantic knowledge. Beyond utilizing these foundational models, approaches like DenseCLIP <ref type="bibr" target="#b52">[44]</ref> and GroupViT <ref type="bibr" target="#b53">[45]</ref> demonstrate that fine-tuning these models or training them from scratch can also yield superior zero-shot performance.</p><p>The SAM marks a significant advancement in extending the capabilities of segmentation models. As a result, SAM has become a popular baseline in the segmentation domain. Several works have investigated the application and adaptation of SAM to different domains. SAM-Med2d <ref type="bibr" target="#b32">[24]</ref> bridges the domain gap between natural and medical images by fine-tuning SAM on a large-scale medical dataset with 4.6 million images and 19.7 million masks. EviPrompt <ref type="bibr" target="#b30">[22]</ref> takes a trainingfree approach, using a single reference image-annotation pair to minimize labeling and computational costs. Both explore distinct strategies for adapting SAM to medical image segmentation. HQ-SAM <ref type="bibr" target="#b33">[25]</ref> focuses on improving SAM's capability for fine-grained segmentation by introducing a learnable, highquality output token. This token is injected into SAM's mask decoder and designed to predict high-quality masks, enhancing its ability to handle detailed segmentation tasks. Building on SAM's strengths, we aim to address these gaps and explore its application for curvilinear structure segmentation across diverse domains.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>III. METHOD</head><p>This section presents the proposed universal curvilinear structure segmentation model, UCS. As illustrated in Fig. <ref type="figure">3</ref>, UCS comprises two primary components: a SAM-based image encoder and a mask decoder. To achieve this, we first introduce the Sparse Adapter (SA) module, which is sparsely inserted at the 5th, 11th, 17th, 23rd encoder blocks, inheriting the SAM encoder's generalization capabilities and minimizing the number of fine-tuning parameters. Furthermore, the PG module implements an FFT with high-pass filter to supply</p><p>Patch Embedding Prompt Genera�on Block 1 ... Block 5 ... Block 23 Block 24 Decoder Layer Decoder Layer Guidance Feature Compression MLP Hierarchical Feature Compression c Prompt Encoder Image Encoder Mask Encoder Learnable Frozen Add Mul�ply c Concat Patch Embed Linear FFT H-Pass IFFT MLP Sampler ConvTranspose2d LayerNom2d GELU ConvTranspose2d Conv 1×1 LayerNom2d GELU Conv 1×1 PCA (a) (b) (c) Prompt Genera�on Hierarchical Feature Compression Guidance Feature Compression Fig. 3. The proposed UCS model architecture. We freeze the image encoder and insert a learnable Sparse Adapter (SA) in specific encoder blocks, namely the 5th, 11th, 17th, and 23rd blocks, as shown in (a). The Prompt Generation (PG) module, illustrated in (b), integrates a Fast Fourier Transform with a high-pass filter to transform high frequency into dynamic prompts using a residual connection. The Hierarchical Feature Compression (HFC) module, shown in (c), compresses the outputs of the sampled encoders and adds them to the decoder layer. The Guidance Feature Compression (GFC) extracts image-driven guidance features. During training, the pretrained weights of the SAM encoder are frozen, and the rest of the model is trained. Block 1 Block 2 ... Block 24 Adapter Adapter Adapter (a) Block 1 ... Block 5 ... Block 11 ... Block 17 ... Block 23 Block 24 Adapter Adapter Adapter Adapter (b) curve-specific prompts to each encoder block (Sec. III-A). Secondly, we propose the HFC and GFC module, using sample strategy and PCA to supply multi-layered and extract the guidance information (Sec. III-B). Finally, we design the loss functions to supervise the training of UCS (Sec. III-C).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A. Image Encoder</head><p>The refinement of the image encoder incorporates two key components: the Sparse Adapter module and the Prompt Generation module.</p><p>1) Sparse Adapter: Adapter has proven to be an effective strategy for fine-tuning large models for downstream tasks <ref type="bibr" target="#b54">[46]</ref>, <ref type="bibr" target="#b55">[47]</ref>. By eliminating the need for full-parameter training, they preserve the model's original knowledge and prevent catastrophic forgetting. Existing adapters are typically designed for single-domain adaptation, limiting their ability to generalize across diverse domains. For example, SAM-Med2D <ref type="bibr" target="#b32">[24]</ref> improves segmentation performance but is limited to the medical domain. SAM-Adapter <ref type="bibr" target="#b35">[27]</ref> shows performance gains in shadow and camouflaged segmentation based on datasets from the same domain as the fine-tuning data. To address these limitations, we propose the Sparse Adapter. As shown in Fig. <ref type="figure" target="#fig_2">4</ref>, unlike previous approaches <ref type="bibr" target="#b32">[24]</ref>, <ref type="bibr" target="#b35">[27]</ref> that insert adapter layers into each encoder block (left side), we insert the adapter only at specific blocks (right side), reducing the number of learnable parameters in the encoder backbone. This design stems from two fundamental considerations: (1) the requirement to prioritize learning generalized curvilinear patterns rather than domain-specific features and (2) the necessity to maintain parameter efficiency while preserving the pretrained encoder's generalization capacity. This will be demonstrated in the ablation study (Table <ref type="table">VI</ref>).</p><p>Fig. <ref type="figure" target="#fig_3">5</ref> illustrates the adapter's placement after the Multihead Attention layer. The adapter is implemented as a residual branch placed adjacent to the MLP: it first projects the incoming features to a lower-dimensional space, applies an activation, and then projects them back to the original dimension. The adapter's operation can be mathematically expressed as:  where x ∈ R d and y ∈ R d are the input and output features, respectively. W 1 ∈ R r×d and W 2 ∈ R d×r are the downprojection and up-projection matrices, respectively. r is the bottleneck ratio set to 0.1 in this study. σ denotes the GELU activation function.</p><formula xml:id="formula_0">y = W 2 • σ(W 1 • x),<label>(1)</label></formula><p>2) Prompt Generation: In segmentation tasks involving small objects, such as curvilinear structures, fine structural information tends to attenuate as the number of encoder blocks increases. In order to preserve fine-grained structural details, the PG module, as depicted in Fig. <ref type="figure">3(b)</ref>, is designed to generate domain-adaptive initial prompts by exploiting frequencydomain representations of the input data. This is effective because curvilinear structures typically differ from the slowly varying background (low-frequency content), so an FFT-based high-pass filter suppresses the background while preserving the high-frequency curve details, which is illustrated in Fig. <ref type="figure" target="#fig_5">6</ref>.</p><p>To simplify things, the PG module extracts curve-related cues directly from input images. Specifically, the module transforms the input data into the frequency domain using an FFT. Subsequently, a central rectangular mask is then constructed to suppress low-frequency components, forming a high-pass filter that highlights high-frequency details in the transformed data. The high-pass filter H(u, v) is defined over frequency coordinates (u, v), with dimensions determined by the input width w, height h, and a tunable parameter rate (0.25 in this study). The filter is expressed as:</p><formula xml:id="formula_1">H(u, v) =      0, if |u -w 2 | &lt; √ w•h•rate 2 , and |v -h 2 | &lt; √ w•h•rate 2 , 1, otherwise. (2)</formula><p>Subsequently, an inverse FFT is applied to transform the filtered frequency signal back into the spatial domain. As shown in Fig. <ref type="figure">3(b)</ref>, for the input image X, the prompt embedding X at each encoder block can be represented as:</p><formula xml:id="formula_2">Xi = M LP i (L(E(X)) + IF F T (H(F F T (X)))) (3)</formula><p>where M LP i , E, IF F T , H, and F F T represent the ith Multilayer Perceptron, Patch Embedding layer, Inverse Fast Fourier Transform, high-pass filter, and Fast Fourier Transform, respectively.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B. Mask Decoder</head><p>The mask decoder needs to balance global context and local detail for universal curvilinear structure segmentation. (a) (b) Fig. 8. Top 5 eigenvalues of the image after PCA.</p><p>We achieve this with a dual-compression architecture using Hierarchical Feature Compression for fine-grained detail and Guidance Feature Compression for automated image-based segmentation. Finally, Mask Embedding integrates these features for refined output. 1) Hierarchical Feature Compression: The purpose of the HFC module is to enrich the decoder by integrating and supplementing features from various blocks of the image encoder. The pipeline of this module is shown in Fig. <ref type="figure">3(c)</ref>. HFC performs interval sampling by sampler on the encoder layer's outputs. Given N (24 in this study) encoder blocks, we sample features at intervals of ∆ (6 in this study). The sample block works as concatenated along the channel dimension to produce a unified feature representation:</p><formula xml:id="formula_3">F sampled = Cat(F l1 , . . . , F li ), l i = i∆ -1<label>(4)</label></formula><p>where F li denotes the l i -th block features. We calculated the cosine similarity between the feature map of the first encoder block and each subsequent encoder block, from encoder block F l1 to encoder block F li . The cosine similarity is computed as:</p><formula xml:id="formula_4">Cosine Similarity = F l1 • F li ∥F l1 ∥∥F li ∥ , i = 1, 2, . . . , i<label>(5)</label></formula><p>As shown in Fig. <ref type="figure">7</ref>, a line graph illustrates the relationship between cosine similarity and the sampling interval for encoder block feature maps. The graph demonstrates a clear downward trend in cosine similarity as the sampling interval increases. Notably, the cosine similarity falls below 0.5 when the sampling interval reaches 6.</p><p>TABLE I DETAILS OF THE DATASETS FOR EXPERIMENTS. Split Distribution Dataset Modality Domain Target Train -DRIVE [48] Fundus Medical Vessels -CHASEDB1 [49] Fundus Medical Vessels -CORN-1 [50] Nerve Medical Fibers -CRACKTREE200 [51] RGB Engineering Cracks -CRACKFOREST [5] RGB Engineering Cracks -XCAD [52] X-ray Medical Vessels -ROSSA [53] OCTA Medical Vessels Test (In-House) Seen Crack RGB Engineering Crack Unseen Branch RGB Plant Branch Unseen Floor RGB Engineering Floor Unseen Scratch RGB Engineering Scratch Unseen Soil RGB Natural Soil Unseen Wire RGB Engineering Wire Unseen Leaf RGB Plant Venation Unseen Tyre RGB Engineering Tread line Test (Public) unseen TubeTK [54] MRA Medical Vessels Seen OCTA500 3M [55] OCTA Medical Vessel Seen OCTA500 6M [55] OCTA Medical Vessel Seen CSD [56] RGB Engineering Crack Seen DCA1 [57] X-ray Medical Vessels Seen STARE [58] Fundus Medical Vessel Seen FIVES [59] Fundus Medical Vessel</p><p>2) Guidance Feature Compression: Unlike the segmentation of general objects, the elongated and intertwined characteristics of curvilinear structures make SAM's original three interactive prompting methods less effective. Specifically, boxbased prompts are not suitable for elongated curves. Pointbased and mask-based prompts are cumbersome and imprecise, requiring laborious manual placement.</p><p>Using a 15×15 sliding window, we compute the covariance matrix of pixel intensities across the image and map the top five eigenvalues back to their spatial coordinates. As illustrated in Fig. <ref type="figure">8</ref>, regions associated with the highest eigenvalues consistently align with curvilinear structures, validating PCA's effectiveness in identifying their principal characteristics.</p><p>Inspired by PCA and its ability to reduce dimensionality while retaining principal components, we propose the GFC module and integrate it into GFC to automatically capture dominant features. Considering that the dimension of the outputs of the prompt encoder and decoder layer X ∈ R 5×256 . PCA is applied to perform dimensionality reduction and guidance feature extraction with the following formula:</p><formula xml:id="formula_5">X ′ = (X -µ) • V C k ,<label>(6)</label></formula><p>where µ is the mean of X, C is the covariance matrix of the (X -µ), and V C k is the projection matrix formed by the k (5 in this study) eigenvectors of C. X ′ ∈ R 5×5 represents the output of GFC. An ablation study, detailed in TableV, further demonstrates the impact of this approach on segmentation performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C. Loss Formulation</head><p>A total loss function is designed by combining Focal Loss <ref type="bibr" target="#b68">[60]</ref>, Dice Loss <ref type="bibr" target="#b69">[61]</ref>, and Mask IoU Loss <ref type="bibr" target="#b70">[62]</ref> for segmentation of curvilinear structures. It's defined as:</p><formula xml:id="formula_6">L total = α • L focal + β • L dice + γ • L IoU ,<label>(7)</label></formula><p>where α, β, γ are the weight coefficients for Focal Loss, Dice Loss, and Mask IoU Loss, respectively.</p><p>The calculation formulas for these loss functions are as follows:</p><formula xml:id="formula_7">                     L focal = - 1 N N i=1 (1 -p i ) ζ log(p i ), if y i = 1 p ζ i log(1 -p i ), if y i = 0 L dice = 1 - 2 N i=1 p i y i + ϵ N i=1 p 2 i + N i=1 y 2 i + ϵ L IoU = 1 - N i=1 p i y i N i=1 p i + N i=1 y i - N i=1 p i y i + ϵ<label>(8)</label></formula><p>where ζ and ϵ are the focusing parameter and smoothing term with default values. Typical values for α, β, and γ are determined empirically. For instance, we empirically set α = 20.0, β = 1.0, and γ = 1.0, which showed good performance in our experiments.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>IV. EXPERIMENT AND EVALUATION</head><p>A. Experimental Setup 1) Train Dataset: We curated a comprehensive training set by gathering existing datasets for curvilinear segmentation: DRIVE <ref type="bibr" target="#b56">[48]</ref>, CHASEDB1 <ref type="bibr" target="#b57">[49]</ref>, CORN-1 <ref type="bibr" target="#b58">[50]</ref>, CRACKTREE200 <ref type="bibr" target="#b59">[51]</ref>, CRACKFOREST <ref type="bibr" target="#b13">[5]</ref>, XCAD <ref type="bibr" target="#b60">[52]</ref>, and ROSSA <ref type="bibr" target="#b61">[53]</ref>. These datasets, referred to as the Train Dataset, consist of 3,244 annotated image-mask pairs, providing a solid foundation for training.</p><p>2) Test Dataset: We created a novel In-House Test Dataset to evaluate open-set segmentation capabilities across diverse and challenging scenarios. This dataset is publicly available at IEEE DataPort (doi: <ref type="url" target="https://dx.doi.org/10.21227/1n2q-6770">https://dx.doi.org/10.21227/1n2q-6770</ref>). This dataset comprises images of curvilinear structures captured across eight distinct natural scene categories: branch, crack, floor, scratch, soil, wire, leaf, and tyre. Representative images from these categories are shown in Fig. <ref type="figure" target="#fig_1">2(a)</ref>. Each image in the dataset was annotated with pixel-level accuracy through manual labeling to ensure high-quality ground truth masks.</p><p>Additionally, we collected seven additional benchmark datasets for curvilinear segmentation to evaluate our model, collectively referred to as the Public Test Dataset: OCTA500 3M <ref type="bibr" target="#b63">[55]</ref>, OCTA500 6M 1 <ref type="bibr" target="#b63">[55]</ref>, CSD 2 , DCA1 <ref type="bibr" target="#b65">[57]</ref>, TubeTk <ref type="bibr" target="#b62">[54]</ref>, STARE <ref type="bibr" target="#b66">[58]</ref>, and FIVES <ref type="bibr" target="#b67">[59]</ref>. The combination of the In-House Test Dataset and the Public Test Dataset forms a comprehensive benchmark, enabling the evaluation of segmentation performance on diverse and unseen domains. Here, "seen" and "unseen" refer to imaging modalities or segmentation targets that are, respectively, present or absent in the training set. The details of the training and test splits, included datasets, imaging modalities, and the corresponding segmentation targets are summarized in Table <ref type="table">I</ref>. 1 The images in OCTA500 3M and OCTA500 6M share some similarities with those in the ROSSA <ref type="bibr" target="#b61">[53]</ref> from the Train Dataset. 2 The Crack Segmentation Dataset (CSD) is derived from <ref type="bibr" target="#b64">[56]</ref>, which was created by merging multiple crack segmentation datasets <ref type="bibr" target="#b13">[5]</ref>- <ref type="bibr" target="#b15">[7]</ref>, <ref type="bibr" target="#b59">[51]</ref>, <ref type="bibr" target="#b71">[63]</ref>, <ref type="bibr" target="#b72">[64]</ref> and included additional non-crack images. The original test folder contains 1,695 images. To avoid overlap with the Train Dataset, we excluded 31 images from CRACKTREE200 <ref type="bibr" target="#b59">[51]</ref>, 18 images from CRACKFOREST <ref type="bibr" target="#b13">[5]</ref>, and 212 nocrack images. The final CSD used in our experiments consisted of 1,434 unique image-mask pairs.</p><p>FIVES OCTA 3M TubeTK LEAF * CRACK * SCRATCH * SOIL *</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Input</head><p>UNet++ <ref type="bibr" target="#b22">[14]</ref> CSSR <ref type="bibr" target="#b16">[8]</ref> FR-UNet <ref type="bibr" target="#b23">[15]</ref> HQ-SAM <ref type="bibr" target="#b33">[25]</ref> Rein <ref type="bibr" target="#b50">[42]</ref> Ours 3) Implementation Details: UCS and the comparison models were either fine-tuned or trained on the Train Dataset until convergence to ensure a fair evaluation of their generalization capabilities.</p><p>UCS was implemented using PyTorch 2.4.0 and CUDA 11.8. To augment the data, we employed horizontal flipping and random cropping techniques. The model was trained for 10 epochs with an initial learning rate was set to 1 × 10 -4 , and the model was trained using the Adam optimizer with a batch size of 1. The binarization threshold was set to 0.5. The comparison models were trained or fine-tuned with default hyperparameters from their open-source implementations. All models, including UCS and the comparison models, were trained on an NVIDIA GeForce RTX 3090 GPU.</p><p>4) Evaluation metrics: For pixel-based evaluation, we employ the F1-score, Precision, and Recall metrics, which are widely adopted in existing semantic segmentation meth-ods <ref type="bibr" target="#b19">[11]</ref>, <ref type="bibr" target="#b23">[15]</ref>, <ref type="bibr" target="#b41">[33]</ref>, <ref type="bibr" target="#b42">[34]</ref>, <ref type="bibr" target="#b45">[37]</ref>, <ref type="bibr" target="#b73">[65]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B. One Model Weight for All</head><p>We compared with nine different representative models, providing a comprehensive analysis of performance across different architectures. Specifically, we benchmarked our method against general CNN-based frameworks such as UNet-vgg16 <ref type="bibr" target="#b20">[12]</ref>, UNet-resnet101 <ref type="bibr" target="#b20">[12]</ref>, UNet++ <ref type="bibr" target="#b22">[14]</ref>, CSNet <ref type="bibr" target="#b74">[66]</ref>, CS 2 Net <ref type="bibr" target="#b75">[67]</ref>, CSSR <ref type="bibr" target="#b16">[8]</ref>, FR-UNet <ref type="bibr" target="#b23">[15]</ref>, BCU-Net <ref type="bibr" target="#b24">[16]</ref>, as well as larger Transformer-based architectures, including SAM-Med2d <ref type="bibr" target="#b32">[24]</ref>, Rein <ref type="bibr" target="#b50">[42]</ref>, and HQ-SAM <ref type="bibr" target="#b33">[25]</ref>. Moreover, since foundation models (SAM-Med2d <ref type="bibr" target="#b32">[24]</ref>, Rein <ref type="bibr" target="#b50">[42]</ref>, and HQ-SAM <ref type="bibr" target="#b33">[25]</ref>) are designed for general purposes, we evaluate both their original pretrained weights and their fine-tuned versions on the Train Dataset for a comprehensive comparison. TABLE II COMPARISON RESULTS ON THE IN-HOUSE TEST DATASET. HERE, ‡ AND † DENOTE TEST RESULTS FOR MODELS TRAINED AND FINE-TUNED ON THE TRAIN DATASET, RESPECTIVELY. THE BEST AND SECOND-BEST PERFORMANCES ARE BOLDED AND UNDERLINED, RESPECTIVELY. Method Year BRANCH CRACK FLOOR SCRATCH SOIL WIRE LEAF TYRE</p><p>TABLE III COMPARISON RESULTS ON THE PUBLIC TEST DATASET. Method Year OCTA500 3M OCTA500 6M CSD DCA1 TubeTK STARE FIVES</p><p>Dataset, which includes a wide range of curvilinear structures from diverse real-world scenarios.</p><p>Table <ref type="table">II</ref> provides a comprehensive comparison of our proposed UCS method against several state-of-the-art segmentation models on the In-House Test Dataset, evaluating performance across eight diverse categories. Our UCS method demonstrates strong performance, achieving F1-score ranging from 65.32 (WIRE) to 93.63 (SCRATCH), significantly outperforming existing approaches. Across the categories listed from left to right in Table <ref type="table">II</ref>, UCS outperforms the second-best comparison model by <ref type="bibr">16.30, 14.86, 20.64, 49.61, 47.20, 14.68, 32.</ref>02, and 39.44 on the F1-score, respectively. For example, in the CRACK category, UCS achieves an F1-score of 69.31, surpassing HQ-SAM's F1-score of 54.45 by a notable margin of 14.86 points. These results underscore UCS's exceptional generalization capability, establishing it as a new benchmark for curvilinear structure segmentation tasks.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>2) Comparison on Public Test Dataset:</head><p>To verify the consistency of performance gains, we conducted experiments on the Public Test Dataset.</p><p>Table <ref type="table">III</ref> compares UCS with other segmentation models on the Public Test dataset. UCS attains the highest F1-score on all seven public benchmarks (OCTA500 3M, OCTA500 6M, CSD, DCA1, TubeTK, STARE, and FIVES). Although UCS does not always achieve the top precision or recall individually (e.g., FR-UNet reports higher precision on OCTA500 3M and OCTA500 6M), this is a consequence of different models operating at different points on the precision-recall spectrum. Some methods over-segment and therefore obtain high recall but lower precision, while others produce conservative, highly precise masks that miss thin or fragmented structures and thus have lower recall. The F1-score, as the harmonic mean of precision and recall, captures the balance between these behaviors. UCS is deliberately biased toward recovering fine, continuous curvilinear structures-accepting a modest rise in false positives to secure higher recall and better structural coherence-so its precision may not always be maximal, but its overall F1 is consistently superior. The particularly large margin on CSD ( 24.7 F1 points over the next best) further underscores UCS's effectiveness on crack-like patterns and its strong cross-domain generalisation. Fig. <ref type="figure" target="#fig_8">9</ref> presents a visual comparison of segmentation results across a range of datasets. In the FIVES dataset, our method clearly outperforms others, exhibiting precise delineation of vascular structures with minimal red (false negatives) and green (false positives) pixels. In the LEAF dataset, our approach segments the delicate vein patterns, while other methods produce incomplete or fragmented results, primarily showing red pixels indicating significant false negatives. In the SOIL dataset, other methods exhibit significant noise and incomplete segmentation. Our method provides a complete and clean segmentation. Overall, the proposed UCS consistently outperforms competing methods by delivering higher true positive rates, lower false positives, and superior structural coherence across all examined domains.</p><p>LEAF * OCTA 3M Motion FR-UNet [15] Ours sRNS [70] FR-UNet [15] Ours DANET [71] FR-UNet [15] Ours </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C. Robustness Study</head><p>We evaluated UCS's robustness by testing its segmentation performance under simple and realistic image degradations.</p><p>1) Simple Degradations: Gaussian noise is random fluctuations following a normal distribution and is added to the input images with a zero mean and varying standard deviations (σ =10, 15). The noisy image is defined as:</p><formula xml:id="formula_8">I y = I + N (0, σ 2 )<label>(9)</label></formula><p>Motion Blur refers to image degradation caused by relative motion between the camera and the scene during exposure, typically simulated by convolving the image with a motion blur kernel. The kernel is defined as:</p><formula xml:id="formula_9">K(L, ϕ) = 1 L if x 2 + y 2 ≤ L</formula><p>2 and y x = tan(ϕ), 0 otherwise. <ref type="bibr" target="#b18">(10)</ref> where x, y are the coordinates in the kernel, L denotes the kernel dimensions, which are set to 7, 11, and 15 in this experiment, ϕ ∈ [0, π) represents the motion direction, and ϕ is randomly assigned.</p><p>2) Realistic Degradations: We employed three advanced degradation models: sRGB-Real-Noise-Synthesizing (sRNS) <ref type="bibr" target="#b78">[70]</ref>, DASR <ref type="bibr" target="#b80">[72]</ref>, and DANET <ref type="bibr" target="#b79">[71]</ref>. sRNS improves the realism of degradation by modeling spatial correlations and signal dependencies through three specialized networks. DASR predicts degradation parameters such as Gaussian blur, downsampling, Poisson noise, and JPEG compression through a lightweight regression network, which dynamically simulates realistic degradation effects, including blurring and noise artifacts. DANET generates realistic degradations by learning the joint distribution of clean and degraded images via adversarial training, effectively capturing both spatial correlations and intensity variations.</p><p>As shown in Table <ref type="table">IV</ref>, UCS consistently achieves high segmentation accuracy across various degradation methods and levels. Gaussian noise with σ=10 and σ=15 leads to a slight decline in the F1-score, dropping from 77.74 to 76. <ref type="bibr" target="#b63">55</ref> and 75.30 on the Public test dataset, and from 74.69 to 74.05 and 73.37 on the In-House test dataset. Motion blur with increasing lengths (L=7, L=11, L=15) further impacts performance, with the F1-score on the Public test dataset reducing to 74.28, 73.49, and 70.37, respectively, and on the In-House test dataset declining to 73.13, 71.98, and 70.29. Among deep learningbased degradation models, sRNS causes the most significant F1-score drop, with scores decreasing to 67.75 and 70.09 on</p><p>TABLE IV PERFORMANCE UNDER VARIOUS DEGENERATION ON THE PUBLIC TEST DATASET (PUBLIC) AND THE IN-HOUSE TEST DATASET (IN-HOUSE). Degradation Public In-House F1 ↑ Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec ↑ -77.74 84.51 71.27 74.69 78.61 71.16 Gaussian(σ=10) 76.55 83.19 70.91 74.05 76.72 71.56 Gaussian(σ=15) 75.30 81.52 69.97 73.37 76.19 70.75 Motion(L=7) 74.28 78.61 70.40 73.13 72.49 73.80 Motion(L=11) 73.49 76.70 70.53 71.98 70.49 73.54 Motion(L=15) 70.37 75.04 66.25 70.29 68.20 72.52 sRNS [70] 67.75 84.26 56.59 70.09 70.02 70.16 DASR [72] 75.15 80.49 70.47 70.68 68.50 73.02 DANET [71] 72.68 80.80 66.04 70.74 70.92 70.57</p><p>TABLE V ABLATION OF SA, PG, HFC, AND GFC MODULES. Model Module Public In-House SA PG HFC GFC F1 ↑ Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec ↑ ----33.07 39.57 28.41 29.95 31.87 28.25 ✓ ---45.45 65.93 36.80 40.92 57.87 31.65 Base ✓ ✓ --61.57 82.53 49.10 59.54 72.99 50.28 ✓ ✓ ✓ -67.78 81.19 58.18 66.35 76.00 58.87 ✓ ✓ ✓ ✓ 77.74 84.51 71.27 74.69 78.61 71.16 both two major datasets. DASR and DANET lead to moderate performance drop, with F1-score of 75.15 and 72.68 on the Public test dataset, and 70.76 and 70.74 on the In-House test dataset, respectively.</p><p>Fig. <ref type="figure" target="#fig_11">10</ref> provides a qualitative comparison of segmentation results under various image degradations. We observe that UCS consistently outperforms FR-UNet in handling degraded images. For example, under Motion blur, FR-UNet fails to capture the leaf veins, resulting in fragmented segmentation with many red pixels (false negatives), whereas UCS accurately segments the veins. Similarly, with sRNS noise, FR-UNet exhibits numerous green pixels (false positives), while UCS maintains accurate segmentation. Under DANet degradation, FR-UNet produces significant red and green errors, struggling to preserve details, while UCS delivers sharper segmentation. These results demonstrate the superior robustness of UCS against diverse image degradations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>D. Ablation Study</head><p>1) The Impact of Different Components: Table <ref type="table">V</ref> presents a comprehensive ablation study, assessing the contributions TABLE VI PERFORMANCE COMPARISON OF DIFFERENT ADAPTER SPARSE STRATEGIES IN THE ENCODER BLOCKS, WHERE -DENOTES THE ORIGINAL SAM MODEL. Sparse Adapter Public In-House Number F1 ↑ Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec ↑ -33.07 39.57 28.41 29.95 31.87 28.25 24 33.74 42.50 27.98 27.56 28.13 27.02 12 34.75 45.03 28.29 29.66 31.26 28.22 8 34.28 48.98 26.34 35.86 48.67 28.39 6 36.72 50.18 28.95 38.20 53.73 29.63 4 45.45 65.93 36.80 40.92 57.87 31.65 3 30.79 48.69 22.51 26.33 36.81 20.49</p><p>of each module within the UCS framework. The analysis reveals a progressive performance enhancement with the sequential integration of each component. Specifically, the SA module demonstrably improves F1-score by 12.36 and 10.97 on the public and in-house datasets, respectively. Subsequent inclusion of the PG module further augments performance, yielding precision gains of 16.60 and 15.12, alongside recall improvements of 12.30 and 18.63. The HFC module leads to a consistent increase in recall, with gains of 9.08 and 8.59 observed across both datasets. Finally, the GFC module exhibits a pronounced impact on recall, achieving increments of 13.09 and 12.19, while exhibiting modest precision gains of 3.32 and 2.61. In summation, these results illustrate the incremental and complementary contributions of each UCS module.</p><p>2) The Impact of Cutoff Rate: To determine the optimal cutoff rate for the Prompt Generation (PG) module, we conducted an ablation study using a grid search approach. As illustrated in Fig. <ref type="figure" target="#fig_12">11</ref>, the F1 score peaks when the cutoff rate is set to 0.25. As the rate increases beyond this point, performance begins to decline. This trend suggests that a lower cutoff rate fails to adequately filter out low-frequency noise, whereas a higher rate may inadvertently remove essential high-frequency structural details along with the noise. Therefore, a cutoff rate of 0.25 strikes the optimal balance, maximizing the extraction of relevant curvilinear features while minimizing interference from irrelevant information.</p><p>3) Impact of Sparse Adapter Strategy: Table <ref type="table">VI</ref> shows that the 4-adapter sparse configuration yields the best trade-off between performance and parameter efficiency: it improves F1 by 12.38 points on the public dataset and by 10.97 points on the in-house dataset versus the original SAM baseline. Overly  dense adaptation (24 adapters) degrades performance, while extreme sparsity (3 adapters) also harms results, indicating a sweet spot for the number of adapters.</p><p>To verify the effectiveness of the Sparse Adapter strategy in mitigating catastrophic forgetting during domain shifts, we conducted a sequential training experiment. The model was trained first on FIVES (Task 1), then fine-tuned on Wire (Task 2), and finally on DCA1 (Task 3). As illustrated in Fig. <ref type="figure" target="#fig_13">12</ref>, both strategies exhibit similar evolutionary trends across the training epochs. However, the Sparse Adapter consistently outperforms the full insertion strategy, maintaining higher F1 scores throughout all stages. Specifically, when shifting to the second task, although both curves show a decline due to domain differences, the Sparse Adapter exhibits a much milder drop and superior stability. This demonstrates that by confining parameter updates to a smaller subspace, the sparse strategy reduces the risk of overfitting and retains better generalization capabilities compared to inserting adapters in every block. TABLE VII TRAINABLE PARAMETER FRACTION, F1 AND EFFICIENCY COMPARISON OF ADAPTATION METHODS ON WIRE DATASET. Method Trainable Params(%)↓ F1↑ Params(M)↓ FLOPs(GB)↓ Runtime(ms)↓ SAM-Med2d 68.0 41.22 950.14 1690.34 538.32 HQ-SAM 1.30 50.64 312.34 1493.84 268.46 CWSAM 12.1 51.70 315.56 1468.74 350.51 UCS (Ours) 2.65 65.32 312.61 1497.88 239.56</p><p>such as red ('leaf') and pink ('scratch'), also show improved compactness and reduced inter-mixing in the UCS plot. This enhanced separation and compactness signify an improved inter-domain discrimination and more consistent semantic representations for various curvilinear structure categories with UCS, which directly correlates with its superior cross-domain segmentation performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>5) Number of Trainable Parameters:</head><p>The sparse-adapter design updates only 2.65% of the model parameters by inserting lightweight adapters into four selected encoder blocks while keeping the rest of the pretrained encoder frozen. Paired with the Prompt Generation, Hierarchical Feature Compression and Guidance Feature Compression modules, this parameter-efficient adaptation preserves pretrained generalization and achieves the best empirical segmentation performance (e.g., F1 = 65.32) on our benchmarks. As shown in Table <ref type="table">VII</ref>, the proposed approach attains the highest F1 while maintaining a very low fraction of trainable parameters, demonstrating superior parameter efficiency without sacrificing accuracy.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>V. CONCLUSION</head><p>In this paper, we introduce UCS, a universal segmentation model designed to segment arbitrary curvilinear structures across diverse domains, effectively bridging the domain gap. UCS features a novel architecture that integrates initial prompt information into each encoder block and fuses multi-level contextual features within the mask decoder, achieving a balance between global semantic understanding and precise local delineation. Comprehensive evaluations on both public and inhouse test datasets demonstrate that UCS outperforms stateof-the-art CNN-based and Transformer-based models in segmentation accuracy, while also exhibiting robust performance under various image degradation conditions. By focusing on cross-domain segmentation, UCS transcends specific downstream tasks, aligning with our goal of universal applicability. In the future, we will focus on further reducing training parameters to achieve efficient model deployment and lower computational costs and explore fusing multi-modal data to improve segmentation accuracy in complex scenarios.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 .</head><label>1</label><figDesc>Fig. 1. Comparison of F1-score across diverse segmentation models and datasets, where * denotes in-house dataset.</figDesc><graphic coords="1,311.98,175.62,251.05,251.05" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 2 .</head><label>2</label><figDesc>Fig. 2. Visualization results of curvilinear segmentation by UCS across various scenarios. These images are selected from our in-house dataset and represent key examples from eight scene categories. The (a) shows the input images, while the (b) presents the corresponding segmentation results.</figDesc><graphic coords="2,55.02,59.07,256.20,170.80" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 4 .</head><label>4</label><figDesc>Fig. 4. (a) Previous adapter approach (b) Our Sparse Adapter.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 5 .</head><label>5</label><figDesc>Fig. 5. Structure of the Adapter.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><figDesc>(a) Inputs (b) High-Pass Results</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Fig. 6 .</head><label>6</label><figDesc>Fig. 6. (a) Input image. (b) Result after FFT-based high-pass filtering. The high-pass output preserves and enhances curvilinear structures (e.g., vessels, cracks).</figDesc><graphic coords="5,54.19,56.07,87.87,87.87" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Fig. 7 .Fig. 8 .</head><label>78</label><figDesc>Fig. 7. Cosine similarity vs. sampling interval for encoder block feature maps.</figDesc><graphic coords="5,324.53,56.07,225.94,110.39" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Fig. 9 .</head><label>9</label><figDesc>Fig. 9. Qualitative comparison of UCS with other methods across datasets from diverse domains. The left text identifies the image dataset, while the bottom text denotes the segmentation model used. The results are presented as pixel-level comparisons with the ground truth, where black, white, red, and green pixels represent true negatives (TN), true positives (TP), false negatives (FN), and false positives (FP), respectively.</figDesc><graphic coords="7,490.60,425.51,70.94,53.21" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>1 )</head><label>1</label><figDesc>Comparison on In-House Test Dataset: The open-set segmentation performance was evaluated on the In-House Test</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><head>Fig. 10 .</head><label>10</label><figDesc>Fig. 10. Visualization of image degradation and segmentation results post-degradation. Columns 1, 4, and 7 show the results of the degradation methods indicated by the text at the bottom, with the segmentation results of FR-UNet and UCS (Ours) displayed to their right.</figDesc><graphic coords="9,58.96,93.62,54.49,54.49" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_12"><head>Fig. 11 .</head><label>11</label><figDesc>Fig. 11. The impact of different cutoff rates on the F1 on WIRE datasets. Performance peaks at a cutoff rate of 0.25 and subsequently declines.</figDesc><graphic coords="10,61.52,56.07,225.94,112.21" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_13"><head>Fig. 12 .</head><label>12</label><figDesc>Fig. 12. The F1 of the sparse adapter versus adapters inserted in all encoder blocks across three-stage training epochs.</figDesc><graphic coords="10,312.10,56.07,250.79,139.33" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_14"><head>Fig. 13 .</head><label>13</label><figDesc>Fig. 13. Visualization of t-SNE embeddings for (a) CWSAM and (b) UCS on the eight In-House Test Dataset. Different colors represent different curvilinear structure categories.</figDesc><graphic coords="10,311.98,236.05,123.01,98.29" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_15"><head>4 )</head><label>4</label><figDesc>Visualization of t-SNE:Figure 13 illustrates the t-SNE embeddings derived from the In-House Test Dataset, comparing CWSAM (a) with UCS (b). A visual comparison reveals that UCS generates significantly more compact and distinctly separated clusters across different domains than CWSAM. For instance, in the CWSAM visualization (a), the green ('floor') and orange ('crack') clusters exhibit notable overlap, indicating poor discrimination between these categories. In stark contrast, the UCS visualization (b) demonstrates a clear separation of these same green and orange clusters, with each forming a more cohesive group. Furthermore, other clusters,</figDesc></figure>
+		</body>
+		<back>
+
+			<div type="funding">
+<div><p>This paper was supported by the <rs type="funder">National Natural Science Foundation of China</rs> (<rs type="grantNumber">62271359</rs>) and the <rs type="funder">Agency for Science, Technology and Research (A*STAR)</rs> under its <rs type="funder">MTC Programmatic Funds</rs> (Grant No. <rs type="grantNumber">M23L7b0021</rs>). <rs type="person">Jun Cheng</rs> is with the <rs type="institution">Institute for Infocomm Research (I 2 R)</rs>, <rs type="funder">Agency for Science, Technology and Research (A*STAR)</rs>, <rs type="person">1 Fusionopolis Way</rs>, #<rs type="grantNumber">21-01</rs>, <rs type="person">Connexis South Tower</rs>, <rs type="grantNumber">Singapore 138632</rs>, <rs type="programName">Republic of Singapore</rs> (e-mail:</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_Dv7P5Nu">
+					<idno type="grant-number">62271359</idno>
+				</org>
+				<org type="funding" xml:id="_eDBMcTw">
+					<idno type="grant-number">M23L7b0021</idno>
+				</org>
+				<org type="funding" xml:id="_RbvYNGV">
+					<idno type="grant-number">21-01</idno>
+				</org>
+				<org type="funding" xml:id="_5uzDcY5">
+					<idno type="grant-number">Singapore 138632</idno>
+					<orgName type="program" subtype="full">Republic of Singapore</orgName>
+				</org>
+			</listOrg>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">↑</forename><surname>Pre</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">↑</forename><surname>Rec</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">↑</forename><surname>F1 ↑ Pre</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">↑</forename><surname>Rec</surname></persName>
+		</author>
+		<idno>UNet-vgg16 [12] ‡ 2015 25.41 38.31 19.01 22.19 47.70 14.46 50.21 54.88 46.28 32.38 51.42 23.64 13.64 12.87 14.52 28.72 39.03 22.73 29.74 48.61 21.43 44.04 33.44 64.48</idno>
+	</analytic>
+	<monogr>
+		<title level="j">↑ Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title/>
+		<author>
+			<persName><surname>Csnet</surname></persName>
+		</author>
+		<idno>66] ‡ 2019 31.16 54.61 29.20 25.80 54.12 24.23 46.88 49.44 54.83 35.60 44.81 35.40 19.10 15.90 31.66 29.33 35.09 32.63 11.91 14.92 12.19 28.72 19.99 70.02 CS 2 Net [67] ‡ 2020 35.62 52.87 34.77 24.42 49.38 22.87 44.14 47.97 52.63 35.42 44.17 36.21 13.53 9.91 30.72 27.12 30.38 33.68 13.65 15.29 14.64 25.58 17.53 65.10</idno>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title/>
+		<author>
+			<persName><surname>Hq-Sam</surname></persName>
+		</author>
+		<idno>25] † 2024 49.01 43.74 55.73 54.45 48.95 63.94 51.99 42.72 66.39 39.33 30.43 55.59 34.91 23.88 64.91 50.64 46.04 56.26 42.20 37.20 48.76 43.08 30.37 74.07</idno>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title/>
+		<author>
+			<persName><surname>Knowsam</surname></persName>
+		</author>
+		<idno>69] † 2025 47.50 42.00 54.00 53.30 47.50 62.50 50.20 41.80 65.50 38.40 29.60 53.90 34.00 22.90 63.80 49.50 45.00 55.80 41.00 36.50 46.50 42.00 29.80 73.50</idno>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title/>
+		<idno>UNet-vgg16 [12] ‡ 2015 40.71 80.45 28.15 53.23 79.05 41.67 23.92 49.96 15.73 47.12 72.05 35.44 14.94 80.04 15.39 47.45 87.70 32.23 60.29 74.64 50.57</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec ↑ F1 ↑ Pre ↑ Rec</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<title/>
+		<author>
+			<persName><surname>Csnet</surname></persName>
+		</author>
+		<idno>66] ‡ 2019 68.10 72.50 64.00 64.00 78.00 55.00 25.00 45.00 18.00 55.05 60.30 50.20 34.50 51.00 33.00 45.50 61.00 38.00 42.00 66.00 33.00 CS 2 Net [67] ‡ 2020 69.60 73.00 65.50 65.50 78.00 56.50 24.50 44.50 16.50 56.22 61.10 51.00 34.00 50.50 32.50 44.00 60.50 37.50 39.50 63.50 30.50</idno>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title/>
+		<author>
+			<persName><surname>Sam-Med</surname></persName>
+		</author>
+		<idno>24] † 2023 72.38 72.04 72.73 70.90 74.40 67.69 41.10 49.85 34.69 65.50 72.10 59.20 49.99 73.67 43.14 54.99 73.67 43.14 60.24 78.36 48.47</idno>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title/>
+		<author>
+			<persName><surname>Hq-Sam</surname></persName>
+		</author>
+		<idno>25] † 2024 80.29 75.35 85.93 78.68 76.74 80.73 49.19 63.77 40.03 73.20 82.00 65.00 31.25 98.73 25.48 26.25 88.73 15.48 73.07 75.69 70.62</idno>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title/>
+		<author>
+			<persName><surname>Knowsam</surname></persName>
+		</author>
+		<idno>69] † 2025 72.30 67.50 77.90 70.70 69.00 72.90 41.10 55.50 33.00 64.40 72.20 57.70 52.20 68.80 48.60 57.20 68.80 48.60 62.00 64.60 59.50</idno>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Curve segmentation and representation by superellipses</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">L</forename><surname>Rosin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">A</forename><surname>West</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEE Proceedings-Vision, Image and Signal Processing</title>
+		<imprint>
+			<date type="published" when="1995">1995</date>
+			<biblScope unit="volume">142</biblScope>
+			<biblScope unit="page" from="280" to="288" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Curves: Curve evolution for vessel segmentation</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Lorigo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><forename type="middle">D</forename><surname>Faugeras</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">E L</forename><surname>Grimson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Keriven</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Kikinis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Nabavi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C.-F</forename><surname>Westin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical image analysis</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="195" to="206" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Robust 3-d modeling of vasculature imagery using superellipsoids</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Tyrrell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Di Tomaso</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Fuja</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Tong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Kozak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Jain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Roysam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="223" to="237" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Deep retinal image segmentation with regularization under geometric priors</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Cherukuri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">G</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bala</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Monga</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Image Processing</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="page" from="2552" to="2567" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Automatic road crack detection using random structured forests</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Qi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Meng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Intelligent Transportation Systems</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="issue">12</biblScope>
+			<biblScope unit="page" from="3434" to="3445" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Feature pyramid and hierarchical boosting network for pavement crack detection</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Prokhorov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Mei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ling</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Intelligent Transportation Systems</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="1525" to="1535" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Deepcrack: A deep hierarchical feature learning architecture for crack segmentation</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neurocomputing</title>
+		<imprint>
+			<biblScope unit="volume">338</biblScope>
+			<biblScope unit="page" from="139" to="153" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Crack segmentation for low-resolution images using joint learning with super-resolution</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Kondo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ukita</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2021 17th international conference on machine vision and applications (MVA)</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1" to="6" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Automatic classification of legumes using leaf vein image features</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">G</forename><surname>Larese</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Namías</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">M</forename><surname>Craviotto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Arango</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Gallo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">M</forename><surname>Granitto</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognition</title>
+		<imprint>
+			<biblScope unit="volume">47</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="158" to="168" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Phenovein-a tool for leaf vein segmentation and analysis</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bühler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Rishmawi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Pflugfelder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Huber</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Scharr</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hülskamp</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Koornneef</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Schurr</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Jahnke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Plant Physiology</title>
+		<imprint>
+			<biblScope unit="volume">169</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="2359" to="2370" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Stimulus-guided adaptive transformer network for retinal blood vessel segmentation in fundus images</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical Image Analysis</title>
+		<imprint>
+			<biblScope unit="volume">89</biblScope>
+			<biblScope unit="page">943</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">U-net: Convolutional networks for biomedical image segmentation</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ronneberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Brox</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical image computing and computer-assisted intervention-MICCAI 2015: 18th international conference</title>
+		<meeting><address><addrLine>Munich, Germany</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2015">October 5-9, 2015. 2015</date>
+			<biblScope unit="page" from="234" to="241" />
+		</imprint>
+	</monogr>
+	<note>proceedings, part III 18</note>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Local intensity order transformation for robust curvilinear object segmentation</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Boutry</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Géraud</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Image Processing</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="2557" to="2569" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Unet++: Redesigning skip connections to exploit multiscale features in image segmentation</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M R</forename><surname>Siddiquee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tajbakhsh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1856" to="1867" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Full-resolution network and dual-threshold iteration for retinal vessel and coronary angiograph segmentation</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Tian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Gao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE journal of biomedical and health informatics</title>
+		<imprint>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="4623" to="4634" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Bcu-net: Bridging convnext and u-net for medical image segmentation</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ji</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computers in Biology and Medicine</title>
+		<imprint>
+			<biblScope unit="volume">159</biblScope>
+			<biblScope unit="page" from="960" to="106" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<title level="m" type="main">Gpt-4v (ision) system card</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Open</surname></persName>
+		</author>
+		<ptr target="https://cdn.openai.com/papers/GPTVSystemCard.pdf" />
+		<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Mask dino: Towards a unified transformer-based framework for object detection and segmentation</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Ni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H.-Y</forename><surname>Shum</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2023 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="3041" to="3050" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Seggpt: Towards segmenting everything in context</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Huang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2023 IEEE/CVF International Conference on Computer Vision (ICCV)</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="1130" to="1140" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Aligning and prompting everything all at once for universal visual perception</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Ji</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page">203</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Segment anything</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kirillov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Mintun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ravi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Rolland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Gustafson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Whitehead</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">C</forename><surname>Berg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W.-Y</forename><surname>Lo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dollár</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2023 IEEE/CVF International Conference on Computer Vision (ICCV)</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="3992" to="4003" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Eviprompt: A training-free evidential prompt generation method for adapting segment anything model in medical images</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Men</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Image Processing</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="6204" to="6215" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Segment anything in medical images</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>You</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Communications</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="654" to="663" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Jiang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2308.16184</idno>
+		<title level="m">Sam-med2d</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Segment anything in high quality</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Ke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Danelljan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y.-W</forename><surname>Tai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C.-K</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="page" from="29" to="914" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">The segment anything model (sam) for remote sensing applications: From zero to one shot</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">P</forename><surname>Osco</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">L</forename><surname>De Lemos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">N</forename><surname>Gonc ¸alves</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">P M</forename><surname>Ramos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Marcato</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Applied Earth Observation and Geoinformation</title>
+		<imprint>
+			<biblScope unit="volume">124</biblScope>
+			<biblScope unit="page">358</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Sam-adapter: Adapting segment anything in underperformed scenes</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Mao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2023 IEEE/CVF International Conference on Computer Vision Workshops (ICCVW)</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="3359" to="3367" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Context-aware spatio-recurrent curvilinear structure segmentation</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Pan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page">649</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Semicurv: Semi-supervised curvilinear structure segmentation</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yazici</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Min</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C.-S</forename><surname>Foo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Image Processing</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="5109" to="5120" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Bifusion of structure and deformation at multi-scale for joint segmentation and registration</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Image Processing</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="3676" to="3691" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Vsr-net: Vessel-like structure rehabilitation network with graph clustering</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Image Processing</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="1090" to="1105" />
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Masked vascular structure segmentation and completion in retinal images</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">S</forename><surname>Ahmed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">A</forename><surname>Newman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Schmetterer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Tan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="13" />
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Deepcrack: Learning hierarchical convolutional features for crack detection</title>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Qi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Image Processing</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="1498" to="1512" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Selective feature fusion and irregular-aware network for pavement crack detection</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Intelligent Transportation Systems</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="3445" to="3456" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Attention guided global enhancement and local refinement network for semantic segmentation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Image Processing</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="3211" to="3223" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Gt u-net: A u-net like group transformer network for tooth root segmentation</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Zeng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Machine Learning in Medical Imaging</title>
+		<meeting><address><addrLine>Cham</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer International Publishing</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="386" to="395" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Vision transformer-based retina vessel segmentation with deep adaptive gamma correction</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>-H. Shim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kwak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">W</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S.-J</forename><surname>Kang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICASSP 2022-2022 IEEE International Conference on Acoustics, Speech and Signal Processing</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1456" to="1460" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Tunet-lbf: Retinal fundus image fine segmentation model based on transformer unet network and lbf</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Ni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computers in Biology and Medicine</title>
+		<imprint>
+			<biblScope unit="volume">159</biblScope>
+			<biblScope unit="page" from="937" to="106" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">A vision-transformerbased convex variational network for bridge pavement defect segmentation</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Qi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Intelligent Transportation Systems</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="13" to="820" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Open-vocabulary instance segmentation via robust cross-modal pseudo-labeling</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Huynh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kuen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Elhamifar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="7010" to="7021" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">A simple framework for open-vocabulary segmentation and detection</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2023 IEEE/CVF International Conference on Computer Vision (ICCV)</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="1020" to="1031" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Stronger, fewer, &amp; superior: Harnessing vision foundation models for domain generalized semantic segmentation</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Ling</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zheng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page">630</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Scaling up visual and vision-language representation learning with noisy text supervision</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Jia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y.-T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Parekh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Pham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Le</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y.-H</forename><surname>Sung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Duerig</surname></persName>
+		</author>
+		<idno>PMLR</idno>
+	</analytic>
+	<monogr>
+		<title level="m">International conference on machine learning</title>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="4904" to="4916" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Denseclip: Language-guided dense prediction with context-aware prompting</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Rao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page">70</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Groupvit: Semantic segmentation emerges from text supervision</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">De</forename><surname>Mello</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Byeon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Breuel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kautz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page">123</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<monogr>
+		<title level="m" type="main">Vision transformer adapter for dense predictions</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Duan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Qiao</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2205.08534</idno>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<monogr>
+		<title level="m" type="main">Medical sam adapter: Adapting segment anything model for medical image segmentation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Ji</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Jin</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2304.12620</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Ridge-based vessel segmentation in color images of the retina</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Staal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Abramoff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Niemeijer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Viergever</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Van Ginneken</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="501" to="509" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Measuring retinal vessel tortuosity in 10-year-old children: validation of the computer-assisted image analysis of the retina (caiar) program</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">G</forename><surname>Owen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">R</forename><surname>Rudnicka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Mullen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Barman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Monekosso</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">H</forename><surname>Whincup</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Paterson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Investigative ophthalmology &amp; visual science</title>
+		<imprint>
+			<biblScope unit="volume">50</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="2004" to="2010" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">Cs-net: Channel and spatial attention network for curvilinear structure segmentation</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Mou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Qi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Frangi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical Image Computing and Computer Assisted Intervention -MICCAI</title>
+		<imprint>
+			<biblScope unit="page" from="721" to="730" />
+			<date type="published" when="2019">2019. 2019</date>
+			<publisher>Springer International Publishing</publisher>
+			<pubPlace>Cham</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Cracktree: Automatic crack detection from pavement images</title>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognition Letters</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="227" to="238" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Self-supervised vessel segmentation via adversarial learning</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Hua</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Xue</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Guan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2021 IEEE/CVF International Conference on Computer Vision (ICCV)</title>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="7516" to="7525" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title level="a" type="main">An accurate and efficient neural network for octa vessel segmentation and a new dataset</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ning</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICASSP 2024 -2024 IEEE International Conference on Acoustics, Speech and Signal Processing</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="1966" to="1970" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<analytic>
+		<title level="a" type="main">Deq-mpi: A deep equilibrium reconstruction with learned consistency for magnetic particle imaging</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Güngör</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Askin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A</forename><surname>Soydan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">B</forename><surname>Top</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">U</forename><surname>Saritas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">C</forename><surname>¸ukur</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="321" to="334" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<analytic>
+		<title level="a" type="main">Octa-500: A retinal dataset for optical coherence tomography angiography study</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Ji</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical Image Analysis</title>
+		<imprint>
+			<biblScope unit="volume">93</biblScope>
+			<biblScope unit="page" from="103" to="092" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<monogr>
+		<title level="m" type="main">Kaggle crack segmentation dataset</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Middha</surname></persName>
+		</author>
+		<ptr target="https://www.kaggle.com/datasets/lakshaymiddha/crack-segmentation-dataset" />
+		<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title level="a" type="main">Automatic segmentation of coronary arteries in x-ray angiograms using multiscale analysis and artificial neural networks</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Cervantes-Sanchez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Cruz-Aceves</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hernandez-Aguirre</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Hernandez-Gonzalez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">E</forename><surname>Solorio-Meza</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Applied Sciences</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page">24</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">Locating blood vessels in retinal images by piecewise threshold probing of a matched filter response</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hoover</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Kouznetsova</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Goldbaum</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="203" to="210" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">Fives: A fundus image dataset for artificial intelligence based vessel segmentation</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ye</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Scientific data</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="475" to="483" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Focal loss for dense object detection</title>
+		<author>
+			<persName><forename type="first">T.-Y</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Goyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dollár</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Pattern Analysis and Machine Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="318" to="327" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">V-net: Fully convolutional neural networks for volumetric medical image segmentation</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Milletari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Navab</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S.-A</forename><surname>Ahmadi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2016 Fourth International Conference on 3D Vision (3DV</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="565" to="571" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">Mask r-cnn</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Gkioxari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dollár</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2017 IEEE International Conference on Computer Vision (ICCV)</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="2980" to="2988" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title level="a" type="main">How to get pavement distress detection ready for deep learning? a systematic approach</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Eisenbach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Stricker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Seichter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Amende</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Debes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sesselmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ebersbach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Stoeckert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H.-M</forename><surname>Gross</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2017 International Joint Conference on Neural Networks (IJCNN)</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="2039" to="2047" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">Automatic crack detection on two-dimensional pavement images: An algorithm based on minimal path selection</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Amhaz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chambon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Idier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Baltazart</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Intelligent Transportation Systems</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="2718" to="2729" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<analytic>
+		<title level="a" type="main">Mdau-net: A multi-scale u-net with dual attention module for pavement crack segmentation</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Al-Huda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Al-Antari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">N A</forename><surname>Algburi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">A</forename><surname>Saleh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Moghalles</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2023 18th International Conference on Intelligent Systems and Knowledge Engineering (ISKE)</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="170" to="177" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title level="a" type="main">Cs-net: Channel and spatial attention network for curvilinear structure segmentation</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Mou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Qi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Frangi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Image Computing and Computer Assisted Intervention -MICCAI 2019</title>
+		<editor>
+			<persName><forename type="first">D</forename><surname>Shen</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">T</forename><surname>Liu</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">T</forename><forename type="middle">M</forename><surname>Peters</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">L</forename><forename type="middle">H</forename><surname>Staib</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">C</forename><surname>Essert</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">S</forename><surname>Zhou</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">P.-T</forename><surname>Yap</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Khan</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Cham</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer International Publishing</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="721" to="730" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<analytic>
+		<title level="a" type="main">Cs2-net: Deep learning segmentation of curvilinear structures in medical imaging</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Mou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">F</forename><surname>Frangi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Akiba</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liu</surname></persName>
+		</author>
+		<ptr target="https://www.sciencedirect.com/science/article/pii/S1361841520302383" />
+	</analytic>
+	<monogr>
+		<title level="j">Medical Image Analysis</title>
+		<imprint>
+			<biblScope unit="volume">67</biblScope>
+			<biblScope unit="page">101874</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<analytic>
+		<title level="a" type="main">Classwise-sam-adapter: Parameter efficient fine-tuning adapts segment anything to sar domain for semantic segmentation</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Pu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Jia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing</title>
+		<imprint>
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<analytic>
+		<title level="a" type="main">Learnable prompting sam-induced knowledge distillation for semisupervised medical image segmentation</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Gong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Liang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">44</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="2295" to="2306" />
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<analytic>
+		<title level="a" type="main">srgb real noise synthesizing with neighboring correlation-aware noise model</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2023 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="1683" to="1691" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<analytic>
+		<title level="a" type="main">Dual adversarial network: Toward real-world noise removal and noise generation</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Yue</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Meng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Computer Vision -ECCV 2020</title>
+		<meeting><address><addrLine>Cham</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer International Publishing</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="41" to="58" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b80">
+	<analytic>
+		<title level="a" type="main">Efficient and degradation-adaptive network for real-world image super-resolution</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zeng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Computer Vision -ECCV 2022</title>
+		<meeting><address><addrLine>Cham</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer Nature Switzerland</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="574" to="591" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

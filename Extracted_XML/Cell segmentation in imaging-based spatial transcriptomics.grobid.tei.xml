@@ -1,0 +1,1124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Cell segmentation in imaging-based spatial transcriptomics</title>
+				<funder>
+					<orgName type="full">Chan Zuckerberg Initiative</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">University of Copenhagen</orgName>
+				</funder>
+				<funder ref="#_KWW65Ug">
+					<orgName type="full">Harvard Digestive Disease Center</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Harvard Medical School</orgName>
+				</funder>
+				<funder ref="#_yupWb8F">
+					<orgName type="full">Seed Network</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>Springer Science and Business Media LLC</publisher>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2021-10-14">14 October 2021</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Viktor</forename><surname>Petukhov</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Rosalind</forename><forename type="middle">J</forename><surname>Xu</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ruslan</forename><forename type="middle">A</forename><surname>Soldatov</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Paolo</forename><surname>Cadinu</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Konstantin</forename><surname>Khodosevich</surname></persName>
+							<idno type="ORCID">0000-0001-7232-5558</idno>
+						</author>
+						<author>
+							<persName><forename type="first">Jeffrey</forename><forename type="middle">R</forename><surname>Moffitt</surname></persName>
+							<idno type="ORCID">0000-0002-3836-3101</idno>
+						</author>
+						<author>
+							<persName><forename type="first">Peter</forename><forename type="middle">V</forename><surname>Kharchenko</surname></persName>
+							<idno type="ORCID">0000-0002-6036-5875</idno>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Biomedical Informatics</orgName>
+								<orgName type="institution">Harvard Medical School</orgName>
+								<address>
+									<settlement>Boston</settlement>
+									<region>MA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="department" key="dep1">Biotech Research and Innovation Centre</orgName>
+								<orgName type="department" key="dep2">Faculty of Health and Medical Sciences</orgName>
+								<orgName type="institution">University of Copenhagen</orgName>
+								<address>
+									<settlement>Copenhagen</settlement>
+									<country key="DK">Denmark</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="department">Program in Cellular and Molecular Medicine</orgName>
+								<orgName type="institution">Boston Children&apos;s Hospital</orgName>
+								<address>
+									<settlement>Boston</settlement>
+									<region>MA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff3">
+								<orgName type="department">Department of Microbiology</orgName>
+								<orgName type="institution">Harvard Medical School</orgName>
+								<address>
+									<settlement>Boston</settlement>
+									<region>MA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff4">
+								<orgName type="department">Department of Chemistry</orgName>
+								<orgName type="institution">Harvard University</orgName>
+								<address>
+									<settlement>Boston</settlement>
+									<region>MA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff5">
+								<orgName type="institution">Harvard Stem Cell Institute</orgName>
+								<address>
+									<settlement>Cambridge</settlement>
+									<region>MA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Cell segmentation in imaging-based spatial transcriptomics</title>
+					</analytic>
+					<monogr>
+						<title level="j" type="main">Nature Biotechnology</title>
+						<title level="j" type="abbrev">Nat Biotechnol</title>
+						<idno type="ISSN">1087-0156</idno>
+						<idno type="eISSN">1546-1696</idno>
+						<imprint>
+							<publisher>Springer Science and Business Media LLC</publisher>
+							<biblScope unit="volume">40</biblScope>
+							<biblScope unit="issue">3</biblScope>
+							<biblScope unit="page" from="345" to="354"/>
+							<date type="published" when="2021-10-14">14 October 2021</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">D239F4367E4E28CA448053CBA2ED5518</idno>
+					<idno type="DOI">10.1038/s41587-021-01044-w</idno>
+					<note type="submission">Received: 5 October 2020; Accepted: 4 August 2021;</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:09+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract/>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>D</head><p>uring the last decade, single-cell transcriptomic technologies gained great popularity, with single-cell RNA-sequencing (scRNA-seq) becoming the preferred approach for characterizing the state of complex tissues <ref type="bibr" target="#b0">[1]</ref><ref type="bibr" target="#b1">[2]</ref><ref type="bibr" target="#b2">[3]</ref><ref type="bibr" target="#b3">[4]</ref> . These techniques are being gradually augmented by spatially resolved transcriptomics measurements based on in situ sequencing <ref type="bibr" target="#b4">5,</ref><ref type="bibr" target="#b5">6</ref> , multiplexed single-molecule fluorescent in situ hybridization (smFISH) <ref type="bibr" target="#b6">[7]</ref><ref type="bibr" target="#b7">[8]</ref><ref type="bibr" target="#b8">[9]</ref> or spatially barcoded hybridization <ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b10">11</ref> . The ability to examine the physical positions of different transcripts and cells at genomic scales has potential to bridge the molecular view of the cell with morphology, electrophysiology and other cellular phenotypes <ref type="bibr" target="#b11">12,</ref><ref type="bibr" target="#b12">13</ref> . It can expose the impact of physical and biochemical interactions between cells and reveal how such processes influence tissue organization during development <ref type="bibr" target="#b13">14</ref> and disease <ref type="bibr" target="#b14">15</ref> . These protocols may eventually supplant scRNA-seq as they also offer technical advantages, such as the ability to bypass capricious tissue dissociation steps needed for scRNA-seq. At present, however, most such assays are limited in the number of genes they can detect (30-300 genes) as well as the number of molecules that can be detected per cell (50-500) <ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b15">16</ref> . Nevertheless, there has been steady progress on the optimization of these protocols, with some increasing the number of detectable genes to thousands <ref type="bibr" target="#b6">7,</ref><ref type="bibr" target="#b8">9,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b17">18</ref> . Increasing scales and spatial resolution are already enabling unbiased characterization of tissue organization <ref type="bibr" target="#b18">19</ref> and subcellular organization of cells <ref type="bibr" target="#b6">7,</ref><ref type="bibr" target="#b8">9,</ref><ref type="bibr" target="#b16">17</ref> .</p><p>The transcriptional data acquired by in situ sequencing or smFISH protocols can be generally summarized as a collection of detected molecules, each corresponding to a particular gene or transcript, along with the coordinates of that molecule within the field of view. While, in principle, such data can yield cellular or even subcellular resolution, the effective spatial resolution depends on the ability to distinguish features in the downstream analysis. Very sparse measurements, for instance, may only allow for interpretation of regional differences, such as segmentation of cortical layers. Achieving cellular resolution, however, even with high-density measurements, requires accurate cell segmentation. Most current groups have relied on an auxiliary nuclei staining (for example, DAPI) to identify putative cell centers <ref type="bibr" target="#b6">7,</ref><ref type="bibr" target="#b17">18</ref> . But even such one-channel segmentation is challenging, commonly requiring manual tuning and corrections <ref type="bibr" target="#b19">20</ref> , including compensation for physical misalignment of molecular and auxiliary stains. Nuclei positions also do not inform on the extent of the cell body. Some efforts have used additional poly(A) staining to extend the initial nuclei positions <ref type="bibr" target="#b17">18,</ref><ref type="bibr" target="#b18">19</ref> . Similarly, the probabilistic cell typing by in situ sequencing (pciSeq) algorithm <ref type="bibr" target="#b15">16</ref> relies on the initial nuclei segmentation and extends the boundaries of the cell based on a Poisson model of gene expression. Alternatively, spatial measurements can be analyzed without explicit cell segmentation (segmentation free). Such approaches can characterize cell type composition of the tissue or identify distinct regions but cannot be easily extended to other kinds of analyses <ref type="bibr" target="#b13">14,</ref><ref type="bibr" target="#b20">21</ref> .</p><p>In this manuscript, we start by discussing the applications and limitations of the segmentation-free approach to imaging-based spatial transcriptomics. We suggest a new, simple method for segmentation-free analysis, which does not require extensive hyperparameter tuning. We then describe a general framework based on Markov random fields (MRFs) that can be used to solve a variety of molecule labeling problems, such as background separation or clustering. Following this framework, we introduce a method that performs cell segmentation based on the observed molecules and optional auxiliary staining data, modeling cells as smooth elongated distributions of distinct transcriptional composition. These methods are implemented in an open-sourced command line tool and a corresponding Julia package called Baysor. We show that Baysor can segment data from most published protocols with molecular resolution, yielding better segmentation accuracy and increasing the number of detected cells and the number of molecules in each cell.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Cell segmentation in imaging-based spatial transcriptomics</head><p>Viktor Petukhov 1,2 , Rosalind J. Xu 3,4,5 , Ruslan A. Soldatov 1 , Paolo Cadinu <ref type="bibr" target="#b2">3,</ref><ref type="bibr" target="#b3">4</ref> , Konstantin Khodosevich 2 , Jeffrey R. <ref type="bibr">Moffitt 3,</ref><ref type="bibr" target="#b3">4</ref> and Peter V. Kharchenko <ref type="bibr">1,6 ✉</ref> Single-molecule spatial transcriptomics protocols based on in situ sequencing or multiplexed RNA fluorescent hybridization can reveal detailed tissue organization. However, distinguishing the boundaries of individual cells in such data is challenging and can hamper downstream analysis. Current methods generally approximate cells positions using nuclei stains. We describe a segmentation method, Baysor, that optimizes two-dimensional (2D) or three-dimensional (3D) cell boundaries considering joint likelihood of transcriptional composition and cell morphology. While Baysor can take into account segmentation based on co-stains, it can also perform segmentation based on the detected transcripts alone. To evaluate performance, we extend multiplexed error-robust fluorescence in situ hybridization (MERFISH) to incorporate immunostaining of cell boundaries. Using this and other benchmarks, we show that Baysor segmentation can, in some cases, nearly double the number of cells compared to existing tools while reducing segmentation artifacts. We demonstrate that Baysor performs well on data acquired using five different protocols, making it a useful general tool for analysis of imaging-based spatial transcriptomics.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Analysis of local expression patterns without segmentation.</head><p>As illustrated by the scRNA-seq studies, different cell types and many phenotypic states can be readily distinguished based on the transcriptional composition of a cell. In spatial measurements, the cells of a distinct type will give rise to small molecular neighborhoods with stereotypical transcriptional composition, making it possible to interpret such neighborhoods without performing explicit cell segmentation <ref type="bibr" target="#b20">21</ref> . To capture this patch-like structure, we compute a neighborhood composition vector (NCV) for each molecule by taking its k spatially nearest neighbors (NNs) and estimating the relative frequency of different genes among the neighboring molecules (Fig. <ref type="figure" target="#fig_1">1a</ref>). Embedding the total set of NCVs into a 3D color space results in a color encoding where the neighborhoods of similar transcriptional composition are represented by similar colors. When k is comparable to the size of the cell, under such color encoding, different types of cells and their boundaries become visually apparent (Fig. <ref type="figure" target="#fig_1">1</ref> and Supplementary Fig. <ref type="figure" target="#fig_1">1</ref>).</p><p>The NCV expression vectors, in principle, can be treated as 'pseudo-cells' and analyzed using existing methods developed for scRNA-seq, including clustering, cell-type annotation and embedding (Fig. <ref type="figure" target="#fig_1">1b</ref>,<ref type="figure">c</ref> and Supplementary Fig. <ref type="figure" target="#fig_2">2a</ref>,<ref type="figure">b</ref>). However, because NCVs are generated for every molecule in the dataset, their absolute and relative abundance do not match the true composition of the tissue. NCVs of the molecules detected near cell boundaries may represent a mixture of distinct cell types, similar to doublets in scRNA-seq data (Supplementary Fig. <ref type="figure" target="#fig_2">2c</ref>,<ref type="figure">d</ref>). For these reasons, below we develop more complex quantitative approaches for classifying and segmenting the measured molecules. The NCVs approach, however, provides effective and robust visualization of the transcriptional composition signal present in the data.</p><p>General approach for statistical labeling of spatial data. A number of analyses in spatial transcriptomics can be formulated as label assignment problems. Cell segmentation, for instance, assigns cell labels to the observed molecules. Similarly, separation of intercellular</p><p>Alcam Chodl k-NNs Embed to 3D CIELAB space Visualization of expression patterns NCV ... N 9 ... Based on the similarity of these vector profiles, NCVs can be clustered or embedded into lower-dimensional space (b,c) (center, right). A 3D embedding can be translated into a color encoding so that similar colors correspond to similar neighborhood compositions. Such color encoding allows for effective visualization of individual cells as well as the overall tissue organization. A part of the Allen smFISH dataset is shown as an example. b, Heat map showing the expression patterns for 20,000 NCVs (k = 50) that were uniformly sampled across the physical space with rows corresponding to genes and columns corresponding to NCVs. The color scale shows log 10 of total count normalized expression additionally normalized by the maximum for each gene. The L1 and L2 column headers show the marker-based annotations for the corresponding NCVs; Ex, excitatory; Inh, inhibitory; IT, intratelencephalic; NP, near-projecting; PT, pyramidal tract. c, Uniform manifold approximation and projection (UMAP) embedding of NCVs colored by annotation.</p><p>background is a problem of labeling molecules as 'signal' versus 'background' . The distinguishing characteristics of these problems are that the labels tend to show strong spatial clustering; two nearby molecules, for instance, are likely to belong to the same cell and therefore share a common label. Mathematically, this spatial clustering tendency can be captured using MRF priors <ref type="bibr" target="#b21">22,</ref><ref type="bibr" target="#b22">23</ref> on simple tessellation graphs (that is, without tuning of k). The labels themselves can be modeled as latent variables and inferred from the observed data using an expectation-maximization (EM) algorithm.</p><p>Different labeling problems can then be solved by choosing the appropriate label probability model and the observable data (Extended Data Fig. <ref type="figure" target="#fig_1">1a</ref>). For instance, by using gene identities of the molecules as observables and multinomial distributions to model the transcriptional composition associated with different labels, this MRF-based approach results in a meaningful clustering of molecular neighborhoods (Fig. <ref type="figure" target="#fig_2">2a</ref>,<ref type="figure">b</ref>). One can additionally use expression profiles of different cell types obtained from scRNA-seq data as priors for the multinomial distributions of different labels. This enables the approach to efficiently transfer the cell annotations from scRNA-seq to the measured molecules without performing cell segmentation (Supplementary Fig. <ref type="figure" target="#fig_3">3</ref>). The MRF-based inference can be notably faster than traditional clustering (Supplementary Table <ref type="table">1</ref>). However, both performance and robustness of such an annotation transfer become poor when the number of cell types increases beyond 10-15, as the algorithm starts to capture stochastic fluctuations of the transcriptional composition. Another example of the labeling problem is distinguishing background molecules from cell bodies. In this setting, one can assume that the cells form dense regions, while the background noise molecules appear in sparse regions. Taking the distance to the k-th NN as a measure of sparsity (observed data), we used the same EM algorithm to segment the background (Fig. <ref type="figure" target="#fig_2">2c</ref>,d and Extended Data Fig. <ref type="figure" target="#fig_1">1a</ref>). Interestingly, across different datasets, we find that the transcriptional composition of the background molecules shows weak but noticeable regional variation, which is expected as extended cellular processes cannot be easily traced to the corresponding somas (Supplementary Fig. <ref type="figure" target="#fig_2">2e-j</ref>). Overall, MRF provides a general recipe for solving a variety of spatial labeling problems, although each problem requires a custom formulation of the EM algorithm.</p><p>Cell segmentation across various protocols. Many of the downstream analyses and interpretations of the spatially resolved data depend on the ability to resolve individual cells. These include analysis of context-dependent cell expression states, physical interactions and spatial dependencies between cell types, cell migration and formation of tissue architecture. We, therefore, set out to develop a cell segmentation method that can take into account different facets of data that are informative of cell boundaries. The increased spatial density of molecules within the cell somas is one such facet, and the transcriptional composition of local molecular neighborhoods is another. Further evidence can be gained from stainings for nuclei (for example, DAPI), cell bodies (for example, poly(A)) or cellular membranes. To optimize cell segmentation based on multiple evidence sources, we have developed an algorithm, called Baysor, that builds on the ideas of the MRF segmentation outlined above. The method can be used to analyze data from various experimental protocols (Fig. <ref type="figure" target="#fig_3">3</ref>) and can perform cell segmentation using molecular positions alone or by incorporating additional information. The approach models each cell as a distribution, combining spatial position and gene identity of each molecule. Thus, the whole dataset is considered as a mixture of such cell-specific distributions. Baysor then uses Bayesian mixture models (BMMs) to separate the mixture. The optimization relies on an MRF prior to ensure spatial separability of the cells and to encode additional information about the spatial relations of molecules (Extended Data Fig. <ref type="figure" target="#fig_1">1b</ref>).</p><p>We used several strategies to evaluate the quality of computational segmentations, as it is currently challenging to establish ground truth. In tissues in which cells are not densely packed, staining of poly(A) can provide a way of estimating the extent of the cell <ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b18">19</ref> . As an initial benchmark, we evaluated the extent to which poly(A) boundaries are matched by the segmentations predicted by Baysor, the default DAPI Watershed method (using ImageJ 24 ; see Methods) as well as a recently published pciSeq approach <ref type="bibr" target="#b15">16</ref> (Extended Data Fig. <ref type="figure" target="#fig_2">2</ref>). We found that Baysor predicted more cells and showed the lowest poly(A) signal intensity outside of the predicted cells. Overall, we find that both Baysor and pciSeq show good agreement with the poly(A)-predicted boundaries, while the Watershed approach performs notably worse (Extended Data Fig. <ref type="figure" target="#fig_2">2d-f</ref>). Visualization of individual cells confirmed that while Watershed tends to underestimate the boundaries, Baysor segmentation is typically able to capture the extent of the cell soma (Extended Data Fig. <ref type="figure" target="#fig_2">2g-i</ref>). In some examples, however, it was evident that the poly(A) signal itself can also be challenging to segment and can result in merges of cells with clearly distinct composition (Extended Data Fig. <ref type="figure" target="#fig_2">2j</ref>,<ref type="figure">k</ref>).</p><p>While many existing cell segmentation methods rely on nuclear (DAPI) or cytoplasmic (poly(A)) staining <ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b18">19</ref> , the challenges of obtaining accurate segmentation of such stains are well known <ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b20">21</ref> , and the resulting calls typically contain errors. Such auxiliary stains, however, provide valuable information in cases where the molecular signal is sparse or not informative about cell boundaries (see Discussion). Baysor can take advantage of auxiliary stains by incorporating a precalculated segmentation as a probabilistic prior. To account for a limited degree of confidence in such segmentations, Baysor defines a 'prior segmentation confidence' parameter, which determines the weight of the prior. Setting this parameter to 0 will cause Baysor to ignore the prior, while a maximum value of 1 will restrict Baysor from changing segmentation of the molecules assigned to cells, leaving it to deal only with non-assigned molecules (Extended Data Fig. <ref type="figure" target="#fig_3">3</ref>). Prior segmentation is also taken into account when determining the background to penalize removal of the molecules assigned to cells in the prior segmentation (see Methods). In addition to segmentation priors, Baysor can also incorporate information about background assignment probabilities per molecule. Finally, Baysor can use information about molecule clustering to penalize the assignment of molecules from different clusters to the same cell.</p><p>Next, we evaluated performance of Baysor and other segmentation methods on datasets generated using five different protocols <ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b17">18,</ref><ref type="bibr" target="#b18">19</ref> (Fig. <ref type="figure" target="#fig_4">4</ref>). Examining summary statistics, we found that Baysor reported cells containing approximately the same number of molecules and area as the originally published ('Paper') segmentations, while Watershed and pciSeq <ref type="bibr" target="#b15">16</ref> reported smaller segments, capturing mostly the molecules within the nucleus (Extended Data Fig. <ref type="figure" target="#fig_4">4</ref>). Compared to the published segmentations, Baysor reported larger numbers of cells and higher fractions of molecules recognized as a part of a cell (Fig. <ref type="figure" target="#fig_4">4a</ref>,<ref type="figure">b</ref>) with the largest, twofold difference for the osmFISH data <ref type="bibr" target="#b7">8</ref> . Watershed and pciSeq underperformed by these two criteria as well. While the Baysor algorithm is stochastic in nature, the resulting segmentations are robust with respect to random starting points and parameter settings (Supplementary Fig. <ref type="figure" target="#fig_4">4</ref>). Baysor normally relies on only one user-specified parameter (expected minimum number of molecules per cell) to determine all other settings (see Methods). The initial determination of molecular background probability is the most sensitive step and can be monitored visually using NCV visualization and diagnostic plots (Fig. <ref type="figure" target="#fig_2">2d</ref>). We also profiled time and memory usage of the Baysor run, with the longest run taking 51 min for the MERFISH dataset with 3.7 million molecules and the largest memory usage of 40.4 GB for the STARmap dataset with 1,020 genes (Supplementary Table <ref type="table">2</ref>).</p><p>Given the challenges in establishing ground truth on cell segmentation, we devised a relative quality measure that examines the differences between segmentations and evaluates which algorithm performs better in cases where the segmentations disagree. Specifically, in comparing any two segmentation results, we identified all cases where a cell from one segmentation ('Source') matched multiple cells from the other segmentation ('Target'). For each of these cases, we picked the largest part of the cell from the Source segmentation that matched to a single cell from the Target segmentation. We then estimated the correlation of expression profiles between this matching part and the rest of the Source cell (Fig. <ref type="figure" target="#fig_4">4c</ref>). If the Source segmentation was correct, then the matching part should show similar transcriptional composition to the rest of the Source cell, and the resulting correlation measure will be high. By contrast, if the second (Target) segmentation was correct, the expression correlation will be low (Fig. <ref type="figure" target="#fig_4">4d</ref>). For all protocols where the evaluation could be performed (see Methods), the overlapping regions showed, on average, higher expression correlation with the corresponding Baysor assignments than with the alternative segmentations, indicating higher accuracy of Baysor segmentation results than alternative segmentations, including Watershed, pciSeq and published segmentations (Fig. <ref type="figure" target="#fig_4">4e</ref>-h and Supplementary Figs. <ref type="figure" target="#fig_6">5</ref><ref type="figure" target="#fig_8">6</ref><ref type="figure">7</ref>).</p><p>We further investigated the two datasets where the differences between Baysor and published segmentations were most notable: the osmFISH 8 (Fig. <ref type="figure" target="#fig_6">5</ref>) and MERFISH <ref type="bibr" target="#b18">19</ref> (Extended Data Fig. <ref type="figure" target="#fig_6">5</ref>) datasets. In both cases, the segmentation differences preferentially impacted certain cell types. In the case of osmFISH, the published segmentation omitted most of the cells of non-neuronal subtypes; only 10% of vascular and astrocytic cells detected by Baysor are present in the original segmentation (Fig. <ref type="figure" target="#fig_6">5d</ref>). The disagreements on the MERFISH dataset were less biased, with the largest difference observed for endothelial cells and the published segmentation reporting 42% fewer cells (Extended Data Fig. <ref type="figure" target="#fig_6">5c</ref>). This result was unsurprising given that the nucleus of many endothelial cells was not present within the physical slice as a consequence of the long cellular morphology of these cells. Without an imaged nucleus, such cells would be missed with the seeded Watershed method used in this work. There was also one subtype (ependymal cells) where Baysor distinguished 25% fewer cells. There, cells formed a homogeneous region with no signal to distinguish some of closely adjacent cells, which resulted in some level of undersegmentation (Extended Data Fig. <ref type="figure" target="#fig_6">5g</ref>).</p><formula xml:id="formula_0">Kcnip4 Chodl Cux2 Sv2c Sez6 Parm1 Galnt14 Fezf2 Rorb Pvalb Alcam Mpped1 Sema3e Satb2 Pde1a Prox1 Foxp2 Kcnk2 Grin3a Lhx6 Thsd7a Gad2 Cluster</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Membrane staining with MERFISH and 3D segmentation.</head><p>While total poly(A) and DAPI staining can provide feature-rich costains suitable for segmentation in cell-sparse tissues such as the brain, such stains are not as useful for segmentation in cellular-dense tissues. To address this challenge, we have developed protocols to combine immunofluorescence (IF) of a pan-cell-type cell surface marker, the Na + /K + -ATPase, with MERFISH. Briefly, a secondary antibody to the anti-Na + /K + -ATPase primary antibody is labeled with a MERFISH readout sequence unique to that antibody <ref type="bibr" target="#b24">25</ref> . Hybridization of the readout probe complementary to this readout sequence reveals the locations of cell boundaries marked by Na + /K + -ATPase (Fig. <ref type="figure" target="#fig_8">6a</ref>). By incorporating an acrydite moiety into the oligonucleotide that labels the antibody, the IF antibody signal can be embedded in the same polyacryl-amide film that is used to stabilize mRNAs in the sample during tissue clearing <ref type="bibr" target="#b24">25,</ref><ref type="bibr" target="#b25">26</ref> .</p><p>We then used this cellular membrane IF-MERFISH protocol in the mouse small intestine to provide an additional benchmark For the Source cells, which overlap multiple target cells, the region with the largest ('main') overlap is used. Correlation of gene expression of the main overlap region against the expression of the rest of the cell in the Source segmentation is then estimated. d, Examples of the results where the published segmentation merged distinct cell types. Dots show the measured molecules, colored by NCVs, with contours showing cell boundaries for Baysor (black) and reported in the original publications (purple). e, Agreement of different methods with the originally published segmentations measured as mutual information of molecule cell assignments (y axis). f, Comparison of Baysor results to the published segmentations using the correlation benchmark (c). The violin plots show the distribution of overlap correlations with the rest of the cell (y axis) for different datasets (x axis), with dashed lines representing quartiles of the distributions. The right side of each violin plot was calculated using Baysor segmentation as a Source and the published segmentation as a Target, while the left side of each plot was calculated by swapping the Source and Target segmentations. The width of the violin plots is proportional to the number of Source cells that were matched to multiple Target cells. The results show that in the regions of disagreement with the Paper segmentation, the overlap region correlates well with the rest of the Baysor cell, while the opposite is not always the case. g,h, Analogous to f, the plot compares performance of Baysor segmentation with the segmentation obtained using pciSeq (g) or Watershed (h) algorithms.</p><p>dataset with defined cell boundaries (Fig. <ref type="figure" target="#fig_8">6b</ref>). We prepared cryosections of mouse ileum via a fresh-frozen protocol preceded by an mRNA preservation step in 4 mM ribonucleoside vanadyl complex (RVC). We then stained tissue sections with a MERFISH encoding probe library targeting 241 genes, including previously defined markers for the majority of gut cell types. Samples were also stained with anti-Na + /K + -ATPase primary antibodies, oligo-labeled secondary antibodies and DAPI. MERFISH measurements across multiple fields of view and nine z planes were performed to provide a volumetric reconstruction of the distribution of the targeted mRNAs, the cell boundaries marked by Na + /K + -ATPase IF and cell nuclei stained with DAPI (Fig. <ref type="figure" target="#fig_8">6c</ref>).</p><p>This model dataset provided a useful setting for extending Baysor to dense and complex tissue types. First, in the crowded cellular environment of the gut, cell boundaries can vary greatly across the modest thickness of our slices (Fig. <ref type="figure" target="#fig_8">6c</ref>). Second, the MERFISH library contained several genes with subcellular localization (for example, Neat1, which is nuclear localized, and Apob, Slc5a1 and Mptx2, which are polarized within the cytoplasm). To address these challenges, we extended Baysor to perform segmentation in three dimensions and also added an option to incorporate prior knowledge of genes with pronounced intracellular mRNA localization (see Methods).</p><p>Application of Baysor to the 400 × 600 μm-sized ileum slice portion (Fig. <ref type="figure" target="#fig_8">6b</ref>,<ref type="figure">d</ref>) partitioned mRNAs into cells that, when clustered, reproduced the rich diversity of cell types expected in the mouse ileum (Fig. <ref type="figure" target="#fig_8">6e</ref>,f and Extended Data Figs. <ref type="figure" target="#fig_8">6a</ref> and <ref type="figure">7</ref>). In the epithelial layer, we identified intestinal stem cells and transit amplifying (TA) cells, various stages of enterocyte maturation along the villus, Paneth cells, goblet cells and the rare tuft cells; in the subepithelial compartments, we identified the expected diversity of immune cells, including B cells, T cells, macrophages and dendritic cells. In addition, we identified a range of stromal cells, including smooth muscle cells, ICCs, telocytes, pericytes, endothelial cells and cells associated with the enteric nervous system (Extended Data Figs. <ref type="figure" target="#fig_8">6a</ref> and <ref type="figure">7</ref>). Notably, Baysor was able to recover this cellular diversity in a dense and complex tissue without using the Na + /K + -ATPase membrane costain, further underscoring Baysor's ability to use the rich information contained within mRNA distributions.</p><p>As the Na + /K + -ATPase IF costain provides a high-accuracy independent assessment of the cell boundaries, we quantified the extent to which Baysor segmentation, as well as segmentations of other methods, agree with the IF membrane signal. Overall, we find that Baysor outperformed other methods (Fig. <ref type="figure" target="#fig_8">6g-j</ref> and Extended Data Figs. <ref type="figure" target="#fig_8">6</ref> and <ref type="figure">8</ref>). DAPI segmentations estimated by Cellpose <ref type="bibr" target="#b26">27</ref> were within IF segments but, as expected, severely underestimated cell size. pciSeq appeared to overextend DAPI well beyond IF boundaries, reporting segments that were nearly twice as large as IF (Extended Data Fig. <ref type="figure">8</ref>). Baysor also showed elevated cell size, although to a lesser extent. While Baysor showed best overall agreement with IF (Fig. <ref type="figure" target="#fig_8">6h</ref>), there were some instances in which Baysor over-or undersegmented cell boundaries (Supplementary Fig. <ref type="figure">8b</ref> and Extended Data Fig. <ref type="figure">8</ref>). However, Baysor was able to recover more non-epithelial cells and revealed certain cell types, such as pericytes or telocytes, that were not apparent in the IF segmentation (Supplementary Fig. <ref type="figure">8a</ref> and Extended Data Fig. <ref type="figure" target="#fig_8">6c</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Outstanding challenges.</head><p>Comparing between Na + /K + -ATPase stains, we noted that many instances where Baysor disagreed with the IF boundaries were from the regions in the gut that were defined by densely packed cells that are transcriptionally similar (Extended Data Fig. <ref type="figure">9b</ref>). This situation is one in which RNA distributions</p><p>d c b f Micro Hexb Aldoc Hexb Lamp5 e Astro Mfge8 Aldoc Gfap Mfge8 a Expression 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1 0 Baysor Paper Baysor 52 84 91 89 56 19 52 57 90 93 38 44 16 12 15 25 72 86 87 Paper 1,500 1,000 500 0 A s tr o G fa p A s tr o M fg e 8 E p e n d y m a l H ip p o c a m p u s In h C r h b p In h K c n ip In h L a m p 5 In h V ip L 2 -L 3 e x L a m p 5 L 3 -L 4 e x R o r b L 5 -L 6 e x S y t6 L 5 -L 6 e x T b r 1</p><p>Astro Gfap Astro Gfap Astro Mfge8 Ependymal Ependymal Hippocampus Inh Crhbp Inh Kcnip Inh Kcnip Inh Crhbp Inh Crhbp Inh Lamp5 Inh Lamp5 Inh Lamp5 Inh Vip L2-L3 ex Lamp5 L2-L3 ex Lamp5 L2-L3 ex Lamp5 L3-L4 ex Rorb L3-L4 ex Rorb L3-L4 ex Rorb Astro Mgfe8 Astro Mgfe8 Hippocampus Hippocampus Inh Vip Inh Vip L5-L6 ex Syt6 L5-L6 ex Tbr1 L5-L6 ex Tbr1 L5-L6 ex Tbr1 L5-L6 Ex Syt6 L5-L6 ex Syt6 M ic r o H e x b O li g o m a tu r e O li g o p r e c u r s o r s V a s c A c ta 2 V a s c A p ln V a s c F lt 1 V a s c V tn Micro Hexb Micro Hexb Micro Hexb Oligo mature Oligo mature Oligo mature Oligo precursors Oligo precursors Oligo precursors Vasc Acta2 Vasc Acta2 Vasc Acta2 Vasc Apln Vasc Apln Vasc Apln Vasc Flt1 Vasc Flt1 Vasc Vtn Vasc Vtn Vasc Vtn Ependymal Inh Kcnip Astro Gfap Vasc Flt1 No. of cells Vasc Vtn Vasc Flt1 Vasc Apln Vasc Apln2 Vtn Flt1 Apln Anln Lum Klk6 Acta2 Pdgfra Mrc1 Plp1 Sox10 Hexb Tbr1 Crh Pthlh Gad2 Slc32a1 Crhbp Kcnip Foxj1 Ttr Mfge8 Aldoc Gfap Vip Cnr1 Syt6 Rorb Lamp5 Bmp4 Oligo precursors Oligo mature Micro Hexb L5-L6 ex Tbr1 L5-L6 ex Syt6 L3-L4 ex Rorb L2-L3 ex Lamp5 Inh Vip Inh Lamp5 Inh Kcnip Inh Crhbp Hippocampus Ependymal Astro Gfap Astro Mfge8 alone are unlikely to contain sufficient information to define cell boundaries. For the purposes of the downstream analyses, such uncertainty in the boundaries between cells of the same type is likely to be less consequential than other types of errors. Segmentation of such homotypic regions can be improved by incorporating priors on the boundaries defined from auxillary stains, such as Na + / K + -ATPase IF itself. When re-estimating cell boundaries with an IF segmentation prior, as expected, we find an excellent agreement between IF and Baysor segmentation (Extended Data Figs. <ref type="figure">8</ref> and <ref type="figure">9</ref>). We find modest differences in the discovered cell types and their marker expression (Extended Data Fig. <ref type="figure" target="#fig_8">6</ref>). A DAPI prior was not informative in this case due to dense cell packing (Extended Data Fig. <ref type="figure">8</ref>). Using an IF prior does not reduce advantages of Baysor in other regions, as it still detects notably more cells than IF (Extended Data Fig. <ref type="figure">8</ref> and Supplementary Fig. <ref type="figure">8</ref>), including rare cell types that were not detected with IF segmentation alone (Extended Data Fig. <ref type="figure" target="#fig_8">6</ref>).</p><p>The other challenge is posed by intracellular heterogeneity, which is particularly noticeable in highly multiplexed measurements possible with MERFISH <ref type="bibr" target="#b8">9,</ref><ref type="bibr" target="#b16">17</ref> or sequential FISH + (seqFISH + ) <ref type="bibr" target="#b6">7</ref> . This includes basic separation of the nuclear and cytoplasmic composition as well as more specialized polarization and compartmentalization patterns observed for subsets of transcripts in specific cell types (Extended Data Fig. <ref type="figure">9a</ref> and <ref type="figure" target="#fig_1">10</ref>). Baysor currently alleviates such issues by allowing for prior weights to be specified for polarized and nuclear-localized transcripts. Incidentally, nuclear localization priors also help to localize cell centers in homotypic and other challenging regions. In principle, it should be possible to automatically learn the stereotypical structure of intracellular heterogeneity using auxiliary stains, for instance a combination of DAPI and poly(A). The current Baysor model, however, assumes the cell body to be homogeneous. In the case of the STARmap dataset, inhomogeneity appeared to be technical in nature, with molecules belonging to the same gene exhibiting pronounced spatial clustering (Extended Data Figs. 10f and Supplementary Fig. <ref type="figure">9</ref>). Baysor also currently assumes that cell shape can be reasonably well approximated using a multivariate normal prior, which can be a poor approximation for cells such as fibroblasts (Extended Data Fig. <ref type="figure" target="#fig_1">10</ref>). Such issues can be currently mitigated by using more informative priors from auxiliary stainings, ensuring that the prior segmentation traces the complex cell shapes and is given higher prior weight.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Discussion</head><p>Realizing the potential of spatially resolved transcriptomics will require continued improvements on both the side of the protocols <ref type="bibr" target="#b11">12</ref> and the side of the analytical methods for processing such data. Here, we focused on addressing an important preprocessing step of cell segmentation. Effective segmentation can increase the number of detected cells and provide more informative profiles for each cell. The accuracy of the segmentation is also critical for a number of valuable downstream inferences. For instance, incorrectly drawn borders can create spurious correlation of expression state between adjacent cell types, resulting in false-positive inference of cell interactions. Alternatively, shifted borders may be interpreted as transient cell states, suggesting false transitions between cell types. To avoid such potential issues, we described an approach that uses transcriptional composition to optimize the placement of cell boundaries in 2D or 3D. At its core, Baysor relies on a general MRF-based approach that can be used for solving other labeling problems on spatial data, such as separation of background molecules or clustering. Baysor can perform segmentation using only molecule place-ment data or in combination with evidence from auxiliary stains and yields improved segmentation quality, increased number of cells and segmented molecules.</p><p>Not all of the downstream analyses require cell segmentation. For instance, region segmentation or tissue cell-type composition may be inferred directly from molecular data <ref type="bibr" target="#b20">21</ref> . We show that a relatively simple segmentation-free approach based on the composition of local neighborhoods (NCVs) can be used to assess the quality of the dataset, estimate the number and identity of the major cell types and effectively visualize the organization of the tissue (Fig. <ref type="figure" target="#fig_1">1a</ref>). This approach is fast and does not require parameter tuning, making it a convenient option for preliminary analysis. Nevertheless, accurate cell segmentation opens up possibilities for quantitative modeling of tissue architecture and cell interactions (Fig. <ref type="figure" target="#fig_8">6f</ref>).</p><p>Although the Baysor algorithm performed well on most of the published protocols, a number of potential improvements could be introduced, such as improving modeling of cell shapes <ref type="bibr" target="#b27">28</ref> . Further improvements could be gained by extending the hierarchical Bayesian model to introduce cell-type-specific shape and composition characteristics, ideally incorporating explicit models of cell-type-specific transcript compartmentalization structure.</p><p>As we demonstrate, auxiliary stainings can be extremely valuable in resolving difficult cases. Improved stainings, such as labeling of outer membranes that we present here, as well as improved methods for segmenting such images will likely be key for improving the overall segmentation results. Both, however, face their own challenges. Manual processing is still often required to perform initial segmentation of DAPI and other common stains. Similarly, as we show, even membrane signals can be uneven across tissues and fail to confidently resolve boundaries of certain cells (Extended Data Fig. <ref type="figure" target="#fig_8">6</ref>). It is therefore likely that optimal segmentations will rely on a combination of the transcriptional composition signal and information from auxiliary stains. As Baysor can take advantage of uncertain prior predictions, probabilistic auxiliary image segmentation methods would provide an advantage in that regard. We hope that Baysor implementation and the MRF-based computational approach will further facilitate the development and application of imaging-based spatial transcriptomics methods.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>online content</head><p>Any methods, additional references, Nature Research reporting summaries, source data, extended data, supplementary information, acknowledgements, peer review information; details of author contributions and competing interests; and statements of data and code availability are available at <ref type="url" target="https://doi.org/10.1038/s41587-021-01044-w">https://doi.org/10.1038/  s41587-021-01044-w</ref>. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Methods</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>NCV analysis.</head><p>To analyze the spatial expression patterns without cell segmentation, we use NCVs as a unit of analysis. NCVs are constructed by identifying k spatially NNs for each molecule and then characterizing its composition, that is, estimating the frequency of occurrences of different genes among the neighbors</p><formula xml:id="formula_1">NCVi = { |u : ( gene u = q, u ∈ adj k (i) ) | k } q=1:Ngenes (1)</formula><p>Here, N genes is the total number of measured genes, gene u is the gene that produced the molecule u, k is the number of NNs and adj k (i) are the indices of these NNs for the molecule i. To estimate the NNs, a k-d tree structure implemented in the NearestNeighbors.jl Julia package was used. Two-dimensional Euclidean distance was used as a distance metric. As implemented in the Baysor package, the default value of k was set to the expected minimal number of molecules per cell (a user-modifiable parameter) or the total number of detectable genes divided by 10, whatever is larger.</p><p>To perform scRNA-seq analysis of NCVs, we used the Pagoda2 (<ref type="url" target="https://github.com/kharchenkolab/pagoda2">https://github.  com/kharchenkolab/pagoda2</ref>) R package to calculate UMAP embedding <ref type="bibr" target="#b28">29</ref> and the CellAnnotatoR package (<ref type="url" target="https://github.com/khodosevichlab/CellAnnotatoR">https://github.com/khodosevichlab/CellAnnotatoR</ref>) to annotate the cell types.</p><p>To visualize the local gene composition, embedding of the NCVs into three dimensions was performed, first by reducing the dimensions using a principal-components analysis (PCA) to the top 15 principal components and then embedding the data into 3D space using UMAP with the default parameters min_dist = 0.1 and spread = 2.0. As fitting UMAP embedding for many NCVs is computationally intensive, to optimize performance, we first fit the UMAP embedding on a subset of NCVs and then applied the resulting transformation to all NCVs. In more detail, 10,000 NCVs were selected uniformly across the PCs by taking the sum over all PC coordinates for each of the NCVs, ranking them by the obtained values and then selecting a subset from this array uniformly across indices. Such an approach allows for a subset of NCVs with a density similar to the original distribution while avoiding stochastic sampling. After that, UMAP embedding was learned based on 10,000 selected NCVs in PC space. Next, the fitted UMAP embedding was used to project all PCA-transformed NCVs to 3D space. Finally, these 3D coordinates were renormalized and encoded into a perceptually uniform CIELAB color space. In a general case, normalization and encoding depends on the implementation for a specific library. Baysor delegates CIELAB encoding to the Colors.jl Julia package, which requires a* and b* components to be in the range of -100 to 100, while L* component has to be in the range of 0 to 100. However, to avoid colors that are too close to black or white, Baysor restricts L* component to a range of 10 to 90. If the assignment of molecules to background noise or true signal is available for a given dataset, only non-background molecules are used for fitting UMAP.</p><p>MRF for spatial segmentation. Here, we present a general probabilistic framework based on MRF applicable to a wide range of computational tasks in spatial transcriptomics. Observations about an RNA molecule, such as gene identity, spatial position or density of nearby RNA molecules, usually reflect latent objects, such as a cell or cell type of origin that produced the molecule or 'background'/'intracellular' compartment of the tissue. Thus, it is natural to consider a probabilistic model P( - → x , - → z ) that models observed properties of molecules - → x and latent factors - → z . Examples of pairs ( - → x , - → z ) could be observed density of nearby molecules and latent background/intracellular tissue regions for background separation problem, observed gene identities and latent cell types of origin for cell type segmentation problem or observed gene identity and position and latent cell of origin for cell segmentation problem. The probabilistic model</p><formula xml:id="formula_2">P( - → x , - → z ) is specified through parameters - → v of latent components with labels - → z : P(xi, zi = s| - → v ) = P(xi|vs) • P(zi = s).</formula><p>Following the traditional mixture model notation, here P(z i = s) = r s , such that ∑ s r s = 1 are the mixture coefficients. Examples of - → v are parameters of expression levels for cell type segmentation or the expected molecule density for the corresponding regions for inferring the background/intracellular labels.</p><p>In our tasks, spatially proximal molecules usually share similar latent properties. For example, nearby RNA molecules likely come from the same cell. Traditional mixture models, however, do not necessarily account for this property, so we extended them with the MRF prior 22 PMRF( - → z ) to formalize relationships of spatially close labels. It specifies dependence of a molecule label only on neighboring molecule labels:</p><formula xml:id="formula_3">PMRF(zi| - → z -i ) = PMRF(zi| - → z k , k ∈ adj(i)).</formula><p>Here, we rely on Potts MRF prior:</p><formula xml:id="formula_4">PMRF(zi| - → z k , k ∈ adj(i)) = 1 Zi • exp[β ∑ j∈adj(i) wijδ(zi, zj)]<label>(2)</label></formula><p>Here, w ij is the MRF edge weight between molecules i and j (described below), β is a strength of the MRF prior, Z i is a normalization constant and δ(z i , z j ) is a delta function. Adding this prior, we get the probability for molecule i and component u:</p><formula xml:id="formula_5">P( - → xi , zi = u| - → v u, ru, - → z -i) = P(xi| - → v u, zi = u) • PMRF(zi = u| - → z k , k ∈ adj(i)) • ru<label>(3)</label></formula><p>Auxiliary information - → av about parameters - → v , such as parameters of physical cell shape and cell type assignments, or prior segmentation labels are sometimes available in the form of additional priors P(</p><formula xml:id="formula_6">- → v | - → a v) and P ( - → z | - → a v )</formula><p>in the model. Additionally, a special case of prior information is using a Dirichlet prior over mixture probabilities rz i ∼ Dir(α). Such a prior allows for inferring the number of mixture components automatically and is used in Cell segmentation. Thus, when prior information is available, the maximum likelihood estimates (MLEs) turn into maximum a posteriori (MAP) estimates for the following probability:</p><formula xml:id="formula_7">P( - → xi , zi = u| - → v u, - → a v, ru, - → z -i) = P(xi| - → v u, zi = u)• P( - → v u| - → a v) • PMRF(zi = u| - → z k , k ∈ adj(i))• P ( zi = u| - → a v ) • rz i • P(rz i | - → a v)<label>(4)</label></formula><p>Exact interpretation of parameters depends on the particular task (see Extended Data Fig. <ref type="figure" target="#fig_1">1</ref> for the graphical model representation); however, the notations stay the same. All vector variables are represented with lowercase letters accented by a right arrow (for example, - → x ), and matrix variables are shown in capital letters (for example, W). The following names are preserved across the further sections:</p><formula xml:id="formula_8">• - →</formula><p>x is the observed data used to infer the latent variables. • -→ z is the assignment of observations to components, with meaning of the components depending on the particular problem. It is a latent variable inferred by the algorithm. • -→ v k is the vector of parameters for the component k. It is a latent variable inferred by the algorithm, and some prior information about these parameters is often available. • -→ a v is the prior information about latent variables - → v k , - → z or r k . This information may include uncertainty by itself and, in some cases, can be represented as a hierarchical Bayesian model.</p><p>• W = {w i,j } is the matrix of edge weights of the MRF. It is considered as a meta-parameter of the algorithm. In practice, it is deterministically estimated from the data, although parameters of this estimation may vary. • r k is the mixing coefficient for the component k. It is inferred by the algorithm and, in most cases, it is proportional to the number of observations assigned to this component.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Variational EM inference.</head><p>Parameter optimization in such a setting is commonly performed using the EM approach, iterating between E-step and M-step until convergence. E-step at iteration t estimates parameters of the posterior Pt( - → z ) = P( - → z | - → v t , - → x ) following fixed parameter estimates - → v t , while M-step at iteration t + 1 estimates - → v (t+1) by maximizing expected likelihood of the observed data across the label posterior distribution P t from the E-step</p><formula xml:id="formula_9">E-→ z ∼P t log P( - → x , - → z | - → v ).</formula><p>In the case of MRF, however, posterior</p><formula xml:id="formula_10">P( - → z | - → v t , - → x ) ∼ P( - → x | - → z , - → v ) • PMRF( - → z ) is intractable.</formula><p>We thus use variational EM <ref type="bibr" target="#b29">30</ref> , which approximates the posterior using mean field approximation Q(</p><formula xml:id="formula_11">- → z ) that minimizes KL divergence KL(Q( - → z )||P( - → z | - → v t , - → x ))</formula><p>and factorizes over a set of latent factors</p><formula xml:id="formula_12">Q( - → z ) = ∏ i Qi(zi)<label>(5)</label></formula><p>It can be shown <ref type="bibr" target="#b30">31</ref> that factorized distribution Q i (z i ) has the following optimal form:</p><formula xml:id="formula_13">Qi(zi) ∼ exp(E-i[log P(zi| - → z -i, - → x , - → v )]) )<label>(6)</label></formula><p>Here, - → z -i is a set of all latent factors except for z i , and</p><formula xml:id="formula_14">E -i is expectation across - → z -i drawn from Q( - → z ). Because P(zi| - → z -i, - → x , - → v ) ∼ P(xi|zi, - → v ) • PMFR(zi| - → z -i) • rz i , one can show that log Qi(zi) = log P(xi|zi, - → v ) + log rz i + E-ilog PMRF(zi| - → z -i ) + const (7)</formula><p>where the MFR term can be further decomposed as</p><formula xml:id="formula_15">E-ilog PMRF(zi| - → z -i ) =E-ilog ( e β ∑ j∈adj(i) wij δ(i,j) ) + const = β • ∑ j∈adj(i) wijE-iδ(i, j) + const = β • ∑ j∈adj(i) wijQj(zi) + const<label>(8)</label></formula><p>E-step. The formulas above indicate that Q i (z i ) has the following update form in E-step when other latent variables are fixed:</p><formula xml:id="formula_16">Q (t+1) i (zi) ∼ P ( xi|zi, - → v t ) • rz i • e β• ∑ j∈adj(i) wijQ t j (zi)<label>(9)</label></formula><p>NAtuRe BioteChNology | <ref type="url" target="http://www.nature.com/naturebiotechnology">www.nature.com/naturebiotechnology</ref> </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Articles</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>NATURE BIoTECHNology</head><p>M-step. Without prior information, M-step of the variational EM estimates - → v t+1 by maximizing expectation of the likelihood</p><formula xml:id="formula_17">E-→ z ∼Q log P( - → x , - → z | - → v ) across all labels - → z driven from Q: E-→ z ∼Q log P( - → x , - → z | - → v ) = E-→ z ∼Q log P( - → x | - → z , - → v ) +E-→ z ∼Q log PMRF( - → z ) + E-→ z ∼Q ∑ i log rz i = = nmols ∑ i=1 E-→ z ∼Q log P(xi|zi, v) + nmols ∑ i=1 E-→ z ∼Q + ∑ i,u Qi(u)log ru + const = = nmols ∑ i=1 ncomps ∑ u=1 (log P(xi|vu) + log ru) • Qi(u) + const = = ncomps ∑ u=1 [ nmols ∑ i=1 (log P(xi|vu) + log ru) • Qi(u) ] + const<label>(10)</label></formula><p>Thus, each variable v u at M-step can be inferred by maximizing</p><formula xml:id="formula_18">nmols ∑ i=1 (log P(xi|vu) + log ru) • Qi(u)<label>(11)</label></formula><p>For the case of MAP estimates, the formula is adjusted with P(vu| - → a v) and P(ru| - → a v) (ref. <ref type="bibr" target="#b31">32</ref> )</p><formula xml:id="formula_19">nmols ∑ i=1 (log P(xi|vu) + log P(vu| - → a v) + log ru + log P(ru| - → a v)) • Qi(u)<label>(12)</label></formula><p>Particular forms P(x i |v u ) and P(vu| - → a v) are specified for each application below. Label probabilities r u are inferred identically for most applications unless explicitly specified:</p><formula xml:id="formula_20">ru = ∑ i Qi(u) ∑ i,u ′ Qi(u ′ )<label>(13)</label></formula><p>To summarize, variational EM consists of two steps:</p><formula xml:id="formula_21">• E-step: sequentially update distributions Q (t+1) i (u)</formula><p>for each i upon fixed - → v t and Q t j (u), j ≠ i according to equation ( <ref type="formula" target="#formula_16">9</ref>). • M-step: update - → v , - → r by maximizing equation (11) or equation (12).</p><p>Modeling background. The measurements we used for segmentation contain large amounts of background noise. Prior probability for each molecule to be recognized as signal (p c,i ) or background (1p c,i ) is often available. The model above can be extended to incorporate such prior information without explicitly modeling background as a separate component. Here, we will show the formulas only for the case of the MLEs; however, it can naturally be extended for MAP estimates. Equation (3) implicitly assumes that all observations can be described by the specified model P(xi, zi| - → v u, ru, - → z -i ). Instead, we may assume that our data are generated by a two-level hierarchy of mixtures. The first level captures likely separation of background from signal where the probabilities are provided by the prior, and the second level is our mixture, where the probabilities need to be inferred.</p><p>In such a process, each molecule has a latent variable τ i ∈ {C, B} showing whether this molecule was produced by one of the modeled components (τ i = C) or the background (τ i = B). Let us denote probability density of a molecule i produced by the background as PB( - → xi , zi). In these definitions, equation (3) assumes that τ i = C and so defines the probability P(xi, zi| - → v u, ru, - → z -i , τi = C). Then, the probability density to observe a molecule i produced by the whole mixture is</p><formula xml:id="formula_22">P(xi, zi| - → v , - → r , - → z -i ) = p(τi = C) • ncomps ∑ u=1 P(xi, zi| - → v u, ru, - → z -i , τi = C) + p(τi = B) • PB( - → xi , zi)<label>(14)</label></formula><p>Assuming the first-level coefficients are known (p(τ i = C) = p c,i and p(τ i = B) = 1p c,i ), we do not need to make any assumptions about the background density PB( - → xi , zi). Instead, for the whole process described in Variational EM inference, we replace P(xi, zi| - → v u, ru, - → z -i ) with</p><formula xml:id="formula_23">P(xi, zi, τi = C| - → v u, ru, - → z -i ) = P(xi, zi| - → v u, ru, - → z -i , τi = C) • p(τi = C</formula><p>). As a result, for each molecule i, its probability to belong to the component u is multiplied by p(τ i = C) = p c,i : Qi = Qi • pc,i. On the E-step equation (9), it affects the estimates of the MRF prior</p><formula xml:id="formula_24">Q(t+1) i (zi) ∼ pc,i • P ( xi|zi, - → v t ) • rz i • e β• ∑ j∈adj(i) wijpc,jQ t j (zi)<label>(15)</label></formula><p>On the M-step equation (11), it would correspond to maximizing the following for each v u :</p><formula xml:id="formula_25">nmols ∑ i=1 (log P (xi, vu) + log ru) • pc,i • Qi(u)<label>(16)</label></formula><p>Introducing p c,i does not affect complexity of the algorithm from the computational point of view. On the E-step, we do not need to store Qi , as the algorithm works with non-normalized probabilities. During the MRF computations, p c,j can be incorporated into the MRF weights, transforming them as ŵij = wij • pc,j. On the M-step, p c,j can be processed exactly in the same way as Q i (u), as it simply introduces additional weight to the observations. So, the equations for maximization stay the same with only the weights being updated.</p><p>Building the random field. To establish the structure of the random field in 2D space, Delaunay triangulation over points was built using the VoronoiDelaunay. jl package. It provides a connected planar graph matching the general structure of the space. For the 3D space triangulation, performance scales poorly, so a k-NN graph was used (k = 5 by default). Then, in both cases, edge weights were set to the trimmed inverse Euclidean distance, so they represent connectivity of the two molecules i and j wi,j = min(q0.3(</p><formula xml:id="formula_26">- → d )/di,j, 1), where di,j = √ (xi -xj) 2 + (yi -yj) 2 and q0.3( - → d ) is the 0.3 quantile of the distance distribution - → d = {di,j}.</formula><p>In principle, the weights could be additionally adjusted to represent other kinds of dependencies between molecules. Details of such adjustments are described in the sections where they were used.</p><p>Applications. Below, we build probabilistic models and show variational EM updates for particular applications. One needs to specify the number of characteristics of the model in each of the applications.</p><p>• Observations x, number of labels z and parameters The generative process. For observed distance x i for a component u ∈ {c, b},</p><formula xml:id="formula_27">- → v u • Generative model P(xi| - → v u) • Variation EM</formula><formula xml:id="formula_28">p(xi|zi = u) ∼ N (μ u , σu)<label>(17)</label></formula><p>E-step.</p><formula xml:id="formula_29">Q (t+1) i (u) ∼ ru • N (xi|μ u , σu) • e β• ∑ j∈adj(i) wijQ t j (u)<label>(18)</label></formula><p>M-step.</p><formula xml:id="formula_30">μ u = ∑ nmols i=1 Qi(u)•xi ∑ nmols i=1 Qi(u) σu = ∑ nmols i=1 Qi(u)•(xi-μ u ) 2 ∑ nmols i=1 Qi(u)<label>(19)</label></formula><p>Initialization. Initialization was performed using 10th and 90th percentiles of the distance distribution for the means of the intracellular (μ c ) and the background (μ b ) components correspondingly. Both standard deviations were initialized as σ c , σ b = 0.25 ⋅ (μ bμ c ). The probability of a molecule to be labeled as intracellular (later called 'molecule confidence' for simplicity) was initialized as</p><formula xml:id="formula_31">Q (0) i (c) = N (di|μ c ,σc) N (xi|μ c ,σc)+N (xi|μ b ,σb) .</formula><p>The molecules from the right tail with x i &gt; μ b + 3σ were assigned to the background with probabilities fixed to 1.0 and excluded from subsequent optimization. Finally, the mixing coefficients are estimated according to equation (13). The β MRF parameter was set to 1 on all the performed experiments.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Using prior information. In case a prior segmentation</head><p>--→ z prior (for example, DAPI) was available, it was used as a constraint for the optimization. Given the prior segmentation confidence c prior ∈ [0.0, 1.0], the expectation step was restricted for Qi(c) ≥ c 2 prior for all molecules assigned to cells in the prior segmentation (</p><formula xml:id="formula_32">z prior i ̸ = b) Q (t+1) i (c) = c 2 prior + (1 -c 2 prior ) • rc•N (xi|μ c ,σc)•e β• ∑ j∈adj(i) wij Q t i (c) ∑ u∈(c,b) ru•N (xi|μ u ,σu)•e β• ∑ j∈adj(i) wij Q t i (u) ∀i : z prior i ̸ = b Q (t+1) i (b) = 1 -Q (t+1) i (c) (20)</formula><p>At the limit of c prior → 0, this approach converges to the case without a prior segmentation, whereas c prior → 1 will ensure that the molecules assigned to cells in the prior segmentation will be necessarily recognized as intracellular. This part does not fit into the formal model described above, and it was chosen as it matches the general intuition of the prior segmentation confidence.</p><p>Stop criteria. The relative difference d of the parameters - → μ and - → σ between iterations was used as the convergence criteria, with a convergence threshold of 0.005</p><formula xml:id="formula_33">d = max ( |μ t+1 c -μ t c | μ t c , |μ t+1 b -μ t b | μ t b , |σ t+1 c -σ t c | σ t c , |σ t+1 b -σ t b | σ t b )<label>(21)</label></formula><p>After the algorithm converged, the MRF prior was discarded, and only the densities of the normal distribution were used to estimate the cell assignment probabilities</p><formula xml:id="formula_34">pc,i = Qi(c) = rc • N (xi|μ c , σc) rc • N (xi|μ c , σc) + r b • N (xi|μ b , σ b )<label>(22)</label></formula><p>This was done because the MRF prior consistently pushes probabilities to be close to either 0.0 or 1.0, which corresponds to binary classification. By contrast, using only normal densities results in more gradual probability values, which can be integrated better with the further probabilistic parts of the algorithm.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Segmentation of cell types (molecule clustering).</head><p>Each observation x i is the gene identity of a molecule. Label factors z correspond to cell types, and the number of cell types n comps is a fixed meta-parameter. Cell-type labels are characterized by categorical distributions Cat(xi| - → v u) for each cell type u with a vector of gene probabilities - → v u .</p><p>The generative process. The generative process for observed gene x i is</p><formula xml:id="formula_35">p(xi|zi = u) ∼ Cat(xi| - → v u)<label>(23)</label></formula><p>E-step.</p><formula xml:id="formula_36">Q (t+1) i (zi) ∼ Cat(xi| - → v zi ) • e β• ∑ j∈adj(i) wij•pc,j•Q t j (zi)<label>(24)</label></formula><p>Here, p c,j represents the molecule confidences estimated on the previous step incorporated according to Modeling background. The mixing coefficients rz i were deliberately removed, which corresponds to the assumption that all mixture components have the same coefficients ru = 1 ncomps ∀u, regardless of the number of observations per component. This was done because having such a dependency forced the algorithm to prefer components of larger size, and, without strong signal from data, the MRF prior tended to eliminate all but the largest component. Such problems do not arise in the previous application because for molecular densities, the two normal distributions described the observed data much better than one, ensuring that both components (background and signal) were maintained. By contrast, here, the whole dataset can be described as a single categorical distribution with a high quality of fit, pushing the algorithm to converge on one component. M-step. M-step is as follows with the justification described below:</p><formula xml:id="formula_37">vu,q = ∑ i:gi=q [Qi(u) • pc,i] + 1 ∑ nmols i=1 [Qi(u) • pc,i] + 1<label>(25)</label></formula><p>The conventional rule for updating the parameters of a categorical distribution is vu,q = ∑ i:gi =q Qi(u) ∑ nmols i=1 Qi(u) . However, using it can be problematic because if a gene g was not previously observed for a specific component u, then its probability always remains zero (v u,g = 0). A popular solution for this is Laplace smoothing (also known as pseudocounts), vu,q = ∑ i:gi =q Qi(u)+α ∑ nmols i=1 Qi(u)+α•ngenes , which also corresponds to using a symmetric Dirichlet prior with parameter α. But, Laplace smoothing introduces dependency on the total number of genes n genes in the dataset, which is undesired for categorical mixtures with sparse probability vectors. This problem becomes apparent when considering a dataset with d possible gene types, some gene g ∈ 1: d. Let us consider two categorical components C 1 (g) and C 2 (g), which have v 1 and v 2 molecules of g assigned to them with N 1 and N 2 total molecules assigned correspondingly. If we estimate the likelihood ratio for these two components with Laplace smoothing, it is equal to (v1+1)•(N2+d) (v2+1)•(N1+d) . In realistic scenarios, d &gt; N u ≫ v u , so the ratio is dominated by d and is always close to 1. To avoid this, we replaced d in the Laplace smoothing with a constant 1 vu,q = ∑ i:gi =q Qi(u)+1 ∑ nmols i=1 Qi(u)+1 . This results in non-normalized probability densities, but this fact does not affect the rest of the algorithm. Then, these formulas are further adjusted by molecule confidences according to Modeling background, which leads to equation (25).</p><p>Using prior information. This model can be further enhanced by incorporating prior information about transcriptional composition of cell clusters (for example, scRNA-seq cell types). The method we used is ad hoc without a solid mathematical foundation, which deviates from the general model described above. If prior information is available, the maximization step is then changed to take it into account. Given prior expression fraction μ u,q from the cluster u and the gene q as well as its standard deviation σ u,q (both can be estimated from scRNA-seq data), the estimate was adjusted based on the z score value ζ u,q = vu,q-μ u,q σu,q</p><formula xml:id="formula_38">as v ′ u,q =            vu,q, if |ζ u,q | &lt; 1 μ u,q + sign(ζ u,q ) • ( |ζ u,q | 4 + 0.75 ) • σu,q, if 1 ≤ |ζ u,q | &lt; 3 μ u,q + sign(ζ u,q ) • (√ |ζ u,q | + 1.5 - √ 3 ) • σu,q, if |ζ u,q | ≥ 3<label>(26)</label></formula><p>This function applies no penalty for all deviation from the mean within one standard deviation, linear penalty for deviations less than three standard deviations and a super-linear penalty otherwise (Supplementary Fig. <ref type="figure" target="#fig_1">10a</ref>). If the standard deviation was not available, it was set to the mean value by default, σ u,q = μ u,q . It is important to note here that for a given prior clustering, reasonable results can often be obtained by running only the expectation step without the maximization, which corresponds to setting σ u,q = 0, ∀ u, q. Particularly, the results shown in Supplementary Fig. <ref type="figure" target="#fig_3">3</ref> were obtained iterating only over the expectation step.</p><p>Initialization. To provide a reasonable starting point for optimization, the algorithm takes into account local gene coexpression structure. To do so, we first estimate the coexpression matrix S = {si,j} i,j∈1:ngenes , estimating coexpression level between genes q 1 and q 2 as a fraction of weights between all molecules of q 1 and q 2 , connected with an MRF edge, relative to the geometric average between total weights of edges from molecules of q 1 and molecules of q 2 sq 1 ,q2 = ∑ i:gi=q1</p><formula xml:id="formula_39">∑ j∈adj(i),gj=q2 wi,j √ ( ∑ i:gi=q1 ∑ j∈adj(i) wi,j ) • ( ∑ i:gi=q2 ∑ j∈adj(i) wi,j )<label>(27)</label></formula><p>Then, the independent component analysis (ICA) is applied to the matrix S (implementation from MultivariateStats.jl) with the number of components equal to the desired number of clusters. The absolute values of the loading matrix W are used as initial expression values v init u,q = |Wu,q|. In case the ICA does not converge, the algorithm is initialized using a vector of gene frequencies estimated over the whole dataset multiplied by uniform noise in [0.95; 1.05]:</p><formula xml:id="formula_40">v init u,q = |{i: gi=q}|•Unif(0.95,1.05) nmols</formula><p>. Finally, these values were normalized by the sum over all genes vu,q = v init u,q ∑n genes t=1 v init u,t</p><p>. The initial assignment probabilities were estimated as pu,i =</p><formula xml:id="formula_41">Cat(gi| - → v u ) ∑n comps s=1 Cat(gi| - → v s ) )</formula><p>. The MRF β parameter was set to 1 on all the performed experiments.</p><p>Stop criteria. Convergence was determined based on the maximal change in p u,i between iterations weighted by p c,i max</p><formula xml:id="formula_42">1 ≤ i ≤ n mols 1 ≤ u ≤ ncomps ( |p (t) u,i -p (t-1) u,i | • pc,i</formula><p>) . The default threshold for the convergence was set to 0.01. The algorithm stops when the condition is satisfied for 20 continuous iterations.</p><p>Compartment segmentation. Sometimes, gene expression data can have intracellular structure with few genes specific only for some cell compartments. The model here is described in terms of separation of nuclei and cytoplasm; however, it can be easily extended to describe other kinds of compartments, such as mitochondria. It is important to note, however, that compartment-specific genes are often also cell-type specific. So besides labeling the compartment wherever it is possible, the algorithm must also recognize regions where no compartmentalization is observed. The input of the algorithm in this case is a set of genes that are specific to nuclei or cytoplasm (at least one gene per compartment). The goal of the algorithm is to infer compartment localization for molecules for other genes for which compartment information has not been provided. Given the graphical structure of the data, this problem is known in general case as information propagation on a graph. The approach we picked relies on the same Potts model and can be considered as a degenerate case of the general model described above (MRF for spatial segmentation). Our observed data in this case are labeling for molecules x i ∈ {'nuclei' , 'cyto' , 'na' , 'unknown'} (see 'Initialization' step). The components are u ∈ {'nuclei' , 'cyto' , 'na'} with no parameters to fit.</p><p>The generative process. The following is the generative process for observed label x i :</p><formula xml:id="formula_43">p(xi|zi = u) = { 0.5, ifxi = uor xi = unknown 0, otherwise<label>(28)</label></formula><p>E-step.</p><formula xml:id="formula_44">Q (t+1) i (zi) ∼    e β• ∑ j∈adj(i) wij•pc,j•Q t j (zi) , if xi = unknown Q t i (zi), otherwise<label>(29)</label></formula><p>M-step. M-step is degenerate because there are no parameters to optimize.</p><p>Initialization. Given lists of genes per compartment l nuclei and l cyto , the algorithm assigns all molecules produced by genes from a list l u to the label u. Next, for each molecule i, the distances to the second nearest molecule from each compartment (d nuclei i and d cyto i ) are estimated. The maximum across these distances</p><formula xml:id="formula_45">di = max( nuclei d i , d cyto i</formula><p>) is used to determine whether a molecule belongs to a non-compartmentalized region. All molecules with d i ≥ 3s are assigned to the 'na' class. The assignment probabilities Q <ref type="bibr">(0)</ref> i (zi) for the labeled molecules are fixed to 1 for the corresponding class. The other molecules are assigned to the 'unknown' class, and their assignment probabilities are initialized as</p><formula xml:id="formula_46">Q (0) i (u) =      max ( min ( 0.5 • ( di s -1 ) ,<label>1</label></formula><formula xml:id="formula_47">) , 0 ) , if u = na, 1-Q (0) i (u=na) 2 , otherwise<label>(30)</label></formula><p>For the presented results, the MRF β parameter was set to 1.</p><p>Stop criteria. The stop criteria are exactly the same as for the cell type segmentation.</p><p>Convergence was determined based on max</p><formula xml:id="formula_48">1 ≤ i ≤ n mols 1 ≤ u ≤ ncomps ( |p (t) u,i -p (t-1) u,i | • pc,i</formula><p>) .</p><p>The default threshold for the convergence was set to 0.01. The algorithm stops when the condition is satisfied for 20 continuous iterations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Cell segmentation.</head><p>For each RNA molecule i, we record gene identity g i , spatial positions (in 2D or 3D) - → x i as well as the probability that the molecule does not belong to the background p c,i ('molecule confidence'; see equation ( <ref type="formula" target="#formula_34">22</ref>)). When available, the information about cell type per molecule cl i is also used. An optional prior cell segmentation - → z prior , optional information about compartment-specific expression of select genes as well as a probability of a molecule being found in nuclei p n,i can also be taken into account in an ad hoc manner (see Using a prior segmentation). The goal of this stage is to infer molecule cell assignment z i . It is important to note that while the algorithm here uses results from the segmentation problems described above, most of the assigned labels (such as cell types or compartments) are treated as fixed observed information but not as latent variables (as was done previously). The only exceptions are molecule confidence values, which use raw probabilities but not hard assignment. So, no other latent labels on the molecule level are estimated.</p><p>Each cell u is described by its cell shape and modeled as an ellipsoid using 2D or 3D Gaussian distribution with parameters { - → μ u , Su} and a vector of gene expression frequencies - → v u . If prior cell type information is provided (for example, from Segmentation of cell types (molecule clustering)), the description of each cell is extended to include a cell type label κ u assigned. Additionally, 'background' is treated as a label and modeled as a separate component (see below). Please notice that here we model background explicitly, which is different from the ideas described in Modeling background. The algorithm also requires prior information about the expected physical cell size s global and variation in cell size σ global with σ global = s global /4 by default. Here, parameters - → μ u , S u , - → v u and κ u are latent variables inferred by the algorithm. It is worth noticing that cell type per molecule cl i is fixed, while cell type per cell is inferred. So, a cell of type κ u may include molecules of a type different from κ u . The graphical model of the process is shown in Extended Data Fig. <ref type="figure" target="#fig_1">1b</ref>.</p><p>The generative process. The generative process of molecules from a cell (but not background) is defined as</p><formula xml:id="formula_49">Pc(gi, - → x i, cli|zi, zi ̸ = b, κz i , - → μ zi , Sz i , - → v zi ) = N ( - → x i| - → μ zi , Sz i ) • Cat(gi| - → v zi )• P cl (cli|κz i )<label>(31)</label></formula><p>Probability N ( - → x i| -→ μ zi , Sz i ) establishes the spatial position and the shape of a cell, Cat(gi| - → v i) reflects the expression profile of the cell and probability P cl (cli|κz i ) penalizes for mismatch between cell-type identity of the cell and a molecule. Mismatch probability is defined as P cl (cli|κz i ) ∼ γ I(cli=κz i ) , with γ set to 0.25 by default.</p><p>The generative model for the background component is uniform across all positions, gene and cell-type identity, which effectively assumes constant cell density. For practical purposes, the density p bg of the background component is estimated in such a way so that it would be on the same scale as cell components</p><formula xml:id="formula_50">p bg = f position bg • f gene bg f position bg = N ( ⃗ (3s global ) d |μ = ⃗ (0) d , Σ = s 2 global • I d ) f gene bg = 1 ncomps ncomps ∑ u=1 ( 1 |{expressed u }| ∑ q∈{expressed u } vu,q )<label>(32)</label></formula><p>Here, ⃗ (a) d is a constant d-dimensional vector with values a and I d is a d-dimensional identity matrix, d ∈ {2, 3}. And {expressed u } is the set of all genes with non-zero expression in the component u. The position part of this density corresponds to the level of three expected standard deviations (that is, 3 ⋅ s global ) from the cell center. This part pushes molecules, which are far from any cell, to be assigned to background, and the gene part estimates the average expression probability across all cells and all genes expressed in them (ignoring zeros in the expression probability vectors). This allows for the accounting of sparsity level in the expression vectors.</p><p>Prior information. Parameter s global reflects prior knowledge of cell sizes and is described below. In general cases, we aim to incorporate a prior probability P(S i |s global , σ global ) akin to a Wishart prior, where s global and σ global reflect expected size and standard deviation of a cell's diameter. In practice, inference with a covariance prior becomes intractable at scale. We thus use an ad hoc procedure to accommodate prior information, as described below in M-step.</p><p>Compared to all segmentation problems described previously, the number n comps of cells, denoted as {u1, .., un comps }, is unknown in advance and is the subject of statistical inference. This is done by introducing Dirichlet prior Dir(α) on mixture coefficients - → r . Combining the generative model, spatial MRF prior and prior on parameters, the data probability for a cell component is</p><formula xml:id="formula_51">P(gi, - → x i, cli, zi, rz i , Sz i |κz i , μ zi , - → v zi ) = pc,i • Pc(gi, - → x i, cli|κz i , μ zi , Sz i , - → v zi , zi) • rz i • PMRF(zi| - → z -i )• P(Si|s global , σ global ) • Dir(rz i |α)<label>(33)</label></formula><p>Deviations from the model. Because the number of cells is large, storing the whole distribution of Q i (u) becomes the major bottleneck of the algorithm performance in terms of both time and memory. To avoid that, we altered the E-step so that its result is a hard assignment of molecules sampled from the conditional distribution (see below), which corresponds to the stochastic EM algorithm <ref type="bibr" target="#b32">33</ref> . In the sake of performance, estimation of Q i (u) was restricted only to components u directly adjacent for the molecule i. Additionally, the Dirichlet process assumes that new components can be added or removed dynamically, which is implemented as separate steps. So, instead of iterating through only E-and M-steps, the workflow is 1. Maximize parameters of the distributions given the existing assignment of molecules by cells (maximization step). 2. Sample empty components from the Dirichlet prior (distribution sampling step).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Stochastically assign molecules to components given the exiting components</head><p>and their parameters (stochastic expectation step). 4. Remove all components that have less than two molecules assigned to them.</p><p>After finishing the iterations, the algorithm re-estimates molecule assignment by averaging it over the last N est iterations (N iter /10 by default). These steps are described in more detail below.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>E-step.</head><p>In contrast to the model described in equation ( <ref type="formula" target="#formula_16">9</ref>), the result of this step on the iteration t is a hard assignment of labels - → z (t) but not the distribution</p><formula xml:id="formula_52">Q (t) ( - → z )</formula><p>. So, the MRF probabilities use the indicator function instead of Q i (u),</p><formula xml:id="formula_53">PMRF(zi) = e β• ∑ j∈adj(i) wijI [ z (t) j =zi ]</formula><p>. Then, for a given molecule i, the values Q i (u) are estimated the usual way; however, it is done only for the components u that are adjacent for this molecule i, u ∈ {zj} j∈adj(i) . The following formulas were used:</p><formula xml:id="formula_54">Qi(u) ∼ pc,i • ru • Pc(gi, - → x i, cli|u, κu, μ u , Su, - → v u) • PMRF ( u| - → z (t) -i ) , u ̸ = b Qi(b) ∼ (1 -pc,i) • p bg • PMRF ( b| - → z (t) -i ) (<label>34</label></formula><formula xml:id="formula_55">)</formula><p>After estimating the distribution</p><formula xml:id="formula_56">- →</formula><p>Qi, the component label z (t+1) i is sampled from this distribution.</p><p>To reduce the amount of computations, estimation of Q i (u) was restricted only to components u adjacent to the molecule i on MRF or the background component, which was considered adjacent to all molecules. Additionally, we had to take into account that the distribution sampling step produces components that do not have any molecules assigned to them. For every component u that was just sampled from the prior and still has no assigned molecules, the algorithm found a molecule i closest to the component center - → μ u and included component k as adjacent for all molecules j that are connected to i:</p><formula xml:id="formula_57">( i = argmin l ∈ 1 : n mols (| - → x l -- → μ u |) ) ⇒ (u ∈ adj(j), ∀j ∈ ∪(adj(i), i)).</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>M-step.</head><p>For the categorical distribution of the component k, non-normalized probability v k,q of the gene q being expressed was estimated as a fraction of the gene q across the observed molecules (smoothed with pseudocounts; see M-step):</p><formula xml:id="formula_58">v k,q = |{(gi = q)&amp;(zi = k)}|i∈1:n mols + 1 |{zi = k}|i∈1:n mols + 1 (35)</formula><p>For the multivariate normal distribution, the mean - → μ k was estimated as the average over the positions of the assigned molecules:</p><formula xml:id="formula_59">μ k,u = 1 n k ∑ i: zi=k xi,u,<label>(36)</label></formula><p>Here, u ∈ {1, 2} or {1,2,3} and n k = |{zi = k}|i∈1:n mols is the total number of molecules assigned to the component k. The maximal likelihood estimator was used for the covariance matrix:</p><formula xml:id="formula_60">S k = 1 n k ∑ i: zi=k ( ( - → x i -- → μ k ) • ( - → x i -- → μ k ) T ) (<label>37</label></formula><formula xml:id="formula_61">)</formula><p>After estimating the covariance matrix, it was adjusted based on the global scale s global . The most popular solution for such adjustment uses the Wishart prior over the covariance matrix, as this prior is conjugate for the normal distribution. However, the Wishart prior is parameterized with the expected covariance matrix and the number of degrees of freedom and thus does not allow us to explicitly control the magnitude of deviation from the expected covariate matrix. Therefore, we instead relied on the non-conjugate normal-like prior on the eigenvalues of the covariance matrix. This prior was parameterized with the expected size of the eigenvalues s global and their standard deviation σ global , which can be specified by the user or set to 0.25 ⋅ s global by default. Then, the adjustment starts by performing eigen decomposition over S k to calculate its eigenvalues -→ λ k and the eigenvector matrix Q k . Next, the eigenvalues are adjusted using the</p><formula xml:id="formula_62">formula λ ′ k,u = λ k,u + sign(λ k,u -s global ) • √ |λk,u -sglobal | σglobal</formula><p>• σ global , where u ∈ [1, 2]. This transformation corresponds to quadratic penalty over deviation z scores Z k,u , reducing the deviation Z k,u ⋅ σ global to √ Z k,u • σ global . Next, to account for the components with a low number of samples, it is further adjusted as</p><formula xml:id="formula_63">λ k,u ′′ = m•σglobal+nk•λ ′ k,u m+nk</formula><p>, where m is the expected minimal number of molecules per cell and n k is the number of molecules assigned to the component k. Finally, the adjusted covariance matrix is estimated as</p><formula xml:id="formula_64">S ′ k = Q k Λ″ Q -1</formula><p>k , where Λ″ is the diagonal matrix with (λ k,1 ″) 2 values on the diagonal.</p><p>Mixture coefficients - → r are estimated by adjusting proportions of molecules, assigned to each component, by the Dirichlet prior. However, for the Dirichlet process to have more global convergence, instead of using exact posterior estimates for - → r , these values were sampled from the posterior after each iteration</p><formula xml:id="formula_65">- → r ∼ Dir ( max( - → n , α) )<label>(38)</label></formula><p>Here, α is the Dirichlet Process parameter set to 0.2 by default.</p><p>If the prior cell type segmentation is available, the parameter κ u is estimated as the mode of cell-type labels cl i across all molecules i assigned to the cell u</p><formula xml:id="formula_66">κu = mode({cli} i:zi=u ) (<label>39</label></formula><formula xml:id="formula_67">)</formula><p>Distribution sampling. To allow arbitrary numbers of components in the data, we used a dynamic version of the truncated Dirichlet prior <ref type="bibr" target="#b33">34</ref> . For that, after the maximization step, n nc = ρ new ⋅ n comps new components were sampled from the prior distributions. The parameter ρ new was set to 0.3 by default. For the normal distribution, centers were sampled from all molecule positions with the weights proportional to the molecule confidences, μ * = - → x i;i ∼ Cat(</p><formula xml:id="formula_68">- → p c</formula><p>). The diagonal covariance matrix S * was sampled from the global scale prior with diagonal values si ∼ N ( s global , σ 2 global</p><formula xml:id="formula_69">)</formula><p>, i ∈ {1, 2} or {1, 2, 3} depending on the data dimensionality. Sampling gene composition parameters requires proper modeling of sparsity of the expression vectors, which varies greatly between protocols and cell types. It is therefore unclear how to capture this with a parametric prior distribution. Instead, the algorithm sampled gene composition parameters uniformly from the existing components and randomly permuted the vector</p><formula xml:id="formula_70">- → v * = shuffle(v k ); k ~ Uniform(1: n comps ).</formula><p>Using compartment assignment. Information about compartment assignment per molecule or information about some genes being compartment specific is sometimes available. This can be used to improve the quality of the segmentation in several ways. First, knowing which molecules belong to the nuclei and which came from the cytoplasm can improve the inference of cell center positions. Second, it can also help to separate cells in dense regions, where it is challenging to define exact boundaries in the cytoplasm but nuclei are somewhat separated from each other. Third, by requiring each cell to have some nuclei-specific molecules, the algorithm can avoid oversegmentation when some cells can be assigned to purely cytoplasmic regions. This issue is particularly noticeable when the expression patterns vary across compartments, which violates our assumption on homogeneity of the transcriptional composition within a cell, as a result pushing the algorithm to assign each compartment to a separate component. This problem can be mitigated by knowing which genes have such compartmentalized expression and treating them differently.</p><p>When a list of compartment-specific genes is provided, such information can be inferred as described in Compartment segmentation. In this case, the probability that a molecule i comes from a nucleus is estimated as p n,i = 1pi ('cyto') so that all molecules in 'na' regions are assumed to come from nuclei. Then, the M-step is adjusted, using weighted estimators for the cell center positions</p><formula xml:id="formula_71">- → μ k μ k,u = ∑ i:zi=k pn,i • xi,u ∑ j:zj=k pn,j<label>(40)</label></formula><p>Additionally, a cell is penalized if it does not have enough molecules with high p n,i . For that, during the M-step, the penalty factor τ k for a cell k is estimated as 0.9th quantile of p n,i across all molecules assigned to k. Then, during the E-step, assignment probability Q i (k) is multiplied by τ k . The raw probabilities pi ('cyto') and pi ('nuclei') are also used to adjust the MRF weights so that nuclei molecules can spread their labels to cytoplasm but not the other way around. To do so, the MRF is updated as w ′ i,j = wi,j• [1pi ('cyto') ⋅ pi ('nuclei')] for all i with pi ('nuclei') &gt; 0.25. Finally, to deal with the negative influence of compartment-specific genes, gene identity of all molecules coming from those genes are set to NA before starting the segmentation optimization. Then, during the E-step, the categorical part of the density equation ( <ref type="formula" target="#formula_54">34</ref>) for such molecules is omitted</p><formula xml:id="formula_72">Qi(u) ∼ pc,i • ru • N ( - → x i| - → μ zi , Sz i ) • P cl (cli|κz i ) • PMRF ( u| - → z (t) -i ) (<label>41</label></formula><formula xml:id="formula_73">)</formula><p>Using a prior segmentation. For many datasets, auxiliary microscopy stains, such as DAPI, can be used to generate a prior segmentation. Such a segmentation can be used to resolve the cases where measured transcript molecules do not provide sufficient information. The complexities of segmenting and aligning the auxiliary stains, however, mean that the quality of such segmentations can vary. To incorporate this optional information, Baysor can accept prior cell segmentation labels per molecule as well as the prior segmentation confidence parameter c prior ∈ [0; 1]. At c prior = 0, the prior segmentation would be ignored, whereas c prior = 1 forces Baysor segmentation not to violate the prior segmentation assignments. Increasing c prior from 0 to 1 gradually increases the importance of the prior segmentation. The prior segmentation penalty is evaluated only for the molecules that are assigned to some cell (but not to background) in both Baysor and the prior segmentations. This accounts for the fact that the imaging-based segmentations may miss some cells or portions of cells that can still be deduced from the spatial transcriptomics data. The most obvious example of such a situation is the DAPI-based segmentations, which cover only molecules within the cell nuclei, leaving most of the cytoplasm molecules unannotated. The Baysor algorithm, therefore, treats background labels (that is, not within the segmented region) within the prior segmentations as 'unknown' instead of explicitly assigning these molecules to the background component. The situation in which some non-background molecule from the prior segmentation is recognized as background by Baysor is dealt with during Separation of the intracellular molecules from the background. Specifically, if a molecule i is recognized as intracellular in the prior, its confidence cannot be less than c 2 prior : pc,i ≥ c 2 prior , ∀i : z prior i ̸ = background. As a result, there are two possible types of contradictions between the two segmentations: (1) multiple Baysor components are present within one prior segment and (2) one Baysor cell component touches multiple prior segments.</p><p>The penalties are applied during the stage at which the densities of different components are estimated for a given molecule by multiplying Q i (z i ) by the penalty term β k,i . If this molecule has a prior assignment to some segment, all but the component with the largest intersection with this prior segment are penalized. This is done using the following procedure. After the distribution sampling step, the algorithm estimates the number of molecules n seg k,q per segment q for each of the cell components k. Then, based on these numbers, it estimates the main prior segment per component ς k . This main segment label is used to separate the cases where two Baysor components are present within one prior segment (in this case, they would have the same main segment ID) from the cases where a Baysor component touches multiple segments (it would have one main segment but would get penalized for touching all other segments). During the expectation step for molecule i, the algorithm finds the component u * , which has the largest intersection with the segment z prior i = q across all candidate components for any molecule i that has this segment as their main assignment or does not have a main segment at all, u * = argmin k : ς k ∈ (q, ∅)</p><formula xml:id="formula_74">( n seg k,q</formula><p>) . If any two components have the same number of molecules for this segment, the component with the larger total number of molecules is chosen as the main component. The main component per segment incurs no penalty ( β u * ,i = 1), while the other components are penalized as</p><formula xml:id="formula_75">β k,i =          √ 1 -cprior ( n seg k,q n seg u * ,q ) cprior if ς k ∈ (q, ∅) √ 1 -cprior ( n seg k,q n seg q ) cprior•exp(3•cprior) otherwise<label>(42)</label></formula><p>Here, n seq q is the total number of molecules per segment q. The first penalty line prevents two cells from existing in the same prior segment (oversegmentation problem), while the second line prevents one cell from taking over a big part of a segment assigned to a different cell (overlapping problem). The second penalty line also solves the undersegmentation problem; if a Baysor cell overlaps two prior segments, then as soon as a new component is sampled inside one of these segments, the existing 'doublet' cell incurs a very large penalty for all other molecules of this segment. These functional forms of the penalties, while somewhat arbitrary, have allowed us to express a desired functional shape for the penalties (Supplementary Fig. <ref type="figure" target="#fig_1">10b</ref>,<ref type="figure">c</ref>). The penalties are also scaled in [0; 1], which allows us to avoid changes to the distribution sampling step. Newly sampled cells have no penalty, which corresponds to</p><formula xml:id="formula_76">β k,i = 1.</formula><p>Initialization. The algorithm is initialized with a large number of components uniformly distributed over 2D space. Setting the initial number of cells to be much larger than the expected number greatly improved the convergence of the algorithm. The initial cell centers were selected uniformly across 2D space, and each molecule was assigned to the nearest center. The center selection was done using a strategy similar to the one used for subsampling of the NCVs; the molecules were ranked by the sum over the x and y coordinates, and then the algorithm selected a subset from this array uniformly across the ranks. When molecule background confidences were available, only molecules with a true signal confidence greater than 0.25 were used. The MRF strength parameter beta was set to 0.1 for all experiments.</p><p>Adjusting MRF. The MRF was initialized using Delaunay triangulation for 2D space and five NN graphs for 3D space, as described in Building the random field. However, given that the triangulation uses only the information about the spatial positions, the MRF was then further adjusted to reflect the neighborhood composition similarities based on NCVs. Specifically, NCVs were estimated for each molecule, and the resulting matrix of NCVs was transformed using PCA. Pairwise Pearson linear correlations of the PC vectors, ρ i,j , were estimated for any two molecules i and j that were connected by an edge in the graph, and the MRF edge weight was then multiplied by max(ρ i,j , 0.01). When information about compartment assignment was available, the MRF was also adjusted as described in Using compartment assignment.</p><p>Stop criteria. Given the sampling nature of the algorithm, estimating convergence is challenging. Instead, the algorithm always works for a fixed number of iterations (500 by default, which was well sufficient for the algorithm to converge on a fixed set of cells and their parameters).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Complete Baysor workflow.</head><p>Below is the description of the full Baysor workflow, as implemented by the command line interface:</p><p>1. Read the data frame with information about molecules. Filter out the genes with the total number of molecules below threshold if it was specified. 2. If provided, load the prior segmentation mask. Filter out any prior segments that have less than m prior molecules. Estimate the global scale s global based on these data. 3. Estimate confidence p c,i per molecule. 4. If a list of compartment-specific genes is provided, estimate compartment assignment per molecule. 5. If the specified number of cell clusters (four by default) is greater than one, run the cell-type segmentation using the confidences estimated above. Otherwise, assign all molecules to the same cluster. 6. If a list of compartment-specific genes is provided, set all g i for the molecules produced by these genes to NA. 7. Initialize the BMM algorithm. 8. Run the BMM algorithm. 9. Re-estimate assignment by averaging over the last N est iterations. 10. Save the segmentation results. 11. Build diagnostic plots.</p><p>Inferring the algorithm parameters. Baysor implementation derives most of the parameter estimates based on the minimal expected number of molecules per cell m, which must be specified by the user, as well as the number of genes measured by the assay (n genes ). Parameter m depends on the protocol and the measurement. This key parameter can impact segmentation performance (Supplementary Fig. <ref type="figure" target="#fig_4">4</ref>), in particular as a result of the molecule background probability determination step. It is therefore recommended for the users to check diagnostic plots for the background assignment step to make sure the value of m is suitable. With larger values of m, the algorithm will expect more molecules concentrated in the same region to be recognized as a cell. Other parameters are inferred as</p><p>• The initial number of cells is set to N init cells = N molecules /m, where N molecules is the total number of molecules.</p><p>• The number of PCs for the PCA transformation of NCVs for adjusting the MRF is estimated as min ( max ( ngenes/3, 30 ) , 100, ngenes ) . • The NN index for estimating distances d i during the background segmentation is set to max (m/2 + 1, 2). • The number of NNs for NCV coloring is set to max(ngenes/10), m, 3.</p><p>• If a segmentation mask was provided, it is used to infer the global scale s global and its standard deviation σ global . To do so, Baysor first approximates cell radii from the number of pixels per prior segment n pix i as ri = n pix i /π. Then, s global = median i (r i ) and σ global = 1.4826 ⋅ MAD i (r i ), which are the median and the adjusted median absolute deviation (MAD) over the radii.</p><p>• Without a segmentation mask, the global scale s global is a required input parameter, and the deviation σ global is set to 0.25 ⋯ global by default. • The minimal number of molecules per prior segment m prior = max(m/4, 2).</p><p>Segmentation parameters. Parameters of the segmentation runs for different datasets are shown in the Supplementary Table <ref type="table">3</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Benchmarks.</head><p>To evaluate the performance of Baysor and compare it with other methods, we have used several benchmarks that measure the agreement with segmentations based on poly(A) signal, outer membrane immunostaining and examination of the differences between segmentations based on transcriptional correlation of discordant regions.</p><p>Poly(A) benchmarks. The MERFISH dataset was used, taking poly(A) segmentation from the original publication <ref type="bibr" target="#b18">19</ref> . The segmentations were obtained by Baysor, pciSeq and DAPI Watershed algorithms (see the corresponding sections below). For each poly(A) (Source) cell, we estimated a cell with the largest overlap from each of the Baysor/pciSeq/Watershed cells (Target). For each of the Target cells, Source segmentation was considered as the ground truth, and two metrics were estimated. The first metric is the number of molecules in the overlap of the Source and the Target cell divided by the number of molecules in the Source cell. This ratio corresponds to recall, a common machine learning quality metric. The second metric is the overlap size divided by the number of molecules in the Target cells, which corresponds to precision.</p><p>Correlation benchmarks. As it is difficult to establish ground truth on cell segmentations, we developed a benchmark to evaluate the differences between two segmentations. For each Source cell c in the segmentation - → z src , the benchmark finds a Target cell t * from the segmentation - → z target that has the largest overlap with c (Fig. <ref type="figure" target="#fig_4">4c</ref>). Then, it splits the molecules from c over the part that overlaps with t * from the molecules in the non-overlapping part. Measuring similarities of gene compositions of these two parts as a Pearson linear correlation (ρ c ), the benchmark evaluates the distribution of such similarities over all cells from the Source segmentation, - → ρ = {ρ c } c∈ - → z src . Taking two segmentations - → z 1 and - → z 2 as the input, the benchmark returns two distributions - → ρ 1 and - → ρ 2 for the cases where</p><formula xml:id="formula_77">- → z src = - → z 1, - → z target = - → z 2 and - → z src = - → z 2, - → z target = - → z 1 correspondingly. Based</formula><p>on these two distributions, the segmentation is said to be better if it has higher - → ρ i values. More formally, given two segmentations - → z src and - → z target , the benchmark procedure does the following:</p><p>1. All cells i with the total number of molecules below the threshold (n mols i &lt; m) are removed from both segmentations. 2. Among the remaining cells, a contingency matrix between the two segmentation assignments is estimated. 3. Based on the contingency matrix, for each cell c of the segmentation - → z src and cell t from the segmentation - → z target , the overlap fraction f over c,t is estimated. 4. For each cell c ∈ - → z src , the target cell t * ∈ - → z target is determined as the cell with the highest molecule overlap fraction</p><formula xml:id="formula_78">f over c,t * = |{i:(zsrc,i=c) &amp; (ztarget,i=t * )} i∈1:N mols | n mols c .</formula><p>5. Only cells from - → z src with the overlap f over c,t * ∈ (25%, 75%) are selected for further analysis. 6. For each cell c ∈ - → z src , the molecules from this cell are partitioned into (1)   the main overlap</p><formula xml:id="formula_79">- → l main c,t * = {i : (zsrc,i = c) &amp; (ztarget,i = t * )} and (2) the rest - → l rest c,t * = {i : (zsrc,i = c) &amp; (ztarget,i ̸ = t * )}.</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.">Gene composition vectors</head><p>- → v main c,t * and - → v rest c,t * are estimated over the molecules from -→ l main c,t * and -→ l rest c,t * correspondingly. 8. Pearson linear correlation coefficients ρ c between the vectors - → v main c,t * and - → v rest c,t *</p><p>are estimated. If these two sets of molecules were produced by different cell types, the correlation ρ c is expected to be low, suggesting that the segmen-tation - → z src was erroneous for the cell c. However, similar to the classical hypothesis testing framework, a high correlation ρ c does not mean that the segmentation - → z src is correct; it only suggests that the molecules were obtained from the same cell type, and it is still possible that they originated from different cells.</p><p>Given that assessment of such expression correlation between parts of the cell requires a relatively high number of molecules per cell, we were not able to apply this benchmark to the dataset generated using the ISS protocol <ref type="bibr" target="#b15">16</ref> (Extended Data Fig. <ref type="figure" target="#fig_4">4a</ref>). Also, the STARmap datasets <ref type="bibr" target="#b17">18</ref> do not have published auxiliary stainings, so we were unable to run Watershed and pciSeq segmentations on them. As a result, for comparison with the Watershed and pciSeq data, which require nuclei stains, STARmap was excluded as well.</p><p>Sensitivity benchmarks. To assess the stability and sensitivity of the algorithm, Baysor was run seven times with different random number generator seeds on a subset of the MERFISH hypothalamus dataset (x ∈ [6,000, 10,000], y ∈ [6,000, 10,000] in pixel coordinates). Each run used 400 iterations with parameters 'scale=6.5' and 'min_molecules_per_cell=30' , 'new_component_ frac=0.3' , 'new_component_weight=0.2' . The final assignment was obtained by averaging over the last 100 iterations ('assignment_history_depth=100'). Then, parameters were varied one by one (Supplementary Fig. <ref type="figure" target="#fig_4">4</ref>), and mutual information was estimated for all pairs of the baseline segmentations and the segmentations with changed parameters. Additionally, sensitivity to varying sparsity of the dataset was estimated. For that, the dataset was split over 25 large squares, and those with even IDs were progressively downsampled from 100% to 10% of their original number. Then, the segmentation was run on the downsampled dataset, and mutual information between the assignments was estimated separately for the molecules in the downsampled and preserved regions.</p><p>Performance benchmarks. To assess the runtime performance profiling of molecule clustering (Supplementary Table <ref type="table">1</ref>), the MERFISH dataset was used with the molecules subset to those with coordinates x &lt; -3,300 and y &lt; -3,300 (338,023 molecules in total). Molecule confidence was then estimated using the confidence_nn_id = 26 parameter setting. The MRF clustering was run five times for each value of k ∈ {2, 4, 6, 8, 10}, with parameters max_iters = 5,000 and n_iters_without_update = 100.</p><p>To evaluate the performance of the NCV Leiden clustering, the Pagoda2 package was used. For each run, the NCV matrix was estimated using 50 NNs normalized by the total count of each NCV and reduced to projections on the top 50 PCs. A k-NN graph was then built using 30 NNs (using the default cosine similarity distance metric), and the Leiden community detection algorithm was applied with the default resolution = 1.0. For the profiling, the same parameters as specified in Supplementary Table <ref type="table">3</ref> (prior = no) were used. Each dataset was segmented five times using a single thread. All benchmarks were run on a Lenovo Thinkpad X1 laptop with Intel(R) Core(TM) i7-8850H at 2.60 GHz CPU and 64 GB RAM.</p><p>Quality metrics. After finishing the segmentation, Baysor extracts the following summary metrics per cell:</p><p>• Cell area: area of the convex hull around molecules assigned to the cell.</p><p>• Density: a cell's area divided by the number of molecules in the cell.</p><p>• Elongation: ratio of the two eigenvalues of the cell shape covariance matrix.</p><p>• Average confidence: background/signal confidence averaged across all the molecules assigned to the cell.</p><p>scRNA-seq processing. Analyzing NCVs using scRNA-seq tools. To generate clustering and embedding of NCVs (Fig. <ref type="figure" target="#fig_1">1b</ref>,<ref type="figure">c</ref>), the Pagoda2 package (<ref type="url" target="https://github.com/kharchenkolab/pagoda2/">https://  github.com/kharchenkolab/pagoda2/</ref>) was used. The data were preprocessed using total count normalization, and then a 50-NN graph over the normalized counts using the default cosine distance metric was built. Leiden clustering with parameters 'resolution=8' and 'n.iterations=15' was used for annotation expansion (see below). Visualization of the MERFISH and the osmFISH datasets was done by building a joint matrix over the paper and the Baysor segmentations, reducing its dimensionality with PCA to the 10 top PCs (MultivariateStats.jl package) and then running UMAP embedding (UMAP.jl package) using Euclidean distance and parameters 'spread=2.0' and 'min_dist=0.1' over the joint matrix. Hierarchical clustering with the Ward linkage method and 70 clusters (Clustering.jl package) was used for the annotation expansion.</p><p>scRNA-seq annotation. The annotation for Allen smFISH data was generated using the CellAnnotatoR package. The cell-type markers were inferred from mouse VISp scRNA-seq data produced for the SpaceTx consortium by the Allen Brain Institute (personal communication) and then applied to the corresponding FISH data. For inference, the 'merged_cluster_smFISH' annotation shared with the dataset was used. First, the cell-type hierarchy was built using 'broad_class' as the first level, class prefix from 'merged_cluster_smFISH' as the second level and the full 'merged_cluster_smFISH' labels as the third level of the hierarchy. Second, cell types 'CR' , ' Astro' , 'Endo' , 'Macrophage' , 'Oligo' and 'SMC' were removed, as they could not be distinguished by the genes measured in the Allen smFISH dataset. Next, a CellAnnotatoR marker inference procedure was used to obtain the markers using this hierarchy, and the resulting marker list was adjusted by hand to improve the quality of the annotation. Finally, CellAnnotatoR was used to apply the identified markers to the NCV data. To annotate MERFISH and osmFISH data, the marker list was compiled manually using the information published by the protocol authors, and then CellAnnotatoR was applied in the same manner. In all three cases, the resulting annotation was expanded over the clusters found in the previous step (see Analyzing NCVs using scRNA-seq tools).</p><p>Polygon visualization. To visualize the boundaries of the cells, a kernel density estimation (KDE)-based algorithm was used. The algorithm builds a grid over 2D space, assigns each grid node to the cell with the highest density of molecules around this node and draws a polygon around this label on the grid. More formally, the following steps were performed:</p><p>1. A uniform four-connected grid was created over the 2D space, with the grid step specified as an input parameter. 2. The density of molecules for each cell was estimated over the grid nodes using the KDE implementation in the KernelDensity.jl package. KDE bandwidth, a parameter of the algorithm, was set to the 0.5 * 'grid step' by default. To improve runtime performance, only the nodes within three bandwidths of the cell molecules were taken into account. 3. Each node was assigned to the cell with the maximal density in this node.</p><p>If the maximal density was below threshold (10 -5 by default), the node was assigned to the background. 4. For each cell, the graph of boundary nodes was determined as the grid nodes of the cell that were adjacent to the nodes from the other cells or from the background. The edges between these boundary nodes were accepted into the boundary graph. 5. For each cell, a minimal spanning tree was built over its boundary graph using the Kruskal algorithm. 6. For each cell, the longest path in this tree was extracted using the Dijkstra algorithm, and the resulting path was transformed into a polygon by connecting its beginning and its end.</p><p>Baysor segmentation. All datasets were segmented using the Baysor command line interface, with parameters specified in the Supplementary Table <ref type="table">3</ref>.</p><p>pciSeq segmentation. All datasets were segmented using the pciSeq Python package v0.0.30 with default parameters. As input, we passed the spot matrix, Watershed-segmented DAPI stains and clustered scRNA-seq data. The following processing steps of scRNA-seq data were used:</p><p>• Allen smFISH: the annotated mouse VISp scRNA-seq data produced for the SpaceTx consortium by the Allen Brain Institute (personal communication) was used. • MERFISH hypothalamus data: the dataset from the original publication <ref type="bibr" target="#b18">19</ref> was processed using the scanPy package <ref type="bibr" target="#b34">35</ref> . Total-count and log-normalization were applied, then highly variable genes were selected, and gene variance scaling was applied with subsequent PCA dimensionality reduction. Finally, a k-NN graph was built using 15 PCs and k = 30. Leiden clustering with resolution = 3 was performed on this graph, resulting in 44 clusters. These clusters were used as cell types for the pciSeq run. • osmFISH: the published mouse somatosensory cortex scRNA-seq dataset <ref type="bibr" target="#b35">36</ref> was used with the published annotation (level 2). Two genes from the FISH data were missing in the original dataset, likely due to typos in their names; so to fix it, we renamed 'Tmem2' to 'Tmem6' and 'Kcnip2' to 'Kcnip' in the scRNA-seq data. • ISS: the dataset produced by Harris, et al. <ref type="bibr" target="#b36">37</ref> suggested by the original ISS publication <ref type="bibr" target="#b15">16</ref> was used with the published annotation. • STARmap datasets do not have any stainings published, so they were excluded from the comparison.</p><p>After obtaining scRNA-seq data with cell-type assignment, counts were summed across all cells for each of the cell types, and the aggregated count matrices were passed to pciSeq. An exception to this workflow is the MERFISH mouse gut dataset, which has 3D DAPI stacks with no scRNA-seq data available. So, Cellpose 27 DAPI segmentation for z = 8.5 (stack ID = 5) was used for the whole 3D dataset. Instead of scRNA-seq data, we used transcriptional count (MERFISH) profiles of cells obtained using 3D Watershed segmentation of the membrane IF signal. They were processed with the scanPy package using total count normalization and PCA reduction to 15 components. Then, a k-NN graph was built (k = 30) and clustered with the Leiden algorithm (resolution = 3). DAPI and membrane segmentation with Cellpose. On the MERFISH mouse gut dataset, the quality of the watershed segmentation was too low due to the cell density, so we used the Cellpose 27 software fine-tuned for our data. For DAPI stains, we selected one field of view and manually labeled all nuclei on it for one z slice (z = 8.5 µm). Then, the Cellpose nuclei model was fine-tuned (with the default parameters) using these manually labeled data. Finally, it was applied for all z slices over the full dataset with diameter = 120. For membrane stains, we selected three different fields of view and manually segmented one z slice from each of them (z = (4, 8.5, 14.5) µm). Then, we fine-tuned the cyto Cellpose model (using default parameters) and applied it to the whole dataset with diameter = 60. To construct 3D cell boundaries, Cellpose cell boundaries defined by DAPI or membrane stain were stitched together across z stacks so that the same cell has the same ID across z stacks by matching cells between adjacent z planes. Specifically, cell b in plane 2 is considered to be the same cell as cell a in plane 1 if cell a overlaps with the shadow of cell b in plane 1 by over 60% OR if cell b's shadow overlaps predominantly with the blank space in plane 1, yet cell a occupies over 15% of cell b's shadow in plane 1 AND among all the cells in plane 1 that overlap with cell b, cell a accounts for over 90% of the overlapping area. DAPI Watershed segmentation with ImageJ. To generate prior segmentations using DAPI stains, the Watershed segmentation was performed using ImageJ 24 software. Each staining was segmented by the following procedure:</p><p>1. The image was converted to 8-bit format ('Image'/'Type'/'8-bit'). 2. A median filter with 1 pixel radius was applied ('Process'/'Filters'/'Median... '). 3. Auto Threshold with the 'Default' method and 'Ignore black' option was applied for image binarization ('Image'/' Adjust'/' Auto Threshold'). 4. Watershed segmentation was applied ('Process'/'Binary'/'Watershed').</p><p>VISp multiplexed smFISH data generation. Multiplexed smFISH data of mouse primary visual cortex (VISp) was generated as part of the SpaceTx consortium. Tissue processing was performed as previously described <ref type="bibr" target="#b37">38</ref> , with some modifications. The description is taken from ref. <ref type="bibr" target="#b20">21</ref> .</p><p>Silanization of coverslips (1.5, Thorlabs CG15KH) was performed by plasma cleaning for 30 min in Plasma-Prep III (SPI 11050-AB) followed by vapor deposition of 3-aminopropyl-triethoxysilane (APES; Sigma A3648) in a vacuum for 10 min. Coverslips were then washed in 100% methanol for 2 × 5 min, allowed to dry and stored in a dust-free environment until use.</p><p>Fresh-frozen mouse brain tissue was sectioned at 10 μm onto silanized coverslips, allowed to dry for 20 min at -20 °C then fixed for 15 min at 4 °C in 4% paraformaldehyde (PFA) in PBS. Sections were washed 3 × 10 min in PBS and permeabilized and dehydrated with chilled 100% methanol at -20 °C for 10 min and allowed to dry. Sections were stored at -80 °C until use. Frozen sections were rehydrated in 2× SSC (Sigma 20XSSC, 15557036) for 5 min and treated 10 min with 8% SDS (Sigma, 724255) in PBS at room temperature. Sections were washed five times in 2× SSC. Sections were then incubated in hybridization buffer (10% formamide (vol/vol); Sigma, 4650), 10% dextran sulfate (wt/vol) (Sigma, D8906), 200 μg ml -1 bovine serum albumin (BSA; ThermoFisher, AM2616), 2 mM RVC (New England Biolabs, S1402S) and 1 mg ml -1 tRNA (Sigma, 10109541001) in 2× SSC for 5 min at 37 °C. Probes were diluted in hybridization buffer at a concentration of 250 nM and hybridized at 37 °C for 2 h. Following hybridization, sections were washed 2 × 10 min at 37 °C in wash buffer (2× SSC, 20% formamide), 1 × 10 min in wash buffer with 5 μg ml -1 DAPI (Sigma, 32670) and three times with 2× SSC. Sections were then imaged in imaging buffer (20 mM Tris-HCl, pH 8, 50 mM NaCl, 0.8% glucose (Sigma, G8270), 30 U ml -1 pyranose oxidase (Sigma, P4234), 50 μg ml -1 catalase (Abcam, ab219092)). Following imaging, sections were incubated 3 × 10 min in stripping buffer (65% formamide, 2× SSC) at 30 °C to remove hybridization probes from the first round. Sections were then washed in 2× SSC for 3 × 5 min at room temperature before repeating the hybridization procedure.</p><p>The multiplexed smFISH image data were collected and processed using methods previously described <ref type="bibr" target="#b37">38</ref> , except that the images from different rounds of hybridization were registered in (x,y) based on the DAPI signal. The spot locations and raw data are available on request.</p><p>MERFISH measurements in mouse gut. MERFISH encoding probe design and construction. In total, 241 genes were targeted for MERFISH measurements in the mouse small intestine. To construct an encoding probe set for these genes, we first created a binary encoding scheme with a minimum Hamming distance between all barcodes of 4 and a constant Hamming weight of 4. This 20-bit barcoding scheme contains 256 barcodes, of which 15 were left unassigned to serve as measures of the false-positive rate in these measurements.</p><p>Marker gene selection for major cell classes in the mouse small intestine was guided using previously published scRNA-seq measurements <ref type="bibr" target="#b38">39,</ref><ref type="bibr" target="#b39">40</ref> , and isoform selection was guided using published bulk RNA-seq data for the mouse small intestine <ref type="bibr" target="#b40">41</ref> . In many cases, we targeted a single isoform of a given gene; however, in some cases, we designed encoding probes to target shared regions of multiple isoforms of individual genes. Barcodes were assigned to each of these genes at random.</p><p>Templates for the production of MERFISH encoding probes were designed using a previously published <ref type="bibr" target="#b41">42</ref> probe design pipeline using standard parameters for the mouse genome: 30-nucleotide regions of homology to the target regions, melting temperatures between 65 °C and 75 °C, GC contents between 0.4 and 0.6, gene specificities between 0.75 and 1 and isoform specificities between 0.75 and 1 (where appropriate). Designed target regions were allowed to overlap with other potential target regions by as much as 20 nucleotides. Seventy-two encoding probes were designed for each gene with each encoding probe containing three of the four readout sequences associated with the barcode assigned to each gene. In rare instances (20 of 241 genes), some genes were too short to support 72 encoding probes; however, only two genes had fewer than 40 encoding probes, and no gene had fewer than 31 encoding probes.</p><p>Encoding probe templates were synthesized as a complex oligopool (Twist Biosciences). This pool was then used to produce encoding probes via published methods <ref type="bibr" target="#b41">42</ref> . Briefly, an in vitro transcription template was made from the oligopool via limited-cycle PCR and purified via spin column (Zymo Spin V with the DNA Clean and Concentrator protocol; C1012-50). RNA was created from this template using high-yield in vitro transcription (NEB HiScribe, E2050S) and purified with solid-phase reversible immobilization beads (SPRI). DNA was produced from this RNA using reverse transcription (Thermo, Maxima RT H minus). The RNA template was removed via alkaline hydrolysis, and the single-stranded DNA probes were purified with SPRI beads.</p><p>Oligo-labeled secondary antibodies. Oligo-labeled goat anti-rabbit secondary antibodies were produced as described previously <ref type="bibr" target="#b24">25</ref> . Briefly, secondary antibodies (goat anti-rabbit IgG, 2 mg ml -1 ; Thermo, A16112) were purified via three 1× PBS washes in a size-exclusion spin column (Amicon Ultra-0.5 Centrifuge Filters, EMD, UFC510024) and then exposed to 100 μM of a DBCO-NHS crosslinker (Kerafast, FCC310) for 1 h at room temperature. Unreacted crosslinker was then removed by three additional 1× PBS washes with the same size-exclusion column, and an azide and acrydite-modified oligo (/5Acryd/GAGGTAGGGAGTATGTAGTT/3AzideN/; IDT) was added to a final concentration of 20 μM. Antibody-oligo mixes were incubated overnight at 4 °C to allow the DBCO-azide click reaction. Excess oligo was not purified from antibodies.</p><p>Mouse ileum collection and cryosection. Male-specific pathogen-free C57BL/6 mice aged 8 to 12 weeks were killed via isoflurane anesthesia followed by cervical dislocation using a protocol approved by the Harvard Medical School Office of the IACUC. The small intestine was rapidly dissected and dropped into ice-cold 4 mM RVC (NEB, S1402S) in 1× PBS in a large Petri dish on ice. The ileum was then rapidly excised, cut into two halves and carefully flushed with cold 4 mM RVC. The tissue was left to incubate in 4 mM RVC at 4 °C for 1 h before embedding in prechilled optimal cutting temperature (OCT) compound (VWR, 25608-930) and flash freezing. The tissue blocks were stored at -80 °C before use.</p><p>Coverslips were silanized and coated with poly-d-lysine largely following a previous protocol <ref type="bibr" target="#b25">26</ref> . Briefly, coverslips (Bioptechs, 40-1313-03193) were cleaned with 1:1 37% hydrochloric acid and methanol, silanized in 0.2% (vol/vol) allytrichlorosilane (Sigma, 107778) with 0.1% (vol/vol) triethylamine (Sigma, T0886) in chloroform and stored in dessicated containers for at least 1 d. The coverslips were then coated with 0.1 mg ml -1 poly-d-lysine (Santa Cruz, sc-136156) and 1:20,000 orange fluorescent fiducial beads (Invitrogen, F8800) in 1× PBS for 20 min, dried at room temperature for 1 h and then fixed with 4% (vol/vol) PFA (EMS, 15714) at room temperature for 10 min. The coverslips were then washed, dried and stored in the dark at 4 °C in a desiccated container until use.</p><p>For cryosectioning, tissue blocks were mounted and equilibrated to -20 °C. Coverslips and Petri dishes were prechilled in the cryostat chamber as well. Slices of 8-μm thickness were cut and melted onto cold coverslips using finger heat and quickly refrozen in the Petri dishes on the bottom of the cryostat chamber. After cryosectioning, the slices were left to dry on the bottom of the cryostat chamber for approximately 2 h. The slices were then fixed in prechilled 4% (vol/vol) PFA in 1× PBS at 4 °C for 20 min followed by two washes with cold 2 mM RVC in 1× PBS and then permeabilized in cold 70% ethanol at 4 °C for at least overnight.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>MERFISH sample preparation.</head><p>The permeabilized ileum samples were prepared for MERFISH imaging largely following a previously published protocol <ref type="bibr" target="#b18">19</ref> . Briefly, samples were washed in 30% (vol/vol) formamide in 2× SSC twice for 3 min at room temperature then placed on a parafilm-coated Petri dish, and 100 μl of hybridization solution was added on top of the slices. The hybridization solution consisted of 2× SSC, 30% (vol/vol) formamide (Fisher, AM9342), 10% (wt/vol) dextran sulfate (Millipore, S4030), 1 mg ml -1 yeast tRNA (Thermo, 15401029), a total concentration of 5 μM encoding probes (see above) and 2 μM of a poly(A) anchor probe (/5Acryd/TTGAGTGGATGGAGTGTAAT T+TT+ TT+T T+TT+ TT+T T+TT+ TT+T T+T, where T+ indicates locked nucleic acid; IDT). To label the boundaries of all cells, a rabbit anti-Na + /K + -ATPase primary antibody (Abcam, ab76020) was added to this solution at a final concentration of 3 μg ml -1 (1:200 dilution). The sample chamber was then humidified with a piece of moist cotton and sealed with parafilm. Samples were hybridized in a humidified 37 °C oven for 36 to 48 h then washed with 30% (vol/vol) formamide in 2× SSC twice for 3 min at room temperature. Hybridization was then repeated using the same buffers and conditions but with the primary antibody replaced with the goat anti-rabbit oligo-labeled secondary antibody (prepared above) at a final concentration of 4 μg ml -1 (1:300 dilution) in a humidified 37 °C oven overnight. Samples were then washed with 30% (vol/vol) formamide in 2× SSC twice for 30 min at 47 °C and covered in 2 mM RVC in Tris-buffered saline (50 mM Tris-HCl, 300 mM NaCl).</p><p>After hybridization, samples were embedded in a polyacrylamide gel film, and the protein components were digested away. Briefly, the samples were washed twice in a gel solution consisting of 4% acrylamide/bis-acrylamide 19:1 (Bio-Rad, 1610144) in 50 mM Tris-HCl, 300 mM NaCl, 0.03% (wt/vol) ammonium persulfate (Sigma, 215589), 0.15% (vol/vol) tetramethylethylenediamine (TEMED; Sigma, T7024) and 2 mM RVC. The coverslips were then inverted on a 65-μl droplet of the gel solution on a Gel Slick (Lonza, 50640)-coated glass plate and allowed to cast for 1 h and 30 min at room temperature. Samples were then gently removed from the glass plate, washed with 2× SSC and digested in a buffer consisting of 2× SSC, 2% (vol/vol) SDS (Thermo, AM9823), 1:100 proteinase K (NEB, P8107S) and 0.25% (vol/vol) Triton-X (Sigma, T8787) at 37 °C for 2 d with a change of digestion buffer after 1 d. Samples were then washed with 2× SSC five times for 30 min at room temperature and imaged immediately or stored at 4 °C.</p><p>MERFISH imaging. MERFISH measurements were conducted on a home-built epifluorescence microscope with integrated fluidics control. The microscope was built around a Nikon Ti-2 body and contained a seven-color, solid-state laser illumination source (Lumencor, Celesta) coupled into the microscope with a custom epi-illumination injection system built to our specifications (Lumencor), a pentaband dichroic and a filter cube (Semrock FF421/491/567/659/776-Di01-25x36; FF01-391/477/549/639/741-25; FF01-441/511/593/684/817-25), a motorized xy stage (Marzhauser, SCAN IM 130x85), a piezo-controlled objective nano-positioner (Mad City Labs, NanoF2000), a ×60 CFI PlanApo oil objective (Nikon) and two high-performance CMOS cameras (Hamamatsu, Flash 4.0) coupled to the microscope body with a dual-camera splitter (Cairn, TwinCam) and a long-pass dichroic (Semrock, T750lpxrxt-UF2). The focus of the microscope was controlled by a custom autofocus system described previously <ref type="bibr" target="#b18">19</ref> .</p><p>MERFISH imaging was performed as described previously <ref type="bibr" target="#b18">19</ref> . In short, fluorophore readout probes complementary to the readout bit sequences were sequentially hybridized and cleaved off in sequential rounds of imaging, forming the barcode on-off pattern that can be decoded later using a computational pipeline. The readout probes were paired by color and had either Cy5 or Alex647; their sequences have been published previously <ref type="bibr" target="#b18">19</ref> .</p><p>The first pair of readout probes and readout probe complementary to the cell boundary immunofluorescence oligo were stained on the bench before imaging. The samples were stained with 3 nM each of the readout probes in 2× SSC, 10% (vol/vol) ethylene carbonate (Sigma, E26258-500G) and 0.25% (vol/vol) Triton-X for 20 min at room temperature followed by 4 μg ml -1 DAPI (Fisher, D1306) in the same solution for 10 min at room temperature and washed once with 2× SSC. Coverslips were then mounted in a closed-flow chamber (Bioptechs, FCS2), and buffers were introduced via a home-built fluidics system consisting of four computer-controlled valves (Hamilton, MVP) and a peristaltic pump (Gilson, MP1). The fluidics system controlled the flow of a series of buffers, including a readout hybridization buffer (2× SSC, 10% (vol/vol) ethylene carbonate and 0.25% (vol/vol) Triton-X and 3 nM of the specific readout probes), a readout wash buffer (2× SSC, 10% (vol/vol) ethylene carbonate and 0.25% (vol/vol) Triton-X), a readout cleavage buffer (2× SSC, 50 mM tris(2-carboxyethyl)phosphine) (GoldBio, TCEP25), a cleavage wash buffer (2× SSC) and an imaging buffer (2× SSC, 4 μM Trolox-quinone, 0.5 mg ml -1 Trolox, 1:500 rPCO (OYC 46852004) and 5 mM protocatechuic acid (Sigma, 37580-25G-F)).</p><p>In each round of imaging, samples were hybridized with readout probes for 15 min, washed with the readout wash buffer for 5 min and then imaged in the imaging buffer. Nine z planes were collected at 1.5-μm separation to cover the full volume of the slice. After imaging, the fluorescence signal was extinguished by incubating the sample in the readout cleavage buffer for 15 min. The sample was then washed with the cleavage wash buffer for 5 min and then hybridized for the next round of imaging. Readout probes complementary to the poly(A) anchor probe readout region were imaged in the last round.</p><p>Readout probes were imaged with either 635-nm (Cy5) or 750-nm (Alex647) illumination. Orange fluorescent fiducial beads (coated on coverslips) were imaged with 535-nm illumination to align fields of view between imaging rounds. DAPI was imaged with 405-nm illumination, and the poly(A) and cell boundary immunofluorescence signals were imaged with 473-nm illumination.</p><p>MERFISH analysis. Individual mRNAs were identified in these data using a previously described analysis pipeline <ref type="bibr" target="#b18">19</ref> . Briefly, images of the fiducial beads were used to align images of the same field of view from different imaging rounds, and chromatic aberrations between images collected in the 635-nm or 750-nm channels were corrected. Background was removed with a high-pass filter, the image was deconvolved with Lucy-Richardson deconvolution and then noise was removed with a low-pass filter. Individual pixels were assigned to their nearest barcode based on the measured intensity profile across all imaging rounds, assuming that the distance between the nearest barcode and the measured intensity profile falls within a distance smaller than that of a single-bit flip to that barcode. Contiguous pixels assigned to the same barcode were then grouped to form an RNA. Spurious RNAs were removed by filtering over the quality score estimated based on the number of pixels assigned to each RNA as well the average brightness across all rounds for each RNA <ref type="bibr" target="#b18">19</ref> using the following procedure:</p><p>1. All spots were split by the number of pixels n p assigned to them. 2. For each value of n p , the spots were ordered by the average brightness b.</p><p>3. For each value of n p and b, the fraction of false-positive measurements was estimated across all spots with the brightness higher than b. This fraction was used as the quality score. 4. All spots with a quality score less than 0.8 were removed.</p><p>Single-cell analysis of segmented MERFISH data. Single-cell analysis was performed in scanPy 1.7.2 (ref. <ref type="bibr" target="#b34">35</ref> ). Baysor-or Cellpose <ref type="bibr" target="#b42">43</ref> -segmented cells were filtered by the following criteria: transcript counts of &gt;10 and &lt;900, and the number of genes expressed is ≥1. Additionally, for Baysor segmentation, the average in-cell confidence is set to &gt;0.75 with a cell area of &gt;50 and &lt;25,000 pixel 3 . After filtering, 5,180 of 5,194 cells remained for Baysor segmentation, 7,416 of 8,211 cells remained for Baysor with membrane stain prior and 5,317 of 8,439 cells remained for Cellpose segmentation. All genes were expressed in at least one cell and were kept for subsequent analysis. Gene expression was normalized by cell area; the counts per cell were divided by the cell area and multiplied by a normalization constant (mean(cell area) + 2 × standard deviation(cell area)). Highly variable gene analysis was performed, and 200 of 241 genes were considered highly variable. Fifty PCs were then extracted, and a UMAP embedding was calculated. For clustering, the Leiden algorithm <ref type="bibr" target="#b43">44</ref> was used, and subclustering was performed on some of the clusters to yield the final sets of clusters.</p><p>Reporting Summary. Further information on research design is available in the Nature Research Reporting Summary linked to this article.</p><p>Extended Data Fig. <ref type="figure" target="#fig_1">1</ref> | graphical models of the segmentation process. Graphical representations of the Bayesian models used for the general Markov-Random Field (MRF) segmentation process (a) and the extended model for cell segmentation (b) are shown. Blue squares represent input parameters and data for the algorithm. The yellow circles represent the hidden parameters, fitted by the algorithm. Optional input and parameters are shown with dashed border lines. Round-corner boxes represent plate notation for a mixture of distributions with the size of the mixture shown on the bottom right corner. N mols denotes the number of molecules in the dataset, and N comps is the specified number of the mixture components. Arrow labels show the distributions used to model dependencies between the corresponding variables. Matrix variables are shown with the capital letters and vector variables are designated with the overline. a, The general MRF model, where the MRF prior with weights W is used to account for the spatial dependency of the inferred labels -→ z ∈ 1 : N comps . Examples of the variables and distributions for different labelling problems are noted below the boxes. b, The detailed model for the Cell Segmentation problem. Here, Bayesian Mixture Models with Dirichlet prior were used, so the possible number of components of the mixture is infinite, which allows the algorithm to estimate the number of components automatically. To ensure that the components correspond to the actual cells, the Global Scale parameter s was introduced, which specifies the expected cell radius.</p><p>Extended Data Fig. <ref type="figure" target="#fig_4">4</ref> | Cell statistics for different segmentation methods. The boxplots show distributions of the number of molecules per cell (a, log-scale y-axis) and the squared root of the cell area, which is an approximation for cell radii (b) for different protocols (x-axis) and segmentation methods (fill colours). The boxes represent quartiles with the maximal length of whiskers equal to 1.5 of the inter-quartile range. For all datasets, Baysor has approximately the same values as the published segmentations, which suggests that it is not biased towards over-or under-segmentation. The Watershed and pciSeq methods stably shows lower values, consistent with registering mostly nuclei molecules. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Extended Data</head></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 1 |</head><label>1</label><figDesc>Fig. 1 | Segmentation-free analysis of spatial data using NCVs. a, NCVs are estimated by taking k spatially NNs for each molecule and tabulating the number of neighborhood molecules belonging to each gene (left). The molecules measured in the 2D space are shown as dots colored by the gene identity.Based on the similarity of these vector profiles, NCVs can be clustered or embedded into lower-dimensional space (b,c) (center, right). A 3D embedding can be translated into a color encoding so that similar colors correspond to similar neighborhood compositions. Such color encoding allows for effective visualization of individual cells as well as the overall tissue organization. A part of the Allen smFISH dataset is shown as an example. b, Heat map showing the expression patterns for 20,000 NCVs (k = 50) that were uniformly sampled across the physical space with rows corresponding to genes and columns corresponding to NCVs. The color scale shows log 10 of total count normalized expression additionally normalized by the maximum for each gene. The L1 and L2 column headers show the marker-based annotations for the corresponding NCVs; Ex, excitatory; Inh, inhibitory; IT, intratelencephalic; NP, near-projecting; PT, pyramidal tract. c, Uniform manifold approximation and projection (UMAP) embedding of NCVs colored by annotation.</figDesc><graphic coords="2,70.48,239.83,197.71,181.58" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 2 |</head><label>2</label><figDesc>Fig. 2 | Application of an MRF framework for segmentation-free cell-type inference and background filtration. a,b, Individual molecules were clustered into major cell types by modeling the tissue as a mixture of multinomial distributions with an MRF prior. Cluster labels per molecule are shown in a with expression vectors for each of the clusters shown in b. c, The MRF approach is used to separate background from intracellular signal by modeling distance to its k-th nearest molecule (x axis, k = 16) as a mixture of two normal distributions. Fitted intracellular and background distributions for the Allen smFISH dataset are shown in red and green, respectively. The vertical black line shows the optimal separation point. d, Molecules from a subset of the Allen smFISH dataset are shown as dots colored by their distance to the k-th NN, with the color key shown on the bottom of c. The black contours mark regions above 50% probability of being intracellular.</figDesc><graphic coords="4,348.78,295.10,178.70,178.99" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 3 |</head><label>3</label><figDesc>Fig. 3 | examples of Baysor cell segmentation over the published protocols. a, Baysor segmentation is shown for a part of the MERFISH mouse hypothalamus 19 dataset. The center image shows positions of the measured molecules colored by their neighborhood gene composition (NCV; see Fig. 1a). The inferred boundaries of the segmented cells are shown as black contours. Zoom-in views are shown immediately to the left and right of the central plot (also colored by NCVs). The outer plots show DAPI signal within these regions. Additionally, the DAPI signal is shown as grayscale background within the zoom-in molecule plots. b-e, Additional examples of Baysor segmentation are shown for the Allen smFISH mouse VISp (b), ISS hippocampus 16 (c), STARmap mouse VISp 1020 (ref. 18 ) (d) and ouroboros smFISH (osmFISH) somatosensory cortex 8 (e) datasets.</figDesc><graphic coords="5,44.17,66.30,508.90,483.98" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Fig. 4 |</head><label>4</label><figDesc>Fig. 4 | Comparison of Baysor segmentation with other methods and published results. a,b, Number of cells (a) and fraction of the molecules assigned to cells (b) by different segmentation methods (color) are shown for different datasets (x axis). c, Schematics for evaluating the differences between two segmentations based on gene composition of the results. Each cell from the Source segmentation c is matched to cells from the Target segmentation t.For the Source cells, which overlap multiple target cells, the region with the largest ('main') overlap is used. Correlation of gene expression of the main overlap region against the expression of the rest of the cell in the Source segmentation is then estimated. d, Examples of the results where the published segmentation merged distinct cell types. Dots show the measured molecules, colored by NCVs, with contours showing cell boundaries for Baysor (black) and reported in the original publications (purple). e, Agreement of different methods with the originally published segmentations measured as mutual information of molecule cell assignments (y axis). f, Comparison of Baysor results to the published segmentations using the correlation benchmark (c). The violin plots show the distribution of overlap correlations with the rest of the cell (y axis) for different datasets (x axis), with dashed lines representing quartiles of the distributions. The right side of each violin plot was calculated using Baysor segmentation as a Source and the published segmentation as a Target, while the left side of each plot was calculated by swapping the Source and Target segmentations. The width of the violin plots is proportional to the number of Source cells that were matched to multiple Target cells. The results show that in the regions of disagreement with the Paper segmentation, the overlap region correlates well with the rest of the Baysor cell, while the opposite is not always the case. g,h, Analogous to f, the plot compares performance of Baysor segmentation with the segmentation obtained using pciSeq (g) or Watershed (h) algorithms.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Fig. 5 |</head><label>5</label><figDesc>Fig. 5 | examples of the segmentation differences on the osmFiSh data. a, A joint UMAP embedding of the cells generated by both Baysor and the published segmentations labeling the annotated cell types with color; Astro, astrocyte; Inh, inhibitory; Ex, excitatory; Micro, microglia; Oligo, oligodendrocyte; Vasc, vascular. b, The same embedding colored by the segmentation method. c, A heat map showing expression patterns of marker genes (columns) for each of the cell types (rows). The colors show expression levels normalized by gene. d, Bar plots showing the number of cells per cell type for the Baysor (brown) and the published (blue) segmentations. Numbers on the top of the bars show excess percentage for the Baysor segmentation. e,f, Examples of Astro Mfge8 (e) and Micro Hexb (f) cells, which were not segmented in the published segmentation but were distinguished using Baysor. The dots correspond to molecules colored by gene (only three of the most abundant genes are shown). The grayscale background represents DAPI signal, and the black line shows the cell boundary determined by Baysor.</figDesc><graphic coords="7,389.69,214.50,164.45,84.96" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><figDesc>VOL 40 | MARCH 2022 | 345-354 | www.nature.com/naturebiotechnology</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Fig. 6 |</head><label>6</label><figDesc>Fig. 6 | Comparing Baysor segmentation to MeRFiSh measurements with stained cell boundaries in the mouse ileum. a, Cartoon representation of the process by which IF against a pan-cell-type cell surface marker, the Na + /K + -ATPase, is combined with MERFISH. b, Distribution of 241 RNAs measured with MERFISH in a slice of the mouse ileum. RNAs are colored by NCV; scale bar, 100 µm. Six replicate measurements from three different animals were performed with similar results. c, Zoom-in on a highlighted region in b showing the membrane stain (Na + /K + -ATPase IF) with RNAs (colored by NCV) and DAPI for select z planes. Bottom left, RNAs from all z planes are plotted on top of the IF image from the central z plane (6 µm). Arrows mark a cell visible only in a subset of z planes; scale bar, 20 µm. d, Representative zoom-in images from different regions of the ileum slice demonstrating the results of Baysor segmentation using RNA information alone. Left, polygon boundaries defined by Baysor (red lines), RNAs imaged across all nine z planes (colored by NCV) and the IF image from the central z plane (6 µm). Right, RNAs imaged across all nine z planes (colored such that RNAs assigned to the same cell have the same color) and the IF image from the central z plane. e, UMAP representation of the cells identified by Baysor colored by the results of Leiden clustering; TA, transit amplifying cells; DC, dendritic cells; ICC, interstitial cells of Cajal. f, Spatial distribution of all cell types (left) colored as in e and three representative rare cell types (right). g, Fraction of molecules annotated to cells in different segmentations. h, Agreement between different segmentations and membrane IF segmentation is assessed using mutual information across molecules for n = 5 central z planes. The average and 95% confidence intervals across z planes and dots for individual values are shown. Only molecules assigned in IF segmentations were used. i, For each cell of a given segmentation, the size of an overlap (in terms of molecules) of a best-matching membrane IF cell is shown as a fraction of IF cell size. j, Correlation of transcriptional composition is shown for all neighboring cells (blue) and for the cells that were joined in Baysor segmentation relative to membrane IF segmentation (orange). Baysor-joined cells tend to show high expression correlation.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><figDesc>updates and initialization • Priors P( - → v u| -→ a v) and/or P( - → z | - → a v) used • Deviations from the model if there are any • Stop criteria • The way to build MRF if it is different from the description above Separation of the intracellular molecules from the background. Observations x, reflecting local density of molecules around a given RNA molecule, are quantified as the distance to the k-th NN molecule (see Inferring the algorithm parameters for the k estimation). Label factors z correspond to 'background' and 'intracellular' regions of tissue. They are characterized by distributions of expected molecular densities N (μ c , σc) and N (μ b , σ b ) in background and intracellular regions, respectively.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head>Fig. 5 | 7 | 8 |</head><label>578</label><figDesc>Comparison of the Baysor and the published segmentation on the MeRFiSh hypothalamus dataset. The figure shows the comparison in the same format as Fig. 5. a, A joint UMAP embedding of the cells from both Baysor and the segmentations. The colors correspond to the annotated cell types. b, The same embedding, colored by the segmentation that produced a specific cell. c, A heatmap showing expression patterns of marker genes (columns) for the different cell types (rows). The colors show expression levels, normalised for each gene. d, The frequency of different cell types is shown for the Baysor (brown bars) and the paper (blue bars) segmentations. The numbers on the top of the bars show excess percentage for Baysor. The largest difference is observed for Endothelial cells, where the Paper segmentation has 42% fewer cells compared to Baysor. e-f. Examples of Astrocytes (e) and Endothelial (f), which were not segmented by the Paper annotation, but were distinguished by Baysor. The dots correspond to the measured molecules, colored by gene (only three the most abundant genes are shown). The grayscale background shows the DAPI signal, and the black contours show the determined cell boundary. g. Example of a region with Ependymal cells, showing that for such regions molecules have homogeneous expression patterns. This results in Baysor slightly under-segmenting such cells, which causes the difference in the number of detected cells. Extended Data Fig. Spatial distributions of all cell types identified by Baysor (with RNA information only). Gray dots represent the location of all cells, and colored dots represent the location of the indicated cell type. DC: dendritic cells; ICC: interstitial cells of Cajal; TA: transit amplifying cells. Extended Data Fig. Additional benchmarks against MeRFiSh membrane staining data. a, Similar to Fig. 6i of the main manuscript, the distribution shows overlap of different segmentations with membrane IF segmentation. Baysor+DAPI and Baysor+IF correspond to Baysor ran with DAPI and IF segmentations as priors, respectively. b, Size of the overlap of different target segmentations with IF segments is shown relative to the size of the predicted cell in the target segmentation. c, Distribution of the number of target cells matching to cells of the membrane IF segmentation is shown for different segmentation results. d, Number of cells by different segmentation methods e-f number of molecules (e) and area (f) per cell, reported by different segmentation methods. The boxes represent distribution quartiles with the maximal length of whiskers equal to 1.5 of the inter-quartile range. g, Agreement between different segmentations and membrane IF segmentation is assessed using mutual information across molecules for n = 5 central z-planes. The average and 95% confidence intervals across z-planes, as well as dots for individual values are shown. Only molecules assigned to some cell in any of the methods are used. Extended Data Fig. 9 | outstanding challenges: intracellular compartmentalization and homotypic cells. a, An example of intracellular compartmentalization, illustrated by polarized expression pattern of enterocytes in the mouse ileum, as captured by MERFISH. RNAs are colored by NCV. b, Example of a homotypic cell cluster from the mouse ileum. Three panels show the same region with membrane IF signal. The left panel shows NCV molecule coloring, whereas center and right panels color molecules assigned to each cell differently. Red arrows point at homotypic cells that Baysor was only able to segment with the help of IF prior.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="21,164.36,58.28,324.12,580.92" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="23,56.56,397.08,495.50,136.37" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="30,52.35,67.58,499.97,120.82" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="31,46.59,56.42,344.45,331.63" type="bitmap" /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>NAtuRe BioteChNology | VOL 40 | MARCH 2022 | 345-354 | www.nature.com/naturebiotechnology</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_1"><p>© The Author(s), under exclusive licence to Springer Nature America, Inc. 2021 NAtuRe BioteChNology | VOL 40 | MARCH 2022 | 345-354 | www.nature.com/naturebiotechnology</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_2"><p>NAtuRe BioteChNology | www.nature.com/naturebiotechnology</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgements</head><p>We thank <rs type="person">B. Tasic</rs> and <rs type="person">B. Long</rs> for sharing the non-published Allen smFISH data and aiding in its interpretation and the <rs type="institution">SpaceTx consortium</rs> for facilitating the collaborations. We also thank <rs type="person">Y. Boykov</rs> (<rs type="affiliation">University of Waterloo</rs>) for the initial discussions and advice on an alternative segmentation approach based on graph cuts. We are also grateful to a number of colleagues who advised us on the published protocols, including <rs type="person">N. Pierson</rs> and <rs type="person">L. Cai</rs> (seqFISH + ), <rs type="person">S. Codeluppi</rs>, <rs type="person">L. Borm</rs> and <rs type="person">S. Linnarsson</rs> (osmFISH) and <rs type="person">X. Qian</rs>, <rs type="person">M. Hilscher</rs> and <rs type="person">M. Nilsson</rs> (ISS). Additionally, we thank <rs type="person">J. Miller</rs> for his input on segmentation benchmarks and <rs type="person">B. Lelieveldt</rs> for his advising on NCV visualization. We express our gratitude to <rs type="person">D. Molchanov</rs> and <rs type="person">D. Vetrov</rs> (<rs type="affiliation">HSE, Moscow</rs>) for their input on the algorithm. J.R.M. acknowledges pilot funding from the <rs type="funder">Harvard Digestive Disease Center</rs> (<rs type="grantNumber">P30 DK034854</rs>). V.P., P.V.K. and J.R.M. were supported by the <rs type="funder">Seed Network</rs> grant <rs type="grantNumber">2019-202743</rs> from the <rs type="funder">Chan Zuckerberg Initiative</rs>. V.P. is funded through a cooperative agreement between <rs type="funder">University of Copenhagen</rs> and <rs type="funder">Harvard Medical School</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_KWW65Ug">
+					<idno type="grant-number">P30 DK034854</idno>
+				</org>
+				<org type="funding" xml:id="_yupWb8F">
+					<idno type="grant-number">2019-202743</idno>
+				</org>
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data availability</head><p>The following datasets were used in evaluating the developed methods: 1. osmFISH mouse somatosensory cortex <ref type="bibr" target="#b7">8</ref> , 35 genes: <ref type="url" target="http://linnarssonlab.org/osmFISH/availability/">http://linnarssonlab.org/  osmFISH/availability/</ref>. 2. MERFISH mouse preoptic hypothalamus 19 , 140 genes: <ref type="url" target="https://doi.org/10.5061/dryad.8t8s248">https://doi.org/10.5061/  dryad.8t8s248</ref>. 3. ISS mouse CA1 region 16 , 95 genes: <ref type="url" target="https://doi.org/10.6084/m9.figshare.7150760.v1">https://doi.org/10.6084/m9.figshare.  7150760.v1</ref>. 4. STARmap mouse VISp 18 , 1,020 genes: <ref type="url" target="https://www.starmapresources.com/data/">https://www.starmapresources.com/data/</ref> (visual_1020, 20180505_BY3_1kgenes). 5. STARmap mouse VISp 18 , 160 genes: <ref type="url" target="https://www.starmapresources.com/data/">https://www.starmapresources.com/data/</ref> (visual_160, 20171120_BF4_light). 6. seqFISH + NIH/3T3 cells 7 , 10,000 genes: <ref type="url" target="https://doi.org/10.5281/zenodo.2669683">https://doi.org/10.5281/zenodo.2669683</ref>. 7. seqFISH mouse embryo 45 , 387 genes: <ref type="url" target="https://marionilab.cruk.cam.ac.uk/SpatialMouseAtlas/">https://marionilab.cruk.cam.ac.uk/  SpatialMouseAtlas/</ref>. 8. Allen smFISH mouse VISp, 22 genes: <ref type="url" target="https://github.com/spacetx-spacejam/data">https://github.com/spacetx-spacejam/data</ref>. 9. MERFISH mouse ileum, 241 genes: <ref type="url" target="https://doi.org/10.5061/dryad.jm63xsjb2">https://doi.org/10.5061/dryad.jm63xsjb2</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Code availability</head><p>The Baysor package is available at <ref type="url" target="https://github.com/kharchenkolab/Baysor">https://github.com/kharchenkolab/Baysor</ref>. Baysor parameters for different datasets are reported in Supplementary Table <ref type="table">3</ref>. The code to reproduce the results is available at <ref type="url" target="https://github.com/kharchenkolab/BaysorAnalysis/">https://github.com/kharchenkolab/  BaysorAnalysis/</ref>. This repository also contains the links to interactive visualization of the processed datasets using the Vitessce tool (<ref type="url" target="http://vitessce.io/">http://vitessce.io/</ref>). MERFISH probe design and analysis software is available at <ref type="url" target="https://github.com/ZhuangLab/MERFISH_analysis">https://github.com/ZhuangLab/  MERFISH_analysis</ref>.</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Publisher's note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Author contributions</head><p>P.V.K. and V.P. formulated the study and the overall approach. V.P. developed the detailed algorithms with advice from R.A.S. and K.K. V.P. implemented the Baysor package. J.R.M., R.J.X. and P.C. developed boundary immunostaining and performed MERFISH measurements. V.P. and P.V.K. drafted the manuscript, with contributions by J.R.M, R.A.S., and R.J.X. All authors provided suggestions and corrections on the manuscript text.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Competing interests</head><p>P.V.K. serves on the Scientific Advisory Board to Celsius Therapeutics, Inc., and Biomage, Inc. J.R.M. is a cofounder and Scientific Advisory Board member of Vizgen, Inc. J.R.M. is an inventor on patents associated with MERFISH applied for on his behalf by Harvard University and Boston Children's Hospital. The other authors declare no conflict of interest.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Additional information</head><p>Extended data is available for this paper at <ref type="url" target="https://doi.org/10.1038/s41587-021-01044-w">https://doi.org/10.1038/s41587-021-01044-w</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Supplementary information</head><p>The online version contains supplementary material available at <ref type="url" target="https://doi.org/10.1038/s41587-021-01044-w">https://doi.org/10.1038/s41587-021-01044-w</ref>.</p><p>Correspondence and requests for materials should be addressed to Peter V. Kharchenko.</p><p>Peer review information Nature Biotechnology thanks Kenneth Harris and the other, anonymous, reviewer(s) for their contribution to the peer review of this work.</p><p>Reprints and permissions information is available at <ref type="url" target="http://www.nature.com/reprints">www.nature.com/reprints</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Articles</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>NATURE BIoTECHNology</head><p>Extended Data Fig. <ref type="figure">2</ref>  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Articles</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>NATURE BIoTECHNology</head><p>Extended Data Fig. <ref type="figure">3</ref> | impact of the 'prior segmentation confidence' parameter on the difference between the prior and the posterior segmentations on the example of iSS CA1 region. a, The Mutual Information between the Baysor and the Paper (published) segmentations (y-axis) is shown as a function of the prior segmentation confidence (x-axis). Mutual Information does not reach the value of 1.0, as even for prior confidence set to 1.0, Baysor is still allowed to re-assign molecules, recognised as background in the Paper segmentation. b, For each cell of the source segmentation (shown with colour), a cell with the largest overlap was picked from the target segmentation. The overlap fraction is shown on the y-axis for the different values of prior segmentation confidence. The boxes represent distribution quartiles with the maximal length of whiskers equal to 1.5 of the inter-quartile range. It can be seen that for high values of the prior confidence, for each Paper cell there is a Baysor cell that covers it completely (confidence ≥0.9, Source=Paper). The opposite is not true, as Baysor is allowed to re-assign the background molecules from the Paper segmentation.  </p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Benchmarking single-cell RNA-sequencing protocols for cell atlas projects</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Mereu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">38</biblScope>
+			<biblScope unit="page" from="747" to="755" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m" type="main">The human cell atlas. eLife 6, e27041</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Regev</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">The human body at cellular resolution: the NIH Human Biomolecular Atlas Program</title>
+		<author>
+			<persName><forename type="first">Hubmap</forename><surname>Consortium</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">574</biblScope>
+			<biblScope unit="page" from="187" to="192" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Single cell transcriptomics comes of age</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Aldridge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Teichmann</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="page">4307</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Highly multiplexed subcellular RNA sequencing in situ</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">343</biblScope>
+			<biblScope unit="page" from="1360" to="1363" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">In situ sequencing for RNA analysis in preserved tissue and cells</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Ke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page" from="857" to="860" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Transcriptome-scale super-resolved imaging in tissues by RNA seqFISH</title>
+		<author>
+			<persName><forename type="first">C.-H</forename><forename type="middle">L</forename><surname>Eng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">568</biblScope>
+			<biblScope unit="page" from="235" to="239" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Spatial organization of the somatosensory cortex revealed by osmFISH</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Codeluppi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="932" to="935" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Spatial transcriptome profiling by MERFISH reveals subcellular RNA compartmentalization and cell cycle-dependent gene expression</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Emanuel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Hao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhuang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. Natl Acad. Sci. USA</title>
+		<meeting>Natl Acad. Sci. USA</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="volume">116</biblScope>
+			<biblScope unit="page" from="19490" to="19499" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Slide-seq: a scalable technology for measuring genome-wide expression at high spatial resolution</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">G</forename><surname>Rodriques</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">363</biblScope>
+			<biblScope unit="page" from="1463" to="1467" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">High-definition spatial transcriptomics for in situ tissue profiling</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Vickovic</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="987" to="990" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">The promise of spatial transcriptomics for neuroscience in the era of molecular cell typing</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Lein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">E</forename><surname>Borm</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Linnarsson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">358</biblScope>
+			<biblScope unit="page" from="64" to="69" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Spatial-omics: novel approaches to probe cell heterogeneity and extracellular matrix biology</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">C</forename><surname>Bingham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Naba</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">H</forename><surname>Barker</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Matrix Biol</title>
+		<imprint>
+			<biblScope unit="page" from="152" to="166" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Spatiotemporal structure of cell fate decisions in murine neural crest</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Soldatov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">364</biblScope>
+			<biblScope unit="page">9536</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Spatial transcriptomics and in situ sequencing to study Alzheimer&apos;s disease</title>
+		<author>
+			<persName><forename type="first">W.-T</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">182</biblScope>
+			<biblScope unit="page" from="976" to="991" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Probabilistic cell typing enables fine mapping of closely related cell types in situ</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Qian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="page" from="101" to="106" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">RNA imaging. Spatially resolved, highly multiplexed RNA profiling in single cells</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Boettiger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Moffitt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhuang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">348</biblScope>
+			<biblScope unit="page">6090</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Three-dimensional intact-tissue sequencing of single-cell transcriptional states</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">361</biblScope>
+			<biblScope unit="page">5691</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Molecular, spatial, and functional single-cell profiling of the hypothalamic preoptic region</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Moffitt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">362</biblScope>
+			<biblScope unit="page">5324</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Cell segmentation for image cytometry: advances, insufficiencies, and challenges</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cytometry A</title>
+		<imprint>
+			<biblScope unit="volume">95</biblScope>
+			<biblScope unit="page" from="708" to="711" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Cell segmentation-free inference of cell types from in situ transcriptomics data</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Park</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page">3545</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<monogr>
+		<title level="m" type="main">Structured hierarchical models for probabilistic inference from perturbation screening data</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Dirmeier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Beerenwinkel</surname></persName>
+		</author>
+		<idno type="DOI">10.1101/848234</idno>
+		<ptr target="https://doi.org/10.1101/848234" />
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at bioRxiv</note>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Identification of spatially associated subpopulations by combining scRNAseq and sequential fluorescence in situ hybridization data</title>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Shah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Dries</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G.-C</forename><surname>Yuan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="page" from="1183" to="1190" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">ImageJ2: ImageJ for the next generation of scientific image data</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">T</forename><surname>Rueden</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">BMC Bioinformatics</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page">529</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Multiplexed imaging of high-density libraries of RNAs with MERFISH and expansion microscopy</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Moffitt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhuang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sci. Rep</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page">4847</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">High-performance multiplexed fluorescence in situ hybridization in culture and tissue with matrix imprinting and clearing</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Moffitt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proc. Natl Acad. Sci. USA</title>
+		<imprint>
+			<biblScope unit="volume">113</biblScope>
+			<biblScope unit="page" from="14456" to="14461" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Cellpose: a generalist algorithm for cellular segmentation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Stringer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Michaelos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pachitariu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="100" to="106" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<monogr>
+		<author>
+			<persName><forename type="first">B</forename><surname>Yangel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Vetrov</surname></persName>
+		</author>
+		<title level="m">Energy Minimization Methods in Computer Vision and Pattern Recognition</title>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Heyden</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">F</forename><surname>Kahl</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">C</forename><surname>Olsson</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Oskarsson</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">X.-C</forename><surname>Tai</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="137" to="150" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<monogr>
+		<title level="m" type="main">UMAP: uniform manifold approximation and projection for dimension reduction</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Mcinnes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Healy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Melville</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/1802" />
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="volume">03426</biblScope>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at arXiv</note>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Superresolution with compound markov random fields via the variational em algorithm</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kanemura</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Maeda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ishii</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neural Netw</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="1025" to="1034" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Variational inference: a review for statisticians</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Blei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kucukelbir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Mcauliffe</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Am. Stat. Assoc</title>
+		<imprint>
+			<biblScope unit="volume">112</biblScope>
+			<biblScope unit="page" from="859" to="877" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Maximum likelihood from incomplete data via the em algorithm</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">P</forename><surname>Dempster</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">M</forename><surname>Laird</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">B</forename><surname>Rubin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. R. Stat. Soc. Series B Stat. Methodol</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="page" from="1" to="38" />
+			<date type="published" when="1977">1977</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">The stochastic EM algorithm: estimation and asymptotic results</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">F</forename><surname>Nielsen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bernoulli</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page" from="457" to="489" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Expectation-maximization algorithms for inference in Dirichlet processes mixture</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kimura</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Anal. Appl</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="55" to="67" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Scanpy: large-scale single-cell gene expression data analysis</title>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">A</forename><surname>Wolf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Angerer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">J</forename><surname>Theis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Genome Biol</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page">15</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Cell types in the mouse cortex and hippocampus revealed by single-cell RNA-seq</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Zeisel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">347</biblScope>
+			<biblScope unit="page" from="1138" to="1142" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Classes and continua of hippocampal CA1 inhibitory neurons revealed by single-cell transcriptomics</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">D</forename><surname>Harris</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS Biol</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page">2006387</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Conserved cell types with divergent features in human versus mouse cortex</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Hodge</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">573</biblScope>
+			<biblScope unit="page" from="61" to="68" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">A single-cell survey of the small intestinal epithelium</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">L</forename><surname>Haber</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">551</biblScope>
+			<biblScope unit="page" from="333" to="339" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Identification of enteroendocrine regulators by real-time single-cell differentiation mapping</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Gehart</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">176</biblScope>
+			<biblScope unit="page" from="1158" to="1173" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Accurate estimation of cell-type composition from gene expression data</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Tsoucas</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page">2975</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">High-throughput single-cell gene-expression profiling with multiplexed error-robust fluorescence in situ hybridization</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Moffitt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proc. Natl Acad. Sci. USA</title>
+		<imprint>
+			<biblScope unit="volume">113</biblScope>
+			<biblScope unit="page" from="11046" to="11051" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Cellpose: a generalist algorithm for cellular segmentation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Stringer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Michaelos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pachitariu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="100" to="106" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">From Louvain to Leiden: guaranteeing well-connected communities</title>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">A</forename><surname>Traag</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Waltman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">J</forename><surname>Van Eck</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sci. Rep</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page">5233</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<monogr>
+		<title level="m" type="main">Highly multiplexed spatially resolved gene expression profiling of mouse organogenesis</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lohoff</surname></persName>
+		</author>
+		<idno type="DOI">10.1101/2020.11.20.391896</idno>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at bioRxiv https</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

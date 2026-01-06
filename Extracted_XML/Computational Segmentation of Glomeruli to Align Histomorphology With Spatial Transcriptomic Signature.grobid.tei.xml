@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Computational Segmentation of Glomeruli to Align Histomorphology With Spatial Transcriptomic Signature Session Information</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="institution">University at Buffalo</orgName>
+								<address>
+									<settlement>Brandon Buffalo</settlement>
+									<region>New York</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="institution"> Melo ferreira</orgName>
+								<address>
+									<settlement>Ricardo</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="institution">Indiana University</orgName>
+								<address>
+									<settlement>Bloomington</settlement>
+									<region>Indiana</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff3">
+								<orgName type="department">Ulysses G. J</orgName>
+								<orgName type="institution">University of Michigan Michigan Medicine</orgName>
+								<address>
+									<settlement>Balis Ann Arbor</settlement>
+									<region>Michigan</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff4">
+								<orgName type="department">Jain</orgName>
+								<orgName type="institution">Washington University in St Louis</orgName>
+								<address>
+									<settlement>Sanjay St Louis</settlement>
+									<region>Missouri</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff5">
+								<orgName type="department">John E</orgName>
+								<orgName type="laboratory">Tomaszewski</orgName>
+								<orgName type="institution">University at Buffalo</orgName>
+								<address>
+									<settlement>Buffalo</settlement>
+									<region>New York</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff6">
+								<orgName type="department" key="dep1">El-Achkar</orgName>
+								<orgName type="department" key="dep2">Tarek M</orgName>
+								<orgName type="institution">Indiana University</orgName>
+								<address>
+									<settlement>Bloomington</settlement>
+									<region>Indiana</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff7">
+								<orgName type="laboratory">Eadon</orgName>
+								<orgName type="institution">Indiana University</orgName>
+								<address>
+									<settlement>Bloomington</settlement>
+									<region>Michael T Indiana</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff8">
+								<orgName type="department">Sarder, Pinaki</orgName>
+								<orgName type="institution">University at Buffalo</orgName>
+								<address>
+									<settlement>Buffalo</settlement>
+									<region>New York</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Computational Segmentation of Glomeruli to Align Histomorphology With Spatial Transcriptomic Signature Session Information</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">60D4D5A3DD14527E1739673601771886</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:09+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Group or Team Name</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head> Kidney Precision Medicine Project</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Background</head><p>Glomerular histomorphology establishes kidney disease diagnosis and prognosis. Spatial transcriptomics facilitates spatial resolution of molecular signatures superimposed upon histology. We trained a machine learning (ML) method to automatically segment glomeruli and quantify pixel level image features to align with spatial transcriptomics (ST) performed on the same section.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Methods</head></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Brightfield histology images of 17 kidney disease biopsies and 3 reference kidney sections were used for training a deep learning model for glomerular segmentation. We used 3 additional reference images for testing. Unsupervised clustering of ML features was performed across all glomeruli using Seurat. Transcriptomic signatures of 10X Visium ST spots were deconvoluted with Seurat 3.2.3 transfer scores using the kidney precision medicine project (KPMP) snRNAseq atlas as reference. Association between cell type composition and ML classification was assessed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results</head><p>The ML glomerular segmentation achieved sensitivity/specificity/precision 0.88/1.0/0.97. The glomeruli were classified into 3 clusters; with cluster one statistically associated with increases in degenerative podocyte; and a second cluster with a glomerular capillary signature (p &lt;0.033).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Conclusion</head><p>Our pipeline will serve as a framework to map molecular to histomorphologic data over large areas captured from large sample libraries, and will aide in the development of kidney precision medicine.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Funding</head><p> NIDDK Support</p></div>		</body>
+		<back>
+			<div type="references">
+
+				<listBibl/>
+			</div>
+		</back>
+	</text>
+</TEI>

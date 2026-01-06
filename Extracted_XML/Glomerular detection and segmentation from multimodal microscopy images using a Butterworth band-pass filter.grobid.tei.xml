@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Glomerular detection and segmentation from multimodal microscopy images using a Butterworth band-pass filter</title>
+				<funder>
+					<orgName type="full">Pathology &amp; Anatomical Sciences Department, Jacobs School of Medicine and Biomedical Sciences, University at Buffalo</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">UB IMPACT</orgName>
+				</funder>
+				<funder ref="#_VwR4yc3">
+					<orgName type="full">DiaComp Pilot and Feasibility Program</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>SPIE</publisher>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2018-03-06">2018-03-06</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Brandon</forename><surname>Ginley</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Departments of Pathology and Anatomical sciences</orgName>
+								<orgName type="institution" key="instit1">biomedical sciences University at Buffalo</orgName>
+								<orgName type="institution" key="instit2">The State University of New York Buffalo</orgName>
+								<address>
+									<region>NY</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Brendon</forename><surname>Lutnick</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Departments of Pathology and Anatomical sciences</orgName>
+								<orgName type="institution" key="instit1">biomedical sciences University at Buffalo</orgName>
+								<orgName type="institution" key="instit2">The State University of New York Buffalo</orgName>
+								<address>
+									<region>NY</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">John</forename><forename type="middle">E</forename><surname>Tomaszewski</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Departments of Pathology and Anatomical sciences</orgName>
+								<orgName type="institution" key="instit1">biomedical sciences University at Buffalo</orgName>
+								<orgName type="institution" key="instit2">The State University of New York Buffalo</orgName>
+								<address>
+									<region>NY</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">Pinaki</forename><surname>Sarder</surname></persName>
+							<email>pinakisa@buffalo.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department">Departments of Pathology and Anatomical sciences</orgName>
+								<orgName type="institution" key="instit1">biomedical sciences University at Buffalo</orgName>
+								<orgName type="institution" key="instit2">The State University of New York Buffalo</orgName>
+								<address>
+									<region>NY</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Darshana</forename><surname>Govind</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Departments of Pathology and Anatomical sciences</orgName>
+								<orgName type="institution" key="instit1">biomedical sciences University at Buffalo</orgName>
+								<orgName type="institution" key="instit2">The State University of New York Buffalo</orgName>
+								<address>
+									<region>NY</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Glomerular detection and segmentation from multimodal microscopy images using a Butterworth band-pass filter</title>
+					</analytic>
+					<monogr>
+						<title level="m">Medical Imaging 2018: Digital Pathology</title>
+						<imprint>
+							<publisher>SPIE</publisher>
+							<biblScope unit="page">39</biblScope>
+							<date type="published" when="2018-03-06" />
+						</imprint>
+					</monogr>
+					<idno type="MD5">016340D6AEDC342DF3C50727945CF1A9</idno>
+					<idno type="DOI">10.1117/12.2295446</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:09+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Butterworth band-pass filter</term>
+					<term>Immunofluorescence staining</term>
+					<term>Multi-modal microscopy imaging</term>
+					<term>Glomerular segmentation</term>
+					<term>Renal histopathology</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>We present a rapid, scalable, and high throughput computational pipeline to accurately detect and segment the glomerulus from renal histopathology images with high precision and accuracy. Our proposed method integrates information from fluorescence and bright-field microscopy imaging of renal tissues. For computation, we exploit the simplicity, yet extreme robustness of Butterworth bandpass filter to extract the glomeruli by utilizing the information inherent in the renal tissue stained with immunofluorescence marker sensitive at blue emission wavelength as well as tissue auto-fluorescence. The resulting output is in-turn used to detect and segment multiple glomeruli within the fieldof-view in the same tissue section post-stained with histopathological stains. Our approach, optimized over 40 images, produced a sensitivity/specificity of 0.95/0.84 on n = 66 test images, each containing one or more glomeruli. The work not only has implications in renal histopathology involving diseases with glomerular structural damages, which is vital to track the progression of the disease, but also aids in the development of a tool to rapidly generate a database of glomeruli from whole slide images, essential for training neural networks. The current practice to detect glomerular structural damage is by the manual examination of biopsied renal tissues, which is laborious, time intensive and tedious. Existing automated pipelines employ complex neural networks which are computationally extensive, demand expensive highperformance hardware and require large expert-annotated datasets for training. Our automated method to detect glomerular boundary will aid in rapid extraction of glomerular compartmental features from large renal histopathological images.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">INTRODUCTION</head><p>The glomerulus, a tuft of capillaries located within the Bowman's capsule, is the basic filtration unit of the kidney <ref type="bibr" target="#b0">[1]</ref> . Disruptions in the glomerular structure affects the glomerular filtration barrier, the latter of which is responsible for the filtration of blood into urine. This disruption results in proteinuria, a condition characterized by the presence of excessive proteins in the urine, a common indicator of several renal diseases. Hence, the histological damages within the glomeruli are primarily analyzed by experts while evaluating a renal biopsy, to identify kidney diseases <ref type="bibr" target="#b1">[2]</ref> . Moreover, various compartments within the glomeruli, such as the mesangial matrix <ref type="bibr" target="#b2">[3]</ref> , capillary walls <ref type="bibr" target="#b3">[4]</ref> , and podocytes <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b5">6]</ref> , are the focus of several studies to comprehend the changes within the kidney during different disease stages. However, to detect these compartments, it is vital to first identify the glomerular boundaries within the whole slide image (WSI) rapidly with high accuracy <ref type="bibr" target="#b4">[5]</ref> .</p><p>Automated glomerular segmentation remains a challenge today due to its complex nature and intense variations in size and shape within the renal section <ref type="bibr" target="#b6">[7]</ref> . Although consistent under normal conditions in vivo, the glomerulus undergoes swelling during hypertension <ref type="bibr" target="#b7">[8]</ref> , hypertrophy <ref type="bibr" target="#b8">[9]</ref> , and diabetes <ref type="bibr" target="#b9">[10]</ref> . Furthermore, the manual tissue sectioning causes variations in the sizes of the glomerulus, owing to the variations in sectioning angles. Apart from this, the variations in staining intensities further complicates the task. These inconsistent geometrical parameters make it inconvenient to develop a single robust algorithm capable of detecting and segmenting all the glomeruli within a tissue section. The</p><p>Butterworth band -pass filter Extract regions from IF WSI Overlay of registered images Image registration IF WSI PAS stained WSJ VA -:Abtrv.,:115 _T .i 44-Generated mask Extract corresponding regions from PAS WSI Overlay mask with PAS image</p><p>current clinical practice for glomerular detection involves the manual observation of histologically stained biopsied tissues under a standard bright-field microscope by a pathologist <ref type="bibr" target="#b10">[11]</ref> , which is time consuming, tedious, subjective and requires expertise.</p><p>Existing automated methodologies like rectangular-histogram of gradients (R-HOG <ref type="bibr" target="#b11">[12]</ref> ) descriptors for the segmentation of glomeruli <ref type="bibr" target="#b12">[13,</ref><ref type="bibr" target="#b13">14]</ref> , employ complex algorithms with rigid block divisions, generating false positives and the other common method of employing Gabor texture filters <ref type="bibr" target="#b14">[15]</ref> , to segment glomeruli, utilize multiple parameters which need to be optimized due to the inter-glomerular structural variations within a single tissue slice. The latter also fails to detect more than one glomerulus within an image. Other automated techniques employ complex neural networks <ref type="bibr" target="#b15">[16]</ref> , which utilize expensive dedicated hardware and require a large expert-annotated dataset of training images.</p><p>We have developed a rapid, high throughput, scalable, and robust computational pipeline, capable of detecting and segmenting multiple glomeruli within the field-of-view, using minimal computational complexity, by integrating the two different microscopic imaging modalities of immunofluorescence and histology. Our pipeline utilizes the robust yet simple Butterworth band-pass filter to exploit previously unexplored innate features of fluorescence photo physical properties of DAPI generated and tissue autofluorescence signals, thereby reducing the computational cost and complexity when compared to other techniques <ref type="bibr" target="#b15">[16]</ref> , while generating comparable performance.</p><p>The developed method could thereby aid in renal disease diagnosis and tracking of disease progression and therapeutic response by alleviating the burden of manual detection of glomeruli within the tissue. It would also aid in the development of a tool, capable of rapidly generating glomerular databases by detecting and segmenting them from whole slide renal tissue images, which are crucial for training neural networks. Furthermore, it could also be used to extract various compartments within the glomerulus, such as the mesangium, the podocytes and the capillary walls which are the focus of several studies. filtering of the image in Fig. 1D. (F) Image patches from PAS WSI corresponding to the ones shown in Fig. 1D. (G) Overlay image of the masks shown in Fig. 1E and the PAS image patch shown in Fig. 1F.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">METHODOLOGY 2.1 Schematic overview</head><p>Fig. <ref type="figure" target="#fig_1">1</ref> shows the proposed computational pipeline to segment glomerular boundaries. Fig. <ref type="figure" target="#fig_1">1A</ref> shows the whole slide image of a mouse renal tissue section stained with immunofluorescence (IF) markers. The cell nuclei were stained with DAPI (ex/em (nm): 358/461) and tissue auto-fluorescence <ref type="bibr" target="#b16">[17]</ref> was captured at 488 nm excitation and 525 nm emission. In this carefully designed imaging set-up, glomerular regions are demarcated by significantly lower auto-fluorescent signal than surrounding tubular regions. This is a direct result of the high numbers of mitochondria found in the cytoplasm and in the basal infoldings of tubular epithelial cells <ref type="bibr" target="#b17">[18]</ref> , which contain autofluorescent molecules such as NADH/NADPH and and FADH2 <ref type="bibr" target="#b16">[17]</ref> . Glomerular residents such as mesangial, endothelial or podocyte cells are not hallmarked by abundant mitochondria, thereby providing a huge distinction in their intensities. This inherent biological difference within the glomerulus and the surrounding tubules is exploited using a Butterworth band-pass filter <ref type="bibr" target="#b18">[19]</ref> to extract solely the regions containing glomeruli from the fluorescent tissue image, see Section 2.4. The same renal tissue was poststained with Periodic acid-Schiff (PAS), see Fig. <ref type="figure" target="#fig_1">1B</ref>. The two whole slide images obtained from two distinct microscopic imaging modalities are then registered by matching their speeded up robust features (SURF) features <ref type="bibr" target="#b19">[20]</ref> (Fig. <ref type="figure" target="#fig_1">1C</ref>). Random image patches are selected from the registered IF image, as shown in Fig. <ref type="figure" target="#fig_1">1D</ref> and are filtered using the Butterworth band-pass filter to detect and segment the glomeruli. The resulting mask indicating the glomerular region is shown in binary in Fig. <ref type="figure" target="#fig_1">1E</ref>. Fig. <ref type="figure" target="#fig_1">1G</ref> shows the PAS image patch of glomerulus corresponding to that shown in Fig. <ref type="figure" target="#fig_1">1B</ref>. The mask depicted in Fig. <ref type="figure" target="#fig_1">1E</ref> is overlaid with the PAS image patch, to highlight the glomerular boundary in Fig. <ref type="figure" target="#fig_1">1H</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Tissue slicing and image acquisition</head><p>Tissue sample of normal C57BL/6J background mice were used. All animal studies were performed in accordance with protocols approved by the University at Buffalo Animal Studies Committee. Tissue slices of 2 µm were stained using immunofluorescence markers, and subsequently imaged using a whole-slide imaging fluorescence microscope (Aperio Versa, Leica, Buffalo Grove, Il). For immunofluorescence imaging, cell nuclei were stained with DAPI (ex/em (nm): 358/461) and tissue auto-fluorescence <ref type="bibr" target="#b16">[17]</ref> was captured at 488 nm excitation and 525 nm emission. The tissue section was post-stained using Periodic acid-Schiff, and imaged in brightfield using the Aperio scanner. Pixel resolution for fluorescence imaging was 0.16 µm and for brightfield imaging was 0.13 µm. Other details of tissue preparation, staining, and optics configuration used for imaging were remain same as discussed in our earlier works <ref type="bibr" target="#b4">[5]</ref> . The computational method proposed here has been constructed around this imaging configuration, and the parameter values may change proportionally for other imaging conditions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Image registration</head><p>DAPI (pseudo-blue) channel image was extracted and processed to generate a binary image indicating the location of nuclei in the registered immunofluorescence image. Similarly, the color deconvolution algorithm <ref type="bibr" target="#b20">[21]</ref> was used to extract the nuclei locations within the PAS image. These binary images were then registered by matching their SURF features <ref type="bibr" target="#b19">[20]</ref> . This registration enabled the extraction of various image patches from the IF whole slide image and their corresponding PAS stained counterparts.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.4">Butterworth band-pass filter</head><p>We used the standard Butterworth band-pass filter <ref type="bibr" target="#b18">[19]</ref> with an order of 1 n = . The transfer functions of the low pass and high pass filter (Eq. ( <ref type="formula">1</ref>) and ( <ref type="formula">2</ref>), respectively) used to design the Butterworth band-pass filter (Eq. ( <ref type="formula">3</ref>)) are:</p><formula xml:id="formula_0">2 1 ( , ) 1 [ ( , ) / ] LP n L H u v D u v D = + (1) 2 1 ( , ) 1 1 [ ( , ) / ] HP n H H u v D u v D = - + (2) ( , ) ( , )* ( , ) BP LP HP H u v H u v H u v = (3)</formula><p>where, L D and H D indicate the upper and lower cut off frequencies and ( , ) D u v indicates the distance of each pixel from the origin.</p><p>The lower cut off frequency of the band-pass filter is set to avoid the blank regions within the tissue and the high frequency cut off is set to a point that it avoids high frequency noise. The band of frequencies thus selected were</p><p>2.5 L D = and 300 H D =</p><p>, which accurately detects the glomerular region while rejecting the surrounding tubular region and interstitial spaces. The obtained mask (see, Fig. <ref type="figure" target="#fig_1">1E</ref>) was overlayed with the corresponding PAS image section (see Fig. <ref type="figure" target="#fig_1">1G</ref>). Our proposed pipeline is able to detect glomerular boundaries, including multiple glomeruli within the same image, with a mean sensitivity/specificity 0.95/0.84 over n = 66 images, each containing one or more glomeruli. Ground-truth glomerular boundaries were obtained manually. The above performance was obtained by optimizing the cut-off frequencies of the proposed band-pass filter. The performance of glomerular segmentation in each of the images from a total of n = 66 images are shown in Fig. <ref type="figure" target="#fig_5">3</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">RESULTS</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Performance evaluation</head><p>Table 3. Results for different glomerular segmentation methods. Method Accuracy (%) Error F1-score/ dice coefficient Sensitivity Specificity Precision Butterworth band-pass filter 87.31 0.13 0.83 0.95 0.84 0.74 Gabor filter 88.99 0.11 0.84 0.96 0.87 0.76 CNN 96.35 0.04 0.95 0.97 0.97 0.93</p><p>U y 5-bA co 4 3r " 2-1-0 o 10 9 8 7 O 6 U a.) 5 vs 4 El 3 2 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 Sensitivity 10 9 8 7 O 6 U au bei 4 £ 3 2 1 0 1 o o C i . EN fir 0 0.1 0.2 0.3 0.4 0.5 . 0.6 0.7 O S Precision 10 9 8 Ó 7 Ó 6 U y 5 cG 4 E3 2 1 0.1 0.2 0.3 0.4 0.5 06 0_, 08 09 1 00 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 09 1 Specificity F-measure D mirk 9 1</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Comparison</head><p>The performance of our glomerular segmentation was compared with state-of-the-art methods like Gabor texture filters <ref type="bibr" target="#b14">[15]</ref> designed for glomerular segmentation and deep convolutional neural networks (CNN) <ref type="bibr" target="#b21">[22]</ref> . The deep CNN was based on fully convolutional AlexNet architecture, trained/validated using 30298/3366 glomeruli images, and the results generated were compared with our method, as shown in Table <ref type="table">3</ref>. Our method produces comparable results with that of state-of-the-art methods, while eliminating the need for complex algorithms and large training databases. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">DISCUSSION</head><p>The proposed pipeline can be used to rapidly generate a database of glomeruli, extracted from whole slide images, essential for training neural networks. We have shown for the first time a rapid, high throughput, scalable, and robust computational pipeline, integrating two different microscopy image modalities to detect and segment multiple glomeruli within the field-of-view in renal histopathology. Our pipeline builds upon exploiting, for the first time, previously unexplored innate features of fluorescence photo-physical properties of DAPI generated and tissue autofluorescence signals. We are currently studying the performance of the proposed method in diverse murine and human renal histopathology conditions, result of which will be published in a future journal publication.</p><p>Several possible applications of the proposed method can be considered. In the future, we plan to extend the study by including images of structurally damaged glomeruli by diseases like diabetic nephropathy for analysis. We wish to eventually modify the pipeline into an automated whole-slide glomerular segmentation algorithm, which can be easily translated to clinics for rapid and accurate diagnosis. Moreover, the glomerular segmentation could further aid in calculating the cell density per glomerulus, which is often used as a diagnostic tool for renal diseases <ref type="bibr" target="#b22">[23,</ref><ref type="bibr" target="#b23">24]</ref> .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">CONCLUSION</head><p>This study shows for the first time that the inherent properties of immunofluorescence staining of renal tissues can be used for automated glomeruli detection within histopathological images. Automated detection and segmentation of glomerular boundaries can help establish pipelines that further detect individual components within the glomerulus from whole-slide images. The resulting feature distributions would enable studying glomerular disease progression in an unbiased and quantitative fashion.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig 1 .</head><label>1</label><figDesc>Fig 1. Schematic diagram of the computational pipeline used to extract accurate glomerular boundaries. (A) Whole-slide image (WSI) of renal tissue section stained via immunofluorescence markers. (B) WSI of the same renal section post-stained with Periodic acid-Schiff (PAS). (C) Result of image registration by matching speeded up robust features. (D) Extracted image patches containing glomeruli, from registered immunofluorescence WSI. The cell nuclei were stained with DAPI (blue). The green signal depicts tissue autofluorescence. (E) Mask generated upon band-pass</figDesc><graphic coords="2,63.35,365.90,484.80,276.45" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 2 .</head><label>2</label><figDesc>Figure 2. Segmentation of a glomerulus in a field-of-view. (A) A sample Periodic acid-Schiff image patch containing a glomerulus. (B) Corresponding immunofluorescence image patch. (C) Overlay of mask generated by the Butterworth band-pass filter with the histopathological image shown in Fig. 2A.</figDesc><graphic coords="4,63.35,246.95,485.15,173.90" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 3 .</head><label>3</label><figDesc>Figure 3. Performance analysis of the proposed pipeline in segmenting glomeruli. (A) Sensitivity, (B) Precision, (C) Specificity, (D) F-measure metrics are shown for n = 66 images containing one or more glomeruli.</figDesc><graphic coords="5,64.20,153.00,484.30,263.50" type="bitmap" /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>Proc. of SPIE Vol. 10581 1058114-2</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_1"><p>Proc. of SPIE Vol. 10581 1058114-3</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_2"><p>Proc. of SPIE Vol. 10581 1058114-4</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_3"><p>Proc. of SPIE Vol. 10581 1058114-5</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_4"><p>Proc. of SPIE Vol. 10581 1058114-6</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_5"><p>Proc. of SPIE Vol. 10581 1058114-7</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head n="6.">ACKNOWLEDGEMENT</head><p>This project was supported partially by the faculty start-up fund from the <rs type="funder">Pathology &amp; Anatomical Sciences Department, Jacobs School of Medicine and Biomedical Sciences, University at Buffalo</rs> (UB), partially by the <rs type="funder">UB IMPACT</rs> award, and partially by the <rs type="funder">DiaComp Pilot and Feasibility Program</rs> grant #<rs type="grantNumber">32307-5</rs>. We thank <rs type="institution">NVIDIA Corporation</rs> for the donation of the Titan X Pascal GPU used for this research (NVIDIA, <rs type="person">Santa Clara</rs>, CA).</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_VwR4yc3">
+					<idno type="grant-number">32307-5</idno>
+				</org>
+			</listOrg>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">W</forename><surname>Smith</surname></persName>
+		</author>
+		<title level="m">The kidney: structure and function in health and disease</title>
+		<meeting><address><addrLine>USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Oxford University Press</publisher>
+			<date type="published" when="1951">1951</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Automated renal histopathology: Digital extraction and quantification of renal pathology</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Sarder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Ginley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Tomaszewski</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of SPIE (SPIE Medical Imaging 2016: Digital Pathology)</title>
+		<meeting>SPIE (SPIE Medical Imaging 2016: Digital Pathology)</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="volume">9791</biblScope>
+			<biblScope unit="page" from="1" to="12" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Mesangial matrix modulation and glomerulosclerosis</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">B</forename><surname>Fogo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nephron Experimental Nephrology</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="147" to="159" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">From the periphery of the glomerular capillary wall toward the center of disease</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Wolf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">N</forename><surname>Ziyadeh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Diabetes</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1626" to="1634" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Unsupervised labeling of glomerular boundaries using Gabor filters and statistical testing in renal histology</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Ginley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Tomaszewski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Yacoub</surname></persName>
+		</author>
+		<idno>021102: 1-12</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Progression of glomerular diseases: is the podocyte the culprit?</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Kriz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Gretz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">V</forename><surname>Lemley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Kidney international</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="687" to="697" />
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Glomerular number and size in relation to age, kidney weight, and body surface in normal man</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Nyengaard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Bendtsen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Anatomical Record</title>
+		<imprint>
+			<biblScope unit="volume">232</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="194" to="201" />
+			<date type="published" when="1992">1992</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Hypertension, glomerular hypertrophy and nephrosclerosis: the effect of race</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">D</forename><surname>Hughson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">G</forename><surname>Puelles</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">E</forename><surname>Hoy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nephrology Dialysis Transplantation</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1399" to="1409" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">The state of the glomerulus in experimental hypertrophy of the kidneys of rabbits</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Saphir</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The American journal of pathology</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page">329</biblScope>
+			<date type="published" when="1927">1927</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Glomerular structural changes in pregnant, diabetic, and pregnant-diabetic rats</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Rasch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Lauszus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Thomsen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Apmis</title>
+		<imprint>
+			<biblScope unit="volume">113</biblScope>
+			<biblScope unit="issue">7-8</biblScope>
+			<biblScope unit="page" from="465" to="472" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Basics of kidney biopsy: A nephrologist&apos;s perspective</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Agarwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sethi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Dinda</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Indian journal of nephrology</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page">243</biblScope>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<monogr>
+		<title level="m" type="main">Histograms of oriented gradients for human detection</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Dalal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Triggs</surname></persName>
+		</author>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="886" to="893" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Automated quantitative image analysis of glomerular desmin immunostaining as a sensitive injury marker in spontaneously diabtic torii rats</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Hirohashi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Relator</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kakimoto</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Biomed Image Process</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="20" to="28" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Quantitative analysis of markers of podocyte injury in the rat puromycin aminonucleoside nephropathy model</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kakimoto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Okada</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Fujitaka</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Experimental and Toxicologic Pathology</title>
+		<imprint>
+			<biblScope unit="volume">67</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="171" to="177" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Unsupervised labeling of glomerular boundaries using Gabor filters and statistical testing in renal histology</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Ginley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Tomaszewski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Yacoub</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="21102" to="021102" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<title level="m" type="main">Glomerulus classification with convolutional neural networks</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pedraza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gallego</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lopez</surname></persName>
+		</author>
+		<imprint>
+			<biblScope unit="page" from="839" to="849" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Molecular Probes for Fluorescence Lifetime Imaging</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Sarder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Maji</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Achilefu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bioconjugate Chemistry</title>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Illuminating mitochondrial function and dysfunction using multiphoton technology</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Weinberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">A</forename><surname>Molitoris</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Am Soc Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1164" to="1166" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">C</forename><surname>Gonzalez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">E</forename><surname>Woods</surname></persName>
+		</author>
+		<title level="m">Digital Image Processing</title>
+		<imprint>
+			<publisher>Prentice Hall</publisher>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page" from="1" to="976" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<author>
+			<persName><forename type="first">H</forename><surname>Bay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ess</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Tuytelaars</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Speeded-Up Robust Features (SURF)</title>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="volume">110</biblScope>
+			<biblScope unit="page" from="346" to="359" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Quantification of histochemical staining by color deconvolution</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">C</forename><surname>Ruifrok</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A</forename><surname>Johnston</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Analytical and quantitative cytology and histology</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="291" to="299" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<monogr>
+		<title level="m" type="main">Caffe: Convolutional Architecture for Fast Feature Embedding</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Jia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Shelhamer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Donahue</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<publisher>ACM</publisher>
+			<pubPlace>Orlando, Florida, USA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Glomerular cell number in normal subjects and in type 1 diabetic patients</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">W</forename><surname>Steffes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Schmidt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Mccrery</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Kidney international</title>
+		<imprint>
+			<biblScope unit="volume">59</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="2104" to="2113" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Podocyte loss and progressive glomerular injury in type II diabetes</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">E</forename><surname>Pagtalunan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">L</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Jumping-Eagle</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Clinical Investigation</title>
+		<imprint>
+			<biblScope unit="volume">99</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

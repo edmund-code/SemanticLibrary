@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Neural Cellular Automata for Weakly Supervised Segmentation of White Blood Cells</title>
+				<funder ref="#_Jwd8Ddz">
+					<orgName type="full">European Research Council</orgName>
+					<orgName type="abbreviated">ERC</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Hightech Agenda Bayern. Disclosure of Interests</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2025-08-17">17 Aug 2025</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Michael</forename><surname>Deutges</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Institute of AI for Health</orgName>
+								<orgName type="institution">Helmholtz Zentrum München -German Research Center for Environmental Health</orgName>
+								<address>
+									<settlement>Neuherberg</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Chen</forename><surname>Yang</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">TUM School of Computation, Information and Technology</orgName>
+								<orgName type="institution">Technical University Munich</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Raheleh</forename><surname>Salehi</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Institute of AI for Health</orgName>
+								<orgName type="institution">Helmholtz Zentrum München -German Research Center for Environmental Health</orgName>
+								<address>
+									<settlement>Neuherberg</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff2">
+								<orgName type="department" key="dep1">Institute of Chemical Epigenetics</orgName>
+								<orgName type="department" key="dep2">Faculty of Chemistry and Pharmacy</orgName>
+								<orgName type="institution">Ludwig Maximilian University</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Nassir</forename><surname>Navab</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="department">Computer Aided Medical Procedures</orgName>
+								<orgName type="institution">Technical University of Munich</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Carsten</forename><surname>Marr</surname></persName>
+							<email>carsten.marr@helmholtz-munich.de</email>
+							<affiliation key="aff0">
+								<orgName type="department">Institute of AI for Health</orgName>
+								<orgName type="institution">Helmholtz Zentrum München -German Research Center for Environmental Health</orgName>
+								<address>
+									<settlement>Neuherberg</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Ario</forename><surname>Sadafi</surname></persName>
+							<email>ario.sadafi@helmholtz-munich.de</email>
+							<affiliation key="aff0">
+								<orgName type="department">Institute of AI for Health</orgName>
+								<orgName type="institution">Helmholtz Zentrum München -German Research Center for Environmental Health</orgName>
+								<address>
+									<settlement>Neuherberg</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff3">
+								<orgName type="department">Computer Aided Medical Procedures</orgName>
+								<orgName type="institution">Technical University of Munich</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Neural Cellular Automata for Weakly Supervised Segmentation of White Blood Cells</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2025-08-17">17 Aug 2025</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">8ADBF9B4E980A98D7C3DB6B1D8D56CE8</idno>
+					<idno type="arXiv">arXiv:2508.12322v1[cs.CV]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:09+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Neural Cellular Automata</term>
+					<term>Weakly Supervised Segmentation</term>
+					<term>White Blood Cells</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>The detection and segmentation of white blood cells in blood smear images is a key step in medical diagnostics, supporting various downstream tasks such as automated blood cell counting, morphological analysis, cell classification, and disease diagnosis and monitoring. Training robust and accurate models requires large amounts of labeled data, which is both time-consuming and expensive to acquire. In this work, we propose a novel approach for weakly supervised segmentation using neural cellular automata (NCA-WSS). By leveraging the feature maps generated by NCA during classification, we can extract segmentation masks without the need for retraining with segmentation labels. We evaluate our method on three white blood cell microscopy datasets and demonstrate that NCA-WSS significantly outperforms existing weakly supervised approaches. Our work illustrates the potential of NCA for both classification and segmentation in a weakly supervised framework, providing a scalable and efficient solution for medical image analysis.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>The segmentation of white blood cells (WBCs) in blood smear images plays a crucial role in medical diagnostics and treatment. Accurate segmentation of WBCs enable a range of downstream applications, including automated blood cell counting, morphological analysis, and disease diagnosis. These analyses are particularly relevant for hematologic disorders such as leukemia, where abnormalities in WBC morphology, size, and distribution serve as key diagnostic indicators <ref type="bibr" target="#b14">[15]</ref>.</p><p>Manual segmentation remains the gold standard in clinical practice due to its accuracy, but it is labor-intensive, time-consuming, and subject to inter-and intra-observer variability. To address these challenges, automated segmentation methods have gained increasing attention as a means to improve efficiency, consistency, and scalability. However, traditional deep learning-based segmentation models rely on pixel-wise annotations, which are costly and time-consuming to obtain, limiting their applicability in real-world medical settings. This has motivated the development of weakly supervised approaches that aim to infer segmentation masks from less expensive or already available annotations, such as image-level class labels <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b8">9,</ref><ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b17">18,</ref><ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b21">22]</ref>. These approaches are particularly valuable in medical imaging, where acquiring fully annotated datasets is costly and time-consuming.</p><p>A common strategy for weakly supervised segmentation is to leverage class activation maps (CAMs) <ref type="bibr" target="#b22">[23]</ref>, which highlight the most discriminative regions of an image for a given class. Methods such as GradCAM <ref type="bibr" target="#b13">[14]</ref> and attentionbased approaches <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b17">18]</ref> have been widely used to localize objects within an image. However, these methods often struggle with capturing complete object structures, as they primarily focus on the most salient features and may fail to capture the full extent of a white blood cell.</p><p>An additional challenge for existing approaches in white blood cell segmentation is the poor generalization across different datasets and clinical settings. Variations in microscope scanners, staining protocols, and lighting conditions, can introduce significant domain shifts <ref type="bibr" target="#b12">[13]</ref>. These shifts make it difficult for models trained on one dataset to perform well on another.</p><p>Recently, neural cellular automata (NCA) have emerged as a promising class of models for various tasks, demonstrating strong generalization capabilities by leveraging self-organizing behaviour through iterative update rules <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b2">3,</ref><ref type="bibr" target="#b10">11]</ref>. This behavior enables NCA to learn robust, spatially structured representations that are less sensitive to domain shifts <ref type="bibr" target="#b0">[1]</ref>. Additionally, NCA models are highly parameter-efficient while maintaining strong performance, making them wellsuited for applications with limited resources.</p><p>NCA provide a powerful mechanism for iterative feature extraction by modeling spatial interactions between pixels <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b20">21]</ref>. Unlike conventional models, NCA dynamically refine local representations over multiple iterations, allowing the emergence of structured feature maps. This property enables the extraction of high-quality segmentation masks without the need for explicit supervision.</p><p>Here, we propose a novel weakly supervised NCA approach for white blood cell segmentation. Our method extracts segmentation masks from NCA-generated feature maps using principal component analysis <ref type="bibr" target="#b1">[2]</ref> and is evaluated on two diverse datasets. To assess the robustness of our approach, we further examine its cross-domain performance across three datasets, demonstrating its generalizability in different data distributions. To foster reproducible research, we publish our source code at <ref type="url" target="https://github.com/marrlab/NCA-WSS">https://github.com/marrlab/NCA-WSS</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Methods</head><p>We propose a weakly supervised segmentation approach where we first train an NCA-based classifier using image-level labels and then apply a feature-based segmentation strategy to localize white blood cells. In the following, we describe the details of our NCA architecture, classification framework, and segmentation mask extraction process.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">NCA Backbone</head><p>NCA operate through iterative local updates, where each cell c ∈ R n adjusts its state based on its (e.g. 3 × 3) neighborhood N c . In image processing tasks, a cell corresponds to a pixel across all feature channels. The NCA update rule consists of two main functions:</p><p>-The perception function f p aggregates local information using two convolutional filters. -The update function f u processes the perception output through a two-layer fully connected network with ReLU activations.</p><p>The computed update is stochastically applied to the cell state at time t</p><formula xml:id="formula_0">c t+1 = c t + δf u (f p (N c )),<label>(1)</label></formula><p>where δ is a binary variable acting as a regularization method that ensures only a random subset of cells are updated per iteration. At time step t, the full state of all cells forms a feature representation S t ∈ R H×W ×n , which evolves over multiple iterations. Here, H, W , and n are height, width and number of channels. The NCA update function can be expressed as</p><formula xml:id="formula_1">NCA ϕ : R H×W ×n → R H×W ×n (2)</formula><p>where ϕ represents the learnable parameters of the perception and update functions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Classification Architecture</head><p>Following NCA-based feature extraction, we aggregate the feature maps into a single vector for classification. Specifically, we apply average pooling across the spatial dimensions to obtain a compact representation pool : R H×W ×n → R n .</p><p>(3)</p><p>The pooled feature vector is then passed through a fully connected network to predict class probabilities. By training the model end-to-end, the NCA learns to extract informative, structured features that are effective for classification. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Segmentation Mask Extraction</head><p>Given an NCA-processed image with feature maps S ∈ R H×W ×n , we treat each cell (i.e., each pixel across all n feature channels) as a point in an n-dimensional space. We apply principal component analysis (PCA) <ref type="bibr" target="#b1">[2]</ref> to extract the principal direction of variance. Specifically, we compute the covariance matrix Σ of the feature vectors across all spatial locations:</p><formula xml:id="formula_2">Σ = 1 HW i,j (S i,j -S)(S i,j -S) T ,<label>(4)</label></formula><p>where S ∈ R n is the mean of the NCA-cells. The first principal component v 1 ∈ R n is obtained by solving</p><formula xml:id="formula_3">v 1 = arg max v,∥v∥=1 v T Σv.<label>(5)</label></formula><p>We then project each feature vector onto v 1 to form a response map</p><formula xml:id="formula_4">P i,j = v T 1 S i,j , ∀(i, j) ∈ H × W.<label>(6)</label></formula><p>This projection enhances high-variance regions, which correspond to informative structures within the WBC, while reducing background variations.</p><p>To obtain a binary segmentation mask, we apply Otsu's thresholding <ref type="bibr" target="#b11">[12]</ref> to P , selecting the optimal threshold τ * that minimizes intra-class variance</p><formula xml:id="formula_5">τ * = arg min τ ω 1 (τ )σ 2 1 (τ ) + ω 2 (τ )σ 2 2 (τ ) ,<label>(7)</label></formula><p>where ω 1 , ω 2 and σ 2 1 , σ 2 2 are the class probabilities and variances for pixels below and above the threshold τ , respectively. The final segmentation mask is given by</p><formula xml:id="formula_6">M i,j = 1 {Pi,j &gt;τ * } .<label>(8)</label></formula><p>This approach effectively combines the extracted feature representations learned by the classification model, which allows for segmentation without requiring annotations for segmentation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Experiments &amp; Results</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Datasets</head><p>We train our method using two datasets of white blood cell microscopy images, Raabin <ref type="bibr" target="#b3">[4]</ref> and Matek19 <ref type="bibr" target="#b9">[10]</ref>. Images in both datasets are annotated with segmentation masks and class labels. Additionally, we collect an internal, independent dataset with segmentation masks but without class labels, serving as an extra test set to evaluate the generalizability of our weakly supervised segmentation method.</p><p>Raabin 1145 samples 5 classes Basophil Eosinoph. Lympho. Matek19 1285 images 15 classes INT25 563 images no class labels Basophil Eosinoph. Lympho. Raabin <ref type="bibr" target="#b3">[4]</ref> is a diverse dataset of white blood cell images covering five classes. The images are captured using different cameras and microscopes to ensure variability. For our experiments, we use a subset of 1,145 images that includes expert annotated segmentation masks.</p><p>Matek19 <ref type="bibr" target="#b9">[10]</ref> contains white blood cell images collected from 200 patients at the Munich University Hospital, with some images originating from patients diagnosed with acute myeloid leukemia. The dataset includes 15 distinct white blood cell classes, annotated by medical experts. For our experiments, we use a subset of 1,285 images that include both segmentation masks and class labels.</p><p>INT25 is our in-house dataset, consisting of 563 microscopy images including segmentation masks but no class labels. As a result, this dataset is used exclusively for evaluating segmentation performance in the cross domain experiment.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Implementation Details</head><p>Model Parameters Our NCA backbone consists of 32 channels and a hidden layer of size 32. We iterate for 32 update steps before applying average pooling. The classifier network has a hidden layer of size 128.</p><p>Training Parameters We optimize the model using an Adam optimizer with a learning rate of 10 -4 and betas set to (0.9, 0.999). Learning rate decay is applied via an exponential scheduler with a decay rate of 0.9999. The model is trained using focal loss <ref type="bibr" target="#b6">[7]</ref> with a batch size of 32. During training, we augment the images with random rotation and flips. We train for 256 epochs on the Raabin dataset and 128 epochs on Matek19. All experiments are conducted with five fold cross validation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Quantitative Results</head><p>We evaluate the performance of our proposed method using the Intersection over Union (IoU) metric on the two datasets Matek19 and Raabin. For comparison, we include several baselines from a recently published study <ref type="bibr" target="#b8">[9]</ref> where the authors trained the models in a federated learning setup using class labels. In contrast, our method trains on a single dataset and tests on the same set, without the benefit of federated learning's shared weights. This difference in training should not be expected to have an advantage due to the limited amount of data available for training compared to the federated learning setup that uses three datasets simultaneously.</p><p>Table <ref type="table" target="#tab_0">1</ref> shows the IoU scores of the proposed NCA-WSS approach compared with the mentioned baselines when trained on both datasets.</p><p>To further assess generalization, we conduct a cross-domain experiment where we train on one dataset and test on the other two. Our method still achieves significantly superior performance compared to the baselines, even in this crossdomain setting. This result suggests that our model has good generalization capabilities, enabling it to perform well on unseen domains. Table <ref type="table" target="#tab_1">2</ref> shows the in-domain and cross-domain performances. AuxSegNet <ref type="bibr" target="#b18">[19]</ref> ResNet38 37.2 ± 0.9 44.1 ± 0.1 SEAM <ref type="bibr" target="#b17">[18]</ref> ResNet38 33.6 ± 0.5 41.0 ± 0.7 EPS <ref type="bibr" target="#b4">[5]</ref> ResNet101 36.7 ± 0.4 45.7 ± 0.8 Luo et al. <ref type="bibr" target="#b7">[8]</ref> VGG16 36.9 ± 0.4 41.9 ± 0.4 CDA <ref type="bibr" target="#b15">[16]</ref> ResNet38 37.2 ± 0.2 43.5 ± 0.4 MCTformer <ref type="bibr" target="#b19">[20]</ref> ResNet38 37.0 ± 0.8 44.8 ± 0.5 Wang et al. <ref type="bibr" target="#b16">[17]</ref> VGG16 31.9 ± 0.9 38.9 ± 0. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Discussion</head><p>In contrast to the existing approaches, our method fundamentally differs by leveraging the unique features extracted by the NCA backbone, which are then robustly combined using PCA (Figure <ref type="figure" target="#fig_3">3</ref>). The NCA extracts localized features from the input image, focusing on discriminative information guided by the training with class labels. These features allow the model to effectively differentiate between cellular structures. Rather than directly relying on the absolute values of individual features, we use PCA to identify regions of high variance that typically correspond to the key structures within the white blood cell, such as the nucleus and cytoplasm.</p><p>By applying PCA, our model dampens the influence of background noise and non-informative variations, ensuring that only the most informative and stable features are used for segmentation. This focus on the most prominent features in terms of variance, rather than raw pixel values, contributes significantly to the higher IoU scores observed in our experiments, particularly in cross-domain scenarios.</p><p>These results highlight the robustness and effectiveness of our approach for weakly supervised semantic segmentation of WBCs, even when compared to state-of-the-art methods. Despite being trained on only a single dataset at a time, our method significantly outperforms all baselines trained using a federated PCA highlights regions of high variance that correspond to the most relevant features within the cell, while filtering out noise.</p><p>learning scheme with three datasets, demonstrating its effectiveness even with limited training data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Conclusion</head><p>In this work, we proposed a novel method for weakly-supervised segmentation of white blood cells, leveraging the unique capabilities of NCA combined with PCA. Our approach stands out by extracting highly localized and discriminative features through NCA, which are then robustly aggregated using PCA to obtain segmentation masks from a classification model without retraining. Our experiments on three datasets demonstrate the effectiveness of our method in both in-domain and cross-domain scenarios, achieving superior segmentation results when compared to several baseline approaches. The robustness and high accuracy of our method highlight its potential for real-world applications in medical image analysis, where labeled segmentation data is scarce.</p><p>This work opens up new avenues for further improvements in weakly-supervised learning, and future efforts will explore extending the method to more complex segmentation tasks and broader datasets.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 .</head><label>1</label><figDesc>Fig. 1. Weakly Supervised Segmentation using Neural Cellular Automata (NCA-WSS) uses feature maps to identify WBCs in image patches. A: Feature maps are generated through the iterative local updates of the NCA. B: A class prediction is obtained by pooling NCA-generated feature maps, followed by a fully connected network. C: We extract segmentation masks by projecting the NCA features onto their first principal component, followed by Otsu thresholding to generate the binary mask.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 2 .</head><label>2</label><figDesc>Fig. 2. Example images from the three white blood cell datasets used in this study. For each sample, we display the original blood smear image with its corresponding ground truth segmentation mask and class label below.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 3 .</head><label>3</label><figDesc>Fig. 3. Example of the extracted features and generated masks. The unique features learned by the NCA backbone allow for accurate segmentation of white blood cells. PCA highlights regions of high variance that correspond to the most relevant features within the cell, while filtering out noise.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 .</head><label>1</label><figDesc>Our NCA-based weakly supervised segmentation significantly outperforms existing approaches in terms of IoU scores on both datasets. Mean and standard deviation are computed from five independent runs.</figDesc><table><row><cell>Method</cell><cell>Backbone</cell><cell>IoU Raabin</cell><cell>IoU Matek19</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 .</head><label>2</label><figDesc>Our NCA-based weakly supervised segmentation generalizes well to unseen domains. Mean and standard deviation of IoU scores are computed from five independent runs.</figDesc><table><row><cell>2</cell></row></table></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><p>Acknowledgments. C.M. acknowledges funding from the <rs type="funder">European Research Council (ERC)</rs> under the European Union's <rs type="programName">Horizon 2020 research and innovation program</rs> (Grant Agreement No. <rs type="grantNumber">866411 &amp; 101113551 &amp; 101213822</rs>) and support from the <rs type="funder">Hightech Agenda Bayern. Disclosure of Interests</rs>. The authors have no competing interests to declare that are relevant to the content of this article.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_Jwd8Ddz">
+					<idno type="grant-number">866411 &amp; 101113551 &amp; 101213822</idno>
+					<orgName type="program" subtype="full">Horizon 2020 research and innovation program</orgName>
+				</org>
+			</listOrg>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Neural cellular automata for lightweight, robust and explainable classification of white blood cell images</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Deutges</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sadafi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Navab</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Marr</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Medical Image Computing and Computer-Assisted Intervention</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="693" to="702" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m" type="main">Principal component analysis for special types of data</title>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">T</forename><surname>Jolliffe</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2002">2002</date>
+			<publisher>Springer</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Med-nca: Robust and lightweight segmentation with neural cellular automata</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kalkhof</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>González</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mukhopadhyay</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Information Processing in Medical Imaging</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="705" to="716" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm</title>
+		<author>
+			<persName><forename type="first">Z</forename><forename type="middle">M</forename><surname>Kouzehkanan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Saghari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Tavakoli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Rostami</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Abaszadeh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Mirzadeh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">S</forename><surname>Satlsar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Gheidishahran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Gorgi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mohammadi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Scientific reports</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">1123</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Railroad is not a train: Saliency as pseudo-pixel supervision for weakly supervised semantic segmentation</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Shim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="5495" to="5505" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Tell me where to look: Guided attention inference network</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">C</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ernst</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Fu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="9215" to="9223" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Focal loss for dense object detection</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">Y</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Goyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dollár</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TPAMI.2018.2858826</idno>
+		<ptr target="https://doi.org/10.1109/TPAMI.2018.2858826" />
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Pattern Analysis and Machine Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="318" to="327" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Learning saliency-free model with generic features for weaklysupervised semantic segmentation</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Yang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI conference on artificial intelligence</title>
+		<meeting>the AAAI conference on artificial intelligence</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="11717" to="11724" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Fl-w3s: Cross-domain federated learning for weakly supervised semantic segmentation of white blood cells</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">A</forename><surname>Madni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">M</forename><surname>Umer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zottin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Marr</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">L</forename><surname>Foresti</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Medical Informatics</title>
+		<imprint>
+			<biblScope unit="page">105806</biblScope>
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Human-level recognition of blast cells in acute myeloid leukaemia with convolutional neural networks</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Matek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Schwarz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Spiekermann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Marr</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Machine Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page" from="538" to="544" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Growing neural cellular automata</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mordvintsev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Randazzo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Niklasson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Levin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Distill</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page">23</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<author>
+			<persName><forename type="first">N</forename><surname>Otsu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">A threshold selection method from gray-level histograms</title>
+		<imprint>
+			<date type="published" when="1975">1975</date>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="page" from="23" to="27" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Unsupervised cross-domain feature extraction for single blood cell image classification</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Salehi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sadafi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Gruber</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lienemann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Navab</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Albarqouni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Marr</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Medical Image Computing and Computer-Assisted Intervention</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="739" to="748" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Gradcam: Visual explanations from deep networks via gradient-based localization</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">R</forename><surname>Selvaraju</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Cogswell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Das</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Vedantam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Parikh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Batra</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ICCV.2017.74</idno>
+		<ptr target="https://doi.org/10.1109/ICCV.2017.74" />
+	</analytic>
+	<monogr>
+		<title level="m">2017 IEEE International Conference on Computer Vision (ICCV)</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="618" to="626" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Blood cell image segmentation and classification: a systematic review</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Shahzad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Ali</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">H</forename><surname>Shirazi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Rasheed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ahmad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Shah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Kwak</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PeerJ Computer Science</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page">1813</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Context decoupling augmentation for weakly supervised semantic segmentation</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF international conference on computer vision</title>
+		<meeting>the IEEE/CVF international conference on computer vision</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="7004" to="7014" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Weakly-supervised semantic segmentation by iterative affinity learning</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">H</forename><surname>Yang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Computer Vision</title>
+		<imprint>
+			<biblScope unit="volume">128</biblScope>
+			<biblScope unit="page" from="1736" to="1749" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Self-supervised equivariant attention mechanism for weakly supervised semantic segmentation</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Shan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="12275" to="12284" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Leveraging auxiliary tasks with affinity learning for weakly supervised semantic segmentation</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Ouyang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bennamoun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Boussaid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Sohel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF international conference on computer vision</title>
+		<meeting>the IEEE/CVF international conference on computer vision</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="6984" to="6993" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Multi-class token transformer for weakly supervised semantic segmentation</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Ouyang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bennamoun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Boussaid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="4310" to="4319" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Hierarchical neural cellular automata for lightweight microscopy image classification</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Deutges</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Navab</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sadafi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Marr</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Information Processing in Medical Imaging</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Causal intervention for weaklysupervised semantic segmentation</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><forename type="middle">S</forename><surname>Hua</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="655" to="666" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Learning deep features for discriminative localization</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Khosla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Lapedriza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Oliva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Torralba</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="2921" to="2929" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

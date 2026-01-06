@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Dr-SAM: An End-to-End Framework for Vascular Segmentation, Diameter Estimation, and Anomaly Detection on Angiography Images</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Vazgen</forename><surname>Zohranyan</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Yerevan State University</orgName>
+							</affiliation>
+							<affiliation key="aff3">
+								<orgName type="institution">ServiceTitan, Inc</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Vagner</forename><surname>Navasardyan</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="institution">Ruhr-Universität Bochum (RUB)</orgName>
+							</affiliation>
+							<affiliation key="aff5">
+								<orgName type="institution">Johannes Wesling University Hospital</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Hayk</forename><surname>Navasardyan</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Synopsys</orgName>
+								<address>
+									<country>Armenia CJSC</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jan</forename><surname>Borggrefe</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="institution">Ruhr-Universität Bochum (RUB)</orgName>
+							</affiliation>
+							<affiliation key="aff5">
+								<orgName type="institution">Johannes Wesling University Hospital</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Shant</forename><surname>Navasardyan</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Yerevan State University</orgName>
+							</affiliation>
+							<affiliation key="aff4">
+								<orgName type="department">Picsart AI Research (PAIR)</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Dr-SAM: An End-to-End Framework for Vascular Segmentation, Diameter Estimation, and Anomaly Detection on Angiography Images</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">BA4EFE85BD7C537CEA697B5D56CF1546</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:10+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p><ref type="url" target="https://github.com/vazgenzohranyan/Dr.SAM">https://github.com/vazgenzohranyan/Dr.SAM</ref> Figure <ref type="figure">1</ref>Recent advancements in AI have significantly transformed medical imaging, particularly in angiography, by enhancing diagnostic precision and patient care. However existing works are limited in analyzing the aorta and iliac arteries, above all for vascular anomaly detection and characterization. To close this gap, we propose Dr-SAM, a comprehensive multi-stage framework for vessel segmentation, diameter estimation, and anomaly analysis aiming to examine the peripheral vessels through angiography images. For segmentation we introduce a customized positive/negative point selection mechanism applied on top of the Segment Anything Model (SAM), specifically for medical (Angiography) images. Then we propose a morphological approach to determine the vessel diameters followed by our histogram-driven anomaly detection approach. Moreover, we introduce a new benchmark dataset for the comprehensive analysis of peripheral vessel angiography images which we hope can boost the upcoming research in this direction leading to enhanced diagnostic precision and ultimately better health outcomes for individuals facing vascular issues.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Introduction</head><p>The blood supply to the lower body, including the legs and pelvic organs, relies heavily on the infrarenal aorta and pelvic arteries. Any narrowing (stenosis) <ref type="bibr" target="#b18">[19]</ref> or widening (aneurysms) in these vessels can lead to serious health issues. Angiography, an imaging technique that uses X-rays and contrast agents, is utilized for the precise diagnosis and treatment of these conditions. This imaging technique is particularly effective in identifying stenosis and aneurysms in the infrarenal aorta and pelvic arteries. With the advancement of technology and the introduction of minimally invasive procedures, angiography has significantly enhanced the outcomes for patients with vascular diseases. With the raise of AI angiography images got a chance to be analyzed semantically and assist the doctors more effectively in diagnosis forecasting.</p><p>To conduct an angiographic examination, the doctor inserts a catheter into the arteries and through the catheter injects a contrast agent containing iodine into the blood vessel. The vessels can now be visualized using x-rays, usually in a substraction technique, to identify potential narrowing or widening. These images are used to evaluate the vessel diameter, stenoses or aneurysms, as well as the precise localization. If a relevant stenosis is detected during angiography, immediate treatment may be required, especially if it significantly impairs blood flow. In such cases, balloon or stent angioplasty may be an effective intervention. In this procedure, a small balloon at the end of the catheter is introduced to the narrowed area and then inflated to widen the narrowing and restore normal blood flow. For this reason, rapid and precise assessment of vascular diameters and their changes are crucial for stenosis/aneurysm detection and characterization.</p><p>Simultaneous treatment of stenoses during angiographic examination offers a number of advantages. First, it can reduce the risk of complications that could arise if the patient had to return later for a separate operation. Second, it allows blood flow to be restored more quickly, minimizing the risk of tissue damage and complications such as tissue loss or necrosis. In addition, prompt treatment of stenosis may reduce the need for repeat interventions and improve long-term prognosis. For this reason, rapid and precise assessment of vascular changes is crucial.</p><p>With the assistance of our tool, doctors can analyze images more quickly than manual examination allows. This efficiency shortens the time between diagnosis and the start of treatment, which is essential for conditions that need quick action. It also importantly minimizes the risk of diagnostic errors that can occur due to human factors like fatigue or subjective interpretation.</p><p>For this purpose we develop Dr-SAM, an end-to-end framework designed for vascular angiograpgy image analysis with vessel segmentation, diameter determination, and anomaly detection/characterization.</p><p>Various filter-based, learning-based, or regionally growing approaches have been developed for angiographic segmentation <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b10">11]</ref> including a wide usage of convolutional neural networks (CNNs <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b16">17]</ref>). CNNs have proven effective in segmentation across various applications and offer a potential solution to address the shortcomings of traditional methods in this complex area.</p><p>Recently, with the advancements of CNNs in the general domain segmentation task the Segment Anything Model (SAM) <ref type="bibr" target="#b9">[10]</ref> was developed as an interactive tool for ultimate segmentation. However directly using SAM for vessel segmentation in angiography images usually leads to incorrect region selections (see Fig. <ref type="figure" target="#fig_0">2</ref>) due to the limitation of SAM requiring positive label points for precise segmentation. Therefore we designed a special positive point selection mechanism, tailored to use with SAM for the vascular angiography images.</p><p>After segmenting the vessels in their corresponding regions, we further estimate vessel diameters and analyze stenosis/aneurysm anomalies. To achieve this, we utilize the topological skeleton of the binary mask by pruning certain branches. Due to the noise from the binary mask, the topological skeleton <ref type="bibr" target="#b1">[2]</ref> may contain branches that are not actual vessel branches. Our algorithm identifies these branches by their size and prunes them, resulting in a clean tree-based vessel structure. This process improves the accuracy of approximate diameter estimation for vessel segments, aiding in the identification of stenosis/aneurysms. Furthermore, we introduce a benchmark dataset for the segmentation and anomaly detection on vascular angiography images crafted by domain specialists. We validate our approach on the proposed benchmark, and hope our dataset can further boost the research in this direction.</p><p>To summarize, our contributions are three-fold:</p><p>• We propose a positive point selection mechanism for segmenting blood vessels from angiographic X-ray images using SAM. • We introduce an algorithm for detecting stenoses and aneurysms over binary masks of the vessels.</p><p>• We introduce a new benchmark dataset containing X-ray images of peripheral vessels along with the vessel binary masks and anomaly point labels.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Related work</head><p>2.1. Segmentation of blood vessels in x-ray images</p><p>In our study, we explored both image processing <ref type="bibr" target="#b22">[23]</ref> and learning-based <ref type="bibr" target="#b9">[10]</ref> methods for angiography image segmentation. The lack of data in the community and also the novelity of the problem itself are limiting the fine-tuning or training specialized models. Hence we choose to go with a zero-shot approach by leveraging pre-trained segmentation models. The Segment Anything Model (SAM) <ref type="bibr" target="#b9">[10]</ref> from Meta AI showcases the advancement, providing a system that can identify and segment a wide range of objects without needing prior training on them. Similar to this paper, some existing works <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b11">12,</ref><ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b20">21</ref>] leverage SAM for medical image segmentation. However they majorly choose to fine-tune SAM on medical 2D and 3D images of wide range, including ophtalmology images. <ref type="bibr" target="#b4">[5]</ref> employs multi-box prompts to segment the optic disc. In <ref type="bibr" target="#b14">[15]</ref> the authors use SAM to annotate their dataset for training a new network for OCTA vessel segmentation. <ref type="bibr" target="#b15">[16]</ref> suggests a new learnable prompt layer for segmenting ophthalmology images. In <ref type="bibr" target="#b21">[22]</ref> the authors have trained a model on 64 open-source medical datasets and added prompt options.</p><p>Regardless impressive results of the previous works, most of them either segment convex regions in medical images or vessels of different regions. To the best of our knowledge Dr-SAM is the first end-to-end pipeline for angiography image analysis, including the vessel segmentation stage specified on peripheral vascular angiography images. Our contribution on segmentation part extends SAM's utility through a novel methodology of positive point selection which, along with user-specified bounding boxes, is guiding SAM for refined vascular segmentation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2.">Anomaly detection</head><p>Some previous works <ref type="bibr" target="#b8">[9,</ref><ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b13">14</ref>] also touch the anomaly detection problem on medical images. To detect anomalies, AngioNet <ref type="bibr" target="#b8">[9]</ref> segments vessels and calculates the minimum and maximum diameters within each segment. In contrast, our approach identifies extremum points within each segment and designates anomalies in the areas between these extremum points. For finding diameters, we use skeleton detection algorithm <ref type="bibr" target="#b1">[2]</ref>, which is a tool used for thinning or skeletonizing objects within an image to a single-pixel wide skeleton. The algorithm iteratively removes pixels from the edges of objects until only the minimal set of pixels that constitutes the "skeleton" remains, preserving the topology and general shape of the original object.</p><p>In <ref type="bibr" target="#b13">[14]</ref> the authors utilize Coronary CT Angiography (CCTA) to extract coronary artery characteristics and assess stenosis significance with a CNN, focusing on artery geometry's impact on blood flow and local appearance for accurate stenosis assessment. In <ref type="bibr" target="#b12">[13]</ref> the authors enhance key frame detection with vessel extraction and employ CNN models with self-attention modules to classify stenosis, validating the algorithm through extensive crossvalidation and external dataset evaluation, highlighting the use of heatmaps for visualization. These methods illustrate the evolving complexity and specificity of techniques in detecting coronary anomalies, contrasting with our extremum point identification strategy for anomaly detection.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Method</head><p>In this section we introduce Dr-SAM, a universal algorithm for anomaly detection in blood vessels, incorporating zero-shot technology for vessel extraction followed by anomaly detection with the integration of topological skeleton. Moreover, here we also present our benchmark dataset collected for thorough evaluation of our method and other approaches.</p><p>Our streamlined approach for anomaly detection not only reduces computational costs having pipeline without training process, but also ensures applicability demonstrating effectiveness on angiographic images. The overview of the framework can be found in Fig. <ref type="figure">3</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.">Vessel extraction using point-conditioned SAM</head><p>We employ SAM <ref type="bibr" target="#b9">[10]</ref> for extracting vessels from X-ray images. In order to enhance results, we tailor SAM's prompt, particularly focusing on input points. In our approach, we propose a novel algorithm for identifying positive points to feed SAM during segmentation (see Fig. <ref type="figure">3</ref>).</p><p>It is worth to mention that due to our experiments, incorporating negative points does not significantly impact segmentation outcomes hence we choose to design a special algorithm only for positive point selection. For the initial point, we select the most probable vessel point within the bounding box through the following procedure: 1. We generated a probability map for each pixel being a vessel pixel, assigning higher probabilities to pixels with lower values by assuming that darker points in the X-ray angiographic images are part of the vessel. We obtained the probability map by scaling and reverting the input values to [0, 1] (255 to 0 and 0 to 1, i.e.</p><p>x → 1 -x/255 = Probability(xis a vessel pixel) for</p><p>x ∈ [0, 255]). 2. Excluded the pixels with probabilities lower than predefined threshold. 3. Sampled 100 random points from the remaining set to prevent concentration of points in densely populated areas.</p><p>Image embedding Doctor's manual input Figure <ref type="figure">3</ref>. The overview of Dr-SAM: For each bounding box provided by the user, first we determine five positive points using our point finder algorithm. This is followed by vessel extraction by SAM <ref type="bibr" target="#b9">[10]</ref> conditioned on our positive points. Then for anomaly detection we extract the centerline of the binary mask, obtained from the previous stage, by finding its skeleton, and use that skeleton for estimating vessel diameters, which are later being used to detect anomaly points on the vessels. <ref type="bibr" target="#b3">4</ref>. Selected a point with the highest number of neighboring points within the predefined radius of SelectionRadius from the sampled set as a positive point. For the second step, we select the most probable point that lies outside the region defined by the ExcludeRadius from the first point and with the radius of SecondP ointSelectionRadius.</p><p>To further enhance results, we implement a repeatable algorithm for identifying positive points. In simple words, the algorithm starts segmenting images by available points described in the previous paragraph. After segmentation, for selecting the next positive point, the algorithm avoids considering points on the previously predicted mask, selecting the most possible positive point from the remaining image in the same way as described in the previous paragraph. For each iteration algorithm uses all available positive points collected from previous steps for segmentation, thereby ensuring consistent results after each iteration. However, to preserve previously segmented good results with minimal changes, we repeat this process three times at the result having overall 5 positive points, including 2 points from last paragraph, for the final segmentation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.">Anomaly detection using topological skeleton</head><p>For anomaly detection, we utilized a topological skeleton <ref type="bibr" target="#b1">[2]</ref>, a method widely employed in X-ray image studies within Computer Vision. The topological skeleton is a vital component in identifying or approximating the centerline of a vessel, aiding in the determination of its diameter in specific regions. Our proposed algorithm involves the use of a topological skeleton, which is subsequently pruned by removing unnecessary branches while preserving the vessel's structural integrity.</p><p>To do so, our algorithm uses PlantCV <ref type="bibr" target="#b6">[7]</ref> techniques to extract branches from the topological skeleton. After getting the branches separated, we identified low-length branches. Our consideration was that branches with the length less then M inBranchLength are not real branches of the blood vessel and were generated because of the anomalies in it. Removing low-length branches, we get tree-like structured skeleton of the blood vessel, which is better to estimate diameters along the segments. Further, we leveraged extracted segments of the skeleton to examine anomaly regions within the vessel segment. Treating segment-approximated diameters as values of a function, we conducted anomaly detection on each segment. Our primary consideration was that anomaly points constitute a subgroup of extremum points of the real function. However, the challenge arises from noise, which generates inaccuracies in the sequence's highs and lows. The primary contribution of our approach lies in mitigating noise by clustering close values in one region, facilitating the more accurate identification of highs and lows. By applying a threshold of M inChangeT hreshold to the variations between these extremum point values and the mean of surrounding point values, we identify anomaly points within the segment. For details see Algorithm 1.</p><p>After detecting the anomaly points we leverage the distance transform <ref type="bibr" target="#b17">[18]</ref> technique to better estimate the diameters near the anomaly points. To do so for each centerline point we calculate the distance between that point and the nearest non-vessel point in the image by so estimating the radius of the vessel at that particular location of centerline. After that we estimate the percentage of the anomaly as follows: 1. Extract branch from the skeleton as an array of points. 2. Calculate the distance transform of anomaly point.</p><formula xml:id="formula_0">dt p = distanceT ransf orm(segment[i])<label>(1)</label></formula><p>3. Calculate the distance transform of points located before and after anomaly point with the step equal to length(segment)//5.</p><formula xml:id="formula_1">dt e1 = distanceT rasf orm(segment[i -step] (2)</formula><formula xml:id="formula_2">dt e2 = distanceT ransf orm(segment[i + step]) (3)</formula><p>4. For getting the percentage of the anomaly:</p><formula xml:id="formula_3">change p = abs(mean(dt e1 , dt e2 ) -dt p ) mean(dt e1 , dt e2 )<label>(4)</label></formula><p>And finally, to get the type of the anomaly, we compare mean(dt e1 , dt e2 ) and dt p . If the first is more than the second, we have stenosis and our percentage change will be withsign. Otherwise, we will have an aneurysm, and the percentage change will have + sign.  18 N ← length(newExtremums);</p><formula xml:id="formula_4">19 for i ← 1 to N -1 do 20 current ← f ilteredExtremums[i][1]; 21 previous ← f ilteredExtremums[i -1][1]; 22 next ← f ilteredExtremums[i + 1][1]; 23 if current &lt; previous &amp; current &lt;</formula><p>next then 24 f ilteredExtremums.add(current); 25 end if 26 if current &gt; previous &amp; current &gt; next then 27 f ilteredExtremums.add(current); 28 end if 29 end for 30 radius ← length(seg)//5; 31 for point in f ilteredExtremums do 32 index ← point[0]; 33 meanT hickness ← (thickness[index -radius] + thickness[index + radius])/2; 34 if abs(point[1] -meanT hickness)/meanT hickness &gt; 0.5 then 35 anomalyP oints.add(seg[index]); 36 end if 37 end for 38 end for 39 return anomalyP oints</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3.">Benchmark Dataset</head><p>Our dataset consists of carefully selected images from 500 angiographic examinations of the pelvic-iliac arteries, carried out between 2018 and 2024 at Bad Oeynhausen Hospital and JWK Klinikum Minden, within their radiology departments. The focus of these examinations was the abdominal aorta below the renal arteries and the pelvic arteries. Using Adobe Lightroom, only the pertinent areas of these examinations were cropped to isolate the regions of interest. Of these images, 450 have a resolution of 386x448 pixels, and 50 have a resolution of 819x950 pixels. The dataset includes 170 images featuring at least one stenosis and 64 images with at least one aneurism. Following this initial selection, Adobe Photoshop <ref type="bibr" target="#b0">[1]</ref> was employed to create a vessel mask for each cropped image, which outlines the arterial structure. Additionally, any narrowing and widening observed within the arterial regions were meticulously marked. This dataset is a comprehensive compilation that provides a significant resource for studying the conditions affecting the pelvic-iliac arteries, demonstrating a targeted approach to vascular imaging research.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">Experiments</head><p>In this section we first discuss some implementation details of Dr-SAM, then make thorough analysis of its segmentation and anomaly detection (including the centerline detection, diameter and anomaly estimations) stages.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.">Implementation details</head><p>The experiments were conducted on a diverse set of angiography images, encompassing various structures and anomalies. We utilized angiographic X-ray images with bounding boxes and anomaly points validated by two professional doctors in the field of vascular imaging.</p><p>Throughout the experiments, we configured parameters as follows: SelectionRadius = 75, SecondP ointSelectionRadius = 50, ExcludeRadius = 100, M inBranchLength = 40, M inChangeT hreshold = 50%. Our code is implemented using PyTorch. The mean time for the segmentation part takes 0.66 seconds on average, while the anomaly detection part takes 0.65 seconds on average.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.">Segmentation Analysis</head><p>For the segmentation aspect, we aim to evaluate our methodology against two established techniques: The first technique involves applying the Segment Anything Model (SAM) to the original images, employing bounding boxes as prompts without any enhancement or additional prompts. The second, a naive positive point selection approach, attempts to identify the pixel with the lowest value (i.e. the highest probability of being a vascular pixel) within each ), and gives it as a positive point prompt. We present the analysis both visually and through quantitative measures. For our quantitative metric, we use the Intersection over Union (IoU) <ref type="bibr" target="#b7">[8]</ref> to compare our predictions with the ground truths. The ground truth is derived from binary masks of each box, meticulously annotated by experts.</p><p>In Tab. 1 we present the mean Intersection over Union calculated on 450 various angiography images segmented by 1. standalone SAM; 2. SAM with additional positive point naively chosen as the highest probable point of being a vascular pixel; 3. SAM with additional positive points gathered by our method. The experiments clearly show the advantage of our method for segmenting the vessels in angiography images.</p><p>SAM Naive approach Our method MIoU 0.754 0.807 0.859</p><p>Table 1. Quantitative comparison by using the mean IoU metric.</p><p>We also perform qualitative analysis of our method by comparing it with the above mentioned approaches of vanilla SAM and highest probable positive point selection approach. Fig. <ref type="figure">4</ref> shows the clear advantage of our method in comparison, different colors are applied for more visually appealing demonstration.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.">Anomaly detection</head><p>For centerline estimation, our objective is to assess its performance relative to the topological skeleton. As depicted in Figure <ref type="figure">6</ref>, the distinction between skeletons is clearly illustrated. Our proposed algorithm effectively eliminates extra branches from the skeleton (indicated by red circles) that do not belong to the vessel structure.</p><p>In Figure <ref type="figure">5</ref>, we present the successful centerline estimation results. These results clearly demonstrate the adaptability of the centerline algorithm to anomalies, leading to improved accuracy in diameter estimation. Following successful centerline detection, the distance transform method yields excellent results in diameter estimation, including in challenging anomal regions. And finally, our anomaly detection algorithm excellently finds both stenosis and aneurysm parts of the segments, giving good results in indicating the level of anomaly.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Conclusion</head><p>In this paper, we present Dr-SAM, a novel approach for an end-to-end detection of stenoses and aneurisms in peripheral blood vessels. We introduce a customized positive point detection for Segment Anything Model (SAM) to capture blood vessels in X-ray angiographic images without the need for any additional training.</p><p>Through a series of experiments, we demonstrate the effectiveness of our approach in vessel extraction and anomaly detection. Our method offers significant advancements over existing segmentation techniques in this particular task.</p><p>Additionally, we introduce a benchmark dataset of 450 angiography images of peripheral vessels, annotated and labeled by highly qualified experts. We plan to make the dataset and the codes publicly available.</p><p>In conclusion, our work contributes to expanding research on medical image processing by introducing new ideas and tools for future work. Addressing limitations of the naive approaches, our approach has the potential to advance the state-of-the-art in anomaly detection in blood vessels research, providing a more effective and efficient solution for a wide range of applications.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 2 .</head><label>2</label><figDesc>Figure 2. SAM result on X-Ray image without any prompts. Middle -ground truth mask, right -SAM predicted mask.</figDesc><graphic coords="2,332.49,72.00,188.99,100.79" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Algorithm 1 :</head><label>1</label><figDesc>Anomaly detection algorithmInput : 2D Predicted binary mask Output: List of anomaly points 1 anomalyP oints = [ ]; 2 segmentedSkeleton ← segmentize(skeletonize(mask)); 3 skeletonT hickness ← getT hickness(mask); 4 for seg in segmentedSkeleton do 5 seg ← segmentedSkeleton[i]; 6 thickness ← skeletonT hickness[seg];</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>12 for c in clusters do 13 indices ← c.indices; 14 center</head><label>121314</label><figDesc>← int(mean(indices)); 15 newExtremums.add([center, thickness[center]])</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 4 .Figure 6 .</head><label>46</label><figDesc>Figure 4. Qualitative comparison of three different approaches for segmentation. From left to right: SAM, naive approach of selecting the positive point as the most probable vascular pixel, our method</figDesc><graphic coords="6,82.83,72.00,432.05,595.32" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="1,50.12,242.32,494.98,267.87" type="bitmap" /></figure>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<title level="m">Adobe Systems Incorporated. Adobe Photoshop, Year of Version. Software available from Adobe Systems Incorporated</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">A transformation for extracting new descriptors of shape</title>
+		<author>
+			<persName><forename type="first">Harry</forename><surname>Blum</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Models for the Perception of Speech and Visual Form</title>
+		<meeting><address><addrLine>Cambridge, Massachusetts</addrLine></address></meeting>
+		<imprint>
+			<publisher>MIT Press</publisher>
+			<date type="published" when="1967">1967</date>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page">4</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Encoder-decoder with atrous separable convolution for semantic image segmentation</title>
+		<author>
+			<persName><forename type="first">Liang-Chieh</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yukun</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">George</forename><surname>Papandreou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Florian</forename><surname>Schroff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hartwig</forename><surname>Adam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ECCV</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Junlong</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jin</forename><surname>Ye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhongying</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianpin</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianbin</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haoyu</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanzhou</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ziyan</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jilong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Jiangand</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hui</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junjun</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoting</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Qiao</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Sam</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2023">-med2d, 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<author>
+			<persName><forename type="first">Guoyao</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Zou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuedong</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sancong</forename><surname>Ying</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Huazhu</forename><surname>Fu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2307.04973</idno>
+		<title level="m">Sam-u: Multi-box prompts triggered uncertainty estimation for reliable sam in medical image</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="volume">1</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">A novel segmentation algorithm for digital subtraction angiography images: First experimental results</title>
+		<author>
+			<persName><forename type="first">Danilo</forename><surname>Franchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pasquale</forename><surname>Gallo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Giuseppe</forename><surname>Placidi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Visual Computing</title>
+		<meeting><address><addrLine>Berlin, Heidelberg; Berlin Heidelberg</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="612" to="623" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title level="m" type="main">Plantcv v2: Image analysis software for highthroughput plant phenotyping</title>
+		<author>
+			<persName><forename type="first">Noah</forename><surname>Malia A Gehan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Arash</forename><surname>Fahlgren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeffrey</forename><forename type="middle">C</forename><surname>Abbasi</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Berry</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Leonardo</forename><surname>Steven T Callen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrew</forename><forename type="middle">N</forename><surname>Chavez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Max</forename><forename type="middle">J</forename><surname>Doust</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kerrigan B</forename><surname>Feldman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><forename type="middle">G</forename><surname>Gilbert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Hodge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aanika</forename><surname>Steen Hoyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Siobhan</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carolina</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Argelia</forename><surname>Lizárraga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Lorence</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Monica</forename><surname>Platon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tony</forename><surname>Tessman</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Sax</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note>PeerJ, 5:e4088</note>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Distribution de la flore alpine dans le bassin des dranses et dans quelques régions voisines</title>
+		<author>
+			<persName><forename type="first">Paul</forename><surname>Jaccard</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bulletin de la Société Vaudoise des Sciences Naturelles</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="241" to="272" />
+			<date type="published" when="1901">1901</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Angionet: a convolutional neural network for vessel segmentation in xray angiography</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Iyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">P</forename><surname>Najarian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">A</forename><surname>Fattah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Arthurs</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M R</forename><surname>Soroushmehr</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Figueroa</surname></persName>
+		</author>
+		<idno>2021. 3</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Scientific Reports</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="issue">1</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Kirillov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Mintun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nikhila</forename><surname>Ravi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanzi</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chloe</forename><surname>Rolland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Laura</forename><surname>Gustafson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tete</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Spencer</forename><surname>Whitehead</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><forename type="middle">C</forename><surname>Berg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wan-Yen</forename><surname>Lo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Piotr</forename><surname>Dollár</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ross</forename><surname>Girshick</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2304.02643</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page">4</biblScope>
+		</imprint>
+	</monogr>
+	<note>Segment anything</note>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Digital subtraction angiography image segmentation based on multiscale hessian matrix applied to medical diagnosis and clinical nursing of coronary stenting patients</title>
+		<author>
+			<persName><forename type="first">Yanping</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Linggang</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Radiation Research and Applied Sciences</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page">100603</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Segment anything in medical images</title>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuting</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Feifei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lin</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chenyu</forename><surname>You</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bo</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Communications</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page">3</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Automatic stenosis recognition from coronary angiography using convolutional neural networks</title>
+		<author>
+			<persName><forename type="first">Jong</forename><surname>Hak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Moon</forename><surname>Da</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Young</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Won</forename><surname>Chul Cha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Myung</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jin</forename><surname>Chung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kyu-Sung</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Baek</forename><surname>Hwan Cho</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jin</forename><forename type="middle">Ho</forename><surname>Choi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer Methods and Programs in Biomedicine</title>
+		<imprint>
+			<biblScope unit="volume">198</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page">105819</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Deep learning-based detection of functionally significant stenosis in coronary ct angiography</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Hampe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sgm</forename><surname>Van Velzen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">N</forename><surname>Planken</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jps</forename><surname>Henriques</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Collet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">P</forename><surname>Aben</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Voskuil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Leiner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Išgum</forename><forename type="middle">I</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Front Cardiovasc Med</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page">964355</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<title level="m" type="main">An accurate and efficient neural network for octa vessel segmentation and a new dataset</title>
+		<author>
+			<persName><forename type="first">Haojian</forename><surname>Ning</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chengliang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinrun</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shiying</forename><surname>Li</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2309.09483</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="volume">1</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<author>
+			<persName><forename type="first">Zhongxi</forename><surname>Qiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">†</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Heng</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiang</forename><surname>Liu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2304.13425</idno>
+		<title level="m">Learnable ophthalmology sam</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="volume">1</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">U-net: Convolutional networks for biomedical image segmentation</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ronneberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Brox</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1505.04597[cs.CV]).2</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Image Computing and Computer-Assisted Intervention (MICCAI)</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="234" to="241" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Distance functions on digital pictures</title>
+		<author>
+			<persName><forename type="first">Azriel</forename><surname>Rosenfeld</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><forename type="middle">L</forename><surname>Pfaltz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognition</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="33" to="61" />
+			<date type="published" when="1969">1969</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<title level="m" type="main">Vascular Stenosis: An Introduction</title>
+		<author>
+			<persName><forename type="first">Marc</forename><surname>Thiriet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michel</forename><surname>Delfour</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">André</forename><surname>Garon</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<publisher>Springer</publisher>
+			<biblScope unit="page" from="781" to="868" />
+			<pubPlace>Berlin Heidelberg, Berlin, Heidelberg</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<monogr>
+		<title level="m" type="main">Sam-octa: A fine-tuning strategy for applying foundation model to octa image segmentation tasks</title>
+		<author>
+			<persName><forename type="first">Chengliang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinrun</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haojian</forename><surname>Ning</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shiying</forename><surname>Li</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2309.11758</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="volume">1</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Haoyu</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sizheng</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jin</forename><surname>Ye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhongying</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junlong</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianbin</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianpin</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanzhou</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ziyan</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqing</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bin</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoting</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junjun</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Qiao</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Sam</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2023">-med3d, 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<monogr>
+		<title level="m" type="main">One-prompt to segment all medical images</title>
+		<author>
+			<persName><forename type="first">Junde</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiayuan</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuanpei</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yueming</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Xu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2305.10300</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="volume">3</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">An unsupervised image segmentation algorithm for coronary angiography</title>
+		<author>
+			<persName><forename type="first">Zong-Xian</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hong-Ming</forename><surname>Xu</surname></persName>
+		</author>
+		<idno>2022. 3</idno>
+	</analytic>
+	<monogr>
+		<title level="j">BioData Mining</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="issue">27</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

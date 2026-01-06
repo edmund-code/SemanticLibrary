@@ -1,0 +1,1785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">A visual–omics foundation model to bridge histopathology with spatial transcriptomics</title>
+				<funder ref="#_cKASwep">
+					<orgName type="full">Cancer Prevention and Research Institute of Texas</orgName>
+					<orgName type="abbreviated">CPRIT</orgName>
+				</funder>
+				<funder ref="#_9WmN4bc">
+					<orgName type="full">National Institute of General Medical Sciences</orgName>
+					<orgName type="abbreviated">NIGMS</orgName>
+				</funder>
+				<funder ref="#_jBJxySy">
+					<orgName type="full">National Institutes of Health (NIH)-National Heart, Lung, and Blood Institute</orgName>
+					<orgName type="abbreviated">NHLBI</orgName>
+				</funder>
+				<funder ref="#_KNBpUmH">
+					<orgName type="full">NIH/National Institute of Neurological Disorders Stroke</orgName>
+					<orgName type="abbreviated">NINDS</orgName>
+				</funder>
+				<funder ref="#_xzbbMyh">
+					<orgName type="full">NIH/National Cancer Institute</orgName>
+					<orgName type="abbreviated">NCI</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>Springer Science and Business Media LLC</publisher>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2025-05-29">29 May 2025</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Weiqing</forename><surname>Chen</surname></persName>
+							<idno type="ORCID">0000-0003-3539-9210</idno>
+						</author>
+						<author>
+							<persName><forename type="first">Pengzhi</forename><surname>Zhang</surname></persName>
+							<idno type="ORCID">0000-0001-6920-1490</idno>
+						</author>
+						<author>
+							<persName><forename type="first">Tu</forename><forename type="middle">N</forename><surname>Tran</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yiwei</forename><surname>Xiao</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Shengyu</forename><surname>Li</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Vrutant</forename><forename type="middle">V</forename><surname>Shah</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Hao</forename><surname>Cheng</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Kristopher</forename><forename type="middle">W</forename><surname>Brannan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Keith</forename><surname>Youker</surname></persName>
+							<idno type="ORCID">0000-0003-2535-7973</idno>
+						</author>
+						<author>
+							<persName><forename type="first">Li</forename><surname>Lai</surname></persName>
+							<idno type="ORCID">0000-0002-5731-2705</idno>
+						</author>
+						<author>
+							<persName><forename type="first">Longhou</forename><surname>Fang</surname></persName>
+							<idno type="ORCID">0000-0003-1653-5221</idno>
+						</author>
+						<author>
+							<persName><forename type="first">Yu</forename><surname>Yang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Nhat-Tu</forename><surname>Le</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jun-Ichi</forename><surname>Abe</surname></persName>
+							<idno type="ORCID">0000-0001-7439-7774</idno>
+						</author>
+						<author>
+							<persName><forename type="first">Shu-Hsia</forename><surname>Chen</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Qin</forename><surname>Ma</surname></persName>
+							<idno type="ORCID">0000-0002-3264-8392</idno>
+						</author>
+						<author>
+							<persName><forename type="first">Ken</forename><surname>Chen</surname></persName>
+							<idno type="ORCID">0000-0003-4013-5279</idno>
+						</author>
+						<author>
+							<persName><forename type="first">Qianqian</forename><surname>Song</surname></persName>
+							<idno type="ORCID">0000-0002-4455-5302</idno>
+						</author>
+						<author>
+							<persName><forename type="first">John</forename><forename type="middle">P</forename><surname>Cooke</surname></persName>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">Guangyu</forename><surname>Wang</surname></persName>
+							<email>gwang2@houstonmethodist.org</email>
+							<idno type="ORCID">0000-0003-4803-7200</idno>
+						</author>
+						<title level="a" type="main">A visual–omics foundation model to bridge histopathology with spatial transcriptomics</title>
+					</analytic>
+					<monogr>
+						<title level="j" type="main">Nature Methods</title>
+						<title level="j" type="abbrev">Nat Methods</title>
+						<idno type="ISSN">1548-7091</idno>
+						<idno type="eISSN">1548-7105</idno>
+						<imprint>
+							<publisher>Springer Science and Business Media LLC</publisher>
+							<biblScope unit="volume">22</biblScope>
+							<biblScope unit="issue">7</biblScope>
+							<biblScope unit="page" from="1568" to="1582"/>
+							<date type="published" when="2025-05-29">29 May 2025</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">F7FDB5F113522EE31E729FDC519A62B8</idno>
+					<idno type="DOI">10.1038/s41592-025-02707-1</idno>
+					<note type="submission">Received: 30 September 2024 Accepted: 15 April 2025</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:09+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Artificial intelligence has revolutionized computational biology. Recent developments in omics technologies, including single-cell RNA sequencing and spatial transcriptomics, provide detailed genomic data alongside tissue histology. However, current computational models focus on either omics or image analysis, lacking their integration. To address this, we developed OmiCLIP, a visual-omics foundation model linking hematoxylin and eosin images and transcriptomics using tissue patches from Visium data. We transformed transcriptomic data into 'sentences' by concatenating top-expressed gene symbols from each patch. We curated a dataset of 2.2 million paired tissue images and transcriptomic data across 32 organs to train OmiCLIP integrating histology and transcriptomics. Building on OmiCLIP, our Loki platform offers five key functions: tissue alignment, annotation via bulk RNA sequencing or marker genes, cell-type decomposition, image-transcriptomics retrieval and spatial transcriptomics gene expression prediction from hematoxylin and eosin-stained images. Compared with 22 state-of-the-art models on 5 simulations, and 19 public and 4 in-house experimental datasets, Loki demonstrated consistent accuracy and robustness.</p><p>Computational biology has advanced notably with artificial intelligence (AI) for tasks such as gene expression enhancement, single-cell perturbation prediction, tissue annotation, diagnosis, primary tumor origin predictions and image retrieval from hematoxylin and eosin (H&amp;E)-stained images <ref type="bibr" target="#b0">[1]</ref><ref type="bibr" target="#b1">[2]</ref><ref type="bibr" target="#b2">[3]</ref><ref type="bibr" target="#b3">[4]</ref><ref type="bibr" target="#b4">[5]</ref><ref type="bibr" target="#b5">[6]</ref><ref type="bibr" target="#b6">[7]</ref> . Recently, foundation models like CLIP 8 , CoCa 9 and DeCLIP 10 have been adapted to the field, fine-tuned with pathology images and captions, as seen in PLIP and CONCH <ref type="bibr" target="#b10">11,</ref><ref type="bibr" target="#b11">12</ref> . These visual-language foundation models support applications like text-to-image and image-to-text retrieval, histology image classification, captioning and diagnosis improvement.</p><p>Omics data, including transcriptomics and genetics, provide crucial insights into cell types in health and disease, enhancing our understanding of cellular heterogeneity, lineage tracing and disease mechanisms <ref type="bibr" target="#b12">[13]</ref><ref type="bibr" target="#b13">[14]</ref><ref type="bibr" target="#b14">[15]</ref><ref type="bibr" target="#b15">[16]</ref><ref type="bibr" target="#b16">[17]</ref><ref type="bibr" target="#b17">[18]</ref><ref type="bibr" target="#b18">[19]</ref><ref type="bibr" target="#b19">[20]</ref><ref type="bibr" target="#b20">[21]</ref><ref type="bibr" target="#b21">[22]</ref> . Combining omics data with histology images offers complementary information for both research and clinical applications, and has been used for predicting cancer outcomes, prognosis and response to neoadjuvant chemotherapy 3 . However, existing methods remain task specific and lack a unified multimodal AI model to integrate histology and omics data. Additionally, challenges remain in developing infrastructure to efficiently analyze sequencing data and pathology images together.</p><p>To address these gaps, we introduce omics and image pretraining, OmiCLIP, a transcriptomic-image dual-encoder foundation model and Loki platform, an infrastructure of multimodal analysis using OmiCLIP as a backbone. To train OmiCLIP, we curated the ST-bank dataset with 2.2 million tissue patches from 1,007 samples across 32 organs with paired whole-slide images (WSIs) and 10x Visium spatial transcriptomics (ST) data. Inspired by large language model-based single-cell models</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>depth, medium-to-low sequencing depth and high-to-low sequencing depth. We compared similarity scores between paired images and original transcriptomic embeddings, with paired images and downsampled transcriptomic embeddings. These embeddings were encoded using OmiCLIP's image and transcriptomic encoders, using PLIP and OpenAI CLIP as benchmarks (Extended Data Fig. <ref type="figure">3c</ref>). Results demonstrated OmiCLIP's robustness across sequencing depths, highlighting its adaptability to datasets generated across different technologies.</p><p>The key advantage of contrastive-aligned visual-transcriptomics pretraining is its unique capability to drive the development of cross-modality tissue analysis tools. As a proof of concept, we developed Loki, a unified AI platform for multimodal analysis. In Loki, five modules were implemented, including Loki Align for multi-section tissue alignment, Loki Annotate for multimodal tissue annotation, Loki Decompose for cell-type decomposition from transcriptomics or histology, Loki Retrieve for histology image-transcriptomics retrieval and Loki PredEx for ST gene expression prediction from histology images (Fig. <ref type="figure" target="#fig_4">1b</ref>). While these initial modules demonstrate its potential, Loki is designed to expand, supporting the development of more tools to further enhance multimodal tissue reconstruction and analysis. Loki could serve as the infrastructure that efficiently transfers transcriptomics such as scRNA-seq, bulk RNA-seq data and even marker genes into pathology image analysis via the pretrained model (OmiCLIP) (Fig. <ref type="figure" target="#fig_4">1d</ref>), streamlining workflows, accelerating analysis and minimizing sequencing cost in research areas such as three-dimensional (3D) tissue studies and pathology diagnosis.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>OmiCLIP improves image and transcriptomics representations</head><p>OmiCLIP's image embeddings capture the morphology of tissues, while its transcriptomic embeddings represent genomic characteristics. Since OmiCLIP includes both transcriptomics and image encoders, here we evaluated whether contrastive learning enhances the ability of each encoder to represent tissue types better than the initial encoders. To assess clustering performance, we moved beyond qualitative visualizations and introduced quantitative metrics to assess the quality of the clustering. The uniform manifold approximation and projection (UMAP) visualizations showed that both embeddings clustered similar tissue types (Extended Data Fig. <ref type="figure">2</ref>); however, the results were limited in their ability to quantify clustering quality and may have appeared unstable in some cases. Therefore, we computed the Calinski-Harabasz (CH) score <ref type="bibr" target="#b28">29</ref> , a widely used clustering validation metric, which balances the dispersion between clusters with the cohesion within clusters (Methods). Higher CH scores reflect better clustering performance by indicating more distinct and internally consistent clusters.</p><p>First, we calculated CH scores across 95 tissue samples from the ST-bank dataset, which included expert-annotated cell types from breast, healthy heart, kidney cancer and lung tissues and heart tissue with myocardial infarction (Supplementary Table <ref type="table">2</ref>). These annotated cell types served as ground-truth cluster labels. Our results showed a significant increase (P value &lt; 0.001; Extended Data Fig. <ref type="figure" target="#fig_0">1</ref>) in CH scores for embeddings after contrastive learning compared to before, demonstrating improved clustering performance.</p><p>Second, we expanded the CH score calculations to the rest of the ST-bank samples, where no cell-type annotations are directly available. For these samples, the clusters were identified by the Leiden algorithm on the ST (Methods). After contrastive learning, CH scores significantly increased in all organ types (P value &lt; 0.05; Extended Data Fig. <ref type="figure">2</ref>). OmiCLIP's image embeddings also outperformed SOTA models like UNI <ref type="bibr" target="#b6">7</ref> and GigaPath <ref type="bibr" target="#b29">30</ref> by aligning image and transcriptomic data, not just image-image interactions. The results demonstrated OmiCLIP's ability to capture tissue heterogeneity.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Loki Align aligns ST-to-ST and H&amp;E image-to-ST data</head><p>Researchers recently began investigating spatial biology in 3D, revealing new insights into tissue organization and cellular interactions. like GenePT <ref type="bibr" target="#b22">23</ref> and Cell2Sentence <ref type="bibr" target="#b23">24</ref> , we represented transcriptomics of a tissue patch by a 'sentence' of top-ranking highly expressed genes, separated by spaces (' '). Using this large-scale set of transcriptomicshistology image pairs, we trained the CLIP-based foundation model, integrating both genomic and image data. Building upon OmiCLIP, the Loki platform offers five core functions: tissue alignment, tissue annotation, cell-type decomposition, image-transcriptomics retrieval and ST gene expression prediction (Fig. <ref type="figure" target="#fig_0">1</ref>). Loki provides several distinctive features, including aligning H&amp;E images with ST data, annotating tissue H&amp;E images based on bulk RNA sequencing (RNA-seq) or marker genes and decomposing cell types from H&amp;E images with reference to single-cell RNA sequencing (scRNA-seq). We evaluated Loki's functions against 22 state-of-the-art (SOTA) methods on 5 simulation datasets, 19 publicly available experimental datasets and 4 in-house experimental datasets, showing Loki's consistent accuracy and robustness across tasks. We also investigated OmiCLIP's embeddings for clustering and annotating scRNA-seq data and predicting The Cancer Genome Atlas (TCGA) participants' risk levels (Supplementary Notes 1 and 2).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Loki platform powered by contrastive-aligned visual-omics</head><p>Transcriptomics provides insights into cellular diversity within tissues, making it a natural indicator of tissue diversity <ref type="bibr" target="#b24">25</ref> . ST technologies bridge histopathology images and transcriptomics data, enabling the development of a foundation model that integrates both. We introduce OmiCLIP, a visual-transcriptomics foundation model trained on ST-bank, which includes diverse histopathology images and over 2.2 million paired transcriptomics from 113 studies (Fig. <ref type="figure" target="#fig_4">1a-c</ref> and Supplementary Table <ref type="table">1</ref>). ST-bank covers 32 organ types, including conditions like health, cancer, heart failure and Alzheimer's disease (Fig. <ref type="figure" target="#fig_4">1b</ref>,<ref type="figure">c</ref>). We applied a quality-control pipeline to retain ST data with high-resolution H&amp;E images. As the batch effects may strongly affect the generalization ability of the model, the adopted rank-based strategies inspired by recent single-cell foundation models such as Gen-eFormer <ref type="bibr" target="#b25">26</ref> and scFoundation <ref type="bibr" target="#b26">27</ref> successfully eliminate batch effects through rank-based approaches rather than relying directly on raw read counts or normalized gene expression values. Specifically, we standardized text descriptions of the associated images by converting all Ensembl gene IDs to gene symbols and removing housekeeping genes. To format transcriptomics for language models, genes symbols were ranked from high to low by expression levels and structured into sentences for the text encoder (Fig. <ref type="figure" target="#fig_4">1a</ref>).</p><p>OmiCLIP was fine-tuned using CoCa <ref type="bibr" target="#b8">9</ref> , a SOTA visual-language foundation framework, comprising an image encoder, a text encoder and a multimodal fusion decoder. The image and transcriptomics modalities were aligned in a common representation space utilizing contrastive learning (Fig. <ref type="figure" target="#fig_4">1a</ref> and Extended Data Figs. <ref type="figure" target="#fig_4">1</ref> and <ref type="figure">2</ref>). In this dual-modality space, paired image and transcriptomic embedding vectors were optimized to be similar.</p><p>To evaluate OmiCLIP's reliability to image quality variability across samples due to technological limitations, we simulated low-quality H&amp;E images by adding Gaussian noise and compared the similarity scores between the paired transcriptomic and original image embeddings, with paired transcriptomic and simulated low-quality image embeddings, which were encoded by OmiCLIP's image and transcriptomic encoders. PLIP and OpenAI CLIP served as benchmarks (Extended Data Fig. <ref type="figure">3a</ref>,<ref type="figure">b</ref>), and results demonstrated that OmiCLIP is robust to variations in image quality.</p><p>For sequencing depth variability across technologies, we first analyzed the sequencing depth ranges in ST-bank and categorized samples into high, medium and low sequencing depth groups, identified as 11,792 unique molecular identifier (UMI) counts, 4,512 UMI counts and 615 UMI counts, respectively. Second, we generated low sequencing depth ST simulations using the downsampling function implemented in scuttle <ref type="bibr" target="#b27">28</ref> . We evaluated transitions from high-to-medium sequencing</p><p>a b Spinal cord 110,000 Brain 297,000 Skin 185,000 Breast 194,000 Liver 166,000 Colon 71,000 Prostate 123,000 Kidney 166,000 Heart 217,000 2.2 million pairs Transcriptomics Brain Heart Breast Skin Liver Kidney Embryo Prostate Spinal cord Colon Pancreas Ovary Uterus Intestine Adipose Others Stomach Tonsil Lung Similarity Tissue Disease Study H&amp;E images Normal Cancer Skin disease Heart failure HCM Alzheimer's disease Dead brain Dental disease Acute kidney injury Diabetes This requires tools to align multiple H&amp;E images or ST sections, and even cross-align H&amp;E images with ST slides. However, spatial distortions and biological variations between sections make alignment challenging. To address this, we developed the module Loki Align to align ST-to-ST data, H&amp;E image-to-H&amp;E image, and H&amp;E image-to-ST data.</p><p>Loki Align first embeds patch-level transcriptomics or H&amp;E images into a 768-dimension space using OmiCLIP, and then applies the adapted coherent point drift (CPD) method <ref type="bibr" target="#b30">31</ref> to align two embeddings, preserving probability distribution and topology (Fig. <ref type="figure">2a</ref> and Methods). We evaluated Loki Align on four datasets including two simulation datasets, a set of eight adjacent small intestine tissue sections, and a set of two adjacent ovarian carcinosarcoma sections. To ensure compatibility with datasets that may not be represented in the ST-bank, we used fine-tuning as a default setting for the Loki Align in the alignment tasks. Fine-tuning minimized contrastive loss between image embeddings and the paired text embeddings of the top-expressed gene name sentence (Methods). We further evaluated the zero-shot performance on an ovarian carcinosarcoma dataset. First, we simulated paired H&amp;E images and ST data by perturbing gene expression and spatial locations with varying noise levels, covering diverse tissue types and disease types (Methods). We measured the distance between Loki-aligned data and the ground truth, and compared Loki Align with PASTE and GPSA, which are designed for ST section alignment <ref type="bibr" target="#b31">32,</ref><ref type="bibr" target="#b32">33</ref> . At both high and low noise levels, Loki ST-to-ST alignment and Loki image-to-ST alignment ranked first and second, respectively, among the four methods (Fig. <ref type="figure">2b</ref>), significantly outperforming PASTE and GPSA (P values &lt; 0.001, Wilcoxon test). This superiority likely stems from PASTE's design for linear transformations, which maintains topological integrity but struggles with spatial warping <ref type="bibr" target="#b31">32</ref> , while GPSA aims to map readouts to a common coordinate system, risking topological fidelity <ref type="bibr" target="#b32">33</ref> .</p><p>Second, we tested Loki Align on eight adjacent human small intestine tissues sections <ref type="bibr" target="#b33">34</ref> . Real-world datasets often present challenges due to distortions such as rotation, tilt, uneven slicing and missing fragments. For better performance, we fine-tuned OmiCLIP using the target slide's H&amp;E image and ST data. We aligned seven source ST datasets to target ST data and seven source H&amp;E images to target ST data using Loki Align and applied PASTE and GPSA to align seven source ST datasets to target ST data. Loki Align successfully aligned all source sections to the target section. To evaluate the performance, we calculated the Pearson correlation coefficient (PCC) and Kendall's tau coefficient. For ST-to-ST scenarios, we compared the aligned ST data and the target ST data. For image-to-ST scenarios, after aligning the H&amp;E image to the target ST dataset, we compared the paired ST data corresponding to the H&amp;E image with the target ST dataset. The median PCC for Loki's image-to-ST and ST-to-ST alignment ranged from 0.67 to 0.80 and 0.62 to 0.83, respectively (Fig. <ref type="figure">2c</ref>). The median Kendall's tau coefficient ranged from 0.16 to 0.27 for Loki's image-to-ST and 0.18 to 0.27 for ST-to-ST alignment (Supplementary Fig. <ref type="figure" target="#fig_4">1a</ref>). On the vertical plane, Loki correctly aligned the same tissue types by image-to-ST and ST-to-ST alignment, while PASTE and GPSA twisted the tissues. PASTE rotated three source sections (sources 1-3; Fig. <ref type="figure">2c</ref>) and the PCC and Kendall's tau coefficient ranged from -0.25 to 0.39 and -0.06 to 0.13, respectively. GPSA found common coordinates in six of the seven slices but introduced tremendous distortions, resulting in a PCC of 0.27 to 0.56 and Kendall's tau coefficient of 0.06 to 0.13. Overall, Loki ST-to-ST and image-to-ST alignments outperformed the SOTA methods. To isolate the contributions of OmiCLIP embeddings versus the superior registration method (CPD), we applied CPD to both OmiCLIP embeddings and transcriptomic embeddings that was reduced to two principal components using principal component analysis (PCA; Fig. <ref type="figure">2c</ref>). OmiCLIP embeddings significantly improved the performance of alignment compared to PCA embeddings (P value &lt; 0.001, Wilcoxon test).</p><p>Third, we assessed Loki Align's performance on two adjacent human ovarian carcinosarcoma sections <ref type="bibr" target="#b34">35</ref> (Fig. <ref type="figure">2d</ref>). With fine-tuning, Loki's ST-to-ST and image-to-ST achieved the best performance, with median PCCs of 0.88 and 0.86, and Kendall's tau coefficients of 0.21 and 0.18, respectively. PASTE, GPSA and CAST <ref type="bibr" target="#b35">36</ref> had median PCCs of 0.26, 0.43 and 0.71 and median Kendall's tau coefficients of 0.03, 0.04 and 0.09, respectively (P value &lt; 0.01; Fig. <ref type="figure">2e</ref> and Supplementary Fig. <ref type="figure" target="#fig_4">1b</ref>). The spatial expression patterns of representative genes are shown in Supplementary Fig. <ref type="figure">2</ref>.</p><p>Fourth, we evaluated Loki Align on a human breast cancer dataset 37 with paired 10x Visium and Xenium slides (Extended Data Fig. <ref type="figure">4</ref>). We generated simulation data by performing rotation and translation of Xenium data. To perform the alignment, we first calculated transcriptomic embeddings for the Visium slide using gene sentences derived from Visium transcriptomic data. For the Xenium slide, we created pseudo-Visium data by averaging gene expression values across pseudo-spots. These pseudo-Visium data were then used to calculate transcriptomic embeddings via the transcriptomic encoder of OmiCLIP. Finally, Loki Align was applied to align the transcriptomic embeddings of the Xenium slide with those of the Visium slide, with performance measured by the mean distance between the aligned and target spots. The resulting distance between the aligned Xenium slide and the target Visium slide was 0.08 mm, demonstrating that Loki Align effectively aligns Visium and Xenium slides with high precision.</p><p>Fifth, we evaluated the performance of three training strategies: pretraining plus fine-tuning, pure pretraining and pure training from scratch on ovarian carcinosarcoma samples (Supplementary Fig. <ref type="figure">3</ref>). The best performance was achieved with pretraining plus fine-tuning, resulting in a median PCC of 0.86 and a Kendall's tau coefficient of 0.17. Pure pretraining showed comparable performance, with a median PCC of 0.85 and a Kendall's tau coefficient of 0.18. In contrast, training Fig. <ref type="figure">2</ref> | Tissue alignment. a, Schematic illustration of tissue alignment using ST and histology image with Loki Align. Created in BioRender.com. b, Performance comparison of tissue alignment on 100 low-noise and 100 high-noise simulated datasets, represented by the distance between ground truth and aligned simulated sample using Loki (ST-to-ST and image-to-ST) and baseline methods PASTE (ST-to-ST) and GPSA (ST-to-ST), respectively. P values were calculated using a one-sided Wilcoxon test. c, Alignment results on eight adjacent normal human small intestine samples using Loki (ST-to-ST and image-to-ST) and baseline methods PASTE (ST-to-ST), GPSA (ST-to-ST) and CPD (ST-to-ST), respectively. We colored the samples using the top three PCA components of OmiCLIP transcriptomic embeddings, mapped to red, green and blue color channels, respectively. For visualization, we stacked the eight samples together along the perpendicular axis before and after different alignment methods, respectively, and visualized from the side view. The source2 that has no spatial variable gene selected by GPSA to run it is marked as 'not applicable' (NA). Box plots show the comparison of tissue alignment performances on these seven source samples respectively and combined, represented by the PCC (and Kendall's tau coefficient in Supplementary Fig. <ref type="figure" target="#fig_0">1</ref>) of highly variable gene expression between target and source samples after alignment at the same location, using Loki and baseline methods (PASTE, GPSA and CPD using PCA embeddings as input), respectively. In the box plots, the middle line represents the median, the box boundaries indicate the interquartile range, and the whiskers extend to data points within 1.5 times the interquartile range. d, Tissue alignment of two adjacent human ovarian carcinosarcoma samples using Loki (ST-to-ST and image-to-ST) and baseline methods PASTE (ST-to-ST), GPSA (ST-to-ST) and CAST (ST-to-ST), respectively. We colored the samples as described in c. e, Alignment performance comparison using PCC and Kendall's tau coefficient of the highly expressed gene expression between the target sample and the source sample at aligned locations, using Loki (ST-to-ST and image-to-ST) and baseline methods PASTE (ST-to-ST), GPSA (ST-to-ST) and CAST (ST-to-ST), respectively. In the box plots, the middle line represents the median, the box boundaries indicate the interquartile range, and the whiskers extend to data points within 1.5 times the interquartile range; n = 147. from scratch exhibited the lowest performance, with a median PCC of 0.53 and a Kendall's tau coefficient of 0.06. Overall, we recommend fine-tuning as a default setting for Loki Align, as it ensures compatibility with datasets underrepresented in the ST-bank.</p><p>Lastly, we examined whether Loki Align could leverage both modalities simultaneously for alignment over a single modality. To evaluate this, we integrated image embeddings and transcriptomic embeddings by averaging them and used the combined embeddings to align two adjacent ovarian carcinosarcoma samples. We then calculated the PCC and Kendall's tau coefficient for the image embeddings, transcriptomic embeddings and averaged embeddings to assess performance (Supplementary Fig. <ref type="figure">4</ref>). The results indicated that the averaged embeddings did not outperform single-modality embeddings. Altogether, by addressing spatial distortions and biological variability, Loki Align enables the accurate alignment of multiple H&amp;E images and ST sections, thereby supporting advanced 3D reconstructions of tissue organization, particularly for cross-modality studies that combine H&amp;E images and ST data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Loki Annotate deciphers H&amp;E images with bulk RNA-seq data</head><p>Next, we evaluated Loki's capability to analyze H&amp;E images using bulk RNA-seq data, which is commonly used in both basic research and clinical practice. During OmiCLIP pretraining, the cosine similarities between paired ST and histology images were maximized, allowing the similarity between the H&amp;E image of tissue patches and tissue-type-specific bulk RNA-seq data to indicate tissue-type enrichment. We developed Loki Annotate to annotate H&amp;E images using tissue-type-specific bulk RNA-seq data as a reference. We used OmiCLIP to encode tissue patches from a WSI and the tissue-specific bulk RNA-seq data, then calculated the cosine similarity between the encoded embeddings (Fig. <ref type="figure">3a</ref>). Higher similarity values indicate greater presence of the tissue type.</p><p>We evaluated Loki Annotate on breast cancer, normal breast, and heart failure tissues. In three breast cancer tissues, H&amp;E regions corresponding to tumor tissue showed high similarity with the bulk RNA-seq data from tumor biopsies, which include tumor-related markers such as COL1A1 (ref. 38) and ACTB <ref type="bibr" target="#b38">39</ref> (Fig. <ref type="figure">3b</ref> and Supplementary </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Article</head><p><ref type="url" target="https://doi.org/10.1038/s41592-025-02707-1">https://doi.org/10.1038/s41592-025-02707-1</ref> Fig. <ref type="figure" target="#fig_3">5</ref>). Similarity scores within the tumor regions were significantly higher than those outside (P value &lt; 0.05, Wilcoxon test). Additionally, higher similarity scores were consistent with higher diagnostic values of tumors calculated by clustering-constrained-attention multiple-instance learning <ref type="bibr" target="#b39">40</ref> (CLAM, a SOTA WSI tumor analysis model; Fig. <ref type="figure">3b</ref>). Next, we tested the similarity between H&amp;E images of heart failure tissues and fibroblast RNA-seq data, as well as between H&amp;E images of normal breast tissues and adipose RNA-seq data. The similarity scores in the corresponding pathology annotated regions were remarkably higher than the non-corresponding regions (Fig. <ref type="figure">3b</ref> and Supplementary Fig. <ref type="figure" target="#fig_3">5</ref>). In summary, Loki Annotate effectively annotates H&amp;E images by using tissue-type-specific bulk RNA-seq data as a reference.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Loki Annotate annotates H&amp;E images based on marker genes</head><p>When bulk RNA-seq is unavailable, Loki Annotate can also annotate tissues using predefined marker genes, similar to the workflow of using bulk RNA-seq data without fine-tuning. We created tissue-specific gene lists using well-established markers, such as 'TP53, EPCAM, KRAS, …, DSP' for tumors (Fig. <ref type="figure">4a</ref> and Supplementary Table <ref type="table">3</ref>). As with the bulk RNA-seq approach, we used OmiCLIP to encode tissue patches from histology images and the gene name sentence composed from the marker gene list. We applied Loki Annotate to four benchmark histopathology datasets including CRC7K <ref type="bibr" target="#b40">41</ref> (eight tissue types), WSSS-4LUAD <ref type="bibr" target="#b41">42</ref> (normal and tumor), PatchCamelyon <ref type="bibr" target="#b42">43</ref> (normal and tumor) and LC25000 <ref type="bibr" target="#b43">44</ref> (benign and malignant). Tissue-type annotation was determined by cosine similarity derived from the dot product of normalized text embeddings and H&amp;E image embeddings, with the highest cosine similarity score assigned as the predicted tissue to the query image.</p><p>Based on these annotations, precision was defined as the proportion of correctly predicted tissues (true positives) of all predicted tissues, while recall was defined as the proportion of correctly predicted tissues of all actual tissues. The F1 score was calculated as the harmonic mean of precision and recall, which was used to measure classification performance. We measured annotation performance using F1 score and compared our results to the OpenAI CLIP model. Our analysis showed that Loki consistently outperformed OpenAI CLIP across all four datasets (Fig. <ref type="figure">4b</ref>,<ref type="figure">c</ref>). The F1 scores of Loki ranged from 0.59 to 0.96, while the F1 scores of OpenAI CLIP ranged from 0.03 to 0.34 (Fig. <ref type="figure">4c</ref>).</p><p>Several studies have developed visual-language foundation models using paired histopathology images and captions <ref type="bibr" target="#b10">11,</ref><ref type="bibr" target="#b11">12</ref> . Given that transcriptomics and natural language provide complementary information, we investigated whether their combination could improve annotation performance without additional training. We applied PLIP, a visual-language foundation model for pathology image analysis, to annotate the tissue images by descriptive prompts, such as converting 'tumor' to 'an H&amp;E image patch of colorectal adenocarcinoma epithelium' in the CRC7K dataset. Overall, PLIP performed comparably to Loki, with F1 scores ranging from 0.5 to 0.93 (Fig. <ref type="figure">4d</ref>). We then combined Loki and PLIP by averaging their similarity scores of an H&amp;E image and a given tissue type (Fig. <ref type="figure">4a</ref> and Methods), resulting in the best performance across all four benchmark datasets (Fig. <ref type="figure">4d</ref>,<ref type="figure">e</ref>). In CRC7K, PLIP misclassified 63% of colorectal adenocarcinoma epithelium images as cancer-associated stroma, while Loki misclassified 15% of tumor images as normal colon mucosa. Notably, combining Loki and PLIP achieved a 93% recall rate, demonstrating that combining transcriptomic and natural language enhances overall performance compared to each modality alone (Fig. <ref type="figure">4f</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Loki Decompose maps cell types in H&amp;E image using scRNA-seq</head><p>Since OmiCLIP can project the Visium ST data and H&amp;E images to a shared embedding space, we developed Loki Decompose, a feature to decompose cell types in both ST data and H&amp;E images, using scRNA-seq as a reference. Inspired by ST decomposition models like Tangram and CytoSPACE <ref type="bibr" target="#b44">45,</ref><ref type="bibr" target="#b45">46</ref> , we used OmiCLIP to encode the patches (the same size as a Visium spot) of an H&amp;E image and scRNA-seq transcriptomic profile into this embedding space. As an application of Tangram with OmiCLIP embeddings instead of gene expression data, Loki Decompose applied Tangram's nonconvex optimization algorithm <ref type="bibr" target="#b46">47</ref> to deconvolute the OmiCLIP embeddings of an H&amp;E image patch or the embeddings of a Visium spot's transcriptomic profile rather than raw gene expression data, providing the cell-type composition of an image patch or a Visium spot (Fig. <ref type="figure" target="#fig_3">5a</ref>). We assessed Loki Decompose on our in-house triple-negative breast cancer (TNBC) dataset, a human colorectal cancer dataset <ref type="bibr" target="#b47">48</ref> and a brain dataset <ref type="bibr" target="#b48">49,</ref><ref type="bibr" target="#b49">50</ref> .</p><p>First, we performed a Xenium experiment on the in-house TNBC sample and captured paired H&amp;E images. We generated pseudo-Visium data from the Xenium data as a benchmark for evaluating Loki Decompose, using publicly available scRNA-seq data as a ref. 51. The Xenium data classified tissue into three main cell types: cancer epithelial cells, immune cells and stromal cells (Fig. <ref type="figure" target="#fig_3">5b</ref> and Extended Data Fig. <ref type="figure" target="#fig_3">5a</ref>,<ref type="figure">b</ref>). We used Loki to decompose pseudo-Visium spots and H&amp;E images, using paired sequencing and image data from one-fourth of a WSI for fine-tuning followed by cross-validation (Methods). Decomposition accuracy was evaluated using Jensen-Shannon ( JS) divergence and the structural similarity index measure (SSIM). These metrics were calculated by comparing the predicted cell-type proportions to the ground truth derived from the Xenium data. Since JS divergence and SSIM operate on different scales, we standardized their values by calculating z-scores among different methods (details in Methods). The z-score for JS divergence was inverted (that is, multiplied by -1), as lower values indicate better performance. Finally, we averaged the z-scores of JS divergence and SSIM to calculate an overall impact score, which provides a unified metric for comparison across methods. Loki Decompose in ST mode and image mode ranked as the top two methods with  Low High Density Low High Density Low High Density Low High Density Epithelial Immune Stroma z-score Epithelial Immune Stroma z-score Loki ST 0.51 0.28 0.13 1.82 0.17 0.45 0.61 0.83 1.32 Loki image 0.52 0.40 -0.03 1.76 0.18 0.42 0.73 0.46 1.11 RCTD 0.38 0.17 -0.01 0.88 0.20 0.38 0.64 0.86 0.87 CARD 0.08 0.02 0.00 -0.21 0.22 0.43 0.60 0.78 0.28 Tangram -0.02 0.03 0.15 -0.10 0.23 0.57 0.52 0.52 0.21 scGPT -0.07 0.00 0.19 -0.17 0.23 0.56 0.52 0.52 0.18 Spatial Seurat 0.08 0.03 0.02 -0.15 0.22 0.65 0.56 0.09 -0.03 scFoundation -0.21 -0.11 0.19 -0.81 0.24 0.59 0.52 0.40 -0.20 GeneFormer 0.00 0.00 0.01 -0.44 0.23 0.59 0.66 -0.08 -0.26 CytoSPACE 0.04 0.02 0.06 -0.18 0.27 0.72 0.74 -1.03 -0.61 Cell2location -0.03 -0.14 -0.13 -1.24 0.49 0.57 0.63 -0.88 -1.06 spatialDWLS -0.24 0.03 -0.07 -1.15 0.63 0.71 0.78 -2.49 -1.82 Impact score SSIM JS divergence Step 1 ST fine-tuning Histology image (adjacent/serial section) prediction OmiCLIP image encoder OmiCLIP text encoder</p><p>Step 2</p><p>Gene expression Dimension 1 Dimension 2 scRNA-seq Cell 1 Cell 2 Cell N C e ll -t y p e A C e ll -t y p e B C e ll -t y p e C C e ll -t y p e D Patch 0.75 0.06 0.17 0.02 0.08 0.83 0.05 0.04 0.13 0.08 0.68 0.11 0.05 0.01 0.15 0.79 . . . . . . . . . . . . . . .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Article</head><p><ref type="url" target="https://doi.org/10.1038/s41592-025-02707-1">https://doi.org/10.1038/s41592-025-02707-1</ref> impact scores of 1.32 and 1.11, respectively, outperforming other SOTA methods <ref type="bibr" target="#b51">52</ref> including Tangram, Spatial Seurat 53 , CARD <ref type="bibr" target="#b53">54</ref> , CytoSPACE, Cell2location <ref type="bibr" target="#b49">50</ref> , SpatialDWLS <ref type="bibr" target="#b54">55</ref> and RCTD <ref type="bibr" target="#b55">56</ref> , with impact scores ranging from 0.87 to -1.82 (Fig. <ref type="figure" target="#fig_3">5c</ref>,d and Extended Data Fig. <ref type="figure" target="#fig_3">5c</ref>). As single-cell foundation models such as GeneFormer <ref type="bibr" target="#b25">26</ref> , scGPT <ref type="bibr" target="#b56">57</ref> and scFoundation <ref type="bibr" target="#b26">27</ref> can also provide the transcriptomic embeddings, to further evaluate the approach, we replaced OmiCLIP gene expression embeddings with those from single-cell foundation models GeneFormer, scGPT and scFoundation. Results showed that scGPT, scFoundation and Gen-eFormer ranked 6th, 8th and 9th, respectively (Fig. <ref type="figure" target="#fig_3">5c</ref> and Extended Data Fig. <ref type="figure" target="#fig_3">5c</ref>). Second, we evaluated Loki Decompose using pseudo-Visium data generated from whole-genome sequencing Visium-HD data of human colorectal cancer as a benchmark (Fig. <ref type="figure" target="#fig_3">5e</ref>). We fine-tuned OmiCLIP on regions with paired sequencing and image data (Methods). Remarkably, the transcriptomic embeddings for scRNA-seq data effectively captured cell heterogeneity, even without training on scRNA-seq data (Extended Data Fig. <ref type="figure">6a</ref> and Supplementary Note 1). Loki Decompose successfully predicted the spatial distribution of key cell types (Extended Data Fig. <ref type="figure">6b</ref>). We developed a technique inspired by non-maximum suppression (NMS) <ref type="bibr" target="#b57">58</ref> to refine spatial probabilistic maps, enhancing decomposition performance by reducing ambiguity in complex spatial scenarios and focusing predictions on the most confident cell-type assignments. Using JS divergence and SSIM scores, Loki Decompose based on either the ST data or the H&amp;E images was comparable to Tangram, which used gene expression as input (Fig. <ref type="figure" target="#fig_3">5f</ref>).</p><p>Third, we extended the analysis to the entire WSI (20 mm) of the same human colorectal cancer tissue (Fig. <ref type="figure" target="#fig_3">5g</ref>), segmenting it into image patches matching Visium spot size. Similarly, we used OmiCLIP to encode image patches and transcriptomics of scRNA-seq and then decomposed those using scRNA-seq data. Loki Decompose accurately predicted densities of tumor, fibroblast, intestinal epithelial, smooth muscle, immune and inflammatory cells, aligning closely with pathology annotations (Fig. <ref type="figure" target="#fig_3">5g</ref>). Additionally, our predicted tumor cell density matched that of CLAM <ref type="bibr" target="#b39">40</ref> , further validating Loki Decompose's robustness (Fig. <ref type="figure" target="#fig_3">5g</ref>).</p><p>Fourth, to test Loki Decompose in a more challenging scenario, we applied it to a brain tissue, where neurons share similar morphology. Our dataset included vascular and leptomeningeal cells (VLMCs), astrocytes, and neurons from layers 2/3 (L2/3), layers 4/5 (L4/5) and layer 6 (L6), as well as oligodendrocytes (Fig. <ref type="figure" target="#fig_3">5h</ref> and Supplementary Fig. <ref type="figure">6</ref>). VLMCs and astrocytes are concentrated near the cortical surface and pial borders (for example, layer 1), while oligodendrocytes are more prevalent in deeper layers and within white matter tracts <ref type="bibr" target="#b48">49</ref> . To decompose the mouse brain cortex slice, we applied a workflow similar to the one for other decomposition tasks. First, we fine-tuned OmiCLIP using adjacent Visium data and H&amp;E images, then segmented the WSI into patches, corresponding to Visium spot size. The transcriptomic encoder of OmiCLIP was used to encode the scRNA-seq data from the Allen Institute atlas <ref type="bibr" target="#b48">49</ref> , while the image encoder was used to encode the H&amp;E image. Finally, Loki Decompose was applied to predict cell-type distributions within the brain cortex H&amp;E image. Loki Decompose accurately predicted the distribution of VLMCs, astrocytes, neurons from L2/3, L4/5 and L6 and oligodendrocytes, aligning closely with brain anatomic ref. 49.</p><p>Lastly, we tested the performance of decomposition using three training strategies: pretraining plus fine-tuning, pure pretraining and pure training from scratch on TNBC samples (Extended Data Fig. <ref type="figure">7</ref>). The analysis showed that pretraining plus fine-tuning had the best performance, achieving a mean SSIM score of 0.30 and a mean JS divergence of 0.40. In contrast, pure pretraining resulted in a mean SSIM score of 0.13 and a mean JS divergence of 0.43, while pure training from scratch performed the worst, with a mean SSIM score of 0.00070 and a mean JS divergence of 0.44. Although pure pretraining achieved a comparable JS divergence score to the pretraining plus fine-tuning method (0.43 versus 0.40), it showed a notable decline in the SSIM (0.13 versus 0.30), underscoring the importance of fine-tuning for optimal performance. Therefore, we strongly recommend fine-tuning the model for this task to achieve optimal results.</p><p>Altogether, Loki Decompose effectively inferred cell-type fractions from H&amp;E images and ST data, demonstrating its potential to enhance spatial tissue analysis by utilizing H&amp;E images to reduce experimental costs and processing time, particularly in multi-section tissue studies.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Loki Retrieve enables H&amp;E image-to-transcriptomics retrieval</head><p>One of the basic functions of contrastive learning models is retrieval. Leveraging such ability of OmiCLIP, we developed Loki Retrieve to identify and retrieve transcriptomics data corresponding to a given H&amp;E image. Using OmiCLIP's image encoder, query images were encoded to embeddings to retrieve the most similar transcriptomic entries from the ST-bank dataset in the aligned latent space (Fig. <ref type="figure">6a</ref>). We presented the top 50 most similar transcriptomics results, as demonstrated by the ST-paired images from the ST-bank dataset (Fig. <ref type="figure">6b</ref>). Then, we systematically evaluated our model on diverse datasets including four independent histopathology datasets of colorectal cancer, lung cancer and lymph node metastasis, along with eight in-house tissues of heart failure, Alzheimer's disease and breast cancer human tissues (Supplementary Fig. <ref type="figure">7</ref>). Because ground-truth transcriptomics data were unavailable, retrieval accuracy was assessed by measuring similarity between the query image and the retrieved transcriptomics-paired images. Overall, Loki Retrieve significantly outperformed OpenAI CLIP and PLIP by a large margin (Fig. <ref type="figure">6c</ref>,<ref type="figure">d</ref>; P value &lt; 0.05), achieving median similarity scores ranging from 0.7 to 0.9.</p><p>We further evaluated image-to-transcriptomics retrieval performance by calculating the rank of the correct pair using Recall@K (5% and 10%). This metric measures the proportion of correctly retrieved data within the samples retrieved using the top-K quantile (Methods). We used four reserved samples from ST-bank as validation datasets including brain, heart, kidney and breast tissue samples and four independent ST studies as a test dataset, including desmoplastic small round cell tumor, colorectal cancer, vascular and colon samples (Supplementary Table <ref type="table">4</ref>). Results demonstrated that Loki notably outperformed both OpenAI CLIP and PLIP across all validation datasets. Specifically, Loki achieved Recall@5% of 0.125 and Recall@10% of 0.227 for brain (average 2.3-fold higher than OpenAI CLIP and 2.5-fold Fig. <ref type="figure">6</ref> | Image-to-transcriptomics retrieval. a, Schematic illustration of imageto-transcriptomics retrieval on the ST-bank dataset. b, Example image-totranscriptomics retrieval results. For each example image from adipose tissue, colorectal adenocarcinoma epithelium, lymphocytes, smooth muscle and normal colon mucosa, the retrieved top 50 most similar transcriptomics are shown by the paired image from the ST-bank dataset. c, Image-to-transcriptomics retrieval similarity scores across the four validation datasets-CRC7K, WSSS4LUAD, LC25000 and PatchCamelyon-using Loki, OpenAI CLIP and PLIP. In the box plots, the middle line represents the median, the box boundaries indicate the interquartile range, and the whiskers extend to data points within 1.5 times the interquartile range. d, Image-to-transcriptomics retrieval similarity scores across the eight in-house human tissues: heart failure (HF), Alzheimer's disease (AD), metaplastic breast cancer (MPBC) and TNBC, using Loki, OpenAI CLIP and PLIP. In the box plots, the middle line represents the median, the box boundaries indicate the interquartile range, and the whiskers extend to data points within 1.5 times the interquartile range. e, Image-to-transcriptomics retrieval evaluation across four validation datasets and one test dataset using Loki, OpenAI CLIP and PLIP, with random baseline. The top-K quantile most similar transcriptomics were retrieved. We report Recall@K for K ∈ {5%, 10%} (Methods). f, Example image-totranscriptomics retrieval results. The retrieved transcriptomics are shown by the paired image. ST-bank dataset Loki OpenAI CLIP PLIP Loki OpenAI CLIP PLIP e f Query image Retrieved transcriptomics Dataset Metric Loki OpenAI CLIP PLIP Random Fold change (Loki versus PLIP) Fold change (Loki versus OpenAI CLIP) Recall@5% 0.125 0.051 0.048 0.052 2.4 2.6 0.227 0.103 0.095 0.101 2.2 0.186 0.052 0.057 0.049 3.6 0.291 0.104 0.103 0.098 2.8 3.3 2.8 0.173 0.052 0.053 0.053 3.4 0.297 0.100 0.097 0.101 3.0 3.3 3.0 0.140 0.049 0.050 0.047 2.9 0.240 0.100 0.096 0.094 2.4 2.8 2.5 0.117 0.033 0.042 0.025 3.5 0.208 0.075 0.067 0.067 2.8 2.8 3.1 2.4 Recall@10%</p><p>Recall@5% Recall@10% Recall@5% Recall@10% Recall@5% Recall@10% Recall@5% Recall@10% Test dataset</p><p>Validation brain dataset Validation heart dataset Validation kidney dataset Validation breast dataset 1.0 0.8 0.2 0.6 0.4 1.0 0.8 0.2 N o r m a l T u m o r N o r m a l T u m o r N o r m a l T u m o r 0.6 0.4 1.0 0.8 0.2 0.6 0.4 1.0 0.8 0.2 0.6 0.4 1.0 0.8 0.2 0.6 0.4 MYH7 TNNT2 ACTC1 ... CATA4 PPARG LEP ... ADIPOQ . . .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Article</head><p><ref type="url" target="https://doi.org/10.1038/s41592-025-02707-1">https://doi.org/10.1038/s41592-025-02707-1</ref> higher than PLIP), Recall@5% of 0.186 and Recall@10% of 0.291 for heart (average 3.2-fold higher than OpenAI CLIP and 3.1-fold higher than PLIP), Recall@5% of 0.173 and Recall@10% of 0.297 for kidney (average 3.2-fold higher than OpenAI CLIP and PLIP) and Recall@5% of 0.140 and Recall@10% of 0.240 for breast (average 2.6-fold higher than OpenAI CLIP and PLIP; Fig. <ref type="figure">6e</ref>). On the test dataset, Loki further demonstrated substantial improvements, achieving Recall@5% of 0.117 and Recall@10% of 0.208 (average 3.1-fold higher than OpenAI CLIP and 3.0-fold higher than PLIP; Fig. <ref type="figure">6e</ref> and Supplementary Table <ref type="table">4</ref>). Together, these results confirm Loki's superior performance in accurately retrieving paired transcriptomic information from images.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Loki PredEx predicts ST gene expression from H&amp;E images</head><p>Building on the success of Loki Align, Annotate and Decompose in analyzing tissue across the H&amp;E image and transcriptomics data, we developed Loki PredEx to predict gene expression for image patches.</p><p>Loki PredEx computes a weighted sum of gene expression from reference ST spots where weights are determined by similarity scores between the query image and ST data, both encoded by OmiCLIP (Supplementary Fig. <ref type="figure">8</ref> and <ref type="figure">Methods</ref>). Several studies have explored predicting gene expression from H&amp;E images using AI models <ref type="bibr" target="#b58">[59]</ref><ref type="bibr" target="#b59">[60]</ref><ref type="bibr" target="#b60">[61]</ref><ref type="bibr" target="#b61">[62]</ref> .</p><p>We compared Loki PredEx with them on a normal human heart dataset comprising 39 samples. Loki accurately predicted highly variable gene expression, as demonstrated by the spatial distribution of the predicted gene expression (Extended Data Fig. <ref type="figure">8</ref>). To evaluate the performance, we used mean squared error (MSE) and PCC as two metrics.</p><p>Loki PredEx demonstrated superior performance, achieving the best results based on MSE scores in 28 of 39 cases, and ranking as the best in 16 of 39 samples based on PCC compared to Hist2ST, HisToGene, BLEEP and mclSTExp (Extended Data Fig. <ref type="figure">9a</ref>). These results showed the robustness of OmiCLIP in predicting ST data across diverse datasets (Extended Data Fig. <ref type="figure">9b</ref>). A major limitation of deep learning models like HisToGene is their heavy hardware requirements. Models like His-ToGene and Hist2ST were optimized for smaller legacy ST datasets, with fewer spots. For instance, HisToGene is typically trained on less than 7,000 spot-image pairs. However, with modern ST technologies such as Visium, slides contain over</p><p>4,000 spots, pushing memory demands above 300 GB and complicating GPU-based training. In our experiments, training HisToGene on over 80,000 spots from 35 tissues required 4 h on 16 2.60 GHz Intel Xeon Gold 6348 CPUs for 100 epochs and Hist2ST took 31 h under similar conditions. Loki PredEx avoids these resource-intensive training needs, providing a more efficient alternative. Together, Loki PredEx delivers accurate ST gene expression predictions, and avoids these resource-intensive training needs, providing a more efficient alternative based upon the use of pretrained weights, highlighting its potential as a scalable infrastructure.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Discussion</head><p>Existing dual-modality foundation models in computational biology <ref type="bibr" target="#b10">11,</ref><ref type="bibr" target="#b11">12</ref> primarily combine images with textual descriptions, proving their utility in histopathology annotation and analysis. However, the natural language descriptions lack molecular insights for disease characterization. Our study first suggests that publicly available ST datasets provide sufficient volume and diversity to pretrain a foundation model bridging tissue morphology with genomics. The success of the development of our foundation model could represent a substantial step toward understanding molecular mechanisms regulating tissue phenotypes in health and disease. We presented OmiCLIP, a high-performance histopathology image-omics foundation model by contrastive learning. Unlike visual-language foundation models, OmiCLIP integrates molecular insights with pathology images, complementing language descriptions. Benchmark results indicate that OmiCLIP performs comparably to, and in some cases surpasses visual-language foundation models in tissue annotation, suggesting that marker genes could serve as effective tissue labels independent of language. Notably, our annotation of tissue types incorporating both language description and marker genes shows promise for triple-modal foundation modeling of image, transcriptomics and language. Using marker genes as a label could potentially facilitate molecular investigation-related studies such as drug repurposing, immune response prediction and disease mechanism discovery.</p><p>A key question is whether OmiCLIP's transcriptomic encoder generalizes to other sequencing techniques like bulk RNA-seq and scRNA-seq. We evaluated the information of transcriptomic embeddings by cell annotation of scRNA-seq data (Supplementary Note 1) and tumor classification of bulk RNA-seq data (Supplementary Note 2). Our results show that OmiCLIP's transcriptomic embeddings efficiently cluster participants with cancer without specific training and accurately annotate cell types with even 1% of labeled cells.</p><p>Loki could potentially enhance 3D tissue analysis by integrating imaging and molecular modalities in a scalable and efficient manner. Emerging 3D histology and omics techniques already show promise in improving diagnostic accuracy by preserving native 3D tissue morphology, leading to better prognostic predictions and ultimately improved patient care <ref type="bibr" target="#b62">[63]</ref><ref type="bibr" target="#b63">[64]</ref><ref type="bibr" target="#b64">[65]</ref><ref type="bibr" target="#b65">[66]</ref> . However, challenges remain in spatial distortions and aligning molecular data across different modalities. Loki addresses these by aligning tissue slices and integrating ST, histology and scRNA-seq data, enabling a more comprehensive understanding of tissue architecture and cellular interactions, which is crucial for 3D tissue analysis. Incorporating Loki into workflows facilitates detailed molecular and spatial features analysis across tissue sections, supporting automated, scalable and high-resolution 3D tissue analysis.</p><p>Loki provides an AI-powered platform supporting the expansion of additional tools in a unified framework. Among the existing modules, Loki Annotate automates annotation and interpretation of molecular and spatial tissue features using associated or external RNA-seq data or marker genes. Loki PredEx predicts spatial gene expression from histology images, reducing reliance on costly and laborious ST experiments. These modules, leveraging contrastively aligned embeddings, enable efficient multimodal tissue reconstruction and analysis, providing a scalable solution to the growing demand for high-resolution tissue studies. Loki's ability to integrate diverse data types across tissue sections minimizes cost and complexity while accelerating workflows in enabling deeper insights into biological systems.</p><p>Compared to billion-scale datasets for developing visual-language models in the general machine-learning domain, the major limitation of this study is pretraining data size. We expect that continued use of training datasets may further improve the zero-shot performance. However, several biomedical multimodal foundation models were efficiently trained on million-scale datasets by removing duplicates and noise <ref type="bibr" target="#b10">11,</ref><ref type="bibr" target="#b11">12,</ref><ref type="bibr" target="#b66">67</ref> , a strategy we used to optimize training efficiency.</p><p>Notably, as a contrastive learning framework, OmiCLIP is not generative and cannot directly generate the accurate transcriptomic profile of the query image. Instead, it retrieves tissues with the most similar transcriptomic profiles to the query tissue. While it effectively embeds transcriptomic and histology data at the patch level, it does not inherently generate new data, such as reconstructing a WSI with gene expression patterns. However, OmiCLIP's patch-level embeddings could support generative approaches, such as diffusion models, to reconstruct WSIs with ST details. Future studies could refine the transcriptomic encoder using RNA-seq datasets like scRNA-seq and bulk RNA-seq data. Although ST-bank includes 32 organ types, rare conditions may be underrepresented. We suggest fine-tuning alignment and decomposition tasks to ensure compatibility with datasets that are not covered in ST-bank (Extended Data Fig. <ref type="figure" target="#fig_4">10</ref>).</p><p>Unlike single-cell foundation models like scGPT <ref type="bibr" target="#b56">57</ref> , Geneformer 26 and scFoundation <ref type="bibr" target="#b26">27</ref> , our approach models omics data as text, effectively bridging molecular and visual modalities. Representing gene expression data as text leverages natural language processing models to Article <ref type="url" target="https://doi.org/10.1038/s41592-025-02707-1">https://doi.org/10.1038/s41592-025-02707-1</ref> embed biological information into a high-dimensional space, offering several advantages over using gene expression values directly. First, text embeddings integrate omics data with various biological entities such as pathways, functional annotations <ref type="bibr" target="#b67">68</ref> and cell types <ref type="bibr" target="#b68">69</ref> , extending the model's capabilities beyond tissue alignment and decomposition, making it adaptable to a broader range of biological tasks. Second, this approach aligns with other multimodal foundation models, and allows incorporation of proteomics, metabolomics and DAPI images into the same unified space. In contrast, raw gene expression values lack flexibility for such integrations and require additional preprocessing. Third, text-based foundation models trained on billions of tokens provided robust text embeddings, like GenePT <ref type="bibr" target="#b22">23</ref> , demonstrating that gene embeddings from textual descriptions can match or surpass models trained on extensive gene expression datasets. This supports our approach of utilizing text-based embeddings to capture rich biological information efficiently.</p><p>While integrating two modalities enhances information capture, it may also introduce noise or misalignment, potentially overshadowing benefits. If one modality dominates, performance gains from dual-modality fusion may be minimal.</p><p>Loki Decompose is valuable in scenarios where sequencing costs limit transcriptomic profiling. By estimating cell-type proportions from images, researchers can preselect, screen or perform batch processing of samples cost-effectively for exploratory studies and large-scale screenings. Loki Retrieve utilizes curated reference images for ground-truth comparisons, aiding validation and interpretation, especially when training data for prediction models like Loki PredEx are scarce. Together, our approach contributes to a unified, scalable framework for multimodal analysis.</p><p>To conclude, we created ST-bank, a dataset of over 2 million pathology-specific image-transcriptomics pairs. We developed OmiCLIP to integrate these data, forming a visual-omics foundation model. Leveraging OmiCLIP, we built Loki, an infrastructure enabling multimodal analysis for tissue alignment, tissue annotation, cell-type decomposition, histology image-transcriptomics retrieval and ST gene expression prediction. These capabilities represent a fundamental step toward bridging and applying foundation models in genomics for histopathology.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Online content</head><p>Any methods, additional references, Nature Portfolio reporting summaries, source data, extended data, supplementary information, acknowledgements, peer review information; details of author contributions and competing interests; and statements of data and code availability are available at <ref type="url" target="https://doi.org/10.1038/s41592-025-02707-1">https://doi.org/10.1038/s41592-025-02707-1</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Methods</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Training dataset curation</head><p>We curated a large dataset of histopathology image-transcriptomics pairs using publicly available 10x Visium datasets (Supplementary Table <ref type="table">1</ref>). H&amp;E images were cropped to match ST spot sizes, and text sentences were generated by combining the top 50 expressed genes per spot into sentences. For example, the top-expressed genes in one spot, for example, SNAP25, ENO2, CKB, GRIN2C and CAMK4, will be combined into a sentence: 'SNAP25 ENO2 CKB GRIN2C CAMK4 … MTOR VPS13D'. Data preprocessing involved removing duplicates and excluding low-resolution H&amp;E images (&lt;2,000 × 2,000 pixels), and normalizing raw count matrices following standard protocols using Seurat 70 and Scanpy <ref type="bibr" target="#b70">71</ref> . For datasets in transcripts per million or fragments per kilobase of transcript per million fragments mapped formats, which cannot be normalized to standard gene expression profiles, were retained unchanged. Quality control was applied to filter out contaminated, extremely low-quality or damaged cells, retaining only those with over 200 expressed genes. Ensembl gene IDs were converted to gene symbols for consistency. Housekeeping genes were removed to ensure a more biologically relevant analysis. These steps resulted in ST-bank, a pathology-specific image-transcriptomics caption dataset of 2,185,571 pairs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Downstream evaluation datasets (details in Supplementary</head><p>Note 3) Tissue alignment. Simulated datasets were generated from ten human tissue slices including two breast cancer <ref type="bibr" target="#b71">72,</ref><ref type="bibr" target="#b72">73</ref> , one colorectal liver cancer <ref type="bibr" target="#b73">74</ref> , one liver cancer <ref type="bibr" target="#b74">75</ref> , one prostate cancer <ref type="bibr" target="#b75">76</ref> , one 10x Genomics prostate cancer, one 10x Genomics colon cancer, one embryonic lung <ref type="bibr" target="#b76">77</ref> , one normal small intestine <ref type="bibr" target="#b33">34</ref> and one sleep apnea tonsil sample <ref type="bibr" target="#b77">78</ref> . We simulated new ST experiments by perturbing both gene expression and spatial locations at different levels of noise, generating 10 simulated datasets per real dataset, totaling 200 datasets (100 low-noise, 100 high-noise). Real-world data tests used a normal human small intestine Visium dataset <ref type="bibr" target="#b33">34</ref> of eight adjacent tissue slices, a human ovarian carcinosarcoma Visium dataset <ref type="bibr" target="#b34">35</ref> of two adjacent tissue slices and a human breast cancer Visium and Xenium dataset <ref type="bibr" target="#b36">37</ref> . Tissue annotation. Bulk RNA-seq data-based annotation used three normal human breast and three human heart failure histology images <ref type="bibr" target="#b78">79,</ref><ref type="bibr" target="#b79">80</ref> and three breast cancer histology images from TCGA. Pathology experts annotated different tissue regions. Bulk RNA-seq datasets including 663 human adipose and 504 fibroblast samples from the Genotype-Tissue Expression Portal and three paired tumor biopsy samples from TCGA. Marker gene-based annotation included four datasets: CRC7K (6,333 colorectal adenocarcinoma images), WSSS4LUAD (10,091 LUAD images), LC25000 (25,000 lung and colon images) and PatchCamelyon (32,768 lymph node images).</p><p>Cell-type decomposition. We downloaded a human colorectal cancer dataset <ref type="bibr" target="#b47">48</ref> to create pseudo-Visium spots in the Visium-HD capture area. Pathology experts annotated different tissue regions. We collected an in-house TNBC patient-derived xenograft for processing on Xenium slides, to create pseudo-Visium spots with an external scRNA-seq reference of TNBC <ref type="bibr" target="#b50">51</ref> for decomposition. We also downloaded a mouse brain Visium dataset <ref type="bibr" target="#b49">50</ref> and a scRNA-seq dataset <ref type="bibr" target="#b48">49</ref> from the Allen Institute.</p><p>H&amp;E image-to-ST retrieval. We collected our in-house heart failure patient tissue, paraffin-embedded Alzheimer's disease patient tissue, and metaplastic breast cancer and TNBC patient-derived xenografts. The validation datasets included brain, heart, kidney and breast samples, and the test dataset included desmoplastic small round cell tumor, colorectal cancer, vascular and colon samples (Supplementary Table <ref type="table">4</ref>).</p><p>ST gene expression prediction. We used a normal human heart sample dataset <ref type="bibr" target="#b80">81</ref> of paired ST data and H&amp;E images including 39 samples.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>OmiCLIP model training</head><p>OmiCLIP consisted of an image encoder and a text encoder following CoCa 9 settings. The image encoder was based on a standard vision transformer (ViT) <ref type="bibr" target="#b81">82</ref> with an input image size of 224 × 224 pixels. The text encoder was based on a causal masking transformer with input text length of 76 tokens. Regarding the initial embeddings of ST data, the initial text encoder was not trained from scratch but on LAION-5B <ref type="bibr" target="#b82">83</ref> , including biological literature, which may explain its tendency to cluster similar tissue patches. The model was trained for 20 epochs, using one NVIDIA A100 80-GB GPU with a local batch size of 64. The output vectors of the image and text encoders with dimensions of 768 were optimized by minimizing the contrastive loss on a given batch. All experiments were run in Python v.3.9. Detailed software versions are: CUDA v.12.2; torch v. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>OmiCLIP model fine-tuning</head><p>To improve performance on downstream tasks, OmiCLIP allows fine-tuning with user datasets. The fine-tuning dataset is created by preprocessing Visium data using a standard 10x Space Ranger pipeline and generating gene name sentences as describe in 'Training dataset curation', ensuring compatibility with the pretraining dataset format. Fine-tuning is done using contrastive loss <ref type="bibr" target="#b8">9</ref> between image embeddings and paired text embeddings of the top-expressed gene sentences. The contrastive loss is calculated according to equation ( <ref type="formula" target="#formula_0">1</ref>):</p><formula xml:id="formula_0">L Con = - 1 N ⎛ ⎜ ⎜ ⎝ ∑ N i log exp ( x T i y i σ ) ∑ N j=1 exp ( x T i y j σ ) + ∑ N i log exp ( y T i x i σ ) ∑ N j=1 exp ( y T i x j σ ) ⎞ ⎟ ⎟ ⎠ ,<label>(1)</label></formula><p>where x i and y j denote the normalized image and text embeddings, respectively. N denotes the batch size, while σ represents the temperature parameter. The pretrained model was fine-tuned for ten epochs for the tissue alignment task and five epochs for the cell-type decomposition task, using a local batch size of 64, minimizing the contrastive loss.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Loki Align</head><p>We first fine-tuned OmiCLIP using paired ST data and H&amp;E image of the target sample. The fine-tuned OmiCLIP text encoder and image encoder then encoded ST data and image, respectively. We used a nonrigid point set registration algorithm based on the CPD method <ref type="bibr" target="#b30">31</ref> , which iteratively aligns two point sets by minimizing the statistical discrepancies.</p><p>The algorithm initializes the transformation matrix W to zero and sets the variance σ 2 of point displacements as shown in equation ( <ref type="formula" target="#formula_1">2</ref>):</p><formula xml:id="formula_1">σ 2 = 1 DNM M,N ∑ m,n=1 ‖x n -y m ‖ 2 . (<label>2</label></formula><formula xml:id="formula_2">)</formula><p>Where D is the point's dimensionality, M, N are the number of points in each set, and x, y are the source and target points in sets X and Y , respectively. Point sets are modeled as Gaussian mixture samples, with correspondence probability matrix G computed as shown in equation (3):</p><formula xml:id="formula_3">g ij = exp - 1 2β2</formula><p>‖y y y i -y y y j ‖ 2 .</p><p>(</p><formula xml:id="formula_4">)<label>3</label></formula><p>This forms the basis for expectation-maximization steps, which iterate until convergence. During the E-step, posterior probabilities P of correspondences update as given by equation ( <ref type="formula" target="#formula_5">4</ref>):</p><formula xml:id="formula_5">P mn = exp - 1 2σ2 ‖x x x n -( y y y m +G(m,⋅)W )‖ 2 ∑ M k=1 exp - 1 2σ2 ‖x x x n -( y y y k +G(k,⋅)W )‖ 2 + w 1-w (2πσ 2 ) D/2 M N .<label>(4)</label></formula><p>Article <ref type="url" target="https://doi.org/10.1038/s41592-025-02707-1">https://doi.org/10.1038/s41592-025-02707-1</ref> </p><p>In the M-step, W updates according to equations ( <ref type="formula" target="#formula_6">5</ref>)-( <ref type="formula" target="#formula_9">7</ref>):</p><formula xml:id="formula_6">(G + λσ 2 d(P1) -1 ) W = d(P1) -1 PX -Y,<label>(5)</label></formula><formula xml:id="formula_7">N p = 1 T P1, T = Y + GW, (<label>6</label></formula><formula xml:id="formula_8">)</formula><formula xml:id="formula_9">σ 2 = 1 N p D (tr (X T d (P T 1) X) -2tr ((PX) T T) + tr (T T d (P1) T)) ,<label>(7)</label></formula><p>where the transformation weights W are constrained to 0 ≤ W ≤ 1 . Parameters β &gt; 0 controls transformation stiffness and the trade-off between data fidelity and smoothness, respectively. We optimized CPD by adding the first two principal components of embeddings generated by OmiCLIP image encoder or text encoder, along with the original two-dimensional coordinates. The M-step was optimized by updating only the coordinates to minimize loss. We further calculated the homography matrix with translation and rotation between spots before and after alignment to avoid tremendous distortion. For PASTE, GPSA and CAST, we used their default configuration for tissue preparation and alignment in Visium data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Loki Annotate</head><p>Bulk RNA-seq data. OmiCLIP enables zero-shot annotation by learning an aligned latent space for image and transcriptomic embeddings, eliminating the need for retraining. We used OmiCLIP text encoder to encode bulk RNA-seq data and image encoder for H&amp;E images, then calculated cosine similarity between transcriptomic and image embeddings at spot level.</p><p>Marker genes. Annotation was determined by selecting candidate texts with the highest similarity score to image query. We evaluate this using four datasets: CRC7K, LC25000, PatchCamelyon and WSSS-4LUAD. For Loki, text candidates were generated according to marker genes of each tissue type (Supplementary Table <ref type="table">3</ref>). For the PLIP model, text candidates were generated from tissue-type descriptions (Supplementary Table <ref type="table">3</ref>). The OmiCLIP image encoder encoded images resized to 20 × 20 pixels, consistent with its pretraining. OpenAI CLIP and PLIP models used their default configuration and functions for image and text processing.</p><p>Multimodal annotation. For jointly using Loki and PLIP, we summed their normalized similarity scores. Let, s Loki (I, T ) and s PLIP (I, T ) represent the similarity scores between an image I and text T computed by Loki and PLIP, respectively. Normalized scores were obtained according to equations ( <ref type="formula" target="#formula_10">8</ref>)- (10):</p><formula xml:id="formula_10">ŝLoki (I, T ) = s Loki (I, T ) -min T ′ s Loki (I, T ′ ) max T ′ s Loki (I, T ′ ) -min T ′ s Loki (I, T ′ ) ,<label>(8)</label></formula><formula xml:id="formula_11">ŝPLIP (I, T ) = s PLIP (I, T ) -min T ′ s PLIP (I, T ′ ) max T ′ s PLIP (I, T ′ ) -min T ′ s PLIP (I, T ′ ) ,<label>(9)</label></formula><p>s combine (I, T ) = ŝLoki (I, T ) + ŝPLIP (I, T ) .</p><p>The candidate text T * with the highest combined similarity score was identified as given by equation (11):</p><formula xml:id="formula_13">T * = arg max T s combine (I, T ) .<label>(11)</label></formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Loki Decompose</head><p>To decompose human colorectal cancer slices, we fine-tuned OmiCLIP using paired Visium ST data and H&amp;E images. We then used fine-tuned</p><p>OmiCLIP text encoder to encode scRNA-seq data and pseudo-Visium ST data, and image encoder to encode H&amp;E images. For in-house TNBC human samples, we fine-tuned OmiCLIP using a quarter of a region (top-right, top-left, bottom-right or bottom-left) of pseudo-Visium ST data and H&amp;E images, then encoded scRNA-seq data and ST data via the text encoder and H&amp;E images via the image encoder. Similarly, for mouse brain cortex slices, we fine-tuned OmiCLIP using adjacent Visium ST data and H&amp;E images, then encoded scRNA-seq data and H&amp;E images accordingly. We used a nonconvex optimization algorithm implemented by Tangram to co-register OmiCLIP embeddings of scRNA-seq data with those of ST data or H&amp;E images. We aimed to obtain a probabilistic mapping matrix M aligning single cells to specific spots based on embedding similarities between scRNA-seq and ST data or scRNA-seq and H&amp;E images. The mapping matrix M of dimensions spots-bycells quantifies the likelihood that a given single cell is located within a particular spot. The scRNA-seq data matrix S is structured as cells-by-embeddings, while the ST data or H&amp;E image matrix G is formatted as spots-by-embeddings. The optimal mapping matrix M is derived by minimizing the loss function L (S, M) as shown in equation ( <ref type="formula" target="#formula_14">12</ref>):</p><formula xml:id="formula_14">L (S, M) = n embeddings ∑ k cos distance ((M T S) * ,k , G * ,k ) .<label>(12)</label></formula><p>Here, cos distance denotes the cosine distance between OmiCLIP embeddings of the mapped single cells and those of ST data or H&amp;E images. The loss function aims to minimize the cosine distance between the projected single-cell embeddings M T S and the embeddings of ST data or H&amp;E images G, thereby ensuring that the embeddings of the single cells, when mapped, resemble those observed in the spatial data as closely as possible. Each element M ij in the matrix represents the probability that cell i correspond to spot j , integrating the cellular composition of the spatial spot. For Tangram, we used a uniform density prior for each spot without target count, aligning with Loki Decompose. To enhance efficiency, we adapted the mapping at the cell cluster level. The same settings were used for Loki, while Spatial Seurat, CARD, CytoSPACE, RCTD, Cell2location and spatialD-WLS utilized their default configurations and tissue preparation and decomposition functions. For scGPT, scFoundation and GeneFormer, we used default configuration and tissue preparation functions before using the Tangram method with same default configurations to decompose cell types. To evaluate their performance, we used cell-type information from Xenium, Visium-HD and pathology annotation as ground truth.</p><p>To improve decomposition performance in regions with complex cellular heterogeneity, we developed a refinement strategy inspired by NMS <ref type="bibr" target="#b57">58</ref> . This method prioritizes the most probable cell type within each spot, reducing overlapping or ambiguous assignments when multiple cell types have comparable probabilities. This refined method is recommended in complex spatial scenarios, such as colorectal cancer. For N total spots (indexed by i = 1, … , N ), and C cell types, we defined P i,c as the original probability of cell type c at spot i. The NMS-based refinement follows two steps: selecting the highest probability cell type and suppressing others. The most likely cell type at each spot i was determined as given by equation ( <ref type="formula" target="#formula_15">13</ref>):</p><formula xml:id="formula_15">c * i = arg max c∈C P i,c .<label>(13)</label></formula><p>Then refined probabilities P (NMS) i,c</p><p>was defined according to equation (14):</p><formula xml:id="formula_16">P (NMS) i,c = { P i,c , if c = c * i , 0, otherwise. (<label>14</label></formula><formula xml:id="formula_17">)</formula><p>Article <ref type="url" target="https://doi.org/10.1038/s41592-025-02707-1">https://doi.org/10.1038/s41592-025-02707-1</ref> </p><p>This NMS-based refinement ensured that only the cell type with the highest likelihood remained at each spot, eliminating competing probabilities and improving spatial decomposition accuracy.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Loki Retrieve</head><p>Similarly to Loki Annotate, the retrieval results were decided by choosing candidate transcriptomics with the highest similarity score to the image query.</p><formula xml:id="formula_18">k * = arg max k∈K sim (I q , I k ) .<label>(15)</label></formula><p>Here, as shown in equation ( <ref type="formula" target="#formula_18">15</ref>), K indicates the set of all pairs, I q indicates the image embeddings of a given query, I k indicates the transcriptomics embeddings and k * indicates the candidate transcriptomics with the highest similarity score. We then calculated the similarity between the embeddings of the query image and the image that is paired with the retrieved transcriptomics as the ground truth.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Loki PredEx</head><p>We applied 10-fold cross-validation to evaluate Loki PredEx's performance. In each fold, OmiCLIP was fine-tuned on the training set for ten epochs, and then we used the fine-tuned OmiCLIP text encoder to encode the ST data of training sets and the image encoder to encode the image of validation sets. For each spot in the validation set, cosine similarity between its image embeddings and all the transcriptomic embeddings in the training set was computed, and these weights were used to generate ST gene expression prediction for validation set spots via a weighted average as given by equation ( <ref type="formula" target="#formula_19">16</ref>):</p><formula xml:id="formula_19">X i = ∑ jϵT w i, j ⋅ X j ∑ jϵT w i, j ,<label>(16)</label></formula><p>where T is the set of all spots in the training set, X i is the predicted gene expression for validation spot i, w i,j is the similarity score between validation spot i and training spot j, and X j is the gene expression for training spot j.</p><p>To benchmark performance, we compared Loki PredEx against HisToGene, Hist2ST, BLEEP and mclSTExp, on the same dataset. In each fold, the top 300 expressed genes in the validation set were selected for prediction. We followed default training settings: 100 epochs for HisToGene, 4 epochs for BLEEP, 90 epochs for mclSTExp and 110 epochs reduced from 350 due to computational resource constraints for Hist2ST. By applying the same cross-validation procedure and evaluating the top 300 expressed genes in each fold, we ensured a fair comparison between Loki PredEx and baseline models.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Evaluation metrics and statistical analysis</head><p>In 'OmiCLIP improves image and transcriptomics representations', we used the Leiden algorithm in Scanpy <ref type="bibr" target="#b70">71</ref> to cluster ST with default parameters including a resolution of 1 and a sparse adjacency matrix derived from neighbor connectivity. We then calculated the UMAP embeddings with an effective minimum distance of 0.5 and three dimensions.</p><p>The CH score, also referred to as the variance ratio criterion, was used to evaluate clustering quality for a given dataset by comparing between-cluster dispersion and within-cluster dispersion. It was computed using two sets of ground truth, a benchmarked dataset containing 95 tissue samples from the ST-bank, which included expert-annotated cell types (Supplementary Table <ref type="table">2</ref>) and the Leiden clustering (described above) labels for samples without cell-type annotations. For a dataset with n points {x 1 , … , x n } divided into k clusters {C 1 , … , C k }, CH score is the ratio normalized by the number of degrees of freedom for between-cluster and within-cluster dispersions, respectively, as given by equation ( <ref type="formula" target="#formula_20">17</ref>):</p><formula xml:id="formula_20">CH = BCSS/(k -1) WCSS/(n -k) . (<label>17</label></formula><formula xml:id="formula_21">)</formula><p>Between-cluster sum of squares (BCSS) is calculated as the weighted sum of squared Euclidean distances from each cluster's centroid to overall centroid, as given by equation ( <ref type="formula" target="#formula_22">18</ref>):</p><formula xml:id="formula_22">BCSS = k ∑ i=1 n i ‖c i -c‖ 2 . (<label>18</label></formula><formula xml:id="formula_23">)</formula><p>Here, n i is the number of points in cluster C i , c i is the centroid of cluster C i , and c is the overall centroid. BCSS quantifies separation between clusters, with higher value indicating better separation. Within-cluster sum of squares (WCSS) measures the cohesion of the clusters with smaller values indicating tighter clustering and is the total squared Euclidean distances from each data point to its cluster centroid, as given by equation (19):</p><formula xml:id="formula_24">WCSS = k ∑ i=1 ∑ x∈C i ‖x -c i ‖ 2 . (<label>19</label></formula><formula xml:id="formula_25">)</formula><p>The PCC, which ranges from -1 to 1, assessed tissue alignment and gene expression prediction. Given paired data {(x 1 , y 1 ) , … , (x n , y n )} consisting of n pairs, PCC represented by r xy is defined in equation (20):</p><formula xml:id="formula_26">r xy = n ∑ x i y i -∑ x i ∑ y i √ n ∑ x 2 i -(∑ x i ) 2 √ n ∑ y 2 i -(∑ y i ) 2 , (<label>20</label></formula><formula xml:id="formula_27">)</formula><p>where n is the sample size, and x i , y i are the individual sample points indexed with i. Kendall's tau coefficient, which ranges from -1 to 1, assessed tissue alignment, as given by equation ( <ref type="formula" target="#formula_28">21</ref>):</p><formula xml:id="formula_28">τ = P -Q √(P + Q + T ) (P + Q + U ) ,<label>(21)</label></formula><p>where P denotes the number of concordant pairs, Q is the number of discordant pairs, while T and U represent ties occurring solely in x or solely in y, respectively. JS divergence, which ranges from 0 to 1, assessed cell-type decomposition. To calculate JS divergence between two probability distributions P and Q, we first computed the pointwise average distribution, as given by equation ( <ref type="formula" target="#formula_29">22</ref>):</p><formula xml:id="formula_29">M = 1 2 (P + Q) .<label>(22)</label></formula><p>Then, we calculated Kullback-Leibler (KL) divergence of each distribution with respect to M: D KL (P||M) and D KL (Q||M). KL divergence is a measure of how one probability distribution diverges from a second distribution, as given by equation (23):</p><formula xml:id="formula_30">KL (P||Q) = ∑ P (x) log ( P (x) Q (x) ) . (<label>23</label></formula><formula xml:id="formula_31">)</formula><p>JS divergence is the average of these two KL divergences as given by equation (24):</p><formula xml:id="formula_32">D JS (P||Q) = 1 2 D KL (P||M) + 1 2 D KL (Q||M) .<label>(24)</label></formula><p>The SSIM, which ranges from -1 to 1, assessed cell-type decomposition, where we considered the cell-type distribution in spatial as image. For two images x and y, as shown in equation ( <ref type="formula">25</ref> </p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 |</head><label>1</label><figDesc>Fig. 1 | Overview of the study. a, The workflow of pretraining the OmiCLIP model with paired image-transcriptomics dataset via contrastive learning. b, Workflow of the Loki platform using the OmiCLIP foundation model as an engine. Left diagram illustrates the size of the training data in different organs. Right diagram lists the existing modules of the Loki platform, including tissue alignment, cell-type decomposition, tissue annotation, ST gene expression prediction and histology image-transcriptomics retrieval.</figDesc><graphic coords="3,51.83,425.36,232.01,197.76" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><figDesc>Article https://doi.org/10.1038/s41592-025-02707-1 Article https://doi.org/10.1038/s41592-025-02707-1</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 3 |Fig. 4 |</head><label>34</label><figDesc>Fig. 3 | Tissue annotation using bulk RNA-seq data. a, Schematic illustration of tissue annotation using H&amp;E image and reference bulk RNA-seq data from different sources, with OmiCLIP paired image and transcriptomic embeddings. b, Histology WSIs of breast cancer, heart failure and normal breast samples. The major tumor regions, fibroblast cell-enriched regions and adipose regions are annotated by pathology experts in black lines. Heat map shows the similarity</figDesc><graphic coords="6,280.27,384.11,276.82,67.65" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 5 |</head><label>5</label><figDesc>Fig.5| Cell-type decomposition. a, Schematic illustration of tissue alignment using ST, reference scRNA-seq data and histology images with OmiCLIP paired transcriptomic and image embeddings after fine-tuning. b, H&amp;E image of our in-house TNBC sample, characterized by Xenium into three major cell types: cancer epithelial, immune and stromal cells. c, Performance comparison of 12 decomposition methods using JS divergence, SSIM and impact scores. z-scores of JS divergence (or SSIM) across methods were calculated based on the average JS divergence (or SSIM) among cell types. The impact score of each method is the average of the z-score of JS divergence and SSIM (Methods). The green color indicates decomposition tools. The blue color indicates the performance of replacing OmiCLIP embeddings with other transcriptomic foundation models' embeddings. d, Cell-type decomposition results on three major cell types of the TNBC sample using the image by Loki and using ST by Tangram, with Xenium data as ground truth. The color of the heat map reflects the z-score, calculated by the probability distribution of each cell type. e, H&amp;E image of the human colorectal cancer sample and cell-type distribution within the Visium-HD capture area. f, Bar plot shows the accuracy of decomposition on four major cell types by Loki using ST or image mode, and by Tangram using ST. Error bars indicate the standard deviation and the center values represent the mean. For both JS divergence and SSIM, adjusted P value &gt; 0.1 using a two-sided Wilcoxon test. g, Whole-slide (20 mm × 13 mm) human colorectal cancer cell-type decomposition. Different tissue regions are annotated by the pathologist as ground truth. Heat map shows the cell-type distribution of fibroblast, tumor, intestinal epithelial, smooth muscle and immune/inflammatory cells, with color reflecting the density of each cell type. CLAM attention heat maps were generated using CLAM with default parameters. h, Cell-type decomposition results on the brain sample. Left, brain anatomic references with zoom-in H&amp;E image patches of L1 (VLMCs, astrocytes), L2/3, L4/5, L6 and white matter (WM; oligodendrocytes), respectively. Created in BioRender.com. Right, heat map shows the cell-type distribution of VLMCs, astrocytes, L2/3, L4/5, L6 and oligodendrocytes, with color reflecting the distribution of each cell type.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>1 g</head><label>1</label><figDesc>Article https://doi.org/10.1038/s41592-025-02707-Colorectal</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><figDesc>Article https://doi.org/10.1038/s41592-025-02707-1</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><figDesc>2.3.1; torchvision v.0.18.1; scipy v.1.13.1; pillow v.10.4.0; scikit-learn v.1.5.2; pandas v.2.2.3; numpy v.1.25.0; and scanpy v.1.10.3.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>. ( 25 )Extended Data Fig. 2 |Extended Data Fig. 2 |Extended Data Fig. 3 |</head><label>25223</label><figDesc>):SSIM (x, y) = (2μ x μ y + C 1 ) (2σ xy + C 2 ) (μ 2 x + μ 2 y + C 1 ) (σ 2 x + σ 2 y + C 2 )Article https://doi.org/10.1038/s41592-025-02707-1 S p i n a l C o r d S m a l l i n t e s t i n e S k i n H e a r t O t h e r s K i d n e y B r e a s t B r a i n L u n g E m b r y o L i v e r O v a r y C o l o n P r o s t a t e A d i p o s e U t e r u s P a n c r e a s T o n s i l S t o m a c See next page for caption.Image and transcriptomic representations analysis. a, Clustering performance on all ST-bank data. Top: clustering performance using transcriptomic embeddings generated from OmiCLIP model before and after training. Bottom: clustering performance usings image embeddings from OmiCLIP model before and after training, and image embeddings generated from UNI and Pro-GigaPath, respectively. The Calinski-Harabasz scores were calculated on the embeddings using the pre-trained OmiCLIP transcriptomic (top) and image (bottom) encoders, evaluated for each organ type. Higher Calinski-Harabasz scores indicate better separation capability between clusters of the embeddings. In the box plots, the middle line represents the median, the box boundaries indicate the interquartile range, and the whiskers extend to data points within 1.5× the interquartile range. Sample sizes are skin: 163, brain: 119, breast: 97, heart: 73, kidney: 73, embryo: 73, others: 64, liver: 57, prostate: 49, spinal cord: 44, ovary: 32, colon: 29, pancreas: 25, lung: 22, tonsil: 18, uterus: 17, adipose: 15, small intestine: 14, and stomach: 12. b, Image and transcriptomic embeddings of the spinal cord, liver cancer, brain cancer, kidney cancer and skin cancer samples. Each row corresponds to a WSI and showcases information from two modalities. The first column are H&amp;E images showing tissue morphology; the second column are the heatmaps of ST data with the colors indicating the ST data clustering using Leiden algorithm (Methods); the third column are the UMAP of image embeddings colored by ST Leiden clusters before and after contrastive learning; the fourth column are the UMAP of transcriptomics embeddings colored by ST Leiden clusters before and after contrastive learning.Low quality regionOriginal image Simulated low quality image L o k i ( o r ig in a l im a g e ) Similarity L o k i ( s im u la t e d lo w q u a li t y im a g e ) P L I P O p e n A I C L I P a b L o k i ( o r ig in a l t r a n s c r ip t o m e ) L o k i ( d o w n s a m p le d f r o m h ig h t o m id d le ) P L I P O p e n A I C L I P Similarity L o k i ( d o w n s a m p le d f r o m m id d le t o lo w ) L o k i ( d o w n s a m p le d f r o m h ig h t o lo w ) OmiCLIP's robustness for image quality and sequencing depth. a, Example image with low-quality region marked in red line and simulated low-quality image by adding Gaussian noise. b, Cosine similarity of paired transcriptomic and image embeddings using OmiCLIP (original image and simulated low-quality image), PLIP (original image), and OpenAI CLIP (original image). In the box plots, the middle line represents the median, the box boundaries indicate the interquartile range, and the whiskers extend to data points within 1.5× the interquartile range. Sample sizes are 10 for each simulated condition. c, Cosine similarity of the paired image with transcriptomic embeddings using OmiCLIP (original transcriptomes and down sampled transcriptome from high sequencing depth to middle sequencing depth, middle sequencing depth to low sequencing depth, and high sequencing depth to low sequencing depth, respectively), PLIP (original transcriptome), and OpenAI CLIP (original transcriptome). In the box plots, the middle line represents the median, the box boundaries indicate the interquartile range, and the whiskers extend to data points within 1.5× the interquartile range, n = 500.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="21,49.89,274.74,502.75,287.25" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="22,67.50,335.05,485.05,317.80" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="25,65.83,65.38,473.96,189.31" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="29,49.95,64.21,508.46,329.58" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="30,43.95,191.07,513.77,98.03" type="bitmap" /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>Nature Methods | Volume 22 | July 2025 | 1568-1582</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgements</head><p>This work was supported in part by the grant <rs type="grantNumber">R35GM150460</rs> (to G.W.) from the <rs type="funder">National Institute of General Medical Sciences (NIGMS)</rs> and grant <rs type="grantNumber">R01HL169204-01A1</rs> (to L.L.) from the <rs type="funder">National Institutes of Health (NIH)-National Heart, Lung, and Blood Institute (NHLBI)</rs>. K.W.B. is supported by <rs type="funder">NIH/National Institute of Neurological Disorders Stroke (NINDS)</rs> award <rs type="grantNumber">K22 NS112678</rs>, <rs type="funder">NIH/National Cancer Institute (NCI)</rs> award <rs type="grantNumber">R01 CA284315</rs> and <rs type="funder">Cancer Prevention and Research Institute of Texas (CPRIT)</rs> award <rs type="grantNumber">RR220017</rs>. We acknowledge <rs type="person">J. Chang</rs> in <rs type="affiliation">Houston Methodist Research Institute</rs> for support and assistance in facilitating access to clinical resources essential to this study.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_9WmN4bc">
+					<idno type="grant-number">R35GM150460</idno>
+				</org>
+				<org type="funding" xml:id="_jBJxySy">
+					<idno type="grant-number">R01HL169204-01A1</idno>
+				</org>
+				<org type="funding" xml:id="_KNBpUmH">
+					<idno type="grant-number">K22 NS112678</idno>
+				</org>
+				<org type="funding" xml:id="_xzbbMyh">
+					<idno type="grant-number">R01 CA284315</idno>
+				</org>
+				<org type="funding" xml:id="_cKASwep">
+					<idno type="grant-number">RR220017</idno>
+				</org>
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data availability</head><p>The normal human small intestine dataset used for the tissue alignment task can be found in <ref type="url" target="https://doi.org/10.1038/s41467-023-36071-5">https://doi.org/10.1038/s41467-023- 36071-5</ref> (ref. <ref type="bibr" target="#b33">34)</ref>. The human ovarian carcinosarcoma dataset used for the tissue alignment task can be found at <ref type="url" target="https://doi.org/10.1016/j.xgen.2021.100065">https://doi.org/10.1016/j.  xgen.2021.100065</ref> (ref. <ref type="bibr" target="#b34">35)</ref>. The human breast cancer dataset used for the tissue alignment task can be found at <ref type="url" target="https://doi.org/10.1038/s41467-023-43458-x">https://doi.org/10.1038/  s41467-023-43458-x</ref> (ref. <ref type="bibr" target="#b36">37)</ref>. The human colorectal cancer dataset including Visium, Visium-HD and scRNA-seq data of serial slices used for cell-type decomposition task can be found at <ref type="url" target="https://doi.org/10.1101/2024.06.04.597233">https://doi.  org/10.1101/2024.06</ref>. 04.597233 (ref. 48). The TNBC scRNA-seq data used for the cell-type decomposition task can be found at <ref type="url" target="https://doi.org/10.1038/s41467-018-06052-0">https://doi.  org/10.1038/s41467-018-06052-0</ref> (ref. <ref type="bibr" target="#b50">51)</ref>. The TNBC Xenium data generated in this study have been deposited in the Gene Expression Omnibus database under accession code GSE293199. The brain dataset including Visium data of serial slices used for cell-type decomposition task can be found at <ref type="url" target="https://doi.org/10.1038/s41587-021-01139-4">https://doi.org/10.1038/s41587-021-01139-4</ref> (ref. <ref type="bibr" target="#b49">50)</ref>. The brain scRNA-seq dataset used for cell-type decomposition task can be found at <ref type="url" target="https://doi.org/10.1038/s41586-018-0654-5">https://doi.org/10.1038/s41586-018-0654-5</ref> (ref. <ref type="bibr" target="#b48">49)</ref>. The histology images of the heart failure patient dataset used for the tissue annotation task can be found at <ref type="url" target="https://doi.org/10.1038/s41586-022-05060-x">https://doi.org/10.1038/  s41586-022-05060-x</ref> (ref. <ref type="bibr" target="#b79">80)</ref>. The histology images of the normal human breast dataset used for the tissue annotation task can be found at <ref type="url" target="https://doi.org/10.1038/s41586-023-06252-9">https://doi.org/10.1038/s41586-023-06252-9</ref> (ref. <ref type="bibr" target="#b78">79)</ref>. The histology images of TCGA BRCA dataset used for the tissue annotation task are available from the NIH Genomic Data Commons (<ref type="url" target="https://portal.gdc.cancer.gov/">https://portal.gdc.  cancer.gov/</ref>). The bulk RNA-seq data used for tissue annotation task are available from the Genotype-Tissue Expression Portal (<ref type="url" target="https://gtexportal.org/home/">https://  gtexportal.org/home/</ref>) and TCGA (<ref type="url" target="https://portal.gdc.cancer.gov/">https://portal.gdc.cancer.gov/</ref>). CRC7k image patch data and labels can be found at Zenodo via <ref type="url" target="https://doi.org/10.5281/zenodo.1214456">https://  doi.org/10.5281/zenodo.1214456</ref> (ref. <ref type="bibr" target="#b83">84)</ref>. WSSS4LUAD image patches and labels can be found at <ref type="url" target="https://wsss4luad.grand-challenge.org/">https://wsss4luad.grand-challenge.org/</ref>. LC25000 image patches and labels can be found at <ref type="url" target="https://github.com/tampapath/lung_colon_image_set">https://github.com/  tampapath/lung_colon_image_set</ref>/. PatchCamelyon image patches and labels can be found at <ref type="url" target="https://patchcamelyon.grand-challenge.org">https://patchcamelyon.grand-challenge.  org</ref>/. The validation and test datasets used for the image-transcriptomics retrieval task can be found in Supplementary Table <ref type="table">4</ref>. The normal human heart samples used for the ST gene expression prediction task can be found at <ref type="url" target="https://doi.org/10.1038/s41586-023-06311-1">https://doi.org/10.1038/s41586-023-06311- 1</ref> (ref. <ref type="bibr" target="#b80">81)</ref>. The ST-bank database is available at <ref type="url" target="https://github.com/GuangyuWangLab2021/Loki">https://github.com/  GuangyuWangLab2021/Loki</ref>/.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Code availability</head><p>Loki is implemented in Python and is available via <ref type="url" target="https://github.com/GuangyuWangLab2021/Loki">https://github.com/  GuangyuWangLab2021/Loki</ref>/. The pretrained OmiCLIP weights are available via <ref type="url" target="https://huggingface.co/WangGuangyuLab/Loki">https://huggingface.co/WangGuangyuLab/Loki</ref>/. Hist2ST HisToGene mclSTExp Loki MSE PCC Sample 1 Sample 2 Sample 3 Sample 4 Sample 5 Sample 6 Sample 7 Sample 8 Sample 9 Sample 10 Sample 11 Sample 12 Sample 13 Sample 14 Sample 15 Sample 16 Sample 17 Sample 18 Sample 19 Sample 20 Sample 21 Sample 22 Sample 23 Sample 24 Sample 25 Sample 26 Sample 27 Sample 28 Sample 29 Sample 30 Sample 31 Sample 32 Sample 33 Sample 34 Sample 35</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Article</head><p><ref type="url" target="https://doi.org/10.1038/s41592-025-02707-1">https://doi.org/10.1038/s41592-025-02707-1</ref> </p><note type="other">1</note><p>Center for Bioinformatics and Computational Biology, Houston Methodist Research Institute, Houston, TX, USA. <ref type="bibr" target="#b1">2</ref> Department of Physiology, Biophysics &amp; Systems Biology, Weill Cornell Graduate School of Medical Science, Cornell University, New York, NY, USA. <ref type="bibr" target="#b2">3</ref> Center for Cardiovascular Regeneration, Houston Methodist Research Institute, Houston, TX, USA. <ref type="bibr" target="#b3">4</ref> Center for RNA Therapeutics, Houston Methodist Research Institute, Houston, TX, USA. 5   Department of Cardiothoracic Surgery, Weill Cornell Medicine, Cornell University, New York, NY, USA. <ref type="bibr" target="#b5">6</ref> Department of Biomedical Informatics, College of Medicine, The Ohio State University, Columbus, OH, USA. <ref type="bibr" target="#b6">7</ref> Department of Pathology, Immunology and Laboratory Medicine, College of Medicine, University of Florida, Gainesville, FL, USA. <ref type="bibr" target="#b7">8</ref> Department of Cardiology, The University of Texas MD Anderson Cancer Center, Houston, TX, USA. <ref type="bibr" target="#b8">9</ref> Center for Immunotherapy, Neal Cancer Center, Houston Methodist Research Institute, Houston, TX, USA. <ref type="bibr" target="#b9">10</ref> Department of Bioinformatics and Computational Biology, The University of Texas MD Anderson Cancer Center, Houston, TX, USA. <ref type="bibr" target="#b10">11</ref> Department of Health Outcomes and Biomedical Informatics, College of Medicine, University of Florida, Gainesville, FL, USA. <ref type="bibr" target="#b11">12</ref> These authors contributed equally: Weiqing Chen, Pengzhi Zhang. e-mail: gwang2@houstonmethodist.org</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Article</head><p><ref type="url" target="https://doi.org/10.1038/s41592-025-02707-1">https://doi.org/10.1038/s41592-025-02707-1</ref> </p><p>where u x and u y are the mean intensities of images x and y, σ 2 x and σ 2 y are the variances of x and y, σ xy is the covariance between x and y, C 1 and C 2 are small constants to stabilize the division when the denominators are close to zero.</p><p>MSE assessed ST gene expression prediction by comparing the Euclidean distance of the highly expressed gene expression between ground truth and prediction for each method within the same location.</p><p>The impact score assessed the performance of cell-type decomposition. For each decomposition method m, we computed the mean JS divergence, JS m , and the mean SSIM, SSIM m , across all cell types as given by equations ( <ref type="formula">26</ref>) and (27):</p><p>where p c and q c represent the ground truth and predicted proportions, respectively. N represents the total number of cell types. We standardized SSIM and JS divergence across methods to enable direct comparison, as they operate on different scales. The standardized metrics Z SSIM m and Z JS m are calculated according to equation (28):</p><p>where μ SSIM and σ SSIM are the mean and standard deviation of SSIM across methods. Because lower JS divergence indicates better performance, we inverted the standardized JS divergence values by multiplying them by -1, as given by equation ( <ref type="formula">29</ref>):</p><p>where μ JS and σ JS are the mean and standard deviation of JS divergence across methods. To generate a unified metric for decomposition accuracy, we averaged the inverted JS divergence z-scores and the SSIM z-scores for each method as given by equation (30):</p><p>F1 score, which ranges from 0 to 1, assessed zero-shot and linear probing methods as given by equation (31):</p><p>Here, TP represents true positives, FP represents false positives and FN represents false negatives. A higher F1 score indicates better overall performance in classification tasks. The weighted F1 score was calculated by averaging the F1 scores for each class, with each class's contribution weighted based on its frequency in the data.</p><p>Recall@K assessed image-to-transcriptomics retrieval. Let Q be the set of all queries, and N be the total number of queries. For each query q ∈ Q, the retrieval model outputs a ranked list of candidate targets as given by equation (32):</p><p>where c q,i is the i th highest-ranked candidate for query q based on cosine similarity, and quantile (q) is the quantile of the smallest index i of the ground-truth target. Recall@K is defined as the fraction of queries for which the ground-truth target occurs at rank K or better as given by equation ( <ref type="formula">33</ref>):</p><p>where I [•] is an indicator function that takes the value of 1 if quantile (q) ≤ K and 0 otherwise. Two-sided Student's t-test and Wilcoxon rank-sum test were used to assess statistical significance between models.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Reporting summary</head><p>Further information on research design is available in the Nature Portfolio Reporting Summary linked to this article. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Author contributions</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Competing interests</head><p>The authors declare no competing interests.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Additional information</head><p>Extended data is available for this paper at <ref type="url" target="https://doi.org/10.1038/s41592-025-02707-1">https://doi.org/10.1038/s41592-025-02707-1</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Supplementary information</head><p>The online version contains supplementary material available at <ref type="url" target="https://doi.org/10.1038/s41592-025-02707-1">https://doi.org/10.1038/s41592-025-02707-1</ref>.</p><p>Correspondence and requests for materials should be addressed to Guangyu Wang.</p><p>Peer review information Nature Methods thanks Spencer Krieger and the other, anonymous, reviewer(s) for their contribution to the peer review of this work. Peer reviewer reports are available. Primary Handling Editor: Rita Strack, in collaboration with the Nature Methods team.</p><p>Reprints and permissions information is available at <ref type="url" target="http://www.nature.com/reprints">www.nature.com/reprints</ref>.    </p><note type="other">Ground Truth Loki Hist2ST HisToGene TAGLN APOD MYH7 C1QA H&amp;E Image Gene expression Low High mclSTExp BLEEP Extended Data Fig</note></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Similar image search for histopathology: SMILY</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Hegde</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NPJ Digit. Med</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page">56</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Fast and scalable search of whole-slide images via self-supervised deep learning</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biomed. Eng</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page" from="1420" to="1434" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Artificial intelligence reveals features associated with breast cancer neoadjuvant chemotherapy responses from multi-stain histopathologic images</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Huang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NPJ Precis. Oncol</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page">14</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">AI-based pathology predicts origins for cancers of unknown primary</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Y</forename><surname>Lu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">594</biblScope>
+			<biblScope unit="page" from="106" to="110" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">An accurate prediction of the origin for bone metastatic cancer using deep learning on digital pathological images</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">EBioMedicine</title>
+		<imprint>
+			<biblScope unit="volume">87</biblScope>
+			<biblScope unit="page">104426</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Pan-cancer integrative histology-genomic analysis via multimodal deep learning</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cancer Cell</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="865" to="878" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Towards a general-purpose foundation model for computational pathology</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Med</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="850" to="862" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Learning transferable visual models from natural language supervision</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Radford</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. 38th International Conference on Machine Learning</title>
+		<meeting>38th International Conference on Machine Learning</meeting>
+		<imprint>
+			<publisher>PMLR</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="volume">8748</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">CoCa: contrastive captioners are image-text foundation models</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Trans. Mach. Learn. Res</title>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Supervision exists everywhere: a data efficient contrastive language-image pre-training paradigm</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. 10th International Conference on Learning Representations</title>
+		<meeting>10th International Conference on Learning Representations</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">A visual-language foundation model for computational pathology</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Y</forename><surname>Lu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Med</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="863" to="874" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">A visual-language foundation model for pathology image analysis using medical twitter</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Bianchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Yuksekgonul</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">J</forename><surname>Montine</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Med</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="page" from="2307" to="2316" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">An ERK5-NRF2 axis mediates senescence-associated stemness and atherosclerosis</title>
+		<author>
+			<persName><forename type="first">J.-I</forename><surname>Abe</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Circ. Res</title>
+		<imprint>
+			<biblScope unit="volume">133</biblScope>
+			<biblScope unit="page" from="25" to="44" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">CRAT links cholesterol metabolism to innate immune responses in the heart</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Mao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Metab</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page" from="1382" to="1394" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">TNIK regulation of interferon signaling and endothelial cell response to virus infection</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">M</forename><surname>Chau</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Front. Cardiovasc. Med</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page">1213428</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Endothelial activation and fibrotic changes are impeded by laminar flow-induced CHK1-SENP2 activity through mechanisms distinct from endothelial-to-mesenchymal cell transition</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">T</forename><surname>Nguyen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Front. Cardiovasc. Med</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page">1187490</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Cell-free gene expression: an expanded repertoire of applications</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">D</forename><surname>Silverman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">S</forename><surname>Karim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Jewett</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Rev. Genet</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="page" from="151" to="170" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Temporal modelling using single-cell transcriptomics</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Sharon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Bar-Joseph</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Rev. Genet</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="page" from="355" to="368" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">A relay velocity model infers cell-dependent RNA velocity</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="page" from="99" to="108" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Epigenetic induction of smooth muscle cell phenotypic alterations in aortic aneurysms and dissections</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Chakraborty</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Circulation</title>
+		<imprint>
+			<biblScope unit="volume">148</biblScope>
+			<biblScope unit="page" from="959" to="977" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Characterizing cis-regulatory elements using single-cell epigenomics</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Preissl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Gaulton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Ren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Rev. Genet</title>
+		<imprint>
+			<biblScope unit="volume">24</biblScope>
+			<biblScope unit="page" from="21" to="43" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Lineage tracing meets single-cell omics: opportunities and challenges</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">E</forename><surname>Wagner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Klein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Rev. Genet</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="page" from="410" to="427" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Simple and effective embedding model for single-cell biology built from ChatGPT</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biomed. Eng</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="483" to="493" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Cell2Sentence: teaching large language models the language of biology</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Levine</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. 41st International Conference on Machine Learning 27299-27325</title>
+		<meeting>41st International Conference on Machine Learning 27299-27325</meeting>
+		<imprint>
+			<publisher>PMLR</publisher>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Single-cell transcriptomics of human T cells reveals tissue and activation signatures in health and disease</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Szabo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page">4706</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Transfer learning enables predictions in network biology</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">V</forename><surname>Theodoris</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">618</biblScope>
+			<biblScope unit="page" from="616" to="624" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Large-scale foundation model on single-cell transcriptomics</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="page" from="1481" to="1491" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Scater: pre-processing, quality control, normalization and visualization of single-cell RNA-seq data in R</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Mccarthy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">R</forename><surname>Campbell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">T</forename><surname>Lun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">F</forename><surname>Wills</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bioinformatics</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="1179" to="1186" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">A dendrite method for cluster analysis</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Caliński</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Harabasz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Commun. Stat. Theory Methods</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="1" to="27" />
+			<date type="published" when="1974">1974</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">A whole-slide foundation model for digital pathology from real-world data</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">630</biblScope>
+			<biblScope unit="page" from="181" to="188" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Point set registration: coherent point drift</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Myronenko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Song</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41592-025-02707-1</idno>
+		<ptr target="https://doi.org/10.1038/s41592-025-02707-1" />
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Pattern Anal. Mach. Intell</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="2262" to="2275" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Alignment and integration of spatial transcriptomics data</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Zeira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Land</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Strzalkowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">J</forename><surname>Raphael</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page" from="567" to="575" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Alignment of spatial genomics data using deep Gaussian processes</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">W</forename><surname>Townes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">E</forename><surname>Engelhardt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page" from="1379" to="1387" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Spatially resolved transcriptomic profiling of degraded and challenging fresh frozen samples</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Mirzazadeh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page">509</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Genome-wide spatial expression profiling in formalin-fixed tissues</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">G</forename><surname>Villacampa</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell Genom</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page">100065</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Search and match across spatial omics samples at single-cell resolution</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Tang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="page" from="1818" to="1829" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">High resolution mapping of the tumor microenvironment using integrated single-cell, spatial and in situ analysis</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Janesick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page">8353</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Identification of the collagen type 1 alpha 1 gene (COL1A1) as a candidate survival-related factor associated with hepatocellular carcinoma</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hayashi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">BMC Cancer</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page">108</biblScope>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">A pan-cancer analysis of the prognostic and immunological role of β-actin (ACTB) in human cancers</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Gu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bioengineered</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page" from="6166" to="6185" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Data-efficient and weakly supervised computational pathology on whole-slide images</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Y</forename><surname>Lu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biomed. Eng</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page" from="555" to="570" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Predicting survival from colorectal cancer histology slides using deep learning: a retrospective multicenter study</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">N</forename><surname>Kather</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS Med</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page">1002730</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<monogr>
+		<title level="m" type="main">WSSS4LUAD: grand challenge on weakly-supervised tissue semantic segmentation for lung adenocarcinoma</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Han</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/2204.06455" />
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Rotation equivariant CNNs for digital pathology</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">S</forename><surname>Veeling</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Linmans</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Winkens</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Cohen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Welling</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Image Computing and Computer Assisted Intervention -MICCAI 2018: 21st International Conference</title>
+		<meeting><address><addrLine>Granada, Spain</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2018">September 16-20, 2018. 2018</date>
+			<biblScope unit="page" from="210" to="218" />
+		</imprint>
+	</monogr>
+	<note>Proceedings, Part II</note>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<monogr>
+		<title level="m" type="main">Lung and colon cancer histopathological image dataset (LC25000)</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Borkowski</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/1912.12142" />
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Deep learning and alignment of spatially resolved single-cell transcriptomes with Tangram</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Biancalani</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="1352" to="1362" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">High-resolution alignment of single-cell and spatial transcriptomes with CytoSPACE</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Vahid</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="page" from="1543" to="1548" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Non-convex optimization for machine learning</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Jain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Kar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Found. Trends Mach. Learn</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page" from="142" to="363" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<monogr>
+		<title level="m" type="main">Characterization of immune cell populations in the tumor microenvironment of colorectal cancer using high definition spatial profiling</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Oliveira</surname></persName>
+		</author>
+		<idno type="DOI">10.1101/2024.06.04.597233</idno>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at bioRxiv https</note>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Shared and distinct transcriptomic cell types across neocortical areas</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Tasic</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">563</biblScope>
+			<biblScope unit="page" from="72" to="78" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Cell2location maps fine-grained cell types in spatial transcriptomics</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Kleshchevnikov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="661" to="671" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Unravelling subclonal heterogeneity and aggressive disease states in TNBC through single-cell RNA-seq</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Karaayvaz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page">3588</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Benchmarking spatial and single-cell transcriptomics integration methods for transcript distribution prediction and cell type deconvolution</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page" from="662" to="670" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Comprehensive integration of single-cell data</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Stuart</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">177</biblScope>
+			<biblScope unit="page" from="1888" to="1902" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Spatially informed cell-type deconvolution for spatial transcriptomics</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="1349" to="1359" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">SpatialDWLS: accurate deconvolution of spatial transcriptomic data</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G.-C</forename><surname>Yuan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Genome Biol</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page">145</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Robust decomposition of cell type mixtures in spatial transcriptomics</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Cable</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="517" to="526" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">scGPT: toward building a foundation model for single-cell multi-omics using generative AI</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Cui</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="page" from="1470" to="1480" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Efficient non-maximum suppression</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Neubeck</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Van Gool</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">18th International Conference on Pattern Recognition (ICPR&apos;06)</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2006">2006</date>
+			<biblScope unit="page" from="850" to="855" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<monogr>
+		<title level="m" type="main">Leveraging information in spatial transcriptomics to predict super-resolution gene expression from histology images in tumors</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Li</surname></persName>
+		</author>
+		<idno type="DOI">10.1101/2021.11.28.470212</idno>
+		<ptr target="https://doi.org/10.1101/2021.11.28.470212" />
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at bioRxiv</note>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Spatial transcriptomics prediction from histology jointly through transformer and graph neural networks</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zeng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Brief. Bioinform</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="page">297</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Spatially resolved gene expression prediction from histology images via bi-modal contrastive learning</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title level="a" type="main">Multimodal contrastive learning for spatial gene expression prediction using histology images</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Min</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Brief. Bioinform</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="page">551</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<analytic>
+		<title level="a" type="main">Three-dimensional imaging mass cytometry for highly multiplexed molecular and cellular mapping of tissues and the tumor microenvironment</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Kuett</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Cancer</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="122" to="133" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<analytic>
+		<title level="a" type="main">Prostate cancer risk stratification via nondestructive 3D pathology with deep learning-assisted gland analysis</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cancer Res</title>
+		<imprint>
+			<biblScope unit="volume">82</biblScope>
+			<biblScope unit="page" from="334" to="345" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title level="a" type="main">Analysis of 3D pathology samples using weakly supervised AI</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">H</forename><surname>Song</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">187</biblScope>
+			<biblScope unit="page" from="2502" to="2520" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title level="a" type="main">Open-ST: high-resolution spatial transcriptomics in 3D</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Schott</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">187</biblScope>
+			<biblScope unit="page" from="3953" to="3972" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">Visionlanguage foundation model for echocardiogram interpretation</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Christensen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Vukadinovic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ouyang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Med</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="1481" to="1488" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">Evaluation of large language models for discovery of gene set function</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="82" to="91" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Assessing GPT-4 for cell type annotation in single-cell RNA-seq analysis</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Hou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Ji</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="page" from="1462" to="1465" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note>References</note>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">Dictionary learning for integrative, multimodal and scalable single-cell analysis</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Hao</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41592-025-02707-1</idno>
+		<ptr target="https://doi.org/10.1038/s41592-025-02707-1" />
+	</analytic>
+	<monogr>
+		<title level="j">Nature Methods Article</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="page" from="293" to="304" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note>Nat. Biotechnol.</note>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">SCANPY: large-scale single-cell gene expression data analysis</title>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">A</forename><surname>Wolf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Angerer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">J</forename><surname>Theis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Genome Biol</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page">15</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<monogr>
+		<title level="m" type="main">Starfysh reveals heterogeneous spatial dynamics in the breast tumor microenvironment</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>He</surname></persName>
+		</author>
+		<idno type="DOI">10.1101/2022.11.21.517420</idno>
+		<ptr target="https://doi.org/10.1101/2022.11.21.517420" />
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at bioRxiv</note>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">Cancer cell states recur across tumor types and form specific interactions with the tumor microenvironment</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Barkley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Genet</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="page" from="1192" to="1201" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<analytic>
+		<title level="a" type="main">Spatial resolution of cellular senescence dynamics in human colorectal liver metastasis</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Garbarino</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Aging Cell</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page">13853</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title level="a" type="main">Comprehensive analysis of spatial architecture in primary liver cancer</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sci. Adv</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page">3750</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<analytic>
+		<title level="a" type="main">Spatial transcriptomic analysis of virtual prostate biopsy reveals confounding effect of tissue heterogeneity on genomic signatures</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Figiel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Mol. Cancer</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page">162</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<analytic>
+		<title level="a" type="main">A topographic atlas defines developmental origins of cell heterogeneity in the human embryonic lung</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sountoulidis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Cell Biol</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="page" from="351" to="365" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<analytic>
+		<title level="a" type="main">Spatial transcriptomics of B cell and T cell receptors reveals lymphocyte clonal dynamics</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Engblom</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">382</biblScope>
+			<biblScope unit="page">8486</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<analytic>
+		<title level="a" type="main">A spatially resolved single-cell genomic atlas of the adult human breast</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kumar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">620</biblScope>
+			<biblScope unit="page" from="181" to="191" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<analytic>
+		<title level="a" type="main">Spatial multi-omic map of human myocardial infarction</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Kuppe</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">608</biblScope>
+			<biblScope unit="page" from="766" to="777" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b80">
+	<analytic>
+		<title level="a" type="main">Spatially resolved multiomics of human cardiac niches</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Kanemaru</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">619</biblScope>
+			<biblScope unit="page" from="801" to="810" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b81">
+	<analytic>
+		<title level="a" type="main">An image is worth 16x16 words: transformers for image recognition at scale</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Dosovitskiy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Learning Representations</title>
+		<imprint/>
+	</monogr>
+	<note>OpenReview.net, 2020</note>
+</biblStruct>
+
+<biblStruct xml:id="b82">
+	<analytic>
+		<title level="a" type="main">Laion-5b: an open large-scale dataset for training next generation image-text models</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Schuhmann</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Adv. Neural Inf. Process. Syst</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="page" from="25278" to="25294" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b83">
+	<monogr>
+		<title level="m" type="main">000 histological images of human colorectal cancer and healthy tissue</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">N</forename><surname>Kather</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Halama</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Marx</surname></persName>
+		</author>
+		<idno type="DOI">10.5281/zenodo.1214456</idno>
+		<ptr target="https://doi.org/10.5281/zenodo.1214456" />
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="volume">100</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

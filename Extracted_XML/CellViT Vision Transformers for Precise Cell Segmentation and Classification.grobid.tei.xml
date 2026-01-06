@@ -1,0 +1,2603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">CellViT: Vision Transformers for Precise Cell Segmentation and Classification</title>
+				<funder ref="#_5X7VQWy">
+					<orgName type="full">REACT-EU initiative</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Cancer Research Center Cologne Essen</orgName>
+					<orgName type="abbreviated">CCCE</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2023-10-06">6 Oct 2023</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Fabian</forename><surname>Hörst</surname></persName>
+							<email>fabian.hoerst@uk-essen.de</email>
+							<affiliation key="aff0">
+								<orgName type="department">Institute for AI in Medicine (IKIM)</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Cancer Research Center Cologne Essen (CCCE)</orgName>
+								<address>
+									<settlement>West</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Moritz</forename><surname>Rempe</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Institute for AI in Medicine (IKIM)</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Cancer Research Center Cologne Essen (CCCE)</orgName>
+								<address>
+									<settlement>West</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Lukas</forename><surname>Heine</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Institute for AI in Medicine (IKIM)</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Cancer Research Center Cologne Essen (CCCE)</orgName>
+								<address>
+									<settlement>West</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Constantin</forename><surname>Seibold</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Institute for AI in Medicine (IKIM)</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff3">
+								<orgName type="department">Clinic for Nuclear Medicine</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Julius</forename><surname>Keyl</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Institute for AI in Medicine (IKIM)</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff4">
+								<orgName type="department">Institute of Pathology</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Giulia</forename><surname>Baldini</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Institute for AI in Medicine (IKIM)</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff5">
+								<orgName type="department">Institute of Interventional and Diagnostic Radiology and Neuroradiology</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Selma</forename><surname>Ugurel</surname></persName>
+							<affiliation key="aff6">
+								<orgName type="department">Department of Dermatology</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff7">
+								<orgName type="department">German Cancer Consortium (DKTK</orgName>
+								<address>
+									<addrLine>Partner site Essen)</addrLine>
+									<settlement>Heidelberg</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jens</forename><surname>Siveke</surname></persName>
+							<affiliation key="aff8">
+								<orgName type="department">Bridge Institute of Experimental Tumor Therapy</orgName>
+								<address>
+									<settlement>West</settlement>
+								</address>
+							</affiliation>
+							<affiliation key="aff10">
+								<orgName type="department">Division of Solid Tumor Translational Oncology</orgName>
+								<orgName type="institution">German Cancer Consortium (DKTK</orgName>
+								<address>
+									<addrLine>Partner site Essen</addrLine>
+								</address>
+							</affiliation>
+							<affiliation key="aff13">
+								<orgName type="department">Medical Faculty</orgName>
+								<orgName type="institution">University Duisburg-Essen</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Barbara</forename><surname>Grünwald</surname></persName>
+							<affiliation key="aff14">
+								<orgName type="department">Department of Urology</orgName>
+								<address>
+									<settlement>West</settlement>
+								</address>
+							</affiliation>
+							<affiliation key="aff16">
+								<orgName type="department">Princess Margaret Cancer Centre</orgName>
+								<address>
+									<settlement>Toronto</settlement>
+									<region>Ontario</region>
+									<country key="CA">Canada</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jan</forename><surname>Egger</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Institute for AI in Medicine (IKIM)</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Cancer Research Center Cologne Essen (CCCE)</orgName>
+								<address>
+									<settlement>West</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jens</forename><surname>Kleesiek</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Institute for AI in Medicine (IKIM)</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Cancer Research Center Cologne Essen (CCCE)</orgName>
+								<address>
+									<settlement>West</settlement>
+								</address>
+							</affiliation>
+							<affiliation key="aff7">
+								<orgName type="department">German Cancer Consortium (DKTK</orgName>
+								<address>
+									<addrLine>Partner site Essen)</addrLine>
+									<settlement>Heidelberg</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff17">
+								<orgName type="department">Department of Physics</orgName>
+								<orgName type="institution">TU Dortmund University</orgName>
+								<address>
+									<addrLine>1 0 * 2 3 4 5 6 7 8 9 LinearProjectionofFlattenedPatches TransformerEncoder CellSegmentation SegmentationDecoder CellEmbeddingVectors H&amp;EImage PatchedInputSequence</addrLine>
+									<settlement>Dortmund</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="department">German Cancer Center Essen</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff9">
+								<orgName type="department">German Cancer Center Essen</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff11">
+								<orgName type="department">German Cancer Research Center (DKFZ)</orgName>
+								<address>
+									<addrLine>German 10 West German Cancer Center</addrLine>
+									<settlement>Heidelberg</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff12">
+								<orgName type="department">Department of Medical Oncology</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<settlement>Essen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff15">
+								<orgName type="department">German Cancer Center</orgName>
+								<orgName type="institution">University Hospital Essen (AöR)</orgName>
+								<address>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">CellViT: Vision Transformers for Precise Cell Segmentation and Classification</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2023-10-06">6 Oct 2023</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">8C278F9A0DCCE53C85192CC91BA4480B</idno>
+					<idno type="arXiv">arXiv:2306.15350v2[eess.IV]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:10+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Cell Segmentation</term>
+					<term>Digital Pathology</term>
+					<term>Deep Learning</term>
+					<term>Computer Vision</term>
+					<term>Vision Transformer</term>
+					<term>Segment Anything</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Nuclei detection and segmentation in hematoxylin and eosin-stained (H&amp;E) tissue images are important clinical tasks and crucial for a wide range of applications. However, it is a challenging task due to nuclei variances in staining and size, overlapping boundaries, and nuclei clustering. While convolutional neural networks have been extensively used for this task, we explore the potential of Transformer-based networks in this domain. Therefore, we introduce a new method for automated instance segmentation of cell nuclei in digitized tissue samples using a deep learning architecture based on Vision Transformer called CellViT. CellViT is trained and evaluated on the PanNuke dataset, which is one of the most challenging nuclei instance segmentation datasets, consisting of nearly 200,000 annotated Nuclei into 5 clinically important classes in 19 tissue types. We demonstrate the superiority of large-scale in-domain and out-of-domain pre-trained Vision Transformers by leveraging the recently published Segment Anything Model and a ViT-encoder pre-trained on 104 million histological image patches -achieving state-of-the-art nuclei detection and instance segmentation performance on the PanNuke dataset with a mean panoptic quality of 0.50 and an F 1 -detection score of 0.83. The code is publicly available at <ref type="url" target="https://github.com/TIO-IKIM/CellViT">https://github.com/TIO-IKIM/CellViT</ref>.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Cancer is a severe disease burden worldwide, with millions of new cases yearly and ranking as the second leading cause of death after cardiovascular diseases <ref type="bibr" target="#b7">[1]</ref>. Despite novel and powerful non-invasive radiological imaging modalities, collecting tissue samples and evaluating them with a microscope remains a standard procedure for diagnostic evaluation. A pathologist can draw conclusions about potential therapeutic approaches or use them as a starting point for further investigations by identifying abnormalities within the tissue. One crucial component is the analysis of the cells and their distribution within the tissue, such as detecting tumor-infiltrating lymphocytes <ref type="bibr" target="#b8">[2]</ref> or inflammatory cells in the tumor microenvironment <ref type="bibr" target="#b9">[3,</ref><ref type="bibr" target="#b10">4]</ref>. However, large-scale analysis on the cell level is time-consuming and suffers from a high intra-and inter-observer variability. Due to the development of high-throughput scanners for pathology, it is now possible to create digitized tissue samples (whole-slide images, WSI), enabling the application of computer vision (CV) algorithms. CV facilitates automated slide analysis, for example, to create tissue segmentation <ref type="bibr" target="#b11">[5]</ref>, detect tumors <ref type="bibr" target="#b12">[6]</ref>, evaluate therapy response <ref type="bibr" target="#b13">[7]</ref>, and the computer-aided detection and segmentation of cells <ref type="bibr" target="#b14">[8,</ref><ref type="bibr" target="#b15">9]</ref>. In addition to the clinical applications mentioned above, cell instance segmentation can be leveraged for downstream deep learning tasks, as each WSI contains numerous nuclei of diverse types, fostering systematic analysis and predictive insights <ref type="bibr" target="#b16">[10]</ref>. Sirinukunwattana et al. <ref type="bibr" target="#b17">[11]</ref> showed that cell analysis supports the creation of high-level tissue segmentation based on cell composition. Corredor et al. <ref type="bibr" target="#b18">[12]</ref> used hand-crafted features extracted from cells to detect tumor regions in a slide. Existing algorithms for analyzing WSI <ref type="bibr" target="#b12">[6,</ref><ref type="bibr" target="#b19">13,</ref><ref type="bibr" target="#b13">7]</ref> are often based on Convolutional Neural Networks (CNNs) used as feature extractors for image regions. The algorithms, despite achieving clinical-grade performance <ref type="bibr" target="#b19">[13]</ref>, face limitations in interpretability, which in turn poses challenges in defining novel human-interpretable biomarkers. However, accurate cell analysis within these slides presents an opportunity to construct explainable pipelines, incorporating human-interpretable features effectively in downstream tasks <ref type="bibr" target="#b16">[10,</ref><ref type="bibr" target="#b20">14]</ref>. Nevertheless, since subtask WSI analysis models <ref type="bibr" target="#b12">[6,</ref><ref type="bibr" target="#b19">13,</ref><ref type="bibr" target="#b13">7]</ref> rely on abstract entity embeddings, features must be extracted from the detected cells. One approach is to generate hand-crafted features, such as morphological attributes, from the segmentation <ref type="bibr" target="#b21">[15]</ref>. In the radiology setting, this is referred to as Radiomics <ref type="bibr" target="#b22">[16]</ref>. Alternatively, employing a CNN on image sections of single cells can derive deep learning features. While hand-crafted features may have limited performance, using CNNs for each cell is computationally complex. Thus, the need for automated and reliable detection and segmentation of cells in conjunction with cell-feature extraction in WSI is evident.</p><p>We developed a novel deep learning architecture based on Vision Transformer for automated instance segmentation of cell nuclei in digitized tissue samples (CellViT). Our approach eliminates the need for additional computational effort for deriving cell features via parallel feature extraction during runtime. The CellViT model proves to be highly effective in collecting nuclei information within patient cohorts and could serve as a reliable nucleus feature extractor for downstream algorithms. Our solution demonstrates exceptional performance on the PanNuke <ref type="bibr" target="#b23">[17]</ref> dataset by leveraging transfer learning and pre-trained models <ref type="bibr" target="#b24">[18,</ref><ref type="bibr" target="#b25">19]</ref>. The PanNuke dataset contains 189,744 segmented nuclei and includes 19 different types of tissues. Among these tissues, there are five clinically important nuclei classes: Neoplastic, inflammatory, epithelial, dead, and connective/soft cells. In addition to the high number of tissue classes and nuclei types, the dataset is highly imbalanced, creating additional complexity. Besides class imbalance, segmenting cell nuclei itself is a difficult task. The cell nuclei may overlap, have a high level of heterogeneity and interor intra-instance variability in shape, size, and staining <ref type="bibr" target="#b15">[9]</ref>. Sophisticated training methods such as transfer learning, data augmentation, and specific training sampling strategies next to postprocessing algorithms are necessary to achieve satisfactory results.</p><p>The proposed network architecture is based on a U-Net-shaped encoder-decoder architecture similar to HoVer-Net <ref type="bibr" target="#b14">[8]</ref>, one of the leading models for nuclei segmentation. Notably, we replace the traditional CNN-based encoder network with a Vision Transformer, inspired by the UNETR architecture <ref type="bibr" target="#b26">[20]</ref>. This approach is depicted in Figure <ref type="figure" target="#fig_0">1</ref>. Vision Transformers are token-based neural networks that use the attention mechanism to capture both local and global context information. This ability enables ViTs to understand relationships among all cells in an image, leveraging long-range dependencies and substantially improving their segmentation. Moreover, when using the common token size of 16 pixels (px) and pixel-resolutions such as 0.25 µm/px (commonly ×40 magnification) or 0.50 µm/px (commonly ×20 magnification) of the images, the token size of ViTs is approximately equivalent to that of a cell, enabling a direct association between a detected cell and its corresponding token embedding from the ViT encoder. As a result, we directly obtain a localizable feature vector during our cell detection that we can extract simultaneously within one forward pass, unlike CNN networks. Given the limited amount of available data in the medical domain, pre-trained models are an essential requirement as ViTs have increased data requirements compared to CNNs. Chen et al. <ref type="bibr" target="#b24">[18]</ref> recently published a ViT pre-trained on 104 million histological images (ViT 256 ). Their network outperformed current state-of-the-art (SOTA) cancer subtyping and survival prediction methods. Another important contribution is the Segment Anything Model (SAM), proposed by Kirillov et al. <ref type="bibr" target="#b25">[19]</ref>. They developed a generic segmentation network for various image types, whose zero-shot performance is almost equivalent to many supervised trained networks. In our work, we compare the performance of pre-trained ViT 256 <ref type="bibr" target="#b24">[18]</ref> and SAM <ref type="bibr" target="#b25">[19]</ref> models as building blocks of our architecture for nuclei segmentation and classification. We demonstrate superior performance over existing nuclei instance segmentation models. We summarize our contributions as follows:</p><p>1. We present a novel U-Net-shaped encoder-decoder network for nuclei instance segmentation, levering Vision Transformers as encoder networks. Our approach surpasses existing methods for nuclei detection by a substantial margin and achieves competitive segmentation results with other state-of-the-art methods on the Pan-Nuke dataset. We demonstrate the generalizability of CellViT by applying it to the MoNuSeg dataset without finetuning.</p><p>2. We are the first to employ Vision Transformer networks for nuclei instance segmentation on the Pan-Nuke dataset, demonstrating their effectiveness in this domain. The proposed approach combines pre-trained ViT encoders with a decoder network connected by skip connections.</p><p>3. We provide a framework that enables fast inference results applied on Gigapixel WSI by using a large inference patch size of 1024 × 1024 px in contrast to conventional 256 px-sized patches. Compared to HoVer-Net, our inference pipeline runs 1.85 times faster.</p><p>2 Related Work</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Instance Segmentation of Nuclei</head><p>Numerous methods have been developed to solve the challenging task of cell nuclei instance segmentation in WSIs. Previous works have explored diverse approaches, ranging from traditional image processing techniques to deep learning (DL) methods. Commonly used image processing techniques involve the design and extraction of domain-specific features. These features encompass characteristics such as intensity, texture, shape, and morphological properties of the nuclei. The primary challenge is separating overlapping nuclei, and different techniques have been devised to do this <ref type="bibr" target="#b27">[21,</ref><ref type="bibr" target="#b28">22,</ref><ref type="bibr" target="#b29">23,</ref><ref type="bibr" target="#b30">24,</ref><ref type="bibr" target="#b31">25,</ref><ref type="bibr" target="#b32">26,</ref><ref type="bibr" target="#b33">27,</ref><ref type="bibr" target="#b34">28]</ref>.</p><p>For instance, the works of Cheng and Rajapakse <ref type="bibr" target="#b30">[24]</ref>, Veta et al. <ref type="bibr" target="#b31">[25]</ref>, and Ali and Madabhushi <ref type="bibr" target="#b32">[26]</ref> rely on a predefined nuclei geometry and the watershed algorithm to separate clustered nuclei, while Wienert et al. <ref type="bibr" target="#b33">[27]</ref> used morphological operations without watershed and Liao et al. <ref type="bibr" target="#b34">[28]</ref> utilized eclipse-fitting for cluster separation. A common drawback of these techniques is their dependency on hand-crafted features, which require expert-level domain knowledge, have limited representative power, and are sensitive to hyperparameter selection <ref type="bibr" target="#b14">[8,</ref><ref type="bibr" target="#b35">29]</ref>.</p><p>The complexity of extracting meaningful features increases when cell nuclei classification is added to the segmentation task. Consequently, their performance is insufficient for our needs to classify and segment nuclei in various tissue types <ref type="bibr" target="#b35">[29]</ref>.</p><p>To overcome the limitations of traditional image processing techniques, DL has emerged as a powerful approach for nuclei instance segmentation. An inherent advantage of DL networks is their automatic extraction of relevant features for the given task, surpassing the need for expert-level domain knowledge to generate hand-crafted features. DL algorithms, particularly convolutional neural networks (CNNs) <ref type="bibr" target="#b36">[30,</ref><ref type="bibr" target="#b37">31]</ref>, have shown remarkable success in various computer vision tasks <ref type="bibr" target="#b38">[32]</ref>. Especially the invention of the U-Net architecture by Ronneberger et al. <ref type="bibr" target="#b39">[33]</ref> has significantly impacted medical image analysis by enabling accurate and efficient segmentation of complex structures, contributing to advancements in various medical domains such as radiology <ref type="bibr" target="#b41">[34,</ref><ref type="bibr" target="#b42">35]</ref> and digital pathology <ref type="bibr" target="#b43">[36]</ref>. It consists of a U-shaped encoder-decoder structure with skip connections at multiple network depths to preserve fine-grained details in the decoder. However, the original U-Net implementation is not able to separate clustered nuclei <ref type="bibr" target="#b14">[8]</ref>. Therefore, specialized network architectures are necessary to separate clustered and overlapping cell nuclei.</p><p>In the current literature, DL algorithms for nuclei instance segmentation are further divided into two-stage and one-stage methods <ref type="bibr" target="#b15">[9]</ref>. Two-stage methods incorporate a cell detection network in the first stage to localize cell nuclei within an image, generating bounding box predictions of nuclei. These detected nuclei are then passed on to a subsequent segmentation stage to retrieve a fine-grained nucleus segmentation. Mask-RCNN <ref type="bibr" target="#b44">[37]</ref> is one of the leading two-stage models built on top of the object detection model Fast-RCNN <ref type="bibr" target="#b45">[38]</ref>. Koohbanani et al. <ref type="bibr" target="#b46">[39]</ref> utilized Mask-RCNN networks for nuclei instance segmentation. Based on the proposed nuclei detections in the first stage, the model incorporates a segmentation branch for the fine-grained nucleus segmentations in the second stage.</p><p>A rectangular image section of the detected nuclei is used as input for the segmentation stage, which causes the problem that overlapping neighboring nuclei may be segmented as well and need to be cleaned up by an additional postprocessing algorithm. Another two-stage method for nuclei segmentation is BRP-Net <ref type="bibr" target="#b47">[40]</ref>, which creates nuclei proposals in the first place, then refines the boundary, and finally creates a segmentation out of this. However, this network structure is computationally complex and not designed for end-to-end training due to three independent stages. Additionally, the network requires a considerable time of 12 minutes to segment a 1360 × 1024 px image, making its practical application nearly impossible <ref type="bibr" target="#b47">[40]</ref>.</p><p>While two-stage systems offer advantages in localizing cells and improving individual nucleus detection, they often require additional postprocessing for segmentation and suffer from time and computational complexity.</p><p>In comparison, one-stage methods combine a single DL network with postprocessing operations. Micro-Net <ref type="bibr" target="#b48">[41]</ref> extends the U-Net by using multiple resolution input images to be invariant against nuclei of varying sizes. The DIST model by Naylor et al. <ref type="bibr" target="#b49">[42]</ref> adds an additional decoder branch next to the segmentation branch to detect nuclei markers for a watershed postprocessing algorithm. For this, they predict distance maps from the nucleus boundary to the center of mass of the nuclei. Distance maps are regression maps indicating the distance of a pixel to a reference point, e.g., from a nuclei pixel to the center of mass. HoVer-Net <ref type="bibr" target="#b14">[8]</ref>, one of the current SOTA methods for automatic nuclei instance segmentation, uses horizontal and vertical distances of nuclei pixels to their center of mass and separates the nuclei by using the gradient of the horizontal and vertical distance maps as an input to an edge detection filter (Sobel operator). The models STARDIST <ref type="bibr" target="#b50">[43,</ref><ref type="bibr" target="#b51">44]</ref> and its extension CPP-Net <ref type="bibr" target="#b35">[29]</ref> generate polygons defining the nuclei boundaries over a set of predicted distances. For this, STARDIST utilizes a star-convex polygon representation to approximate the shape of nuclei. Whereas in STARDIST, the polygons are derived just by features of the centroid pixel, CPP-Net uses context information from sampled points within a nucleus and proposes a shape-aware perceptual loss to constrain the polygon shape. STARDIST demonstrates comparable segmentation performance to HoVer-Net, while CPP-Net exhibits slightly superior results.</p><p>In contrast, boundary-based methods such as DCAN <ref type="bibr" target="#b53">[45]</ref> and TSFD-Net <ref type="bibr" target="#b15">[9]</ref> adopt a different approach, where instead of using distance maps, watershed markers, or polygon predictions, they directly predict the nuclear contour using a prediction map.</p><p>While DCAN is based on the U-Net architecture, TSFD-Net utilizes a Feature Pyramid Network (FPN) <ref type="bibr" target="#b54">[46]</ref> to leverage multiple scales of features. Additionally, the authors of TSFD-Net introduce a tissue-classifier branch to learn tissue-specific features and guide the learning process. To address the class imbalance across nuclei and tissue types, they employ the focal loss <ref type="bibr" target="#b55">[47]</ref> for the tissue detection branch, a modified cross-entropy loss with dynamic scaling, and the Focal Tversky loss <ref type="bibr" target="#b56">[48]</ref> for the segmentation branch, which enlarges the contribution of challenging regions. While TSFD-Net shows promising results, its comparability to other methods is limited due to the lack of a standardized evaluation procedure.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Vision Transformer</head><p>All promising DL models <ref type="bibr" target="#b44">[37,</ref><ref type="bibr" target="#b47">40,</ref><ref type="bibr" target="#b48">41,</ref><ref type="bibr" target="#b49">42,</ref><ref type="bibr" target="#b50">43,</ref><ref type="bibr" target="#b14">8,</ref><ref type="bibr" target="#b35">29,</ref><ref type="bibr" target="#b53">45,</ref><ref type="bibr" target="#b15">9]</ref> for nuclei instance segmentation mentioned previously are based on CNNs. Even though CNN models have demonstrated their effectiveness in image processing, they are bound to local receptive fields and may struggle to capture spatial long-range relationships <ref type="bibr" target="#b11">[5]</ref>. Inspired by the Transformer architecture in NLP <ref type="bibr" target="#b57">[49]</ref>, Vision Transformers <ref type="bibr" target="#b58">[50]</ref> have recently emerged as an alternative to CNNs for CV <ref type="bibr" target="#b59">[51]</ref>. Their architecture is based on the self-attention mechanism <ref type="bibr" target="#b57">[49]</ref>, allowing the model to attend to any region within an image to capture long-range dependencies. Unlike CNNs, they are also not bound to fixed input sizes and can process images of arbitrary sizes depending on computational capacity. Vision Transformers have shown promising results not only in image classification <ref type="bibr" target="#b58">[50,</ref><ref type="bibr" target="#b59">51,</ref><ref type="bibr" target="#b60">52]</ref>, but also in other vision tasks such as object detection <ref type="bibr" target="#b61">[53]</ref> and semantic segmentation <ref type="bibr" target="#b26">[20,</ref><ref type="bibr" target="#b11">5]</ref>.</p><formula xml:id="formula_0">Vision</formula><p>Transformers for Instance Segmentation In recent years, various ideas to use the Transformer architecture for instance segmentation have been developed [54, 55, 20, 56, 57, 58]. Primarily, these methods integrate Transformer models into encoder-decoder architectures by exchanging or extending the encoder network of existing U-Net-based solutions. Chen and Yu [54] used a Transformer in their TransUNet network to encode tokenized patches from a CNN feature map as the input sequence to derive global context within the CNN network. Li et al. [55] applied a squeeze-and-expansion Transformer as a variant of the original Vision Transformer by Dosovitskiy et al. [50] for medical segmentation. The Segformer model by Xie et al. [57] incorporates an adapted Transformer as an image encoder connected to a lightweight MLP decoder segmentation head. In contrast to these methods, the SETR model [58], used the original ViT as encoder and a fully convolution network as decoder, both connected without intermediate skip connections. Building upon these advancements, the UNETR model [20] combined a standard ViT connected to a U-Net-like decoder with skip connections, outperforming TransUNet and the SETR model on three medical image segmentation datasets. The integration of the original ViT implementation without adaptions into the powerful U-Net framework allows the use of pre-trained ViT-networks, which is an important property exploited in our work. Large-scale Pre-Training Pre-training a Vision Transformer on a large amount of data serves as a crucial step to initialize the model's parameters with meaningful representations. Dosovitskiy et al. [50] demonstrated that ViTs require a larger amount of data compared to CNNs to learn meaningful representations. This is attributed to the inductive biases of the receptive fields of CNNs that are useful for smaller datasets. In contrast, ViTs need to learn relevant patterns, but when provided with sufficiently large datasets, these patterns are more meaningful [52]. In the medical domain, where annotated data is often limited, pre-trained ViT-based networks become even more critical. By utilizing self-supervised pre-training approaches [59, 60, 61, 62, 63, 51], available unlabelled data can be facilitated effectively to initialize network weights before finetuning the network on the target domain. One popular self-supervised pre-training approach, specifically adapted for Vision Transformers, is DINO (knowledge distillation with no labels) [51]. Vision Transformers trained with this method contain features that explicitly include information about the semantic segmentation of images, which does not emerge as clearly with CNNs [51]. In the histopathological domain, Chen et al. [18] developed a hierarchical network for slide-level representation by stacking multiple ViT blocks. Their approach involves a three-stage hierarchical architecture performing a bottom-up aggregation, with each stage pre-trained independently with DINO. The first stage focuses on processing 16 × 16 px-sized visual tokens out of 256 × 256 px patches to create a local cell-cluster token. This first stage ViT, which we refer to as ViT 256 (ViT-Small, 21.7 M parameter), is particularly relevant for semantic segmentation. The authors pre-trained the ViT 256 on 104 million 256 × 256 pxsized histological image patches from The Cancer Genome Atlas (TCGA) and made the network weights publicly available. It was demonstrated that the ViT 256 network successfully learned visual concepts specific to histopathological tissue images, including fine-grained cell locations, stroma, and tumor regions, making the model a powerful pre-trained backbone network for histological image analysis. As for the "natural image"-domain, Kirillov et al. [19] recently published a promptable open-source segmentation model as a "foundation model" [64] for semantic segmentation, also known as Segment Anything (SAM). The SAM framework comprises an image encoder (ViT) and a lightweight mask decoder network. The final backbone (ViT-H) of SAM was trained supervised on 1.1 billion segmentation masks from 11 million images. A threestage data engine consisting of assisted manual, semi-automatic, and automatic mask generation acquired this extensively annotated dataset. Pre-trained weights for three different ViT-scales (ViT-Base with 86 M parameter, denoted as SAM-B, ViT-Large with 307 M parameter, denoted as SAM-L, and ViT-Huge with 632 M parameter, denoted as SAM-H) are publicly available.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Methods</head><p>Our architecture is inspired by the UNETR model <ref type="bibr" target="#b26">[20]</ref> for 3D volumetric images, but we adapt its architecture for processing 2D images as shown in Fig. <ref type="figure" target="#fig_1">2</ref>. Unlike traditional segmentation networks that employ a single decoder branch for computing the segmentation map, our network employs three distinct multitask output branches inspired by the approach of HoVer-Net <ref type="bibr" target="#b14">[8]</ref>. The first branch predicts the binary segmentation map of all nuclei (nuclei prediction, NP), capturing their boundaries and shapes. The second branch generates horizontal and vertical distance maps (horizontal-vertical prediction, HV), providing crucial spatial information for precise localization and delineation. Lastly, the third branch predicts the nuclei type map (NT), enabling the classification of different nucleus types. In summary, our network has the following multi-task branches for instance segmentation:</p><p>• NP-branch: Predicts binary nuclei map</p><p>• HV-branch: Predicts the horizontal and vertical distances of nuclear pixels to their center of mass, normalized between -1 and 1 for each nuclei</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>• NT-branch: Predicts the nuclei types as instance segmentation maps</head><p>To integrate these outputs, we utilize additional postprocessing steps. These steps involve merging the information from the different branches, separating overlapping nuclei to ensure accurate individual segmentation, and determining the nuclei class based on the nuclei type map.</p><p>In our exepriments, we also evaluated the effectiveness of the STARDIST decoder method and its extension, CPP-Net. We integrate their techniques into the proposed UNETR-HoVer-Net architecture with modifications. Instead of the NP-branch, an object probability branch PD is used to predict whether a pixel belongs to an object by predicting the Euclidean distance to the nearest background pixel. The HV-branch is replaced by a branch RD to predict the radial distances of an object pixel to the boundary of the nucleus (star-convex representation) <ref type="bibr" target="#b50">[43]</ref>.</p><p>The NT-branch remains unchanged. For the CPP-Net decoder, an additional refinement step is added for the radial distances <ref type="bibr" target="#b35">[29]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Network Structure</head><p>In our network, we integrate a Vision Transformer as an image encoder that is connected to an upsampling decoder network via skip connections. This architecture allows us to leverage the strengths of a Vision Transformer as an image encoder for instance segmentation without losing fine-grained information.</p><p>Even though many other adaptations of the U-Net structure for Vision Transformers have been proposed (e.g., SwinUNETR <ref type="bibr" target="#b64">[56]</ref>), it was important for us to choose a network structure that incorporates the original ViT structure by Dosovitskiy et al. <ref type="bibr" target="#b58">[50]</ref> without modifications such that we can make use of the largescale pre-trained ViTs, namely ViT 256 and SAM. As in NLP <ref type="bibr" target="#b57">[49]</ref>, Vision Transformers take as input a 1D sequence of tokens embeddings <ref type="bibr" target="#b58">[50,</ref><ref type="bibr" target="#b57">49]</ref>. Therefore we need to divide an input image x ∈ R H×W×C with height H, width W and C input channels into a sequence of flattened tokens</p><formula xml:id="formula_1">x p ∈ R N×(P 2 •C) .</formula><p>Each token is a squared image section with the dimension P × P.</p><p>The number of tokens N can be calculated via N = HW/P 2 , which is the effective input sequence length <ref type="bibr" target="#b26">[20]</ref>. Accordingly, a linear projection layer E ∈ R N×D is used to map the flattened tokens x p into a D-dimensional latent space. The latent vector size D remains constant through all of the Transformer layers.</p><p>In contrast to the UNETR-network, we incorporate a learnable class token x class <ref type="bibr" target="#b58">[50]</ref>, which we can use for classification tasks and append it to the token sequence. Unlike CNNs, which inherently capture spatial relationships through their local receptive fields, Transformers are permutation invariant and, therefore, cannot capture spatial relationships. Thus, a learnable 1D positional embedding E pos ∈ R (N+1)×D is added to the projected token embeddings to preserve spatial context <ref type="bibr" target="#b26">[20]</ref>. In summary, the final input sequence z 0 for the Transformer encoder is:</p><formula xml:id="formula_2">z 0 = x class ; x 1 p E; x 2 p E; . . . ; x N p E + E pos .<label>(1)</label></formula><p>The Transformer encoder comprises alternating layers of multiheaded self-attention (MHA) <ref type="bibr" target="#b58">[50]</ref> and multilayer perceptrons (MLP), assembled in one Transformer block. A ViT is composed of several stacked Transformer blocks such that the latent tokens z i are calculated by</p><formula xml:id="formula_3">z ′ i = MHA(Norm(z i-1 )) + z i-1 , i = 1 . . . L (2) z i = MLP(Norm(z i-1 )) + z i-1 , i = 1 . . . L,<label>(3)</label></formula><p>with L denoting the number of Transformer blocks, Norm(•) denoting layer normalization, and i is the intermediate block identifier <ref type="bibr" target="#b26">[20]</ref>. Inspired by the U-Net and UNETR architectures, we add skip connections to leverage information at multiple encoder depths in the decoder. In total, we use five skip connections. The first skip connection takes x as input and processes it by two convolution layers (3 × 3 kernel size) with batchnormalization and ReLU activation functions. For the remaining four skip connections, the intermediate and bottleneck latent tokens z j , j ∈ L 4 , 2L 4 , 3L 4 , L are extracted without the class token and reshaped to a 2D tensor Z j ∈ R H P × W P ×D . This is only valid if 4 | L holds, which is commonly satisfied for common ViT implementations <ref type="bibr" target="#b58">[50,</ref><ref type="bibr" target="#b24">18,</ref><ref type="bibr" target="#b25">19]</ref>. Each of the feature maps Z j is transformed by a combination of deconvolutional layers that increase the resolution in both directions by a factor of two and convolutions to adjust the latent dimension. Subsequently, the transformed feature maps are successively processed in each decoder, beginning with Z L , and fused with the corresponding skip connection at each stage. This iterative fusion ensures the effective incorporation of multi-scale information, enhancing the overall performance of the decoder. Our network is designed in such a way that the output resolution of the segmentation results exactly matches the input image resolution. As denoted in Fig. <ref type="figure" target="#fig_1">2</ref>, our three segmentation branches (NP, HV, NT) share the same image encoder with the same skip connections and their transformations. The only difference lies in the isolated upsampling pathways of the decoders specific to each branch. To leverage the additional tissue type information available in the PanNuke dataset, we introduce a tissue classification branch (TC) to guide the learning process of the encoder. For this, we use the class token z L,class as input to a linear layer with softmax activation function to predict the tissue class.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Target and Losses</head><p>For faster training and better convergence of the network, we employ a combination of different loss functions for each network branch. The total loss is</p><formula xml:id="formula_4">L total = L NP + L HV + L NT + L TC (<label>4</label></formula><formula xml:id="formula_5">)</formula><p>where L NP denotes the loss for the NP-branch, L HV the loss for the HV-branch, L NT the loss for the NT-branch, and L TC the loss for the TC-branch. Overall, the individual branch losses are composed of the following weighted loss functions: with the individual segmentation losses</p><formula xml:id="formula_6">L NP = λ NP FT L FT + λ NP DICE L DICE L HV = λ HV MSE L MSE + λ HV MSGE L MSGE L NT = λ NT FT L FT + λ NT DICE L DICE + λ NT BCE L BCE L TC = λ TC CE L CE<label>(5)</label></formula><formula xml:id="formula_7">L BCE = - 1 n Npx i=1 C c=1 y i,c log ŷic<label>(6)</label></formula><formula xml:id="formula_8">L DICE = 1 - 2 × Npx i=1 y ic ŷic + ε Npx i=1 y ic + Npx i=1 ŷic + ε<label>(7)</label></formula><formula xml:id="formula_9">L FT = C c=1        1 - Npx i=1 y ic ŷic + ε Npx i=1 y ic ŷic + α FT Npx i=1 y ic ŷic + β FT Npx i=1 y ic ŷic        1 γ FT (8)</formula><p>and the cross-entropy as tissue classification loss</p><formula xml:id="formula_10">L CE = - C T c T =1 y c T log ŷc T , C T = 19,</formula><p>with the contribution of each branch loss (5) to the total loss (4) controlled by the ith hyperparameters λ i . L MSE denotes the mean squared error of the horizontal and vertical distance maps and L MSGE the mean squared error of the gradients of the horizontal and vertical distance maps, each summarized for both directions separately. In the segmentation losses ( <ref type="formula" target="#formula_7">6</ref>)-( <ref type="formula">8</ref>), y ic is the ground-truth and ŷic the prediction probability of the ith pixel belonging to the class c, C the total number of nuclei classes, N px the total amount of pixels, ε a smoothness factor and α FT , β FT and γ FT are hyperparemters of the Focal Tversky loss L FT . The Cross-Entropy loss <ref type="bibr" target="#b12">(6)</ref> and Dice loss <ref type="bibr" target="#b13">(7)</ref> are commonly used in semantic segmentation. To address the challenge of underrepresented instance classes, the Focal Tversky loss (8), a generalization of the Tversky loss, is used. The Focal Tversky loss places greater emphasis on accurately classifying underrepresented instances by assigning higher weights to those samples. This weighting enhances the model's capacity to handle class imbalance and focuses its learning on the more challenging regions of the segmentation task.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Postprocessing</head><p>As the network does not directly provide a semantic instance segmentation with separated nuclei, postprocessing is necessary to obtain accurate results. This involves several steps, including merging the information from the different branches, separating overlapping nuclei to ensure accurate individual segmentation, and determining the nuclei class based on the nuclei type map. Moreover, when performing inference on whole gigapixel WSI, a fusion mechanism is necessary. Due to the significant size of WSIs, inference needs to be performed on image patches extracted from them using a sliding-window approach. The segmentation results obtained from these patches must be assembled to generate a segmentation map of the entire WSI. The postprocessing methods are therefore explained in the following two paragraphs, starting with the segmentation of a single patch followed by its composition into a segmentation output for the entire WSI.</p><p>Nuclei Separation and Classification To separate adjacent and overlapping nuclei from each other, we utilize HoVer-Net's validated postprocessing pipeline. This involves computing the gradients of the horizontal and vertical distance maps to capture transitions between nuclei boundaries and the boundary between nuclei and the background. At these transition points significant value changes occur in the gradient. The Sobel operator (edge detection filter) is then applied to identify regions with substantial differences in neighboring pixels within the distance maps. Finally, a marker-controlled watershed algorithm is employed to generate the final boundaries. To calculate the nuclei class, the output of the separated nuclei is merged with the nuclei type predictions. For this purpose, majority voting is performed in the nuclei region using the NT prediction map with the majority class assigned to all nuclei pixels <ref type="bibr" target="#b14">[8]</ref>. The STARDIST and CPP-Net decoder methods, on the other hand, use non-maximum suppression (NMS) to prune redundant polygons that likely represent the same object <ref type="bibr" target="#b50">[43,</ref><ref type="bibr" target="#b51">44]</ref>. We use this approach when testing CellViT with STARDIST and CPP-Net decoders. In difference to STARDIST, the CPP-Net approach uses the refined radial distances as input for the NMS. The nuclei classes are then again assigned to the resulting binary polygons via majority voting.</p><p>Inference The encoder ViT offers a significant advantage for performing inference on gigapixel WSI over CNNs based U-Nets. Its capability to process input sequences of arbitrary length, constrained only by memory consumption and positional embedding interpolation, allows for increased input image sizes during inference. It is important to note that positional embedding interpolation must be considered when scaling the input images.</p><p>In preliminary experiments on the MoNuSeg dataset (see Sec. 5.3), we found that our network achieves equal performance when inferring on a single 1024 × 1024 px patch compared to cutting the same patch into 256 × 256 px sub-patches with an overlap of 64 px. Based on these findings, we have chosen to perform WSI inference using 1024 × 1024 px large patches with a 64 px overlap. Due to the high computational overhead, it is not feasible to keep the segmentation results of the entire WSI in memory. Consequently, we process and merge only the overlapping nuclei during postprocessing. By utilizing just a small overlap in the inference patches relative to the patch size, the postprocessing effort is reduced. To efficiently store the results in a structured and readable format, as well as for compatibility with software such as QuPath <ref type="bibr" target="#b73">[65]</ref>, the nuclei predictions for an entire WSI are exported in a JSON file. Each nucleus is represented by several parameters, including the nuclei class, bounding-box coordinates, shape polygon of the boundaries, and the center of mass for detection location. In the Appendix, we provide example visualizations of the prediction results from an internal esophageal adenocarcinoma and melanoma cohort, imported into QuPath (see Fig. <ref type="bibr">A.2)</ref>. This approach ensures the accessibility of the instance segmentation results for further analysis and visualization. Moreover, for each detected nuclei ŷ, we store the corresponding embedding token z ŷ L ∈ R D . Importantly, as the cell embedding vectors can be directly extracted during the forward pass and are spatially linked to each nuclei ŷ, there is no need for an additional forward pass on cropped image patches of the detected cells, again saving inference time. If a nucleus is associated with multiple tokens, we average over all token embeddings in which the nucleus is located. The cell embedding can be used as extracted cell-features for downstream DL algorithms addressing problems such as disease prediction, treatment response, and survival prediction.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Experimental Setup</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Datasets</head><p>PanNuke We use the PanNuke dataset as the main dataset to train and evaluate our model. The dataset contains 189,744 annotated nuclei in 7,904 256×256 px images of 19 different tissue types and 5 distinct cell categories, as depicted in Fig. <ref type="figure" target="#fig_2">3</ref>. Cellimages were captured at a magnification of ×40 with a resolution of 0.25 µm/px. The dataset is highly imbalanced, especially the nuclei class of dead cells is severely underrepresented, as apparent in the nuclei and tissue class statistics (see Fig. <ref type="figure" target="#fig_2">3</ref>). PanNuke is regarded as one of the most challenging datasets to perform the simultaneous nuclei instance segmentation task <ref type="bibr" target="#b15">[9]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>MoNuSeg</head><p>The MoNuSeg <ref type="bibr" target="#b74">[66,</ref><ref type="bibr" target="#b75">67]</ref> dataset serves as an additional dataset for nuclei segmentation. In contrast to PanNuke, the dataset is much smaller and does not divide the nuclei into different classes. For this work, we only use the test dataset of MoNuSeg to evaluate our model. The test dataset consists of 14 images with a resolution of 1000 × 1000 px, acquired at ×40 magnification with 0.25 µm/px. In total, the test dataset contains more than 7000 annotated nuclei across the seven organ types kidney, lung, colon, breast, bladder, prostate, and brain at several disease states (benign and tumors at different stages). Since no nuclei labels are included, the dataset cannot be used for evaluating classification performance. To process the dataset more effectively with our ViT-based networks with a token size of 16 px, we resized the data to a size of 1024 × 1024 px. Due to the sufficient patch size of the original data, we also created a ×20 dataset with 0.50 µm/px resolution, where the patch size is 512 × 512 px accordingly.</p><p>CoNSeP We utilized the colorectal nuclear segmentation and phenotypes (CoNSeP) dataset by Graham et al. <ref type="bibr" target="#b14">[8]</ref> to analyze extracted cell embeddings (see Sec. 3.3) of detected cells on an external validation dataset. This dataset comprises 41 H&amp;E-stained colorectal adenocarcinoma WSI at a resolution of 0.25 µm/px and an image size of 1000 × 1000 px, which we rescale to 1024 × 1024 px similar to the MoNuSeg data. The dataset exhibits significant diversity, encompassing stromal, glandular, muscular, collagen, adipose, and tumorous regions, along with various types of nuclei derived from originating cells: normal epithelial, dysplastic epithelial, inflammatory, necrotic, muscular, fibroblast, and miscellaneous nuclei, including necrotic and mitotic cells.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Experiments</head><p>In this study, we conducted two experiments on the PanNuke dataset and one on the MoNuSeg dataset to assess algorithms performance. We additionally used an internal dataset for comparing inference speed time. Given the higher clinical relevance of the detection task over achieving the optimal segmentation quality, we (1) performed an ablation study on PanNuke to determine the most suitable network architecture for nuclei detection. We compared the performance of pre-trained models (see Sec. 4.4) against randomly initialized models and explored the impact of regularization techniques such as data augmentation, loss functions, and customized oversampling, as well as comparing the HoVer-Net decoder method to the STARDIST and CPP-Net decoder methods in our UNETR-structure. Based on these investigations, we identified the best models, which were (2) subsequently evaluated for segmentation quality. To assess both detection and segmentation performance, we compared our models with multiple baseline architectures, namely DIST <ref type="bibr" target="#b49">[42]</ref>, Mask-RCNN <ref type="bibr" target="#b44">[37]</ref>, Micro-Net <ref type="bibr" target="#b48">[41]</ref>, HoVer-Net <ref type="bibr" target="#b14">[8]</ref>, TSFD-Net <ref type="bibr" target="#b15">[9]</ref>, and CPP-Net <ref type="bibr" target="#b35">[29]</ref>. We also re-trained the STARDIST model with a ResNet50 <ref type="bibr" target="#b76">[68]</ref> backbone and the hyperparameters of Chen et al. <ref type="bibr" target="#b35">[29]</ref> to retrieve comparable detection results. For comparison, we conducted our experiments using the same three-fold cross-validation (CV) splits provided by the PanNuke dataset organizers and report the averaged results over all three splits. It is worth mentioning that all the comparison models we evaluate in this study adhere to the same evaluation scheme for the PanNuke dataset, with one exception. The TSFD-Net publication reports results based on an 80-20 train-test split, making their results more optimistic. Nevertheless, we include their results for the purpose of comparison. As a third experiment (3), we evaluated our models trained on PanNuke on the publicly available 14 test images of the MoNuSeg dataset to test generalizability. The dataset serves a second purpose next to generalization: We compare various input image sizes and assess the performance of our inference pipeline outlined in Section 3.3. In this context, we evaluate the performance using two scenarios -one involving an uncropped MoNuSeg slide with 1024 px input patch size and the other using cropped 256 px input images. Additionally, we investigate the impact of our overlapping strategy with a 64-pixel overlap, focusing on the 256 px input size. To analyze the cell embeddings z ŷ L for detected nuclei with our CellViT models, we utilize the CoNSeP dataset (4). To achieve this, we perform inference with the pre-trained PanNuke models on the CoNSeP images (1024 px input patch size) and extract the token embeddings z ŷ L for each nuclei ŷ from the last Transformer block that are spatially associated with ŷ. Subsequently, we employ the Uniform Manifold Approximation and Projection (UMAP) method for dimension reduction to transform the cell embedding vectors (of the 27 training images) into a two-dimensional representation, which can be visualized in a two-dimensional scatter plot. We additionally trained a linear classifier on top of the cell embeddings (extracted from the 27 training images) to classify the detected cells into the CoNSeP nuclei classes and tested the classifier on the cell embeddings of the cells from the 14 test images. Finally, to compare the inference runtime (5), we collected a diverse dataset of 10 esophageal WSIs with tissue areas ranging from 2.79 mm 2 to 74.07 mm 2 . We measured the inference runtime for the HoVer-Net model, as well as for the CellViT 256 and CellViT-SAM-H models with 256 px and 1024 px patch input size and an overlap of 64 px. For each WSI, we repeated the process three times and averaged the runtime results.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Evaluation Metrics</head><p>Nuclear Instance Segmentation Evaluation Usually, the Dice coefficient (DICE) or the Jaccard index are used as evaluation metrics for semantic segmentation. However, as Graham et al. <ref type="bibr" target="#b14">[8]</ref> have already shown, these two metrics are insufficient for evaluating nuclear instance segmentation as they did not account for the detection quality of the nuclei. Therefore, a metric is needed that assess the following three requirements (see Graham et al. <ref type="bibr" target="#b14">[8]</ref>):</p><p>1. Separate the nuclei from the background 2. Detect individual nuclei instances and separate overlapping nuclei 3. Segment each instance These three requirements cannot be evaluated with the Jaccard index and the DICE score, as they just satisfy requirement (1). In line with <ref type="bibr" target="#b14">[8]</ref> and the PanNuke dataset evaluation recommendations <ref type="bibr" target="#b23">[17]</ref>, we use the panoptic quality (PQ) <ref type="bibr" target="#b77">[69]</ref> to quantify the instance segmentation performance. The PQ us defined as</p><formula xml:id="formula_11">PQ = |T P| |T P| + 1 2 |FP| + 1 2 |FN| Detection Quality (DQ) × (y,ŷ)∈T P IoU(y, ŷ) |T P| Segmentation Quality (SQ) ,<label>(9)</label></formula><p>with IoU(y, ŷ) denoting the intersection-over-union <ref type="bibr" target="#b77">[69]</ref>. In this equation, y denotes a ground-truth (GT) segment, and ŷ denotes a predicted segment, with the pair (y, ŷ) being a unique matching set of one ground-truth segment and one predicted segment. As Kirillov et al. <ref type="bibr" target="#b77">[69]</ref> proved, each pair of segments (y, ŷ), i.e., each pair of true and predicted nuclei, in an image is unique if IoU(y, ŷ) &gt; 0.5 is satisfied. For each class, the unique matching of (y, ŷ) splits the predicted and the GT segments into three sets:</p><p>• True Positives (TP): Matched pairs of segments, i.e., correctly detected instances</p><p>• False Positives (FP): Unmatched predicted segments, i.e., predicted instances without matching GT instance</p><p>• False negatives (FN): Unmatched GT segments, i.e., GT instances without matching predicted instance</p><p>The PQ score can be intuitively decomposed into two parts, the detection quality similar to the F 1 score commonly used in classification and detection scenarios, and the segmentation quality as the average IoU of matched segments <ref type="bibr" target="#b14">[8,</ref><ref type="bibr" target="#b77">69]</ref>. To ensure a fair comparison, we use binary PQ (bPQ) pretending that all nuclei belong to one class (nuclei vs. background) and the more challenging multi-class PQ (mPQ), taking the nuclei class into account. In doing so for mPQ, we calculate the PQ independently for each nuclei class and subsequently average the results over all classes <ref type="bibr" target="#b23">[17]</ref>.</p><p>Nuclear Classification Evaluation To evaluate the detection quality of our model, we employ commonly used detection metrics. Similar to the approach used in the PQ-score for nuclear instance segmentation evaluation, we split GT and predicted instances into TPs, FPs, and FNs. We use the conventional detection metrics precision (P d ), recall (P d ) and the (F 1,d )-score as a harmonic mean between precision and recall. The index 'd' indicates that these are the scores for the entire binary nuclei detection over all classes c. Thus, the binary detection scores are defined as follows:</p><formula xml:id="formula_12">F 1,d = 2T P d 2T P d + FP d + FN d P d = T P d T P d + FP d R d = T P d T P d + FN d</formula><p>We further break down T P d into correctly classified instances of class c (T P c ), false positives of class c (FP c ) and false negatives of class c (FN c ) to derive cell-type specific scores. We then define the F 1,c -score, precision (P c ) and recall (R c ) of each nuclei class c as</p><formula xml:id="formula_13">F 1,c = 2(T P c + T N c ) 2(T P c + T N c ) + 2FP c + 2FN c + FP d + FN d , P c = T P c + T N c T P c + T N c + 2FP c + FP d , R c = T P c + T N c T P c + T N c + 2FN c + FN d .</formula><p>In order to prioritize the classification of different nuclear types, we incorporated an additional weighting factor for the nuclei classes, as suggested in the official PanNuke evaluation metrics <ref type="bibr" target="#b23">[17,</ref><ref type="bibr" target="#b14">8]</ref>, Since we cannot use the IoU(y, ŷ) &gt; 0.5 criterion to find matching instances (y, ŷ) between GT-instances and predictions for the detection task, we use the methodology of Sirinukunwattana et al. <ref type="bibr" target="#b78">[70]</ref> and define a match (y, ŷ) if both centers of mass are within a radius of 6 px (0.50 µm/px) and 12 px (0.25 µm/px), respectively.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Model Training</head><p>Oversampling Even though the PanNuke dataset has around 200,000 annotated nuclei, they are distributed just across a limited number of 8,000 patches with 256 × 256 px patch size. Furthermore, there is a substantial class imbalance among tissue types and nucleic classes (see Fig. <ref type="figure" target="#fig_2">3</ref>). Thus, we developed a new oversampling strategy based on class weightings to balance both tissue classes and nuclei classes. For each patch i in the training dataset with N Train training samples, we calculate the sampling weights for the tissue class and the cell class with</p><formula xml:id="formula_14">p i (γ s ) = w Tissue (i, γ s ) max j∈[1,N Train ] w Tissue ( j, γ s ) + w Cell (i, γ s ) max j∈[1,N Train ] w Cell ( j, γ s ) ,<label>(10)</label></formula><p>where w Tissue (i, γ s ) is a weight factor for the tissue class and w Cell (i, γ s ) for the nuclei class. The parameter γ s ∈ [0, 1] is a weighting factor that determines the strength of the oversampling. A γ s value of 0 indicates no oversampling, while γ s = 1 corresponds to maximum balancing. To ensure neither w Tissue (i, γ s ) nor w Cell (i, γ s ) dominates the sampling, normalization is applied to both summands in eq. ( <ref type="formula" target="#formula_14">10</ref>). The calculation of the weighting factor of the tissue class can be calculated directly via</p><formula xml:id="formula_15">w Tissue (i, γ s ) = N Train γ s          j∈[1,N Train ]|c T, j =c T,i 1          + (1 -γ s )N Train<label>(11)</label></formula><p>as each patch can only belong to one tissue class denoted by c T,i .</p><p>For cell weighting, it must be considered that each patch can contain multiple nuclei from different cell classes. Therefore, we create a binary vector c i ∈ {0, 1} C , where each entry is set to 1 for each existing nuclei type c in the patch. To get a reference value for scaling similar to eq. ( <ref type="formula" target="#formula_15">11</ref>), we calculate N Cell = N Train i=1 ∥c i ∥ 1 . The cell weighting for each training image i is then calculated by Data Augmentation In addition to our customized oversampling strategy, we extensively employ data augmentation techniques to enhance data variety and discourage overfitting. We use a combination of the following geometrical and noisy/intensity-based augmentation methods: random 90-degree rotation, horizontal flipping, vertical flipping, downscaling, blurring, gaussian noise, color jittering, superpixel representation of image sections (SLIC), zoom blur, random cropping with resizing and elastic transformations. These augmentation techniques were selected to introduce variations in the shape, orientation, texture, and appearance of the nuclei, enhancing the robustness and generalization capabilities of the model. For detailed information on the augmentation methods utilized, including the selected probabilities and corresponding hyperparameters, please refer to the Appendix. images Model Decoder Hyperparameters Detection Classification Neoplastic Epithelial Inflammatory Connective Dead Pd Rd F1,d PNeo RNeo F1,Neo PEpi REpi F1,Epi PInf RInf F1,Inf PCon RCon F1,Con PDead RDead F1,Dead DIST 0.74 0.71 0.73 0.49 0.55 0.50 0.38 0.33 0.35 0.42 0.45 0.42 0.42 0.37 0.39 0.00 0.00 0.00 Mask-RCNN 0.76 0.68 0.72 0.55 0.63 0.59 0.52 0.52 0.52 0.46 0.54 0.50 0.42 0.43 0.42 0.17 0.30 0.22 Micro-Net 0.78 0.82 0.80 0.59 0.66 0.62 0.63 0.54 0.58 0.59 0.46 0.52 0.50 0.45 0.47 0.23 0.17 0.19 HoVer-Net 0.82 0.79 0.80 0.58 0.67 0.62 0.54 0.60 0.56 0.56 0.51 0.54 0.52 0.47 0.49 0.28 0.35 0.31 TSFD-Net* 0.84 0.87 0.85 0.60 0.71 0.65 0.56 0.58 0.57 0.59 0.58 0.57 0.55 0.49 0.53 0.33 0.40 0.43 STARDIST (ResNet50) ** STARDIST CPP-Net 0.85 0.80 0.82 0.69 0.69 0.69 0.73 0.68 0.70 0.62 0.53 0.57 0.54 0.49 0.51 0.39 0.09 0.10 STARDIST (ResNet50) ** STARDIST CellViT 0.85 0.79 0.82 0.70 0.66 0.68 0.71 0.66 0.68 0.58 0.58 0.58 0.54 0.49 0.51 0.39 0.34 0.36 CellViT256 -Raw HoVer-Net CellViT 0.80 0.77 0.78 0.61 0.64 0.63 0.63 0.59 0.61 0.55 0.46 0.50 0.45 0.43 0.44 0.43 0.16 0.23 CellViT256 -Over HoVer-Net CellViT 0.79 0.78 0.78 0.62 0.63 0.62 0.65 0.59 0.62 0.54 0.47 0.50 0.44 0.45 0.44 0.46 0.16 0.24 CellViT256 -Aug HoVer-Net CellViT 0.83 0.82 0.82 0.70 0.69 0.69 0.68 0.71 0.69 0.58 0.59 0.58 0.54 0.51 0.52 0.38 0.35 0.36 CellViT256 -No-FC HoVer-Net CellViT 0.82 0.83 0.82 0.69 0.70 0.69 0.70 0.69 0.70 0.58 0.58 0.58 0.53 0.51 0.52 0.40 0.33 0.36 CellViT-Random (no pre-train) HoVer-Net CellViT 0.79 0.81 0.80 0.63 0.65 0.64 0.63 0.62 0.72 0.54 0.57 0.55 0.49 0.46 0.48 0.30 0.34 0.31 CellViT256 HoVer-Net CellViT 0.83 0.82 0.82 0.69 0.70 0.69 0.68 0.71 0.70 0.59 0.58 0.58 0.53 0.51 0.52 0.39 0.35 0.37 CellViT-SAM-B HoVer-Net CellViT 0.83 0.82 0.83 0.70 0.70 0.70 0.70 0.72 0.71 0.59 0.58 0.59 0.54 0.52 0.53 0.46 0.29 0.36 CellViT-SAM-L HoVer-Net CellViT 0.84 0.82 0.83 0.71 0.70 0.70 0.71 0.72 0.72 0.59 0.58 0.58 0.54 0.52 0.53 0.42 0.36 0.39 CellViT-SAM-H HoVer-Net CellViT 0.84 0.81 0.83 0.72 0.69 0.71 0.72 0.73 0.73 0.59 0.57 0.58 0.55 0.52 0.53 0.43 0.32 0.36 CellViT256 STARDIST CPP-Net 0.84 0.75 0.79 0.64 0.60 0.62 0.65 0.56 0.60 0.64 0.45 0.52 0.58 0.47 0.47 0.30 0.27 0.28 CellViT256 STARDIST CellViT 0.83 0.79 0.81 0.71 0.65 0.68 0.68 0.68 0.68 0.59 0.57 0.58 0.52 0.49 0.50 0.37 0.38 0.37 CellViT-SAM-H STARDIST CPP-Net 0.84 0.78 0.81 0.68 0.66 0.67 0.71 0.62 0.66 0.57 0.57 0.57 0.54 0.45 0.49 0.36 0.32 0.32 CellViT-SAM-H STARDIST CellViT 0.84 0.80 0.82 0.72 0.68 0.70 0.74 0.71 0.72 0.60 0.57 0.58 0.53 0.51 0.52 0.44 0.34 0.38 CellViT256 CPP-Net CPP-Net 0.85 0.76 0.80 0.69 0.62 0.65 0.70 0.62 0.65 0.57 0.55 0.56 0.53 0.46 0.49 0.32 0.38 0.33 CellViT256 CPP-Net CellViT 0.87 0.76 0.81 0.73 0.64 0.68 0.71 0.65 0.68 0.58 0.57 0.58 0.55 0.47 0.51 0.37 0.37 0.37 CellViT-SAM-H CPP-Net CPP-Net 0.86 0.78 0.82 0.72 0.67 0.70 0.73 0.68 0.70 0.62 0.55 0.58 0.55 0.50 0.52 0.27 0.14 0.18 CellViT-SAM-H CPP-Net CellViT 0.87 0.78 0.82 0.74 0.67 0.70 0.74 0.70 0.72 0.60 0.57 0.58 0.57 0.49 0.53 0.41 0.36 0.38 CellViT256 (0.50 µm/px)*** HoVer-Net CellViT 0.86 0.60 0.71 0.72 0.59 0.65 0.71 0.58 0.64 0.60 0.38 0.47 0.53 0.32 0.40 0.43 0.04 0.07 CellViT-SAM-H (0.50 µm/px)*** HoVer-Net CellViT 0.88 0.63 0.73 0.74 0.62 0.67 0.74 0.61 0.67 0.60 0.42 0.49 0.56 0.34 0.42 0.49 0.04 0.08</p><formula xml:id="formula_16">w Cell (i, γ s ) = (1 -γ s ) + γ s C j=1 c i j N Cell γ s N Train k=1 c k j + (1 -γ s )N Cell</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Optimization and Training Strategy</head><p>We train all our models for 130 epochs and incorporate exponential learning rate scheduling with a scheduling factor of 0.85 to gradually reduce the learning rate during training (denoted as CellViT hyperparameters). To balance our training, we use our modified oversampling strategy with γ s = 0.85. For the STARDIST and CPP-Net models, we also conducted experiments using the proposed CPP-Net hyperparameters by Chen et al. <ref type="bibr" target="#b35">[29]</ref>. A complete overview of all hyperparameters, including optimizer, data augmentation, and weighting factors of the loss functions in eq. ( <ref type="formula" target="#formula_6">5</ref>) is provided in the Appendix. As for the encoder models, we leverage the ViT 256 -model (ViT-S, D = 384, L = 12), which has been pretrained on histological data (see Sec. These checkpoints provide different model sizes and complexities, allowing us to evaluate their respective performance and choose the most suitable one for our task. During training, we initially freeze the encoder weights for the first 25 epochs. After this initial warm-up phase to train the decoder, we proceed to train the entire model including the image encoder.</p><p>Implementation All models are implemented in PyTorch 1.13.1. To augment images and masks, we used the Albumentations library <ref type="bibr" target="#b79">[71]</ref>. Other used libraries include the official STARDIST <ref type="bibr" target="#b51">[44]</ref>, CPP-Net <ref type="bibr" target="#b35">[29]</ref> and CellSeg-models implementations <ref type="bibr">[72]</ref>. For the pre-trained ViT 256 -model, we utilized the ViT-S checkpoint<ref type="foot" target="#foot_0">foot_0</ref> provided by Chen et al. <ref type="bibr" target="#b24">[18]</ref>. As for the SAM-B, SAM-L, and SAM-H models, we use the encoder backbones of each final training stage of SAM <ref type="bibr" target="#b25">[19]</ref>, published on GitHub <ref type="foot" target="#foot_1">2</ref> . All experiments were conducted on an 80 GB NVIDIA A100 GPU with automatic mixed precision. However, it is worth not-In the section below, the results for the experiments (1) nuclei detection quality and (2) segmentation quality on PanNuke, (3) generalization performance on the independent MoNuSeg cohort, (4) cell-embedding analysis and (5) inference speed comparisons are given. If not stated otherwise, all models were trained on the PanNuke dataset with a resolution of 0.25 µm/px.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Detection Quality on PanNuke</head><p>Considering the clinical importance of nuclei detection and classification over achieving the best possible segmentation quality, our ablation study aimed to determine the best model based on the detection results using the PanNuke dataset. Tab. 1 presents the precision, recall, and F 1 -Score for both detection and classification performance across all nuclei classes, including the binary case. To determine the optimal settings, we evaluated different variations of our network. These include a randomly initialized network (CellViT-Random), networks with pre-trained weights from the ViT 256 network (CellViT 256 ), and networks with different pre-trained SAM backbones (CellViT-SAM-B, CellViT-SAM-L, CellViT-SAM-H). To ensure comparability, the CellViT-Random network shares the same architecture (ViT-S, D = 384, L = 12) as the CellViT 256 network. All mentioned CellViT model variants were trained using data augmentation and our customized sampling strategy as regularization methods. The decoder network strategies (HoVer-Net, STARDIST or CPP-Net decoder) and hyperparameter settings are given behind the network name in Tab. 1.</p><p>We first analyze the CellViT models with HoVer-Net decoder.</p><p>Compared to the baseline models, the randomly initialized CellViT-Random network achieves detection results comparable to the HoVer-Net CNN network. However, when using pretrained encoder networks, we observe a significant performance increase, reaching state-of-the-art performance. We notice a strong increase in F 1 -scores compared to all existing solutions, especially for the epithelial nuclei class. Both the ViT 256 and the three different SAM encoders exhibit significantly better performance, all at a similar level, with the CellViT-SAM-H model as the best solution. Notably, we even outperform purely detection-based methods like Mask-RCNN and all state-of-theart approaches by a large margin with up to a 26 % increase in the F 1,Epi -score of epithelial nuclei.</p><p>To demonstrate the effect of extensive data augmentation, customized sampling strategy and the Focal Tversky loss, we additionally report the results for a CellViT 256 model without regularization (CellViT 256 -Raw), with oversampling only (CellViT 256 -Over), with data-augmentation only (CellViT 256 -Aug) and a model trained with oversampling and all augmentations, but without Focal Tversky loss (CellViT 256 -No-FC) in Tab. 1. Our experiments reveal that data augmentation, in particular, is a crucial regularization method that significantly enhances performance. Specifically, the addition of data augmentation results in a 0.13 increase in the F 1,Dead score for the dead nuclei class compared the the (CellViT 256 -Raw) model. Oversampling and Focal Tversky loss just lead to minimal improvements in the detection scores. We also tested the STARDIST and CPP-Net decoder structures with the CellViT 256 and CellViT-SAM-H model with our hyperparameters and the CPP-Net hyperparameters suggested by Chen et al. <ref type="bibr" target="#b35">[29]</ref>. These models usually achieve higher precision values but often a significantly lower recall and a lower F1 score than the models with the HoVer-Net decoder architecture. As an extension of the STARDIST method, the CPP-Net decoder achieves slightly better results. Overall, the models achieve better detection results than comparable CNN-based SOTA networks and outperform the ResNet50-based STARDIST model, but are inferior to our suggested models with HoVer-Net decoder architecture. The results also reveal that our hyperparameters provide better detection performance.</p><p>In addition to the provided dataset resolution of 0.25 µm/px, we performed training and evaluation for the two best model variants CellViT 256 and CellViT-SAM-H on downscaled Pan-Nuke data (from 256 × 256 to 128 × 128 px patch size), resulting in 0.50 µm/px resolution. The results are presented in the last two rows of Tab. 1. The downsizing leads to a substantial drop in performance compared to the 0.25 µm/px networks, with detection results approaching the baseline models. Notably, the recall of individual classes significantly decreases (by an average of -0.20). In particular, the recall for the dead nuclei class drops to 0.04, indicating that this class is almost not detected at all. Interestingly, the precision increases minimally or remains almost the same compared to our best 0.25 µm/px models. We conclude that despite detecting significantly fewer nuclei, when a nucleus is identified and classified correctly, it corresponds to the true nucleus class with high accuracy for most classes.</p><p>For subsequent investigations, we decided to further just consider the CellViT 256 and CellViT-SAM-H models to enable a comparison between in-domain and out-of-domain pre-training. To provide a visual representation of the segmentations, we include tissue-wise comparisons between ground-truth and segmentation predictions of the CellViT-SAM-H model in Fig. <ref type="figure" target="#fig_6">4</ref>.</p><p>As observed in the lung example, the instance segmentation of dead cells poses a significant challenge due to their small size. Furthermore, detecting and segmenting dead nuclei becomes even more difficult when these images are scaled down from 0.25 µm/px to 0.50 µm/px resolution.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">MoNuSeg Test Performance</head><p>In this experiment, we focused on instance segmentation without classification on the MoNuSeg dataset to assess the generalizability of our models (just with HoVer-Net decoder) at resolutions of 0.25 µm/px and 0.50 µm/px. Additionally, we aim to evaluate the impact of changing the input sequence size by performing inference on large-scale tiles of size 1024 px (0.25 µm/px) and 512 px (0.50 µm/px), respectively, comparing the results to non-overlapping 256 px patches and 256 px patches with an overlap of 64 px derived by a shifting window approach. We utilized the three final models of the PanNuke training folds for each architecture and conducted inference on the MoNuSeg data without retraining. The evaluation results are presented in Tab. 4. Consistent with the previous experiments, the CellViT-SAM-H model is the best-performing model. It achieves a bPQ-score of 0.672 on 1024 px tiles when no patching was applied and of 0.671 for 256 px tiles with an overlap of 64 px. However, when using 256 px patches without overlap, the bPQ-score decreases to 0.631, likely due to the absence of merging overlapping nuclei at cell borders and double detected cells (higher recall). Importantly, the overall comparison between larger tiles and smaller tiles with overlapping indicates that inference on larger tiles did not lead to a degradation in performance. This justifies our inference pipeline for large-scale WSI, in which we are using 1024 px sized patches with an overlap of 64 px and overlapping merging strategies. The CellViT 256 model yields slightly inferior results compared to the CellViT-SAM-H model. Using the models trained on 0.50 µm/px data on the 0.25 µm/px data and vice versa, the 0.50 µm/px trained models exhibit poor performance on 0.25 µm/px data, while the 0.25 µm/px trained models experience a less severe performance drop on the 0.50 µm/px data. Nevertheless, networks trained and evaluated on the same WSI resolution achieved the best performance, thus it is advisable to align image resolution between different dataset and use the appropriate model. Consistently, the best results are achieved for WSI acquired with a resolution of 0.25 µm/px. We include a visual demonstration presenting a tissue tile from the MoNuSeg test set along with binary segmentation masks generated by the CellViT-SAM-H and CellViT-SAM-H (0.50 µm/px) models in the Appendix.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">Token Analysis</head><p>In Figure <ref type="figure" target="#fig_8">5</ref>, we present the two-dimensional UMAP embeddings of cell tokens from the CoNSeP dataset. The CellViT-SAM-H and CellViT 256 models with HoVer-Net decoder, trained on the PanNuke dataset, were utilized. The tokens were extracted simultaneously with cell detections in a single inference pass. The color overlay in the scatter plots (left) and tissue images (right) indicates the respective nuclei classes. Consistent with Graham et al. <ref type="bibr" target="#b14">[8]</ref>, we grouped normal and malignant/dysplastic epithelial nuclei into an "epithelial" class, while fibroblast, muscle, and</p><p>Image1 Image2 Image2 Image1 Cluster1 Cluster3 Cluster2 UMAP1 UMAP2 UMAP2 UMAPEmbeddings UMAPEmbeddingsCellViT-SAM-H ClusterAnalysis-CellViT-SAM-H Nuclei-Type Overlay Image Overlay Cluster2-OneImage Cluster1 Cluster3-OneImage Inflammatory Miscellaneous Spindle-ShapedNuclei Epithelial Legend꞉ </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.5">Inference Runtime</head><p>Our inference runtime benchmark shows that our inference pipeline is accelerated by a factor of 2.49 (CellViT 256 ) and 2.25 (CellViT-SAM-H) when using 1024 px input patches instead of 256 px. The CellViT 256 model with 1024 px input patches is 1.34 times faster than the CellViT-SAM-H model with 1024 px patches. Both CellViT models with our large 1024 px input patch size outperform the HoVerNet model, with speedups of 1.85 (CellViT 256 ) and 1.39 (CellViT-SAM-H), respectively.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Discussion and Conclusion</head><p>Nuclei instance segmentation is crucial for clinical applications, requiring automated tools that offer high robustness and reliability. In the clinical context of performing large-scale analysis on clinical patient cohorts, accurate detection is considered more important than precise segmentation. In this work, we introduced a novel deep learning-based method for simultaneously segmenting and detecting nuclei in digitized H&amp;E tissue samples. Our work was inspired by the success of previous works using large-scale trained Vision Transformers, particularly by the contributions made by Chen et al. <ref type="bibr" target="#b24">[18]</ref> (ViT 256 ) and Kirillov et al. <ref type="bibr" target="#b25">[19]</ref> (SAM). The CellViT network proposed in this study demonstrates state-of-the-art performance for both nuclei instance segmentation and nuclei detection on the PanNuke dataset. Additionally, the results on the MoNuSeg dataset validate the generalizability of our model to previously unseen cohorts. Notably, our model surpasses all other existing methods by a significant margin for nuclei detection and classification, elevating nuclei detection in H&amp;E-slides to a new level. By leveraging the most recent computer vision approaches, we showed that both in-domain pre-training (ViT 256 ) and the use of the SAM foundation model yields significantly better results compared to randomly initialized network weights. Our larger inference patch size allows us to be 1.85 times faster than the popular HoVer-Net inference framework by Graham et al. <ref type="bibr" target="#b14">[8]</ref>, which could save hours in computational time when dealing with huge gigapixel WSI. Moreover, our framework allows direct assessment of a localizable ViT-token from a detected nucleus that can be further used in downstream tissue analysis tasks. Although an evaluation of this aspect is pending, we anticipate promising prospects based on our first results in Sec. 5.4. Our work provides the potential to design interpretable algorithms that directly correlate with specific cells or cell patterns. One possible direction for future research involves graph-based networks with attention mechanisms using these embeddings. Nevertheless, external validation of the results is necessary. Yet, additional datasets are required, especially to verify the detection quality of our model. Furthermore, our models exhibit reliable performance only for WSI acquired at 0.25 µm/px resolution. While the results obtained with 0.50 µm/px images are acceptable in terms of detection, there is room for improvement, as there is a huge performance gap between 0.25 µm/px and 0.50 µm/px-WSI processing. We recommend to scan the tissue samples on a resolution of 0.25 µm/px if technically possible. In the future, we plan to apply the proposed model with extracted nuclei tokens to downstream histological image analysis tasks. This will enable us to validate if simultaneously extracted tokens are an advantage for building interpretable algorithms for computational pathology. Additionally, it will allow us to evaluate which tokens have achieved a more meaningful representation of the tissue and are better suited for downstream tasks, as there are just minimal differences in the segmentation and detection performance between our best-performing CellViT 256 and CellViT-SAM-H models. To ensure the accessibility of our results, we have made both the code and pre-trained models publicly available under an open-source license for non-commercial use. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>CRediT authorship contribution statement</head></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Network structure of CellViT. An input image is transformed into a sequence of tokens (flattened input sections). By using skip connections at multiple encoder depth levels and a dedicated upsampling decoder network, precise nuclei instance segmentations are derived. Nuclei embeddings are extracted from the Transformer encoder.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Network structure of our proposed CellViT-network consisting of a ViT encoder connected to multiple decoders via skip connections. Postprocessing is used to separate overlapping nuclei and perform nuclei type classification. For visualization purposes, the tissue classification branch is not illustrated. As encoder networks, we used the pre-trained ViT 256 and SAM models.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: PanNuke nuclei distribution overview for each of the nineteen tissue types, sorted by the total number of nuclei inside the tissue. The total number of nuclei within a tissue type is given in parentheses. Adapted from [17].</figDesc><graphic coords="8,121.53,91.51,175.60,225.15" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>,</head><figDesc>with c i j the vector entry of c i at position j. The training images are randomly sampled in a training epoch with replacement based on their sampling weights p i (γ s ).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Table 1 :</head><label>1</label><figDesc>Precision (P), Recall (R) and F 1 -score (F 1 ) for detection and classification across the three PanNuke splits for each nuclei type. The centroid of each nucleus was used for computing detection metrics for segmentation networks. *TSFD-Net was not evaluated on the official three-fold splits of the PanNuke dataset and left out by the comparison **Model re-trained by ourselves ***Models trained on downscaled 0.50 µm/px PanNuke</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><figDesc>2.2). Additionally, we compare the performance with the three pre-trained SAM checkpoints: SAM-B (ViT-B, D = 768, L = 12), SAM-L (ViT-L, D = 1024, L = 24) and SAM-H (ViT-H, D = 1280, L = 32).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Example of PanNuke patches with ground-truth annotations and CellViT-SAM-H predictions overlaid for each tissue type.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Two-dimensional UMAP embedding visualization (left) of the CoNSeP dataset with the CellViT-SAM-H and CellViT 256 (HoVer-Net encoder) models trained on PanNuke. We extract cell-tokens for each detected cell with our model, resulting in one embedding vector per cell. On the right side of the figure, representative clusters derived with the CellViT-SAM-H model are displayed alongside corresponding tissue images. The color overlay illustrates the ground-truth nuclei types within the dataset. endothelial nuclei were grouped into the "spindle-shaped nuclei" class. The global clusters in the scatter plot represent cells from different images, with clusters containing cells from the same tissue phenotype being grouped together. An example of this is cluster 1 for the CellViT-SAM-H model. It comprises cell clusters from two images, both containing multiple glands. Within this cluster, the local spatial arrangement of the cell embeddings allows differentiation of nuclei types (epithelial, spindle-shaped, and inflammatory) despite the model not being explicitly trained for all cell classes (spindle-shaped cells are not explicitly defined in the PanNuke dataset). Cluster 3, which is spatially close to cluster 1, contains even more glands, while the tissue image associated with the distant cluster 2 lacks glands and primarily consists of spindle-shaped and inflammatory nuclei. In summary, the global UMAP arrangement primarily captures differences in the nuclei's tissue environment (e.g., nearby glands, muscles). The local arrangement highlights distinctions between nuclei without the need for fine-tuning the model for specific nuclei types. Notably, for the CellViT 256 model, the global tissue differences are even more pronounced. To quantitatively assess the quality of the embeddings, we trained a linear nuclei classifier (Appendix) on the embeddings of the training data (15,548 nuclei) to classify the nuclei into the CoNSeP classes. We evaluated the classifier on the embeddings of the test images (8,773 nuclei). The model achieved an area under the receiver operating characteristics curve (AUROC) of 0.963 for the validation data using the CellViT-SAM-H embeddings. When utilizing the CellViT 256 embeddings, the model achieved an AUROC of 0.960. This demonstrates the effectiveness of our embeddings in classifying unknown nuclei classes, with both CellViT-SAM-H and CellViT 256 embeddings yielding high AUROC values.</figDesc><graphic coords="14,410.15,312.40,84.60,84.60" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Fabian Hörst :</head><label>Hörst</label><figDesc>Conceptualization, Methodology, Software, Formal Analysis, Investigation, Data Curation, Writing -Original Draft, Writing -Review &amp; Editing, Visualization. Moritz Rempe: Methodology, Writing -Original Draft, Writing -Review &amp; Editing. Lukas Heine: Methodology, Writing -Original Draft, Writing -Review &amp; Editing. Constantin Seibold: Conceptualization, Writing -Review &amp; Editing. Julius Keyl: Validation, Writing -Review &amp; Editing. Giulia Baldini: Validation, Writing -Review &amp; Editing. Selma Ugurel: Validation, Writing -Review &amp; Editing. Jens Siveke Validation, Writing -Review &amp; Editing. Barbara Grünwald: Validation, Writing -Review &amp; Editing. Jan Egger: Writing -Review &amp; Editing, Supervision. Jens Kleesiek: Resources, Writing -Review &amp; Editing, Supervision, Project administration, Funding acquisition.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 2 :</head><label>2</label><figDesc>Average PQ across the three PanNuke splits for each nuclear category on the PanNuke dataset. *TSFD-Net was not evaluated on the official three-fold splits of the PanNuke dataset and left out by the comparison. **Model re-trained by ourselves ***Models trained on downscaled 0.50 µm/px PanNuke images.Net decoder against the best baseline models by computing the binary PQ (bPQ) and the more challenging multi-class PQ (mPQ) for each of the 19 tissue types in PanNuke, providing an assessment of both instance segmentation qualities. As baseline experiments, we just include the best HoVer-Net model by Graham et al.<ref type="bibr" target="#b14">[8]</ref>, TSFD-Net and the original STARDIST and CPP-Net models with ResNet50 encoder Chen et al.<ref type="bibr" target="#b35">[29]</ref>. For our</figDesc><table><row><cell cols="6">Abbreviations: Decoder (Dec.), Hyperparameter (HP.), HoVer-</cell></row><row><cell cols="5">Net (HV), STARDIST (SD), CPP-Net (CPP).</cell><cell></cell></row><row><cell>Model</cell><cell>Dec. HP.</cell><cell cols="4">Neoplastic Epithelial Inflammatory Connective Dead</cell></row><row><cell>DIST</cell><cell></cell><cell>0.439</cell><cell>0.290</cell><cell>0.343</cell><cell>0.275 0.000</cell></row><row><cell>Mask-RCNN</cell><cell></cell><cell>0.472</cell><cell>0.403</cell><cell>0.290</cell><cell>0.300 0.069</cell></row><row><cell>Micro-Net</cell><cell></cell><cell>0.504</cell><cell>0.442</cell><cell>0.333</cell><cell>0.334 0.051</cell></row><row><cell>HoVer-Net</cell><cell></cell><cell>0.551</cell><cell>0.491</cell><cell>0.417</cell><cell>0.388 0.139</cell></row><row><cell>TSFD-Net*</cell><cell></cell><cell>0.572</cell><cell>0.566</cell><cell>0.453</cell><cell>0.423 0.214</cell></row><row><cell cols="2">STARDIST (RN50)** SD CPP</cell><cell>0.564</cell><cell>0.543</cell><cell>0.398</cell><cell>0.388 0.024</cell></row><row><cell cols="2">STARDIST (RN50)** SD CellViT</cell><cell>0.547</cell><cell>0.532</cell><cell>0.424</cell><cell>0.380 0.123</cell></row><row><cell>CellViT-SAM-H</cell><cell>HV CellViT</cell><cell>0.581</cell><cell>0.583</cell><cell>0.417</cell><cell>0.423 0.149</cell></row><row><cell>CellViT 256</cell><cell>HV CellViT</cell><cell>0.567</cell><cell>0.559</cell><cell>0.405</cell><cell>0.405 0.144</cell></row><row><cell>CellViT 256 -Raw</cell><cell>HV CellViT</cell><cell>0.495</cell><cell>0.465</cell><cell>0.344</cell><cell>0.335 0.067</cell></row><row><cell>CellViT 256 -Over</cell><cell>HV CellViT</cell><cell>0.494</cell><cell>0.467</cell><cell>0.349</cell><cell>0.339 0.071</cell></row><row><cell>CellViT 256 -Aug</cell><cell>HV CellViT</cell><cell>0.565</cell><cell>0.558</cell><cell>0.419</cell><cell>0.403 0.156</cell></row><row><cell cols="2">CellViT 256 -No-FC HV CellViT</cell><cell>0.567</cell><cell>0.548</cell><cell>0.416</cell><cell>0.404 0.141</cell></row><row><cell>CellViT 256</cell><cell>SD CellViT</cell><cell>0.516</cell><cell>0.507</cell><cell>0.400</cell><cell>0.331 0.128</cell></row><row><cell>CellViT-SAM-H</cell><cell>SD CellViT</cell><cell>0.548</cell><cell>0.544</cell><cell>0.400</cell><cell>0.347 0.132</cell></row><row><cell>CellViT 256</cell><cell>CPP CellViT</cell><cell>0.540</cell><cell>0.524</cell><cell>0.414</cell><cell>0.369 0.133</cell></row><row><cell>CellViT-SAM-H</cell><cell>CPP CellViT</cell><cell>0.571</cell><cell>0.565</cell><cell>0.405</cell><cell>0.395 0.131</cell></row><row><cell>CellViT 256 *** (0.50 µm/px)</cell><cell>HV CellViT</cell><cell>0.497</cell><cell>0.467</cell><cell>0.292</cell><cell>0.285 0.021</cell></row><row><cell>CellViT-SAM-H*** (0.50 µm/px)</cell><cell>HV CellViT</cell><cell>0.528</cell><cell>0.502</cell><cell>0.315</cell><cell>0.311 0.031</cell></row><row><cell cols="4">5.2 Segmentation Quality on PanNuke</cell><cell></cell><cell></cell></row><row><cell cols="6">To assess the segmentation quality, the panoptic quality is used.</cell></row><row><cell cols="6">Tab. 2 presents the PQ values for each nuclei type, averaged over</cell></row><row><cell cols="6">all tissue types. Among all settings, CellViT 256 and CellViT-</cell></row><row><cell cols="6">SAM-H networks with HoVer-Net decoder excell in neoplastic,</cell></row><row><cell cols="6">connective, and epithelial nuclei. However, in the case of in-</cell></row><row><cell cols="6">flammatory and connective nuclei, they are outperformed by</cell></row><row><cell cols="6">TSFD-Net due to its larger training dataset (80/20 split vs. 33/67</cell></row><row><cell cols="6">split). Notably, all models consistently yield the lowest results</cell></row><row><cell cols="6">for dead cells, attributed to class imbalance and the small size of</cell></row><row><cell cols="6">dead cells. To further analyze the influence of Focal Tversky loss</cell></row><row><cell cols="6">and our custom oversampling strategy, we included PQ values</cell></row><row><cell cols="6">for the CellViT 256 model (HoVer-Net decoder) with different reg-</cell></row><row><cell cols="6">ularization techniques in Tab. 2. It is observed that the segmen-</cell></row><row><cell cols="6">tation quality is improved by oversampling (CellViT 256 -Over)</cell></row><row><cell cols="6">for almost all nuclei classes except neoplastic nuclei. The deteri-</cell></row><row><cell cols="6">oration of neoplastic nuclei is attributed to the class rebalancing,</cell></row><row><cell cols="6">as neoplastic nuclei constitute the majority class in the dataset.</cell></row><row><cell cols="6">Removing the Focal Tversky loss (CellViT 256 -No-FC), leads to</cell></row><row><cell cols="6">a decrease in panoptic quality for all classes, except neoplas-</cell></row><row><cell cols="6">tic nuclei again. Models employing STARDIST and CPP-Net</cell></row><row><cell cols="6">decoders achieve lower panoptic quality than HoVer-Net de-</cell></row><row><cell cols="6">coder models but surpass baseline networks. The results for</cell></row><row><cell cols="6">the 0.50 µm/px models reveal a significant drop in performance</cell></row><row><cell cols="3">when using the downscaled data.</cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="6">Finally, we evaluate the segmentation performance of the</cell></row><row><cell cols="6">CellViT 256 and CellViT-SAM-H models with HoVer-</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 3 :</head><label>3</label><figDesc>Average mPQ and bPQ across the 19 tissue types of the PanNuke dataset for three-fold cross-validation. The standard deviation (STD) of the splits is provided in the final row. STARDIST models with with ResNet50 (RN50) encoder were re-trained with CPP-Net hyperparameters (CPP-HP) and CellViT hyperparameters (CellViT-HP) for comparison. For the CellViT models, just the architecture with HoVer-Net decoder (HV-Net) is given. *TSFD-Net was not evaluated on the official three-fold splits of the PanNuke dataset and left out by the comparison **STARDIST trained by Chen et al.<ref type="bibr" target="#b35">[29]</ref> ***Model re-trained by ourselves</figDesc><table><row><cell></cell><cell cols="2">HoVer-Net</cell><cell cols="2">TSFD-Net*</cell><cell cols="2">STARDIST**</cell><cell cols="2">STARDIST***</cell><cell cols="2">STARDIST***</cell><cell>CPP-Net</cell><cell></cell><cell cols="2">CellViT256</cell><cell cols="2">CellViT-SAM-H</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell cols="2">RN50 encoder</cell><cell cols="2">RN50 encoder CPP-HP</cell><cell cols="2">RN50 encoder CellViT-HP</cell><cell cols="2">RN50 encoder</cell><cell cols="2">HV-Net decoder CellViT-HP</cell><cell cols="2">HV-Net decoder CellViT-HP</cell></row><row><cell>Tissue</cell><cell>mPQ</cell><cell>bPQ</cell><cell>mPQ</cell><cell>bPQ</cell><cell>mPQ</cell><cell>bPQ</cell><cell>mPQ</cell><cell>bPQ</cell><cell>mPQ</cell><cell>bPQ</cell><cell>mPQ</cell><cell>bPQ</cell><cell>mPQ</cell><cell>bPQ</cell><cell>mPQ</cell><cell>bPQ</cell></row><row><cell>Adrenal</cell><cell cols="2">0.4812 0.6962</cell><cell cols="2">0.5223 0.6900</cell><cell cols="2">0.4868 0.6972</cell><cell cols="2">0.4928 0.6954</cell><cell cols="2">0.4834 0.6884</cell><cell cols="2">0.4922 0.7031</cell><cell cols="2">0.4950 0.7009</cell><cell cols="2">0.5134 0.7086</cell></row><row><cell>Bile Duct</cell><cell cols="2">0.4714 0.6696</cell><cell cols="2">0.5000 0.6284</cell><cell cols="2">0.4651 0.6690</cell><cell cols="2">0.4632 0.6583</cell><cell cols="2">0.4680 0.6564</cell><cell cols="2">0.4650 0.6739</cell><cell cols="2">0.4721 0.6705</cell><cell cols="2">0.4887 0.6784</cell></row><row><cell>Bladder</cell><cell cols="2">0.5792 0.7031</cell><cell cols="2">0.5738 0.6773</cell><cell cols="2">0.5793 0.6986</cell><cell cols="2">0.5643 0.6949</cell><cell cols="2">0.5730 0.6901</cell><cell cols="2">0.5932 0.7057</cell><cell cols="2">0.5756 0.7056</cell><cell cols="2">0.5844 0.7068</cell></row><row><cell>Breast</cell><cell cols="2">0.4902 0.6470</cell><cell cols="2">0.5106 0.6245</cell><cell cols="2">0.5064 0.6666</cell><cell cols="2">0.4948 0.6585</cell><cell cols="2">0.4889 0.6497</cell><cell cols="2">0.5066 0.6718</cell><cell cols="2">0.5089 0.6641</cell><cell cols="2">0.5180 0.6748</cell></row><row><cell>Cervix</cell><cell cols="2">0.4438 0.6652</cell><cell cols="2">0.5204 0.6561</cell><cell cols="2">0.4628 0.6690</cell><cell cols="2">0.4752 0.6739</cell><cell cols="2">0.4781 0.6685</cell><cell cols="2">0.4779 0.6880</cell><cell cols="2">0.4893 0.6862</cell><cell cols="2">0.4984 0.6872</cell></row><row><cell>Colon</cell><cell cols="2">0.4095 0.5575</cell><cell cols="2">0.4382 0.5370</cell><cell cols="2">0.4205 0.5779</cell><cell cols="2">0.4230 0.5704</cell><cell cols="2">0.4087 0.5555</cell><cell cols="2">0.4269 0.5888</cell><cell cols="2">0.4245 0.5700</cell><cell cols="2">0.4485 0.5921</cell></row><row><cell>Esophagus</cell><cell cols="2">0.5085 0.6427</cell><cell cols="2">0.5438 0.6306</cell><cell cols="2">0.5331 0.6655</cell><cell cols="2">0.5200 0.6508</cell><cell cols="2">0.5175 0.6446</cell><cell cols="2">0.5410 0.6755</cell><cell cols="2">0.5373 0.6619</cell><cell cols="2">0.5454 0.6682</cell></row><row><cell cols="3">Head &amp; Neck 0.4530 0.6331</cell><cell cols="2">0.4937 0.6277</cell><cell cols="2">0.4768 0.6433</cell><cell cols="2">0.4660 0.6305</cell><cell cols="2">0.4629 0.6215</cell><cell cols="2">0.4667 0.6468</cell><cell cols="2">0.4901 0.6472</cell><cell cols="2">0.4913 0.6544</cell></row><row><cell>Kidney</cell><cell cols="2">0.4424 0.6836</cell><cell cols="2">0.5517 0.6824</cell><cell cols="2">0.5880 0.6998</cell><cell cols="2">0.5090 0.6888</cell><cell cols="2">0.4750 0.6800</cell><cell cols="2">0.5092 0.7001</cell><cell cols="2">0.5409 0.6993</cell><cell cols="2">0.5366 0.7092</cell></row><row><cell>Liver</cell><cell cols="2">0.4974 0.7248</cell><cell cols="2">0.5079 0.6675</cell><cell cols="2">0.5145 0.7231</cell><cell cols="2">0.4899 0.7106</cell><cell cols="2">0.5034 0.7051</cell><cell cols="2">0.5099 0.7271</cell><cell cols="2">0.5065 0.7160</cell><cell cols="2">0.5224 0.7322</cell></row><row><cell>Lung</cell><cell cols="2">0.4004 0.6302</cell><cell cols="2">0.4274 0.5941</cell><cell cols="2">0.4128 0.6362</cell><cell cols="2">0.3627 0.6087</cell><cell cols="2">0.3931 0.6205</cell><cell cols="2">0.4234 0.6364</cell><cell cols="2">0.4102 0.6317</cell><cell cols="2">0.4314 0.6426</cell></row><row><cell>Ovarian</cell><cell cols="2">0.4863 0.6309</cell><cell cols="2">0.5253 0.6431</cell><cell cols="2">0.5205 0.6668</cell><cell cols="2">0.5106 0.6573</cell><cell cols="2">0.5204 0.6547</cell><cell cols="2">0.5276 0.6792</cell><cell cols="2">0.5260 0.6596</cell><cell cols="2">0.5390 0.6722</cell></row><row><cell>Pancreatic</cell><cell cols="2">0.4600 0.6491</cell><cell cols="2">0.4893 0.6241</cell><cell cols="2">0.4585 0.6601</cell><cell cols="2">0.4548 0.6516</cell><cell cols="2">0.4526 0.6439</cell><cell cols="2">0.4680 0.6742</cell><cell cols="2">0.4769 0.6643</cell><cell cols="2">0.4719 0.6658</cell></row><row><cell>Prostate</cell><cell cols="2">0.5101 0.6615</cell><cell cols="2">0.5431 0.6406</cell><cell cols="2">0.5067 0.6748</cell><cell cols="2">0.4905 0.6561</cell><cell cols="2">0.4812 0.6457</cell><cell cols="2">0.5261 0.6903</cell><cell cols="2">0.5164 0.6695</cell><cell cols="2">0.5321 0.6821</cell></row><row><cell>Skin</cell><cell cols="2">0.3429 0.6234</cell><cell cols="2">0.4354 0.6074</cell><cell cols="2">0.3610 0.6289</cell><cell cols="2">0.3826 0.6349</cell><cell cols="2">0.3709 0.6197</cell><cell cols="2">0.3547 0.6192</cell><cell cols="2">0.3661 0.6400</cell><cell cols="2">0.4339 0.6565</cell></row><row><cell>Stomach</cell><cell cols="2">0.4726 0.6886</cell><cell cols="2">0.4871 0.6529</cell><cell cols="2">0.4477 0.6944</cell><cell cols="2">0.4239 0.6769</cell><cell cols="2">0.4194 0.6642</cell><cell cols="2">0.4553 0.7043</cell><cell cols="2">0.4475 0.6918</cell><cell cols="2">0.4705 0.7022</cell></row><row><cell>Testis</cell><cell cols="2">0.4754 0.6890</cell><cell cols="2">0.4843 0.6435</cell><cell cols="2">0.4942 0.6869</cell><cell cols="2">0.4819 0.6848</cell><cell cols="2">0.5141 0.6812</cell><cell cols="2">0.4917 0.7006</cell><cell cols="2">0.5091 0.6883</cell><cell cols="2">0.5127 0.6955</cell></row><row><cell>Thyroid</cell><cell cols="2">0.4315 0.6983</cell><cell cols="2">0.5154 0.6692</cell><cell cols="2">0.4300 0.6962</cell><cell cols="2">0.4246 0.6962</cell><cell cols="2">0.4175 0.6921</cell><cell cols="2">0.4344 0.7094</cell><cell cols="2">0.4412 0.7035</cell><cell cols="2">0.4519 0.7151</cell></row><row><cell>Uterus</cell><cell cols="2">0.4393 0.6393</cell><cell cols="2">0.5068 0.6204</cell><cell cols="2">0.4480 0.6599</cell><cell cols="2">0.4452 0.6455</cell><cell cols="2">0.4683 0.6428</cell><cell cols="2">0.4790 0.6622</cell><cell cols="2">0.4737 0.6516</cell><cell cols="2">0.4737 0.6625</cell></row><row><cell>Average</cell><cell cols="2">0.4629 0.6596</cell><cell cols="2">0.5040 0.6377</cell><cell cols="2">0.4796 0.6692</cell><cell cols="2">0.4671 0.6602</cell><cell cols="2">0.4682 0.6539</cell><cell cols="2">0.4815 0.6767</cell><cell cols="2">0.4846 0.6696</cell><cell cols="2">0.4980 0.6793</cell></row><row><cell>STD</cell><cell cols="2">0.0076 0.0036</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell cols="2">0.0489 0.0340</cell><cell cols="2">0.0496 0.0348</cell><cell>-</cell><cell>-</cell><cell cols="2">0.0503 0.0340</cell><cell cols="2">0.0413 0.0318</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 4 :</head><label>4</label><figDesc>MoNuSeg validation result for CellViT 256 and CellViT-SAM-H models with HoVer-Net decoder and trained with CellViT hyperparameters on different dataset resolutions and inference patch sizes averaged over all three PanNuke training folds. The original image size for 0.25 µm/px resolution with ×40 magnification (mag.) is 1024 px, and 512 px for 0.25 µm/px (×20 mag.). *Models trained on downscaled 0.50 µm/px PanNuke images</figDesc><table><row><cell>Dataset</cell><cell>Inference patch size</cell><cell cols="4">256 px with 64 px overlap</cell><cell cols="4">256 px without overlap</cell><cell></cell><cell cols="3">1024 px (no patching)</cell></row><row><cell>resolution</cell><cell>Metric</cell><cell>bPQ</cell><cell>P d</cell><cell>R d</cell><cell>F 1 , d</cell><cell>bPQ</cell><cell>P d</cell><cell>R d</cell><cell>F 1 , d</cell><cell>bPQ</cell><cell>P d</cell><cell>R d</cell><cell>F 1 , d</cell></row><row><cell></cell><cell>CellViT 256</cell><cell cols="4">0.660 0.841 0.886 0.863</cell><cell cols="4">0.621 0.814 0.897 0.853</cell><cell cols="4">0.661 0.838 0.859 0.848</cell></row><row><cell>0.25 µm/px</cell><cell>CellViT-SAM-H</cell><cell cols="4">0.671 0.846 0.893 0.868</cell><cell cols="4">0.631 0.814 0.906 0.857</cell><cell cols="2">0.672 0.847</cell><cell cols="2">0.885 0.865</cell></row><row><cell>(×40 mag.)</cell><cell>CellViT 256 (0.50 µm/px)*</cell><cell cols="4">0.509 0.748 0.893 0.804</cell><cell cols="4">0.491 0.728 0.895 0.792</cell><cell cols="4">0.515 0.759 0.905 0.813</cell></row><row><cell></cell><cell>CellViT-SAM-H (0.50 µm/px)*</cell><cell cols="4">0.524 0.746 0.963 0.840</cell><cell cols="4">0.514 0.729 0.963 0.829</cell><cell cols="4">0.540 0.749 0.966 0.842</cell></row><row><cell></cell><cell></cell><cell cols="4">256 px with 64 px overlap</cell><cell cols="4">256 px without overlap</cell><cell></cell><cell cols="2">512 px (no patching)</cell><cell></cell></row><row><cell></cell><cell>CellViT 256</cell><cell cols="4">0.588 0.918 0.766 0.834</cell><cell cols="4">0.586 0.902 0.759 0.824</cell><cell cols="4">0.593 0.919 0.771 0.837</cell></row><row><cell>0.50 µm/px</cell><cell>CellViT-SAM-H</cell><cell cols="4">0.627 0.922 0.791 0.851</cell><cell cols="4">0.620 0.908 0.784 0.841</cell><cell cols="4">0.627 0.909 0.792 0.846</cell></row><row><cell>(×20 mag.)</cell><cell>CellViT 256 (0.50 µm/px)*</cell><cell cols="4">0.643 0.874 0.803 0.836</cell><cell cols="4">0.640 0.867 0.797 0.830</cell><cell cols="4">0.644 0.873 0.810 0.840</cell></row><row><cell></cell><cell>CellViT-SAM-H (0.50 µm/px)*</cell><cell cols="4">0.649 0.835 0.814 0.824</cell><cell cols="4">0.648 0.841 0.820 0.830</cell><cell cols="3">0.655 0.840 0.829</cell><cell>0.834</cell></row><row><cell cols="5">detection experiments in Sec. 5.1, we retrained the baseline</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">STARDIST model with the ResNet50 encoder. Even though</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">we are not able to reproduce segmentation results reported by</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="6">Chen et al. [29] with CPP-Net and our hyperparameter settings,</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">we include all three results in Tab. 3 for a fair comparison</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">(STARDIST ResNet50 [29], STARDIST ResNet50 re-trained</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">with CPP-Net hyperparameters, and STARDIST ResNet50 with</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">our hyperparameters). Our experimental results demonstrate</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="6">that CPP-Net and STARDIST (both with ResNet50 encoder)</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">exhibit comparable bPQ values, whereas our CellViT models</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="6">achieve superior mPQ. This is primarily attributed to the su-</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="5">perior detection capabilities of our models, which significantly</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="6">impacts the mPQ value. The best average model is CellViT-</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table><note><p>SAM-H with the HoVer-Net decoder architecture trained with our hyperparameter settings. Segmentation results per tissue for 0.50 µm/px are given in the Appendix A.1.</p></note></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1" xml:id="foot_0"><p>https://github.com/mahmoodlab/HIPT</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2" xml:id="foot_1"><p>https://github.com/facebookresearch/segment-anything ing that a 48 GB NVIDIA RTX A6000 is also sufficient for the ViT 256 and SAM-B model training.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_2"><p>CellViT: Vision Transformers for Precise Cell Segmentation and Classification</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgments</head><p>This work received funding from '<rs type="programName">KITE' (Plattform für KI-Translation Essen</rs>) from the <rs type="funder">REACT-EU initiative</rs> (<ref type="url" target="https://kite.ikim.nrw/">https://  kite.ikim.nrw/</ref>, <rs type="grantNumber">EFRE-0801977</rs>) and the <rs type="funder">Cancer Research Center Cologne Essen (CCCE)</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_5X7VQWy">
+					<idno type="grant-number">EFRE-0801977</idno>
+					<orgName type="program" subtype="full">KITE&apos; (Plattform für KI-Translation Essen</orgName>
+				</org>
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data availability</head><p>The used datasets are publicly available. All models and source-code are available online here: <ref type="url" target="https://github.com/TIO-IKIM/CellViT">https://github.com/  TIO-IKIM/CellViT</ref> </p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"> <ref type="bibr" target="#b18">(12)</ref> <p>with the individual loss branches</p><p>and weighting factors λ PD BCE = λ SD MSE = λ NT DICE = λ NT BCE = 1. For L PD and L PD , the loss is weighted by the ground-truth object probabilities. When using the CPP-Net networks, we used the same loss function as in eq. ( <ref type="formula">12</ref>), but changed the nuclei type loss to</p><p>2 and λ NT BCE = 0.5, as we achieved superior results with this setting.</p><p>A.2 Supplementary Tables  </p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<title/>
+		<author>
+			<persName><surname>Adrenal-Gland</surname></persName>
+		</author>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page">948</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m">Bile-duct(9,048) Bladder</title>
+		<imprint>
+			<biblScope unit="volume">839</biblScope>
+		</imprint>
+	</monogr>
+	<note>Breast(51,077) Cervix(7,288) Colon(35,711</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title/>
+		<author>
+			<persName><surname>Ovarian</surname></persName>
+		</author>
+		<imprint>
+			<date>3,857</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title/>
+		<author>
+			<persName><surname>Pancreatic</surname></persName>
+		</author>
+		<imprint>
+			<biblScope unit="volume">434</biblScope>
+		</imprint>
+	</monogr>
+	<note>Prostate(4,175) Skin(7,081</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title/>
+	</analytic>
+	<monogr>
+		<title level="j">Cell-Count</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page">0</biblScope>
+		</imprint>
+	</monogr>
+	<note>Thyroid(4,896) Uterus(8,791 000 20,000 30,000 40,000 50</note>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<title level="m" type="main">Neoplastic</title>
+		<author>
+			<persName><surname>Inflammatory</surname></persName>
+		</author>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+		</imprint>
+	</monogr>
+	<note>Dead(2,908) Epithelial(26,572</note>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title/>
+		<author>
+			<persName><surname>Connective</surname></persName>
+		</author>
+		<imprint>
+			<biblScope unit="volume">50</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">The global burden of cancer attributable to risk factors, 2010-19: a systematic analysis for the global burden of disease study</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">B</forename><surname>Tran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Lang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Compton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">R</forename><surname>Acheson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">J</forename><surname>Henrikson</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/s0140-6736(22)01438-6</idno>
+	</analytic>
+	<monogr>
+		<title level="j">The Lancet</title>
+		<imprint>
+			<biblScope unit="volume">400</biblScope>
+			<biblScope unit="page" from="563" to="591" />
+			<date type="published" when="2019">2019. 10352. August 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Clinical significance of tumor-infiltrating lymphocytes in breast cancer</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">E</forename><surname>Stanton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">L</forename><surname>Disis</surname></persName>
+		</author>
+		<idno type="DOI">10.1186/s40425-016-0165-6</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal for ImmunoTherapy of Cancer</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<date type="published" when="2016-10">October 2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Inflammation and cancer: Triggers, mechanisms, and consequences</title>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">R</forename><surname>Greten</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">I</forename><surname>Grivennikov</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.immuni.2019.06.025</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Immunity</title>
+		<imprint>
+			<biblScope unit="volume">51</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="27" to="41" />
+			<date type="published" when="2019-07">July 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Spatially confined sub-tumor microenvironments in pancreatic cancer</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">T</forename><surname>Grünwald</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Devisme</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Andrieux</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Vyas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Aliar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">W</forename><surname>Mccloskey</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.cell.2021.09.022</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">184</biblScope>
+			<biblScope unit="issue">22</biblScope>
+			<biblScope unit="page" from="5577" to="5592" />
+			<date type="published" when="2021-10">October 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Valuing vicinity: Memory attention framework for context-based semantic segmentation in histopathology</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ester</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Hörst</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Seibold</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Keyl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ting</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Vasileiadis</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.compmedimag.2023.102238</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Computerized Medical Imaging and Graphics</title>
+		<imprint>
+			<biblScope unit="volume">107</biblScope>
+			<biblScope unit="page">102238</biblScope>
+			<date type="published" when="2023-07">July 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Data-efficient and weakly supervised computational pathology on whole-slide images</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Y</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">F K</forename><surname>Williamson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">Y</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Barbieri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Mahmood</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41551-020-00682-w</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Biomedical Engineering</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="555" to="570" />
+			<date type="published" when="2021-03">March 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title level="m" type="main">Histology-based prediction of therapy response to neoadjuvant chemotherapy for esophageal and esophagogastric junction adenocarcinomas using deep learning</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Hörst</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ting</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">T</forename><surname>Liffers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">L</forename><surname>Pomykala</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Steiger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Albertsmeier</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<publisher>JCO Clinical Cancer Informatics</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Hover-net: Simultaneous segmentation and classification of nuclei in multi-tissue histology images</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Graham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">D</forename><surname>Vu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">E A</forename><surname>Raza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Azam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">W</forename><surname>Tsang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">T</forename><surname>Kwak</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.media.2019.101563</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Medical Image Analysis</title>
+		<idno type="ISSN">1361-8415</idno>
+		<imprint>
+			<biblScope unit="volume">58</biblScope>
+			<biblScope unit="page">101563</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">TSFD-Net: Tissue specific feature distillation network for nuclei segmentation and classification</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ilyas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><forename type="middle">I</forename><surname>Mannan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Khan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Azam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">De</forename><surname>Boer</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.neunet.2022.02.020</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Neural Networks</title>
+		<idno type="ISSN">0893-6080</idno>
+		<imprint>
+			<biblScope unit="volume">151</biblScope>
+			<biblScope unit="page" from="1" to="15" />
+			<date type="published" when="2022-07">July 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">One model is all you need: Multi-task learning enables simultaneous histology image segmentation and classification</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Graham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">D</forename><surname>Vu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jahanifar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">E A</forename><surname>Raza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Minhas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Snead</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.media.2022.102685</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Medical Image Analysis</title>
+		<idno type="ISSN">1361-8415</idno>
+		<imprint>
+			<biblScope unit="volume">83</biblScope>
+			<biblScope unit="page">102685</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Novel digital signatures of tissue phenotypes for predicting distant metastasis in colorectal cancer</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Sirinukunwattana</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Snead</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Epstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Aftab</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Mujeeb</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">W</forename><surname>Tsang</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41598-018-31799-3</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Scientific Reports</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<date type="published" when="2018-09">September 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Training a cell-level classifier for detecting basal-cell carcinoma by combining human visual attention maps with low-level handcrafted features</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Corredor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Whitney</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Arias</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Madabhushi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Romero</surname></persName>
+		</author>
+		<idno type="DOI">10.1117/1.jmi.4.2.021105</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page">21105</biblScope>
+			<date type="published" when="2017-03">March 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Clinical-grade computational pathology using weakly supervised deep learning on whole slide images</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Campanella</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">G</forename><surname>Hanna</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Geneslaw</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Miraflor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Werneck</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Silva</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41591-019-0508-1</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Medicine</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="1301" to="1309" />
+			<date type="published" when="2019-07">July 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<title level="m" type="main">CoNIC: Colon nuclei identification and counting challenge 2022</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Graham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jahanifar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">D</forename><surname>Vu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Hadjigeorghiou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Leech</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Snead</surname></persName>
+		</author>
+		<idno type="DOI">10.48550/arXiv.2111.14485</idno>
+		<imprint>
+			<date type="published" when="2021-11">November 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv Preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Extraction of informative cell features by segmentation of densely clustered tissue images</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Kothari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Chaudry</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">D</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/iembs.2009.5333810</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Annual International Conference of the IEEE Engineering in Medicine and Biology Society</title>
+		<imprint>
+			<date type="published" when="2009-09">2009. September 2009</date>
+			<publisher>IEEE</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Murray</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Kaissis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Braren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kleesiek</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s00117-019-00617-w</idno>
+		<title level="m">Wie funktioniert radiomics? Der Radiologe</title>
+		<imprint>
+			<publisher>December</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="volume">60</biblScope>
+			<biblScope unit="page" from="32" to="41" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title level="m" type="main">PanNuke dataset extension, insights and baselines</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gamper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">A</forename><surname>Koohbanani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Benes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Graham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jahanifar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Khurram</surname></persName>
+		</author>
+		<idno type="DOI">10.48550/arXiv.2003.10778</idno>
+		<imprint>
+			<date type="published" when="2020-04">April 2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv Preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Scaling vision transformers to gigapixel images via hierarchical self-supervised learning</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">Y</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">D</forename><surname>Trister</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">G</forename><surname>Krishnan</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/CVPR52688.2022.01567</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</meeting>
+		<imprint>
+			<date type="published" when="2022-06">June 2022</date>
+			<biblScope unit="page" from="16144" to="16155" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<title level="m" type="main">Segment anything. arXiv Preprint</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kirillov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Mintun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ravi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Rolland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Gustafson</surname></persName>
+		</author>
+		<idno type="DOI">10.48550/arXiv.2304.02643</idno>
+		<imprint>
+			<date type="published" when="2023-04">April 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<title level="m" type="main">UNETR: Transformers for 3D medical image segmentation</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hatamizadeh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Nath</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Myronenko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Landman</surname></persName>
+		</author>
+		<idno type="DOI">10.48550/arXiv.2103.10504</idno>
+		<imprint>
+			<date type="published" when="2021-10">October 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv Preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Nuclei segmentation using marker-controlled watershed, tracking using mean-shift, and kalman filter in time-lapse microscopy</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhou</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TCSI.2006.884469</idno>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE Transactions on Circuits and Systems I: Regular Papers</title>
+		<imprint>
+			<date type="published" when="2006">2006</date>
+			<biblScope unit="volume">53</biblScope>
+			<biblScope unit="page" from="2405" to="2414" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Applying watershed algorithms to the segmentation of clustered nuclei</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Malpica</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">O</forename><surname>De Solórzano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Vaquero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Santos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Vallcorba</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>García-Sagredo</surname></persName>
+		</author>
+		<idno type="DOI">10.1002/(sici)1097-0320(19970801)28:4&lt;289</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Cytometry</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="289" to="297" />
+			<date type="published" when="1998-12">December 1998</date>
+		</imprint>
+	</monogr>
+	<note>aid-cyto3&gt;3.0.co;2-7</note>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Multi-pass fast watershed for accurate segmentation of overlapping cervical cells</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tareef</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TMI.2018.2815013</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="2044" to="2059" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Segmentation of clustered nuclei with shape markers and marking function</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">C</forename><surname>Rajapakse</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TBME.2008.2008635</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Biomedical Engineering</title>
+		<imprint>
+			<biblScope unit="volume">56</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="741" to="748" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Automatic nuclei segmentation in h&amp;e stained breast cancer histopathology images</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Veta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Van Diest</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Kornegoor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Huisman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Viergever</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">P W</forename><surname>Pluim</surname></persName>
+		</author>
+		<idno type="DOI">10.1371/journal.pone.0070221</idno>
+	</analytic>
+	<monogr>
+		<title level="j">PLOS ONE</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page">7</biblScope>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">An integrated region-, boundary-, shape-based active contour for multiple object overlap resolution in histological imagery</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ali</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Madabhushi</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TMI.2012.2190089</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1448" to="1460" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Detection and segmentation of cell nuclei in virtual microscopy images: A minimum-model approach</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wienert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Heim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Saeger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Stenzinger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Beil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Hufnagl</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/srep00503</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Scientific Reports</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<date type="published" when="2012-07">July 2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Automatic segmentation for cell images based on bottleneck detection and ellipse fitting</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">Q</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><forename type="middle">H</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">S</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><forename type="middle">W</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">K</forename><surname>Zhang</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.neucom.2015.08.006</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Neurocomputing</title>
+		<imprint>
+			<biblScope unit="volume">173</biblScope>
+			<biblScope unit="page" from="615" to="622" />
+			<date type="published" when="2016-01">January 2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">CPP-Net: Context-aware polygon proposal network for nucleus segmentation</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Tao</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TIP.2023.3237013</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Image Processing</title>
+		<idno type="ISSN">1941-0042</idno>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="980" to="994" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Image segmentation using deep learning: A survey</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Minaee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Boykov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Porikli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Plaza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Kehtarnavaz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Terzopoulos</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TPAMI.2021.3059968</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Pattern Analysis and Machine Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">44</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="3523" to="3542" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">A guide to deep learning in healthcare</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Esteva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Robicquet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Ramsundar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Kuleshov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Depristo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Chou</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41591-018-0316-z</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Medicine</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="24" to="29" />
+			<date type="published" when="2019-01">January 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Deep learning</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lecun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Bengio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Hinton</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nature14539</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">521</biblScope>
+			<biblScope unit="issue">7553</biblScope>
+			<biblScope unit="page" from="436" to="444" />
+			<date type="published" when="2015-05">May 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">U-net: Convolutional networks for biomedical image segmentation</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ronneberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Brox</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="s">Lecture Notes in Computer Science</title>
+		<imprint>
+			<biblScope unit="page" from="234" to="241" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1007/978-3-319-24574-4_28</idno>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<publisher>Springer International Publishing</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">nnU-net: a self-configuring method for deep learning-based biomedical image segmentation</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Isensee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">F</forename><surname>Jaeger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A A</forename><surname>Kohl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Petersen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">H</forename><surname>Maier-Hein</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41592-020-01008-z</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="203" to="211" />
+			<date type="published" when="2020-12">December 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Radiology artificial intelligence: a systematic review and evaluation of methods (RAISE)</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">S</forename><surname>Kelly</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Judge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Bollard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Clifford</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">M</forename><surname>Healy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Aziz</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s00330-022-08784-6</idno>
+	</analytic>
+	<monogr>
+		<title level="j">European Radiology</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page" from="7998" to="8007" />
+			<date type="published" when="2022-04">April 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">U-net and its variants for medical image segmentation: A review of theory and applications</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Siddique</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Paheding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">P</forename><surname>Elkin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Devabhaktuni</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ACCESS.2021.3086020</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Access</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="82031" to="82057" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Mask r-cnn</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Gkioxari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dollar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE International Conference on Computer Vision (ICCV)</title>
+		<meeting>the IEEE International Conference on Computer Vision (ICCV)</meeting>
+		<imprint>
+			<date type="published" when="2017-10">Oct 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Fast r-cnn</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ICCV.2017.322</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE International Conference on Computer Vision (ICCV), December</title>
+		<meeting>the IEEE International Conference on Computer Vision (ICCV), December</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Nuclear instance segmentation using a proposal-free spatially aware deep learning framework</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">A</forename><surname>Koohbanani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Jahanifar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Gooya</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Rajpoot</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/978-3-030-32239-7_69</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Lecture Notes in Computer Science</title>
+		<imprint>
+			<publisher>Springer International Publishing</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="622" to="630" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Accurate cervical cell segmentation from overlapping clumps in pap smear images</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">L</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">Z</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chen</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TMI.2016.2606380</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="288" to="300" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Micro-net: A unified model for segmentation of various objects in microscopy images</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">E</forename><surname>Raza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Cheung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Shaban</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Graham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Epstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Pelengaris</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.media.2018.12.003</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Medical Image Analysis</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="page" from="160" to="173" />
+			<date type="published" when="2019-02">February 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Segmentation of nuclei in histopathology images by deep regression of the distance map</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Naylor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Laé</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Reyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Walter</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TMI.2018.2865709</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">38</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="448" to="459" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Nuclei Instance Segmentation and Classification in Histopathology Images with Stardist</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Weigert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Schmidt</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ISBIC56247.2022.9854534</idno>
+	</analytic>
+	<monogr>
+		<title level="m">2022 IEEE International Symposium on Biomedical Imaging Challenges (ISBIC)</title>
+		<imprint>
+			<date type="published" when="2022-03">March 2022</date>
+			<biblScope unit="page" from="1" to="4" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Cell detection with star-convex polygons</title>
+		<author>
+			<persName><forename type="first">Uwe</forename><surname>Schmidt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Weigert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Coleman</forename><surname>Broaddus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gene</forename><surname>Myers</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Image Computing and Computer Assisted Intervention -MICCAI 2018</title>
+		<imprint>
+			<biblScope unit="page" from="265" to="273" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1007/978-3-030-00934-2_30</idno>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<publisher>Springer International Publishing</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Dcan: Deep contouraware networks for accurate gland segmentation</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Qi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Heng</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/CVPR.2016.273</idno>
+	</analytic>
+	<monogr>
+		<title level="m">2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<imprint>
+			<publisher>IEEE Computer Society</publisher>
+			<date type="published" when="2016-06">jun 2016</date>
+			<biblScope unit="page" from="2487" to="2496" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Feature pyramid networks for object detection</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dollar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Hariharan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Belongie</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/CVPR.2017.106</idno>
+	</analytic>
+	<monogr>
+		<title level="m">2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<imprint>
+			<publisher>IEEE Computer Society</publisher>
+			<date type="published" when="2017-07">jul 2017</date>
+			<biblScope unit="page" from="936" to="944" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Focal loss for dense object detection</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">Y</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Goyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ross</forename><forename type="middle">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dollár</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/tpami.2018.2858826</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE international conference on computer vision</title>
+		<meeting>the IEEE international conference on computer vision</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="2980" to="2988" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">A novel focal tversky loss function with improved attention u-net for lesion segmentation</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Nabila</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">M</forename><surname>Khan</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ISBI.2019.8759329</idno>
+	</analytic>
+	<monogr>
+		<title level="m">2019 IEEE 16th International Symposium on Biomedical Imaging (ISBI 2019)</title>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="683" to="687" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Attention is all you need</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Vaswani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Shazeer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Parmar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Uszkoreit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Gomez</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="volume">30</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<monogr>
+		<title level="m" type="main">An image is worth 16x16 words: Transformers for image recognition at scale. arXiv Preprint</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Dosovitskiy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Beyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kolesnikov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Weissenborn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Unterthiner</surname></persName>
+		</author>
+		<idno type="DOI">10.48550/arXiv.2010.11929</idno>
+		<imprint>
+			<date type="published" when="2021-06">June 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Emerging properties in self-supervised vision transformers</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Caron</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Touvron</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Misra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Jégou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mairal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bojanowski</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ICCV48922.2021.00951</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF international conference on computer vision</title>
+		<meeting>the IEEE/CVF international conference on computer vision</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="9650" to="9660" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Do vision transformers see like convolutional neural networks?</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Raghu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Unterthiner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Kornblith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Dosovitskiy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="12116" to="12128" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title level="a" type="main">Vit-yolo:transformer-based yolo for object detection</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Jiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Liu</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ICCVW54120.2021.00314</idno>
+	</analytic>
+	<monogr>
+		<title level="m">2021 IEEE/CVF International Conference on Computer Vision Workshops (ICCVW)</title>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="2799" to="2808" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<monogr>
+		<title level="m" type="main">Transformers make strong encoders for medical image segmentation</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">Y</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yu</surname></persName>
+		</author>
+		<idno type="DOI">10.48550/arXiv.2102.04306</idno>
+		<imprint>
+			<date type="published" when="2021-02">February 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<monogr>
+		<title level="m" type="main">Medical image segmentation using squeeze-and-expansion transformers. arXiv</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Sui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Goh</surname></persName>
+		</author>
+		<idno type="DOI">10.48550/arXiv.2105.09511</idno>
+		<imprint>
+			<date type="published" when="2021-05">May 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title level="a" type="main">Swin UNETR: Swin transformers for semantic segmentation of brain tumors in MRI images</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hatamizadeh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Nath</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">R</forename><surname>Roth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Xu</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/978-3-031-08999-2_22</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Brainlesion: Glioma, Multiple Sclerosis, Stroke and Traumatic Brain Injuries</title>
+		<imprint>
+			<publisher>Springer International Publishing</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="272" to="284" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title level="a" type="main">Segformer: Simple and efficient design for semantic segmentation with transformers</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Anandkumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Alvarez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Luo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="12077" to="12090" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">Rethinking semantic segmentation from a sequenceto-sequence perspective with transformers</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Wang</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/CVPR46437.2021.00681</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="6881" to="6890" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">A simple framework for contrastive learning of visual representations</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Kornblith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Norouzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Hinton</surname></persName>
+		</author>
+		<idno>PMLR</idno>
+	</analytic>
+	<monogr>
+		<title level="m">International conference on machine learning</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="1597" to="1607" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Momentum contrast for unsupervised visual representation learning</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/CVPR42600.2020.00975</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="9729" to="9738" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">Unsupervised learning of visual features by contrasting cluster assignments</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Caron</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Misra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mairal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Goyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bojanowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Joulin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in neural information processing systems</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="9912" to="9924" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">Bootstrap your own latent-a new approach to self-supervised learning</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Grill</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Strub</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Altché</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Tallec</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Richemond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Buchatskaya</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="21271" to="21284" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title level="a" type="main">Exploring simple siamese representation learning</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/CVPR46437.2021.01549</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="15750" to="15758" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<monogr>
+		<title level="m" type="main">On the opportunities and risks of foundation models. arXiv</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bommasani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A</forename><surname>Hudson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Adeli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Altman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Arora</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Von Arx</surname></persName>
+		</author>
+		<idno type="DOI">10.48550/arXiv.2108.07258</idno>
+		<imprint>
+			<date type="published" when="2021-08">August 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<analytic>
+		<title level="a" type="main">QuPath: Open source software for digital pathology image analysis</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bankhead</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">B</forename><surname>Loughrey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Fernández</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Dombrowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">G</forename><surname>Mcart</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">D</forename><surname>Dunne</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41598-017-17204-5</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Scientific Reports</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<date type="published" when="2017-12">December 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title level="a" type="main">A multi-organ nucleus segmentation challenge</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Verma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Anand</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><forename type="middle">F</forename><surname>Onder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Tsougenis</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TMI.2019.2947628</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="1380" to="1391" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<analytic>
+		<title level="a" type="main">A dataset and a technique for generalized nuclear segmentation for computational pathology</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Verma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bhargava</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Vahadane</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sethi</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TMI.2017.2677499</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE transactions on medical imaging</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1550" to="1560" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<analytic>
+		<title level="a" type="main">Deep residual learning for image recognition</title>
+		<author>
+			<persName><forename type="first">Kaiming</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangyu</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoqing</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="770" to="778" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<analytic>
+		<title level="a" type="main">Panoptic segmentation</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kirillov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Rother</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dollar</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/CVPR.2019.00963</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</meeting>
+		<imprint>
+			<date type="published" when="2019-06">June 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<analytic>
+		<title level="a" type="main">Locality sensitive deep learning for detection and classification of nuclei in routine colon cancer histology images</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Sirinukunwattana</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">E A</forename><surname>Raza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">W</forename><surname>Tsang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Snead</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">A</forename><surname>Cree</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">M</forename><surname>Rajpoot</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TMI.2016.2525803</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Medical Imaging</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="1196" to="1206" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<analytic>
+		<title level="a" type="main">Albumentations: fast and flexible image augmentations</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Buslaev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">I</forename><surname>Iglovikov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Khvedchenya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Parinov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Druzhinin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">A</forename><surname>Kalinin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Information</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page">125</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b80">
+	<monogr>
+		<author>
+			<persName><forename type="first">I</forename><surname>Loshchilov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Hutter</surname></persName>
+		</author>
+		<idno type="DOI">10.48550/arXiv.1711.05101</idno>
+		<title level="m">Decoupled weight decay regularization</title>
+		<imprint>
+			<date type="published" when="2017-11">November 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Adaptive Segment Anything Model for Spatial Transcriptomic Cell Segmentation</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>ACM</publisher>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2024-05-24">2024-05-24</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Yuxin</forename><surname>Pu</surname></persName>
+							<email>202221080301@std.uestc.edu.cn</email>
+							<idno type="ORCID">0009-0004-6272-3543</idno>
+							<affiliation key="aff0">
+								<orgName type="department">School of Computer Science and Engineering</orgName>
+								<orgName type="institution">University of Electronic Science and Technology of China Chengdu</orgName>
+								<address>
+									<settlement>Sichuan</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Adaptive Segment Anything Model for Spatial Transcriptomic Cell Segmentation</title>
+					</analytic>
+					<monogr>
+						<title level="m">Proceedings of the 2024 16th International Conference on Bioinformatics and Biomedical Technology</title>
+						<meeting>the 2024 16th International Conference on Bioinformatics and Biomedical Technology						</meeting>
+						<imprint>
+							<publisher>ACM</publisher>
+							<biblScope unit="page" from="31" to="37"/>
+							<date type="published" when="2024-05-24" />
+						</imprint>
+					</monogr>
+					<idno type="MD5">95C3DE2052F6F163A382916D6F2BFC16</idno>
+					<idno type="DOI">10.1145/3674658.3674664</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:10+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Cell Detection</term>
+					<term>Cell Segmentation</term>
+					<term>Segment Anything</term>
+					<term>Faster RCNN</term>
+					<term>Mask RCNN</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>With the development of spatial transcriptomics, now we could have a much better understanding of the spatial genomic profile of complex tissue. However, the cell segmentation remains a critical step for data analysis processing. Here we developed an adaptive SAM model for cell segmentation in the spatial transcriptomics. SAM model has been developed as a powerful basic model for segmentation. In the application of biomedical image segmentation, SAM did not perform equally well for different dimension of images. In our study, we first exhibited that SAM model segmentation is sensitive to image dimension. We provided minimal human annotation to initiate the optimization for finding the best dimension images for SAM model. We found that adaptiveSAM could perform better or equally well in the biomedical image segmentation without finetuning, compared with Faster RCNN and Mask RCNN based detection head.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>CCS CONCEPTS</head><p>• Computing methodologies → Supervised learning.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>Spatial transcriptomics has now been a fast-developing field <ref type="bibr" target="#b5">[6]</ref>. One critical step in the spatial transcriptomics is the cell bin segmentation <ref type="bibr" target="#b7">[8]</ref>. For sequencing-based approaches, nuclei image segmentation could provide critical information for cell bin segmentation. Accurate segmentation of nuclei has become a bottle neck for a lot of application in image-based approaches. At the same time, abundant effective algorithms of machine learning in computer vision field have been proposed one after another to achieve more efficient and accurate object detection results. With all these techniques, it is inevitable to raise the idea of auto cell segmentation method, as it is tedious to analyze relevant biological features such as cell count, type, division, shape, etc. manually. However, with the help of auto cell segmentation methods based on computer vision technology, scientists are able to evaluate how relevant biological features change over time and in response to a variety of conditions efficiently and effortlessly. Therefore, methods for reliable cell segmentation are of great research value.</p><p>Developed from Fast RCNN <ref type="bibr" target="#b1">[2]</ref>, Faster RCNN <ref type="bibr" target="#b8">[9]</ref> is proposed to achieve real-time object detection with Region Proposal Networks (RPN) which replaces the Selective Search in RCNN and Fast RCNN to generate proposal regions. Faster-RCNN consists of four modules, which are the backbone, RPN, RoI and Fully Connected Networks. Specifically, the input image is first fed to backbones to extract features and then obtain the shared feature map. Second, feature map as the input of the RPN module goes through RPN convolution network, then positive anchors and corresponding bounding box regression offsets are calculated, next the proposals are generated. Then, with the shared feature map, proposals are further selected in RoI Pooling layer. Finally, the proposal features are sent to subsequent fully connected networks for box regression and classification.</p><p>Segment Anything Model (SAM) <ref type="bibr" target="#b4">[5]</ref> consists of three components, which are the image encoder computing an image embedding, the flexible prompt encoder embedding prompts, and the fast mask decoder predicting segmentation masks. For the image encoder, SAM uses an MAE <ref type="bibr" target="#b2">[3]</ref> pre-trained Vision Transformer (ViT) <ref type="bibr" target="#b0">[1]</ref> minimally adapted to process high dimension inputs. For prompt encoder, SAM represents points and boxes by positional encodings summed with learned embeddings for each prompt type and represents free-form text with an off-the-shelf text encoder from CLIP <ref type="bibr" target="#b6">[7]</ref>. Dense prompts (i.e., masks) are embedded using convolutions and summed element-wise with the image embedding. For mask decoder, its design employs a modification of a Transformer decoder block <ref type="bibr" target="#b9">[10]</ref> which uses prompt self-attention and cross-attention in two directions, and a dynamic mask prediction head is followed to computes the mask foreground probability at each image location.</p><p>In this study, we aim to develop an adaptive SAM model to enable it to detect nucleus for spatial transcriptomics as well as wider application in tissue segmentation and compare it with Faster RCNN based models. In order to train the model, a dataset is required. Since the raw images of high-dimension fluorescence microscopy have no labels and cannot be used for direct model training, the raw data need to be preprocessed. Our data preprocessing has four stages: image cropping, data annotation, data augmentation and data format normalization. In the first stage, we crop the large sized raw images to smaller tiles and select tiles with normal cell distribution as the training data. In the second stage, we first utilize Labelme annotation tool to generate bounding boxes for cells on selected tiles and then we input the bounding box annotation to SAM model to generate masks for those cells. In third stage, applying a combination strategy, the annotated data is used to generate synthetic images for data augmentation purpose. In final stage, all data we obtain is formalized to COCO data format which model can processed. After data preprocessing, we use our preprocessed high dimension cell image dataset to fine-tune the Faster RCNN and Mask RCNN <ref type="bibr" target="#b3">[4]</ref>. With trained Mask RCNN, we can directly segment cells on input images. With trained Faster RCNN, since we can only directly obtain the bounding boxes of cells on input images, we further exploit SAM model with prompting the obtained bounding boxes to segment cells. To decide a better method for cell segmentation in this study, we also make the comparison on cell segmentation results in trained trained Faster RCNN+SAM and SAM.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">RELATED WORKS 2.1 Image Cropping for Efficient Handling</head><p>High-dimensional images were processed to make them more manageable for subsequent tasks. These images were cropped into smaller tiles, each measuring 41x41 pixels. The dimension was chosen to ensure that significant features within the images were retained without compromising computational efficiency.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Manual Annotation using Labelme</head><p>For precise object detection and segmentation, bounding boxes around individual cells were manually drawn. We utilized the Labelme annotation tool, a graphical image annotation tool written in Python, for this purpose. Labelme allows for meticulous labeling, ensuring that each cell is accurately boxed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Bounding Box Information Integration</head><p>Once the bounding boxes were established, their coordinates and related information were fed into the "Segment Anything" model. This step ensures that the model receives accurate data points for cell segmentation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.4">Segmentation using RLE Encoding</head><p>The "Segment Anything" model was employed to segment the images. The output from this model was in the form of Run-Length Encoding (RLE). RLE is a compact way to represent the segmented areas, where continuous groups of pixels are encoded as a single data point, thereby compressing the representation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.5">Conversion to COCO Format</head><p>Subsequently, the RLE-encoded segmentation data was transformed into the Common Objects in Context (COCO) format. This is a widely accepted format in the computer vision community and facilitates interoperability with various modeling tools and frameworks. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.6">Visualization of Segmentations</head><p>To ensure the quality of the segmentation, we visualized the segmented images. This step involved overlaying the segmentation masks onto the original images to check for alignment and accuracy. Any inconsistencies or errors detected at this stage were addressed before moving on.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.7">Data Splitting for Model Training</head><p>The data set was divided into training and validation subsets to train and evaluate the model's performance. In our preliminary attempt, 72 images were designated for training, while 9 were set aside for validation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.8">Model Training using Mask RCNN</head><p>With the data prepared, we proceeded to train our model using Mask RCNN, a prominent model for object detection and instance segmentation. This model is known for its capability to effectively distinguish objects in images and generate precise masks around them. Our training regimen was adjusted based on initial results and iterative feedback from the validation set.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">METHOD</head><p>As Segment Anything Model is a powerful foundation model which can be generalized on various tasks. Inspired by this, we come up with an idea that if it is feasible to introduce the SAM model directly to handle with the cell segmentation task. If the idea is verified, instead of fine-tuning traditional image segmentation model with extra task-specific modeling expertise, the cell segmentation can be accomplished easily by utilizing the SAM model. To this end, we conducted an experiment in which we tested the SAM model on cell images with different dimension. Fig. <ref type="figure" target="#fig_0">1</ref> illustrates the results on cell images with four different dimensions and all segmentation results were generated by using the segment everything mode of SAM. It is obvious that with the increase of input image dimension, the model would focus more on the overall structure rather than fine grade details, such as nuclei segmentation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">SAM-in-SAM</head><p>As the generic SAM model is not working perfectly in nuclei segmentation and sensitive to input dimension, we hypothesize that we could use SAM-in-SAM, which refers to the course-to-fine process by applying SAM model twice. As illustrated in Fig. <ref type="figure" target="#fig_1">2</ref>, we first apply SAM model for initial segmentation, with a much lower accuracy but able to predict optimized parameter (cell size). Then we apply SAM again on cropped inputs, which is obtained with the help of optimized parameter, to obtain more accurate results.</p><p>Specifically, by feeding the original image Fig. <ref type="figure" target="#fig_1">2</ref> (A) to SAM model, though with a much lower accuracy, an image of detected cells Fig. <ref type="figure" target="#fig_1">2 (B</ref>) is obtained. Then, with the information of output from SAM, the histogram of detected cells' size Fig. <ref type="figure" target="#fig_1">2 (C</ref>) can be generated. From the histogram, we can predict a most representative cell size for the original image. After this, we multiply the cell size with a scale factor 𝑠 to get the total number of pixels on cropped image with the most proper size denoted as 𝑑, so the dimension of cropped image d can be calculated by the following formula:</p><formula xml:id="formula_0">𝑑 = √︁ 𝑐𝑒𝑙𝑙_𝑠𝑖𝑧𝑒 × 𝑠 × √︁ 𝑐𝑒𝑙𝑙_𝑠𝑖𝑧𝑒 × 𝑠<label>(1)</label></formula><p>Then, we crop the original image to smaller tiles with dimension of 𝑑. Finally, the cropped images are fed to SAM again to get the masked images on which all cells are segmented precisely.</p><p>As illustrated in Fig. <ref type="figure" target="#fig_2">3</ref>, we conduct many experiments to decide the scale factor 𝑠. Specifically, the original image 3 (A) is first input to SAM model. Then, based on the output of SAM, the histogram of cell size 3 (B) is generated, from which most representative cell size is 50. To decide a proper value for scale factor 𝑠, we test a lot of values. Here, we only demonstrate the final segmentations 3 (C), 3 (D) and 3 (E) with value of 200, 5000 and 15000. It is obvious that 5000 is the largest value of s to maintain the accuracy of segmentation from SAM. Additionally, as illustrated in Fig <ref type="figure" target="#fig_3">4</ref>, we further verify the idea of using this model for other medical images like tissue and brain image.</p><p>As shown in Fig. <ref type="figure" target="#fig_0">1</ref>, it is impossible to obtain accurate location and segmentation of each cells by simply applying the SAM model once. However, as shown in Fig. <ref type="figure" target="#fig_2">3</ref>, with the fixed parameter 𝑠 we found, after applying the SAM model twice, we can obtain accurate location and segmentation of almost all cells. Therefore, proposed method can improve the accuracy of SAM model in cell segmentation in complex tissues, and the key of this method is to use the fixed parameter 𝑠 and apply the SAM model twice.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Further Analysis for SAM-in-SAM</head><p>To further analyze the performance of SAM-in-SAM, we also compare the accuracy of SAM-in-SAM model with Faster RCNN+SAM and Mask RCNN. In order to adapt Faster RCNN and Mask RCNN to the cell detection and segmentation task, the pre-trained models need to be fine-tuned by using cell dataset. Since the raw images of high-dimension fluorescence microscopy have no labels and cannot be used for direct model training, the raw data need to be preprocessed to generate cell dataset. Our data preprocessing has four stages: image cropping, data annotation, data augmentation and data format normalization. In the first stage, we crop the large sized raw images to smaller tiles and select tiles with normal cell distribution as the training data. In the second stage, we first utilize Labelme annotation tool to generate bounding boxes for cells on selected tiles and then we input the bounding box annotation to SAM model to generate masks for those cells. In third stage, applying a combination strategy, the annotated data is used to generate synthetic images for data augmentation purpose. In final stage, all data we obtain is formalized to COCO data format which model can processed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.1">Training Data Annotation.</head><p>In this work, we also trained a customized Faster RCNN model and Mask RCNN model specifically for nuclei segmentation. To achieve this goal, we first manually annotate the data. By utilizing Labelme annotation tool, the rectangle bbox of each cell can be drawn on the original image Fig. <ref type="figure" target="#fig_4">5</ref> (A) to get the labelled image Fig. <ref type="figure" target="#fig_4">5 (B</ref>). Then we got json files as the output of Labelme to save the annotation. Secondly, we feed the json file of the annotation into the Segment Anything Model (SAM) to get the mask of each cell in the image Fig. <ref type="figure" target="#fig_4">5 (C</ref>), and we also superimpose the mask of all cells to get a superimposed image Fig. <ref type="figure" target="#fig_4">5 (D)</ref>.</p><p>Initially, we only annotated one image as the dataset. However, with the experiment carrying on, the result is not satisfying. As illustrated in Fig. <ref type="figure" target="#fig_5">6</ref>, we adopt the workflow above and annotate 5 more images by utilizing the Labelme annotation tool, and we  input the json file storing annotation of each raw image to SAM to get the mask image for each raw image.</p><p>As there are many cells overlap with each other, it is difficult for human eyes to identify the edge of these cells. To tackle with this problem, we applied two filters to preprocess the images before annotating the images. Specifically, the Gaussian filter is first applied to blur the raw image, and then the Laplacian filter is applied later to enhance the edge information, so that most of the edge of overlapping cells can be identified when annotating the edge-enhanced image. As illustrated in Fig. <ref type="figure" target="#fig_6">7</ref>, we can easily find that more accurate bounding box are drawn on the edge-enhanced image than on the raw image.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.2">Data Augmentation with Synthetic Images.</head><p>As illustrated in Fig. <ref type="figure" target="#fig_7">8</ref>, we tried to use only one annotated images to train the model, thus to increase the dataset without annotating more image, the superimposed masked image from SAM and the original image are  cropped into 81 smaller tiles (41 × 41 pixels) respectively which are divided into 72 images of training dataset and 9 images of validation dataset. However, the dimension of 41 × 41 pixels is much lower dimension which easily leads to low accuracy of detection when utilizing the trained model in some higher dimension images, which was proved in our experiment.</p><p>As models trained with small-sized tiles of image has worse capability when being applied to some larger dimension images, we come up with the idea of using synthetic images to process data augmentation. In other words, the already cropped images can be combined in some simple procedures to generate more larger dimension images. Before synthesizing images, few procedures are involved. Specifically, to generate a large number of different combinations of synthetic images, more annotated images are needed which ensure we can obtain enough higher dimension cropped images as the synthesizing materials. This explains the reason why we annotated another 5 images. Then, we cropped each pair of raw image and masked image to get smaller tiles (123 ×123 pixels). With these smaller tiles, we can combine every two of them to synthesize images with larger dimension. As shown in 9, take Image 1 from Fig. <ref type="figure" target="#fig_5">6</ref> as an example. We first cropped the raw image and masked   image into 9 smaller tiles, and then we use a simple combination strategy to combine every two smaller tiles from raw images vertically. Additionally, the same combination strategy is also applied to the smaller tiles from masked images. In this way, we get the higher dimension images and their corresponding masked images. Additionally, we also divide the synthetic images to training dataset (924 images), validation dataset (396 images) and test dataset (396 images). Additionally, to make the model perform well on the image dimension which is larger than 123 × 246 pixels, we also directly combine the original images to generate synthesized images whose dimension is 369 × 738 pixels. In the experiment with the edge enhancement preprocessing, the edge-enhanced images are under the same process following the same flow-work mentioned above.</p><p>The masked images obtained from above procedures need to be processed to store cells' corresponding information in the COCO format json file which is a kind of dataset needed to feed the later model. To obtain the COCO dataset, each cropped mask image is binarized, so the edge information and the location information of the cells can be extracted, and with the paired cropped original image the needed information can be saved to json file in COCO format. Importantly, as illustrated in Fig. <ref type="figure" target="#fig_9">10</ref> and Fig. <ref type="figure" target="#fig_10">11</ref>, to ensure the correctness of the detection and segmentation information from SAM, we visualize the COCO format json file to show the segmentation and the bbox of each cell (the edge-enhanced images are under the same process following the same flow-work).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">EXPERIMENT</head><p>We adopt mmdetection to train and test models on CPU with a batch size of 2. The start learning rate is set to 0.001. Other hyperparameters are the same to the default settings of each detector. The Faster RCNN was fine-tuned with 702 training images and 72 validation images. The Fig. <ref type="figure" target="#fig_11">12</ref> shows the change curves of the accuracy (Fig. <ref type="figure" target="#fig_11">12 A</ref>) and the losses (Fig. <ref type="figure" target="#fig_11">12 B</ref>) during model training. After fine-tuning the Faster RCNN on cell dataset, we tested the trained model by using 72 images. As shown in Fig. <ref type="figure" target="#fig_12">13</ref>, it is obvious that Faster RCNN achieve a quite accurate detection on cell image we provided. What's more important is that even with the large dimension cell images, fine-tuned Faster RCNN can achieve accurate prediction on the cell images, as long as the dimension of the image is the same as the training images. Additionally, with accurate detection from Faster RCNN, SAM can have precise segmentation on cell images without doubts. Finally, we can compare these models and give a conclusion that SAM-in-SAM is doing equally to even better compared with Faster RCNN+SAM in nuclei segmentation. As illustrated in Fig. <ref type="figure" target="#fig_13">14</ref>, it's obvious that even without any quantitative comparison metrics or statistical analyses when using the SAM-in-SAM model and Faster RCNN + SAM model respectively on the same input image, almost every cell on the input image are detected when using the SAM-in-SAM model, whereas less than half of the cells are detected when using the Faster RCNN + SAM model. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Discussion</head><p>In this study, we aim to develop a most effective method to detect nucleus in spatial transcriptomics accurately. As Segment Anything Model is a powerful foundation model which can be generalized on many tasks, we conducted the experiment to figure out whether SAM model can achieve our goal directly. During the experiment, we find that SAM is sensitive to the dimension of the image, which means with the increase of input image dimension, the model would focus more on the overall structure rather than fine grade details. To deal with this problem, we propose the idea of SAM-in-SAM which uses SAM model twice to obtain the accurate segmentation from the image. Furthermore, to verify the idea, we compare SAMin-SAM with Faster RCNN based models. We found that our trained Faster RCNN has a low detection accuracy on the test image whose size is 1000 × 1000 and the reason for this is that we fine-tuned Faster RCNN with images whose dimension is smaller than the test image. This problem can be fixed in the future study by enlarging dataset with images of more various dimensions. This is to say, to have a better segmentation result with Faster RCNN based model, we need to generate more training data. Therefore, it can be concluded that SAM-in-SAM is doing equally to even better compared with Faster RCNN-based model fine-tuned with small dataset in nuclei segmentation. The biggest advantage of SAM-in-SAM over Faster RCNN-based model is that there is no training process. By calculating the proper size of cropped images with the fixed scale factor 𝑠, SAM can achieve high segmentation accuracy on these cropped images.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Generic SAM model is sensitive to input dimensions. Left is the original image with dimension 1000 × 1000 pixels, the right are four different images with equal or smaller dimension: (A) Image with dimension of 1000 × 1000 pixels and the segmentation results from SAM; (B) Image with dimension of 500 × 500 pixels and the segmentation results from SAM; (C) Image with dimension of 160 × 160 pixels and the segmentation results from SAM; (D) Image with dimension of 60 × 60 pixels and the segmentation results from SAM.</figDesc><graphic coords="3,317.96,83.69,240.24,112.93" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: The process of SAM-in-SAM: (A) The original image whose size is 1000 × 1000; (B) The output from SAM on which yellow rectangle represents the detected cell on the original image; (C) The histogram's x-axis is the cell size and y-axis is the number of cells; (D) The cropped images whose size are 500 × 500; (E) The output from SAM which yellow mask represents the segmentation of each cell on cropped images.</figDesc><graphic coords="4,53.80,83.69,504.41,100.54" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: The process of deciding the value of scale factor 𝑠: (A) The original image with dimension of 1000 × 1000; (B) The histogram of detected cells' size from which the most representative cell size is 50; (C) The outputs from SAM on the cropped image with dimension of 100 × 100; (D) The outputs from SAM on the cropped image with dimension of 500 × 500; (E) The output from SAM on the cropped image with dimension of 866 × 866.</figDesc><graphic coords="4,317.96,254.96,240.24,100.25" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: The segmentation results from SAM-in-SAM by using brain images: (A) The original image with dimension of 2000 × 2000; (B) The output from SAM on which green rectangle represents the detected cell on the original image; (C) The histogram of detected cells' size whose x-axis is the cell size and y-axis is the number of cells; (D) The cropped images with dimension of 1000 × 1000.</figDesc><graphic coords="5,53.80,83.69,240.24,133.53" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Manual annotation of nuclei image: (A) The original image; (B) The red rectangle represents the manually labelled bbox; (C) The blue mask represents the segmentation of the individual cell in the image; (D) The superimposed blue masks represent the segmentation of all the cells in the image.</figDesc><graphic coords="5,53.80,568.63,240.24,61.01" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 6 :</head><label>6</label><figDesc>Figure 6: Labeled images and masked images of five raw nuclei images: (A) Five raw nuclei images; (B) Five labeled images by utilizing the Labelme annotation tool; (C) Five masked images from Segment Anything model.</figDesc><graphic coords="5,317.96,83.69,240.24,133.58" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 7 :</head><label>7</label><figDesc>Figure 7: Annotation comparison between edge-enhanced image and raw image: (A) Annotation on edge-enhanced image on which yellow rectangles are more accurate bounding boxes of the cells in the same areas on the raw image; (B) Annotation on raw image on which yellow rectangles are less accurate bounding boxes of the cells in the same areas on the edge-enhanced image.</figDesc><graphic coords="5,317.96,488.38,240.23,130.30" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Figure 8 :</head><label>8</label><figDesc>Figure 8: Cropped images from one image: (A) The original image cropped into 81 smaller tiles which are divided as 8:1 of training and validation dataset; (B) The superimposed masked image cropped into 81 smaller tiles which are divided as 8:1 of training and validation dataset.</figDesc><graphic coords="6,53.80,83.69,240.25,111.95" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Figure 9 :</head><label>9</label><figDesc>Figure 9: The process of synthesizing higher dimension images: (A) The original raw image (or masked image); (B) The cropped images from raw image (or masked image). (C) The synthetic images of raw images (or masked images).</figDesc><graphic coords="6,53.80,526.23,240.25,125.33" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Figure 10 :</head><label>10</label><figDesc>Figure 10: Visualized segmentation and detection from SAM: (A) The colorized region represents the segmentation of each cell in cropped images from SAM; (B) The white rectangle bbox represents the detection of each cell in cropped images from SAM.</figDesc><graphic coords="6,317.96,83.68,240.24,110.52" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head>Figure 11 :</head><label>11</label><figDesc>Figure 11: The visualization from generated COCO format json file of synthetic images.</figDesc><graphic coords="6,317.96,294.31,240.24,62.72" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><head>Figure 12 :</head><label>12</label><figDesc>Figure 12: The change curve of accuracy A and losses B in training Faster RCNN.</figDesc><graphic coords="7,53.80,175.33,240.26,106.22" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_12"><head>Figure 13 :</head><label>13</label><figDesc>Figure 13: The predictions from trained Faster RCNN model.</figDesc><graphic coords="7,53.80,532.82,240.24,61.98" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_13"><head>Figure 14 :</head><label>14</label><figDesc>Figure 14: Performance comparison of SAM-in-SAM and Faster RCNN+SAM.</figDesc><graphic coords="7,317.96,83.69,240.24,131.80" type="bitmap" /></figure>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<author>
+			<persName><forename type="first">Alexey</forename><surname>Dosovitskiy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lucas</forename><surname>Beyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Kolesnikov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dirk</forename><surname>Weissenborn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaohua</forename><surname>Zhai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Unterthiner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mostafa</forename><surname>Dehghani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matthias</forename><surname>Minderer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Georg</forename><surname>Heigold</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sylvain</forename><surname>Gelly</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2010.11929</idno>
+		<title level="m">An image is worth 16x16 words: Transformers for image recognition at scale</title>
+		<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Fast r-cnn</title>
+		<author>
+			<persName><forename type="first">Ross</forename><surname>Girshick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE international conference on computer vision</title>
+		<meeting>the IEEE international conference on computer vision</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="1440" to="1448" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Masked autoencoders are scalable vision learners</title>
+		<author>
+			<persName><forename type="first">Kaiming</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinlei</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Saining</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanghao</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Piotr</forename><surname>Dollár</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ross</forename><surname>Girshick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF conference on computer vision and pattern recognition</title>
+		<meeting>the IEEE/CVF conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="16000" to="16009" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Mask r-cnn</title>
+		<author>
+			<persName><forename type="first">Kaiming</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Georgia</forename><surname>Gkioxari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Piotr</forename><surname>Dollár</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ross</forename><surname>Girshick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE international conference on computer vision</title>
+		<meeting>the IEEE international conference on computer vision</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="2961" to="2969" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Segment anything</title>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Kirillov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Mintun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nikhila</forename><surname>Ravi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanzi</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chloe</forename><surname>Rolland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Laura</forename><surname>Gustafson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tete</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Spencer</forename><surname>Whitehead</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><forename type="middle">C</forename><surname>Berg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wan-Yen</forename><surname>Lo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF International Conference on Computer Vision</title>
+		<meeting>the IEEE/CVF International Conference on Computer Vision</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="4015" to="4026" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Spatial transcriptomics inferred from pathology whole-slide images links tumor heterogeneity to survival in breast and lung cancer</title>
+		<author>
+			<persName><forename type="first">Alona</forename><surname>Levy-Jurgenson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xavier</forename><surname>Tekpli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zohar</forename><surname>Vessela N Kristensen</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Yakhini</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Scientific reports</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page">18802</biblScope>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Learning transferable visual models from natural language supervision</title>
+		<author>
+			<persName><forename type="first">Alec</forename><surname>Radford</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jong</forename><forename type="middle">Wook</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Hallacy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aditya</forename><surname>Ramesh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gabriel</forename><surname>Goh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sandhini</forename><surname>Agarwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Girish</forename><surname>Sastry</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Amanda</forename><surname>Askell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pamela</forename><surname>Mishkin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jack</forename><surname>Clark</surname></persName>
+		</author>
+		<idno>PMLR</idno>
+	</analytic>
+	<monogr>
+		<title level="m">International conference on machine learning</title>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="8748" to="8763" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Exploring tissue architecture using spatial transcriptomics</title>
+		<author>
+			<persName><forename type="first">Anjali</forename><surname>Rao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dalia</forename><surname>Barkley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gustavo</forename><forename type="middle">S</forename><surname>França</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Itai</forename><surname>Yanai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">596</biblScope>
+			<biblScope unit="page" from="211" to="220" />
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Faster r-cnn: Towards real-time object detection with region proposal networks</title>
+		<author>
+			<persName><forename type="first">Kaiming</forename><surname>Shaoqing Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ross</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in neural information processing systems</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<date type="published" when="2015">2015. 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Attention is all you need</title>
+		<author>
+			<persName><forename type="first">Ashish</forename><surname>Vaswani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Shazeer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Niki</forename><surname>Parmar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jakob</forename><surname>Uszkoreit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Llion</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aidan</forename><forename type="middle">N</forename><surname>Gomez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Łukasz</forename><surname>Kaiser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Illia</forename><surname>Polosukhin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in neural information processing systems</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<date type="published" when="2017">2017. 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

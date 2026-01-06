@@ -1,0 +1,2796 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Renal Biopsy Pathological Tissue Segmentation: A Comprehensive Review and Experimental Analysis</title>
+				<funder ref="#_nc87aFZ">
+					<orgName type="full">unknown</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>Institute of Electrical and Electronics Engineers (IEEE)</publisher>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2025">2025</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Yan</forename><surname>Liu</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Department of Nephrology</orgName>
+								<orgName type="department" key="dep2">Zhejiang Chinese Medical University (Zhejiang Provincial Hospital of Chinese Medicine)</orgName>
+								<orgName type="institution">The First Affiliated Hospital</orgName>
+								<address>
+									<postCode>310000</postCode>
+									<settlement>Hangzhou</settlement>
+									<region>Zhejiang</region>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="laboratory">Zhejiang Key Laboratory of Research and Translation for Kidney Deficiency-Stasis-Turbidity Disease</orgName>
+								<address>
+									<postCode>310000</postCode>
+									<settlement>Hangzhou</settlement>
+									<region>Zhejiang</region>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Taiping</forename><surname>Wang</surname></persName>
+							<idno type="ORCID">0009-0002-1949-631X</idno>
+							<affiliation key="aff2">
+								<orgName type="institution">Hangzhou Medipath Intelligent Technology Company Ltd</orgName>
+								<address>
+									<postCode>310000</postCode>
+									<settlement>Hangzhou</settlement>
+									<region>Zhejiang</region>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Xinxin</forename><surname>He</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Department of Nephrology</orgName>
+								<orgName type="department" key="dep2">Zhejiang Chinese Medical University (Zhejiang Provincial Hospital of Chinese Medicine)</orgName>
+								<orgName type="institution">The First Affiliated Hospital</orgName>
+								<address>
+									<postCode>310000</postCode>
+									<settlement>Hangzhou</settlement>
+									<region>Zhejiang</region>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="laboratory">Zhejiang Key Laboratory of Research and Translation for Kidney Deficiency-Stasis-Turbidity Disease</orgName>
+								<address>
+									<postCode>310000</postCode>
+									<settlement>Hangzhou</settlement>
+									<region>Zhejiang</region>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Wei</forename><surname>Wang</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="department" key="dep1">Department of Ultrasound Diagnosis</orgName>
+								<orgName type="department" key="dep2">Zhejiang Chinese Medical University (Zhejiang Provincial Hospital of Chinese Medicine)</orgName>
+								<orgName type="institution">The First Affiliated Hospital</orgName>
+								<address>
+									<postCode>310000</postCode>
+									<settlement>Hangzhou</settlement>
+									<region>Zhejiang</region>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Qiang</forename><surname>He</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Juan</forename><surname>Jin</surname></persName>
+							<idno type="ORCID">0000-0003-2513-4665</idno>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Department of Nephrology</orgName>
+								<orgName type="department" key="dep2">Zhejiang Chinese Medical University (Zhejiang Provincial Hospital of Chinese Medicine)</orgName>
+								<orgName type="institution">The First Affiliated Hospital</orgName>
+								<address>
+									<postCode>310000</postCode>
+									<settlement>Hangzhou</settlement>
+									<region>Zhejiang</region>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="laboratory">Zhejiang Key Laboratory of Research and Translation for Kidney Deficiency-Stasis-Turbidity Disease</orgName>
+								<address>
+									<postCode>310000</postCode>
+									<settlement>Hangzhou</settlement>
+									<region>Zhejiang</region>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Renal Biopsy Pathological Tissue Segmentation: A Comprehensive Review and Experimental Analysis</title>
+					</analytic>
+					<monogr>
+						<title level="j" type="main">IEEE Access</title>
+						<title level="j" type="abbrev">IEEE Access</title>
+						<idno type="eISSN">2169-3536</idno>
+						<imprint>
+							<publisher>Institute of Electrical and Electronics Engineers (IEEE)</publisher>
+							<biblScope unit="volume">13</biblScope>
+							<biblScope unit="page" from="58008" to="58024"/>
+							<date type="published" when="2025" />
+						</imprint>
+					</monogr>
+					<idno type="MD5">7413114A7DC5199A79E255E9078A872B</idno>
+					<idno type="DOI">10.1109/access.2025.3555654</idno>
+					<note type="submission">Received 14 February 2025, accepted 24 March 2025, date of publication 28 March 2025, date of current version 8 April 2025.</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:10+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Renal pathological tissue segmentation</term>
+					<term>medical image segmentation</term>
+					<term>convolutional neural networks</term>
+					<term>Unet</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Traditional renal biopsy pathological analysis relies heavily on subjective judgment by pathologists, which is time-consuming and susceptible to inter-observer variability, especially in segmenting glomeruli, renal tubules, and renal vessels. This study aims to develop an efficient and accurate segmentation method for renal pathological tissues to support intelligent diagnostic workflows. By integrating classic models such as Unet, U 2 net, and EfficientNet, along with the state-of-the-art Transformer-based SwinUnet, this research conducts a comprehensive comparison of different architectures in terms of accuracy, speed, and computational resource consumption. Experimental results show that while SwinUnet achieves an F1 score of 84.02 with an inference time of 630s, the proposed EfficientNet-b4+Unet model reaches a higher F1 score of 84.26 with a significantly reduced inference time of 420s, demonstrating its superior efficiency. A complete pipeline is proposed, encompassing data preprocessing, model training, and validation, including multi-scale feature extraction and optimized loss function configurations. Moreover, to enhance segmentation accuracy at tissue boundaries, this study introduces a novel boundary processing strategy, where boundaries are treated as a separate class and assigned higher weights. Experimental validation confirms the effectiveness of this approach. Results on datasets with PAS, PASM, H&amp;E, and Masson staining demonstrate that the improved EfficientNet-b4+Unet model achieves the best balance between performance and speed while exhibiting strong generalization across different staining methods. This study provides a novel technical framework for precise renal pathological tissue segmentation and lays the foundation for future lesion detection and intelligent diagnostic applications.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>I. INTRODUCTION</head><p>Renal biopsy is an important examination method for determining the nature and pathological types of kidney diseases, developing treatment strategies for patients, and</p><p>The associate editor coordinating the review of this manuscript and approving it for publication was Vincenzo Conti .</p><p>predicting the prognosis of kidney diseases. It promotes the etiological diagnosis and reveals the pathological process of kidney diseases so that patients can obtain effective targeted treatment. However, at present, histopathological evaluation of renal biopsies mainly depends on the judgment of pathologists, which is time-consuming. In addition, there were significan diagnostic differences between different pathologists. To address these issues, this study investigates a tissue segmentation algorithm in renal biopsy to provide an efficient and accurate scheme.</p><p>Recently, deep learning methods, particularly convolutional neural networks (CNNs), have been widely used in medical image analysis and have obtained good result. As an important branch of pathology, renal biopsy pathology has unique complexity in medical image analysis. To improve diagnostic efficiency and accuracy, it is important to apply deep learning methods <ref type="bibr" target="#b0">[1]</ref>, <ref type="bibr" target="#b1">[2]</ref>, <ref type="bibr" target="#b2">[3]</ref>, <ref type="bibr" target="#b3">[4]</ref>, <ref type="bibr" target="#b4">[5]</ref>, <ref type="bibr" target="#b5">[6]</ref>, <ref type="bibr" target="#b6">[7]</ref>, <ref type="bibr" target="#b7">[8]</ref>, <ref type="bibr" target="#b8">[9]</ref>, <ref type="bibr" target="#b9">[10]</ref> to renal biopsy pathology. Related studies have been conducted on deep learning renal pathological segmentation methods <ref type="bibr" target="#b10">[11]</ref>, <ref type="bibr" target="#b11">[12]</ref>, <ref type="bibr" target="#b12">[13]</ref>, <ref type="bibr" target="#b13">[14]</ref>. However, several problems still need to be investigated: 1) Most of the studies <ref type="bibr" target="#b14">[15]</ref>, <ref type="bibr" target="#b15">[16]</ref>, <ref type="bibr" target="#b16">[17]</ref>, <ref type="bibr" target="#b17">[18]</ref>, <ref type="bibr" target="#b18">[19]</ref> are on specific lesions, and the reusability of these methods is lacking. In particular, studies on renal tissue mainly focus on the glomerulus <ref type="bibr" target="#b14">[15]</ref>, <ref type="bibr" target="#b15">[16]</ref>, <ref type="bibr" target="#b16">[17]</ref>, <ref type="bibr" target="#b17">[18]</ref>, <ref type="bibr" target="#b18">[19]</ref> and occasionally involve renal tubules <ref type="bibr" target="#b19">[20]</ref>, but seldom consider renal vessels <ref type="bibr" target="#b20">[21]</ref>, <ref type="bibr" target="#b21">[22]</ref>, <ref type="bibr" target="#b22">[23]</ref>; 2) The existing studies use a relatively simple staining method (e.g., periodic acid-Schiff, PAS) for pathological sections <ref type="bibr" target="#b14">[15]</ref>, <ref type="bibr" target="#b19">[20]</ref>, <ref type="bibr" target="#b20">[21]</ref>, <ref type="bibr" target="#b21">[22]</ref>, <ref type="bibr" target="#b23">[24]</ref>, without considering other staining methods, such as Masson, periodic acid silver methenamine (PASM), hematoxylin and eosin (H&amp;E), etc. <ref type="bibr" target="#b24">[25]</ref>, <ref type="bibr" target="#b25">[26]</ref>;</p><p>3) The existing studies focus on the application level <ref type="bibr" target="#b6">[7]</ref>, <ref type="bibr" target="#b7">[8]</ref>, <ref type="bibr" target="#b16">[17]</ref>, <ref type="bibr" target="#b17">[18]</ref>, <ref type="bibr" target="#b26">[27]</ref>, and an in-depth comparison of the algorithms, such as different model structures and more detailed training techniques, are lacking <ref type="bibr" target="#b22">[23]</ref>, <ref type="bibr" target="#b27">[28]</ref>. 4) Most existing segmentation methods struggle with precise boundary detection, particularly for renal vessels and tubules, where unclear boundaries lead to misclassification <ref type="bibr" target="#b14">[15]</ref>, <ref type="bibr" target="#b15">[16]</ref>, <ref type="bibr" target="#b16">[17]</ref>, <ref type="bibr" target="#b17">[18]</ref>, <ref type="bibr" target="#b18">[19]</ref>. Current approaches lack explicit boundary refinement techniques to improve segmentation accuracy in complex pathological images. 5) The importance of multi-scale feature extraction <ref type="bibr" target="#b28">[29]</ref> has been overlooked in previous studies. Proper feature extraction is essential for capturing both fine-grained tissue details and global structural information across different staining types and magnifications. A more effective multi-scale approach is needed to enhance segmentation robustness. 6) Although the latest ConvNext and Transformer-based models <ref type="bibr" target="#b28">[29]</ref>, <ref type="bibr" target="#b29">[30]</ref>, <ref type="bibr" target="#b30">[31]</ref>, <ref type="bibr" target="#b31">[32]</ref>, <ref type="bibr" target="#b32">[33]</ref>, <ref type="bibr" target="#b33">[34]</ref>, <ref type="bibr" target="#b34">[35]</ref>, <ref type="bibr" target="#b35">[36]</ref>, <ref type="bibr" target="#b36">[37]</ref> have been extensively studied in medical image analysis, their application and systematic evaluation in renal pathology segmentation remain limited. Further research is required to validate their effectiveness in this domain.</p><p>In renal biopsy, the pathological tissue mainly includes the glomerulus, tubules, and vessels. These tissues form the basis for renal disease diagnosis; therefore, it is important to accurately segment them. In recent years, various methods, including instance segmentation and semantic segmentation techniques, have been applied to renal tissue segmentation, each with its own limitations.</p><p>For example, Bae et al. <ref type="bibr" target="#b37">[38]</ref> proposed some instance segmentation methods in their study. The first method, based on YOLOv8, demonstrated high speed and efficiency in renal tissue segmentation tasks. However, its segmentation accuracy was relatively low, with significant omission errors, especially in complex pathological images. The second method, using Mask R-CNN, improved segmentation accuracy compared to YOLOv8 and achieved better localization of renal structures. Nevertheless, Mask R-CNN still suffered from high omission rates and significantly slower inference speed, limiting its practicality in real-time applications.</p><p>In the field of semantic segmentation, Dimitri et al. <ref type="bibr" target="#b38">[39]</ref> and Hara et al. <ref type="bibr" target="#b39">[40]</ref> explored DeepLabv3 and U-Net, respectively. While U-Net showed slightly better accuracy and boundary detail processing, both methods struggled with precise boundary localization and robustness in complex backgrounds, particularly for renal vessel segmentation tasks.</p><p>With the rise of Transformer-based models in image segmentation, Feng et al. <ref type="bibr" target="#b40">[41]</ref> compared SwinUnet and ConvWinUnet. These models significantly improved segmentation accuracy through global context modeling, but their slower inference speeds and higher computational requirements present challenges for practical applications in pathology diagnostics.</p><p>Despite the advances in transformer-based segmentation models, prior research has not comprehensively evaluated models such as ConvNext or recent variations of Swin Transformer, which may offer better trade-offs between accuracy and efficiency. This study addresses this gap by incorporating a broader range of model architectures and conducting a systematic comparison to evaluate their suitability for renal pathology segmentation.</p><p>To address these limitations, this study integrates boundary-aware processing techniques and multi-scale feature extraction to enhance segmentation accuracy. The proposed method employs a novel boundary refinement strategy that treats tissue boundaries as a separate class and assigns higher weights, improving precision in contour delineation. Additionally, multi-scale feature extraction is incorporated into the model architecture to effectively capture both global structural information and local fine-grained details, ensuring robust performance across different staining methods and imaging conditions.</p><p>Combined with the most advanced deep learning algorithm, this study proposes a segmentation algorithm for pathological renal tissue. The algorithm involves pretreatment, a model structure, a training module, and a testing module, in which the model structure is divided into backbone, neck, and head. Each component was designed and tested in this study. Specifically, 1) In the pretreatment stage, a boundary refinement technique is introduced, experimentally demonstrating improved segmentation accuracy. Additionally, the impact of different patch sizes and input resolutions on model performance is explored.</p><p>2) In the model structure, a series of classic and most advanced models, such as Unet <ref type="bibr" target="#b41">[42]</ref>, <ref type="bibr" target="#b42">[43]</ref>, <ref type="bibr" target="#b43">[44]</ref>, U 2 net <ref type="bibr" target="#b44">[45]</ref>, EfficientNet <ref type="bibr" target="#b45">[46]</ref>, and Transformer, were compared, and some improvements were made. In addition, different neck and head modules were used to perform experiments on feature fusion. 3) In the training module, some training details are presented, and the effects of BN, batch size, and different loss functions on the model effect are compared. 4) In the test module, the specific operation steps are given, and some post-processing methods to improve the effectiveness of the model are also shown.</p><p>Finally, by the comparing nearly 100 groups of experiments, we selected two groups of models. The model based on U 2 net showed strong performance, although it was slightly weak in speed, and the model based on EfficientNet-b4+Unet achieved a balance between performance and speed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>II. MATERIALS</head><p>All samples used in this study were provided by The First Affiliated Hospital of Zhejiang Chinese Medical University (Zhejiang Provincial Hospital of Chinese Medicine) after deidentification (without patient information), and approval of the Research Ethics Committee of the Zhejiang Provincial Hospital of Chinese Medicine (Acceptance number 2024-KL-01). All biopsy samples were processed using standard light and electron microscopy techniques. Under the light microscope, formalin-fixed and paraffin-embedded tissues were cut into slices (2 mm) and stained with one of the following methods: H&amp;E, PAS, PASM, or Masson staining. A total of 1340 samples were obtained, including 339 samples stained with H&amp;E, 356 samples stained with PAS, and 329 samples stained with PASM. These WSIs are characterized by extremely high resolutions, typically reaching tens of thousands by tens of thousands of pixels, and feature irregular and diverse pathological tissue boundaries. These large-scale images present unique challenges for segmentation algorithms.</p><p>Each sample, including glomeruli, tubules, and vessels, was marked by professional renal pathology mapping personnel (Figure <ref type="figure" target="#fig_0">1</ref>). The pathologist reviewed and confirmed all labels. A total of 16852 glomerulus, 411028 tubules, and 70046 renal vessels were labeled from the above 1340 whole slide images (WSIs). For convenience of description, in this study, the glomerulus is recorded as KG1, the renal tubules as KT1, and the renal vessels as KV1.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>1) Data Augmentation</head><p>To address the challenges posed by large-scale WSIs and enhance the diversity of the training dataset, this study employed a variety of data augmentation techniques. Standard augmentations, including rotation, scaling, flipping, and color space transformations, were applied. In addition, a novel adaptive random patch cropping strategy was developed to better utilize the unique characteristics of pathological images. This strategy, implemented using the Palgo platform, dynamically extracts random patches from the original WSIs during each training iteration. Real-time patch cropping ensures that the training data changes with each epoch, effectively increasing data diversity even with a limited number of samples. Furthermore, this adaptive cropping approach avoids the generation of black edges caused by rotation, preserving the integrity of the training samples. These strategies allow the model to generalize more effectively to unseen data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>2) Statistical Analysis</head><p>To ensure the representativeness of the dataset, statistical analysis was conducted to compare the distributions of target structures (glomeruli, renal tubules, and blood vessels) across training and testing datasets. An independent samples t-test was performed to assess significant differences in the distributions, confirming that the datasets are balanced and reflective of real-world pathological scenarios. This analysis provides a robust foundation for evaluating the performance of the proposed algorithms.</p><p>3) Validation Method To evaluate the robustness and generalization ability of the proposed model, a comprehensive validation framework was implemented. A 5-fold cross-validation strategy was applied to the 100 training samples, which were divided into five subsets. In each fold, one subset was used as the test set, while the remaining four subsets served as the training set. This process ensures that all training samples are evaluated multiple times in different configurations, providing a thorough assessment of model performance across varied data splits. Additionally, an independent validation set comprising 48 samples (12 for each staining method) was used to further assess the model's generalization ability. By combining 5-fold cross-validation on the training samples with evaluation on an independent validation set, the framework offers a robust and reliable method for performance evaluation, ensuring the model is rigorously tested under diverse conditions and simulates real-world scenarios.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>III. METHODS</head><p>Figure <ref type="figure" target="#fig_1">2</ref> shows the general procedure of the deep learning segmentation algorithm proposed in this study, which can be divided into pretreatment, model structure, training, and testing modules. The model structure consists of a backbone, neck, and head. This study analyzes each module in detail and presentes an optimal scheme.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A. PRETREATMENT</head><p>WSIs of renal pathological tissue are very large and have unique characteristics; therefore, it is necessary to carry out targeted pretreatment. Specifically, it includes the following aspects.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>1) Patch Images cropping</head><p>In this study, the information of the valid blocks was stored in memory, which saved the storage space required by pre-cutting and the time cost caused by  repeated data reading. Meanwhile, the image selection was centered on the target to avoid marginalizing important information. Finally, the block calibration technique (filter the patch if more than 85% of the area of the ground truth were used in other patches) was used to avoid resampling of the samples. 2) Selection of image input scale Input size has a certain impact on the efficiency and performance of the model. In this study, multi-scale comparative experiments were conducted on Efficient-Net and U 2 net models.</p><p>3) Processing method of the target boundary The boundary of the renal pathological tissue needs to be accurately segmented, as shown in Figure <ref type="figure" target="#fig_2">3C</ref>, this study adopts the following approaches to deal with the boundary. 1) The target boundary is regarded as a separate class, and a certain width is fixed on the contour of the target as the boundary. 2) Weights are added to the boundary. This study experimentally verified the effectiveness of this boundary treatment method. 4) Data augmentation Data augmentation is performed on the patch image, including rotation, translation, croping, bluring, noise, color contrast, and resizing <ref type="bibr" target="#b46">[47]</ref>, <ref type="bibr" target="#b47">[48]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B. MODEL STRUCTURE</head><p>Referring to the logic of MMDetection <ref type="bibr" target="#b48">[49]</ref>, this study divides the model structure into the backbone, neck, and head. Subsequently, advanced model algorithms were employed to conduct experiments on these three components. Based on this framework, we further developed the Palgo algorithm platform (<ref type="url" target="https://www.palgo.com.cn/">https://www.palgo.com.cn/</ref>), which integrates our segmentation models and provides an accessible environment for model deployment and testing. This platform enables users to efficiently apply and validate renal biopsy pathological tissue segmentation algorithms in real-world scenarios. Additionally, we have open-sourced our code and pre-trained models to promote reproducibility and facilitate further research. The code repository is available at: <ref type="url" target="https://github.com/youngbaby123/Renal-Biopsy-">https://github.com/youngbaby123/Renal-Biopsy-</ref>Pathological-Tissue-Segmentation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>1) Backbone</head><p>The backbone had a basic network structure. In recent years, various excellent basic networks (e.g., VGG <ref type="bibr" target="#b49">[50]</ref>, GoogleNet <ref type="bibr" target="#b50">[51]</ref>, ResNet <ref type="bibr" target="#b51">[52]</ref>, DenseNet <ref type="bibr" target="#b52">[53]</ref>, Efficient-Net <ref type="bibr" target="#b47">[48]</ref>) and lightweight networks (e.g., MobileNet <ref type="bibr" target="#b53">[54]</ref>, <ref type="bibr" target="#b54">[55]</ref>, <ref type="bibr" target="#b55">[56]</ref>, <ref type="bibr" target="#b56">[57]</ref>, ShuffleNet <ref type="bibr" target="#b57">[58]</ref>, <ref type="bibr" target="#b58">[59]</ref>) have been proposed. In the experiments, comparisons were made between several latest models and the network models commonly used in medical image analysis, including Unet <ref type="bibr" target="#b41">[42]</ref>, U 2 net <ref type="bibr" target="#b59">[60]</ref>, EfficientNet (b3, b4), Mobilenet-v3, SwinUnet <ref type="bibr" target="#b60">[61]</ref> based on SwinTransformer, and ConvWinUnet revised in this study. ConvWinUnet has a similar structure to SwinUnet, except that it replaces the shifted windows in SwinTransformer with group convolution.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>2) Neck</head><p>The neck <ref type="bibr" target="#b61">[62]</ref>, <ref type="bibr" target="#b62">[63]</ref>, <ref type="bibr" target="#b63">[64]</ref>, <ref type="bibr" target="#b64">[65]</ref>, <ref type="bibr" target="#b65">[66]</ref>, <ref type="bibr" target="#b66">[67]</ref> connects basic networks with specific tasks and transforms the output of the backbone into the input of the corresponding task by target segmentation according to different tasks such as classification and segmentation. Meanwhile, the neck can fuse the backbone features to make it more suitable for subsequent tasks. In the experiments, the BiFPN and U 2 net were compared. This study constructed the decoder of SwinUnet with a structure similar to that of the neck and adjusted the position of normalization in the patch, expanding the structure to further improve the model (but this structure is not very competitive with others).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>3) Head</head><p>The head <ref type="bibr" target="#b67">[68]</ref> was set according to the needs of different tasks. In this study, comparative experiments were conducted on single-scale and multi-scale feature outputs. In addition, by using upsampling, this study also tested the impact of the output feature size on the performance of the model. As shown in Fig. <ref type="figure" target="#fig_3">4</ref>, in the single-scale feature output, a single head was used to connect the feature output by the neck of the last stage, whereas in the multi-scale feature output, multiple heads were used to connect the feature output by the neck of the corresponding stage. It should be noted that only multi-scale feature outputs were used in the training process. In the test process, only a single specific head was selected as the final output of the model, which could simplify the model and accelerate reasoning. Subsequently study relevant experiments were conducted to select a specific head as the test output. Figure <ref type="figure" target="#fig_3">4C</ref> and D show how the size of the output feature map can be changed in combination with upsampling.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C. TRAINING MODULE</head><p>According to the description above, the segmentation target belongs to the following five classes: KG1, KT1, KV1, boundary, and background. A unified learning rate and optimizer were adopted in this study, and Adam was chosen as the optimizer with an initial learning rate of 0.001 and weight decay of 0.0001. A warmup was used for the first 500 iterations, and a step method was used to decay the learning rate. A total of 200 epochs were executed, and the learning rate decayed after 150 epochs. The following two comparative experiments were conducted. 1) Batch normalization and batch size EfficientNet and U 2 net were used as backbones for BN <ref type="bibr" target="#b68">[69]</ref> and SyncBN <ref type="bibr" target="#b69">[70]</ref> to investigate the impact of batch size on the model performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>2) Loss function</head><p>In the experiments, the following losses were compared: CE loss <ref type="bibr" target="#b70">[71]</ref>, BCE loss <ref type="bibr" target="#b71">[72]</ref>, Dice loss <ref type="bibr" target="#b72">[73]</ref>, focal loss <ref type="bibr" target="#b73">[74]</ref>, SSIM <ref type="bibr" target="#b74">[75]</ref>, <ref type="bibr" target="#b75">[76]</ref>, and multi-CE loss. In particular, to verify whether the multi-scale feature output was effective in kidney pathological tissue segmentation, the multi-CE was modified according to the multi-scale feature output combined with CE loss (as shown in Figure <ref type="figure" target="#fig_3">4B</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>D. TESTING MODULE</head><p>A complete WSI is too large to be simultaneously detected at one time. Thus, during the testing process, the image was cropped into multiple patches for testing and the test results were then spliced to the original size. The complete process is as follows (the sample is shown in Figure <ref type="figure" target="#fig_6">5</ref>): For the same pixel, the maximum pixel value of the glomerulus, tubules, vessels, boundary, and background scores was taken as the final value of the pixel. The class corresponding to the maximum value was also considered the class of the pixel. Subsequently, the connected domain is extracted from the pixels belonging to the same class as the final target area, and score filtering is performed to eliminate invalid targets. 5) Step 5. Correct the edges of the target Because the splicing operation causes the boundary target to be incomplete, for the target with various straight lines on the edge, a secondary detection is performed to correct the target with inaccurate edges.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>E. PERFORMANCE METRICS</head><p>Precision, recall, and F1 scores were used to quantify the performance of the model. Meanwhile, the precision recall curve and receiver operating characteristic curve were used to visualize the actual effects of the different models. It should be noted that because conventional pixel-based statistics (such as Dice) do not consider the integrity of the target organization, this study adopts mask_IOU for statistics. We denote the prediction as mask_p and the ground truth as mask_g. The related performance indicators were calculated using the following formulae:</p><formula xml:id="formula_0">TP = N i=0 M j=0 φ mask_IOU ij (1) FP = N -TP (2) FN = M -TP<label>(3)</label></formula><p>with</p><formula xml:id="formula_1">mask_IOU ij = mask_p i ∩ mask_g i mask_p i ∪ mask_g i φ(a) = 0, a &lt; Threshold 1, a ≥ Threshold</formula><p>where Threshold indicates the IOU threshold, which is set to the default value of 0.7 for all experiments, N indicates the number of detected targets, and M indicates the number of labeled targets.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>IV. RESULTS AND DISCUSSION</head><p>This section presents a detailed analysis of the experimental results, which include a comprehensive comparison with previous studies and an in-depth evaluation of the proposed approaches.</p><p>Table <ref type="table">1</ref> shows a comparison between this study and previous research. The final improvements based on Unet, U 2 net, and Transformer architectures demonstrate significant enhancements in recall and precision compared to earlier methods, particularly when compared with instance segmentation-based approaches. As shown in the subsequent analysis, these improvements are closely related to the comprehensive multi-aspect design employed in this study. Figure <ref type="figure" target="#fig_7">6</ref> presents the confusion matrices of the three proposed solutions in this study. It is important to note that these methods are based on semantic segmentation, where non-target regions are classified as background. The confusion matrices reveal that misclassification between categories is minimal, with most errors arising from target regions being classified as background (causing missed detections) or background regions being classified as a target category (causing false positives). Further analysis suggests that these errors may be attributed to annotation inaccuracies, indicating that the actual performance might be better than reflected by the numerical results.</p><p>This section presents a detailed analysis of the experimental results, which include four main parts. 1) The results of</p><p>VOLUME 13, 2025 TABLE 1. Comparison of performance metrics between proposed methods and existing studies.</p><p>the model structure are compared, including the comparison of various types of backbones, necks, and heads, and the analysis of experiments related to BN and batch size. 2) The loss functions for image segmentation were compared, including CE Loss, BCE Loss, Focal Loss, Dice Loss, and SSIM. Simultaneously, multi-CE loss was analyzed and combined with multi-scale feature output. 3) The results of the pre-treatment and post-treatment experiments were compared, including the boundary treatment and weight setting. The input and output feature map sizes were also compared. In addition, a comparative analysis was performed on the finetuning process using the full datasets. 4) The performances of different models were compared in terms of computation speed, calculation amount, and number of parameters.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A. EXPERIMENTAL RESULTS OF THE DIFFERENT BACKBONES</head><p>In this study, advanced deep learning models for medical image analysis, including Unet, EfficientNet+Unet, MobileNet+Unet, and U 2 net were compared. The recently popular transformer structure <ref type="bibr" target="#b76">[77]</ref>, <ref type="bibr" target="#b77">[78]</ref> has also been investigated (i.e., SwinUnet and ConvWinUnet combined with convolutional construction). Based on these results, the ROC curve (Figure <ref type="figure" target="#fig_8">7</ref>) and the PR curve (Figure <ref type="figure" target="#fig_9">8</ref>) were plotted, and the optimal F1 values for each class are summarized (shown in Table <ref type="table">2</ref>).</p><p>It can be seen that the original Unet achieved good results, but there were more false positives, and its boundaries were more blurred. This indicates that Unet, while efficient in capturing general features, struggles with fine boundary details and is prone to over-segmentation errors. The results suggest that the original Unet architecture may need modifications, such as integrating advanced feature extraction techniques, to handle the complexity of renal pathology images effectively.</p><p>The Transformer structure also performed well in the comparative study. Its ability to model global contextual information through attention mechanisms contributed to better segmentation results, especially for complex structures like renal vessels. However, the computational cost and slower inference speed of Transformer-based models, as noted in other studies <ref type="bibr" target="#b40">[41]</ref>, highlight their trade-off between accuracy and efficiency. This aligns with our findings, where despite their robust performance, Transformers require significant resources, making them less practical for real-time or resource-constrained applications.</p><p>Overall, the models of U 2 net and EfficientNet+Unet were better than the other models. This can be attributed to the lightweight yet powerful architecture of U 2 net, which excels in detecting detailed boundaries, and the superior feature extraction capabilities of EfficientNet when combined with Unet's multi-scale structure. These models not only achieved higher recall and precision but also maintained a good balance between computational efficiency and accuracy, making them particularly suitable for clinical applications.</p><p>In addition, Table <ref type="table">2</ref> reveals that there is little difference in the results of renal tubules output by different models, but the results for vessels vary significantly. This is likely due to more complex vessel characteristics. However, further analysis showed that most cases of false-positive (FP) vessels were caused by label deletion. The actual detection effect is much better than that of the exhibited algorithm, but the comparison of the algorithms is fair. Overall, the U 2 net and EfficientNet+Unet models were the most effective among all the models.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B. EXPERIMENTAL RESULTS OF THE DIFFERENT NECKS &amp; HEADS</head><p>The neck is an effective operation for integrating the characteristics of each stage of the network, which can significantly improve the performance of the network. Skip connection structures, such as Unet are common neck operations used in medical image analysis. The head structure is a characteristic extractor with a structured output for handling different tasks. In this study, the use of the decoder of Unet and BiFPN as the neck of EfficientNet is compared. Then, U 2 net and SwinUnet are compared because the two networks used a neck structure different from Unet. In U net, the upsampling block uses a U-shaped structure as the base module. SwinUnet creatively uses a transformer structure as the base module and adopts patch expansion as the upsampling layer. Finally, for comparative experiments of the heads, the single-scale feature output and multi-scale feature output are compared.</p><p>As presented in Table <ref type="table">3</ref> and Figure <ref type="figure" target="#fig_10">9</ref>, it can be seen that 1) BiFPN has no obvious advantages over the Unet decoder.</p><p>2) In the model with EfficientNet as the backbone, using upsampling to increase the size of the output feature map can improve the effectiveness of the model, particularly for vessels with small targets. 3) The multi-scale feature output failed to improve the model effect in EfficientNet, but the gain was obvious in U 2 net. Moreover, using only the output feature from stage 2 of the neck (multi-scale b2) in the test can achieve the same effect as using the output feature from stage 1 of the neck (multi-scale b1), and can save considerable computational costs. 4) The Transformer-based SwinUnet demonstrates good performance. In this study, the structure of SwinUnet was modified (Figure <ref type="figure" target="#fig_10">9D</ref>), and it was found that placing the normalization layer before the linear layer could significantly improve the performance. This indicates that there is still great potential for improving this new structure.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C. EXPERIMENTAL RESULTS OF THE DIFFERENT BN &amp; BATCH SIZE</head><p>In this experiment, EfficientNet+Unet and U 2 net were used as the basic networks to perform ablation experiments on different BN and batch sizes. In the study on EfficientNet+Unet, using SyncBN or not, using multiple batches, and amplifying the output channel size are compared. In the study on U 2 net, using SyncBN or not and using multiple batches were also compared. In addition, the effect of multi-scale feature output on model performance is also compared.</p><p>As shown in Table <ref type="table">4</ref>, the use of SyncBN, multiple batches, and amplification of the output channel size significantly improves the performance of EfficientNet. This suggests that these adjustments help stabilize training and enhance feature representation, particularly in deeper networks like Efficient-Net. The amplification of output channels likely contributes to better capturing fine details in small structures, such as vessels, which are critical in medical image segmentation tasks.</p><p>As shown in Table <ref type="table">5</ref>, the use of SyncBN and multiple batches were also effective in improving the performance of the U 2 net. Multi-stage output is effective for U 2 net, but its contribution to the performance improvement is not as large as that of multiple batches. This may be attributed to the role of batch size in improving gradient estimation during training and reducing variance.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>D. EXPERIMENTAL RESULTS OF THE DIFFERENT LOSS</head><p>Several dominant loss function methods were compared in this study, including CE Loss, BCE Loss, Dice Loss, Focal Loss, and SSIM. As shown in Table <ref type="table">6</ref>, BCE and Dice are less effective than the cross-entropy loss. In addition, SSIM slightly improves the model performance,</p><p>TABLE 2. The detailed segmentation efficiency of different backbones.</p><p>TABLE 3. The detailed segmentation efficiency of different necks and heads. TABLE 4. The efficiency of using different BN, Batch Sizes, and Output channels in EfficientNet. and there is no improvement when Focal Loss is used.</p><p>TABLE 5. The efficiency of using BN, Batch sizes, and multi-stage output in U 2 net.</p><p>Subsequently, four different staining methods were selected to illustrate the actual segmentation effect of each TABLE 6. The efficiency of different loss functions on EfficientNet.</p><p>loss function (see Figure <ref type="figure" target="#fig_11">10</ref>). It can be seen that the BCE loss and dice loss processed the contours too sloppily, and the effect was obviously weaker than that of other loss functions. In contrast, the SSIM process produces finer contours. This is likely due to the fact that SSIM, unlike other loss functions, emphasizes the structural similarity between the predicted and ground truth images. By focusing on local luminance, contrast, and structure, SSIM encourages the model to better capture spatial dependencies and edge details, which are particularly important in medical image segmentation tasks involving complex and irregular boundaries.</p><p>The overall performance improvement of the Focal Loss is not obvious (although it shows a certain effect on segmenting difficult samples). In addition, it is worth noting that the model can detect many targets that are not actually labeled manually, and the segmentation is correct. PAS, PASM, H&amp;E, and Masson staining methods all achieved good results, indicating that the generalization ability of the model was very strong.</p><p>TABLE 7. Scale optimization for EfficientNet-b4+Unet model.</p><p>TABLE 8. The efficiency of label weights, Boundary label &amp; More data on EfficientNet+Unet model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>E. EXPERIMENTAL RESULTS OF DIFFERENT PRE-TREATMENTS &amp; POST-TREATMENTS</head><p>Here, different pre-treatments and post-treatments are discussed, including scales, image pretreatment, and increased training data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>1) Scales</head><p>Various experiments were designed to determine the input scale, output scale, and output channel size. Experiments were conducted on different backbones. As shown in Table <ref type="table">7</ref>, increasing the input scale, output scale, and output channel size significantly improved  the performance of EfficientNet-b4+Unet. Meanwhile, Figure <ref type="figure" target="#fig_12">11</ref> illustrates that increasing the input scale is also effective for U 2 net.</p><p>2) Image pretreatment For image pretreatment, using the boundary as the learning objective and setting the weight of the learning objective both affect the model performance, especially in processing the details of the boundary. The previous content introduced label processing for the boundary and the corresponding boundary weights. It should be noted that gradient boundary weights were applied to all the models in this study. The label weights here indicate that the gradient boundary weights are multiplied by different weight scales. Herein, the scales are set to 1.5, 1, 2, and 2 for KG1, KT1, KV1, and the boundary. As shown in Table <ref type="table">8</ref>, setting the boundary as a separate label significantly improves the model performance, particularly for the segmentation of vessels. Meanwhile, the label weights do not show a significant effect. Artificial interventions did not play a significant role.  TABLE 9. The efficiency of label weights, Boundary Label &amp; More data on EfficientNet+Unet model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>3) Increased training data</head><p>As mentioned in the previous section, tiny datasets are simplified from full datasets to validate the effectiveness of the algorithm efficiently and perform more comparative experiments. Here, we compare the models based on the two datasets. In this study, the training was started from tiny datasets with a total of 200 epochs. Then, the model trained on the tiny datasets was used as a pretraining model, and it was further trained for 30 epochs on the full datasets. As shown in Figure <ref type="figure" target="#fig_13">12</ref>, a substantial improvement in model performance was achieved by using full datasets with more training samples. As shown in Figure <ref type="figure" target="#fig_14">13</ref>, the 200 epochs on the tiny datasets iterate approximately 100K times, while the 30 epochs on the full datasets iterate approximately 150K times. In addition, the training on the full datasets converges fast and well, suggesting that the model trained on tiny datasets is reliable and easily applied to larger datasets.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>F. SPEED, PARAMS, AND GFLOPS</head><p>The performance, efficiency, and computing resource consumption of these models for identifying renal pathological tissues were compared. Deep learning methods can identify renal pathological tissues much faster than humans, and faster and more sensitive segmentations enable earlier diagnosis and treatment of patients. In addition, because computing resources are limited, effective segmentation with limited resource consumption is preferred. Hence, in the experiment, EfficientNet+Unet (good performance), U 2 net, and a transformer (SwinUnet, widely used nowadays) were compared, and the total time required to process 48 images was taken as the statistical indicator of speed.</p><p>As shown in Table <ref type="table">9</ref>, U 2 net is slow and requires considerable video memory and computational resources despite its good performance. SwinUnet exhibits good performance in identifying renal pathological tissues; however, it is also slow. EfficientNet+Unet exhibited outstanding performance in all aspects.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>V. CONCLUSION</head><p>In summary, the experimental results indicate a balanced result that can be achieved by the model structure of EfficientNet-b4+Unet with an input image size of 896 × 896 pixels, multiple batches (four graphics cards, each with a batch size of 2), SyncBN, an input scale of 0.75, an output scale of 1, and an output channel size of 64. For extreme performance, a model with more parameters such as U 2 net can be considered. Figure <ref type="figure" target="#fig_15">14</ref> presents the segmentation results of renal pathological tissue obtained using the EfficientNet-b4+Unet model. The visual results demonstrate that this model can effectively segment renal pathological tissues. However, further analysis reveals that vascular segmentation performance is slightly inferior to that of glomeruli and renal tubules. This is primarily due to the presence of small capillary structures and a large number of blank areas in the images, which impact the model's ability to learn vascular features effectively. This indicates potential areas for further optimization.</p><p>In this study, the segmentation target was divided into the glomeruli, tubules, and renal vessels. The contributions of this study are as follows.</p><p>(1) Complete procedures and solutions for kidney pathology testing are provided, including data processing, model training, and final tests. Each part is described in detail below.</p><p>(2) Different algorithms are comprehensively compared, including the classic Unet and the latest SwinUnet, the U 2 net with high performance, EfficientNet, and MobileNet with high efficiency.</p><p>(3) Detailed model settings and subtle algorithm tricks were compared, including a detailed comparison of backbones, necks, heads, loss functions, and algorithm tricks such, as BN, batch size, scale, and multi-stage output.</p><p>(4) The best solution is provided by considering the advantages and disadvantages of each algorithm in terms of the model performance, efficiency, and resource consumption. The advantages of EfficientNet+Unet were fully analyzed based on numerical and practical results.</p><p>(5) The generalization ability of the models is shown by different staining methods and datasets. the models achieve good segmentation results under different staining methods including H&amp;E, PAS, PASM, and Masson. In addition, the models showed good generalization ability and strong compatibility from tiny datasets to full datasets.</p><p>Despite the significant contributions of this study, several limitations exist that warrant further investigation:</p><p>(1) Model complexity: While the EfficientNet-b4+Unet model balances performance and efficiency, its computational demands may still limit deployment in resourceconstrained environments. Future work could explore lightweight alternatives with comparable performance.</p><p>(2) Manual annotations: The reliance on manually labeled data introduces potential variability and subjectivity. Incorporating semi-supervised or unsupervised learning approaches could reduce annotation requirements and enhance scalability.</p><p>(3) Specific lesion segmentation: Although the study focuses on segmenting glomeruli, tubules, and vessels, it does not explicitly address the segmentation of specific pathological features, such as crescents or atrophy. Future research could develop specialized models targeting these specific lesions.</p><p>(4) Real-world integration: The study primarily evaluates models in a controlled experimental setup. Further research is needed to validate these models in real-world clinical workflows, including integration with diagnostic systems and feedback from pathologists.</p><p>By addressing these limitations, future research can build on this study to advance the field of renal pathological tissue segmentation and contribute to more precise and efficient diagnostic tools in clinical practice.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>FIGURE 1 .</head><label>1</label><figDesc>FIGURE 1. The ground truth of renal pathological tissue segmentation model. Red indicates glomerulus, green indicates tubules, and blue indicates renal vessels. And several representative blocks are selected here for detailed display. Among them, block 0 mainly shows vessels, block 1 mainly shows tubules, and block 2 mainly shows glomerulus.</figDesc><graphic coords="4,60.85,66.06,452.76,135.04" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>FIGURE 2 .</head><label>2</label><figDesc>FIGURE 2. The composition of the renal pathological tissue segmentation algorithm. The algorithm can be simply divided into the following parts: pretreatment (patch images cropping, input scale, data augmentation, etc.), model structure (mainly including backbone, neck, and head), training module (loss function, optimization method), testing module (post-test processing).</figDesc><graphic coords="4,60.54,441.78,174.56,63.93" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>FIGURE 3 .</head><label>3</label><figDesc>FIGURE 3. The processing method of the target boundary. Three graphs in a row are the original image, label image, weighting factor heat map: A) The target boundary is regarded as a separate class, together with fixed weights. B) The target boundary is not regarded as a separate class, but boundary weights are added. C) The target boundary is regarded as a separate class, and weights are added to the boundary.</figDesc><graphic coords="5,43.56,66.06,226.43,199.63" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>FIGURE 4 .</head><label>4</label><figDesc>FIGURE 4. The different head structures. A) The structures of single-scale feature output. B) The structures of multi-scale feature output. C) The structures of output with upsampling. D) The structures of output without upsampling.</figDesc><graphic coords="5,299.33,66.06,236.71,188.38" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>1 )</head><label>1</label><figDesc>Step 1. Crop the image into patches The circle of the image is filled with a pixel value of 0 and a pixel width of 64 to prevent cross-border crossing. The image was then cropped into patches of size 1024 × 1024 pixels and an overlap of 128 pixels. 2) Step 2. Testing the patch images All the patches in Step 1 are tested with a trained model. 3) Step 3. Splice the results of the patch images The middle 896×896 pixels of the test result were taken as an effective area and backfilled into the corresponding original image to splice the result. In this process, quantization is performed to optimize memory and speed up the splicing operation. 4) Step 4. Tissue extraction from the spliced results</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>FIGURE 5 .</head><label>5</label><figDesc>FIGURE 5. Specific flow of the testing process: A) Original image. B) Padding with a pixel value of 0 around the original image. C) Full coverage cut of image B. D) The analysis of the segmentation results through the model and the extraction of the middle effective area. E) The splice of the segmentation results. F) The correction and fusion of the splicing results and the final output results.</figDesc><graphic coords="7,47.83,66.06,171.24,170.12" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>FIGURE 6 .</head><label>6</label><figDesc>FIGURE 6. Confusion matrices of the proposed semantic segmentation methods. A) Confusion matrix for the method based on Transformer. B) Confusion matrix for the method based on Unet. C) Confusion matrix for the method based on U 2 net.</figDesc><graphic coords="8,52.91,56.98,478.72,164.24" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>FIGURE 7 .</head><label>7</label><figDesc>FIGURE 7. The ROC curve of different models. A) is for identifying glomerulus. B) is for identifying tubules. C) is for identifying renal vessels. D) is the summarized ROC curves of different models.</figDesc><graphic coords="9,47.55,66.06,308.37,275.72" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>FIGURE 8 .</head><label>8</label><figDesc>FIGURE 8. The PR curve of different models. A) is for identifying glomerulus. B) is for identifying tubules. C) is for identifying renal vessels. D) is the summarized PR curves of different models.</figDesc><graphic coords="9,54.74,386.01,299.01,266.07" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head>FIGURE 9 .</head><label>9</label><figDesc>FIGURE 9. The comparison of the neck &amp; head. A) Red, EfficientNet with Unet as the decoder; Blue, EfficientNet with BiFPN as the decoder; B) Red, EfficientNet without multi-stage output; Blue, EfficientNet with multi-stage output; C) Red, U 2 nets' decoder without multi-stage output; Blue, U 2 nets' decoder with multi-stage output and the feature of stage 1 is used as the segmentation output; Green, EfficientNet with multi-stage output and the feature of stage 2 is used as the segmentation output; D) Red, placing the linear layer before the normalization layer; Blue, placing the normalization layer before the linear layer.</figDesc><graphic coords="11,47.51,66.06,411.19,227.61" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><head>FIGURE 10 .</head><label>10</label><figDesc>FIGURE 10. The detailed comparison of the segmentation results under different loss functions with different staining methods. The first line shows the segmentation of glomerulus under the use of the PAS staining method (labeled in red); the second line shows the segmentation of tubules under the use of the H&amp;E staining method (labeled in green); the third line shows the segmentation of renal vessels under the use of the PASM staining method (labeled in blue); the fourth line shows the segmentation of all targets under the use of the Masson staining method. Additionally, from left to right, each column presents the original image, the ground truth image, and results under the use of the CE Loss, BCE Loss, CE+Focal Loss, CE+SSIM, and CE+Dice Loss, respectively.</figDesc><graphic coords="12,60.83,66.06,452.80,265.49" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_12"><head>FIGURE 11 .</head><label>11</label><figDesc>FIGURE 11. The results of comparative experiments on the input scale of U 2 net variants. A) The results of the original U 2 net, where the red bar indicates setting the scale to 0.5, and blue bar indicates setting the scale to 0.75; B) the results of U 2 net+SyncBN, where red bar indicates setting the scale to 0.5, and the blue bar indicates setting the scale to 0.75; C) the results of U 2 net+SyncBN+multi-stage output, where red bar indicates setting the scale to 0.5, and the blue bar indicates setting the scale to 0.75.</figDesc><graphic coords="12,60.46,408.93,453.55,131.95" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_13"><head>FIGURE 12 .</head><label>12</label><figDesc>FIGURE 12. The performance comparison under more training samples. A) Using more training samples for EfficientNet+Unet, where the green bar indicates the original training results on the tiny datasets, and the orange bar indicates the training results on the full datasets. B) Using more training samples for SwinUnet, whether the green bar indicates the training results on the tiny datasets, and the orange bar indicates the results on the full datasets.</figDesc><graphic coords="13,47.82,65.68,478.83,153.84" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_14"><head>FIGURE 13 .</head><label>13</label><figDesc>FIGURE 13. The loss function curve in the model training process. The blue and red lines indicate the training curves of EfficientNet-b4+Unet on the tiny datasets and full datasets, respectively; the purple and green lines indicate the training curves of SwinUnet on the tiny datasets and full datasets, respectively.</figDesc><graphic coords="13,72.67,280.12,429.13,181.68" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_15"><head>FIGURE 14 .</head><label>14</label><figDesc>FIGURE 14. The segmentation results of renal pathological tissue: red indicates glomeruli; green indicates tubules; purple indicates renal vessels, and light blue indicates interstitium. Additionally, A) presents the original image; B) presents the ground truth, and C) presents the segmentation results of EfficientNet-b4+Unet.</figDesc><graphic coords="14,73.38,66.06,427.70,184.10" type="bitmap" /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2025" xml:id="foot_0"><p>The Authors. This work is licensed under a Creative Commons Attribution 4.0 License.For more information, see https://creativecommons.org/licenses/by/4.0/ VOLUME 13, 2025</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_1"><p>VOLUME 13, 2025   </p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="58012" xml:id="foot_2"><p>  VOLUME 13, 2025   </p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="58018" xml:id="foot_3"><p>  VOLUME 13, 2025   </p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="58020" xml:id="foot_4"><p>  VOLUME 13, 2025   </p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="58022" xml:id="foot_5"><p>  VOLUME 13, 2025   </p></note>
+		</body>
+		<back>
+
+			<div type="funding">
+<div><p>This work was supported by the ''<rs type="programName">Pioneer'' and ''Leading Goose'' Research and Development Program of Zhejiang</rs> under Grant <rs type="grantNumber">2023C03075</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_nc87aFZ">
+					<idno type="grant-number">2023C03075</idno>
+					<orgName type="program" subtype="full">Pioneer&apos;&apos; and &apos;&apos;Leading Goose&apos;&apos; Research and Development Program of Zhejiang</orgName>
+				</org>
+			</listOrg>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0" />			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Artificial intelligence and machine learning in nephropathology</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">U</forename><surname>Becker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Mayerich</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Padmanabhan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Barratt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ernst</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Boor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Cicalese</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Mohan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">V</forename><surname>Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Roysam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Kidney Int</title>
+		<imprint>
+			<biblScope unit="volume">98</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="65" to="75" />
+			<date type="published" when="2020-04">Apr. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Artificial intelligence applications for preimplantation kidney biopsy pathology practice: A systematic review</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Girolami</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Pantanowitz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Marletta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hermsen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Van Der Laak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Munari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Furian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Vistoli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Zaza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Cardillo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Gesualdo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Gambaro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Eccher</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1801" to="1808" />
+			<date type="published" when="2022-04">Apr. 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Artificial intelligence-assisted quantification and assessment of whole slide images for pediatric kidney disease diagnosis</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Feng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bioinformatics</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">740</biblScope>
+			<date type="published" when="2024-01">Jan. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Prediction of chronic kidney disease and its progression by artificial intelligence algorithms</title>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">P</forename><surname>Schena</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">W</forename><surname>Anelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">I</forename><surname>Abbrescia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Di Noia</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="1953" to="1971" />
+			<date type="published" when="2022-05">May 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Revolutionizing chronic kidney disease management with machine learning and artificial intelligence</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Krisanapan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Tangpanithandee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Thongprayoon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Pattharanitima</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Cheungpasitporn</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Clin. Med</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page">3018</biblScope>
+			<date type="published" when="2023-04">Apr. 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Digital pathology and computational image analysis in nephropathology</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Barisoni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Lafata</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Hewitt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Madabhushi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><forename type="middle">G J</forename><surname>Balis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Rev. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page" from="669" to="685" />
+			<date type="published" when="2020-08">Aug. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Machine learning, the kidney, and genotype-phenotype analysis</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">S G</forename><surname>Sealfon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">H</forename><surname>Mariani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kretzler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><forename type="middle">G</forename><surname>Troyanskaya</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Kidney Int</title>
+		<imprint>
+			<biblScope unit="volume">97</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1141" to="1149" />
+			<date type="published" when="2020-06">Jun. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Big science and big data in nephrology</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Saez-Rodriguez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Rinschen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Floege</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Kramann</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Kidney Int</title>
+		<imprint>
+			<biblScope unit="volume">95</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1326" to="1337" />
+			<date type="published" when="2019-06">Jun. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Artificial intelligence in nephrology: Core concepts, clinical applications, and perspectives</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Niel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bastard</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Amer. J. Kidney Diseases</title>
+		<imprint>
+			<biblScope unit="volume">74</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="803" to="810" />
+			<date type="published" when="2019-12">Dec. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Classification of glomerular pathological findings using deep learning and nephrologist-AI collective intelligence approach</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Uchino</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Suzuki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Sato</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Kojima</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tamada</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Hiragi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Yokoi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Yugami</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Minamiguchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Haga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Yanagita</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Okuno</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Int. J. Med. Informat</title>
+		<imprint>
+			<biblScope unit="volume">141</biblScope>
+			<biblScope unit="page">104231</biblScope>
+			<date type="published" when="2020-09">Sep. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Detection and classification of novel renal histologic phenotypes using deep neural networks</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sheehan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mawe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">E</forename><surname>Cianciolo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Korstanje</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Mahoney</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Amer. J. Pathol</title>
+		<imprint>
+			<biblScope unit="volume">189</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="1786" to="1796" />
+			<date type="published" when="2019-09">Sep. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Artificial intelligence in nephropathology</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Boor</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Rev. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="4" to="6" />
+			<date type="published" when="2020-01">Jan. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Locality sensitive deep learning for detection and classification of nuclei in routine colon cancer histology images</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Sirinukunwattana</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">E A</forename><surname>Raza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y.-W</forename><surname>Tsang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">R J</forename><surname>Snead</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">A</forename><surname>Cree</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">M</forename><surname>Rajpoot</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Med. Imag</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="1196" to="1206" />
+			<date type="published" when="2016-05">May 2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Deep learning can predict microsatellite instability directly from histology in gastrointestinal cancer</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">N</forename><surname>Kather</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">T</forename><surname>Pearson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Halama</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Jäger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Krause</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">H</forename><surname>Loosen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Marx</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Boor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Tacke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><forename type="middle">P</forename><surname>Neumann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">I</forename><surname>Grabsch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Yoshikawa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Brenner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chang-Claude</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hoffmeister</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Trautwein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Luedde</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Med</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1054" to="1056" />
+			<date type="published" when="2019-06">Jun. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Identification of glomerular lesions and intrinsic glomerular cell types in kidney diseases via deep learning</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zeng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Nan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Lei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Hou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Lv</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Lv</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Pathol</title>
+		<imprint>
+			<biblScope unit="volume">252</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="53" to="64" />
+			<date type="published" when="2020-09">Sep. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">A deep learning-based approach for glomeruli instance segmentation from multistained renal biopsy pathologic images</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Mei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zuo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Shi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Amer. J. Pathol</title>
+		<imprint>
+			<biblScope unit="volume">191</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="1431" to="1441" />
+			<date type="published" when="2021-08">Aug. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Development and validation of a deep learning model to quantify glomerulosclerosis in kidney biopsy specimens</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">N</forename><surname>Marsh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T.-C</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">C</forename><surname>Wilson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Swamidass</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">P</forename><surname>Gaut</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">JAMA Netw. Open</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<date type="published" when="2021-01">Jan. 2021. 2030939</date>
+			<pubPlace>Art</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Computational segmentation and classification of diabetic glomerulosclerosis</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Ginley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Lutnick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K.-Y</forename><surname>Jen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">B</forename><surname>Fogo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Jain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Rosenberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Walavalkar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Wilding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Tomaszewski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Yacoub</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">M</forename><surname>Rossi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Sarder</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Amer. Soc. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="1953" to="1967" />
+			<date type="published" when="2019-10">Oct. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Deep-learning-driven quantification of interstitial fibrosis in digitized kidney biopsies</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Cassol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Jung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Veerapaneni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">C</forename><surname>Chitalia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">Y M</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">S</forename><surname>Bellur</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Boor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Barisoni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">S</forename><surname>Waikar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Betke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">B</forename><surname>Kolachalama</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Amer. J. Pathol</title>
+		<imprint>
+			<biblScope unit="volume">191</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="1442" to="1453" />
+			<date type="published" when="2021-08">Aug. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Automated assessment of glomerulosclerosis and tubular atrophy using deep learning</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Salvi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mogetta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Gambella</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Molinaro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Barreca</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Papotti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Molinari</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computerized Med. Imag. Graph</title>
+		<imprint>
+			<biblScope unit="volume">90</biblScope>
+			<biblScope unit="page">101930</biblScope>
+			<date type="published" when="2021-06">Jun. 2021</date>
+			<pubPlace>Art</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Deep learning-based histopathologic assessment of kidney tissue</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hermsen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Bel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Boer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">J</forename><surname>Steenbergen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Florquin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J T H</forename><surname>Roelofs</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">D</forename><surname>Stegall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">P</forename><surname>Alexander</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">H</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Smeets</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">B</forename><surname>Hilbrands</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A W M</forename><surname>Van Der Laak</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Amer. Soc. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="1968" to="1979" />
+			<date type="published" when="2019-10">Oct. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Deep learning-based segmentation and quantification in experimental kidney histopathology</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Bouteldja</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">M</forename><surname>Klinkhammer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Bülow</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Droste</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Otten</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">V</forename><surname>Stillfried</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Moellmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sheehan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Korstanje</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Menzel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bankhead</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mietsch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Drummer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lehrke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Kramann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Floege</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Boor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Merhof</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Am. Soc. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="52" to="68" />
+			<date type="published" when="2020-11">Nov. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Development and evaluation of deep learning-based segmentation of histologic structures in the kidney cortex with multiple histologic stains</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">P</forename><surname>Jayapandian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">R</forename><surname>Janowczyk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">B</forename><surname>Palmer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Cassol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sekulic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Hodgin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Hewitt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>O'toole</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Toro</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Kidney Int</title>
+		<imprint>
+			<biblScope unit="volume">99</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="86" to="101" />
+			<date type="published" when="2020-08">Aug. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Glomerulosclerosis identification in whole slide images using semantic segmentation</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Bueno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Fernandez-Carrobles</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Gonzalez-Lopez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Deniz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Comput. Methods Programs Biomed</title>
+		<imprint>
+			<biblScope unit="volume">184</biblScope>
+			<biblScope unit="page">105273</biblScope>
+			<date type="published" when="2020-02">Feb. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">The native kidney biopsy: Update and evidence for best practice</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Hogan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mocanu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Berns</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Clin. J. Amer. Soc. Nephrol</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="354" to="362" />
+			<date type="published" when="2016-02">Feb. 2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Role of special stains as a useful complementary tool in the diagnosis of renal diseases: A case series study</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Venkatesh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Malaichamy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Tech. Rep</title>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Artificial intelligence and algorithmic computational pathology: An introduction with renal allograft examples</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">B</forename><surname>Farris</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Vizcarra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Amgad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">A D</forename><surname>Cooper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Gutman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Hogan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Histopathology</title>
+		<imprint>
+			<biblScope unit="volume">78</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="791" to="804" />
+			<date type="published" when="2021-05">May 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Glomerulus classification and detection based on convolutional neural networks</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gallego</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pedraza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lopez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Steiner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Gonzalez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Laurinavicius</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Bueno</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Imag</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">20</biblScope>
+			<date type="published" when="2018-01">Jan. 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Multi-scale CNN: An explainable AIintegrated unique deep learning framework for lung-affected disease classification</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Sarkar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Islam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">K</forename><surname>Syfullah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">T</forename><surname>Islam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Ahamed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ahsan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Haider</surname></persName>
+		</author>
+		<idno type="DOI">10.3390/technologies11050134</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Technologies</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page">134</biblScope>
+			<date type="published" when="2023-09">Sep. 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">A review on brain tumor segmentation based on deep learning methods with federated learning techniques</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Ahamed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Hossain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Nahiduzzaman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Islam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Islam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ahsan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Haider</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.compmedimag.2023.102313</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Computerized Med. Imag. Graph</title>
+		<imprint>
+			<biblScope unit="volume">110</biblScope>
+			<biblScope unit="page">102313</biblScope>
+			<date type="published" when="2023-12">Dec. 2023</date>
+			<pubPlace>Art</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Automated detection of colorectal polyp utilizing deep learning methods with explainable AI</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Ahamed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Islam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Nahiduzzaman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Karim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Ayari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Khandakar</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ACCESS.2024.3402818</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Access</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page" from="78074" to="78100" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Classification and segmentation on multi-regional brain tumors using volumetric images of MRI with customized 3D U-Net framework</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ahamed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Robiul</forename><surname>Islam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Hossain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Syfullah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Sarkar</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/978-981-19-7528-8_18</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. Int. Conf. Inf</title>
+		<meeting>Int. Conf. Inf<address><addrLine>Singapore</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="223" to="234" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Detection of various gastrointestinal tract diseases through a deep learning method with ensemble ELM and explainable AI</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Ahamed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Nahiduzzaman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Islam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Naznine</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ayari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Khandakar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Haider</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.eswa.2024.124908</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Exp. Syst. Appl</title>
+		<imprint>
+			<biblScope unit="volume">256</biblScope>
+			<biblScope unit="page">124908</biblScope>
+			<date type="published" when="2024-12">Dec. 2024</date>
+			<pubPlace>Art</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Interpretable deep learning architecture for gastrointestinal disease detection: A tri-stage approach with PCA and XAI</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Ahamed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">B</forename><surname>Shafi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Nahiduzzaman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Ayari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Khandakar</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.compbiomed.2024.109503</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Comput. Biol. Med</title>
+		<imprint>
+			<biblScope unit="volume">185</biblScope>
+			<biblScope unit="page">109503</biblScope>
+			<date type="published" when="2025-02">Feb. 2025</date>
+			<pubPlace>Art</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Optimizing skin lesion segmentation with UNet and attention-guidance utilizing test time augmentation</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Ahamed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Hossain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Mary</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Islam</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/iceeict62016.2024.10534522</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. 6th Int. Conf. Electr. Eng</title>
+		<meeting>6th Int. Conf. Electr. Eng</meeting>
+		<imprint>
+			<date type="published" when="2024-05">May 2024</date>
+			<biblScope unit="page" from="568" to="573" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Streamlining plant disease diagnosis with convolutional neural networks and edge devices</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Ahamed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Salam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Nahiduzzaman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Abdullah-Al-Wadud</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M R</forename><surname>Islam</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s00521-024-10152-y</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Neural Comput. Appl</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="issue">29</biblScope>
+			<biblScope unit="page" from="18445" to="18477" />
+			<date type="published" when="2024-10">Oct. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Utilizing customized 3D U-Net framework for the classification and segmentation of multi-regional brain tumors in volumetric MRI images</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M T</forename><surname>Titu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Mary</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Ahamed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">M</forename><surname>Oishee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Hasan</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/icaeee62219.2024.10561700</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. 3rd Int. Conf. Advancement Electr. Electron. Eng. (ICAEEE)</title>
+		<meeting>3rd Int. Conf. Advancement Electr. Electron. Eng. (ICAEEE)</meeting>
+		<imprint>
+			<date type="published" when="2024-04">Apr. 2024</date>
+			<biblScope unit="page" from="1" to="6" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Comparative analysis of chronic progressive nephropathy (CPN) diagnosis in rat kidneys using an artificial intelligence deep learning model</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Bae</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Byun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Han</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Toxicological Res</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="551" to="559" />
+			<date type="published" when="2024-10">Oct. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Deep learning approaches for the segmentation of glomeruli in kidney histopathological images</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">M</forename><surname>Dimitri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Andreini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bonechi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bianchini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mecocci</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Scarselli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Zacchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Garosi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Marcuzzo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Tripodi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Mathematics</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page">1934</biblScope>
+			<date type="published" when="2022-06">Jun. 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Evaluating tubulointerstitial compartments in renal biopsy specimens using a deep learning-based approach for classifying normal and abnormal tubules</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Hara</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Haneda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kawakami</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Morita</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Nishioka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Zoshima</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kometani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Yoneda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kawano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Karashima</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Nambo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS ONE</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<date type="published" when="2022-07">Jul. 2022</date>
+		</imprint>
+	</monogr>
+	<note>Art. no. e0271161</note>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">ConvWin-UNet: UNet-like hierarchical vision transformer combined with convolution for medical image segmentation</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Math. Biosciences Eng</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="128" to="144" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">U-Net: Convolutional networks for biomedical image segmentation</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ronneberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Brox</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proc. Int. Conf. Med. Image Comput. Comput.-Assist. Interv</title>
+		<imprint>
+			<biblScope unit="page" from="234" to="241" />
+			<date type="published" when="2015-11">Nov. 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">UNet++: Redesigning skip connections to exploit multiscale features in image segmentation</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M R</forename><surname>Siddiquee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tajbakhsh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Med. Imag</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1856" to="1867" />
+			<date type="published" when="2020-06">Jun. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">UNet3+: A full-scale connected UNet for medical image segmentation</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Tong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Iwamoto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y.-W</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="s">Proc. IEEE Int. Conf. Acoust., Speech Signal Process</title>
+		<imprint>
+			<biblScope unit="page" from="1055" to="1059" />
+			<date type="published" when="2020-05">May 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">&apos;U 2 -net: Going deeper with nested U-structure for salient object detection</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Dehghan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><forename type="middle">R</forename><surname>Zaiane</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jagersand</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognit</title>
+		<imprint>
+			<biblScope unit="volume">106</biblScope>
+			<biblScope unit="page">107404</biblScope>
+			<date type="published" when="2020-10">Oct. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<monogr>
+		<title level="m" type="main">EfficientNet: Rethinking model scaling for convolutional neural networks</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Le</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1905.11946</idno>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Data-efficient and weakly supervised computational pathology on whole-slide images</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Y</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">F K</forename><surname>Williamson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">Y</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Barbieri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Mahmood</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Biomed. Eng</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="555" to="570" />
+			<date type="published" when="2021-03">Mar. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Large scale tissue histopathology image classification, segmentation, and visualization via deep convolutional activation features</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Jia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L.-B</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Ai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">I</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">-C</forename><surname>Chang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">BMC Bioinf</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">281</biblScope>
+			<date type="published" when="2017-12">Dec. 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<monogr>
+		<title level="m" type="main">MMDetection: Open MMLab detection toolbox and benchmark</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Chen</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1906.07155</idno>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<monogr>
+		<title level="m" type="main">Very deep convolutional networks for large-scale image recognition</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Simonyan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Zisserman</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1409.1556</idno>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Going deeper with convolutions</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Szegedy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Jia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Sermanet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Reed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Anguelov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Erhan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Vanhoucke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Rabinovich</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR)</title>
+		<meeting>IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR)</meeting>
+		<imprint>
+			<date type="published" when="2015-06">Jun. 2015</date>
+			<biblScope unit="page" from="1" to="9" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Gradient-based learning applied to document recognition</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lecun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Bottou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Bengio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Haffner</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proc. IEEE</title>
+		<imprint>
+			<biblScope unit="volume">86</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page" from="2278" to="2324" />
+			<date type="published" when="1998-11">Nov. 1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Densely connected convolutional networks</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Van Der Maaten</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">Q</forename><surname>Weinberger</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR)</title>
+		<meeting>IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR)</meeting>
+		<imprint>
+			<date type="published" when="2017-07">Jul. 2017</date>
+			<biblScope unit="page" from="4700" to="4708" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<monogr>
+		<title level="m" type="main">MobileNets: Efficient convolutional neural networks for mobile vision applications</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">G</forename><surname>Howard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Kalenichenko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Weyand</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Andreetto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Adam</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1704.04861</idno>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">MobileNetV2: Inverted residuals and linear bottlenecks</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sandler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Howard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Zhmoginov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L.-C</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IEEE/CVF Conf. Comput. Vis</title>
+		<meeting>IEEE/CVF Conf. Comput. Vis</meeting>
+		<imprint>
+			<date type="published" when="2018-06">Jun. 2018</date>
+			<biblScope unit="page" from="4510" to="4520" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<author>
+			<persName><forename type="first">A</forename><surname>Howard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sandler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L.-C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Chu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Vasudevan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Pang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Adam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Le</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IEEE/CVF Int. Conf. Comput. Vis. (ICCV)</title>
+		<meeting>IEEE/CVF Int. Conf. Comput. Vis. (ICCV)</meeting>
+		<imprint>
+			<date type="published" when="2019-10">Oct. 2019</date>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="1314" to="1324" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">MnasNet: Platform-aware neural architecture search for mobile</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Pang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Vasudevan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sandler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Howard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Le</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR)</title>
+		<meeting>IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR)</meeting>
+		<imprint>
+			<date type="published" when="2019-06">Jun. 2019</date>
+			<biblScope unit="page" from="2820" to="2828" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">ShuffleNet: An extremely efficient convolutional neural network for mobile devices</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IEEE/CVF Conf. Comput. Vis</title>
+		<meeting>IEEE/CVF Conf. Comput. Vis</meeting>
+		<imprint>
+			<date type="published" when="2018-06">Jun. 2018</date>
+			<biblScope unit="page" from="6848" to="6856" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">ShuffleNet v2: Practical guidelines for efficient CNN architecture design</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H.-T</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. Eur. Conf. Comput. Vis. (ECCV)</title>
+		<meeting>Eur. Conf. Comput. Vis. (ECCV)</meeting>
+		<imprint>
+			<date type="published" when="2018-01">Jan. 2018</date>
+			<biblScope unit="page" from="116" to="131" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<monogr>
+		<title level="m" type="main">Semantic image segmentation with deep convolutional nets and fully connected CRFs</title>
+		<author>
+			<persName><forename type="first">L.-C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Papandreou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Kokkinos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Murphy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1412.7062</idno>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<monogr>
+		<title level="m" type="main">Swin-UNet: UNet-like pure transformer for medical image segmentation</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Tian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2105.05537</idno>
+		<imprint>
+			<biblScope unit="page">2021</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title level="a" type="main">DeepLab: Semantic image segmentation with deep convolutional nets, atrous convolution, and fully connected CRFs</title>
+		<author>
+			<persName><forename type="first">L.-C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Papandreou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Kokkinos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Murphy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">L</forename><surname>Yuille</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Pattern Anal. Mach. Intell</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="834" to="848" />
+			<date type="published" when="2018-04">Apr. 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<monogr>
+		<title level="m" type="main">Rethinking atrous convolution for semantic image segmentation</title>
+		<author>
+			<persName><forename type="first">L.-C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Papandreou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Schroff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Adam</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1706.05587</idno>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<analytic>
+		<title level="a" type="main">Encoder-decoder with atrous separable convolution for semantic image segmentation</title>
+		<author>
+			<persName><forename type="first">L.-C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Papandreou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Schroff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Adam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. Eur. Conf. Comput. Vis. (ECCV)</title>
+		<meeting>Eur. Conf. Comput. Vis. (ECCV)</meeting>
+		<imprint>
+			<date type="published" when="2018-01">Jan. 2018</date>
+			<biblScope unit="page" from="1055" to="1059" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<monogr>
+		<title level="m" type="main">SegNet: A deep convolutional encoder-decoder architecture for image segmentation</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Badrinarayanan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kendall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Cipolla</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1511.00561</idno>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title level="a" type="main">Feature pyramid networks for object detection</title>
+		<author>
+			<persName><forename type="first">T.-Y</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dollár</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Hariharan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Belongie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR)</title>
+		<meeting>IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR)</meeting>
+		<imprint>
+			<date type="published" when="2017-07">Jul. 2017</date>
+			<biblScope unit="page" from="2117" to="2125" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">EfficientDet: Scalable and efficient object detection</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Pang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Le</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR)</title>
+		<meeting>IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR)</meeting>
+		<imprint>
+			<date type="published" when="2020-06">Jun. 2020</date>
+			<biblScope unit="page" from="10781" to="10790" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">Dynamic head: Unifying object detection heads with attentions</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR)</title>
+		<meeting>IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR)</meeting>
+		<imprint>
+			<date type="published" when="2021-06">Jun. 2021</date>
+			<biblScope unit="page" from="7373" to="7382" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<monogr>
+		<title level="m" type="main">Batch normalization: Accelerating deep network training by reducing internal covariate shift</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ioffe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Szegedy</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1502.03167</idno>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">MegDet: A large mini-batch object detector</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Jia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IEEE/CVF Conf. Comput. Vis</title>
+		<meeting>IEEE/CVF Conf. Comput. Vis</meeting>
+		<imprint>
+			<date type="published" when="2018-06">Jun. 2018</date>
+			<biblScope unit="page" from="6181" to="6189" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">A tutorial on the cross-entropy method</title>
+		<author>
+			<persName><forename type="first">P.-T</forename><surname>De Boer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">P</forename><surname>Kroese</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mannor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">Y</forename><surname>Rubinstein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Ann. Operations Res</title>
+		<imprint>
+			<biblScope unit="volume">134</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="19" to="67" />
+			<date type="published" when="2005-02">Feb. 2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title level="a" type="main">Binary cross entropy with deep learning technique for image classification</title>
+		<author>
+			<persName><forename type="first">U</forename><surname>Ruby</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Yendapalli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Int. J. Adv. Trends Comput. Sci. Eng</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">V-net: Fully convolutional neural networks for volumetric medical image segmentation</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Milletari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Navab</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S.-A</forename><surname>Ahmadi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. 4th Int. Conf. 3D Vis</title>
+		<meeting>4th Int. Conf. 3D Vis</meeting>
+		<imprint>
+			<date type="published" when="2016-10">Oct. 2016</date>
+			<biblScope unit="page" from="565" to="571" />
+		</imprint>
+	</monogr>
+	<note>3DV</note>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<analytic>
+		<title level="a" type="main">Focal loss for dense object detection</title>
+		<author>
+			<persName><forename type="first">T.-Y</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Goyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dollár</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IEEE Int. Conf. Comput. Vis. (ICCV)</title>
+		<meeting>IEEE Int. Conf. Comput. Vis. (ICCV)</meeting>
+		<imprint>
+			<date type="published" when="2017-10">Oct. 2017</date>
+			<biblScope unit="page" from="2980" to="2988" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title level="a" type="main">Image quality assessment: From error visibility to structural similarity</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Image Process</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="604" to="606" />
+			<date type="published" when="2004-04">Apr. 2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<analytic>
+		<title level="a" type="main">Multiscale structural similarity for image quality assessment</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">P</forename><surname>Simoncelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">C</forename><surname>Bovik</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. 37th Asilomar Conf. Signals, Syst. Comput</title>
+		<meeting>37th Asilomar Conf. Signals, Syst. Comput</meeting>
+		<imprint>
+			<date type="published" when="2003">2003</date>
+			<biblScope unit="page" from="1398" to="1402" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<monogr>
+		<title level="m" type="main">An image is worth 16×16 words: Transformers for image recognition at scale</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Dosovitskiy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Beyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kolesnikov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Weissenborn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Unterthiner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Dehghani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Minderer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Heigold</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Gelly</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Uszkoreit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Houlsby</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2010.11929</idno>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<analytic>
+		<title level="a" type="main">Swin transformer: Hierarchical vision transformer using shifted windows</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Guo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IEEE/CVF Int. Conf. Comput. Vis. (ICCV)</title>
+		<meeting>IEEE/CVF Int. Conf. Comput. Vis. (ICCV)</meeting>
+		<imprint>
+			<date type="published" when="2021-10">Oct. 2021</date>
+			<biblScope unit="page" from="10012" to="10022" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

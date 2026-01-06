@@ -1,0 +1,2214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Whole-cell segmentation of tissue images with human-level performance using large-scale data annotation and deep learning</title>
+				<funder>
+					<orgName type="full">Shurl and Kay Curci Foundation</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Bill and Melinda Gates Foundation</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Parker Center for Cancer Immunotherapy</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Alexander and Margaret Stewart Trust</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Heritage Medical Research Institute</orgName>
+				</funder>
+				<funder ref="#_FBEwYjz">
+					<orgName type="full">NCI</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Susan E. Riley Foundation</orgName>
+				</funder>
+				<funder ref="#_WSK8dyS">
+					<orgName type="full">DOD</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Pew Heritage Trust</orgName>
+				</funder>
+				<funder ref="#_RhbFmCe #_hK6E6vJ">
+					<orgName type="full">Paul Allen Family Foundation</orgName>
+				</funder>
+				<funder ref="#_4uyU6xQ">
+					<orgName type="full">National Institutes of Health</orgName>
+					<orgName type="abbreviated">NIH</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Cancer Research Institute</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Rita Allen Foundation</orgName>
+				</funder>
+				<funder ref="#_B728Ebt #_FEq8xCj #_Jf47HCQ #_SYr4WZz #_qCjDzB3 #_F9du7uv #_7n8ZhqT">
+					<orgName type="full">unknown</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Breast Cancer Research Foundation</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>Springer Science and Business Media LLC</publisher>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2021-11-18">18 November 2021</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Noah</forename><forename type="middle">F</forename><surname>Greenwald</surname></persName>
+							<idno type="ORCID">0000-0002-7836-4379</idno>
+							<affiliation key="aff0">
+								<orgName type="department">Cancer Biology Program</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Geneva</forename><surname>Miller</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Division of Biology and Bioengineering</orgName>
+								<orgName type="institution">California Institute of Technology</orgName>
+								<address>
+									<settlement>Pasadena</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Erick</forename><surname>Moen</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Division of Biology and Bioengineering</orgName>
+								<orgName type="institution">California Institute of Technology</orgName>
+								<address>
+									<settlement>Pasadena</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Alex</forename><surname>Kong</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Adam</forename><surname>Kagel</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Thomas</forename><surname>Dougherty</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Division of Biology and Bioengineering</orgName>
+								<orgName type="institution">California Institute of Technology</orgName>
+								<address>
+									<settlement>Pasadena</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Christine</forename><forename type="middle">Camacho</forename><surname>Fullaway</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Brianna</forename><forename type="middle">J</forename><surname>Mcintosh</surname></persName>
+							<idno type="ORCID">0000-0003-3626-625X</idno>
+							<affiliation key="aff0">
+								<orgName type="department">Cancer Biology Program</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Ke</forename><forename type="middle">Xuan</forename><surname>Leow</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Cancer Biology Program</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Morgan</forename><forename type="middle">Sarah</forename><surname>Schwartz</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Division of Biology and Bioengineering</orgName>
+								<orgName type="institution">California Institute of Technology</orgName>
+								<address>
+									<settlement>Pasadena</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Cole</forename><surname>Pavelchek</surname></persName>
+							<idno type="ORCID">0000-0001-9249-6637</idno>
+							<affiliation key="aff2">
+								<orgName type="department">Division of Biology and Bioengineering</orgName>
+								<orgName type="institution">California Institute of Technology</orgName>
+								<address>
+									<settlement>Pasadena</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Sunny</forename><surname>Cui</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="department">Department of Electrical Engineering</orgName>
+								<orgName type="institution">California Institute of Technology</orgName>
+								<address>
+									<settlement>Pasadena</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Isabella</forename><surname>Camplisson</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Division of Biology and Bioengineering</orgName>
+								<orgName type="institution">California Institute of Technology</orgName>
+								<address>
+									<settlement>Pasadena</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Omer</forename><surname>Bar-Tal</surname></persName>
+							<idno type="ORCID">0000-0003-1622-3674</idno>
+							<affiliation key="aff4">
+								<orgName type="department">Department of Molecular Cell Biology</orgName>
+								<orgName type="institution">Weizmann Institute of Science</orgName>
+								<address>
+									<settlement>Rehovot</settlement>
+									<country key="IL">Israel</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jaiveer</forename><surname>Singh</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Mara</forename><surname>Fong</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff5">
+								<orgName type="department">Department of Cognitive, Linguistic and Psychological Sciences</orgName>
+								<orgName type="institution">Brown University</orgName>
+								<address>
+									<settlement>Providence</settlement>
+									<region>RI</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Gautam</forename><surname>Chaudhry</surname></persName>
+							<idno type="ORCID">0000-0003-2240-9846</idno>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Zion</forename><surname>Abraham</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jackson</forename><surname>Moseley</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Shiri</forename><surname>Warshawsky</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Erin</forename><surname>Soon</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff6">
+								<orgName type="department">Immunology Program</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Shirley</forename><surname>Greenbaum</surname></persName>
+							<idno type="ORCID">0000-0002-0680-7652</idno>
+						</author>
+						<author>
+							<persName><forename type="first">Tyler</forename><surname>Risom</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Travis</forename><surname>Hollmann</surname></persName>
+							<idno type="ORCID">0000-0003-1599-0433</idno>
+							<affiliation key="aff7">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Memorial Sloan Kettering Cancer Center</orgName>
+								<address>
+									<settlement>New York</settlement>
+									<region>NY</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Sean</forename><forename type="middle">C</forename><surname>Bendall</surname></persName>
+							<idno type="ORCID">0000-0003-1341-2453</idno>
+						</author>
+						<author>
+							<persName><forename type="first">Leeat</forename><surname>Keren</surname></persName>
+							<idno type="ORCID">0000-0002-6799-6303</idno>
+							<affiliation key="aff4">
+								<orgName type="department">Department of Molecular Cell Biology</orgName>
+								<orgName type="institution">Weizmann Institute of Science</orgName>
+								<address>
+									<settlement>Rehovot</settlement>
+									<country key="IL">Israel</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">William</forename><surname>Graf</surname></persName>
+							<idno type="ORCID">0000-0002-4264-9479</idno>
+							<affiliation key="aff2">
+								<orgName type="department">Division of Biology and Bioengineering</orgName>
+								<orgName type="institution">California Institute of Technology</orgName>
+								<address>
+									<settlement>Pasadena</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Michael</forename><surname>Angelo</surname></persName>
+							<email>mangelo0@stanford.edu</email>
+							<idno type="ORCID">0000-0003-1531-5067</idno>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Pathology</orgName>
+								<orgName type="institution">Stanford University</orgName>
+								<address>
+									<settlement>Stanford</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">David</forename><surname>Van Valen</surname></persName>
+							<email>vanvalen@caltech.edu</email>
+							<idno type="ORCID">0000-0001-7534-7621</idno>
+							<affiliation key="aff2">
+								<orgName type="department">Division of Biology and Bioengineering</orgName>
+								<orgName type="institution">California Institute of Technology</orgName>
+								<address>
+									<settlement>Pasadena</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff8">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Washington University School of Medicine in St. Louis</orgName>
+								<address>
+									<settlement>St. Louis</settlement>
+									<region>MO</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff9">
+								<orgName type="institution">Princeton University</orgName>
+								<address>
+									<settlement>Princeton</settlement>
+									<region>NJ</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Whole-cell segmentation of tissue images with human-level performance using large-scale data annotation and deep learning</title>
+					</analytic>
+					<monogr>
+						<title level="j" type="main">Nature Biotechnology</title>
+						<title level="j" type="abbrev">Nat Biotechnol</title>
+						<idno type="ISSN">1087-0156</idno>
+						<idno type="eISSN">1546-1696</idno>
+						<imprint>
+							<publisher>Springer Science and Business Media LLC</publisher>
+							<biblScope unit="volume">40</biblScope>
+							<biblScope unit="issue">4</biblScope>
+							<biblScope unit="page" from="555" to="565"/>
+							<date type="published" when="2021-11-18">18 November 2021</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">38805E875F64C9E3487C2CE8553E180F</idno>
+					<idno type="DOI">10.1038/s41587-021-01094-0</idno>
+					<note type="submission">Received: 1 March 2021; Accepted: 14 September 2021;</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2026-01-06T01:09+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=1, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Mesmer FeatureNet Cellpose True segmentation Breast cancer Colon DCIS Esophagus Lung cancer Pancreas Tuberculosis Colorectal carcinoma Skin Lymph node Lymphoma Spleen F1: 0</term>
+					<term>88 F1: 0</term>
+					<term>66 F1: 0</term>
+					<term>58 F1: 1</term>
+					<term>0 F1: 0</term>
+					<term>90 F1: 0</term>
+					<term>90 F1: 0</term>
+					<term>89 F1: 0</term>
+					<term>94 F1: 0</term>
+					<term>79 F1: 0</term>
+					<term>82 F1: 0</term>
+					<term>76 F1: 0</term>
+					<term>98 F1: 0</term>
+					<term>96 F1: 0</term>
+					<term>88 F1: 0</term>
+					<term>85</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>A principal challenge in the analysis of tissue imaging data is cell segmentation-the task of identifying the precise boundary of every cell in an image. To address this problem we constructed TissueNet, a dataset for training segmentation models that contains more than 1 million manually labeled cells, an order of magnitude more than all previously published segmentation training datasets. We used TissueNet to train Mesmer, a deep-learning-enabled segmentation algorithm. We demonstrated that Mesmer is more accurate than previous methods, generalizes to the full diversity of tissue types and imaging platforms in TissueNet, and achieves human-level performance. Mesmer enabled the automated extraction of key cellular features, such as subcellular localization of protein signal, which was challenging with previous approaches. We then adapted Mesmer to harness cell lineage information in highly multiplexed datasets and used this enhanced version to quantify cell morphology changes during human gestation. All code, data and models are released as a community resource.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>U</head><p>nderstanding the structural and functional relationships present in tissues is a challenge at the forefront of basic and translational research. Recent advances in multiplexed imaging have expanded the number of transcripts and proteins that can be quantified simultaneously <ref type="bibr" target="#b0">[1]</ref><ref type="bibr" target="#b1">[2]</ref><ref type="bibr" target="#b2">[3]</ref><ref type="bibr" target="#b3">[4]</ref><ref type="bibr" target="#b4">[5]</ref><ref type="bibr" target="#b5">[6]</ref><ref type="bibr" target="#b6">[7]</ref><ref type="bibr" target="#b7">[8]</ref><ref type="bibr" target="#b8">[9]</ref><ref type="bibr" target="#b9">[10]</ref><ref type="bibr" target="#b10">[11]</ref><ref type="bibr" target="#b11">[12]</ref> , opening new avenues for large-scale analysis of human tissue samples. Ambitious collaborative efforts such as the Human Tumor Atlas Network <ref type="bibr" target="#b12">13</ref> , the Human BioMolecular Atlas Program <ref type="bibr" target="#b13">14</ref> and the Human Cell Atlas <ref type="bibr" target="#b14">15</ref> are using these methods to comprehensively characterize the location, function and phenotype of cells in the human body. However, the tools needed for analysis and interpretation of these datasets at scale do not yet exist. The clearest example is the lack of a generalized algorithm for locating single cells in images. Unlike flow cytometry or single-cell RNA sequencing, tissue imaging is performed with intact specimens. Thus, to extract single-cell data, each pixel must be assigned to a cell in a process known as cell segmentation. Since the features extracted through this process are the basis for downstream analyses <ref type="bibr" target="#b15">16</ref> , inaccuracies at this stage can have far-reaching consequences for interpreting image data. The difficulty of achieving accurate, automated cell segmentation is due in large part to the differences in cell shape, size and density across tissue types <ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b17">18</ref> . Machine-learning approaches developed to meet this challenge <ref type="bibr" target="#b18">[19]</ref><ref type="bibr" target="#b19">[20]</ref><ref type="bibr" target="#b20">[21]</ref><ref type="bibr" target="#b21">[22]</ref><ref type="bibr" target="#b22">[23]</ref><ref type="bibr" target="#b23">[24]</ref> have fallen short for tissue imaging data. A common pitfall is the need to perform manual, image-specific adjustments to produce useful segmentations. This lack of full automation poses a prohibitive barrier given the increasing scale of tissue imaging experiments.</p><p>Deep learning algorithms for computer vision are increasingly being used for a variety of tasks in biological image analysis, including nuclear and cell segmentation <ref type="bibr" target="#b24">[25]</ref><ref type="bibr" target="#b25">[26]</ref><ref type="bibr" target="#b26">[27]</ref><ref type="bibr" target="#b27">[28]</ref><ref type="bibr" target="#b28">[29]</ref><ref type="bibr" target="#b29">[30]</ref><ref type="bibr" target="#b30">[31]</ref> . These algorithms are capable of achieving high accuracy, but require substantial amounts of annotated training data. Generating ground-truth data for cell segmentation is time-intensive, and, as a result, existing datasets are of modest size (10 4 -10 5 annotations). Moreover, most public datasets <ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b26">27,</ref><ref type="bibr" target="#b31">[32]</ref><ref type="bibr" target="#b32">[33]</ref><ref type="bibr" target="#b33">[34]</ref><ref type="bibr" target="#b34">[35]</ref><ref type="bibr" target="#b35">[36]</ref><ref type="bibr" target="#b36">[37]</ref><ref type="bibr" target="#b37">[38]</ref> annotate the location of cell nuclei rather than whole cells, meaning that models trained on these datasets are capable only of performing nuclear segmentation, not cell segmentation. Thus, the lack of available data, combined with the difficulties of deploying pretrained models to the life science community <ref type="bibr" target="#b38">[39]</ref><ref type="bibr" target="#b39">[40]</ref><ref type="bibr" target="#b40">[41]</ref><ref type="bibr" target="#b41">[42]</ref> , has hampered progress in whole-cell segmentation.</p><p>Here, we sought to close these gaps by creating an automated, simple and scalable algorithm for nuclear and whole-cell segmentation that performs accurately across a diverse range of tissue types and imaging platforms. Developing this algorithm required two innovations: (1) a scalable approach for generating large volumes of pixel-level training data and (2) an integrated deep learning pipeline that uses these data to achieve human-level performance. To address the first challenge, we developed a crowdsourced, human-in-the-loop approach for segmenting cells where humans and algorithms work in tandem to produce accurate annotations (Fig. <ref type="figure" target="#fig_0">1a</ref>). We used this pipeline to create TissueNet, a comprehensive segmentation dataset of &gt;1 million paired whole-cell and nuclear annotations. TissueNet contains twice as many nuclear and 16 times as many whole-cell labels as all previously published datasets combined. To address the second challenge, we developed Mesmer, a deep-learning-enabled pipeline for scalable, user-friendly segmentation of tissue imaging data. To enable broad use by the scientific community, we harnessed DeepCell, an open-source collection of software libraries, to create a web interface for using Mesmer, as well as plugins for ImageJ and QuPath. We have made all code, data and trained models available under a permissive license as a community resource, setting the stage for application of these modern, data-driven methods to a broad range of research challenges.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A human-in-the-loop approach for constructing TissueNet</head><p>Existing annotated datasets for cell segmentation are limited in scope and scale (Fig. <ref type="figure" target="#fig_0">1b</ref>) <ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b26">27,</ref><ref type="bibr" target="#b31">[32]</ref><ref type="bibr" target="#b32">[33]</ref><ref type="bibr" target="#b33">[34]</ref><ref type="bibr" target="#b34">[35]</ref><ref type="bibr" target="#b35">[36]</ref><ref type="bibr" target="#b36">[37]</ref><ref type="bibr" target="#b37">[38]</ref> . This limitation is due largely to the linear, time-intensive approach used to construct them, which requires the border of every cell in an image to be demarcated manually. We therefore implemented a three-phase approach to create TissueNet. In the first phase, expert human annotators outlined the border of each cell in 80 images. These labeled images were used to train a preliminary model (Fig. <ref type="figure" target="#fig_0">1a</ref>, left; Methods). The process then moved to the second phase (Fig. <ref type="figure" target="#fig_0">1a</ref>, middle), where images were first passed through the model to generate predicted annotations and then sent to crowdsourced annotators to correct errors. The corrected annotations underwent final inspection by an expert before being added to the training dataset. When enough new data were compiled, a new model was trained and phase two was repeated. Each iteration yielded more training data, which led to improved model accuracy, fewer errors that needed to be manually corrected and a lower marginal cost of annotation. This virtuous cycle continued until the model achieved human-level performance. At this point, we transitioned to the third phase (Fig. <ref type="figure" target="#fig_0">1a</ref>, right), where the model was run without human assistance to produce high-quality predictions.</p><p>Human-in-the-loop pipelines require specialized software that is optimized for the task at hand. Although previous work has used the human-in-the-loop approach to create segmentation datasets <ref type="bibr" target="#b21">22,</ref><ref type="bibr" target="#b42">[43]</ref><ref type="bibr" target="#b43">[44]</ref><ref type="bibr" target="#b44">[45]</ref> , existing tools were not optimized for crowdsourcing or for correcting large quantities of tissue image data. We therefore developed DeepCell Label 46 , a browser-based graphical user interface optimized for editing existing cell annotations in tissue images (Extended Data Fig. <ref type="figure" target="#fig_0">1a</ref>; Methods). DeepCell Label is supported by a scalable cloud backend that adjusts the number of servers dynamically according to demand (Extended Data Fig. <ref type="figure" target="#fig_0">1b</ref>). Using DeepCell Label, we trained annotators from multiple crowdsourcing platforms to identify whole-cell and nuclear boundaries. To further simplify our annotation workflow, we integrated DeepCell Label into a pipeline that allowed us to prepare and submit images for annotation, have users annotate those images and download the results. The images and resulting labels were used to train and update our model, completing the loop (Extended Data Fig. <ref type="figure" target="#fig_0">1c</ref>; Methods).</p><p>As a result of the scalability of our human-in-the-loop approach to data labeling, TissueNet is larger than the sum total of all previously published datasets <ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b26">27,</ref><ref type="bibr" target="#b31">[32]</ref><ref type="bibr" target="#b32">[33]</ref><ref type="bibr" target="#b33">[34]</ref><ref type="bibr" target="#b34">[35]</ref><ref type="bibr" target="#b35">[36]</ref><ref type="bibr" target="#b36">[37]</ref><ref type="bibr" target="#b37">[38]</ref> (Fig. <ref type="figure" target="#fig_0">1b</ref>), with 1.3 million whole-cell annotations and 1.2 million nuclear annotations. TissueNet contains 2D data from six imaging platforms (Fig. <ref type="figure" target="#fig_0">1c</ref>), nine organs (Fig. <ref type="figure" target="#fig_0">1d</ref>), and includes both histologically normal and diseased tissue (for example, tumor resections). TissueNet also encompasses three species, with images from human, mouse and macaque. Constructing TissueNet required &gt;4,000 person-hours, the equivalent of nearly 2 person-years of full-time effort (Fig. <ref type="figure" target="#fig_0">1e</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Mesmer is a deep learning algorithm for accurate whole-cell segmentation</head><p>To address the requirements for both accuracy and speed in cell segmentation, we created Mesmer, a deep-learning-based algorithm for nuclear and whole-cell segmentation of tissue data. Mesmer's model consists of a ResNet50 backbone coupled to a Feature Pyramid Network with four prediction heads (two for nuclear segmentation and two for whole-cell segmentation) that are attached to the top of the pyramid (Extended Data Fig. <ref type="figure" target="#fig_1">2a</ref>; Methods) <ref type="bibr" target="#b45">[47]</ref><ref type="bibr" target="#b46">[48]</ref><ref type="bibr" target="#b47">[49]</ref> . The input to Mesmer is a nuclear image (for example, DAPI) to define the nucleus of each cell and a membrane or cytoplasm image (for example, CD45 or E-cadherin) to define the shape of each cell (Fig. <ref type="figure" target="#fig_1">2a</ref>). These inputs are normalized <ref type="bibr" target="#b48">50</ref> (to improve robustness), tiled into patches of fixed size (to allow processing of images with arbitrary dimensions) and fed to the deep learning model. The model outputs are then untiled <ref type="bibr" target="#b49">51</ref> to produce predictions for the centroid and boundary of every nucleus and cell in the image. The centroid and boundary predictions are used as inputs to a watershed algorithm <ref type="bibr" target="#b50">52</ref> to create the final instance segmentation mask for each nucleus and each cell in the image (Methods).</p><p>To evaluate Mesmer's accuracy, we performed comprehensive benchmarking against previously published, pretrained algorithms as well as deep learning models that were retrained on TissueNet. These comparisons allowed us to understand the relative contributions of deep learning methodology and training data to overall accuracy. We first compared Mesmer's performance against two pretrained algorithms: FeatureNet 26 , which we used previously <ref type="bibr" target="#b15">16</ref> to perform nuclear segmentation followed by expansion to analyze a cohort of breast cancer samples, and Cellpose 28 , a recently published algorithm for whole-cell segmentation of microscopy data. Overall, we observed higher accuracy for Mesmer (F1 = 0.82) than both FeatureNet (F1 = 0.63) and Cellpose (F1 = 0.41) (Fig. <ref type="figure" target="#fig_1">2b</ref> and Extended Data Fig. <ref type="figure" target="#fig_1">2c-f</ref>).</p><p>We then compared Mesmer's performance against a range of supervised segmentation methods <ref type="bibr" target="#b21">22,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b51">53,</ref><ref type="bibr" target="#b52">54</ref> that were trained on TissueNet. FeatureNet, RetinaMask and Ilastik did not achieve equivalent performance to Mesmer, even when trained on TissueNet (Fig. <ref type="figure" target="#fig_1">2b</ref> and Extended Data Fig. <ref type="figure" target="#fig_1">2c-f</ref>). In contrast, Cellpose and StarDist obtained equivalent performance to Mesmer when trained on TissueNet (Fig. <ref type="figure" target="#fig_1">2b</ref>). Last, we compared Mesmer with a model trained to perform nuclear segmentation followed by a pixel expansion (a common method <ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b53">[55]</ref><ref type="bibr" target="#b54">[56]</ref><ref type="bibr" target="#b55">[57]</ref> to approximate the entire cell for existing nuclear-segmentation algorithms) and found that Mesmer achieved superior performance (Extended Data Fig. <ref type="figure" target="#fig_1">2g</ref>). These comparisons were not affected by our choice of metrics, as we observed similar trends for recall, precision and Jaccard index (Extended Data Fig. <ref type="figure" target="#fig_1">2c-f</ref>).</p><p>In addition to differences in accuracy, the algorithms that we benchmarked differed substantially in their speed. Mesmer was only 13% slower than FeatureNet, despite a significant increase in model capacity, and was 20 times faster than Cellpose (Fig. <ref type="figure" target="#fig_1">2b</ref>). RetinaMask and Illastik also suffered from slow processing times (Fig. <ref type="figure" target="#fig_1">2b</ref>). These differences in speed are due primarily to differences in postprocessing between the various methods, which accounts for most of the computational time (Extended Data Fig. <ref type="figure" target="#fig_1">2b</ref>).</p><p>To visualize the performance differences between Mesmer and the published, pretrained versions of FeatureNet and Cellpose, we used all three algorithms to segment an image of colorectal carcinoma (Fig. <ref type="figure" target="#fig_1">2c</ref>). We compared segmentation predictions to the ground-truth data, coloring each cell by the ratio of the predicted area to the ground-truth area (Fig. <ref type="figure" target="#fig_1">2d</ref>). Overall, Mesmer captured the true size of each cell in the image more effectively (Fig. <ref type="figure" target="#fig_1">2e</ref>). In comparison, FeatureNet poorly captured the true size of each cell, which is expected given that this model approximates cell shape by performing nuclear segmentation followed by expansion. In line with its lower recall score (Extended Data Fig. <ref type="figure" target="#fig_1">2c</ref>), Cellpose failed to identify a large fraction of the cells in the image (Fig. <ref type="figure" target="#fig_1">2e</ref>), probably due to the relative scarcity of tissue images in the data used to train Cellpose.</p><p>Next, we examined Mesmer's segmentation predictions across a range of tissue types (Fig. <ref type="figure" target="#fig_1">2f</ref>). Mesmer's errors were unbiased, with an equal number of cells that were too large or too small. Further, Mesmer's errors were not correlated with the true size of the cell (Extended Data Fig. <ref type="figure" target="#fig_1">2g</ref>). In contrast, methods that rely on nuclear segmentation and expansion tend to overestimate the size of most small cells and underestimate the size of most large cells (Extended Data Fig. <ref type="figure" target="#fig_1">2g</ref>). Taken together, this benchmarking demonstrates that Mesmer is a significant advance over previous segmentation methods.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Mesmer achieves human-level performance for segmentation</head><p>Our results thus far (Fig. <ref type="figure" target="#fig_1">2f</ref> and Fig. <ref type="figure" target="#fig_6">3a</ref>) indicated that Mesmer performed well across all of TissueNet without manual adjustment. However, given that cell morphology and image characteristics can vary depending on organ site, disease state and imaging platform <ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b17">18</ref> , training a specialist model on data from a single platform or single tissue type could lead to superior performance when compared to a model trained on all of TissueNet. To evaluate Mesmer's generalizability, we benchmarked performance against models that were trained using a subset of TissueNet that was either tissue-or platform-specific. We observed comparable performance between Mesmer and the specialist models (Fig. <ref type="figure" target="#fig_6">3b</ref>,<ref type="figure">c</ref>). We next sought to evaluate how specialist models performed when evaluated on data not seen during training. In general, specialist models had poor performance when evaluated on data types not seen during training (Extended Data Fig. <ref type="figure" target="#fig_6">3b</ref>). Dataset size likewise played an important role, as models trained on small subsets of TissueNet did not perform as well as those trained on the entire dataset (Extended Data Fig. <ref type="figure" target="#fig_6">3d-h</ref>).</p><p>The metrics for model accuracy used here treated human-annotated data as ground truth, but even expert annotators can disagree with one another. We therefore compared Mesmer's segmentation predictions with predictions from five independent expert human annotators. We evaluated all pairs of human annotators against one another, using one annotator as the 'ground truth' and the other as the prediction. We then evaluated Mesmer's predictions against predictions from each of these five annotators. We detected no significant differences between human-to-human and human-to-Mesmer F1 scores (P = 0.93) (Fig. <ref type="figure" target="#fig_6">3d</ref>), indicating that Mesmer performed on par with human annotators.</p><p>To further evaluate Mesmer's performance relative to humans, we enlisted four pathologists to perform a blinded evaluation of segmentations from the human annotators and Mesmer. Each pathologist was shown paired images containing a prediction from Mesmer and an annotation from a human (Fig. <ref type="figure" target="#fig_6">3e</ref>). When evaluated in aggregate, the pathologists rated Mesmer's predictions and the expert annotator's predictions equivalently (Fig. <ref type="figure" target="#fig_6">3f</ref>). Breaking down the evaluation by tissue type, we observed only modest differences in pathologist evaluation, with Mesmer performing slightly better than the annotators for some tissues and the annotators performing slightly better in others. Taken together, the preceding analyses demonstrate that Mesmer performs whole-cell segmentation with human-level performance. Cellpose and StarDist would likely achieve similar results, given that they achieve performance equivalent to Mesmer when trained on TissueNet (Fig. <ref type="figure" target="#fig_1">2b</ref>). To our knowledge, no previous cell segmentation algorithm has achieved parity with human performance for tissue data.</p><p>To finish our performance analysis, we sought to understand Mesmer's limitations by identifying images for which Mesmer produced low-quality cell segmentations. Inaccurately segmented images were characterized by low signal-to-noise ratio, heterogeneous staining and focus issues (Extended Data Fig. <ref type="figure" target="#fig_6">3i</ref>). To characterize the impact of each of these factors on model performance, we evaluated model accuracy after blurring, resizing or adding image noise. While Mesmer was robust to moderate image distortion, performance suffered as the distortions increased in magnitude (Extended Data Fig. <ref type="figure" target="#fig_6">3j-l</ref>)-as expected, since these manipulations remove information from the images.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Mesmer enables accurate downstream analysis of tissue imaging data</head><p>Cell segmentation is the first step for quantitative analysis of tissue imaging data and serves as the foundation for subsequent single-cell analysis. Thus, Mesmer's ability to generate both whole-cell and nuclear-segmentation predictions should enable analyses that were difficult to perform with previous segmentation algorithms. One example is predicting the subcellular localization of proteins in cells, which can be used to quantify the nuclear translocation of transcription factors <ref type="bibr" target="#b56">58,</ref><ref type="bibr" target="#b57">59</ref> or degree of membrane staining of HER2 for the assessment of breast cancer <ref type="bibr" target="#b58">60</ref> . To explore the accuracy of subcellular signal prediction, we stained breast cancer samples with a panel of phenotyping markers and imaged them with MIBI-TOF 61 (Fig. <ref type="figure" target="#fig_3">4a</ref>; Methods). We created an integrated multiplexed image analysis pipeline-ark-analysis <ref type="bibr" target="#b60">62</ref> -that links Mesmer's segmentation predictions with downstream analysis. We extracted the compartment-specific expression of each marker using both the predicted and ground-truth segmentation masks (Methods). Subcellular localization predictions from Mesmer agreed with those from the ground-truth data (Fig. <ref type="figure" target="#fig_3">4b</ref>). We observed predominantly nuclear expression for known nuclear markers (for example, Ki67 and HH3) and non-nuclear expression for membrane markers (for example, E-cadherin and HER2; Fig. <ref type="figure" target="#fig_3">4b</ref>).</p><p>As Mesmer also provides automated analysis of the relationship between each individual nucleus and cell, it should enable automatic scoring of the nuclear to cytoplasmic ratio, which is used widely by pathologists to evaluate malignancies <ref type="bibr" target="#b61">63</ref> . We used Mesmer to generate nuclear and whole-cell segmentations for every cell in the test set of TissueNet. We then computed the nuclear to whole-cell (N/C) ratio, which is conceptually similar to the nuclear to cytoplasm ratio but has higher numerical stability for cells with little cytoplasm (for example, immune cells; Methods). Mesmer accurately captured cells with low and high N/C ratios (Fig. <ref type="figure" target="#fig_3">4c</ref>), and there was a strong correlation (Pearson's r = 0.87) between the predicted and ground-truth N/C ratios across all cells in TissueNet (Fig. <ref type="figure" target="#fig_3">4d</ref>).</p><p>This analysis identified a subpopulation of cells with an N/C ratio of zero (Fig. <ref type="figure" target="#fig_3">4e</ref>), indicating that no nucleus was observed in that cell. These cells arise when the imaging plane used to acquire the data captures the cytoplasm but not the nucleus. We quantified the proportion of cells with an out-of-plane nucleus across the tissue types in TissueNet for both the predicted and ground-truth segmentation labels, and found good agreement between predicted and true rates of out-of-plane nuclei (Fig. <ref type="figure" target="#fig_3">4f</ref>). The highest proportion of out-of-plane nuclei occurred in gastrointestinal tissue (Fig. <ref type="figure" target="#fig_3">4f</ref>), presumably due to the elongated nature of the columnar epithelium. Cells with out-of-plane nuclei are missed by nucleus-based segmentation approaches but are captured by Mesmer.</p><p>Cell classification is a common task following segmentation. Inaccuracies in segmentation can lead to substantial bias in the identification and enumeration of the cells present in an image. To benchmark how Mesmer's predictions affect this process, we analyzed a cohort of breast cancer samples generated with the Vectra platform. Each image was stained with a panel of lineage-defining markers (Fig. <ref type="figure" target="#fig_3">4g</ref>), which we used to classify each cell as either a T cell, monocyte, tumor cell or ungated. We selected two distinct regions from three patients and generated both predicted and ground-truth segmentations for all the cells in the image. We classified all cells from the predicted (Fig. <ref type="figure" target="#fig_3">4h</ref>) and ground-truth (Fig. <ref type="figure" target="#fig_3">4i</ref>) segmentations into these categories using the same gating scheme (Methods). We then computed the precision and recall for each cell type across the patients. We observed strong agreement between the two annotations (Fig. <ref type="figure" target="#fig_3">4j</ref>), showing that Mesmer's segmentation predictions enable accurate classification of the diversity of cells present in these images.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Lineage-aware segmentation quantifies morphological changes</head><p>We have demonstrated that models trained on TissueNet can harness the two channels present in this data to accurately segment cells across a diversity of tissue types. However, some tissue types have Fig. <ref type="figure" target="#fig_6">3</ref> | Mesmer performs whole-cell segmentation across tissue types and imaging platforms with human-level accuracy. a, Sample images, predicted segmentations and F1 scores for distinct tissues and imaging platforms demonstrate visually that Mesmer delivers accurate cell segmentation for all available imaging platforms. Scale bars, 50 μm. b, Mesmer has accuracy equivalent to specialist models trained only on data from a specific imaging platform (Methods), with all models evaluated on data from the platform used for training. c, Mesmer has accuracy equivalent to specialist models trained only on data from a specific tissue type (Methods), with all models evaluated on data from the tissue type used for training. GI, gastrointestinal. d, F1 scores evaluating the agreement between segmentation predictions for the same set of images. The predictions from five independent expert annotators were compared against each other (human versus human) or against Mesmer (human versus Mesmer). No statistically significant differences between these two sets of predictions were found, demonstrating that Mesmer achieves human-level performance. e, Workflow for pathologists to rate the segmentation accuracy of Mesmer compared with expert human annotators. f, Pathologist scores from the blinded comparison. A positive score indicates a preference for Mesmer while a negative score indicates a preference for human annotations. Pathologists showed no significant preference for human labels or Mesmer's outputs overall. When broken down by tissue type, pathologists showed a slight preference for Mesmer in immune tissue (P = 0.02), and a slight preference for humans in colon tissue (P = 0.01), again demonstrating that Mesmer has achieved human-level performance. n.s., not significant; *P &lt; 0.05, two-sample t-test for d, one-sample t-test for f. complex morphologies that cannot be accurately captured with only two channels of imaging data. For example, the decidua, the mucosal membrane of the uterus, shows substantial variation in cell size and cell shape arising from the interaction between maternal and fetal cells. This complexity is compounded by the tight juxtaposition of these cells with one another and the nonconvex geometries that they can assume <ref type="bibr" target="#b62">64</ref> , with small round cells nestled in concavities of much larger cells. This complex morphology makes segmentation challenging when using a single membrane channel, even for an expert annotator (Fig. <ref type="figure">5a</ref>, top). However, information about the location and shape of each cell can be attained by including additional markers that are cell-type specific (Fig. <ref type="figure">5a</ref>, <ref type="figure">bottom</ref>). These additional markers provide crucial information about cell morphology during model training that is lost when they are combined into a single channel. We used MIBI-TOF to generate a multiplexed imaging dataset from the human decidua with six lineage specific markers <ref type="bibr" target="#b63">65</ref> and then used DeepCell Label to generate lineage-aware ground-truth segmentations from a subset of the images. We modified our deep learning architecture to accept these six channels of input data and trained a model using this dataset (Methods). The resulting lineage-aware segmentation pipeline accurately performed whole-cell segmentation, despite the complex cell morphologies in these images (Fig. <ref type="figure">5b</ref>).</p><p>We used this lineage-aware segmentation pipeline to quantify morphological changes of cells in the decidua over time. We first defined a series of morphological metrics to capture the diversity of cell shapes in this dataset (Fig. <ref type="figure">5c</ref>; Methods). Manual inspection demonstrated accurate assignment of cells in each category (Fig. <ref type="figure">5d</ref>). We then created an automated pipeline that computed these metrics for every cell in an image <ref type="bibr" target="#b60">62</ref> . We applied our pipeline to this dataset and found that these metrics captured key morphological features of the cell shapes that we observed (Fig. <ref type="figure">5e</ref>). We then performed k-means clustering on the cell morphology profiles (Methods) and identified four distinct clusters (Fig. <ref type="figure">5f</ref>,<ref type="figure">g</ref>). To determine how these cellular morphologies changed over time in the human decidua, we divided the samples into two groups based on age: early (6-8 weeks) and late (16-18 weeks) gestational age. Coloring each cell by its cluster highlighted the difference in cell morphology between the two gestational age groups (Fig. <ref type="figure">5h</ref>,<ref type="figure">i</ref>). We observed an abundance of cluster 1 cells (elongated) in the early time point and an abundance of cluster 2 cells (large and globular) at the late timepoint (Fig. <ref type="figure">5j</ref>). This shift probably reflects the morphological transformation undergone by maternal stromal cells during decidualization <ref type="bibr" target="#b64">66</ref> . Our analysis demonstrates that whole-cell segmentation can make cell morphology a quantitative observable, bridging the historical knowledge of pathologists and modern multiplexed imaging methods.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>DeepCell supports community-wide deployment of Mesmer</head><p>To facilitate the deployment of deep learning models, our group previously created DeepCell <ref type="bibr" target="#b36">37,</ref><ref type="bibr" target="#b38">39,</ref><ref type="bibr">46,</ref><ref type="bibr" target="#b65">67</ref> , a collection of linked, open-source software libraries for cellular image analysis. Here, we used DeepCell to make Mesmer accessible to the broader biological imaging community, with two distinct deployment solutions based on the volume of data that must be processed (Fig. <ref type="figure" target="#fig_5">6</ref>). The first solution is geared toward moderate amounts of data (&lt;10 <ref type="bibr" target="#b2">3</ref> 1-megapixel images) and centers around our web portal <ref type="url" target="https://deepcell.org">https://deepcell.org</ref>, which hosts the full Mesmer pipeline. Users can access Mesmer through this web portal directly or submit images through plugins that we have made for ImageJ <ref type="bibr" target="#b20">21</ref> and QuPath <ref type="bibr" target="#b66">68</ref> -two popular image analysis tools. This web portal is served by a scalable backend (created by DeepCell Kiosk <ref type="bibr" target="#b38">39</ref> ), which adjusts the server's computational resources dynamically to match the volume of data being submitted. This strategy increases computational resources to support large volumes of data during times of high demand, while reducing these resources during times of low demand to reduce costs.</p><p>The second deployment solution is targeted toward users with larger volumes of data (&gt;10 <ref type="bibr" target="#b2">3</ref> 1-megapixel images) and who need more control over the execution of the described algorithm.</p><p>For these users, we provide a Docker image that contains the full Mesmer pipeline. The image generates a Docker container locally on a user's computational infrastructure and can be installed with a one-line command. This container can be used to launch an interactive Jupyter Notebook that processes data with Mesmer. The container can also be configured as an executable, making it possible to integrate Mesmer into existing image analysis workflows. In addition, we have developed a software package specifically for analyzing multiplexed imaging data, ark-analysis <ref type="bibr" target="#b60">62</ref> , that integrates cloud-based segmentation predictions with downstream analysis and visualization.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Discussion</head><p>Cell segmentation has been a principal bottleneck for the tissue imaging community, as previous methods <ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b21">[22]</ref><ref type="bibr" target="#b22">[23]</ref><ref type="bibr" target="#b23">[24]</ref> required extensive manual curation and parameter tuning to produce usable results. Our experience has shown that these shortcomings can lead to months-long delays in analysis. Mesmer provides a single unified solution to cell segmentation for the most widely used fluorescence and mass spectrometry imaging platforms in a user-friendly format. Mesmer achieves human-level accuracy across a variety of tissues and imaging modalities while requiring no manual parameter tuning from the end user. To make Mesmer widely available, we created cloud-based and local software solutions that position users of all backgrounds to generate accurate predictions for their data. Mesmer's speed and scalability should facilitate the analysis of the large volumes of multiplexed imaging data currently being generated by large consortia efforts. Mesmer was trained on tissue imaging data from both fluorescence-and mass spectrometry-based platforms. Analyses of H&amp;E (hematoxylin and eosin) images and images of cells in cell culture have been achieved by previous work <ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b27">28,</ref><ref type="bibr" target="#b37">38,</ref><ref type="bibr" target="#b67">69,</ref><ref type="bibr" target="#b68">70</ref> ; making these functionalities available through DeepCell will be the focus of future work.</p><p>Along with Mesmer, here we present the initial release of TissueNet, a comprehensive cell segmentation dataset for tissue images. TissueNet contains paired nuclear and whole-cell annotations for &gt;1 million cells from nine organs and six imaging platforms. Previous tissue datasets <ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b27">28</ref> were not large enough to train accurate whole-cell segmentation models. As a result, previous efforts to generate accurate tissue-segmentation models have focused on nuclear segmentation <ref type="bibr" target="#b26">27,</ref><ref type="bibr" target="#b28">29,</ref><ref type="bibr" target="#b37">38</ref> , meaning that nearly all previous benchmarking has been limited to the evaluation of nuclear segmentation models <ref type="bibr" target="#b26">27,</ref><ref type="bibr" target="#b28">29,</ref><ref type="bibr" target="#b51">53</ref> . TissueNet will enable these valuable efforts to move from nuclear segmentation to whole-cell segmentation, facilitating the development and benchmarking of a new class of tissue-segmentation algorithms. To expand upon this initial release of TissueNet, we are currently constructing a seamless mechanism for investigators to add their own annotated data. Future releases of TissueNet will probably include higher-dimensional data from a wider diversity of tissue types, imaging techniques and species.</p><p>Constructing TissueNet required a new process for generating annotations. Rather than using manual annotation by experts, we used a human-in-the-loop approach. Because annotators in such Fig. <ref type="figure">5</ref> | Lineage-aware segmentation enables morphological profiling of cells in the decidua during human pregnancy. a, Color overlay showcasing the challenge of distinguishing cells with only a single combined membrane channel (top), paired with a version of the same image containing all six channels used for lineage-aware segmentation (bottom). b, Representative image of the diverse morphology of cell types in the human decidua (left), along with insets (right) with corresponding segmentation predictions. c, Diagram illustrating the morphology metrics that we defined to enable automated extraction of cell shape parameters (Methods). P/A ratio, perimeter to area ratio. d, Predicted segmentations (left) placing cells on a spectrum from low to high for each morphology metric, along with the corresponding imaging data for those cells (right). med, medium. e, Cell segmentations in four representative images colored by morphology metrics demonstrate the accurate quantification of diverse features. f, Heatmap of inputs to k-means clustering used to identify distinct cell populations based on cell morphology. g, Example cells belonging to each cluster illustrate the morphological differences between cells belonging to each cluster. h,i, Representative images of maternal decidua in early (h) and late (i) gestation, with segmentations colored by cluster. j, Quantification of the ratio between cluster 2 and cluster 1 cells in early pregnancy versus late pregnancy. Cluster 2 cells become more prominent at the later time point, while cluster 1 cells become rarer. P = 0.0003, two-sample t-test. Scale bars, 50 μm.</p><p>approaches correct model mistakes rather than create annotations from scratch, annotation time is linked to model performance. As model performance improves, the marginal cost of annotation is reduced, delivering the scalability required for annotating large collections of biological images. Here, we built on previous work <ref type="bibr" target="#b21">22,</ref><ref type="bibr" target="#b42">[43]</ref><ref type="bibr" target="#b43">[44]</ref><ref type="bibr" target="#b44">[45]</ref> by integrating the human-in-the-loop annotation framework with</p><p>Cluster 1 Cluster 2 Cluster 3 Cluster 4 a b c d A s y m m e t r y C o n c a v i t y F i l l A s p e c t r a t i o P / A r a t i o S i z e e f g h Normalized value 0 1 Late i H3 Vimentin CD14 CD56 HLAG Cluster 2/cluster 1 j 0 1 2 3 4 Early Late * Radial asymmetry Aspect ratio N/C ratio P/A ratio Fill area Concavity N/C ratio Asymmetry Concavity Fill Aspect ratio P/A ratio e e Low Med High Low Med High Early 1 2 Centroid shift Perimeter Convex residual Concavities 2 1 3 2 1 3 2 CD3 Normalized value 0 1 Cluster 1 Cluster 2 Cluster 3 Cluster 4 H3 Vimentin CD14 CD56 HLAG CD3 H3 Combined membrane b</p><p>crowdsourcing. This integration increases the speed at which annotation can be performed by distributing work across a crowdsourced labor pool and decreases the annotation burden that deep learning methods place on experts. Thus, crowdsourcing can help meet the data-annotation needs of the biological imaging community. We also demonstrated accurate segmentations for a tissue with complex cell morphologies, the human decidua, using lineage-aware segmentation and a custom six-channel model. While this lineage-aware model was limited to our specific dataset, we believe that it indicates the potential of general-purpose, lineage-aware segmentation models. Our experience developing TissueNet and Mesmer raises a natural question: how much data is enough? We observed diminishing returns to training data at ~10 4 -10 5 labels (Extended Data Fig. <ref type="figure" target="#fig_6">3c</ref>). We believe that the effort required to go beyond this scale is warranted when accuracy is a paramount concern, for example for models applied across projects or in clinical contexts, which is the case for Mesmer. This effort is also worthwhile for generating gold-standard datasets to benchmark model performance. For other use cases, smaller datasets and bespoke models may suffice.</p><p>Future challenges include the need for a standardized, cross-tissue antibody panel for cell segmentation. Development of such a panel would be a significant advance and would synergize with the work presented here. Whole-cell segmentation in three-dimensional (3D) <ref type="bibr" target="#b69">71</ref> is another challenge that will become more prominent as imaging throughput increases to allow routine collection of such datasets. Existing deep learning approaches for 3D instance segmentation are promising <ref type="bibr" target="#b70">72</ref> , but a 3D equivalent of TissueNet to power future models currently does not exist. Our work here can serve as a starting point for these efforts, as it yields accurate prediction in two-dimensional slices of tissues (Extended Data Fig. <ref type="figure" target="#fig_3">4</ref>). Now that accurate cell segmentation is available to the community, many scientific insights can be expected from the diversity of data currently being generated. Users with moderate amounts of data (&lt;10 <ref type="bibr" target="#b2">3</ref> 1-megapixel images) to process can access this pipeline through a web portal. Alternatively, users can use ImageJ and QuPath plugins that submit data to the <ref type="url" target="https://deepcell.org">https://deepcell.org</ref> web server and retrieve the results. We have also created a containerized version of Mesmer that is compatible with existing workflow managers, so that users with larger amounts of data (&gt;10 <ref type="bibr" target="#b2">3</ref> 1-megapixel images) to process can benefit from our work.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Articles</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Nature BiotechNology</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Methods</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Creating TissueNet. Human-in-the-loop annotation in the crowd with DeepCell</head><p>Label. Labeling multiplexed imaging data presents a unique software engineering challenge. Labeling software must allow users to view multiple channels at once, so that they can use all available information to identify cell and nuclear boundaries. This software also needs specialized labeling operations to enable efficient labeling of densely packed fields of cells. Further operations are needed for creating labels from scratch and for editing existing labels; the latter is a key requirement for our human-in-the-loop framework. The final constraint is that this software needs to be browser based, which is essential for crowdsourcing. While existing software packages address specific aspects of these challenges, so far none have met all of the necessary requirements for human-in-the-loop data annotation of multiplexed image data.</p><p>To meet this challenge, we previously developed DeepCell Label 46 , a software package by which humans and algorithms collaboratively create and correct annotations for biological images. DeepCell Label consists of a frontend, which enables users to visualize and interact with images and labels (Extended Data Fig. <ref type="figure" target="#fig_0">1a</ref>), and a backend, which serves images and labels (stored in cloud buckets) to the frontend (Extended Data Fig. <ref type="figure" target="#fig_0">1b</ref>). This backend is built on Elastic Beanstalk-a scalable web framework that allows our application to scale as the number of users increases. This scalability enables multiple users to work on the same collection of data at the same time while maintaining responsiveness. A database keeps track of user access and stores key metadata involved in the annotation process. The DeepCell Label software is available at <ref type="url" target="https://github.com/vanvalenlab/deepcell-label">https://github.com/  vanvalenlab/deepcell-label</ref>.</p><p>Because DeepCell Label is cloud-native, it is compatible with any crowdsourcing platform that supports HTML iframes. We have successfully used two crowdsourcing platforms to perform crowdsourced labeling of multiplexed imaging data with DeepCell Label: Appen (<ref type="url" target="https://appen.com">https://appen.com</ref>) and Anolytics (<ref type="url" target="https://anolytics.ai">https://anolytics.ai</ref>). DeepCell Label enables our human-in-the-loop framework to blend expert and novice human annotators to increase the scale of creating dense, pixel-level labels for biological images (Fig. <ref type="figure" target="#fig_0">1</ref>). An example of the instructions provided for the crowd annotators can be found here: <ref type="url" target="https://github.com/vanvalenlab/publication-figures/blob/master/2021-Greenwald_Miller_et_al-Mesmer/Example_annotation_instructions.docx">https://github.  com/vanvalenlab/publication-figures/blob/master/2021-Greenwald_Miller_et_  al-Mesmer/Example_annotation_instructions.docx</ref>.</p><p>Cropping and stitching of labeled images. We found that supplying smaller image crops led to significantly better crowd annotation of dense images (data not shown). Large images can be overwhelming for annotators to examine and are difficult to navigate at the high zoom level necessary for accurate pixel-level annotation. These two issues significantly increase the time required to complete each job. To alleviate these issues, we created a pipeline to crop and stitch images as part of the annotation process (Extended Data Fig. <ref type="figure" target="#fig_0">1c</ref>). Input images are cropped to a predetermined size, generally 270×270 pixels, with an overlap between adjacent crops. We keep track of the necessary metadata for each crop to facilitate stitching the image back together. Each crop is independently annotated, with crops from the same image being randomly assigned to annotators. Following annotation, these crops are stitched back together. Cells at the boundary between crops are merged based on maximum overlap. Once each image has been stitched back together, it is quality-controlled by an internal expert to correct stitching artifacts and remaining errors from the annotator output. The finalized annotations are stored with the corresponding image data in .npz files to facilitate easy loading and manipulation in Python.</p><p>Combining labeled data for model training. To construct the dataset used for model training, individual .npz files containing annotated images from a single experiment were combined. During this process, the data were randomly split into training (80%), validation (10%) and testing (10%) fractions. We applied automated quality control to each image, such as removing cells with area &lt;15 pixels and removing images with &lt;20 cells. Finally, we cropped each image to 256 × 256 pixels, the input size that the model expects.</p><p>TissueNet construction. Our goal in creating TissueNet was to use it to power general-purpose tissue-segmentation models. To ensure that models trained on TissueNet would serve as much of the imaging community as possible, we made two key choices. First, all data in TissueNet contain two channels: a nuclear channel (such as DAPI) and a membrane or cytoplasm channel (such as E-cadherin or Pan-Keratin). Although some highly multiplexed platforms are capable of imaging dozens of markers at once <ref type="bibr" target="#b0">1,</ref><ref type="bibr" target="#b1">2,</ref><ref type="bibr" target="#b3">4,</ref><ref type="bibr" target="#b5">6</ref> , restricting TissueNet to include only the minimum number of channels necessary for whole-cell segmentation maximizes the number of imaging platforms where the resulting models can be used. Second, the data in TissueNet are derived from a wide variety of tissue types, disease states and imaging platforms. This diversity of data allows models trained on TissueNet to handle data from many different experimental setups and biological contexts. The images included in TissueNet were acquired from the published and unpublished works of laboratories that routinely perform tissue imaging <ref type="bibr" target="#b53">55,</ref><ref type="bibr" target="#b59">61,</ref><ref type="bibr" target="#b71">[73]</ref><ref type="bibr" target="#b72">[74]</ref><ref type="bibr" target="#b73">[75]</ref><ref type="bibr" target="#b74">[76]</ref><ref type="bibr" target="#b75">[77]</ref><ref type="bibr" target="#b76">[78]</ref> .</p><p>Each dataset was inspected manually to identify images suitable for model training. To be included, images from each dataset needed to have robust nuclear staining of all cells, as well as membranous/cytoplasmic staining of a substantial subset of the cells. For datasets with multiple potential nuclear and membrane markers, the best marker (high signal-to-noise ratio, ubiquitous expression) was chosen for each cell type. For multiplexed datasets containing more than one high-quality nuclear or membrane marker, these channels were added together (after rescaling) if doing so increased the coverage of relevant cell compartments across the cells in the image. Selected images were fed through the human-in-the-loop data pipeline to create the final labeled dataset.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Mesmer algorithm design.</head><p>Deep learning model architecture. The deep learning models used for segmentation are based on feature pyramid networks. Briefly, these networks consist of a ResNet50 (ref. <ref type="bibr" target="#b47">49</ref> ) backbone that is connected to a feature pyramid. Before entering the backbone model, images are concatenated with a coordinate map. We use backbone layers C3-C5 and pyramid layers P3-P7; for the pyramid layers we use depthwise convolutions for computational efficiency. We attach two semantic segmentation heads to the top of the feature pyramid that perform upsampling to produce predictions the same size as the input image.</p><p>Label image transforms. We used a deep learning approach to segmentation that is inspired by previous work <ref type="bibr" target="#b29">30,</ref><ref type="bibr" target="#b52">54</ref> . For each image we use a deep learning model to predict two distinct transforms. The first transform is a prediction of whether each pixel belongs to the cell interior, cell boundary or background. We call this transform a 'pixel-wise transform' . The second transform captures the distance of each pixel inside a cell to that cell's centroid. If the distance of a cell's pixel to that cell's centroid is r, then we compute transform = 1 1+αβr , where α = 1 √ cell area and β is a hyperparameter that we take to be 1. We call this the 'inner distance transform' . One key difference between our formula and the work where this strategy was first proposed <ref type="bibr" target="#b29">30</ref> is the introduction of α, which makes this transform relatively indifferent to differences in cell size. We use the softmax loss for the semantic head assigned to the pixel-wise transform and the mean squared error for the semantic head assigned to the inner distance transform. Similar to previous work, we scale the softmax loss by 0.01 to stabilize training.</p><p>Mesmer preprocessing. To handle the variation in staining intensity and signal-to-noise ratio across tissue types and imaging platforms, we normalize each image before running it through our deep learning model. We first perform 99.9% scaling to reduce the influence of extremely bright, isolated pixels. We then use Contrast Limited Adaptive Histogram Equalization (CLAHE) <ref type="bibr" target="#b48">50</ref> to normalize each image to have the same dynamic range.</p><p>Mesmer postprocessing. The output of the deep learning model is two sets of predictions, one for the pixel-wise transform and a second for the inner distance transform. We use marker-based watershed <ref type="bibr" target="#b50">52</ref> as a postprocessing step to convert these continuous predictions into discrete label images, where the pixels belonging to each cell are assigned a unique integer. To perform this postprocessing step, a peak-finding algorithm <ref type="bibr" target="#b77">79</ref> is first applied to the prediction image for the inner distance transform to locate the centroid of each cell in the image. These predictions are thresholded at a value of 0.1. The interior class of the prediction image for the pixel-wise transform is thresholded at a value of 0.3. The cell centroid locations and interior pixel prediction image are used as inputs to the marker-based watershed algorithm to produce the final label image. We smooth the transforms with a Gaussian filter to eliminate minor variations and perform additional processing that removes holes and all objects with an area &lt;15 pixels from the final prediction.</p><p>Model training. All models were trained using the Adam optimizer <ref type="bibr" target="#b78">80</ref> with a learning rate of 10 -4 , clipnorm of 0.001 and batch size of eight images. During training, each image is augmented by performing random flips, rotations, crops and scaling to increase the diversity of the training dataset. We use 80% of the data for training, 10% for validation and 10% for testing. We evaluate the loss on the validation dataset after each epoch, and save the model weights only if the loss decreases from the previous value. The test set is used only to evaluate the final trained model. The deep learning model architecture code is available at <ref type="url" target="https://github.com/vanvalenlab/deepcell-tf">https://github.com/  vanvalenlab/deepcell-tf</ref>.</p><p>Cell segmentation benchmarking. Classifying error types. We previously described a methodology for classifying segmentation error types <ref type="bibr" target="#b36">37</ref> , which we used here. We first construct a cost matrix between all cells in the ground-truth and predicted images, where the cost for each pair of cells is defined as (1 minus the intersection over union) between cells. We use this value to determine which predicted cells have a direct, one-to-one mapping with ground-truth cells; these cells are classified as accurately segmented. For all other cells, we generate a graph in which the nodes are cells and the edges are connections between cells with nonzero intersection over union. Predicted cells with no edges are labeled as false positives, since they do not have a corresponding match in the ground-truth data. True cells with no edges are labeled as false negatives, since they do not have a corresponding match in the predicted data. If a single predicted cell has edges to multiple ground-truth cells, then this cell is labeled as a merge. If a single ground-truth cell has edges to multiple predicted cells, then this cell is labeled as a split. Finally, if none of the above criteria are satisfied, and there are edges between multiple ground truth and predicted cells, then we categorize such cells as 'other. ' Benchmarking model performance. To evaluate model accuracy, we created three random splits of TissueNet, each with a different training, validation and testing set. These three separate versions of TissueNet were used to train models in triplicate for all model comparisons. Each model was trained using the training and validation splits and evaluated using the corresponding test split, which was never seen during training. We used our error classification framework to calculate the types of errors present in each image in the test split and reported the average and standard deviation across the replicates. All deep learning models were trained for 100 epochs with a fixed number of steps per epoch to control for differences in dataset size.</p><p>Comparison with alternate models and architectures. To evaluate the relative performance of distinct deep learning architectures, we compared our approach with several alternative methods: Cellpose 28 (whole-cell), StarDist <ref type="bibr" target="#b51">53</ref> (nuclear), RetinaMask <ref type="bibr" target="#b52">54</ref> (trained on TissueNet), FeatureNet <ref type="bibr" target="#b15">16</ref> (nuclear), FeatureNet <ref type="bibr" target="#b25">26</ref> (trained on TissueNet) and Ilastik <ref type="bibr" target="#b21">22</ref> . For all models other than Ilastik, we trained on the entire train split of the TissueNet dataset, using the default settings as supplied in the original, respective papers. For Ilastik, we manually annotated two images from each tissue type using the Ilastik interface, rather than using the entire train split, to more accurately mirror how this software is used in practice. All models were evaluated on the same test splits of TissueNet.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Mesmer performance analysis. Nuclear expansion comparison.</head><p>To compare Mesmer with the current nuclear-based segmentation approaches listed above, we generated whole-cell labels using Mesmer, as well expanded nuclear labels, for all of the images in the test set. Nuclear expansion predictions were generated from nuclear predictions by applying a morphological dilation with a disk of radius of three pixels as the structuring element. To characterize the error modes of each approach, we selected predictions that mapped directly to a single ground-truth cell using our error-type classification approach (Classifying error types). Following identification of the corresponding ground-truth cell, we computed the ratio of predicted cell size to true cell size for each prediction.</p><p>Specialist model evaluation. To evaluate how a specialist model trained on only a subset of the data compared with a generalist model trained on the entire dataset, we identified the four most common tissue types and four most common imaging platforms in TissueNet. Each of these four tissue types had images from multiple imaging platforms, and each of the four imaging platforms had images from multiple tissue types. For each of the eight specialist models, we identified the images in the training and validation split that belonged to that class and used that subset for model training. We then evaluated the trained specialist model on the data in the test split that belonged to that class and compared this performance with the generalist model evaluated on the same portion of the test split.</p><p>Dataset size evaluation. To evaluate how training dataset size impacts model accuracy, we divided TissueNet into bins of increasing size. Each bin of increasing size contained all data from the previous bins, with new data added. This strategy ensured that each bin is a superset of the previous bin, rather than each bin being a random draw from the whole dataset. Bins of increasing size were generated for the training and validation splits while holding the test split constant. We trained models on the progressively larger bins and evaluated all models on the same complete test set.</p><p>Interannotator agreement. To determine the degree to which annotators agreed with one another, we recruited five expert annotators (lab members or PhD students) to annotate the same set of images. For each of the four images, all five annotators generated segmentations from scratch, without using model predictions. We also generated model predictions for these same four images, which were not included in the training data. We then computed the F1 score between all pairs of annotators, as well as between each annotator and the model.</p><p>Pathologist evaluation. To evaluate the relative accuracy of Mesmer and human annotators, we enlisted four board-certified pathologists to evaluate segmentation accuracy. Each pathologist was shown pairs of images; one image contained the segmentation predictions from Mesmer and the other contained the segmentation prediction from one of our expert annotators. We selected 13 random crops from each of the four images. Each crop was shown to each pathologist twice, with the same Mesmer prediction each time, but matched to a different expert annotator prediction, for a total of 104 comparisons.</p><p>Image distortion quantification. To determine how image quality impacts model performance, we systematically degraded images in the test set and assessed the corresponding decrease in F1 score. To simulate out-of-focus images, we performed a Gaussian blur with increasing sigma. The blurred images were then passed through the model to generate predictions. To determine how image resolution impacts model performance, we downsampled each image to represent low-resolution data. We then upsampled back to the original size and ran the upsampled images through the model. To simulate low signal-to-noise ratio and high background staining, we added uniform random noise of increasing magnitude to each pixel. The noise-corrupted images were passed through the model to generate predictions.</p><p>Analyzing multiplexed imaging datasets. Generating subcellular segmentation predictions. We created a custom analysis pipeline that integrates nuclear and whole-cell segmentation predictions. This pipeline takes as inputs the predictions from Mesmer of each cell and each nucleus in the image. We first link each cell mask with its corresponding nuclear mask using maximum overlap, splitting nuclei that are larger than their corresponding cell. We use these linked masks to extract the counts per compartment for all channels of imaging data. The counts for each marker in each compartment are summed and normalized by cell area. Our multiplex image analysis pipeline is available at <ref type="url" target="https://github.com/angelolab/ark-analysis">https://github.com/angelolab/  ark-analysis</ref>.</p><p>We used this pipeline to compute the subcellular localization of a panel of phenotypic markers with known profiles. We stained a tissue microarray of ductal carcinoma in situ samples <ref type="bibr" target="#b59">61</ref> , imaged them with MIBI-TOF and ran the above pipeline. For each channel, we selected fields of view in which the marker showed clear expression and computed the localization in each cell, after removing the bottom 20% low-expressing cells in each marker. We performed the same procedure using the ground-truth labels generated by the human annotators and used the computed localization from the true labels to assess the accuracy of our predictions.</p><p>Computing N/C ratio. Traditionally, the nuclear to cytoplasm ratio assessed by pathologists is the ratio between the area of the nucleus and the area of the cytoplasm <ref type="bibr" target="#b61">63</ref> . However, as a quantitative measure, this formulation runs into issues with division by zero for immune or stromal cells that have no detectable cytoplasm. To alleviate this issue, we instead use the N/C ratio, which uses the whole-cell area rather than the cytoplasm area. The nuclear and whole-cell areas are always greater than zero, thus avoiding division by zero and leading to more stable estimates while maintaining the same qualitative interpretation. Cells with high N/C ratios have larger nuclei relative to their overall cell size, and cells with low N/C ratios have smaller nuclei relative to their overall cell size.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Evaluating accuracy of N/C ratio predictions.</head><p>To determine the accuracy of our N/C ratio predictions, we ran Mesmer on the entire test split of TissueNet. We computed the nuclear and cell predictions for each cell in the image. For each cell, we computed the N/C ratio by first matching each nucleus to its corresponding cell, and then calculated the ratios of their respective areas. We reported the Pearson correlation between the true N/C and predicted N/C for all predicted cells with a direct match in the ground-truth data.</p><p>Assessing frequency of out-of-plane nuclei. Multiplexed imaging platforms analyze tissue slices that represent a two-dimensional cut through a 3D structure. As a result, sometimes the nucleus of a given cell is not captured in the image plane/ tissue section, whereas the rest of the cell is. Given that Mesmer is trained to separately identify nuclei and cells, cells whose nucleus is out of the imaging plane can still be identified and segmented. To determine the frequency of this occurrence, and to validate that these predictions were not merely segmentation artifacts, we compared the incidence of cells with an out-of-plane nucleus in the ground-truth data and Mesmer predictions from the TissueNet test set. For each ground-truth or predicted cell, we identified the corresponding nucleus. Cells without a matching nucleus were classified as out-of-plane.</p><p>Quantifying accuracy of cell-type predictions. To determine how the accuracy of Mesmer's segmentation predictions influenced downstream quantification of cell type, we analyzed a cohort of breast cancer samples acquired on the Vectra platform. We selected two fields of view each from three patients. Each patient's sample was stained with DAPI, CD8, CD14 and Pan-Keratin to identify the main cell subpopulations. We generated segmentation predictions for all images with Mesmer, as well as ground-truth labels with our human-in-the-loop pipeline. We then extracted the counts of each marker in each cell and used hierarchical gating to define cell populations. Thresholds for gating were determined by manual inspection of the histogram for size-normalized counts of each marker. We used the same thresholds for the ground-truth and predicted segmentations. We matched each ground-truth cell with the predicted cell with maximal intersection over union. We then determined whether these matching cells were of the same assigned cell type based on our gating scheme. Matching cells with the same assigned cell type were labeled as true positives. Matching cells which did not have the same assigned cell type, along with unmatched predicted cells, were labeled as false positive. Unmatched ground-truth cells were labeled as false negative.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Decidual cell morphology.</head><p>Training a six-channel Mesmer model. To establish the potential of a model that takes in several lineage markers, we replaced Mesmer's model with a lineage-aware variant. We stained samples of human decidua with a panel of markers to define the cell lineages present, then generated images using Extended Data Fig. <ref type="figure" target="#fig_0">1</ref> | DeepCell Label annotation workflow. a, How multichannel images are represented and edited in DeepCell Label. b, Scalable backend for DeepCell Label that dynamically adjusts required resources based on usage, allowing concurrent annotators to work in parallel. c, Human-inthe-loop workflow diagram. Images are uploaded to the server, run through Mesmer to make predictions, and cropped to facilitate error correction. These crops are sent to the crowd to be corrected, stitched back together, run through quality control to ensure accuracy, and used to train an updated model.</p><p>Extended Data Fig. <ref type="figure" target="#fig_1">2</ref> | Mesmer benchmarking. a, PanopticNet architecture. Images are fed into a ResNet50 backbone coupled to a feature pyramid network. Two semantic heads produce pixel-level predictions. The first head predicts whether each pixel belongs to the interior, border, or background of a cell, while the second head predicts the center of each cell. b, Relative proportion of preprocessing, inference, and postprocessing time in PanopticNet architecture. c, Evaluation of precision, recall, and Jaccard index for Mesmer and previously published models (right) and models trained on TissueNet (left). d, Summary of TissueNet accuracy for Mesmer and selected models to facilitate future benchmarking efforts e,f Breakdown of most prevalent error types (e) and less prevalent error types (f) for Mesmer and previously published models illustrates Mesmer's advantages over previous approaches. g, Comparison of the size distribution of prediction errors for Mesmer (left) with nuclear segmentation followed by expansion (right) shows that Mesmer's predictions are unbiased. Extended Data Fig. <ref type="figure" target="#fig_3">4</ref> | 3D segmentation. Proof of principle for using Mesmer's segmentation predictions to generate 3D segmentations. A z-stack of 3D data is fed to Mesmer, which generates separate 2D predictions for each slice. We computationally link the segmentations predictions from each slice to form 3D objects. This approach can form the basis for human-in-the-loop construction of training data for 3D models.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Extended Data</head></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 |</head><label>1</label><figDesc>Fig.1| A human-in-the-loop approach enables scalable, pixel-level annotation of large image collections. a, This approach has three phases. During phase 1, annotations are created from scratch to train a model. During phase 2, new data are fed through a preliminary model to generate predictions. These predictions are used as a starting point for correction by annotators. As more images are corrected, the model improves, which decreases the number of errors, increasing the speed with which new data can be annotated. During phase 3, an accurate model is run without human correction. b, TissueNet has more nuclear and whole-cell annotations than all previously published datasets. c, The number of cell annotations per imaging platform in TissueNet. d, The number of cell annotations per tissue type in TissueNet. e, The number of hours of annotation time required to create TissueNet. CODEX, co-detection by indexing; CyCIF, cyclic immunofluorescence; MIBI-TOF, multiplexed ion beam imaging by time of flight; MxIF, multiplexed immunofluorescence; IMC, imaging mass cytometry.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 2 |</head><label>2</label><figDesc>Fig. 2 | Mesmer delivers accurate nuclear and whole-cell segmentation in multiplexed images of tissues. a, Diagram illustrating the key steps in the Mesmer segmentation pipeline. b, Speed versus accuracy comparison of Mesmer and previously published models, as well as architectures we retrained on TissueNet (TN). Accuracy is measured by the F1 score (Methods) between the predicted segmentations and the ground-truth labels in the test set of TissueNet, where 0 indicates no agreement and 1 indicates perfect agreement. c, Color overlay of representative image of colorectal carcinoma. d, Inset showing the ground truth (top) and predicted (middle) labels from a small region in c, along with a visual representation of segmentation accuracy (bottom). Predicted segmentations for each cell are colored by the log 2 of the ratio between the predicted area and ground-truth area. Predicted cells that are too large are red, while predicted cells that are too small are blue. e, Ground-truth segmentation labels for the image in c, along with the predicted labels from Mesmer and previously published models, each colored by the log 2 as in d. As seen visually, Mesmer offers substantially better performance than previous methods. f, Mesmer generalizes across tissue types, imaging platforms and disease states. The F1 score is given for each image. DCIS, ductal carcinoma in situ. Scale bars, 50 μm.</figDesc><graphic coords="4,60.34,465.18,470.40,158.88" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><figDesc>cell annotation do you think is the most accurate? Drag the slider left or right to indicate your assessment. Previous Next 15 of 104 images Software interface for blinded, side-by-side comparison of human and mesmer annotations by board-certified pathologists NATuRE BIOTECHNOLOGy | VOL 40 | APRIL 2022 | 555-565 | www.nature.com/naturebiotechnology</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 4 |</head><label>4</label><figDesc>Fig. 4 | Mesmer enables accurate analysis of multiplex imaging data. a, Color overlays showing staining patterns for nuclear and non-nuclear proteins (top), with associated nuclear and whole-cell segmentation predictions (bottom). b, Quantification of subcellular localization of the proteins in a for predicted and ground-truth segmentations. The agreement between localization for prediction and ground-truth segmentations indicates that Mesmer accurately quantifies protein localization patterns at the single-cell level. n = 1069 cells. Data are presented as mean ± 95% confidence interval. c, Example image of a tissue with a high N/C ratio (top) and a low N/C ratio (bottom). The N/C ratio is one of several metrics used for quantifying cell morphology (Methods). d, A Pearson's correlation contour plot of the accuracy of N/C ratio predictions across the entire test split of TissueNet demonstrates that Mesmer accurately quantifies cell morphology. e, Representative image of a tissue with many nuclei outside the imaging plane (top), along with corresponding segmentations colored by whether the nucleus is, or is not, in the imaging plane. f, Quantification of the number of cells with an out-of-plane nucleus in the predicted and ground-truth segmentations. These cells are detected by Mesmer but would be missed by nuclear segmentation-based methods. g, Representative image of the expression of multiple informative proteins in a breast cancer sample. h, Predicted segmentation colored by cell lineage. i, Ground-truth segmentation colored by cell lineage. j, Quantification of precision and recall of each cell type in the ground-truth and predicted segmentations demonstrates that Mesmer produces accurate cell-type counts. Scale bars, 50 μm.</figDesc><graphic coords="7,44.69,409.41,367.92,111.36" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Fig. 6 |</head><label>6</label><figDesc>Fig.6| Cloud-native and on-premise software facilitates deployment of Mesmer. A centralized web server, https://deepcell.org, hosts a version of the Mesmer pipeline. Users with moderate amounts of data (&lt;10<ref type="bibr" target="#b2">3</ref> 1-megapixel images) to process can access this pipeline through a web portal. Alternatively, users can use ImageJ and QuPath plugins that submit data to the https://deepcell.org web server and retrieve the results. We have also created a containerized version of Mesmer that is compatible with existing workflow managers, so that users with larger amounts of data (&gt;10<ref type="bibr" target="#b2">3</ref> 1-megapixel images) to process can benefit from our work.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Fig. 3 |</head><label>3</label><figDesc>TissueNet accuracy comparisons. a, Accuracy of specialist models trained on each platform type (rows) and evaluated on data from other platform types (columns) indicates good agreement within immunofluorescence and mass spectrometry-based methods, but not across distinct methods. b, Accuracy of specialist models trained on each tissue type (rows) and evaluated on data from other tissue types (columns) demonstrates that models trained on only a single tissue type do not generalize as well to other tissue types. c, Quantification of F1 score as a function of the size of the dataset used for training. d-h, Quantification of individual error types as a function of the size of the dataset used for training. i, Representative images where Mesmer accuracy was poor, as determined by the image specific F1 score. j, Impact of image blurring on model accuracy. k, Impact of image downsampling and then upsampling on model accuracy. l, Impact of adding random noise to image on model accuracy. All scale bars are 50 μM.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="21,43.24,55.56,508.80,193.32" type="bitmap" /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>NATuRE BIOTECHNOLOGy | VOL 40 | APRIL 2022 | 555-565 | www.nature.com/naturebiotechnology</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_1"><p>© The Author(s), under exclusive licence to Springer Nature America, Inc. 2021 NATuRE BIOTECHNOLOGy | VOL 40 | APRIL 2022 | 555-565 | www.nature.com/naturebiotechnology</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_2"><p>NATuRE BIOTECHNOLOGy | www.nature.com/naturebiotechnology</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgements</head><p>We thank <rs type="person">K. Borner</rs>, <rs type="person">L. Cai</rs>, <rs type="person">M. Covert</rs>, <rs type="person">A. Karpathy</rs>, <rs type="person">S. Quake</rs> and <rs type="person">M. Thomson</rs> for interesting discussions; <rs type="person">D. Glass</rs> and <rs type="person">E. McCaffrey</rs> for feedback on the manuscript; <rs type="person">T. Vora</rs> for copy editing; <rs type="person">R. Angoshtari</rs>, <rs type="person">G. Barlow</rs>, <rs type="person">B. Bodenmiller</rs>, <rs type="person">C. Carey</rs>, <rs type="person">R. Coffey</rs>, <rs type="person">A. Delmastro</rs>, <rs type="person">C. Egelston</rs>, <rs type="person">M. Hoppe</rs>, <rs type="person">H. Jackson</rs>, <rs type="person">A. Jeyasekharan</rs>, <rs type="person">S. Jiang</rs>, <rs type="person">Y. Kim</rs>, <rs type="person">E. McCaffrey</rs>, <rs type="person">E. McKinley</rs>, <rs type="person">M. Nelson</rs>, <rs type="person">S.-B. Ng</rs>, <rs type="person">G. Nolan</rs>, <rs type="person">S. Patel</rs>, <rs type="person">Y. Peng</rs>, <rs type="person">D. Philips</rs>, <rs type="person">R. Rashid</rs>, <rs type="person">S. Rodig</rs>, <rs type="person">S. Santagata</rs>, <rs type="person">C. Schuerch</rs>, <rs type="person">D. Schulz</rs>, <rs type="person">Di. Simons</rs>, <rs type="person">P. Sorger</rs>, <rs type="person">J. Weirather</rs> and <rs type="person">Y. Yuan</rs> for providing imaging data for TissueNet; the crowd annotators who powered our human-in-the-loop pipeline; and all patients who donated samples for this study. This work was supported by grants from the <rs type="funder">Shurl and Kay Curci Foundation</rs>, the <rs type="funder">Rita Allen Foundation</rs>, the <rs type="funder">Susan E. Riley Foundation</rs>, the <rs type="funder">Pew Heritage Trust</rs>, the <rs type="funder">Alexander and Margaret Stewart Trust</rs>, the <rs type="funder">Heritage Medical Research Institute</rs>, the <rs type="funder">Paul Allen Family Foundation</rs> through the <rs type="institution">Allen Discovery Centers at Stanford</rs> and <rs type="institution">Caltech</rs>, the <rs type="institution">Rosen Center for Bioengineering at Caltech</rs> and the <rs type="institution">Center for Environmental and Microbial Interactions at Caltech</rs> (D.V.V.). This work was also supported by <rs type="grantNumber">5U54CA20997105</rs>, <rs type="grantNumber">5DP5OD01982205</rs>, <rs type="grantNumber">1R01CA24063801A1</rs>, <rs type="grantNumber">5R01AG06827902</rs>, <rs type="grantNumber">5UH3CA24663303</rs>, <rs type="grantNumber">5R01CA22952904</rs>, <rs type="grantNumber">1U24CA22430901</rs>, <rs type="grantNumber">5R01AG05791504</rs> and <rs type="grantNumber">5R01AG05628705</rs> from <rs type="funder">NIH</rs>, <rs type="grantNumber">W81XWH2110143</rs> from <rs type="funder">DOD</rs>, and other funding from the <rs type="funder">Bill and Melinda Gates Foundation</rs>, <rs type="funder">Cancer Research Institute</rs>, the <rs type="funder">Parker Center for Cancer Immunotherapy</rs> and the <rs type="funder">Breast Cancer Research Foundation</rs> (M.A.). N.F.G. was supported by <rs type="funder">NCI</rs> <rs type="grantNumber">CA246880-01</rs> and the <rs type="grantName">Stanford Graduate Fellowship</rs>. B.J.M. was supported by the <rs type="grantName">Stanford Graduate Fellowship and Stanford Interdisciplinary Graduate Fellowship</rs>. T.D. was supported by the <rs type="programName">Schmidt Academy for Software Engineering at Caltech</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_RhbFmCe">
+					<idno type="grant-number">5U54CA20997105</idno>
+				</org>
+				<org type="funding" xml:id="_hK6E6vJ">
+					<idno type="grant-number">5DP5OD01982205</idno>
+				</org>
+				<org type="funding" xml:id="_B728Ebt">
+					<idno type="grant-number">1R01CA24063801A1</idno>
+				</org>
+				<org type="funding" xml:id="_FEq8xCj">
+					<idno type="grant-number">5R01AG06827902</idno>
+				</org>
+				<org type="funding" xml:id="_Jf47HCQ">
+					<idno type="grant-number">5UH3CA24663303</idno>
+				</org>
+				<org type="funding" xml:id="_SYr4WZz">
+					<idno type="grant-number">5R01CA22952904</idno>
+				</org>
+				<org type="funding" xml:id="_qCjDzB3">
+					<idno type="grant-number">1U24CA22430901</idno>
+				</org>
+				<org type="funding" xml:id="_F9du7uv">
+					<idno type="grant-number">5R01AG05791504</idno>
+				</org>
+				<org type="funding" xml:id="_4uyU6xQ">
+					<idno type="grant-number">5R01AG05628705</idno>
+				</org>
+				<org type="funding" xml:id="_WSK8dyS">
+					<idno type="grant-number">W81XWH2110143</idno>
+				</org>
+				<org type="funding" xml:id="_FBEwYjz">
+					<idno type="grant-number">CA246880-01</idno>
+					<orgName type="grant-name">Stanford Graduate Fellowship</orgName>
+				</org>
+				<org type="funding" xml:id="_7n8ZhqT">
+					<orgName type="grant-name">Stanford Graduate Fellowship and Stanford Interdisciplinary Graduate Fellowship</orgName>
+					<orgName type="program" subtype="full">Schmidt Academy for Software Engineering at Caltech</orgName>
+				</org>
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data availability</head><p>The TissueNet dataset is available at <ref type="url" target="https://datasets.deepcell.org/">https://datasets.deepcell.org/</ref> for noncommercial use.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Code availability</head><p>All software for dataset construction, model training, deployment and analysis is available on our github page <ref type="url" target="https://github.com/vanvalenlab/intro-to-deepcell">https://github.com/vanvalenlab/  intro-to-deepcell</ref>. All code to generate the figures in this paper is available at <ref type="url" target="https://github.com/vanvalenlab/publication-figures/tree/master/2021-Greenwald_Miller_et_al-Mesmer">https://github.com/vanvalenlab/publication-figures/tree/  master/2021-Greenwald_Miller_et_al-Mesmer</ref>.</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Online content</head><p>Any methods, additional references, Nature Research reporting summaries, source data, extended data, supplementary information, acknowledgements, peer review information; details of author contributions and competing interests; and statements of data and code availability are available at <ref type="url" target="https://doi.org/10.1038/s41587-021-01094-0">https://doi.org/10.1038/  s41587-021-01094-0</ref>.</p><p>Publisher's note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Articles</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Nature BiotechNology</head><p>the MIBI-TOF platform <ref type="bibr" target="#b63">65</ref> . We generated whole-cell segmentation labels for 15 of these images manually using HH3 to define the nucleus and CD3, CD14, CD56, HLAG and vimentin to define the shape of the cells in the image. We modified the model architecture to accept six channels of input data and trained it using the settings described above.</p><p>Generating cell morphology information. To quantify the range of cell shapes and morphologies present in the image data, we created an automated pipeline that extracts key features from each cell segmentation in an image. We extract morphological information using the regionprops function in the scikit-image <ref type="bibr" target="#b77">79</ref> library. We use the following default features from regionprops: area, perimeter, centroid, convex area, equivalent diameter, convex image and principal axis length. These features are transformed as described below to create the selected morphology metrics. Our analysis pipeline is available at <ref type="url" target="https://github.com/angelolab/ark-analysis">https://github.com/  angelolab/ark-analysis</ref>.</p><p>Many of the metrics relate to the difference between the cell shape and the corresponding convex hull. A convex hull for a given segmentation is defined as the smallest possible convex shape that completely contains the cell shape. For shapes that are already convex and do not have any concave angles, the convex hull and the cell are equivalent. For shapes that do have concavities, the convex hull fills in these areas.</p><p>In addition to the N/C ratio, we computed the following five morphology metrics:</p><p>• Asymmetry: the distance between the centroid of the convex hull and the centroid of the cell, normalized by the square root of the area of the cell. The centroid of the convex hull is far from the centroid of the cell when extra mass is added to the convex hull in an imbalanced fashion, indicating that the original cell was not symmetrical. • Concavities: the number of concavities present in each cell. We include only concavities that have an area of at least 10 pixels and a perimeter to area ratio &lt; 60 to avoid counting very small deviations from convexity. This approach summarizes how many unique indentations and divots are present in each cell. • Fill: the difference in area between the convex hull and the cell, normalized by the area of the convex hull. This ratio is effectively the proportion of the convex hull that was newly added and quantifies the fraction of the cell that is composed of divots and indentations. • Aspect ratio: the ratio between the principal axis length and the equivalent diameter. Principal axis length is the length of the principal axis of an ellipse with the same moments as the original cell and serves as a proxy for the length of the longest diagonal of the cell. Equivalent diameter is the diameter of a circle with the same area as the cell. The ratio of these two quantities gives an estimate of cell elongation. • Perimeter to area ratio: the ratio between the perimeter squared of the cell and the area of the cell. We use perimeter squared rather than perimeter itself for better consistency across cell sizes.</p><p>Identifying morphological clusters. We classified the cells based only on the above five morphology metrics, which we computed for the images in the decidua cohort. We first normalized each metric independently, and then performed k-means clustering with k = 4. We plotted the mean value of metric in each cluster to identify the features that separated them from one another and performed hierarchical clustering on the resulting output.</p><p>Model deployment. DeepCell Kiosk: a scalable, cloud-based solution for hosting deep learning models. We previously described the construction of DeepCell Kiosk, our cloud-based deployment system <ref type="bibr" target="#b38">39</ref> . This software dynamically adjusts the amount of compute resources needed at any one time to match demand; since the load on the server is low most of the time, this strategy delivers economical hosting of the web portal for community use. When demand increases, compute resources are automatically increased. The Kiosk is available at <ref type="url" target="https://github.com/vanvalenlab/kiosk-console">https://github.com/  vanvalenlab/kiosk-console</ref>.</p><p>Generating predictions from Mesmer using cloud deployments. To facilitate quick and easy access to Mesmer, we used the Kiosk to generate several easy ways to predict cell segmentation. We created a web portal that allows anyone to upload their data and receive results instantly. This web-based interface facilitates point-and-click upload and download of results, with no installation required. We have also created plugins for ImageJ <ref type="bibr" target="#b20">21</ref> and QuPath 68 that automatically send data to the Kiosk and return predictions to the user. These predictions can then be used in ImageJ or QuPath for downstream analyses of interest. Detailed tutorials and documentation can be found at <ref type="url" target="https://github.com/vanvalenlab/intro-to-deepcell">https://github.com/vanvalenlab/intro-to-deepcell</ref>.</p><p>Generating predictions from Mesmer using local deployments. Although cloud deployment offers a fast, intuitive way for users with little computational experience to generate predictions, it offers less fine-grained control over the input and output parameters. Further, web portals are not ideal for integration with existing image-processing workflows. For users with more computational expertise, we have created local deployments of Mesmer to facilitate future model development and integration with existing workflows. To facilitate training and model development, we provide example Jupyter and Colab notebooks. For integration with existing computational workflows, we provide a command line interface and docker container. Finally, we have also made our open-source multiplex image analysis pipeline available for users who want an end-to-end solution for segmenting, quantifying and analyzing image data. A guide showing users how to use these resources is available at <ref type="url" target="https://github.com/vanvalenlab/intro-to-deepcell">https://github.com/vanvalenlab/  intro-to-deepcell</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Statistics and reproducibility.</head><p>The image shown in Fig. <ref type="figure">2c</ref> is a crop from a single patient sample; this experiment was not repeated. The images shown in Figs. 2f and Fig. <ref type="figure">3a</ref> are crops from individual patient samples with the highest F1 scores; this experiment was repeated across all images in the test split of TissueNet, with results reported in Fig. <ref type="figure">2b</ref> and Fig. <ref type="figure">3b</ref>,<ref type="figure">c</ref>. The images shown in Fig. <ref type="figure">4c</ref> are crops from individual patient samples; this experiment was repeated across all samples in the test split of TissueNet, with the results reported in Fig. <ref type="figure">4d</ref>. The images shown in Fig. <ref type="figure">4e</ref> are crops from a single patient sample; this experiment was repeated across all samples in the test split of TissueNet, with the results reported in Fig. <ref type="figure">4f</ref>. The images shown in Fig. <ref type="figure">4g</ref>-i are crops from a single patient sample; this experiment was repeated twice in two distinct crops for the three patients in this dataset, with the results reported in Fig. <ref type="figure">4j</ref>. The images shown in Fig. <ref type="figure">5a</ref>,b,e,h,i are crops from individual patient samples; this experiment was repeated across all ten patients in this cohort. The images in Supplementary Figure <ref type="figure">3i</ref> are crops from individual patient samples; this experiment was repeated across all samples in the test split of TissueNet.</p><p>Software. This project would not have been possible without numerous open-source Python packages including jupyter <ref type="bibr" target="#b79">81</ref> , keras <ref type="bibr" target="#b80">82</ref> , matplotlib <ref type="bibr" target="#b81">83</ref> , numpy <ref type="bibr" target="#b82">84</ref> , pandas <ref type="bibr" target="#b83">85</ref> , scikit-image <ref type="bibr" target="#b77">79</ref> , scikit-learn <ref type="bibr" target="#b84">86</ref> , seaborn <ref type="bibr" target="#b85">87</ref> , tensorflow <ref type="bibr" target="#b86">88</ref>  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Additional information</head><p>Extended data is available for this paper at <ref type="url" target="https://doi.org/10.1038/s41587-021-01094-0">https://doi.org/10.1038/s41587-021-01094-0</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Supplementary information</head><p>The online version contains supplementary material available at <ref type="url" target="https://doi.org/10.1038/s41587-021-01094-0">https://doi.org/10.1038/s41587-021-01094-0</ref>.</p><p>Correspondence and requests for materials should be addressed to Michael Angelo or David Van Valen.</p><p>Peer review information Nature Biotechnology thanks the anonymous reviewers for their contribution to the peer review of this work.</p><p>Reprints and permissions information is available at <ref type="url" target="http://www.nature.com/reprints">www.nature.com/reprints</ref>.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Highly multiplexed imaging of tumor tissues with subcellular resolution by mass cytometry</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Giesen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="page" from="417" to="422" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">MIBI-TOF: a multiplexed imaging platform relates cellular phenotypes and tissue structure</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Keren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sci. Adv</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page">5851</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">A colorful future of quantitative pathology: validation of Vectra technology using chromogenic multiplexed immunohistochemistry and prostate tissue microarrays</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Hennrick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Drew</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Hum. Pathol</title>
+		<imprint>
+			<biblScope unit="volume">44</biblScope>
+			<biblScope unit="page" from="29" to="38" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title level="m" type="main">Highly multiplexed immunofluorescence imaging of human tissues and tumors using t-CyCIF and conventional optical microscopes</title>
+		<author>
+			<persName><forename type="first">J.-R</forename><surname>Lin</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page">31657</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Highly multiplexed single-cell analysis of formalinfixed, paraffin-embedded cancer tissue</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Gerdes</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proc. Natl Acad. Sci</title>
+		<imprint>
+			<biblScope unit="volume">110</biblScope>
+			<biblScope unit="page" from="11982" to="11987" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Deep profiling of mouse splenic architecture with CODEX multiplexed imaging</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Goltsev</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">174</biblScope>
+			<biblScope unit="page">15</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Spatially resolved, highly multiplexed RNA profiling in single cells</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Boettiger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Moffitt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhuang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">348</biblScope>
+			<biblScope unit="page">6090</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Highly multiplexed subcellular RNA sequencing in situ</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">343</biblScope>
+			<biblScope unit="page" from="1360" to="1363" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Molecular, spatial and functional single-cell profiling of the hypothalamic preoptic region</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Moffitt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">362</biblScope>
+			<biblScope unit="page">5324</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Three-dimensional intact-tissue sequencing of single-cell transcriptional states</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">361</biblScope>
+			<biblScope unit="page">5691</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Single-cell in situ RNA profiling by sequential hybridization</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Lubeck</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">F</forename><surname>Coskun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Zhiyentayev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ahmad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Cai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat Methods</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="page" from="360" to="361" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Transcriptome-scale super-resolved imaging in tissues by RNA seqFISH+</title>
+		<author>
+			<persName><forename type="first">C.-H</forename><forename type="middle">L</forename><surname>Eng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">568</biblScope>
+			<biblScope unit="page" from="235" to="239" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">The human tumor atlas network: charting tumor transitions across space and time at single-cell resolution</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Rozenblatt-Rosen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">181</biblScope>
+			<biblScope unit="page" from="236" to="249" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">The human body at cellular resolution: the NIH Human Biomolecular Atlas Program</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">P</forename><surname>Snyder</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">574</biblScope>
+			<biblScope unit="page" from="187" to="192" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<title level="m" type="main">The human cell atlas white paper</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Regev</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/1810" />
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page">1</biblScope>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">A structured tumor-immune microenvironment in triple negative breast cancer revealed by multiplexed ion beam imaging</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Keren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">174</biblScope>
+			<biblScope unit="page">19</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<monogr>
+		<title level="m" type="main">Cell Biology by the Numbers 1st edn</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Milo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Phillips</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<publisher>Garland Science</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<monogr>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mescher</surname></persName>
+		</author>
+		<title level="m">Junqueira&apos;s Basic Histology: Text and Atlas 13th edn</title>
+		<imprint>
+			<publisher>McGraw Hill</publisher>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">CellProfiler 3.0: next-generation image processing for biology</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Mcquin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS Biol</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page">2005970</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Fiji: an open-source platform for biological-image analysis</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Schindelin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="676" to="682" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">NIH Image to ImageJ: 25 years of image analysis</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Schneider</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">S</forename><surname>Rasband</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">W</forename><surname>Eliceiri</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="671" to="675" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">ilastik: interactive machine learning for (bio)image analysis</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Berg</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="1226" to="1232" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Icy: an open bioimage informatics platform for extended reproducible research</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>De Chaumont</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="690" to="696" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Microscopy image browser: a platform for segmentation and analysis of multidimensional datasets</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Belevich</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Joensuu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Vihinen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Jokitalo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS Biol</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page">1002340</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ronneberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Brox</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Navab</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Image Computing and Computer-Assisted Intervention -MICCAI 2015</title>
+		<title level="s">Lecture Notes in Computer Science</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="volume">9351</biblScope>
+			<biblScope unit="page" from="234" to="241" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Deep learning automates the quantitative analysis of individual cells in live-cell imaging experiments</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A V</forename><surname>Valen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS Comput. Biol</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page">1005177</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Nucleus segmentation across imaging experiments: the 2018 Data Science Bowl</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">C</forename><surname>Caicedo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="1247" to="1253" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Cellpose: a generalist algorithm for cellular segmentation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Stringer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Michaelos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pachitariu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="100" to="106" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">nucleAIzer: a parameter-free deep learning framework for nucleus segmentation using image style transfer</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Hollandi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell Syst</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page" from="453" to="458" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">DeepDistance: a multi-task deep regression model for cell detection in inverted microscopy images</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">F</forename><surname>Koyuncu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">N</forename><surname>Gunesli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Cetin-Atalay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Gunduz-Demir</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Med. Image Anal</title>
+		<imprint>
+			<biblScope unit="volume">63</biblScope>
+			<biblScope unit="page">101720</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">NuSeT: A deep learning tool for reliably separating and analyzing crowded cells</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Yang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS Comput. Biol</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page">1008193</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">CCDB:6843, mus musculus</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Yu</surname></persName>
+		</author>
+		<idno type="DOI">10.7295/W9CCDB6843</idno>
+		<ptr target="https://doi.org/10.7295/W9CCDB6843" />
+	</analytic>
+	<monogr>
+		<title level="j">Neuroblastoma. CIL. Dataset</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Object-oriented segmentation of cell nuclei in fluorescence microscopy images</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">F</forename><surname>Koyuncu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Cetin-Atalay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Gunduz-Demir</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cytometry A</title>
+		<imprint>
+			<biblScope unit="volume">93</biblScope>
+			<biblScope unit="page" from="1019" to="1028" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Annotated high-throughput microscopy image sets for validation</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Ljosa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">L</forename><surname>Sokolnicki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">E</forename><surname>Carpenter</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="637" to="637" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">A multi-organ nucleus segmentation challenge</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Kumar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Med. Imaging</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="page" from="1380" to="1391" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">MoNuSAC2020: A Multi-organ Nuclei Segmentation and Classification Challenge</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Verma</surname></persName>
+		</author>
+		<idno>1109/ TMI.2021.3085712</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Med. Imaging</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<monogr>
+		<title level="m" type="main">Accurate cell tracking and lineage construction in live-cell imaging experiments with deep learning</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Moen</surname></persName>
+		</author>
+		<idno type="DOI">10.1101/803205</idno>
+		<ptr target="https://doi.org/10.1101/803205" />
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+	<note>Preprint at bioRxiv</note>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<monogr>
+		<title level="m" type="main">PanNuke dataset extension, insights and baselines</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gamper</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/2003" />
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">10778</biblScope>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">DeepCell Kiosk: scaling deep learning-enabled cellular image analysis with Kubernetes</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Bannon</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="43" to="45" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">CDeep3M-plug-and-play cloud-based deep learning for image segmentation</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">G</forename><surname>Haberl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="677" to="680" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">ImJoy: an open-source computational platform for the deep learning era</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Ouyang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Mueller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hjelmare</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Lundberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zimmer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="1199" to="1200" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Democratising deep learning for microscopy with ZeroCostDL4Mic</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Von Chamier</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page">2276</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Quanti.us: a tool for rapid, flexible, crowd-based annotation of images</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Hughes</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Methods</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="587" to="590" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Interactive biomedical segmentation tool powered by deep learning and ImJoy</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Ouyang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Le</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Lundberg</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Research</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page">142</biblScope>
+			<date type="published" when="1000">1000. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<monogr>
+		<title level="m" type="main">Accurate and versatile 3D segmentation of plant tissues at cellular resolution</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Wolny</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page">57613</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Feature pyramid networks for object detection</title>
+		<author>
+			<persName><forename type="first">T.-Y</forename><surname>Lin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<meeting>IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</meeting>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="2117" to="2125" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">EfficientDet: scalable and efficient object detection</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Pang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Le</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="10778" to="10787" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Deep residual learning for image recognition</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="770" to="778" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<monogr>
+		<author>
+			<persName><forename type="first">K</forename><surname>Zuiderveld</surname></persName>
+		</author>
+		<title level="m">Graphics Gems</title>
+		<editor>
+			<persName><forename type="first">P</forename><forename type="middle">S</forename><surname>Heckbert</surname></persName>
+		</editor>
+		<editor>
+			<persName><surname>Ch</surname></persName>
+		</editor>
+		<editor>
+			<persName><surname>Viii</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Academic Press</publisher>
+			<date type="published" when="1994">1994</date>
+			<biblScope unit="volume">5</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<monogr>
+		<title level="m" type="main">Make smooth predictions by blending image patches, such as for image segmentation</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Chevalier</surname></persName>
+		</author>
+		<ptr target="https://github.com/Vooban/Smoothly-Blend-Image-Patches" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Morphological segmentation</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Meyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Beucher</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Vis. Commun. Image R</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="21" to="46" />
+			<date type="published" when="1990">1990</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Star-convex polyhedra for 3D object detection and segmentation in microscopy</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Weigert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Schmidt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Haase</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Sugawara</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Myers</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE Winter Conference on Applications of Computer Vision (WACV)</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="3655" to="3662" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<monogr>
+		<title level="m" type="main">RetinaMask: learning to predict masks improves state-of-the-art single-shot detection for free</title>
+		<author>
+			<persName><forename type="first">C.-Y</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Shvets</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">C</forename><surname>Berg</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/1901.03353v" />
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page">1</biblScope>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Coordinated cellular neighborhoods orchestrate antitumoral immunity at the colorectal cancer invasive front</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">M</forename><surname>Schürch</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell</title>
+		<imprint>
+			<biblScope unit="volume">182</biblScope>
+			<biblScope unit="page" from="1341" to="1359" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Imaging mass cytometry and multiplatform genomics define the phenogenomic landscape of breast cancer</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">R</forename><surname>Ali</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Cancer</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="163" to="175" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">HSF1 phase transition mediates stress adaptation and cell fate decisions</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Gaglia</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Cell Biol</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="151" to="158" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Oscillations in NF-κB signaling control the dynamics of gene expression</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">E</forename><surname>Nelson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">306</biblScope>
+			<biblScope unit="page" from="704" to="708" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Regulated nuclear-cytoplasmic localization of interferon regulatory factor 3, a subunit of double-stranded RNA-activated factor 1</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">P</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">M</forename><surname>Mcbride</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">K</forename><surname>Weaver</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Dingwall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">C</forename><surname>Reich</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Mol. Cell Biol</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page" from="4159" to="4168" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">Recommendations for human epidermal growth factor receptor 2 testing in Breast Cancer</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">C</forename><surname>Wolff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Clin. Oncol</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="3997" to="4013" />
+			<date type="published" when="2013">2013</date>
+			<publisher>American Society of Clinical Oncology</publisher>
+		</imprint>
+	</monogr>
+	<note>College of American pathologists clinical practice guideline update</note>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<monogr>
+		<title level="m" type="main">Transition to invasive breast cancer is associated with progressive changes in the structure and composition of tumor stroma</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Risom</surname></persName>
+		</author>
+		<idno type="DOI">10.1101/2021.01.05.425362</idno>
+		<ptr target="https://doi.org/10.1101/2021.01.05.425362" />
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at bioRxiv</note>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<monogr>
+		<ptr target="https://github.com/angelolab/ark-analysis" />
+		<title level="m">Ark Analysis</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title level="a" type="main">Diagnostic Cytology and Its Histopathologic Bases</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">G</forename><surname>Koss</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J.B. Lippincott Company</title>
+		<imprint>
+			<date type="published" when="1979">1979</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<analytic>
+		<title level="a" type="main">Immunology of the maternal-fetal interface</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Erlebacher</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Annu. Rev. Immunol</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="387" to="411" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<monogr>
+		<title level="m" type="main">Spatio-temporal coordination at the maternal-fetal interface promotes trophoblast invasion and vascular remodeling in the first half of human pregnancy</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Greenbaum</surname></persName>
+		</author>
+		<idno type="DOI">10.1101/2021.09.08.459490</idno>
+		<ptr target="https://doi.org/10.1101/2021.09.08.459490" />
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at bioRxiv</note>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title level="a" type="main">Defective decidualization during and after severe preeclampsia reveals a possible maternal contribution to the etiology</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Garrido-Gomez</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proc. Natl Acad. Sci. USA</title>
+		<imprint>
+			<biblScope unit="volume">114</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note>E8468-E8477</note>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title/>
+		<ptr target="https://github.com/vanvalenlab/deepcell-tf" />
+	</analytic>
+	<monogr>
+		<title level="j">Deep Cell Core Library. Deep learning for single-cell analysis</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">QuPath: open source software for digital pathology image analysis</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bankhead</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sci. Rep</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page">16878</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">Hover-Net: simultaneous segmentation and classification of nuclei in multi-tissue histology images</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Graham</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Med. Image Anal</title>
+		<imprint>
+			<biblScope unit="volume">58</biblScope>
+			<biblScope unit="page">101563</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Usiigaci: instance-aware cell tracking in stain-free phase contrast microscopy enabled by machine learning</title>
+		<author>
+			<persName><forename type="first">H.-F</forename><surname>Tsai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gajda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">F W</forename><surname>Sloan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Rares</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">Q</forename><surname>Shen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">SoftwareX</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="230" to="237" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<monogr>
+		<title level="m" type="main">In situ characterization of the 3D microanatomy of the pancreas and pancreatic cancer at single cell resolution. bioRxiv 2020</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kiemen</surname></persName>
+		</author>
+		<idno type="DOI">10.1101/2020.12.08.416909</idno>
+		<idno>12.08.416909</idno>
+		<ptr target="https://doi.org/10.1101/2020.12.08.416909" />
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">Establishment of a morphological atlas of the Caenorhabditis elegans embryo using deep-learning-based 4D segmentation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat. Commun</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="page">6254</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title level="a" type="main">Simultaneous multiplexed imaging of mRNA and proteins with subcellular resolution in breast cancer tissue samples by mass cytometry</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Schulz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cell Syst</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page">531</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">Optimized multiplex immunofluorescence single-cell analysis reveals tuft cell heterogeneity</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">T</forename><surname>Mckinley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">JCI Insight</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page">93487</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<analytic>
+		<title level="a" type="main">The microenvironmental niche in classic Hodgkin lymphoma is enriched for CTLA-4-positive T-cells that are PD-1-negative</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">S</forename><surname>Patel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Blood</title>
+		<imprint>
+			<biblScope unit="volume">134</biblScope>
+			<biblScope unit="page" from="2059" to="2069" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title level="a" type="main">The single-cell pathology landscape of breast cancer</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">W</forename><surname>Jackson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">578</biblScope>
+			<biblScope unit="page" from="615" to="620" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<analytic>
+		<title level="a" type="main">Highly multiplexed immunofluorescence images and single-cell data of immune markers in tonsil and lung cancer</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Rashid</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sci. Data</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page">323</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<monogr>
+		<title level="m" type="main">Multiplexed imaging of human tuberculosis granulomas uncovers immunoregulatory features conserved across tissue and blood</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">F</forename><surname>Mccaffrey</surname></persName>
+		</author>
+		<idno type="DOI">10.1101/2020.06.08.140426</idno>
+		<ptr target="https://doi.org/10.1101/2020.06.08.140426" />
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at bioRxiv</note>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<analytic>
+		<title level="a" type="main">scikit-image: image processing in Python</title>
+		<author>
+			<persName><forename type="first">Svander</forename><surname>Walt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PeerJ</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page">453</biblScope>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<monogr>
+		<title level="m" type="main">Adam: a method for stochastic optimization</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">P</forename><surname>Kingma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ba</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/1412" />
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="volume">6980</biblScope>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<monogr>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kluyver</surname></persName>
+		</author>
+		<title level="m">Positioning and Power in Academic Publishing: Players, Agents and Agendas</title>
+		<editor>
+			<persName><forename type="first">B</forename><surname>Schmidt</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">F</forename><surname>Loizides</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>IOS Press</publisher>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b80">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">F</forename><surname>Chollet</surname></persName>
+		</author>
+		<ptr target="https://keras.io" />
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b81">
+	<analytic>
+		<title level="a" type="main">Matplotlib: a 2D graphics environment</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Hunter</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Comput. Sci. Eng</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="90" to="95" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b82">
+	<analytic>
+		<title level="a" type="main">Array programming with NumPy</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">R</forename><surname>Harris</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">585</biblScope>
+			<biblScope unit="page" from="357" to="362" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b83">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><surname>Reback</surname></persName>
+		</author>
+		<idno type="DOI">10.5281/zenodo.3509134</idno>
+		<ptr target="https://doi.org/10.5281/zenodo" />
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">3509134</biblScope>
+			<biblScope unit="page" from="1" to="1" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b84">
+	<monogr>
+		<title level="m" type="main">Scikit-learn: machine learning in Python</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Pedregosa</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/1201.0490v4" />
+		<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b85">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">M</forename><surname>Waskom</surname></persName>
+		</author>
+		<idno type="DOI">10.5281/zenodo.592845</idno>
+		<ptr target="https://doi.org/10.5281/zenodo.592845" />
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b86">
+	<monogr>
+		<title level="m" type="main">TensorFlow: large-scale machine learning on heterogeneous distributed systems</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Abadi</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/1603.04467v2" />
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b87">
+	<analytic>
+		<title level="a" type="main">xarray: N-D labeled arrays and datasets in Python</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Hoyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Hamman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Open Res. Softw</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page">10</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>
